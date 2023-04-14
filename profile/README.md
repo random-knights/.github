@@ -20,11 +20,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <p align="center">
-    <img src="https://github.com/kitt-llc/.github/src/assets/ReadMe-Day.png#gh-light-mode-only" />
-    <img src="https://github.com/kitt-llc/.github/src/assets/ReadMe-Night.png#gh-dark-mode-only" />
-    </a>
-  </p>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../src/assets/ReadMe-Night.png">
+    <source media="(prefers-color-scheme: light)" srcset="../src/assets/ReadMe-Day.png">
+    <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="../src/assets/ReadMe-Night.png">
+  </picture>
 
 <h3 align="center">Kitt, LLC</h3>
 
@@ -375,7 +375,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 [license-url]: https://github.com/kitt-llc/repo_name/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/
-[product-gif]: https://github.com/kitt-llc/.github/src/assets/kitt.gif
+[product-gif]: ../src/assets/kitt.gif
 
 <!-- WORKSPACE BADGES -->
 [Nvidia]: https://img.shields.io/badge/NVIDIA-RTX3060-76B900?style=for-the-badge&logo=nvidia&logoColor=white
