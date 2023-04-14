@@ -1,14 +1,4 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
 
 <!-- PROJECT SHIELDS -->
 <!--
@@ -31,8 +21,8 @@
 <br />
 <div align="center">
   <p align="center">
-    <img src="../src/assets/ReadMe-Day.png#gh-light-mode-only" />
-    <img src="../src/assets/ReadMe-Night.png#gh-dark-mode-only" />
+    <img src="https://github.com/kitt-llc/.github/src/assets/ReadMe-Day.png#gh-light-mode-only" />
+    <img src="https://github.com/kitt-llc/.github/src/assets/ReadMe-Night.png#gh-dark-mode-only" />
     </a>
   </p>
 
@@ -385,7 +375,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 [license-url]: https://github.com/kitt-llc/repo_name/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/
-[product-gif]: ../src/assets/kitt.gif
+[product-gif]: https://github.com/kitt-llc/.github/src/assets/kitt.gif
 
 <!-- WORKSPACE BADGES -->
 [Nvidia]: https://img.shields.io/badge/NVIDIA-RTX3060-76B900?style=for-the-badge&logo=nvidia&logoColor=white
