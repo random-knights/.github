@@ -31,8 +31,8 @@
 <br />
 <div align="center">
   <p align="center">
-    <img src="src/assets/ReadMe-Day.png#gh-light-mode-only" />
-    <img src="src/assets/ReadMe-Night.png#gh-dark-mode-only" />
+    <img src="../src/assets/ReadMe-Day.png#gh-light-mode-only" />
+    <img src="../src/assets/ReadMe-Night.png#gh-dark-mode-only" />
     </a>
   </p>
 
@@ -155,7 +155,6 @@ Week 2 :  b1, 2023-01-09, 5d
 ```
 
 - 📆* Reoccurring Sprint Ceremonies:
-<span style="color:#67DAFF">
   - **1st Monday = Sprint Planning**
   - **1st Tuesday = Automation Planning**
   - **Every Wednesday = Grooming**
@@ -163,10 +162,10 @@ Week 2 :  b1, 2023-01-09, 5d
   - **Last Tuesday of Every Sprint = Code Cut-off**
   - **Last Week of Every Sprint = QA/UAT Sign-Off**
   - **Last Friday = Retro & Demo**
-</span>
 
 
-See the [open issues](https://github.com/kitt-llc/repo_name/issues) for a full list of proposed features (and known issues).
+
+See the [open issues](https://github.com/kitt-llc/repo_name/issues) for a full list of proposed features (and known issues). 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -386,7 +385,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 [license-url]: https://github.com/kitt-llc/repo_name/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/
-[product-gif]: src/assets/kitt.gif
+[product-gif]: ../src/assets/kitt.gif
 
 <!-- WORKSPACE BADGES -->
 [Nvidia]: https://img.shields.io/badge/NVIDIA-RTX3060-76B900?style=for-the-badge&logo=nvidia&logoColor=white
