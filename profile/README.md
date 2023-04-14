@@ -68,7 +68,7 @@
 
 [![Product Name Screen Shot][product-gif]](https://example.com)
 
-We are a collection of daytime professionals, moonlighting the world of Internet Technology to build cool and useful things with computers. As curious nighttime creatures we most commonly identify as `Kits`, known in the animal kingdom as young or undersized fur-bearing animals such as `squirrels`, `beavers`, `rabbits`, `foxes`, or `rabbits`. We thrive in challenging environments, strive to exceeded expectations, and defy conventions while operating in new, advanced, and emerging technologies.
+We are a collection of daytime professionals, moonlighting the world of Internet Technology to build cool and useful things with computers. As curious nighttime creatures we most commonly identify as `Kits`, known in the animal kingdom as young or undersized fur-bearing animals such as 🐿️ `squirrels`, 🦫 `beavers`, 🐇 `rabbits`, 🦊 `foxes`, 🦨 `skunks`, 🦦 `ferrets`, 🦝 `raccoons`, or 🐈 `kittens`. We thrive in challenging environments, strive to exceeded expectations, and defy conventions while operating in new, advanced, and emerging technologies.
 
 Our `Kitt's` come in many forms, specializing in software development, test automation, data analytics, APIs, cloud architecture, AR/VR & computer vision, advanced AI, gaming platforms, models, languages and tooling. Simply put - we `Keep IT Together` with thoughful and forward thinking development. Through the course of our long and weathered journeys, we have learned just how unconventionally valuable our paths have been and, when merged, allow us to create uniquely thoughtful products.
 
