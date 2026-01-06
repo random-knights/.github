@@ -1,201 +1,122 @@
 <a name="readme-top"></a>
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/kitt-llc/.github/blob/main/src/assets/ReadMe-Night.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/kitt-llc/.github/blob/main/src/assets/ReadMe-Day.png">
-    <img alt="Shows an illustrated sun in light mode and a moon with stars in dark mode." src="https://github.com/kitt-llc/.github/blob/main/src/assets/ReadMe-Night.png">
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/random-knights/.github/blob/main/assets/ReadMe-Night.png">
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/random-knights/.github/blob/main/assets/ReadMe-Day.png">
+    <img alt="Shows a Day/Night themed markedown image based on AM/PM." src="https://github.com/random-knights/.github/blob/main/assets/ReadMe-Night.png">
   </picture>
 
-<h3 align="center">Kitt, LLC</h3>
+<h3 align="center" style="color:#ff4124">Random Knights, XYZ</h3>
 
   <p align="center">
-    Keep IT Together
+    rand0m.ai & randomly.engineering
     <br />
-    <a href="https://github.com/kitt-llc/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/random-knights/.github/blob/main/READMORE"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/kitt-llc/repo_name">View Demo</a>
+    <a href="https://github.com/random-knights/random_demo">View Demo</a>
     ·
-    <a href="https://github.com/kitt-llc/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/random-knights/random_bug/issues">Report Bug</a>
     ·
-    <a href="https://github.com/kitt-llc/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/random-knights/random_feature/issues">Request Feature</a>
   </p>
 </div>
 
+## <span style="color:#D8D8D8"><u> **ABOUT ME** </u></span>
 
+👋 Hi, I’m Kitt! [randomly.engineering:](https://randomly.engineering) @random-knights
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li><a href="#about-the-project">About the Project</a></li>
-    <li><a href="#rabbit-hole">Rabbit Hole</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#repo-structure">Repo-Structure</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#getting-started">Getting Started</a></li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#tech-stack">Tech Stack</a></li>
-  </ol>
-</details>
+- 👑 Senior Software Test Engieer in the VCM 🌱🌳 by Day ☀️
+- 🖥️ Owner/Creator of [Random Knights, XYZ](https://randomknights.xyz) ⁉️ by Night 🌙
+- 💞️ I’m looking to collaborate on :taco::taco::taco:
+- 📫 How to reach me ... don't 👨‍💻
 
+  **Certified Scrum Master®, Automation Engineer, and <span style="color:#FAAFA5">Knightly</span> Software Quality Assurance Expert** specializing in Automation Architecture, Test Strategy and Planning, Documentation, QA/TDD/BDD Methodologies with a strong focus in Product Design, Development & Engineering, Creativity and Critical-Thinking, Problem Solving, Cross-System Integrations, Agile/Scrum with full SDLC coverage.
 
+Metaphorically speaking, I am **“IT Duct Tape”** – incredibly useful, immensely versatile, strong yet pliable, binds things together, and something every team can’t live without.
 
-<!-- ABOUT THE PROJECT -->
-## <span style="color:#555555" name="about-the-project"><u> **ABOUT THE PROJECT** </u></span>
+## <span style="color:#858585"><u> **OVERVIEW** </u></span>
 
-[![Product Name Screen Shot][product-gif]](https://example.com)
+K1TTs > "Keep IT Together" | 20 curious creatures to manage your random days & nights.
 
-We are a collection of daytime professionals, moonlighting the world of Internet Technology to build cool and useful things with computers. As curious nighttime creatures we most commonly identify as `Kits`, known in the animal kingdom as young or undersized fur-bearing animals such as 🐿️ `squirrels`, 🦫 `beavers`, 🐇 `rabbits`, 🦊 `foxes`, 🦨 `skunks`, 🦦 `ferrets`, 🦝 `raccoons`, or 🐈 `kittens`. We thrive in challenging environments, strive to exceeded expectations, and defy conventions while operating in new, advanced, and emerging technologies.
+- :sunny: Day5 :european_castle: Agents of Change:
 
-Our `Kitt's` come in many forms, specializing in software development, test automation, data analytics, APIs, cloud architecture, AR/VR & computer vision, advanced AI, gaming platforms, models, languages and tooling. Simply put - we `Keep IT Together` with thoughful and forward thinking development. Through the course of our long and weathered journeys, we have learned just how unconventionally valuable our paths have been and, when merged, allow us to create uniquely thoughtful products.
+  - 🐿️ art1st `¯\_(ツ)_/¯`
+  - 🦦 act0r `stop(); //Hammertime!`
+  - 🐹 comed1an `print("LOL")`
+  - 🐁 ch3f cook() => `throw SaltException("Needs salt");`
+  - 🦔 edit0r `edit() { fixTypos(); }`
+  - 🦊 m0del `python -m antigravity`
+  - 🐇 pr0ducer `#TODO: Figure out what I’m doing here`
+  - 🐈 writ3r `Write-Output "Hello, $name!"`
 
-[![ForDevs][ForDevs]][ForDevs-url]
+- :crescent_moon: Kn1ghts :crown: Agents of Chaos:
+
+  - 🐈‍⬛ devel0per `int getRandomNumber() {Return 404;}`
+  - 🦫 eng1neer `#define TRUE FALSE`
+  - 🦝 expl0rer `Ctrl + Shift + Delete`
+  - 🦥 lawy3r `if (evidence) sue(); else nap();`
+  - 🦨 r3cycler `while(true) clearCache();`
+  - 🐭 rep0rter `print("Breaking news!")`
+  - 🐀 scient1st `result = experiment() ??;`
+  - 🦡 secur1ty `auth ? allow() : alarm();`
+
+- :couch_and_lamp: Syst3m :robot: Agents of Order:
+
+  - 🙃 rand0m `chaotic-neutral, unpredictable yet helpful AI Agent`
+  - 👑 kn1ghts `system-core paladin AI Agent`
+  - 🏰 day5 `daily reporting and workday management AI Agent`
+  - 👻 k1tt `hidden by default, secret squirrel AI Agent`
+
+<small>\*\*models, agents, 'kitts', and stuff is subject to change\*\*</small>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- RABBIT HOLE -->
-## <span style="color:#555555" name="rabbit-hole"><u> **ENTER THE RABBIT HOLE** </u></span>
 
-By day, you can find most of us building the front-to-backend systems that power industries and enterprise companies around the country. At night, we emerge from our corporate dens to play, to learn, to create, and to ironically traverse the infinite rabbit holes of technology. As pathfinders, and diggers, we journey through unchareted territories to discovery new worlds of possibilities to unlock our human potential.
+## <span style="color:#555555" name="rabbit-hole"> **ENTER THE RABBIT HOLE** </span>
 
-We may not have the fancy degrees, the investors, the corporate lawyers, or even an HR department ... but we most certainly have one thing to our advantage - we don't know any better.
+Below is a 1 year overview of the previous, current, and future efforts for `Random Knights, XYZ` and the `Rand0m.AI` project.
 
-Ready to join us on a strange journey to unlock our human potential and discover new worlds of possibilities through open-source projects! [Contact Us](mailto:kitt@made.llc)
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## <span style="color:#555555" name="roadmap"><u> **ROADMAP** </u></span>
-
-Below is a proposed 2 week sprint cadence and timeline for all agile development efforts conducted by `Kitt Devs` and `Communtiy Contributors`.
-
-
-<details>
-  <summary><span style="color:hotpink"> KEY </span></summary>
-
-- 🧙 = Scrum Master
-- 👨‍💻 = DEV
-- 👨‍🚀 = QA
-- 🕵 = BSA
-- 🤖 = Automation
-- 📆* = Sprint Ceremony
-- ✅ = Sign-off
-- 🚫 = Cut-off
-- 🎬 = Demo
-- 🌮🌮 = Break 4 Tacos
-
-</details>
-
-``` mermaid
+```mermaid
 gantt
-title Timeline & Milestones
-dateFormat YYYY-MM-DD
+title Future Proofing
+dateFormat YYYY-MM
 
-section Pre-Sprint
-Prev Sprint :  z1, 2022-12-26, 5d
-🧙📆 :crit,  2022-12-28, 3d
-🌮🌮 :crit, active, 2022-12-31, 2d
+section 2025
+🌮🌮🌮🌮 :crit, a1, 2025-11, 60d
 
-section Week 1
-Week 1 :  a1, 2023-01-02, 5d
-📆 :milestone, active, 2023-01-02, 1d
-🤖 :crit, active, 2023-01-03, 1d
-📆 :milestone, active, 2023-01-04, 1d
-✅ :milestone, active, 2023-01-06, 1d
-🌮🌮 :crit, active, after a1, 2d
+section 2026
+🍻 :active, a1, 2026-01, 31d
 
+🍕 :a1, 2026-02, 28d
 
-section Week 2
-Week 2 :  b1, 2023-01-09, 5d
-📆 :milestone, active, 2023-01-11, 1d
-👨‍🚀🕵✅ :crit, done, 2023-01-09, 5d
-🚫👨‍💻👨‍🚀 :crit, 2023-01-10, 4d
-📆 :milestone, active, 2023-01-13, 1d
-🎬 :milestone, active, 2023-01-13, 1d
-🌮🌮 :crit, active, after b1, 2d
+🍩 :a1, 2026-03, 31d
 
+☕ :a1, 2026-04, 30d
+
+🥓 :a1, 2026-05, 31d
+
+🍔 :a1, 2026-06, 31d
+
+🍜 :a1, 2026-07, 30d
+
+☕ :a1, 2026-08, 30d
+
+🍑 :a1, 2026-09, 30d
+
+🛸 :a1, 2026-10, 30d
+
+section Nov
+👑🐿️ :a1, 2026-11, 30d
 ```
-
-- 📆* Reoccurring Sprint Ceremonies:
-  - **1st Monday = Sprint Planning**
-  - **1st Tuesday = Automation Planning**
-  - **Every Wednesday = Grooming**
-  - **2nd Friday = Sprint Sign-Off**
-  - **Last Tuesday of Every Sprint = Code Cut-off**
-  - **Last Week of Every Sprint = QA/UAT Sign-Off**
-  - **Last Friday = Retro & Demo**
-
-
-
-See the [open issues](https://github.com/kitt-llc/repo_name/issues) for a full list of proposed features (and known issues). 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- REPO-STRUCTURE -->
-## <span style="color:#555555" name="repo-structure"><u> **REPO-STRUCTURE** </u></span> 
-Unity Integration [reference](https://docs.unity.com/ads/en/manual/UnityDeveloperIntegrations)
- | Cognative Speech Controls [reference](https://azure.microsoft.com/en-us/products/cognitive-services/speech-services/)
- | OpenAI API Integration [reference](https://platform.openai.com/docs/introduction)
-
-
-``` mermaid
-graph TD
-A[api-kitt] --> |Contributor 1| K
-B[dev-kitt] --> |Contributor 2| K
-C[rando-person-x] --> |Contributor X| K
-D[rando-person-x] --> |Contributor Y| K
-K{KittHub - GitHub} --> |Azure/GCP| 1(Kitt.Industries)
-1 --> |git/kitt-llc| E
-1 --> |git/kitt-unity| F
-1 --> |git/kitt-api| R[AI_Projects]
-1 --> |git/kitt-speech| G[API_Projects]
-E[Web_Projects] --> |website| L[Kitt.LLC]
-E[Web_Projects] --> |docs| M[Kitt.Wiki]
-F[UnityProjects] -->|engines| H[Kitt.Games]
-F -->|paid_tier| I[Kitt.Pro]
-F -->|private_tier| J[Kitt.Plus]
-F -->|public_tier| U[Kitt.One]
-G --> |engines| O[Kitt.Tools]
-G --> |openapi| P[Made.LLC]
-R -->|engines| S[Kitt.Tech]
-```
-
-
 
 <!-- CONTRIBUTING -->
-## <span style="color:#555555" name="contributing"><u> **CONTRIBUTING** </u></span>
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+## <span style="color:#FAAFA5" name="contributing"><u> **CONTRIBUTING** </u></span>
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
@@ -206,297 +127,450 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+_For more information, please visit: [GitHub Manifesto](https://github.com/random-knights/random-docs/blob/main/development/git-manifesto.md)_
+
+[Rand0m Discord](https://app.discord.com/random-knights)
+
+[Rand0m GitHub](https://github.com/random-knights)
+
+_For more information, please visit: [GitHub Manifesto](https://lmgtfy.app/?q=how+to+use+github)_
+
+```mermaid
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'rand0m'}} }%%
+  gitGraph
+        commit id:"commit_01"
+        commit id:"commit_02"
+        branch kn1ghts
+        commit id:"commit_T01"
+        commit id:"commit_T02"
+        commit id:"commit_T03"
+        branch day5
+        commit id:"commit_K01"
+        commit type: HIGHLIGHT id:"commit_K02"
+
+        checkout rand0m
+        commit id:"commit_03"
+        merge day5
+        commit id:"commit_05"
+        commit id:"commit_06"
+        merge kn1ghts tag:"cherrypick"
 
 
-
-<!-- LICENSE -->
-## <span style="color:#555555" name="license"><u> **LICENSE** </u></span>
-
-Distributed under the Kitt, LLC License. See [license](Kitt,%20LLC) for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## <span style="color:#555555" name="contact"><u> **CONTACT** </u></span>
-
-- [Email Us](mailto:kitt@made.llc) 
-- Project Link: [https://github.com/kitt-llc/repo_name](https://github.com/kitt-llc/repo_name)
-- Social Media: `do we have to?`
-  - "If you build it, they will come"
-  - Maybe a LinkedIn page `[COMING SOON]`
-- [Our Website](https://kitt.llc)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-<!-- GETTING STARTED -->
-## <span style="color:#555555" name="getting-started"><u> **GETTING STARTED** </u></span>
-
-Kitt, LLC is currently operating as a stealth startup - meaning the visibility of our products and services is limited within the scope of Pre-Alpha development.
-
-**`[COMING SOON]`**
-
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/kitt-llc/repo-name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+        commit type:REVERSE id:"head"
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- AGENTS -->
 
+## <span style="color:#FAAFA5" name="regression"><u> **AGENTS** </u></span>
 
-<!-- USAGE EXAMPLES -->
-## <span style="color:#555555" name="usage"><u> **USAGE** </u></span>
+```mermaid
+classDiagram
+    AI_Agent_DAY5 <|-- Eng1neer
+    AI_Agent_DAY5 <|-- Expl0rer
+    AI_Agent_DAY5 <|-- Devel0per
+    AI_Agent_DAY5 <|-- Scient1st
+    AI_Agent_DAY5 <|-- Secur1ty
+    AI_Agent_DAY5 : +envt | day5.rand0m.ai/agents
+    AI_Agent_DAY5 : +org | Random Knights, XYZ
+    AI_Agent_DAY5: -user() [agent_name]@rand0m.ai
+    AI_Agent_DAY5: -roles() Manager | Viewer | Admin
+    class Eng1neer{
+      +biomedical
+      +civil
+      +electrical
+      +environmental
+      +mechanical
+      +software
+      -adapt()
+    }
+    class Expl0rer{
+      +archaeology
+      +ecology
+      +nature
+      +science
+      +space
+      +whatever
+      -find()
+    }
+    class Devel0per{
+      +backEnd
+      +devOps
+      +embedded
+      +frontEnd
+      +fullStack
+      +mobile
+      +systems
+      -build()
+      -break()
+    }
+    class Scient1st{
+      +business
+      +earth
+      +computer
+      +physical
+      +social
+      +theory
+      -test()
+    }
+    class Secur1ty{
+      +admin
+      +cyber
+      +digital
+      +economic
+      +financial
+      +operational
+      -protect()
+    }
+```
 
-Use this space to show useful examples of how the project can be used. Additional screenshots, code examples and demos will work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+```mermaid
+classDiagram
+    AI_Agent_KN1GHTS <|-- Act0r
+    AI_Agent_KN1GHTS <|-- Comed1an
+    AI_Agent_KN1GHTS <|-- Art1st
+    AI_Agent_KN1GHTS <|-- Edit0r
+    AI_Agent_KN1GHTS <|-- Pr0ducer
+    AI_Agent_KN1GHTS : +envt | kn1ghts.rand0m.ai/agents
+    AI_Agent_KN1GHTS : +org | Random Knights, XYZ
+    AI_Agent_KN1GHTS: -user() [agent_name]@rand0m.ai
+    AI_Agent_KN1GHTS: -roles() Manager | Viewer | Admin
+    class Act0r{
+      +animation
+      +background
+      +tv/film
+      +socialMedia
+      +stage
+      +voice-over
+      -display()
+    }
+    class Comed1an{
+      +absurdist
+      +dark
+      +improv
+      +parody
+      +satire
+      +slapstick
+      -craft()
+    }
+    class Art1st{
+      +concept
+      +commercial
+      +graphical
+      +illustrator
+      +performance
+      +sculpt
+      +visual
+      -draft()
+      -design()
+      -detail()
+    }
+    class Edit0r{
+      +audio
+      +development
+      +content
+      +photo
+      +video
+      +writing
+      -fix()
+    }
+    class Pr0ducer{
+      +assist
+      +creative
+      +entertainment
+      +executive
+      +schedule
+      +talent
+      -guide()
+    }
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- WORKFLOWS -->
 
+## <span style="color:#FAAFA5" name="workflows"><u> **WORKFLOWS** </u></span>
 
-<!-- TECH STACK BADGES -->
-## <span style="color:#555555" name="tech-stack"><u> **TECH STACK** </u></span>
+**Xray <> Cucumber** <small>demo only</small>
+
+```mermaid
+graph LR
+A[ID Manual Tests for Automation in Jira] --> B
+B[Convert to Cucumber Tests in Jira] --> C
+C[Export Cucumber Feature files from Jira] --> D
+D[Impliment Step Definitions in Cypress] --> E
+E[Execute Cypress tests in CI environment] --> F[Report automation results to Jira]
+```
+
+<small>\*\*implimentation requires broader community engagement</small>
+
+## <span style="color:#FAAFA5"><u> **CORE DEVELPOMENT** </u></span>
+
 ### **Workspace**
+
 [![Windows][Windows]][Windows-url]
 [![Nvidia][Nvidia]][Nvidia-url]
 [![Ryzen][Ryzen]][Ryzen-url]
 
-[![Macbook][Macbook]][Macbook-url]
-
 ### **IDE**
+
 [![VSCode][VSCode]][VSCode-url]
-[![AndroidStudio][AndroidStudio]][AndroidStudio-url]
-[![XCode][XCode]][XCode-url]
 
 ### **Source Control**
-[![GitHub][GitHub]][GitHub-url] 
-[![GitLab][GitLab]][GitLab-url] 
-[![Git][Git]][Git-url] 
 
-### **Cloud**
-[![GitHubActions][GitHubActions]][GitHubActions-url]
-[![GoogleCloud][GoogleCloud]][GoogleCloud-url]
-[![Azure][Azure]][Azure-url] 
-[![AzureDevOps][AzureDevOps]][AzureDevOps-url] 
-[![AzureFunctions][AzureFunctions]][AzureFunctions-url] 
-
-### **Gaming**
-[![Unity][Unity]][Unity-url] 
-[![Itch.io][Itch.io]][Itch-url] 
-[![Steam][Steam]][Steam-url] 
-[![Flutter][Flutter]][Flutter-url] 
+[![GitHub][GitHub]][GitHub-url]
+[![Git][Git]][Git-url]
 
 ### **Database**
-[![MySQL][MySQL]][MySQL-url]
+
 [![MongoDB][MongoDB]][MongoDB-url]
-[![SQLite][SQLite]][SQLite-url]
 [![PostgreSQL][PostgreSQL]][PostgreSQL-url]
-[![SSMS][SSMS]][SSMS-url]
 
 ### **Development**
-[![JQuery][JQuery.com]][JQuery-url]
-[![ReactNative][ReactNative]][ReactNative-url]
-[![Python][Python]][Python-url]
-[![C#][C#]][C#-url]
-[![C++][C++]][CPlusPlus-url]
-[![Java][Java]][Java-url]
-[![JavaScript][JavaScript]][JavaScript-url]
-[![Node.js][Node.js]][Node-url]
-[![.NET][.NET]][NET-url]
-[![Dart][Dart]][Dart-url]
-[![HTML5][HTML5]][HTML5-url]
-[![CSS3][CSS3]][CSS3-url]
-[![Bootstrap][Bootstrap]][Bootstrap-url]
-[![XCode][Xcode]][Xcode-url]
 
-### **Blockchain**
-[![Ethereum][Ethereum]][Ethereum-url]
-[![OpenZeppelin][OpenZeppelin]][OpenZeppelin-url]
-[![Solidity][Solidity]][Solidity-url]
+[![Node.js][Node.js]][Node-url]
+[![Python][Python]][Python-url]
+[![JavaScript][JavaScript]][JavaScript-url]
+[![TypeScript][TypeScript]][TypeScript-url]
 
 ### **Testing**
-[![Jest][Jest]][Jest-url]
-[![TestLibrary][TestLibrary]][TestLibrary-url]
-[![Mocha.js][Mocha.js]][Mocha-url]
+
 [![Chai.js][Chai.js]][Chai-url]
+[![Cucumber][Cucumber]][Cucumber-url]
+[![Cypress.js][Cypress.js]][Cypress-url]
+[![Jest][Jest]][Jest-url]
+[![Lighthouse][Lighthouse]][Lighthouse-url]
+[![Mocha.js][Mocha.js]][Mocha-url]
+[![Swagger.js][Swagger.js]][Swagger-url]
+[![TestLibrary][TestLibrary]][TestLibrary-url]
 
 ### **Design**
+
 [![AdobeIllustrator][AdobeIllustrator]][Illustrator-url]
-[![Blender][Blender]][Blender-url]
 [![Canva][Canva]][Canva-url]
 [![Figma][Figma]][Figma-url]
-[![Framer][Framer]][Framer-url]
+
+### **Pipelines**
+
+[![Slack][Slack]][Slack-url]
+[![CypressCloud][CypressCloud]][CypressCloud-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<span style="color:#B387FD"><u>**Random Knights, XYZ**</u></span> fully supports the consumption of tacos. Use the examples below to help make all of your wildest taco dreams come true. NOTE: we assume no liable after tacos are consumed. Please use at your own discretion - and listen to your tum tum.
 
+```js
+// EAT MORE TACOS [js]
+function tacosToEat() {
+  const message = document.getElementById("8Kit");
+  message.innerHTML = "";
+  let x = document.getElementById("tacos").value;
+  try {
+    if (x == "") throw "empty";
+    if (isNaN(x)) throw "doing math";
+    x = Number(x);
+    if (x < 8) throw "too hungry";
+    if (x > 85) throw "too full";
+  } catch (err) {
+    message.innerHTML =
+      "WARNING: consuming " + x + " tacos may leave you " + err;
+  }
+}
+```
 
+```csharp
+// EAT MORE TACO [c#]
+using Tacos;
 
+namespace MyTaco
+{
+    class Taco
+    {
+        static void Main(string[], args)
+        {
+            string txt = "Eat More Tacos";
+            Console.WriteLine(txt.ToUpper());
+        }
+    }
+}
 
+```
 
+```sql
+-- EAT MORE TACOS [sql]
+WITH cte_Tacos (TacoType) AS
+(
+    SELECT 'Beef Taco' UNION
+    SELECT 'Chicken Taco' UNION
+    SELECT 'Pork Taco')
+)
+SELECT TOP 1 TacoType FROM cte_Tacos ORDER BY NEWID()
 
+```
+
+<span style="color:#A6A6A6"> **MORE:** </span>:taco::taco::taco:
+
+To further define which tacos should be consumed, use the dropdown reference below...
+
+<details>
+  <summary><span style="color:mediumpurple"> CLICK TO EXPAND </span></summary>
+
+- <span style="color:hotpink"> [@]\_OUTER </span>
+  - [BOWL]
+  - [LETTUCE]
+  - [SHELL/WRAP]
+    - <span style="color:mediumpurple"> [@]\_Corn </span>
+    - <span style="color:mediumpurple"> [@]\_Flour </span>
+  - [NONE]
+    - <span style="color:mediumpurple"> [@]\_Seek-Help </span>
+- <span style="color:hotpink"> [@]\_INNER </span>
+
+  - [BEEF]
+    - <span style="color:mediumpurple"> [@]\_Birria </span>
+    - <span style="color:mediumpurple"> [@]\_Carne-Asada </span>
+    - <span style="color:mediumpurple"> [@]\_Ground </span>
+    - <span style="color:mediumpurple"> [@]\_Shredded </span>
+  - [CHICKEN]
+    - <span style="color:mediumpurple"> [@]\_Chopped </span>
+    - <span style="color:mediumpurple"> [@]\_Shredded </span>
+    - <span style="color:mediumpurple"> [@]\_Tinga </span>
+  - [PORK]
+    - <span style="color:mediumpurple"> [@]\_Al-Pastor </span>
+    - <span style="color:mediumpurple"> [@]\_Barbacoa </span>
+    - <span style="color:mediumpurple"> [@]\_Campechanos </span>
+    - <span style="color:mediumpurple"> [@]\_Carnitas </span>
+    - <span style="color:mediumpurple"> [@]\_Chorizo </span>
+  - [FISH]
+    - <span style="color:mediumpurple"> [@]\_Pescado </span>
+
+- <span style="color:hotpink"> [@]\_TOPPINGS </span>
+  - [BROWNS]
+    - <span style="color:mediumpurple"> [@]\_Lentals </span>
+    - <span style="color:mediumpurple"> [@]\_MoreMeat </span>
+    - <span style="color:mediumpurple"> [@]\_Rice </span>
+  - [GREENS]
+    - <span style="color:mediumpurple"> [@]\_Cilantro </span>
+    - <span style="color:mediumpurple"> [@]\_Lettuce </span>
+    - <span style="color:mediumpurple"> [@]\_Lime </span>
+    - <span style="color:mediumpurple"> [@]\_Guacamole </span>
+    - <span style="color:mediumpurple"> [@]\_Jalapeños </span>
+    - <span style="color:mediumpurple"> [@]\_Spinich </span>
+  - [REDS]
+    - <span style="color:mediumpurple"> [@]\_HotSauce </span>
+    - <span style="color:mediumpurple"> [@]\_Peppers </span>
+    - <span style="color:mediumpurple"> [@]\_Pico </span>
+    - <span style="color:mediumpurple"> [@]\_Salsa </span>
+    - <span style="color:mediumpurple"> [@]\_Tomatoe </span>
+  - [WHITES]
+    - <span style="color:mediumpurple"> [@]\_CheeseDuh </span>
+    - <span style="color:mediumpurple"> [@]\_EggWhites </span>
+    - <span style="color:mediumpurple"> [@]\_Onions </span>
+    - <span style="color:mediumpurple"> [@]\_SourCream </span>
+  - [YELLOWS] - <span style="color:mediumpurple"> [@]\_Corn </span> - <span style="color:mediumpurple"> [@]\_Egg </span> - <span style="color:mediumpurple"> [@]\_MoreCheese </span> - <span style="color:mediumpurple"> [@]\_Pineapples </span>
+  </details>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/kitt-llc/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/kitt-llc/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/kitt-llc/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/kitt-llc/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/kitt-llc/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/kitt-llc/kitt-plus/stargazers
-[issues-shield]: https://img.shields.io/github/issues/kitt-llc/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/kitt-llc/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/kitt-llc/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/kitt-llc/repo_name/blob/master/LICENSE.txt
+
+[contributors-shield]: https://img.shields.io/github/contributors/repo_name.svg?style=for-the-badge
+[contributors-url]: https://github.com/random-knights/random-graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/repo_name.svg?style=for-the-badge
+[forks-url]: https://github.com/random-knights/random-network/members
+[stars-shield]: https://img.shields.io/github/stars/repo_name.svg?style=for-the-badge
+[stars-url]: https://github.com/random-knights/stargazers
+[issues-shield]: https://img.shields.io/github/issues/repo_name.svg?style=for-the-badge
+[issues-url]: https://github.com/random-knights/random-issues
+[license-shield]: https://img.shields.io/github/license/repo_name.svg?style=for-the-badge
+[license-url]: https://github.com/random-knights/random/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/
-[product-gif]: https://github.com/kitt-llc/.github/blob/main/src/assets/kitt.gif
+[linkedin-url]: https://linkedin.com/qa-kitt
+[product-gif]: https://github.com/random-knights/random/blob/main/src/assets/rubicon.gif
 
 <!-- WORKSPACE BADGES -->
+
 [Nvidia]: https://img.shields.io/badge/NVIDIA-RTX3060-76B900?style=for-the-badge&logo=nvidia&logoColor=white
 [Nvidia-url]: https://www.nvidia.com/en-us/
 [Ryzen]: https://img.shields.io/badge/AMD-Ryzen_7_5800H-ED1C24?style=for-the-badge&logo=amd&logoColor=white
 [Ryzen-url]: https://www.amd.com/en/processors/ryzen
-[Windows]: https://img.shields.io/badge/Windows-Lenovo_Leigon_S7-15ACH6?style=for-the-badge&logo=windows&logoColor=white
+[Windows]: https://img.shields.io/badge/Windows-Lenovo_Legion-CADDC4?style=for-the-badge&logo=windows&logoColor=white
 [Windows-url]: https://www.lenovo.com/us/en/p/laptops/legion-laptops/legion-7-series/legion-s7-15ach6/88gmy701595/
-[Macbook]: https://img.shields.io/badge/Apple-MacBook_Pro_2022-999999?style=for-the-badge&logo=apple&logoColor=white
+[Macbook]: https://img.shields.io/badge/Apple-MacBook_Pro_2022-CADDC4?style=for-the-badge&logo=apple&logoColor=white
 [Macbook-url]: https://www.apple.com/macbook-pro-14-and-16/
 
 <!-- IDE BADGES -->
-[XCode]: https://img.shields.io/badge/Xcode-007ACC?style=for-the-badge&logo=Xcode&logoColor=white
-[XCode-url]: https://developer.apple.com/xcode/
-[VSCode]: https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white
+
+[VSCode]: https://img.shields.io/badge/Visual_Studio_Code-9AB79A?style=for-the-badge&logo=visual%20studio%20code&logoColor=white
 [VSCode-url]: https://www.vscode.com
-[AndroidStudio]: https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=android-studio&logoColor=white
-[AndroidStudio-url]: https://www.vscode.com
 
 <!-- SOURCE CONTROL BADGES -->
-[GitHub]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
+
+[GitHub]: https://img.shields.io/badge/GitHub-7A997A?style=for-the-badge&logo=github&logoColor=white
 [GitHub-url]: https://github.com/
-[ReactNative]: https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[ReactNative-url]: https://reactnative.dev/
-[GitLab]: https://img.shields.io/badge/GitLab-330F63?style=for-the-badge&logo=gitlab&logoColor=white
-[GitLab-url]: https://about.gitlab.com/
 [GitHubActions]: https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white
 [GitHubActions-url]: https://github.com/features/actions
-[Git]: https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white
+[Git]: https://img.shields.io/badge/GIT-7A997A?style=for-the-badge&logo=git&logoColor=white
 [Git-url]: https://git-scm.com/
 
-<!-- GAMING BADGES -->
-[Unity]: https://img.shields.io/badge/Unity-100000?style=for-the-badge&logo=unity&logoColor=white
-[Unity-url]: https://unity.com/
-[Itch.io]: https://img.shields.io/badge/Itch.io-FA5C5C?style=for-the-badge&logo=itchdotio&logoColor=white
-[Itch-url]: https://itch.io/
-[Steam]: https://img.shields.io/badge/Steam-000000?style=for-the-badge&logo=steam&logoColor=white
-[Steam-url]: https://store.steampowered.com/
-[Flutter]: https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white
-[Flutter-url]: https://flutter.dev/
-
-<!-- CLOUD BADGES -->
-[Azure]: https://img.shields.io/badge/Microsoft_Azure-0089D6?style=for-the-badge&logo=microsoft-azure&logoColor=white
-[Azure-url]: https://azure.microsoft.com/
-[AzureDevOps]: https://img.shields.io/badge/Azure_DevOps-0078D7?style=for-the-badge&logo=azure-devops&logoColor=white
-[AzureDevOps-url]: https://azure.microsoft.com/en-us/products/devops
-[AzureFunctions]: https://img.shields.io/badge/Azure_Functions-0062AD?style=for-the-badge&logo=azure-functions&logoColor=white
-[AzureFunctions-url]: https://azure.microsoft.com/en-us/products/functions/
-[GoogleCloud]: https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white
-[GoogleCloud-url]: https://cloud.google.com/
-
 <!-- DATABASE BADGES -->
-[MySQL]: https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white
-[MySQL-url]: https://www.mysql.com/
-[MongoDB]: https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white
-[MongoDB-url]: https://www.mongodb.com/
-[PostgreSQL]: https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white
-[PostgreSQL-url]: https://www.postgresql.org/
-[SQLite]: https://img.shields.io/badge/SQLite-07405E?style=for-the-badge&logo=sqlite&logoColor=white
-[SQLite-url]: https://sqlite.org/index.html
-[SSMS]: https://img.shields.io/badge/Microsoft%20SQL%20Server-CC2927?style=for-the-badge&logo=microsoft%20sql%20server&logoColor=white
-[SSMS-url]: https://learn.microsoft.com/en-us/sql/ssms/
 
+[MongoDB]: https://img.shields.io/badge/MongoDB-426442?style=for-the-badge&logo=mongodb&logoColor=white
+[MongoDB-url]: https://www.mongodb.com/
+[PostgreSQL]: https://img.shields.io/badge/PostgreSQL-426442?style=for-the-badge&logo=postgresql&logoColor=white
+[PostgreSQL-url]: https://www.postgresql.org/
 
 <!-- DEVELOPMENT BADGES -->
+
 [ForDevs]: https://forthebadge.com/images/badges/built-by-developers.svg
 [ForDevs-url]: https://dev.to/
-[C++]: https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white
-[CPlusPlus-url]: https://cplusplus.com/
-[C#]: https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white
-[C#-url]: https://learn.microsoft.com/en-us/dotnet/csharp/
-[Dart]: https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white
-[Dart-url]: https://dart.dev/ 
-[Java]: https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white
-[Java-url]: https://www.java.com
-[JavaScript]: https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E
-[JavaScript-url]: https://www.javascript.com/ 
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
-[.NET]: https://img.shields.io/badge/.NET-5C2D91?style=for-the-badge&logo=.net&logoColor=white
-[NET-url]: https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet 
-[Node.js]: https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white
-[Node-url]: https://nodejs.org/en 
-[Python]: https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white
-[Python-url]: https://www.python.org/ 
-
-
-<!-- FRONT-END BADGES -->
-[Bootstrap]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[CSS3]: https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white
-[CSS3-url]: https://www.w3schools.com/css/
-[HTML5]: https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white
-[HTML5-url]: https://www.w3schools.com/html/ 
-
-<!-- BLOCKCHAIN W/BADGES -->
-[Ethereum]: https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=Ethereum&logoColor=white
-[Ethereum-url]: https://ethereum.org/en/
-[OpenZeppelin]: https://img.shields.io/badge/OpenZeppelin-4E5EE4.svg?style=for-the-badge&logo=OpenZeppelin&logoColor=white
-[OpenZeppelin-url]: https://www.openzeppelin.com/
-[Solidity]: https://img.shields.io/badge/Solidity-363636.svg?style=for-the-badge&logo=Solidity&logoColor=white
-[Solidity-url]: https://soliditylang.org/
+[ForScience]: https://forthebadge.com/images/badges/built-with-science.svg
+[ForScience-url]: https://forthebadge.com
+[JavaScript]: https://img.shields.io/badge/JavaScript-274727?style=for-the-badge&logo=javascript&logoColor=F7DF1E
+[JavaScript-url]: https://www.javascript.com/
+[Node.js]: https://img.shields.io/badge/Node.js-274727?style=for-the-badge&logo=node.js&logoColor=white
+[Node-url]: https://nodejs.org/en
+[Python]: https://img.shields.io/badge/Python-274727?style=for-the-badge&logo=python&logoColor=white
+[Python-url]: https://www.python.org/
+[TypeScript]: https://img.shields.io/badge/TypeScript-274727?style=for-the-badge&logo=typescript&logoColor=1572B6
+[TypeScript-url]: https://www.typescript.com/
 
 <!-- TESTING BADGES -->
-[Jest]: https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white
-[Jest-url]: https://jestjs.io/ 
-[TestLibrary]: https://img.shields.io/badge/testing%20library-323330?style=for-the-badge&logo=testing-library&logoColor=red
-[TestLibrary-url]: https://testing-library.com/ 
-[Mocha.js]: https://img.shields.io/badge/mocha.js-323330?style=for-the-badge&logo=mocha&logoColor=Brown
-[Mocha-url]: https://mochajs.org/ 
-[Chai.js]: https://img.shields.io/badge/chai.js-323330?style=for-the-badge&logo=chai&logoColor=red
-[Chai-url]: https://www.chaijs.com/ 
 
-<!-- DESIGNED W/BADGES -->
-[AdobeIllustrator]: https://img.shields.io/badge/Adobe%20Illustrator-FF9A00?style=for-the-badge&logo=adobe%20illustrator&logoColor=white
-[Illustrator-url]: https://www.adobe.com/creativecloud/products/illustrator.html 
-[Blender]: https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white
-[blender-url]: https://www.blender.org/
-[Canva]: https://img.shields.io/badge/Canva-%2300C4CC.svg?&style=for-the-badge&logo=Canva&logoColor=white
+[Chai.js]: https://img.shields.io/badge/chai.js-183718?style=for-the-badge&logo=chai&logoColor=white
+[Chai-url]: https://www.chaijs.com/
+[Cucumber]: https://img.shields.io/badge/cucumber-183718?style=for-the-badge&logo=cucumber&logoColor=white
+[Cucumber-url]: https://cucumber.io/
+[Cypress.js]: https://img.shields.io/badge/cypress-183718?style=for-the-badge&logo=cypress&logoColor=white
+[Cypress-url]: https://www.cypress.io/
+[Jest]: https://img.shields.io/badge/Jest-183718?style=for-the-badge&logo=Jest&logoColor=white
+[Jest-url]: https://jestjs.io/
+[Lighthouse]: https://img.shields.io/badge/Google_Lighthouse-183718?style=for-the-badge&logo=lighthouse&logoColor=white
+[Lighthouse-url]: https://developer.chrome.com/docs/lighthouse/overview/
+[Mocha.js]: https://img.shields.io/badge/mocha.js-183718?style=for-the-badge&logo=mocha&logoColor=white
+[Mocha-url]: https://mochajs.org/
+[Swagger.js]: https://img.shields.io/badge/swagger-183718?style=for-the-badge&logo=swagger&logoColor=white
+[Swagger-url]: https://swagger.io/docs/
+[TestLibrary]: https://img.shields.io/badge/testing%20library-183718?style=for-the-badge&logo=testing-library&logoColor=white
+[TestLibrary-url]: https://testing-library.com/
+
+<!-- DESIGN BADGES -->
+
+[AdobeIllustrator]: https://img.shields.io/badge/Adobe%20Illustrator-113011?style=for-the-badge&logo=adobe%20illustrator&logoColor=white
+[Illustrator-url]: https://www.adobe.com/creativecloud/products/illustrator.html
+[Canva]: https://img.shields.io/badge/Canva-113011.svg?&style=for-the-badge&logo=Canva&logoColor=white
 [Canva-url]: https://canva.com
-[Figma]: https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white
+[Figma]: https://img.shields.io/badge/Figma-113011?style=for-the-badge&logo=figma&logoColor=white
 [Figma-url]: https://www.figma.com
 [Framer]: https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue
 [Framer-url]: https://www.framer.com/
+
+<!-- PIPELINE BADGES -->
+
+[Slack]: https://img.shields.io/badge/slack-071E07?style=for-the-badge&logo=Slack
+[Slack-url]: https://www.slack.com/
+[CypressCloud]: https://img.shields.io/badge/cypress_cloud-071E07?style=for-the-badge&logo=cypress&logoColor=white
+[CypressCloud-url]: https://www.cypress.io/
+
+</details>
