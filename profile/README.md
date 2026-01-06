@@ -25,22 +25,43 @@
   </p>
 </div>
 
-## <span style="color:#D8D8D8"><u> **ABOUT ME** </u></span>
+## <span style="color:#555555"><u> **SUMMARY** </u></span>
 
-👋 Hi, I’m Kitt! [randomly.engineering:](https://randomly.engineering) @random-knights
+[Rand0m.AI](https://rand0m.ai) [`Custom AI Agents, Automations, and Rand0mness`]
+from RandomKnights.XYZ
 
-- 👑 Senior Software Test Engieer in the VCM 🌱🌳 by Day ☀️
-- 🖥️ Owner/Creator of [Random Knights, XYZ](https://randomknights.xyz) ⁉️ by Night 🌙
-- 💞️ I’m looking to collaborate on :taco::taco::taco:
-- 📫 How to reach me ... don't 👨‍💻
+- Built with
+  - Flutter and Dart
+  - Gemini and OpenAI
+  - S.T.E.A.M. and FFmpeg 
+  - Maximum Effort
+  - Canva & Adobe Illustrator
+  - Randomly.Engineering by 'dev-kitt'
+  - :flying_saucer: Roswell, GA :peach:
 
-  **Certified Scrum Master®, Automation Engineer, and <span style="color:#FAAFA5">Knightly</span> Software Quality Assurance Expert** specializing in Automation Architecture, Test Strategy and Planning, Documentation, QA/TDD/BDD Methodologies with a strong focus in Product Design, Development & Engineering, Creativity and Critical-Thinking, Problem Solving, Cross-System Integrations, Agile/Scrum with full SDLC coverage.
+## <span style="color:#555555"><u> **POINTS OF CONTACT** </u></span>
 
-Metaphorically speaking, I am **“IT Duct Tape”** – incredibly useful, immensely versatile, strong yet pliable, binds things together, and something every team can’t live without.
+If any issues arise for any of the below mentioned areas, please draft a strongly worded email and never send it to: **admin@rand0m.ai**
 
-## <span style="color:#858585"><u> **OVERVIEW** </u></span>
+## <span style="color:#555555"><u> **CORE SOLUTIONS** </u></span>
 
-K1TTs > "Keep IT Together" | 20 curious creatures to manage your random days & nights.
+| Stack          |     Versions     |   :chipmunk:    |
+| -------------- | :--------------: | :-------------: |
+| Flutter        |     ^3.38.3      |
+| Dart           |     ^3.10.1      |
+| DevTools       |     ^2.51.1      |
+| GoogleAI       |        v         |
+| Learning Model | gemini-2.5-flash |
+| Image Model    |   nano-banana    | **coming soon** |
+| OpenAI         |        v         |
+| Learning Model |    gpt-5-nano    |
+| Image Model    |      gpt-4o      | **coming soon** |
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## <span style="color:#FAAFA5"><u> **OVERVIEW** </u></span>
+
+K1TTs > "Keep IT Together" | 20 curious creatures to manage your random days & nights...
 
 - :sunny: Day5 :european_castle: Agents of Change:
 
@@ -59,8 +80,8 @@ K1TTs > "Keep IT Together" | 20 curious creatures to manage your random days & n
   - 🦫 eng1neer `#define TRUE FALSE`
   - 🦝 expl0rer `Ctrl + Shift + Delete`
   - 🦥 lawy3r `if (evidence) sue(); else nap();`
-  - 🦨 r3cycler `while(true) clearCache();`
   - 🐭 rep0rter `print("Breaking news!")`
+  - 🦨 r3cycler `while(true) clearCache();`
   - 🐀 scient1st `result = experiment() ??;`
   - 🦡 secur1ty `auth ? allow() : alarm();`
 
@@ -71,15 +92,33 @@ K1TTs > "Keep IT Together" | 20 curious creatures to manage your random days & n
   - 🏰 day5 `daily reporting and workday management AI Agent`
   - 👻 k1tt `hidden by default, secret squirrel AI Agent`
 
-<small>\*\*models, agents, 'kitts', and stuff is subject to change\*\*</small>
+<!-- RABBIT HOLE -->
+
+## <span style="color:#555555" name="rabbit-hole"><u> **ENTER THE RABBIT HOLE** </u></span>
+
+The objective of my work is to implement agentic frameworks to help the 🌎 keep personal data private and secure, give users more personalized customization and control, and to NEVER value profit/power over the product. Open-source and FREE for ALL (**aside from what the money hungry AI overlords require you to pay for increased API request limits; see your preferred AI lord's website for more info...**)
+
+1. **GitHub Source Control:** The project utilizes GitHub for version control and collaborative development. This allows seamless code collaboration, version tracking, and easy integration with other tools in the testing pipeline.
+
+2. **GitHug Actions CI/CD:** Codefresh is employed for continuous integration and continuous deployment (CI/CD). It automates the build, test, and deployment process, ensuring efficient code integration and reducing the time between code changes and deployment.
+
+3. **Cypress Automation:** Cypress is a powerful end-to-end testing framework used in this project. It provides an intuitive and developer-friendly interface to write and execute tests, making it easier to simulate user interactions and validate the behavior of the application.
+
+4. **Xray Test Management:** Xray serves as the test management tool, enabling effective test planning, execution, and tracking. It integrates seamlessly with the automation framework, allowing the creation of test cases, test execution reports, and traceability of requirements.
+
+5. **Cucumber BDD:** Cucumber is utilized as the behavior-driven development (BDD) framework, enabling the creation of executable specifications in a human-readable format. It promotes collaboration between stakeholders and ensures that test cases align with business requirements.
+
+[![ForScience][ForScience]][ForScience-url]
+
+[![ForDevs][ForDevs]][ForDevs-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- RABBIT HOLE -->
+<!-- ROADMAP -->
 
-## <span style="color:#555555" name="rabbit-hole"> **ENTER THE RABBIT HOLE** </span>
+## <span style="color:#555555" name="roadmap"><u> **ROADMAP** </u></span>
 
-Below is a 1 year overview of the previous, current, and future efforts for `Random Knights, XYZ` and the `Rand0m.AI` project.
+Below is a 1 year overview of the previous, current, and future efforts for `Random Knights, XYZ` and the `Rand0m.AI` contributors.
 
 ```mermaid
 gantt
@@ -116,7 +155,7 @@ section Nov
 
 <!-- CONTRIBUTING -->
 
-## <span style="color:#FAAFA5" name="contributing"><u> **CONTRIBUTING** </u></span>
+## <span style="color:#555555" name="contributing"><u> **CONTRIBUTING** </u></span>
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
@@ -126,8 +165,6 @@ Don't forget to give the project a star! Thanks again!
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
-_For more information, please visit: [GitHub Manifesto](https://github.com/random-knights/random-docs/blob/main/development/git-manifesto.md)_
 
 [Rand0m Discord](https://app.discord.com/random-knights)
 
@@ -163,7 +200,7 @@ _For more information, please visit: [GitHub Manifesto](https://lmgtfy.app/?q=ho
 
 <!-- AGENTS -->
 
-## <span style="color:#FAAFA5" name="regression"><u> **AGENTS** </u></span>
+## <span style="color:#555555" name="regression"><u> **AGENTS** </u></span>
 
 ```mermaid
 classDiagram
@@ -290,7 +327,7 @@ classDiagram
 
 <!-- WORKFLOWS -->
 
-## <span style="color:#FAAFA5" name="workflows"><u> **WORKFLOWS** </u></span>
+## <span style="color:#555555" name="workflows"><u> **WORKFLOWS** </u></span>
 
 **Xray <> Cucumber** <small>demo only</small>
 
@@ -305,7 +342,7 @@ E[Execute Cypress tests in CI environment] --> F[Report automation results to Ji
 
 <small>\*\*implimentation requires broader community engagement</small>
 
-## <span style="color:#FAAFA5"><u> **CORE DEVELPOMENT** </u></span>
+## <span style="color:#555555"><u> **CORE DEVELPOMENT** </u></span>
 
 ### **Workspace**
 
@@ -476,18 +513,18 @@ To further define which tacos should be consumed, use the dropdown reference bel
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [contributors-shield]: https://img.shields.io/github/contributors/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/random-knights/random-graphs/contributors
+[contributors-url]: https://github.com/dev-kitt/random-graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/random-knights/random-network/members
+[forks-url]: https://github.com/dev-kitt/random-network/members
 [stars-shield]: https://img.shields.io/github/stars/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/random-knights/stargazers
+[stars-url]: https://github.com/dev-kitt/stargazers
 [issues-shield]: https://img.shields.io/github/issues/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/random-knights/random-issues
+[issues-url]: https://github.com/dev-kitt/random-issues
 [license-shield]: https://img.shields.io/github/license/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/random-knights/random/blob/master/LICENSE.txt
+[license-url]: https://github.com/dev-kitt/random/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/qa-kitt
-[product-gif]: https://github.com/random-knights/random/blob/main/src/assets/rubicon.gif
+[product-gif]: https://github.com/dev-kitt/random/blob/main/src/assets/rubicon.gif
 
 <!-- WORKSPACE BADGES -->
 
@@ -574,3 +611,4 @@ To further define which tacos should be consumed, use the dropdown reference bel
 [CypressCloud-url]: https://www.cypress.io/
 
 </details>
+
