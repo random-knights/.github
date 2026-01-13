@@ -33,7 +33,7 @@ from RandomKnights.XYZ
 - Built with
   - Flutter and Dart
   - Gemini and OpenAI
-  - S.T.E.A.M. and FFmpeg 
+  - S.T.E.A.M. and FFmpeg
   - Maximum Effort
   - Canva & Adobe Illustrator
   - Randomly.Engineering by 'dev-kitt'
@@ -61,9 +61,9 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 
 ## <span style="color:#FAAFA5"><u> **OVERVIEW** </u></span>
 
-K1TTs > "Keep IT Together" | 20 curious creatures to manage your random days & nights...
+**rand0m.ai** --- powered by K1TT: "Keep IT Together" >> manage your random days & nights...
 
-- :sunny: Day5 :european_castle: Agents of Change:
+- :sunny: Days :european_castle:
 
   - 🐿️ art1st `¯\_(ツ)_/¯`
   - 🦦 act0r `stop(); //Hammertime!`
@@ -74,7 +74,7 @@ K1TTs > "Keep IT Together" | 20 curious creatures to manage your random days & n
   - 🐇 pr0ducer `#TODO: Figure out what I’m doing here`
   - 🐈 writ3r `Write-Output "Hello, $name!"`
 
-- :crescent_moon: Kn1ghts :crown: Agents of Chaos:
+- :crescent_moon: Knights :crown:
 
   - 🐈‍⬛ devel0per `int getRandomNumber() {Return 404;}`
   - 🦫 eng1neer `#define TRUE FALSE`
@@ -85,12 +85,16 @@ K1TTs > "Keep IT Together" | 20 curious creatures to manage your random days & n
   - 🐀 scient1st `result = experiment() ??;`
   - 🦡 secur1ty `auth ? allow() : alarm();`
 
-- :couch_and_lamp: Syst3m :robot: Agents of Order:
+- :couch_and_lamp: Random :robot:
 
   - 🙃 rand0m `chaotic-neutral, unpredictable yet helpful AI Agent`
   - 👑 kn1ghts `system-core paladin AI Agent`
   - 🏰 day5 `daily reporting and workday management AI Agent`
   - 👻 k1tt `hidden by default, secret squirrel AI Agent`
+
+<p align="center">
+  <img src="https://github.com/random-knights/.github/blob/main/assets/rand0mkn1ghts.gif" alt="Rand0m: Kn1ghts" title="Random Knights, XYZ">
+</p>
 
 <!-- RABBIT HOLE -->
 
@@ -611,4 +615,3 @@ To further define which tacos should be consumed, use the dropdown reference bel
 [CypressCloud-url]: https://www.cypress.io/
 
 </details>
-
