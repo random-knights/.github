@@ -180,8 +180,6 @@ The objective of our work is to implement agentic frameworks to help the 🌎 ke
 
 [![ForDevs][ForDevs]][ForDevs-url]
 
-<!-- [![ForQAs][ForQAs]][ForQAs-url] -->
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
