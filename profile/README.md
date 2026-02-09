@@ -149,13 +149,13 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 
 <picture>
   <source media="(prefers-color-scheme: dark)"
-          srcset="https://raw.githubusercontent.com/random-knights/.github/main/assets/ReadMe-Night.gif">
+          srcset="https://github.com/random-knights/.github/blob/main/assets/ReadMe-Night.gif">
 
   <source media="(prefers-color-scheme: light)"
-          srcset="https://raw.githubusercontent.com/random-knights/.github/main/assets/ReadMe-Day.gif">
+          srcset="https://github.com/random-knights/.github/blob/main/assets/ReadMe-Day.gif">
 
 <img alt="Shows a Day/Night themed animated README"
-       src="https://raw.githubusercontent.com/random-knights/.github/main/assets/ReadMe-Night.gif">
+       src="https://github.com/random-knights/.github/blob/main/assets/ReadMe-Night.gif">
 </picture>
 
 </div>
