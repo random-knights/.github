@@ -118,23 +118,27 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 
 ### 🌝 Day -- Work
 
-<svg width="900" height="90" viewBox="0 0 900 90" xmlns="http://www.w3.org/2000/svg">
+![Day Palette](https://raw.githubusercontent.com/random-knights/.github/main/assets/palette-day.svg)
+
+<!-- <svg width="900" height="90" viewBox="0 0 900 90" xmlns="http://www.w3.org/2000/svg">
   <rect x="0"   y="0" width="180" height="90" fill="#edc303"/>
   <rect x="180" y="0" width="180" height="90" fill="#ff4124"/>
   <rect x="360" y="0" width="180" height="90" fill="#faafa5"/>
   <rect x="540" y="0" width="180" height="90" fill="#fadfdb"/>
   <rect x="720" y="0" width="180" height="90" fill="#b1fec8"/>
-</svg>
+</svg> -->
 
 ### 🌚 Night -- Play
 
-<svg width="900" height="90" viewBox="0 0 900 90" xmlns="http://www.w3.org/2000/svg">
+![Night Palette](https://raw.githubusercontent.com/random-knights/.github/main/assets/palette-night.svg)
+
+<!-- <svg width="900" height="90" viewBox="0 0 900 90" xmlns="http://www.w3.org/2000/svg">
   <rect x="0"   y="0" width="180" height="90" fill="#563998"/>
   <rect x="180" y="0" width="180" height="90" fill="#723848"/>
   <rect x="360" y="0" width="180" height="90" fill="#ad7a88"/>
   <rect x="540" y="0" width="180" height="90" fill="#e5bec8"/>
   <rect x="720" y="0" width="180" height="90" fill="#6fcf8c"/>
-</svg>
+</svg> -->
 
 </div>
 
