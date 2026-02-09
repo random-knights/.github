@@ -112,64 +112,36 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 
 <!-- THEME -->
 <div align="center">
-  # 🏫 <span style="color:#ff4124" name="color-theme"> **ɯ0puɐɹ** </span> <span style="color:#723848" name="color-theme"> **kn1ghts** </span> 🏰
+
+<h1>  🏫 <span style="color:#ff4124" name="color-theme"> ɯ0puɐɹ </span> <span style="color:#723848" name="color-theme"> kn1ghts </span> 🏰
+</h1>
 
 ### 🌝 Day -- Work
 
-  <table>
-    <tr>
-      <td align="center">
-        <div style="width:70px;height:28px;background:#edc303;border-radius:6px;"></div>
-        <br><code>#edc303</code>
-      </td>
-      <td align="center">
-        <div style="width:70px;height:28px;background:#ff4124;border-radius:6px;"></div>
-        <br><code>#ff4124</code>
-      </td>
-      <td align="center">
-        <div style="width:70px;height:28px;background:#faafa5;border-radius:6px;"></div>
-        <br><code>#faafa5</code>
-      </td>
-      <td align="center">
-        <div style="width:70px;height:28px;background:#fadfdb;border-radius:6px;"></div>
-        <br><code>#fadfdb</code>
-      </td>
-      <td align="center">
-        <div style="width:70px;height:28px;background:#b1fec8;border-radius:6px;"></div>
-        <br><code>#b1fec8</code>
-      </td>
-    </tr>
-  </table>
+<svg width="900" height="90" viewBox="0 0 900 90" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0"   y="0" width="180" height="90" fill="#edc303"/>
+  <rect x="180" y="0" width="180" height="90" fill="#ff4124"/>
+  <rect x="360" y="0" width="180" height="90" fill="#faafa5"/>
+  <rect x="540" y="0" width="180" height="90" fill="#fadfdb"/>
+  <rect x="720" y="0" width="180" height="90" fill="#b1fec8"/>
+</svg>
 
 ### 🌚 Night -- Play
 
-  <table>
-    <tr>
-      <td align="center">
-        <div style="width:70px;height:28px;background:#563998;border-radius:6px;border:1px solid #ddd;"></div>
-        <br><code>#563998</code>
-      </td>
-      <td align="center">
-        <div style="width:70px;height:28px;background:#723848;border-radius:6px;"></div>
-        <br><code>#723848</code>
-      </td>
-      <td align="center">
-        <div style="width:70px;height:28px;background:#ad7a88;border-radius:6px;"></div>
-        <br><code>#ad7a88</code>
-      </td>
-      <td align="center">
-        <div style="width:70px;height:28px;background:#e5bec8;border-radius:6px;"></div>
-        <br><code>#e5bec8</code>
-      </td>
-      <td align="center">
-        <div style="width:70px;height:28px;background:#6fcf8c;border-radius:6px;"></div>
-        <br><code>#6fcf8c</code>
-      </td>
-    </tr>
-  </table>
+<svg width="900" height="90" viewBox="0 0 900 90" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0"   y="0" width="180" height="90" fill="#563998"/>
+  <rect x="180" y="0" width="180" height="90" fill="#723848"/>
+  <rect x="360" y="0" width="180" height="90" fill="#ad7a88"/>
+  <rect x="540" y="0" width="180" height="90" fill="#e5bec8"/>
+  <rect x="720" y="0" width="180" height="90" fill="#6fcf8c"/>
+</svg>
+
 </div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- GIF -->
+<div align="center">
 
 <picture>
   <source media="(prefers-color-scheme: dark)"
@@ -181,6 +153,8 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 <img alt="Shows a Day/Night themed animated README"
        src="https://raw.githubusercontent.com/random-knights/.github/main/assets/ReadMe-Night.gif">
 </picture>
+
+</div>
 
 <!-- RABBIT HOLE -->
 
@@ -202,7 +176,7 @@ The objective of our work is to implement agentic frameworks to help the 🌎 ke
 
 [![ForDevs][ForDevs]][ForDevs-url]
 
-[![ForQAs][ForQAs]][ForQAs-url]
+<!-- [![ForQAs][ForQAs]][ForQAs-url] -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -310,7 +284,6 @@ gitGraph
     merge exp10re tag:"demo"
 
     commit type:REVERSE id:"head"
-
 ```
 
 <small>😉 RUOK-CE</small>
@@ -461,6 +434,8 @@ E[Execute Cypress tests in CI environment] --> F[Report automation results to Ji
 
 <small>\*\*implimentation requires broader community engagement</small>
 
+<!-- BADGES -->
+
 ## <span style="color:#555555"><u> **CORE DEVELPOMENT** </u></span>
 
 ### **Workspace**
@@ -533,6 +508,8 @@ E[Execute Cypress tests in CI environment] --> F[Report automation results to Ji
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- TACOS -->
+
 <span style="color:#B387FD"><u>**Random Knights, XYZ**</u></span> fully supports the consumption of tacos. Use the examples below to help make all of your wildest taco dreams come true. NOTE: we assume no liable after tacos are consumed. Please use at your own discretion - and listen to your tum tum.
 
 ```js
@@ -583,6 +560,8 @@ WITH cte_Tacos (TacoType) AS
 SELECT TOP 1 TacoType FROM cte_Tacos ORDER BY NEWID()
 
 ```
+
+<!-- EXPAND -->
 
 <span style="color:#A6A6A6"> **MORE:** </span>:taco::taco::taco:
 
