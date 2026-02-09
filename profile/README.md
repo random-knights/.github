@@ -17,11 +17,11 @@
     <a href="https://github.com/random-knights/.github/blob/main/READMORE"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/random-knights/random_demo">View Demo</a>
+    <a href="https://github.com/random-knights/rand0m">View Demo</a>
     ·
-    <a href="https://github.com/random-knights/random_bug/issues">Report Bug</a>
+    <a href="https://github.com/random-knights/rand0m_bug/issues">Report Bug</a>
     ·
-    <a href="https://github.com/random-knights/random_feature/issues">Request Feature</a>
+    <a href="https://github.com/random-knights/rand0m_feature/issues">Request Feature</a>
   </p>
 </div>
 
