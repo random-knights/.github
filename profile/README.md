@@ -118,7 +118,7 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 
 ### 🌝 Day -- Work
 
-![Day Palette](https://raw.githubusercontent.com/random-knights/.github/main/assets/palette-day.svg)
+![Day Palette](https://github.com/random-knights/.github/blob/main/assets/palette-day.svg)
 
 <!-- <svg width="900" height="90" viewBox="0 0 900 90" xmlns="http://www.w3.org/2000/svg">
   <rect x="0"   y="0" width="180" height="90" fill="#edc303"/>
@@ -130,7 +130,7 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 
 ### 🌚 Night -- Play
 
-![Night Palette](https://raw.githubusercontent.com/random-knights/.github/main/assets/palette-night.svg)
+![Night Palette](https://github.com/random-knights/.github/blob/main/assets/palette-night.svg)
 
 <!-- <svg width="900" height="90" viewBox="0 0 900 90" xmlns="http://www.w3.org/2000/svg">
   <rect x="0"   y="0" width="180" height="90" fill="#563998"/>
