@@ -4,12 +4,12 @@
 <br />
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/random-knights/.github/blob/main/assets/ruok-drk.gif">
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/random-knights/.github/blob/main/assets/ruok-lte.png">
-    <img alt="Shows a Day/Night themed markedown gif based on AM/PM." src="https://github.com/random-knights/.github/blob/main/assets/ruok-drk.gif">
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/random-knights/.github/blob/main/assets/orac1es/orac1es-drk.gif">
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/random-knights/.github/blob/main/assets/orac1es/orac1es-lte.png">
+    <img alt="Shows a Day/Night themed markedown gif based on AM/PM." src="https://github.com/random-knights/.github/blob/main/assets/orac1es/orac1es-drk.gif">
   </picture>
 
-<h3 align="center" style="color:#ff4124">Random Knights, XYZ</h3>
+<h3 align="center" style="color:#ff4124">Random Knights, XYZ - orac1es</h3>
 
   <p align="center">
     rand0m.ai & randomly.engineering
@@ -25,60 +25,46 @@
   </p>
 </div>
 
-## <span style="color:#555555"><u> **SUMMARY** </u></span>
+## <span style="color:#FAAFA5"><u> **OVERVIEW** </u></span>
 
-[Rand0m.AI](https://rand0m.ai) [`Custom AI Agents, Automations, Classrooms and Rand0m Creations`]
-from [Random Knights, XYZ](https://randomknights.xyz)
+[Orac1es](https://orac1es.rand0m.ai) [`Rand0m: Crysta1 Ba11 and Mythica1 AI`]
+</br>
+<small>from Random Knights, XYZ</small>
 
-- Built with
-  - Node.js, Flutter and Dart
-  - Apache Hive
-    - (Firebase Data Connect **coming soon**)
-  - Gemini, OpenAI, Claude, Perplexity
-  - S.T.E.A.M. and FFmpeg
-  - Maximum Family Effort
-  - Canva & Adobe Illustrator
-  - [Randomly.Engineering](https://randomly.engineering)
-    - @dev-kitt
-    - @dev-dusty
-    - @ops-nancy
-    - @ops-steve
-    - @qa-eleven
-    - @qa-kitt
-  - Cypress + Testing-Library
-    - (Appium **coming soon**)
-  - Firebase/FlutterFire
-  - :flying_saucer: Roswell, GA :peach:
+... a feature-rich, delightfully quotable fortune-telling app that blends interactive storytelling, generative wisdom, expressive audio, and animated presentation. Choose from curated oracle personalities, randomize outcomes, or craft your own custom voices and visuals to create fortunes that feel alive, personal, and shareable.
 
-## <span style="color:#555555"><u> **POINTS OF CONTACT** </u></span>
+Designed for both playful discovery and creative control, Orac1es lets you experience, customize, and distribute moments of insight across devices and platforms.
+
+Featuring:
+
+- 🔮 Interact to reveal your fortune
+- 🔊 Edit audio and animation
+- 🚨 Configurable oracles and stylization
+- 📦 Preset oracles with random advice
+- 📱 Create homescreen widgets
+- 🪄 Cast or share your creations
+
+<p align="center">
+  <img src="https://github.com/random-knights/.github/blob/main/assets/orac1es/orac1es.gif" alt="Rand0m: 0rac1es" title="Random Knights, XYZ">
+</p>
+
+## <span style="color:#D8D8D8"><u> **POINTS OF CONTACT** </u></span>
 
 If any issues arise for any of the below mentioned areas, please draft a strongly worded email and never send it to: **admin@rand0m.ai**
 
 <div align="center">
 
-## <span style="color:#FAAFA5"><u> **CORE SOLUTIONS** </u></span>
+## <span style="color:#858585"><u> **CORE SOLUTIONS** </u></span>
 
-| Stack          |     Versions     |   :chipmunk:    |
-| -------------- | :--------------: | :-------------: |
-| Flutter        |     ^3.38.3      |
-| Dart           |     ^3.10.1      |
-| DevTools       |     ^2.51.1      |
-| GoogleAI       |        v         |
-|                | gemini-2.5-flash |
-|                |  gemini-2.5-pro  |
-|                |   nano-banana    | **coming soon** |
-| OpenAI         |        v         |
-|                |     gpt-4.1      |
-|                |    gpt-5-nano    |
-|                |      gpt-4o      | **coming soon** |
-| **Perplexity** |       grok       | **coming soon** |
-| **Anthropic**  |      claude      | **coming soon** |
+| Stack    | Versions | :chipmunk: |
+| -------- | :------: | :--------: |
+| Flutter  | ^3.38.3  |
+| Dart     | ^3.10.1  |
+| DevTools | ^2.51.1  |
 
 </div>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 🏫 <span style="color:#858585"><u> **LEARN + PLAY + CREATE** </u></span>
+## 🏫 <span style="color:#555555"><u> **LEARN + PLAY + CREATE** </u></span>
 
 - rand0m
   - A true sandbox. Experiments, ideas, and creative chaos are encouraged.
@@ -88,16 +74,20 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
     - <small>subject to change ... randomly</small>
 
 - kn1ghts
-  - Expert level. Everything combined, all in 1 app.
-  - A production-like project where best practices matter.
+  - \*\*Expert level. Everything combined, all in 1 app.
+  - \*\*A production-like project where best practices matter.
   - Junior contributors observe only.
 
-- orac1es
-  - A Beginner level introduction to Flutter App concepts through:
-    - Shell - the App template used for all current projects.
-    - Intro to animations, styling, and Easter-Eggs.
-    - Small interactive Crystal Ball "Orac1es".
-  - Companion _Rabbit R1_ app Creation mini-project.
+<span style="color:#FF4124">
+
+- **orac1es**
+  - **A Beginner level introduction to Flutter App concepts through:**
+    - **Shell - the App template used for all current projects.**
+    - **Intro to animations, styling, and Easter-Eggs.**
+    - **Small interactive Crystal Ball "Orac1es".**
+  - **Companion _Rabbit R1_ app Creation mini-project.**
+
+</span>
 
 - uti1ity
   - Advanced tools and scripts (batch, ffmpeg, automation, and more).
@@ -143,10 +133,6 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
   <rect x="720" y="0" width="180" height="90" fill="#6fcf8c"/>
 </svg> -->
 
-</div>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- GIF -->
 <div align="center">
 
@@ -157,7 +143,7 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
   <source media="(prefers-color-scheme: light)"
           srcset="https://github.com/random-knights/.github/blob/main/assets/ReadMe-Day.gif">
 
-<img alt="Shows a Day/Night themed animated README"
+<img alt="Shows a Day/Night themed animated gif"
        src="https://github.com/random-knights/.github/blob/main/assets/ReadMe-Night.gif">
 </picture>
 
@@ -169,16 +155,6 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 
 The objective of our work is to implement agentic frameworks to help the 🌎 keep personal data private and secure, give users more personalized customization and control, and to NEVER value profit/power over the product. Open-source and FREE for ALL (**aside from what the money hungry AI overlords require you to pay for increased API request limits; see your preferred AI lord's website for more info...**)
 
-1. **GitHub Source Control:** The project utilizes GitHub for version control and collaborative development. This allows seamless code collaboration, version tracking, and easy integration with other tools in the testing pipeline.
-
-2. **GitHug Actions CI/CD:** Codefresh is employed for continuous integration and continuous deployment (CI/CD). It automates the build, test, and deployment process, ensuring efficient code integration and reducing the time between code changes and deployment.
-
-3. **Cypress Automation:** Cypress is a powerful end-to-end testing framework used in this project. It provides an intuitive and developer-friendly interface to write and execute tests, making it easier to simulate user interactions and validate the behavior of the application.
-
-4. **Flutter / Dart:** Flutter is an open-source UI toolkit for building natively compiled, multi-platform applications from a single codebase, while Dart is the programming language that powers Flutter. Developed by Google, they work in tandem to enable developers to create high-performance, visually appealing applications for mobile, web, desktop, and embedded systems.
-
-5. **Cucumber BDD:** Cucumber is utilized as the behavior-driven development (BDD) framework, enabling the creation of executable specifications in a human-readable format. It promotes collaboration between stakeholders and ensures that test cases align with business requirements.
-
 [![ForScience][ForScience]][ForScience-url]
 
 [![ForDevs][ForDevs]][ForDevs-url]
@@ -186,45 +162,6 @@ The objective of our work is to implement agentic frameworks to help the 🌎 ke
 [![ForQAs][ForQAs]][ForQAs-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ROADMAP -->
-
-## <span style="color:#555555" name="roadmap"><u> **ROADMAP** </u></span>
-
-Below is a 1 year overview of the previous, current, and future efforts for `Random Knights, XYZ` and the `Rand0m.AI` contributors.
-
-```mermaid
-gantt
-title Future Proofing
-dateFormat YYYY-MM
-
-section 2025
-🌮🌮🌮🌮 :crit, a1, 2025-11, 60d
-
-section 2026
-🍻 :active, a1, 2026-01, 31d
-
-🍕 :a1, 2026-02, 28d
-
-🍩 :a1, 2026-03, 31d
-
-☕ :a1, 2026-04, 30d
-
-🥓 :a1, 2026-05, 31d
-
-🍔 :a1, 2026-06, 31d
-
-🍜 :a1, 2026-07, 30d
-
-☕ :a1, 2026-08, 30d
-
-🍑 :a1, 2026-09, 30d
-
-🛸 :a1, 2026-10, 30d
-
-section Nov
-👑🐿️ :a1, 2026-11, 30d
-```
 
 <!-- CONTRIBUTING -->
 
@@ -248,75 +185,104 @@ _For more information, please visit: [GitHub Manifesto](https://lmgtfy.app/?q=ho
 <small>**EXAMPLE:**</small>
 
 ```mermaid
-%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel': true, 'mainBranchName': 'rand0m'} } }%%
-gitGraph
-    %% rand0m (AI shell / PROD)
-    commit id:"commit_01"
-    commit id:"commit_02"
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'rand0m'}} }%%
+  gitGraph
+        commit id:"commit_01"
+        commit id:"commit_02"
+        branch ma6ic
+        commit id:"commit_T01"
+        commit id:"commit_T02"
+        commit id:"commit_T03"
+        branch orac1es
+        commit id:"commit_K01"
+        commit type: HIGHLIGHT id:"commit_K02"
 
-    %% Core feeder repos (ordered)
-    branch uti1ity
-    commit id:"commit_K01"
-    commit id:"commit_K02"
-    commit id:"commit_K03"
+        checkout rand0m
+        commit id:"commit_03"
+        merge orac1es
+        commit id:"commit_05"
+        commit id:"commit_06"
+        merge ma6ic tag:"cherrypick"
 
-    branch orac1es
-    commit id:"commit_C01"
-    commit id:"commit_C02"
 
-    branch kn1ghts
-    commit id:"commit_O01"
-    commit type:HIGHLIGHT id:"commit_O02"
-
-    %% Experimental / learning repos
-    branch c1assr00m
-    commit id:"commit_U01"
-
-    %% Demo / testing repo (LAST, spans everything)
-    branch exp10re
-    commit id:"commit_E01"
-    commit id:"commit_E02"
-    commit id:"commit_E03"
-
-    %% Back to rand0m – controlled integrations
-    checkout rand0m
-    commit id:"commit_03"
-    merge c1assr00m
-    commit id:"commit_04"
-    merge orac1es
-    commit id:"commit_05"
-    merge uti1ity
-    commit id:"commit_06"
-    merge kn1ghts tag:"cherrypick"
-    merge exp10re tag:"demo"
-
-    commit type:REVERSE id:"head"
+        commit type:REVERSE id:"head"
 ```
 
 <small>😉 RUOK-CE</small>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- ORACLES -->
 
-<!-- WORKFLOWS -->
-
-## <span style="color:#555555" name="workflows"><u> **TEST AUTOMATION** </u></span>
-
-**Xray <> Cucumber** <small>demo only</small>
+## <span style="color:#555555" name="oracles"><u> **BREAKDOWN** </u></span>
 
 ```mermaid
-graph LR
-A[ID Manual Tests for Automation in Jira] --> B
-B[Convert to Cucumber Tests in Jira] --> C
-C[Export Cucumber Feature files from Jira] --> D
-D[Impliment Step Definitions in Cypress] --> E
-E[Execute Cypress tests in CI environment] --> F[Report automation results to Jira]
+classDiagram
+    Orac1es <|-- Oracle
+    Orac1es <|-- Vo1ce
+    Orac1es <|-- Anim8r
+    Orac1es <|-- Cast3r
+    Orac1es <|-- Widgetz
+
+    Orac1es : +envt | orac1es.rand0m.ai
+    Orac1es : +org | Random Knights, XYZ
+    Orac1es : -user() [orac1e_name]@rand0m.ai
+    Orac1es : -modes() Preset | Random | Custom | Creator
+
+    class Oracle{
+      +select
+      +randomize
+      +customize
+      +compose
+      +quote
+      +save
+      -invoke()
+    }
+
+    class Vo1ce{
+      +synthesize
+      +modulate
+      +filter
+      +loop
+      +sync
+      +export
+      -calibrate()
+    }
+
+    class Anim8r{
+      +animate
+      +transition
+      +pulse
+      +glow
+      +timing
+      +render
+      -stage()
+    }
+
+    class Cast3r{
+      +broadcast
+      +mirror
+      +stream
+      +pair
+      +handoff
+      +disconnect
+      -negotiate()
+    }
+
+    class Widgetz{
+      +embed
+      +resize
+      +theme
+      +refresh
+      +snapshot
+      +share
+      -sandbox()
+    }
 ```
 
-<small>\*\*implimentation requires broader community engagement</small>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- BADGES -->
 
-## <span style="color:#555555"><u> **CORE DEVELPOMENT** </u></span>
+## <span style="color:#555555"><u> **CORE STUFF** </u></span>
 
 ### **Workspace**
 
@@ -383,131 +349,11 @@ E[Execute Cypress tests in CI environment] --> F[Report automation results to Ji
 ### **Pipelines**
 
 [![GitHubActions][GitHubActions]][GitHubActions-url]
-[![Slack][Slack]][Slack-url]
 [![CypressCloud][CypressCloud]][CypressCloud-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- TACOS -->
-
-<span style="color:#B387FD"><u>**Random Knights, XYZ**</u></span> fully supports the consumption of tacos. Use the examples below to help make all of your wildest taco dreams come true. NOTE: we assume no liable after tacos are consumed. Please use at your own discretion - and listen to your tum tum.
-
-```js
-// EAT MORE TACOS [js]
-function tacosToEat() {
-  const message = document.getElementById("8Kit");
-  message.innerHTML = "";
-  let x = document.getElementById("tacos").value;
-  try {
-    if (x == "") throw "empty";
-    if (isNaN(x)) throw "doing math";
-    x = Number(x);
-    if (x < 8) throw "too hungry";
-    if (x > 85) throw "too full";
-  } catch (err) {
-    message.innerHTML =
-      "WARNING: consuming " + x + " tacos may leave you " + err;
-  }
-}
-```
-
-```csharp
-// EAT MORE TACO [c#]
-using Tacos;
-
-namespace MyTaco
-{
-    class Taco
-    {
-        static void Main(string[], args)
-        {
-            string txt = "Eat More Tacos";
-            Console.WriteLine(txt.ToUpper());
-        }
-    }
-}
-
-```
-
-```sql
--- EAT MORE TACOS [sql]
-WITH cte_Tacos (TacoType) AS
-(
-    SELECT 'Beef Taco' UNION
-    SELECT 'Chicken Taco' UNION
-    SELECT 'Pork Taco')
-)
-SELECT TOP 1 TacoType FROM cte_Tacos ORDER BY NEWID()
-
-```
-
-<!-- EXPAND -->
-
-<span style="color:#A6A6A6"> **MORE:** </span>:taco::taco::taco:
-
-To further define which tacos should be consumed, use the dropdown reference below...
-
-<details>
-  <summary><span style="color:mediumpurple"> CLICK TO EXPAND </span></summary>
-
-- <span style="color:hotpink"> [@]\_OUTER </span>
-  - [BOWL]
-  - [LETTUCE]
-  - [SHELL/WRAP]
-    - <span style="color:mediumpurple"> [@]\_Corn </span>
-    - <span style="color:mediumpurple"> [@]\_Flour </span>
-  - [NONE]
-    - <span style="color:mediumpurple"> [@]\_Seek-Help </span>
-- <span style="color:hotpink"> [@]\_INNER </span>
-  - [BEEF]
-    - <span style="color:mediumpurple"> [@]\_Birria </span>
-    - <span style="color:mediumpurple"> [@]\_Carne-Asada </span>
-    - <span style="color:mediumpurple"> [@]\_Ground </span>
-    - <span style="color:mediumpurple"> [@]\_Shredded </span>
-  - [CHICKEN]
-    - <span style="color:mediumpurple"> [@]\_Chopped </span>
-    - <span style="color:mediumpurple"> [@]\_Shredded </span>
-    - <span style="color:mediumpurple"> [@]\_Tinga </span>
-  - [PORK]
-    - <span style="color:mediumpurple"> [@]\_Al-Pastor </span>
-    - <span style="color:mediumpurple"> [@]\_Barbacoa </span>
-    - <span style="color:mediumpurple"> [@]\_Campechanos </span>
-    - <span style="color:mediumpurple"> [@]\_Carnitas </span>
-    - <span style="color:mediumpurple"> [@]\_Chorizo </span>
-  - [FISH]
-    - <span style="color:mediumpurple"> [@]\_Pescado </span>
-
-- <span style="color:hotpink"> [@]\_TOPPINGS </span>
-  - [BROWNS]
-    - <span style="color:mediumpurple"> [@]\_Lentals </span>
-    - <span style="color:mediumpurple"> [@]\_MoreMeat </span>
-    - <span style="color:mediumpurple"> [@]\_Rice </span>
-  - [GREENS]
-    - <span style="color:mediumpurple"> [@]\_Cilantro </span>
-    - <span style="color:mediumpurple"> [@]\_Lettuce </span>
-    - <span style="color:mediumpurple"> [@]\_Lime </span>
-    - <span style="color:mediumpurple"> [@]\_Guacamole </span>
-    - <span style="color:mediumpurple"> [@]\_Jalapeños </span>
-    - <span style="color:mediumpurple"> [@]\_Spinich </span>
-  - [REDS]
-    - <span style="color:mediumpurple"> [@]\_HotSauce </span>
-    - <span style="color:mediumpurple"> [@]\_Peppers </span>
-    - <span style="color:mediumpurple"> [@]\_Pico </span>
-    - <span style="color:mediumpurple"> [@]\_Salsa </span>
-    - <span style="color:mediumpurple"> [@]\_Tomatoe </span>
-  - [WHITES]
-    - <span style="color:mediumpurple"> [@]\_CheeseDuh </span>
-    - <span style="color:mediumpurple"> [@]\_EggWhites </span>
-    - <span style="color:mediumpurple"> [@]\_Onions </span>
-    - <span style="color:mediumpurple"> [@]\_SourCream </span>
-  - [YELLOWS] - <span style="color:mediumpurple"> [@]\_Corn </span> - <span style="color:mediumpurple"> [@]\_Egg </span> - <span style="color:mediumpurple"> [@]\_MoreCheese </span> - <span style="color:mediumpurple"> [@]\_Pineapples </span>
-  </details>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<div align="center">
-  🏰🛏️🌚ɯ0puɐɹ  kn1ghts🌝🛋️🏫
-</div>
+🏰🛏️🌚ɯ0puɐɹ kn1ghts🌝🛋️🏫
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
