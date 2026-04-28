@@ -335,6 +335,7 @@ E[Execute Cypress tests in CI environment] --> F[Report automation results to Ji
 
 ### **Database**
 
+[![HiveDB][HiveDB]][HiveDB-url]
 [![MongoDB][MongoDB]][MongoDB-url]
 [![PostgreSQL][PostgreSQL]][PostgreSQL-url]
 
@@ -558,8 +559,8 @@ To further define which tacos should be consumed, use the dropdown reference bel
 [MongoDB-url]: https://www.mongodb.com/
 [PostgreSQL]: https://img.shields.io/badge/PostgreSQL-faafa5?style=for-the-badge&logo=postgresql&logoColor=white
 [PostgreSQL-url]: https://www.postgresql.org/
-[Hive]: https://img.shields.io/badge/Hive-faafa5?style=for-the-badge&logo=apachehive&logoColor=black
-[Hive-url]: https://pub.dev/packages/hive
+[HiveDB]: https://img.shields.io/badge/Hive-faafa5?style=for-the-badge&logo=apachehive&logoColor=white
+[HiveDB-url]: https://pub.dev/packages/hive
 
 <!-- TOOLS (C2: ad7a88) -->
 
@@ -580,7 +581,7 @@ To further define which tacos should be consumed, use the dropdown reference bel
 [ForQAs-url]: https://forthebadge.com
 [ForScience]: https://forthebadge.com/images/badges/built-with-science.svg
 [ForScience-url]: https://forthebadge.com
-[JavaScript]: https://img.shields.io/badge/JavaScript-e5bec8?style=for-the-badge&logo=javascript&logoColor=black
+[JavaScript]: https://img.shields.io/badge/JavaScript-e5bec8?style=for-the-badge&logo=javascript&logoColor=white
 [JavaScript-url]: https://www.javascript.com/
 [Node.js]: https://img.shields.io/badge/Node.js-e5bec8?style=for-the-badge&logo=node.js&logoColor=white
 [Node-url]: https://nodejs.org/
@@ -607,7 +608,7 @@ To further define which tacos should be consumed, use the dropdown reference bel
 [Lighthouse-url]: https://developer.chrome.com/docs/lighthouse/
 [Mocha.js]: https://img.shields.io/badge/Mocha-fadfdb?style=for-the-badge&logo=mocha&logoColor=white
 [Mocha-url]: https://mochajs.org/
-[Swagger.js]: https://img.shields.io/badge/Swagger-fadfdb?style=for-the-badge&logo=swagger&logoColor=black
+[Swagger.js]: https://img.shields.io/badge/Swagger-fadfdb?style=for-the-badge&logo=swagger&logoColor=white
 [Swagger-url]: https://swagger.io/
 [TestLibrary]: https://img.shields.io/badge/Testing_Library-fadfdb?style=for-the-badge&logo=testing-library&logoColor=white
 [TestLibrary-url]: https://testing-library.com/
