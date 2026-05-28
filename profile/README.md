@@ -79,26 +79,25 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 ## 🏫 <span style="color:#858585"><u> **HOW IT WORKS** </u></span>
 
 - rand0m
-  - A true sandbox. Experiments, ideas, and creative chaos are encouraged.
-  - Mid level. AI, Agents, and Hive DB History.
-  - A pre-production project t ostep up your AI game.
-  - Junior contributors observe first, then assist gradually.
+  - Public root/chat landing app for `rand0m.ai`.
+  - Mid level. Creative discovery, public chat, and ecosystem entry point.
+  - The default place to explore ideas before stepping into power-user workflows.
     - <small>subject to change ... randomly</small>
 
-- kn1ghts
-  - Expert level. Everything combined, all in 1 app.
-  - A production-like project where best practices matter.
-  - Junior contributors observe only.
+- knight1y
+  - Full premium/power-user app for agents, history, settings, and workflow control.
+  - Expert level. The production-like command center where best practices matter.
+  - Junior contributors observe first, then assist with clearly scoped tasks.
 
-- orac1es
-  - A Beginner level introduction to Flutter App concepts through:
-    - Shell - the App template used for all current projects.
-    - Intro to animations, styling, and Easter-Eggs.
-    - Small interactive Crystal Ball "Orac1es".
+- out1ine
+  - Oracle/lightweight future test app.
+  - Beginner-friendly shell for experiments with oracles, drawing, weather, and connection tools.
+  - Good for testing shared UI and service contracts before heavier apps adopt them.
 
-- uti1ity
-  - Advanced tools and scripts (batch, ffmpeg, automation, and more).
-  - Primarily reference and inspiration.
+- up10ad
+  - Creative render/upload tool.
+  - Advanced utility surface for FFmpeg, media workflows, uploads, and automation experiments.
+  - Primarily reference, tooling, and inspiration for shared media features.
 
 - c1assr00m
   - The formal learning space. All junior contributors start here.
