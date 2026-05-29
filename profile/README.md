@@ -43,7 +43,7 @@ from [Random Knights, XYZ](https://randomknights.xyz)
     - @dev-dusty
     - @ops-nancy
     - @ops-steve
-    - @qa-eleven
+    - @e1even
     - @qa-kitt
   - Cypress + Testing-Library
     - (Appium **coming soon**)
@@ -78,41 +78,52 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 🏫 <span style="color:#858585"><u> **LEARN + PLAY + CREATE** </u></span>
+## 🏫 <span style="color:#858585"><u> **HOW IT WORKS** </u></span>
 
 - rand0m
-  - A true sandbox. Experiments, ideas, and creative chaos are encouraged.
-  - Mid level. AI, Agents, and Hive DB History.
-  - A pre-production project t ostep up your AI game.
-  - Junior contributors observe first, then assist gradually.
+  - Public root/chat landing app for `rand0m.ai`.
+  - Mid level. Creative discovery, public chat, and ecosystem entry point.
+  - The default place to explore ideas before stepping into power-user workflows.
     - <small>subject to change ... randomly</small>
 
 - knight1y
-  - Expert level. Full premium and power-user app.
-  - Agents, history, favorites, runtime tooling, and advanced app behavior.
-  - Junior contributors observe only until assigned a guided task.
+  - Full premium/power-user app for agents, history, favorites, settings, and workflow control.
+  - Expert level. The production-like command center where best practices matter.
+  - Junior contributors observe first, then assist with clearly scoped tasks.
 
 - out1ine
-  - Beginner-friendly oracle and lightweight future test app.
-  - Introduces shared shell patterns, styling, animations, and app slices.
-  - Good practice target for safe shared-component wiring.
+  - Oracle/lightweight future test app.
+  - Beginner-friendly shell for experiments with oracles, drawing, weather, and connection tools.
+  - Good for testing shared UI and service contracts before heavier apps adopt them.
 
 - up10ad
   - Creative render/upload tool.
-  - Advanced media workflow reference for future render and upload practice.
-  - Primarily reference and inspiration.
+  - Advanced utility surface for FFmpeg, media workflows, uploads, and automation experiments.
+  - Primarily reference, tooling, and inspiration for shared media features.
 
 - c1assr00m
   - The formal learning space. All junior contributors start here.
   - Missions live as folders, not separate repos, keeping things simple and focused.
-  - Learning roadmap: 11 practice examples, each with 11 challenges.
+  - Learn from the ecosystem before changing live behavior.
+
+- e1even
+  - The formal do/practice repo for ecosystem exercises.
+  - Roadmap: 11 practice examples, each with 11 challenges.
+  - Builds confidence in QA, automation, validation, docs hygiene, and release-readiness work.
 
 - eng1neer
-  - The formal testing and QA automation support space.
-  - Learn test strategy, coverage, regression planning, CI quality, and open-source automation tools.
-  - Distinct from va1idat0r, which focuses on validation, review, consistency, and quality gates.
+  - QA/test expert agent identity inside the Random Knights ecosystem.
+  - Focuses on test strategy, automation, coverage, regression, and CI quality.
 
-<small>\*\*models, agents, 'kitts', and stuff is subject to change; all projects contain easter-eggs ga10re, but first you must exp10re\*\*</small>
+- temp1ate
+  - Future template/scaffold productivity agent.
+  - Helps create reusable project artifacts, checklists, docs, and boilerplates.
+
+- va1idat0r
+  - Future validation/review quality-gate agent.
+  - Focuses on consistency checks, audits, requirement validation, and release confidence.
+
+<small>\*\*models, agents, 'kitts', and stuff is subject to change\*\*</small>
 
 <!-- THEME -->
 <div align="center">
