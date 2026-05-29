@@ -87,29 +87,30 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
   - Junior contributors observe first, then assist gradually.
     - <small>subject to change ... randomly</small>
 
-- kn1ghts
-  - Expert level. Everything combined, all in 1 app.
-  - A production-like project where best practices matter.
-  - Junior contributors observe only.
+- knight1y
+  - Expert level. Full premium and power-user app.
+  - Agents, history, favorites, runtime tooling, and advanced app behavior.
+  - Junior contributors observe only until assigned a guided task.
 
-- orac1es
-  - A Beginner level introduction to Flutter App concepts through:
-    - Shell - the App template used for all current projects.
-    - Intro to animations, styling, and Easter-Eggs.
-    - Small interactive Crystal Ball "Orac1es".
-  - Companion _Rabbit R1_ app Creation mini-project.
+- out1ine
+  - Beginner-friendly oracle and lightweight future test app.
+  - Introduces shared shell patterns, styling, animations, and app slices.
+  - Good practice target for safe shared-component wiring.
 
-- uti1ity
-  - Advanced tools and scripts (batch, ffmpeg, automation, and more).
+- up10ad
+  - Creative render/upload tool.
+  - Advanced media workflow reference for future render and upload practice.
   - Primarily reference and inspiration.
 
 - c1assr00m
   - The formal learning space. All junior contributors start here.
   - Missions live as folders, not separate repos, keeping things simple and focused.
+  - Learning roadmap: 11 practice examples, each with 11 challenges.
 
 - eng1neer
-  - The formal testing space. All QA contributors start here.
-  - Learn, add, and monitor our Regression tests w/open-source tools.
+  - The formal testing and QA automation support space.
+  - Learn test strategy, coverage, regression planning, CI quality, and open-source automation tools.
+  - Distinct from va1idat0r, which focuses on validation, review, consistency, and quality gates.
 
 <small>\*\*models, agents, 'kitts', and stuff is subject to change; all projects contain easter-eggs ga10re, but first you must exp10re\*\*</small>
 
@@ -255,16 +256,16 @@ gitGraph
     commit id:"commit_02"
 
     %% Core feeder repos (ordered)
-    branch uti1ity
+    branch up10ad
     commit id:"commit_K01"
     commit id:"commit_K02"
     commit id:"commit_K03"
 
-    branch orac1es
+    branch out1ine
     commit id:"commit_C01"
     commit id:"commit_C02"
 
-    branch kn1ghts
+    branch knight1y
     commit id:"commit_O01"
     commit type:HIGHLIGHT id:"commit_O02"
 
@@ -283,11 +284,11 @@ gitGraph
     commit id:"commit_03"
     merge c1assr00m
     commit id:"commit_04"
-    merge orac1es
+    merge out1ine
     commit id:"commit_05"
-    merge uti1ity
+    merge up10ad
     commit id:"commit_06"
-    merge kn1ghts tag:"cherrypick"
+    merge knight1y tag:"cherrypick"
     merge exp10re tag:"demo"
 
     commit type:REVERSE id:"head"
