@@ -1,2 +1,4 @@
-READLESS/
+READLESS/*
+!READLESS/architecture/
+!READLESS/architecture/**
 READMORE/_eng1neer/
