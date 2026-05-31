@@ -448,6 +448,31 @@ Risk:
 
 - More has no route by design. Future phases should not add a lightweight More page unless the naming/routing scope is explicitly changed.
 
+### Future Phase: WASM Web Compatibility Audit
+
+Goal: audit web package compatibility for a future WebAssembly-compatible build path. This is a follow-up infrastructure/browser compatibility phase, not part of FE navigation/page naming hardening.
+
+Reference finding from Flutter web build wasm dry run:
+
+- `package:flutter_sound_web/flutter_sound_web.dart` uses `dart:html`.
+- `package:geolocator_web/src/html_geolocation_manager.dart` uses `dart:html`.
+- `package:geolocator_web/src/html_permissions_manager.dart` uses `dart:html`.
+- `package:geolocator_web/src/utils.dart` uses `dart:html`.
+- `package:flutter_sound_web/flutter_sound_media_player_web.dart` imports `dart:js_util`, which blocks Wasm compilation.
+
+Recommended scope:
+
+- Audit `flutter_sound_web` usage.
+- Audit `geolocator_web` usage.
+- Identify whether these packages are required on web.
+- Consider conditional imports, alternative packages, feature gating, or deferred web-only fallbacks.
+- Do not address during FE navigation/page naming hardening unless directly required.
+
+Risk:
+
+- Current JavaScript web builds can still succeed while wasm dry-run warnings exist.
+- Solving this may require package-level decisions or dependency changes, so it should be isolated from label, icon, ordering, and routing work.
+
 ## Files Likely to Change in Later Phases
 
 App-local files likely to change:
