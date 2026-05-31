@@ -6,6 +6,16 @@ Scope: audit and planning only for FE navigation/page naming hardening. This fil
 
 Hard rule for future phases: do not rename files, classes, methods, functions, services, models, packages, Firebase Functions, or Hive boxes. Future phases may change user-visible labels and route paths only.
 
+Final naming corrections locked in:
+
+- More is a popup/menu affordance only. Do not create `/more` and do not treat More as a page.
+- XYZ is the default landing/home/dashboard experience. Root route `/` maps to XYZ. Do not create `/xyz`.
+- Organization names: Random Knights, XYZ.
+- Logo/brand names: Rand0m Kn1ghts, XYZ.
+- Product landing: XYZ.
+- AI chat destination: `random1y` / `Random1y`.
+- AI agents destination: `knight1y` / `Knight1y`.
+
 ## Source Guidance Read
 
 - `C:\Projects\dev-kitt\CODEX.md`
@@ -163,7 +173,7 @@ Current route behavior:
 - The authenticated default landing is `HomePage(startIndex: 0)` through startup/splash flow.
 - Main shell pages are index-swapped inside one `Scaffold` body, so they do not have independent URL paths.
 - `DrawPage`, `RelaxPage`, `SpotifyPlayerPage`, `FavoritesPage`, `AgentChatPage`, and `AgentsSettingsPage` are pushed with anonymous `MaterialPageRoute`s, so they also do not have stable URL paths.
-- Web deep links to `/about`, `/rand0m`, `/xyz`, `/kn1ghts`, `/more`, `/uti1ity`, `/oracles`, `/c0nnect`, `/e1evate`, `/draw`, `/relax`, `/vibe`, `/weather`, or `/favorites` are not currently modeled in Flutter routing.
+- Web deep links to `/about`, `/random1y`, `/uti1ity`, `/oracles`, `/knight1y`, `/c0nnect`, `/e1evate`, `/draw`, `/relax`, `/vibe`, `/weather`, or `/favorites` are not currently modeled in Flutter routing.
 - Firebase Hosting rewrites all paths to `/index.html`, so server-side path support is likely compatible with future Flutter web routing, but the app must add client-side route parsing to avoid all paths landing on the default index.
 
 Deep-link/web URL concerns:
@@ -205,9 +215,9 @@ Default landing behavior:
 ### Target Bottom Navigation
 
 1. About
-2. Rand0m
+2. Random1y
 3. XYZ, formerly Dashboard, keep as default landing
-4. Kn1ghts
+4. Knight1y
 5. More, use `...`/ellipsis icon
 
 Target bottom nav labels and destinations:
@@ -215,28 +225,28 @@ Target bottom nav labels and destinations:
 | Order | Target label | Destination | Recommended path |
 | --- | --- | --- | --- |
 | 1 | About | `AboutPage` | `/about` |
-| 2 | Rand0m | `ChatPage` | `/rand0m` |
-| 3 | XYZ | current `_HomeCardPage` | `/xyz` and `/` |
-| 4 | Kn1ghts | `AgentsPage` | `/kn1ghts` |
-| 5 | More | More menu/sheet | `/more` |
+| 2 | Random1y | `ChatPage` | `/random1y` |
+| 3 | XYZ | current `_HomeCardPage` | `/` |
+| 4 | Knight1y | `AgentsPage` | `/knight1y` |
+| 5 | More | More menu/sheet | popup only, no route |
 
 ### Target More Menu
 
 Primary group:
 
-- `rand0m` with sublabel `ai chat`
+- `random1y` with sublabel `ai chat`
 - `uti1ity` with sublabel `render + test`
 - `oracles` with sublabel `ai oracles`
-- `kn1ghts` with sublabel `ai agents`
+- `knight1y` with sublabel `ai agents`
 - `c0nnect` with sublabel `enhance`
 - `e1evate` with sublabel `customize`
 
 Secondary group:
 
 - `draw`
-- `weather`
 - `relax`
 - `vibe`, formerly Spotify
+- `weather`
 
 Footer/group:
 
@@ -258,10 +268,10 @@ Top:
 
 Primary AI group:
 
-- `rand0m` with sublabel `ai chat`
+- `random1y` with sublabel `ai chat`
 - `uti1ity` with sublabel `render + test`
 - `oracles` with sublabel `ai oracles`
-- `kn1ghts` with sublabel `ai agents`
+- `knight1y` with sublabel `ai agents`
 - `c0nnect` with sublabel `enhance`
 - `e1evate` with sublabel `customize`
 
@@ -279,24 +289,25 @@ Footer:
 
 ## Naming Rule
 
-Only AI-relevant app pages use 0/1 naming conventions:
+Only AI-relevant app pages use lowercase/stylized naming in the Drawer and More menu:
 
-- `rand0m`
+- `random1y`
 - `uti1ity`
 - `oracles`
-- `kn1ghts`
+- `knight1y`
 - `c0nnect`
 - `e1evate`
 
 Non-AI utility pages use plain names:
 
 - `about`
-- `xyz`
 - `draw`
 - `relax`
 - `vibe`
 - `weather`
 - `favorites`
+
+Bottom navigation may use capitalization: About, Random1y, XYZ, Knight1y, More. Drawer and More menu entries should use the lowercase/stylized destination names except `Home`, `About`, and `Favorites`.
 
 ## Proposed Sitemap and Recommended URL Paths
 
@@ -304,14 +315,12 @@ Canonical paths:
 
 | Path | Target visible name | Current implementation |
 | --- | --- | --- |
-| `/` | XYZ | redirect/select `/xyz` target while preserving root as default |
-| `/xyz` | XYZ | `_HomeCardPage` within `HomePage` |
+| `/` | XYZ | `_HomeCardPage` within `HomePage`; default landing/home/dashboard experience |
 | `/about` | about | `AboutPage` |
-| `/rand0m` | rand0m | `ChatPage` |
-| `/kn1ghts` | kn1ghts | `AgentsPage` |
-| `/more` | more | More menu/sheet route state |
+| `/random1y` | random1y | `ChatPage` |
 | `/uti1ity` | uti1ity | future utility surface combining render + test |
 | `/oracles` | oracles | `OraclePage` |
+| `/knight1y` | knight1y | `AgentsPage` |
 | `/c0nnect` | c0nnect | current `Globe`/Connect surface |
 | `/e1evate` | e1evate | future customization/elevation surface |
 | `/draw` | draw | `DrawPage` |
@@ -320,18 +329,25 @@ Canonical paths:
 | `/weather` | weather | `WeatherPage` |
 | `/favorites` | favorites | `FavoritesPage` |
 
-Non-canonical compatibility aliases to consider later:
+No canonical route should be created for More. More remains a popup/menu affordance only.
 
-- `/dashboard` -> `/xyz`
-- `/chat` -> `/rand0m`
-- `/agents` -> `/kn1ghts`
-- `/connect` -> `/c0nnect`
-- `/connections` -> `/c0nnect`
-- `/spotify` -> `/vibe`
-- `/test` -> `/uti1ity`
-- `/render` -> `/uti1ity`
+Final route list:
 
-Recommendation: add aliases only if analytics, shared links, or previous public usage justify them. Otherwise keep the first hardening pass canonical-only to reduce route complexity.
+- `/`
+- `/about`
+- `/random1y`
+- `/uti1ity`
+- `/oracles`
+- `/knight1y`
+- `/c0nnect`
+- `/e1evate`
+- `/draw`
+- `/relax`
+- `/vibe`
+- `/weather`
+- `/favorites`
+
+No compatibility aliases are part of the final route list. If analytics, shared links, or previous public usage justify aliases in a later phase, evaluate them as an explicit scope change. Do not add `/xyz` or `/more` aliases.
 
 ## Recommended Phase Breakdown for Phases 2-5
 
@@ -343,9 +359,9 @@ Recommended work:
 
 - Bottom nav order/labels/icons:
   - About
-  - Rand0m
+  - Random1y
   - XYZ
-  - Kn1ghts
+  - Knight1y
   - More with ellipsis icon
 - Drawer labels and ordering to target shape.
 - More menu labels and ordering to target shape.
@@ -370,7 +386,8 @@ Goal: introduce client-side URL path selection for visible destinations without 
 Recommended work:
 
 - Add app-local path-to-destination mapping.
-- Ensure `/` and `/xyz` select the default landing.
+- Ensure `/` selects the default landing.
+- Do not introduce `/xyz`.
 - Ensure browser refresh/deep links select the right page after auth/startup.
 - Add named routes or a small Router/RouteInformationParser only if it can stay app-local and low-risk.
 - Keep labels from Phase 2.
@@ -417,7 +434,7 @@ Recommended work:
 
 - Verify every target path has a selected nav/drawer/more state.
 - Decide whether to add compatibility aliases.
-- Ensure `/more` behavior is sensible on refresh, either by opening the sheet after startup or rendering a More page.
+- Ensure More remains a popup/menu affordance only, with no `/more` route.
 - Ensure Favorites, Draw, Relax, Vibe, Weather paths are refresh-safe.
 - Update QA architecture note with final closeout if needed.
 
@@ -429,7 +446,7 @@ Likely files:
 
 Risk:
 
-- `/more` as a modal-only state may be awkward for direct links. A lightweight More page may be more web-safe than auto-opening a modal, but this should be decided in Phase 5 after Phase 3 routing exists.
+- More has no route by design. Future phases should not add a lightweight More page unless the naming/routing scope is explicitly changed.
 
 ## Files Likely to Change in Later Phases
 
