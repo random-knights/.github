@@ -995,3 +995,235 @@ Goal:
 - Run `build-wgms-glacier-summary.ps1` against a small real sample.
 - Capture redacted fixture rows and expected output.
 - Decide summary asset vs hosted summary artifact.
+
+## P9.27 WGMS Real Sample Extraction
+
+Validation date: 2026-06-01
+
+Validation branch/workspace:
+
+```text
+C:\Projects\dev-kitt
+spike/glacier-provider-validation
+```
+
+Raw dataset source:
+
+```text
+https://wgms.ch/downloads/DOI-WGMS-FoG-2026-02-10.zip
+```
+
+Temporary local path used:
+
+```text
+D:\XYZ\Temp\wgms-glacier-sample\DOI-WGMS-FoG-2026-02-10.zip
+```
+
+The raw WGMS ZIP was kept outside the app repo and must not be committed.
+
+Compact preview artifact:
+
+```text
+C:\Projects\dev-kitt\tooling\scripts\earth\output\wgms-glacier-summary-preview.json
+```
+
+The preview artifact is approximately 2 KB and contains summary-only data. It
+does not contain raw WGMS rows, coordinates, map geometry, imagery, gridded data,
+provider secrets, or app wiring.
+
+### Real Dataset Contents Audited
+
+The WGMS ZIP contains these CSV entries:
+
+- `data/agency.csv`
+- `data/change.csv`
+- `data/change_band.csv`
+- `data/event.csv`
+- `data/front_variation.csv`
+- `data/glacier.csv`
+- `data/mass_balance.csv`
+- `data/mass_balance_band.csv`
+- `data/mass_balance_point.csv`
+- `data/person.csv`
+- `data/state.csv`
+- `data/state_band.csv`
+
+The MVP parser used:
+
+```text
+data/mass_balance.csv
+```
+
+Reason:
+
+- It is the smallest direct mass-balance table suitable for summary extraction.
+- It contains annual balance values, glacier names/ids, country/region proxy,
+  years, blank values, and multi-year coverage.
+- It avoids larger raw change tables and map/geometry-style workflows.
+
+### Actual Column Mapping
+
+Observed real header:
+
+```text
+country,glacier_name,glacier_id,outline_id,year,time_system,begin_date,begin_date_unc,midseason_date,midseason_date_unc,end_date,end_date_unc,winter_balance,winter_balance_unc,summer_balance,summer_balance_unc,annual_balance,annual_balance_unc,ela_position,ela,ela_unc,aar,area,investigators,agencies,references,remarks
+```
+
+Accepted parser mappings:
+
+- region/country:
+  - actual: `country`
+  - parser alias: `COUNTRY`
+- glacier identifier/name:
+  - actual: `glacier_name`
+  - parser alias: `GLACIER_NAME`
+  - actual: `glacier_id`
+  - future alias recommended: `GLACIER_ID`
+- observation year:
+  - actual: `year`
+  - parser alias: `YEAR`
+- mass-balance value:
+  - actual: `annual_balance`
+  - parser alias: `ANNUAL_BALANCE`
+
+PowerShell property lookup was case-insensitive, so existing uppercase aliases
+matched real lowercase columns. Future parser hardening should explicitly include
+the lowercase names for readability and test clarity.
+
+### Parser Changes From Real Sample
+
+The real WGMS sample showed annual balance values are meter water equivalent
+style values rather than millimeter-scale values. The prototype threshold was
+updated from `+/-250` to:
+
+```text
++/-0.25
+```
+
+The parser now emits:
+
+- `blankMassBalanceRowCount`
+- `negativeMassBalanceRowCount`
+- `positiveMassBalanceRowCount`
+- `neutralMassBalanceRowCount`
+- `massBalanceUnit`
+- `massBalanceSignalThreshold`
+- optional `-OutputPath` support
+
+These additions make null/blank handling and positive/negative/neutral
+distribution visible without exposing raw rows.
+
+### Validation Commands
+
+Embedded sample validation:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File C:\Projects\dev-kitt\tooling\scripts\earth\build-wgms-glacier-summary.ps1 -UseEmbeddedSample
+```
+
+Real sample validation:
+
+```powershell
+$zip = 'D:\XYZ\Temp\wgms-glacier-sample\DOI-WGMS-FoG-2026-02-10.zip'
+powershell -ExecutionPolicy Bypass -File C:\Projects\dev-kitt\tooling\scripts\earth\build-wgms-glacier-summary.ps1 -InputPath $zip -ZipEntryPattern 'data/mass_balance.csv' -OutputPath C:\Projects\dev-kitt\tooling\scripts\earth\output\wgms-glacier-summary-preview.json
+```
+
+Both validations passed.
+
+### Real Summary Output Shape
+
+Real sample output characteristics:
+
+- provider: `WGMS`
+- sourceDataId: `wgms-fog-2026-02-10`
+- monitoredRegionCount: `38`
+- monitoredGlacierCount: `551`
+- observationRowCount: `8944`
+- numericMassBalanceRowCount: `8444`
+- blankMassBalanceRowCount: `500`
+- negativeMassBalanceRowCount: `5262`
+- positiveMassBalanceRowCount: `1218`
+- neutralMassBalanceRowCount: `1964`
+- massBalanceSignal: `negative`
+- averageMassBalance: `-0.57`
+- massBalanceUnit: `m w.e. (as reported by WGMS annual_balance sample)`
+- massBalanceSignalThreshold: `+/-0.25`
+- observationPeriod: `1885-2026`
+- providerFreshness: `Dataset release 2026-02-10`
+
+Compact payload:
+
+```json
+{
+  "provider": "WGMS",
+  "sourceDataId": "wgms-fog-2026-02-10",
+  "monitoredRegionCount": 38,
+  "monitoredGlacierCount": 551,
+  "observationRowCount": 8944,
+  "numericMassBalanceRowCount": 8444,
+  "blankMassBalanceRowCount": 500,
+  "negativeMassBalanceRowCount": 5262,
+  "positiveMassBalanceRowCount": 1218,
+  "neutralMassBalanceRowCount": 1964,
+  "massBalanceSignal": "negative",
+  "averageMassBalance": -0.57,
+  "massBalanceUnit": "m w.e. (as reported by WGMS annual_balance sample)",
+  "massBalanceSignalThreshold": "+/-0.25",
+  "observationPeriod": "1885-2026",
+  "providerFreshness": "Dataset release 2026-02-10"
+}
+```
+
+### Artifact Recommendation
+
+Recommended first production artifact location:
+
+- app asset, if the summary is manually generated and version-controlled as a
+  small reviewed JSON file;
+- remote static hosting, if the summary should refresh without app releases;
+- Firebase callable, only if refresh orchestration, access control, or server
+  cache observability is required.
+
+Recommended next step:
+
+- Use the generated summary JSON as a tooling-only fixture until an app phase
+  explicitly approves adding it to `apps/rand0m` assets.
+
+Do not wire `wgms-glacier-summary-preview.json` into the app during P9.27.
+
+### Production Readiness Gaps
+
+Still required before app integration:
+
+1. Review the `+/-0.25` mass-balance threshold with WGMS methodology.
+2. Decide whether country count is sufficient for `monitoredRegionCount` or if a
+   different regional grouping should be derived from WGMS metadata.
+3. Decide whether `glacier_id` should be counted instead of `glacier_name`.
+4. Add automated parser tests with a tiny redacted real-schema CSV fixture.
+5. Decide whether preview artifact timestamps should be deterministic for
+   version control.
+6. Decide app asset vs remote static hosting vs Firebase callable.
+7. Replace synthetic fixture behavior in `spike/glacier-summary-mvp` only after
+   the artifact location is approved.
+
+### Merge Recommendation For `spike/glacier-summary-mvp`
+
+Keep `spike/glacier-summary-mvp` open.
+
+Do not merge it yet. The branch model/UI remains useful, and the real summary
+shape now closely matches it, but the app still needs an approved artifact
+location and deterministic fixture/test strategy.
+
+Recommended next phase:
+
+```text
+P9.28 Glacier Summary Asset Integration Plan
+```
+
+Goal:
+
+- Decide app asset vs static hosting vs callable.
+- Add tiny redacted parser fixture tests.
+- Make summary artifact generation deterministic.
+- Plan replacement of the synthetic glacier UI fixture with the real compact
+  WGMS summary artifact.
