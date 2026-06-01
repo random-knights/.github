@@ -692,3 +692,306 @@ Goal:
 - Acquire a small WGMS sample outside Flutter web.
 - Prove the mass-balance summary calculation.
 - Preserve P9.23's summary-only client model.
+
+## P9.26 WGMS Summary Parser / Proxy Design
+
+Design date: 2026-06-01
+
+Design branch/workspace:
+
+```text
+C:\Projects\dev-kitt
+spike/glacier-provider-validation
+```
+
+Parser prototype:
+
+```text
+C:\Projects\dev-kitt\tooling\scripts\earth\build-wgms-glacier-summary.ps1
+```
+
+### Design Decision
+
+Preferred MVP approach:
+
+1. **Static generated JSON summary artifact** for first production integration.
+2. Generate it outside Flutter web with root tooling.
+3. Commit or host only the compact summary JSON artifact in a future approved app
+   phase.
+4. Do not commit raw WGMS CSV/ZIP data.
+5. Do not add Firebase callable runtime fetching for MVP unless the static
+   artifact workflow proves operationally inadequate.
+
+Rationale:
+
+- WGMS FoG data is slow-moving and versioned by dataset release, not real-time.
+- P9.25 validated official metadata and download headers without secrets.
+- The full WGMS dataset is large/raw and unsuitable for direct Flutter web.
+- A static summary artifact is reviewable, cache-free for the client, easy to
+  roll back, and avoids introducing Firebase/runtime provider complexity before
+  the parsing method is proven against real rows.
+- Firebase callable remains the Phase 2 option for server-side refresh,
+  authenticated access boundaries, or scheduled cache refresh.
+
+Rejected for MVP:
+
+- Direct Flutter web download/parsing of WGMS CSV/ZIP.
+- Direct WFS integration, because official WFS links returned `404` in local
+  validation and need provider confirmation.
+- Firebase callable as the first step, because no secret/auth need is proven and
+  the parser schema is not yet proven against real rows.
+- Fixture-only UI merge, because fixture behavior does not represent provider
+  data.
+
+### Strategy Options
+
+#### Static Build-Step Generation
+
+Recommended MVP path.
+
+Workflow:
+
+1. Operator downloads the approved WGMS FoG CSV/ZIP outside Flutter web.
+2. Root tooling parses one approved local CSV/ZIP.
+3. Tool emits compact summary JSON.
+4. Future app phase reviews and commits/hosts only summary JSON.
+5. Flutter app reads summary JSON without provider credentials or raw rows.
+
+Benefits:
+
+- No provider secrets.
+- No Firebase Functions.
+- No runtime provider failures.
+- Summary payload can be code-reviewed.
+- Best match for slow-moving annual/static glacier data.
+
+Risks:
+
+- Manual refresh process until automation is approved.
+- Freshness depends on release monitoring.
+- Requires a reproducible parser and captured schema tests.
+
+#### Firebase Callable Proxy
+
+Phase 2 option.
+
+Workflow:
+
+1. `getGlacierSummary` callable downloads or reads cached WGMS source data.
+2. Callable parses/cache-reduces raw data server-side.
+3. Client receives only summary JSON.
+4. Callable exposes provider health, cache status, and safe failures.
+
+Benefits:
+
+- Server-side cache/freshness control.
+- No raw provider payload reaches Flutter web.
+- Can later support scheduled refresh and auth boundaries.
+
+Risks:
+
+- More infrastructure surface.
+- Needs callable tests, cache policy, failure taxonomy, and deployment.
+- Not justified until parser/schema is stable.
+
+#### Manual Fixture Refresh
+
+Accepted only as a development bridge.
+
+Workflow:
+
+1. Developer updates a local fixture from reviewed WGMS summary output.
+2. UI/model tests use the fixture.
+3. Fixture remains labeled preview/development-only.
+
+Benefits:
+
+- Fastest way to test UI/model shape.
+
+Risks:
+
+- Not production data.
+- Easy to confuse with validated provider data.
+- Must not be merged as production behavior without provider-backed summary
+  artifact.
+
+### Parser Requirements
+
+Input source:
+
+- Local WGMS CSV or ZIP only.
+- No network download inside parser.
+- No secrets.
+- No provider tokens.
+- No app wiring.
+
+Expected input formats:
+
+- `.csv`
+- `.zip` containing one approved `.csv`
+
+Prototype ZIP behavior:
+
+- Reads the first ZIP entry matching `*mass*balance*.csv` by default.
+- Allows an override entry pattern for future WGMS schema discovery.
+- Does not extract files to disk.
+
+Required logical fields:
+
+- region or country:
+  - `REGION`
+  - `POLITICAL_UNIT`
+  - `COUNTRY`
+  - `GLACIER_REGION_CODE`
+  - `MOUNTAIN_RANGE`
+- glacier identifier/name:
+  - `GLACIER_NAME`
+  - `NAME`
+  - `WGMS_ID`
+  - `GLIMS_ID`
+- observation year:
+  - `REFERENCE_YEAR`
+  - `SURVEY_YEAR`
+  - `YEAR`
+  - `YEAR_BALANCE`
+  - `BALANCE_YEAR`
+- mass-balance value:
+  - `ANNUAL_BALANCE`
+  - `SPECIFIC_MASS_BALANCE`
+  - `MASS_BALANCE`
+  - `BA`
+  - `B_A`
+  - `ANNUAL_BALANCE_MM_W_E`
+
+Output fields:
+
+```json
+{
+  "provider": "WGMS",
+  "sourceDataId": "wgms-fog-2026-02-10",
+  "selectedDataset": {
+    "title": "Fluctuations of Glaciers (FoG) Database",
+    "doi": "https://doi.org/10.5904/wgms-fog-2026-02-10",
+    "publicationYear": "2026",
+    "releaseDate": "2026-02-10"
+  },
+  "monitoredRegionCount": 3,
+  "monitoredGlacierCount": 3,
+  "observationRowCount": 6,
+  "numericMassBalanceRowCount": 6,
+  "massBalanceSignal": "negative",
+  "averageMassBalance": -531.67,
+  "observationPeriod": "2022-2023",
+  "providerFreshness": "Dataset release 2026-02-10",
+  "sourceAttribution": "WGMS (2026): Fluctuations of Glaciers (FoG) Database. World Glacier Monitoring Service (WGMS), Zurich, Switzerland. https://doi.org/10.5904/wgms-fog-2026-02-10",
+  "providerStatus": {
+    "health": "healthy",
+    "freshness": "cached",
+    "cacheStatus": "hit",
+    "providerFetchStatus": "local-file"
+  },
+  "warnings": [
+    "Parser prototype only.",
+    "Validate against real WGMS FoG schema before production use.",
+    "Do not expose raw WGMS rows or large source datasets to Flutter web."
+  ]
+}
+```
+
+Error handling:
+
+- Missing input path: fail with clear message unless using embedded sample.
+- Missing file: fail with clear message.
+- Unsupported extension: fail; only `.csv` and `.zip` are allowed.
+- ZIP without matching CSV: fail with clear message.
+- Empty CSV: fail with clear message.
+- No numeric mass-balance values: fail with clear message.
+- Malformed rows: skip only when required field aliases are absent; do not emit
+  false precision.
+
+Mass-balance signal thresholds:
+
+- average <= `-250`: `negative`
+- average >= `250`: `positive`
+- otherwise: `mixed / near neutral`
+
+Thresholds are prototype values. Production thresholds must be reviewed against
+WGMS methodology before app integration.
+
+### Parser Prototype Validation
+
+Command:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File C:\Projects\dev-kitt\tooling\scripts\earth\build-wgms-glacier-summary.ps1 -UseEmbeddedSample
+```
+
+Result:
+
+- passed
+- no network
+- no file writes
+- no raw dataset
+- emitted compact summary JSON
+
+Embedded sample output characteristics:
+
+- monitored region count: `3`
+- monitored glacier count: `3`
+- observation rows: `6`
+- numeric mass-balance rows: `6`
+- observation period: `2022-2023`
+- mass-balance signal: `negative`
+- average mass balance: `-531.67`
+- provider freshness: `Dataset release 2026-02-10`
+- attribution: WGMS 2026 FoG citation with DOI
+
+### Freshness Model
+
+MVP freshness should be dataset-version based, not realtime:
+
+- `providerFreshness`: dataset release date
+- `sourceDataId`: WGMS DOI slug/version
+- `providerStatus.freshness`: `cached`
+- `providerStatus.cacheStatus`: `hit`
+- optional future field: generated summary timestamp
+
+Do not imply live glacier monitoring.
+
+### Production Readiness Gates
+
+Before production app integration:
+
+1. Download WGMS FoG source outside Flutter web.
+2. Identify the exact CSV file(s) containing annual/specific mass-balance rows.
+3. Run parser against a small real extracted sample.
+4. Capture a redacted/non-secret sample fixture.
+5. Add parser tests for real column names.
+6. Review mass-balance signal thresholds against WGMS methodology.
+7. Decide whether generated summary JSON is committed as an asset or hosted.
+8. Only then replace the `spike/glacier-summary-mvp` synthetic fixture.
+
+### Merge Recommendation For `spike/glacier-summary-mvp`
+
+Keep `spike/glacier-summary-mvp` open.
+
+Do not merge until a real WGMS-derived summary artifact or callable response
+replaces the embedded/synthetic fixture.
+
+Once a real generated summary artifact exists, the spike branch can be used as
+the model/UI merge reference because its summary model and observability shape
+match the recommended payload.
+
+Recommended next phase:
+
+```text
+P9.27 WGMS Real Sample Extraction
+```
+
+Goal:
+
+- Acquire the approved WGMS FoG dataset outside Flutter web.
+- Identify the exact mass-balance CSV schema.
+- Run `build-wgms-glacier-summary.ps1` against a small real sample.
+- Capture redacted fixture rows and expected output.
+- Decide summary asset vs hosted summary artifact.
