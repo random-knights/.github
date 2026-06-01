@@ -476,3 +476,219 @@ Recommended outcome gates:
   curated dataset build step rather than direct Flutter web access.
 - If NSIDC requires Earthdata Login/OAuth, defer NSIDC to Phase 2 unless a
   server-side proxy is explicitly approved.
+
+## P9.25 Provider Validation Findings
+
+Validation date: 2026-06-01
+
+Validation branch/workspace:
+
+```text
+C:\Projects\dev-kitt
+spike/glacier-provider-validation
+```
+
+Local proof script:
+
+```text
+C:\Projects\dev-kitt\tooling\scripts\earth\validate-glacier-provider.ps1
+```
+
+The script is read-only. It does not download raw glacier datasets, does not
+require secrets, does not call Firebase, and does not write files. It validates
+official WGMS metadata pages and performs a `HEAD` request against the current
+WGMS FoG zip only to capture small download metadata.
+
+### Provider Validation Summary
+
+#### WGMS
+
+Status: selected MVP candidate, metadata-validated only.
+
+Official findings:
+
+- WGMS Data Exploration states WGMS data is freely available for scientific and
+  educational purposes, with acknowledgement required to WGMS and/or original
+  investigators and sponsoring agencies according to available metadata.
+- WGMS Data Exploration states the FoG Browser allows direct download of minimal
+  glacier-change data series, while larger datasets can be ordered by email.
+- WGMS documents OGC WFS/CSW services for Fluctuations of Glaciers metadata.
+- The current WGMS FoG database version is:
+  - DOI: `https://doi.org/10.5904/wgms-fog-2026-02-10`
+  - release date: `2026-02-10`
+  - publication year: `2026`
+  - format: CSV files, zipped
+  - reported size: `868 MB`
+  - spatial coverage: global
+  - temporal coverage: `1127-2026 AD`
+  - rights: open access under correct citation
+
+Local validation findings:
+
+- The database page and data exploration page are reachable without secrets.
+- The current zip URL responds to a `HEAD` request with:
+  - status `200`
+  - content type `application/zip`
+  - compressed content length `39,137,587` bytes
+- The proof script deliberately does not download the zip because the provider
+  page reports a large raw dataset and this phase only allows small summary
+  samples.
+- WGMS-hosted WFS links listed on the official data exploration page returned
+  `404` during local validation. Treat direct WFS access as unresolved until
+  WGMS confirms the active endpoint/path or an alternate hosted service.
+
+Sample payload shape proven by metadata validation:
+
+```json
+{
+  "provider": "WGMS",
+  "selectedDataset": {
+    "title": "Fluctuations of Glaciers (FoG) Database",
+    "doi": "https://doi.org/10.5904/wgms-fog-2026-02-10",
+    "publisher": "World Glacier Monitoring Service (WGMS)",
+    "publicationYear": "2026",
+    "releaseDate": "2026-02-10",
+    "rights": "Open access under the requirement of correct citation",
+    "dataFormat": "CSV files, zipped",
+    "reportedDataSize": "868 MB",
+    "spatialCoverage": "Global",
+    "temporalCoverage": "1127-2026 AD"
+  },
+  "downloadProbe": {
+    "statusCode": 200,
+    "contentType": "application/zip",
+    "compressedContentLengthBytes": 39137587,
+    "downloaded": false
+  },
+  "validationResult": {
+    "metadataValidated": true,
+    "payloadValidated": false,
+    "requiresProductionProxyOrBuildStep": true
+  }
+}
+```
+
+Attribution wording for MVP:
+
+```text
+WGMS (2026): Fluctuations of Glaciers (FoG) Database. World Glacier Monitoring Service (WGMS), Zurich, Switzerland. https://doi.org/10.5904/wgms-fog-2026-02-10
+```
+
+MVP implication:
+
+- WGMS is the best candidate for first glacier summary work.
+- Do not use direct Flutter web access to the full dataset.
+- Implement a summary-only Firebase callable or curated static build step that
+  converts WGMS raw data into bounded app payloads.
+
+#### NSIDC
+
+Status: rejected for MVP direct runtime access; keep as Phase 2 candidate.
+
+Official findings:
+
+- NSIDC says NASA Earth science data managed by NSIDC requires a free NASA
+  Earthdata Login account.
+- NSIDC says users must cite data products, and each dataset landing page
+  provides DOI/citation details.
+- NSIDC programmatic access guidance states NSIDC DAAC data access requires
+  Earthdata Login.
+
+MVP implication:
+
+- NSIDC is strong for cryosphere/ice extent metadata, but it should not be used
+  by Flutter web directly.
+- Treat NSIDC as Phase 2 behind a server-side Earthdata-authenticated boundary
+  unless a specific public non-auth metadata endpoint is approved.
+
+#### NASA Earthdata / CMR
+
+Status: rejected as MVP data source; useful for discovery and Phase 2 metadata.
+
+Official findings:
+
+- CMR Search supports collection and granule metadata queries.
+- CMR granule queries must target a subset of collections using parameters such
+  as provider, concept id, collection concept id, short name, version, or entry
+  title.
+- Earthdata/CMR is better suited to discovery/catalog workflows than the first
+  glacier summary MVP.
+
+MVP implication:
+
+- Use CMR later to discover or validate NSIDC/NASA collection metadata.
+- Do not use CMR as the first app summary provider unless a bounded collection
+  and exact summary calculation are already defined.
+
+#### USGS EarthExplorer / M2M
+
+Status: rejected for MVP direct runtime access; keep as terrain/glacier imagery
+Phase 2 candidate.
+
+Official findings:
+
+- USGS M2M is a RESTful JSON API for searching and acquiring USGS/EROS data
+  inventories and retrieving metadata/download URLs.
+- USGS documents application-token authentication through `login-token` for M2M.
+
+MVP implication:
+
+- USGS is useful for discovery, terrain, imagery, and historical comparison.
+- It is not the right first source for a simple glacier mass-balance summary.
+- Any future use should be server-side and token-backed.
+
+### Recommended MVP Implementation Path
+
+Recommended provider path:
+
+1. Use WGMS FoG as the primary MVP source.
+2. Do not download or parse the full WGMS dataset in Flutter web.
+3. Add a provider-build/proxy phase that runs outside the client:
+   - option A: static curated build step that downloads/parses WGMS FoG and
+     emits a small checked or hosted summary artifact;
+   - option B: Firebase callable `getGlacierSummary` with cache-first behavior.
+4. Return only:
+   - provider
+   - source data id / DOI
+   - monitored region count
+   - mass-balance signal
+   - observation period
+   - provider freshness
+   - attribution
+   - provider health/freshness/cache status
+   - safe warnings
+5. Add tests from captured, redacted, non-secret WGMS sample rows before merging
+   any production runtime behavior.
+
+Firebase proxy requirement:
+
+- Required if runtime fetching/parsing is needed.
+- Not required if a static curated artifact is generated offline and shipped or
+  hosted safely.
+- Direct Flutter web access is not recommended for full WGMS data.
+
+### Merge Recommendation For `spike/glacier-summary-mvp`
+
+Keep `spike/glacier-summary-mvp` open.
+
+Do not merge it to `main` yet because it still contains fixture-backed behavior,
+not provider-validated production data.
+
+The branch is useful as a UI/model reference. Merge only after a follow-up phase
+replaces the synthetic fixture with one of:
+
+- a static curated WGMS summary artifact, or
+- a Firebase callable/proxy response backed by cached WGMS summary parsing.
+
+Recommended next phase:
+
+```text
+P9.26 WGMS Summary Parser/Proxy Design
+```
+
+Goal:
+
+- Decide static build artifact vs Firebase callable.
+- Acquire a small WGMS sample outside Flutter web.
+- Prove the mass-balance summary calculation.
+- Preserve P9.23's summary-only client model.
