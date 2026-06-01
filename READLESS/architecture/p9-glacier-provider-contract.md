@@ -336,3 +336,143 @@ Recommended spike goals:
 - Prototype parser off-app or in a branch-only sandbox.
 - Compare payload shape to proposed summary model.
 - Do not add runtime app integration until provider access and attribution are proven.
+
+## P9.24 Spike Review Findings
+
+Spike branch:
+
+```text
+C:\Projects\dev-kitt\apps\rand0m
+spike/glacier-summary-mvp
+```
+
+Spike commit reviewed:
+
+```text
+83d58c1 feat: spike glacier summary provider preview
+```
+
+### What The Spike Proved
+
+The branch proved an app-local, summary-only glacier path can fit the existing
+Earth architecture without adding providers, Firebase Functions, maps, overlays,
+raw gridded data, or client-side secrets.
+
+Production-shape pieces that look reusable:
+
+- `EarthGlacierSummary` can represent bounded summary data:
+  - provider
+  - source data id
+  - monitored region count
+  - mass-balance signal
+  - observation period
+  - provider freshness
+  - source attribution
+  - generated timestamp
+  - warnings
+  - provider health/freshness/cache status
+- Schema validation correctly rejects malformed payloads and missing source
+  metadata/attribution.
+- Empty summary state is representable with `monitoredRegionCount == 0`.
+- The service seam is useful:
+  - `EarthGlacierSummaryService`
+  - fixture-backed implementation
+  - injected Glaciers card loader
+- The Glaciers card can reuse existing provider observability presentation.
+- UI labeling can keep the layer honest with explicit:
+  - preview
+  - provider spike
+  - not production
+- Test coverage now demonstrates:
+  - model parsing
+  - empty state
+  - malformed source data rejection
+  - attribution requirement
+  - provider health/freshness parsing
+  - Glaciers card success and failure rendering
+
+### What The Spike Did Not Prove
+
+The spike does not prove live provider readiness.
+
+Still blocked:
+
+- WGMS live endpoint certainty.
+- NSIDC endpoint certainty.
+- Provider terms and attribution requirements.
+- Dataset version/publication metadata shape.
+- Real payload schema stability.
+- Real cache/freshness behavior.
+- Region preset semantics.
+- Server-side proxy requirements.
+- Provider failure taxonomy from real source responses.
+
+The fixture payload is intentionally synthetic and must not be treated as live
+provider evidence.
+
+### Contract Alignment
+
+The spike aligns with this contract by keeping glacier data:
+
+- summary-only
+- read-only
+- attribution-required
+- provider-observability-aware
+- map-free
+- overlay-free
+- secret-free
+- isolated from command architecture
+
+The spike intentionally stops short of `getGlacierSummary`, OAuth, provider
+calls, raw payload ingestion, and production route behavior.
+
+### Merge Recommendation
+
+Do not merge the spike to `main` as production behavior yet.
+
+Keep the spike branch open as a reviewed implementation reference until a
+provider-validation task proves at least one real data path.
+
+Acceptable merge conditions:
+
+1. Replace fixture payload with a provider-validated or proxy-validated summary
+   source.
+2. Preserve the summary-only client model.
+3. Preserve explicit attribution rendering.
+4. Preserve safe malformed/empty/unavailable states.
+5. Preserve provider health/freshness display.
+6. Add tests using real captured, redacted, non-secret fixture samples from the
+   approved provider path.
+
+If live provider validation remains blocked, close the spike after extracting
+the model and UI lessons into a future implementation ticket.
+
+### Recommended Provider Validation Path
+
+Run a dedicated provider-validation phase before production implementation:
+
+```text
+P9.25 Glacier Provider Validation
+```
+
+Scope:
+
+- Verify WGMS data access terms and exact downloadable/API surface.
+- Verify whether NSIDC can provide a browser-safe public metadata endpoint or
+  requires Earthdata/OAuth/server proxy access.
+- Capture small, non-secret sample payloads.
+- Define required attribution strings.
+- Define dataset version/publication-date fields.
+- Decide whether MVP can remain app-local fixture-backed for demonstration or
+  requires a Firebase callable proxy.
+- Do not merge the spike or expose live behavior until these checks are
+  complete.
+
+Recommended outcome gates:
+
+- If WGMS exposes a stable, public, summary-suitable source, implement a
+  cache-first parser/proxy path.
+- If WGMS is download/catalog/manual only, use a Firebase callable or static
+  curated dataset build step rather than direct Flutter web access.
+- If NSIDC requires Earthdata Login/OAuth, defer NSIDC to Phase 2 unless a
+  server-side proxy is explicitly approved.
