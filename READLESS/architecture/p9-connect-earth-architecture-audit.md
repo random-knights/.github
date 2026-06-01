@@ -589,3 +589,42 @@ No new route is needed. Do not add `/earth` in P9.1 unless a later sitemap phase
 - No Home Terminal changes.
 - No package repo modifications.
 - No deployment.
+
+## P9.18 Tooling Script Discovery Addendum
+
+Date: 2026-06-01
+
+Scope: audit only. No tooling scripts were executed, wired into the app, or promoted to production workflows.
+
+### `tooling/scripts/earth`
+
+| Script | Purpose observed | Inputs / outputs | Dependencies | Safety | Recommendation |
+| --- | --- | --- | --- | --- | --- |
+| `earth-vision.py` | Experimental NASA Earth imagery / tile comparison sketch. | Hardcoded locations, dates, NASA/GIBS-style URLs; writes downloaded image files in the working directory if run. | `requests`, `cv2`, `numpy`, basic auth placeholder credentials. | Not safe to run as-is. It has duplicate `params`, placeholder auth, external network calls, GUI display via OpenCV, and writes files. | Keep as historical experiment only; do not integrate until rewritten as a bounded fixture-based tool. |
+| `nasa-vision.py` | Experimental NASA imagery download and local image comparison sketch. | Hardcoded coordinates/date flow; downloads images to `satellite_image_1.jpg` and `satellite_image_2.jpg`. | `requests`, `cv2`, API key placeholder. | Not safe to run as-is. It performs external NASA calls, writes image files, assumes response shapes, and contains placeholder API key logic. | Keep as research seed; future Earth/Terrain/Glacier tooling should be rewritten with explicit inputs, no secrets in source, fixture mode, and no GUI side effects. |
+
+Earth integration candidates:
+
+- Terrain/glacier readiness: useful conceptually for image/source exploration, but current scripts are too experimental for product or validation use.
+- Provider validation: not suitable yet; scripts need deterministic CLI arguments, fixture mode, safe output paths, and no GUI windows.
+- Source metadata/testing fixtures: future rewritten variants could generate sample source metadata or image fixtures.
+
+### `tooling/scripts/web`
+
+| Script | Purpose observed | Inputs / outputs | Dependencies | Safety | Recommendation |
+| --- | --- | --- | --- | --- | --- |
+| `accessability-vision.py` | Rough accessibility signal scraper for image alt text, headings, and labels. | Hardcoded Rubicon Carbon URL; prints raw soup/counts. | `requests`, `BeautifulSoup`. | Not production-ready. External network call, hardcoded URL, weak scoring math, typo in filename. | Keep only as experiment; future `/uti1ity` Test tab could inspire a validated accessibility checker through existing PageSpeed/web diagnostics patterns. |
+| `environment-vision.py` | DOM comparison sketch between two hardcoded URLs. | Hardcoded `qa.com` / `stg.com`; prints differing elements. | `requests`, `BeautifulSoup`. | Not production-ready. External network calls, no CLI args, potentially huge output. | Keep as experiment; integrate later only after deterministic URL validation and output limits. |
+| `hyperlink-vision.py` | Broken-link checker sketch. | Hardcoded Rubicon Carbon URL; calls every link directly. | `requests`, `BeautifulSoup`. | Not safe as-is. External fan-out, no URL normalization, no timeout/error handling. | Rewrite later if `/uti1ity` needs link checking; do not run in current form. |
+| `pageload-vision.py` | Page load timing and `/api/` link discovery sketch. | Hardcoded Rubicon Carbon URL; prints elapsed time and API-like links. | `requests`, `BeautifulSoup`. | Low/medium risk but still experimental due hardcoded external call and no timeout policy. | Candidate concept for future web diagnostics, but prefer existing `runPageSpeedAudit` proxy pattern. |
+
+Web integration candidates:
+
+- `/uti1ity` Render/Test: these scripts can inform future test-tool ideas, but none should be wired directly.
+- Pagespeed/web diagnostics: prefer the existing Firebase `runPageSpeedAudit` callable for production-quality diagnostics.
+- Agent tools: not ready; any future command/tool integration must go through P8 command governance.
+
+Guardrail recommendation:
+
+- No CODEX/RUNBOOK update is required yet.
+- Before any tooling integration phase, convert scripts to explicit CLI tools with documented arguments, fixture/offline mode, timeouts, safe output directories, no GUI side effects, and no hardcoded third-party targets.

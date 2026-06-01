@@ -705,6 +705,35 @@ NASA FIRMS satellite detections for {area}, {window}. Educational preview only. 
 - Add source status transitions to `available`, `connected`, and `error`.
 - Add QUERY preview metadata for Wildfires without enabling source-backed command execution unless separately approved.
 
+## P9.18 Wildfire Source Audit Addendum
+
+Date: 2026-06-01
+
+Runtime audit:
+
+- Current `getWildfireSummary` uses the FIRMS Area API data endpoint:
+  `https://firms.modaps.eosdis.nasa.gov/api/area/csv/{MAP_KEY}/{SOURCE}/{AREA_COORDINATES}/{DAY_RANGE}`.
+- It does not rely on a map-only endpoint.
+- Current source is `VIIRS_NOAA20_NRT`, day range is enforced as `1`, and requests are limited to approved area presets.
+- The callable returns summary data only and does not expose coordinates or raw FIRMS rows to the Flutter UI.
+
+Source candidates reviewed:
+
+| Source | Role | Fit | Notes |
+| --- | --- | --- | --- |
+| NASA FIRMS Area API | Current active-fire summary source. | Keep as MVP. | Official CSV data endpoint, requires server-side MAP_KEY, needs cache/rate limits. |
+| NASA FIRMS data availability | Source/dataset readiness validation. | Add later. | Useful for checking dataset availability before user-facing summary fetches. |
+| NOAA Wildland Fire Data Portal | Official NOAA fire-data discovery and early-detection portal. | Research fallback. | Good source-family candidate, but not a direct drop-in replacement for current summary callable. |
+| NOAA/NESDIS HMS | Fire and smoke detection context. | Research fallback/augmentation. | Strong smoke/fire context, but product cadence, geometry, and attribution need a separate source contract. |
+| Google Earth Engine FIRMS datasets | Analysis and derived raster workflow. | Long-term only. | Requires Earth Engine auth/project posture and should not be used as a quick client-side fallback. |
+
+Recommendation:
+
+- Keep NASA FIRMS as the only live wildfire provider for now.
+- Add no fallback provider in P9.18.
+- Treat NOAA Wildland Fire, NOAA/NESDIS HMS, and Earth Engine FIRMS as future source-contract candidates after the FIRMS safe-read path remains stable.
+- Future P9.18+ hardening may add a read-only data-availability check through the existing Firebase proxy pattern before broadening wildfire provider coverage.
+
 ## Long-Term Wildfire Implementation
 
 - Add map or globe overlay only after Earth rendering architecture is approved.
