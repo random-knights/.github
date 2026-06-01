@@ -1227,3 +1227,332 @@ Goal:
 - Make summary artifact generation deterministic.
 - Plan replacement of the synthetic glacier UI fixture with the real compact
   WGMS summary artifact.
+
+## P9.28 Glacier Summary Asset Integration Plan
+
+Planning date: 2026-06-01
+
+Scope: planning/design only. This section does not authorize Flutter app wiring,
+Firebase Functions, deployment, or merging `spike/glacier-summary-mvp`.
+
+### Asset Strategy Decision
+
+Preferred production MVP strategy:
+
+```text
+Committed app asset containing compact WGMS-derived summary JSON.
+```
+
+Recommended app asset path:
+
+```text
+C:\Projects\dev-kitt\apps\rand0m\assets\earth\glaciers\wgms-glacier-summary.json
+```
+
+Recommended asset declaration:
+
+```yaml
+flutter:
+  assets:
+    - assets/earth/glaciers/wgms-glacier-summary.json
+```
+
+Commit recommendation:
+
+- Commit the compact generated summary JSON in `apps/rand0m`.
+- Do not commit raw WGMS CSV/ZIP data.
+- Do not commit extracted WGMS rows.
+- Do not commit large intermediate data files.
+
+Why committed asset first:
+
+- Small and reviewable: current summary artifact is about 2 KB.
+- No runtime network dependency.
+- No Firebase Functions required.
+- No provider secrets.
+- No user data.
+- Predictable rollback.
+- Best fit for slow-moving, dataset-release-based glacier data.
+
+Deferred alternatives:
+
+- Remote static hosting: use only if summary refresh must happen without app
+  releases.
+- Firebase callable: use only if server-side refresh, auth, cache
+  observability, or provider orchestration becomes necessary.
+- Tooling-only fixture: acceptable for tests, but not enough for production UI.
+
+### Generation Command
+
+Current real-data generation command:
+
+```powershell
+$zip = 'D:\XYZ\Temp\wgms-glacier-sample\DOI-WGMS-FoG-2026-02-10.zip'
+powershell -ExecutionPolicy Bypass -File C:\Projects\dev-kitt\tooling\scripts\earth\build-wgms-glacier-summary.ps1 -InputPath $zip -ZipEntryPattern 'data/mass_balance.csv' -OutputPath C:\Projects\dev-kitt\tooling\scripts\earth\output\wgms-glacier-summary-preview.json
+```
+
+Future asset generation command should write directly to the app asset path only
+after an app integration phase is approved:
+
+```powershell
+$zip = '<local path outside repo>\DOI-WGMS-FoG-2026-02-10.zip'
+powershell -ExecutionPolicy Bypass -File C:\Projects\dev-kitt\tooling\scripts\earth\build-wgms-glacier-summary.ps1 -InputPath $zip -ZipEntryPattern 'data/mass_balance.csv' -OutputPath C:\Projects\dev-kitt\apps\rand0m\assets\earth\glaciers\wgms-glacier-summary.json
+```
+
+Raw dataset location rule:
+
+- Raw WGMS ZIP/CSV must stay outside `C:\Projects\dev-kitt\apps\rand0m`.
+- Preferred temporary path pattern:
+
+```text
+%TEMP%\wgms-glacier-sample\DOI-WGMS-FoG-2026-02-10.zip
+```
+
+### Refresh Cadence
+
+Recommended MVP refresh cadence:
+
+- Manual refresh when WGMS publishes a new FoG database release.
+- Check WGMS release metadata quarterly or before Earth feature releases.
+- Do not imply realtime/live glacier monitoring.
+
+Display freshness as:
+
+```text
+Dataset release 2026-02-10
+```
+
+Display source version as:
+
+```text
+wgms-fog-2026-02-10
+```
+
+### Attribution Display
+
+Required visible attribution:
+
+```text
+WGMS (2026): Fluctuations of Glaciers (FoG) Database. World Glacier Monitoring Service (WGMS), Zurich, Switzerland. https://doi.org/10.5904/wgms-fog-2026-02-10
+```
+
+UI should surface attribution near:
+
+- Glaciers summary card details.
+- Learn More / methodology section.
+- Source details section if compact card space is limited.
+
+Do not hide attribution behind source metadata alone.
+
+### Deterministic Generation Requirements
+
+Before app integration, update parser/tooling so generated app asset JSON is
+deterministic:
+
+- Stable key ordering if practical.
+- No volatile `lastSuccessfulRetrievalAtUtc` in committed asset output, or move
+  it to a deterministic `generatedFromDatasetRelease`/`summaryGeneratedAt`
+  field intentionally set by the release operator.
+- Stable newline/encoding.
+- Repeat generation from the same WGMS ZIP should produce no git diff unless
+  parser logic changes.
+
+Required parser tests:
+
+- Embedded sample validation remains.
+- Tiny redacted real-schema CSV fixture:
+  - lowercase `country`
+  - lowercase `glacier_name`
+  - lowercase `glacier_id`
+  - lowercase `year`
+  - lowercase `annual_balance`
+  - blank/null annual balance rows
+  - negative values
+  - positive values
+  - neutral values
+  - multiple countries
+  - multiple years
+- Expected output snapshot for that fixture.
+- Missing mass-balance column failure.
+- Empty CSV failure.
+- Unsupported extension failure.
+
+Fixture location recommendation:
+
+```text
+C:\Projects\dev-kitt\tooling\scripts\earth\fixtures\wgms-mass-balance-sample.csv
+C:\Projects\dev-kitt\tooling\scripts\earth\fixtures\wgms-mass-balance-summary.expected.json
+```
+
+Fixture rule:
+
+- Keep fixtures tiny and redacted.
+- Do not include raw large WGMS tables.
+
+### App Integration Requirements
+
+Future app phase must:
+
+1. Add app asset JSON at:
+
+```text
+apps/rand0m/assets/earth/glaciers/wgms-glacier-summary.json
+```
+
+2. Declare the asset in `apps/rand0m/pubspec.yaml`.
+3. Load asset JSON locally using Flutter asset loading.
+4. Map asset JSON into `EarthGlacierSummary`.
+5. Preserve `EarthGlacierSummary` schema validation.
+6. Preserve provider health/freshness UI.
+7. Preserve safe error state when:
+   - asset is missing;
+   - JSON is malformed;
+   - required attribution is missing;
+   - source metadata is missing.
+8. Label the UI as:
+
+```text
+WGMS-derived summary
+Not live
+Dataset release 2026-02-10
+```
+
+9. Display attribution and methodology.
+10. Add no network calls.
+11. Add no Firebase Functions.
+12. Add no map rendering, overlays, coordinates, imagery, or raw rows.
+
+Recommended service behavior:
+
+- Reuse the `EarthGlacierSummaryService` seam from `spike/glacier-summary-mvp`.
+- Replace fixture-backed implementation with asset-backed implementation.
+- Keep fixture-backed service only for tests/development if useful.
+
+Fallback behavior:
+
+- If asset load fails, show the existing Glaciers readiness content and a safe
+  unavailable provider status.
+- User-facing copy:
+
+```text
+Glacier summary asset is temporarily unavailable.
+```
+
+- Do not crash the Earth tab.
+- Do not retry network.
+- Do not silently fall back to synthetic production values.
+
+### Reusable Work From `spike/glacier-summary-mvp`
+
+Reusable:
+
+- `EarthGlacierSummary` model shape.
+- `EarthGlacierSummarySchemaException`.
+- Summary service seam.
+- Glaciers card loader injection.
+- Provider health/freshness panel reuse.
+- Preview/failure UI structure.
+- Tests for:
+  - model parsing;
+  - empty state;
+  - malformed source data;
+  - attribution requirement;
+  - provider health/freshness parsing;
+  - card success/failure rendering.
+
+Must change before merge:
+
+- Replace synthetic fixture with asset-backed WGMS summary.
+- Change UI labels from:
+
+```text
+provider spike
+not production
+```
+
+to:
+
+```text
+WGMS-derived summary
+not live
+```
+
+- Add app asset tests.
+- Add parser fixture/snapshot tests.
+- Ensure no production UI reads tooling output directly.
+
+### Production Gates
+
+Do not merge app integration until all gates pass:
+
+1. Parser emits deterministic summary JSON.
+2. Tiny real-schema parser fixture tests pass.
+3. App asset exists and is declared.
+4. Asset JSON parses into `EarthGlacierSummary`.
+5. UI shows WGMS-derived/not-live labels.
+6. UI shows attribution and dataset release freshness.
+7. Missing/malformed asset tests pass.
+8. Existing Weather, Wind, Wildfires, Carbon, Tree-Time, Ocean, Flights, Ships,
+   and Terrain behavior remains unchanged.
+9. Full app validation passes:
+   - `flutter analyze`
+   - `flutter test`
+   - `flutter build web`
+   - `validate-all.ps1`
+
+### Merge Strategy
+
+Recommended branch plan:
+
+1. Keep `spike/glacier-summary-mvp` open.
+2. Create production branch from `main`:
+
+```text
+feature/glacier-summary-asset-mvp
+```
+
+3. Cherry-pick or manually port only reusable model/service/UI/test pieces from
+   `spike/glacier-summary-mvp`.
+4. Add deterministic parser fixture tests in root tooling.
+5. Generate and commit compact app asset JSON.
+6. Replace synthetic fixture behavior with asset-backed behavior.
+7. Run full validation.
+8. Deploy only after merge to `main` and normal full-cycle rules apply.
+
+Do not merge the spike branch directly unless it has been rebased/reviewed and
+all synthetic fixture behavior has been removed.
+
+### Rollback Strategy
+
+Rollback should be simple:
+
+- Remove asset-backed loader wiring.
+- Restore readiness-only Glaciers card behavior.
+- Keep source registry metadata.
+- Keep parser tooling and QA contract history.
+- Remove app asset declaration only if no other app code uses it.
+
+Expected user-visible fallback:
+
+```text
+Glaciers readiness remains visible with Not Yet Connected/unavailable summary state.
+```
+
+No Firestore, Firebase Function, provider credential, or package rollback should
+be required for the asset MVP.
+
+### Recommended Next Phase
+
+```text
+P9.29 Glacier Summary Asset MVP
+```
+
+Scope:
+
+- app runtime integration on a production feature branch;
+- deterministic parser fixture tests;
+- compact app asset JSON;
+- asset-backed glacier summary service;
+- no network calls;
+- no Firebase Functions;
+- no raw WGMS data committed.
