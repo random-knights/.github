@@ -27,7 +27,7 @@
 
 ## <span style="color:#555555"><u> **SUMMARY** </u></span>
 
-[Rand0m.AI](https://rand0m.ai) [`Custom AI Agents, Automations, Classrooms and Rand0m Creations`]
+[Rand0m.AI](https://rand0m.ai) [`Custom AI Agents, Dualing Chatbots, Test Automations, Earth Data, Classrooms and Rand0m Creations`]
 from [Random Knights, XYZ](https://randomknights.xyz)
 
 - Built with
@@ -41,12 +41,10 @@ from [Random Knights, XYZ](https://randomknights.xyz)
   - [Randomly.Engineering](https://randomly.engineering)
     - @dev-kitt
     - @dev-dusty
-    - @ops-nancy
-    - @ops-steve
-    - @e1even
+    - @xyz-admin
+    - @qa-eleven
     - @qa-kitt
-  - Cypress + Testing-Library
-    - (Appium **coming soon**)
+  - Cypress / Playwright + Testing-Library
   - Firebase/FlutterFire
   - :flying_saucer: Roswell, GA :peach:
 
@@ -58,21 +56,49 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 
 ## <span style="color:#FAAFA5"><u> **CORE SOLUTIONS** </u></span>
 
-| Stack          |     Versions     |   :chipmunk:    |
-| -------------- | :--------------: | :-------------: |
-| Flutter        |     ^3.38.3      |
-| Dart           |     ^3.10.1      |
-| DevTools       |     ^2.51.1      |
-| GoogleAI       |        v         |
-|                | gemini-2.5-flash |
-|                |  gemini-2.5-pro  |
-|                |   nano-banana    | **coming soon** |
-| OpenAI         |        v         |
-|                |     gpt-4.1      |
-|                |    gpt-5-nano    |
-|                |      gpt-4o      | **coming soon** |
-| **Perplexity** |       grok       | **coming soon** |
-| **Anthropic**  |      claude      | **coming soon** |
+| Stack           | Version / Models |    :chipmunk:    |
+| --------------- | :--------------: | :--------------: |
+| Flutter         |     ^3.38.3      |                  |
+| Dart            |     ^3.10.1      |                  |
+| DevTools        |     ^2.51.1      |                  |
+| Google AI       |        v         |                  |
+|                 | gemini-2.5-flash |   **enabled**    |
+|                 |  gemini-2.5-pro  |   **enabled**    |
+|                 |   nano-banana    |   experimental   |
+| OpenAI          |        v         |                  |
+|                 |     gpt-4.1      |   **enabled**    |
+|                 |      gpt-4o      |   **enabled**    |
+|                 |    gpt-5-nano    |   **enabled**    |
+| Anthropic       |        v         |                  |
+|                 |  claude-sonnet   |   **enabled**    |
+|                 |   claude-opus    |     planned      |
+| xAI             |        v         |                  |
+|                 |       grok       |   **enabled**    |
+|                 |    grok-mini     |     planned      |
+| Perplexity      |        v         |                  |
+|                 |  sonar / search  |     planned      |
+| Firebase        |        v         |                  |
+|                 |     Hosting      |   **enabled**    |
+|                 |    Functions     |   **enabled**    |
+|                 |  Authentication  |   **enabled**    |
+| Earth           |        v         |                  |
+|                 |     Weather      |     **live**     |
+|                 |       Wind       |     **live**     |
+|                 |    Wildfires     |     **live**     |
+|                 |      Carbon      |   **derived**    |
+|                 |    Tree-Time     |   **derived**    |
+|                 |     Glaciers     | **asset-backed** |
+|                 |      Ocean       |     research     |
+|                 |     Flights      |     research     |
+|                 |      Ships       |     research     |
+|                 |     Terrain      |     research     |
+| Agent Framework |        v         |                  |
+|                 |     random1y     |   **enabled**    |
+|                 |     knight1y     |   **enabled**    |
+|                 |     c0nnect      |   **enabled**    |
+|                 |     e1evate      |   **enabled**    |
+|                 |      Earth       |   **enabled**    |
+|                 | Glacier Summary  |     **MVP**      |
 
 </div>
 
@@ -80,50 +106,43 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 
 ## 🏫 <span style="color:#858585"><u> **HOW IT WORKS** </u></span>
 
-- rand0m
+- abc
+  - c1assr00m: the formal learning space.
+  - e1even: The formal testing space.
+
+- xyz
   - Public root/chat landing app for `rand0m.ai`.
-  - Mid level. Creative discovery, public chat, and ecosystem entry point.
-  - The default place to explore ideas before stepping into power-user workflows.
-    - <small>subject to change ... randomly</small>
+  - A single-app experience built around AI, utilities, environmental awareness, customization, experimentation, and a healthy amount of organized chaos
+  - Everything eventually flows through the XYZ repo.
 
-- knight1y
-  - Full premium/power-user app for agents, history, favorites, settings, and workflow control.
-  - Expert level. The production-like command center where best practices matter.
-  - Junior contributors observe first, then assist with clearly scoped tasks.
+- rk_core
+  - The shared foundation of the ecosystem.
+  - Common contracts, models, utilities, helpers, configuration, and reusable building blocks used across the project.
 
-- out1ine
-  - Oracle/lightweight future test app.
-  - Beginner-friendly shell for experiments with oracles, drawing, weather, and connection tools.
-  - Good for testing shared UI and service contracts before heavier apps adopt them.
+- rk_ai
+  - The AI abstraction layer.
+  - Handles model providers, request orchestration, provider configuration, token usage, cost tracking, environmental metrics, and future AI integrations.
+- rk_agents
+  - The agent framework.
+  - Defines agent contracts, behaviors, commands, capabilities, personalities, lifecycle management, and future agent execution patterns.
 
-- up10ad
-  - Creative render/upload tool.
-  - Advanced utility surface for FFmpeg, media workflows, uploads, and automation experiments.
-  - Primarily reference, tooling, and inspiration for shared media features.
+- rk_ui
+  - The shared user experience layer.
+  - Contains reusable widgets, layouts, navigation patterns, dialogs, visual components, animations, splash screens, progress systems, and other shared presentation logic.
 
-- c1assr00m
-  - The formal learning space. All junior contributors start here.
-  - Missions live as folders, not separate repos, keeping things simple and focused.
-  - Learn from the ecosystem before changing live behavior.
+- rk_branding
+  - The identity layer.
+  - Logos, icons, themes, colors, typography, visual assets, and the overall look and feel of the Random Knights ecosystem.
 
-- e1even
-  - The formal do/practice repo for ecosystem exercises.
-  - Roadmap: 11 practice examples, each with 11 challenges.
-  - Builds confidence in QA, automation, validation, docs hygiene, and release-readiness work.
+- rk_media
+  - The media layer.
+  - Audio, video, images, rendering metadata, playback models, and future media processing contracts.
 
-- eng1neer
-  - QA/test expert agent identity inside the Random Knights ecosystem.
-  - Focuses on test strategy, automation, coverage, regression, and CI quality.
+- rk_data
+  - The data layer.
+  - Storage models, persistence contracts, local-first data structures, synchronization patterns, favorites, history, settings, and future data integrations.
 
-- temp1ate
-  - Future template/scaffold productivity agent.
-  - Helps create reusable project artifacts, checklists, docs, and boilerplates.
-
-- va1idat0r
-  - Future validation/review quality-gate agent.
-  - Focuses on consistency checks, audits, requirement validation, and release confidence.
-
-<small>\*\*models, agents, 'kitts', and stuff is subject to change\*\*</small>
+<small>\*\*models, providers, agent 'kitts', and stuff is subject to change\*\*</small>
 
 <!-- THEME -->
 <div align="center">
@@ -179,17 +198,32 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 
 ## <span style="color:#555555" name="rabbit-hole"><u> **ENTER THE RABBIT HOLE** </u></span>
 
-The objective of our work is to implement agentic frameworks to help the 🌎 keep personal data private and secure, give users more personalized customization and control, and to NEVER value profit/power over the product. Open-source and FREE for ALL (**aside from what the money hungry AI overlords require you to pay for increased API request limits; see your preferred AI lord's website for more info...**)
+We both Love & Hate `AI`, but we LOVE 🌍 way more!
 
-1. **GitHub Source Control:** The project utilizes GitHub for version control and collaborative development. This allows seamless code collaboration, version tracking, and easy integration with other tools in the testing pipeline.
+`Rand0m.AI` is an experiment in building technology that serves people first. We believe users should own their experience, control their data, understand what their software is doing, and decide how much automation belongs in their lives.
 
-2. **GitHug Actions CI/CD:** Codefresh is employed for continuous integration and continuous deployment (CI/CD). It automates the build, test, and deployment process, ensuring efficient code integration and reducing the time between code changes and deployment.
+This family passion project explores agentic systems, environmental awareness, digital ownership, personal productivity, creativity, and responsible AI. Some experiments will succeed. Some will fail. All of them will be **random** ... and **random** events can lead to extraordinary outcomes!
 
-3. **Cypress Automation:** Cypress is a powerful end-to-end testing framework used in this project. It provides an intuitive and developer-friendly interface to write and execute tests, making it easier to simulate user interactions and validate the behavior of the application.
+The objective of our work is to demontrate the direct impact of technology, both in its ability to help create and destroy. The world is filled with enough physical and digital "Hot Garbage", how you want to contribute is up to you, but **ONLY YOU** can prevent garbage fires!
 
-4. **Flutter / Dart:** Flutter is an open-source UI toolkit for building natively compiled, multi-platform applications from a single codebase, while Dart is the programming language that powers Flutter. Developed by Google, they work in tandem to enable developers to create high-performance, visually appealing applications for mobile, web, desktop, and embedded systems.
+Open-source and FREE for ALL (**aside from what the money hungry AI overlords require you to pay for increased API request limits; see your preferred AI lord's website for more info...**) our mission is to NEVER value profit/power over the product.
 
-5. **Cucumber BDD:** Cucumber is utilized as the behavior-driven development (BDD) framework, enabling the creation of executable specifications in a human-readable format. It promotes collaboration between stakeholders and ensures that test cases align with business requirements.
+1. **Environmental Awareness** The platform incorporates carbon, tree-time, wildfire, weather, glacier, and Earth-awareness initiatives to help connect technology usage with real-world environmental impact.
+2. **GitHub Source Control:** GitHub provides version control, collaboration workflows, issue tracking, branch protection, code review, and release management across the ecosystem.
+
+3. **CI/CD:** GitHub Actions automates validation, testing, deployment, and release workflows, ensuring every change is verified before reaching production.
+
+4. **Test Automation** Cypress, Playwright, Flutter's native testing framework, and supporting QA tooling help validate functionality, performance, and user experience across web, mobile, and desktop platforms.
+
+5. **Flutter & Dart** Flutter and Dart provide a single codebase capable of powering mobile, web, desktop, and future platform experiences while maintaining a consistent user experience.
+
+6. **Behavior Driven Development** Cucumber BDD promotes collaboration between technical and non-technical stakeholders through human-readable specifications that align implementation with expected behavior.
+
+7. **AI & Agent Systems** XYZ leverages multiple AI providers and agentic workflows to deliver personalized experiences while maintaining transparency, user control, and provider independence wherever possible.
+
+8. **Data & Storage** Local-first storage, selective cloud integration, and user-controlled data ownership are foundational principles throughout the ecosystem.
+
+Dive in for knightly research, random side-projects, or just for plain old fun.
 
 [![ForScience][ForScience]][ForScience-url]
 
@@ -203,7 +237,7 @@ The objective of our work is to implement agentic frameworks to help the 🌎 ke
 
 ## <span style="color:#555555" name="roadmap"><u> **ROADMAP** </u></span>
 
-Below is a 1 year overview of the previous, current, and future efforts for `Random Knights, XYZ` and the `Rand0m.AI` contributors.
+Below is a 1 year overview of the previous, current, and future efforts for `Rand0m.AI` developed by `Randomly.Engineering` and the `Random Knights, XYZ` contributors.
 
 ```mermaid
 gantt
@@ -408,7 +442,7 @@ E[Execute Cypress tests in CI environment] --> F[Report automation results to Ji
 ```js
 // EAT MORE TACOS [js]
 function tacosToEat() {
-  const message = document.getElementById("8Kit");
+  const message = document.getElementById("kitt");
   message.innerHTML = "";
   let x = document.getElementById("tacos").value;
   try {
