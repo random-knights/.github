@@ -204,7 +204,7 @@ We both Love & Hate `AI`, but we LOVE 🌍 way more!
 
 This family passion project explores agentic systems, environmental awareness, digital ownership, personal productivity, creativity, and responsible AI. Some experiments will succeed. Some will fail. All of them will be **random** ... and **random** events can lead to extraordinary outcomes!
 
-The objective of our work is to demontrate the direct impact of technology, both in its ability to help create and destroy. The world is filled with enough physical and digital "Hot Garbage", how you want to contribute is up to you, but **ONLY YOU** can prevent garbage fires!
+The objective of our work is to demonstrate the direct impact of technology, both in its ability to help create and destroy. The world is filled with enough physical and digital "Hot Garbage", how you want to contribute is up to you, but **ONLY YOU** can prevent garbage fires!
 
 Open-source and FREE for ALL (**aside from what the money hungry AI overlords require you to pay for increased API request limits; see your preferred AI lord's website for more info...**) our mission is to NEVER value profit/power over the product.
 
@@ -232,6 +232,36 @@ Dive in for knightly research, random side-projects, or just for plain old fun.
 [![ForQAs][ForQAs]][ForQAs-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- AGENTS -->
+
+## <span style="color:#555555" name="roadmap"><u> **AGENTS** </u></span>
+
+- 🌝 Dayi1y 🏫 Agents of Change:
+  - 🐿️ art1st `¯\_(ツ)_/¯`
+  - 🦥 ath1ete `run();`
+  - 🐈 auth0r `Once upon a while(true)...`
+  - 🦔 edit0r `Write-Output "Hello, $name!"`
+  - 🐾 navigat0r `Recalculating... again.`
+  - 🦫 eng1neer `Measure twice, deploy once.`
+  - 🐇 pr0ducer `#TODO: Figure out what I’m doing here`
+  - 🦨 recyc1er `rm -rf garbage/*`
+  - 🦊 sh0pper `if (sale) buy++;`
+
+- 🌚 Knight1y 🏰 Agent of Chaos:
+  - 🦦 act0r `System.exit("And scene.");`
+  - 🐹 c0median `print("LOL");`
+  - 🐁 c00k `sudo make sandwich`
+  - 🐈‍⬛ deve10per `Works on my machine™`
+  - 🐺 direct0r `stop(); // Hammertime!`
+  - 🦝 exp10rer `cd ../somewhere-interesting`
+  - 🐭 rep0rter `BREAKING: Something happened.`
+  - 🐀 scient1st `It worked once. Let's publish.`
+  - 🦡 pr0tect0r `Access denied. Nice try.`
+
+- 🗺️ Random1y ⚡ Agents of Order:
+  - 🐱 temp1ate `Ctrl+C, Ctrl+V, but professionally.`
+  - 🐰 va1idat0r `Trust, but verify();`
 
 <!-- ROADMAP -->
 
