@@ -209,6 +209,7 @@ The objective of our work is to demonstrate the direct impact of technology, bot
 Open-source and FREE for ALL (**aside from what the money hungry AI overlords require you to pay for increased API request limits; see your preferred AI lord's website for more info...**) our mission is to NEVER value profit/power over the product.
 
 1. **Environmental Awareness** The platform incorporates carbon, tree-time, wildfire, weather, glacier, and Earth-awareness initiatives to help connect technology usage with real-world environmental impact.
+   1. <small>**inspired by [earth.nullschool.net](https://earth.nullschool.net/) & [rubiconcarbon.com](https://rubiconcarbon.com/)**</small>
 2. **GitHub Source Control:** GitHub provides version control, collaboration workflows, issue tracking, branch protection, code review, and release management across the ecosystem.
 
 3. **CI/CD:** GitHub Actions automates validation, testing, deployment, and release workflows, ensuring every change is verified before reaching production.
