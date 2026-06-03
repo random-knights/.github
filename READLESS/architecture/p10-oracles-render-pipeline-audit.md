@@ -19,7 +19,7 @@ The Oracles page now uses the layered Oracle composition:
 
 - GIF animation per oracle
 - shared `orb.png`
-- shared `base.svg`
+- shared `_base.png` visual frame/base
 - dynamic nameplate text
 
 The first Oracle entry is `Rand0m Kn1ghts`, which is the active-agent quote oracle. On page load, it asks the active favorite agent when one exists. If no favorite agent is active, it falls back to the `rand0m` system agent. Provider failures degrade to a local fallback quote.
@@ -200,16 +200,55 @@ Do not remove current video assets until the Render feature and About/Relax medi
 
 ## Current Render Page
 
-The `/uti1ity` Render panel is currently a placeholder:
+The `/uti1ity` Render panel is currently a preview-only recipe builder:
 
-- copy: `Render is not available in Rand0m yet.`
-- button shows the same unavailable message
+- default video choices include `dai1y.mp4` and `knight1y.mp4`
+- fallback video choices include the `_md` and `_xl` variants
+- sound choices come from the shared sound registry
+- duration defaults to `8` seconds
+- output filename is user-editable
+- selected inputs and render plan are visible
+- generate/export remains disabled
 - no runtime rendering
 - no file upload
 - no FFmpeg invocation
 - no browser/client media processing
 
 This is the correct safe state before a dedicated implementation phase.
+
+## P10.13 Render Command Builder Spike
+
+The P10.13 spike adds a pure Dart render plan and FFmpeg command builder on the
+`spike/render-engine-mvp` app branch. It does not execute a process, discover a
+binary, invoke browser rendering, call Firebase, or create output files.
+
+The selected MVP path is:
+
+1. Keep hosted Render preview/export disabled.
+2. Build a validated render plan from the existing video and sound registries.
+3. Emit a preview-only FFmpeg argument list for local/developer review.
+4. Defer real export to either a local tooling path or a future authenticated
+   Cloud Run/Firebase worker.
+
+The command shape mirrors the local `REND3R.bat` reference while removing unsafe
+defaults:
+
+```text
+ffmpeg -stream_loop -1 -i <video> -stream_loop -1 -i <sound> -map 0:v:0 -map 1:a:0 -c:v copy -c:a aac -t <seconds> -movflags +faststart <output>.mp4
+```
+
+Safety constraints proven by the spike:
+
+- default duration remains `8` seconds
+- duration is bounded and rejects the old `28800` second default
+- output filenames reject paths and sanitize unsafe characters
+- command preview uses app asset paths only
+- no `staged-render` path is hardcoded
+- no `.exe` path is hardcoded
+- Generate remains disabled in the Flutter UI
+
+This spike should not be merged as production export behavior. It is safe to use
+as a planning and UI contract step because it keeps all rendering non-executable.
 
 ## Render UX Plan
 
@@ -272,6 +311,14 @@ Recommended for:
 - fixture generation
 - manual exports during development
 
+Implementation note:
+
+- Local FFmpeg discovery should happen outside hosted Flutter web runtime.
+- A future local-only script may accept the same render plan shape emitted by
+  the P10.13 command builder.
+- Do not commit `ffmpeg.exe`, `ffplay.exe`, `ffprobe.exe`, `REND3R.bat`, or
+  generated render outputs.
+
 ### Option B: Firebase/Cloud Run Render Worker
 
 Best production path after UI/contract are proven.
@@ -293,6 +340,16 @@ Recommended for:
 
 - future account-based production rendering
 - short bounded render jobs only
+
+Future worker path:
+
+- require authenticated users
+- enforce a strict max duration and max input size
+- allowlist bundled preset assets
+- store uploaded media temporarily with lifecycle cleanup
+- expose job status rather than raw process logs
+- rate-limit per user/account
+- keep FFmpeg and any worker credentials server-side
 
 ### Option C: ffmpeg.wasm
 
@@ -380,6 +437,17 @@ Future worker rules:
    - Cloud Run/Firebase callable architecture
    - auth/rate limits/storage lifecycle
 
+## Recommended P10.14 Implementation Sequence
+
+1. Keep the P10.13 branch isolated until UI/contract review is complete.
+2. Decide whether the command-builder preview belongs on `main` as a disabled
+   planning affordance.
+3. Create a local tooling script that consumes the same render plan shape, if
+   local exports are desired before cloud work.
+4. Open a separate Cloud Run/Firebase worker contract phase for real production
+   rendering.
+5. Do not enable browser/client rendering for production.
+
 ## Merge / Commit Recommendation
 
 For this audit phase:
@@ -390,4 +458,3 @@ For this audit phase:
 - Do not commit `.exe` files.
 - Do not implement Render execution.
 - Do not deploy.
-
