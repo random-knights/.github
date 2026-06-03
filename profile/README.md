@@ -4,9 +4,9 @@
 <br />
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/random-knights/.github/blob/main/assets/ReadMe-Night.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/random-knights/.github/blob/main/assets/ReadMe-Day.png">
-    <img alt="Shows a Day/Night themed markedown image based on AM/PM." src="https://github.com/random-knights/.github/blob/main/assets/ReadMe-Night.png">
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/random-knights/.github/blob/main/assets/ruok-drk.gif">
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/random-knights/.github/blob/main/assets/ruok-lte.png">
+    <img alt="Shows a Day/Night themed markedown gif based on AM/PM." src="https://github.com/random-knights/.github/blob/main/assets/ruok-drk.gif">
   </picture>
 
 <h3 align="center" style="color:#ff4124">Random Knights, XYZ</h3>
@@ -27,8 +27,8 @@
 
 ## <span style="color:#555555"><u> **SUMMARY** </u></span>
 
-[Rand0m.AI](https://rand0m.ai) [`Custom AI Agents, Automations, and Rand0mness`]
-from RandomKnights.XYZ
+[Rand0m.AI](https://rand0m.ai) [`Custom AI Agents, Dualing Chatbots, Test Automations, Earth Data, Classrooms and Rand0m Creations`]
+from [Random Knights, XYZ](https://randomknights.xyz)
 
 - Built with
   - Node.js, Flutter and Dart
@@ -36,15 +36,15 @@ from RandomKnights.XYZ
     - (Firebase Data Connect **coming soon**)
   - Gemini, OpenAI, Claude, Perplexity
   - S.T.E.A.M. and FFmpeg
-  - Maximum Effort
+  - Maximum Family Effort
   - Canva & Adobe Illustrator
-  - Randomly.Engineering
+  - [Randomly.Engineering](https://randomly.engineering)
     - @dev-kitt
     - @dev-dusty
+    - @xyz-admin
+    - @qa-eleven
     - @qa-kitt
-    - @qa-nancy
-  - Cypress + Testing-Library
-    - (Appium **coming soon**)
+  - Cypress / Playwright + Testing-Library
   - Firebase/FlutterFire
   - :flying_saucer: Roswell, GA :peach:
 
@@ -56,21 +56,49 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 
 ## <span style="color:#FAAFA5"><u> **CORE SOLUTIONS** </u></span>
 
-| Stack          |     Versions     |   :chipmunk:    |
-| -------------- | :--------------: | :-------------: |
-| Flutter        |     ^3.38.3      |
-| Dart           |     ^3.10.1      |
-| DevTools       |     ^2.51.1      |
-| GoogleAI       |        v         |
-|                | gemini-2.5-flash |
-|                |  gemini-2.5-pro  |
-|                |   nano-banana    | **coming soon** |
-| OpenAI         |        v         |
-|                |     gpt-4.1      |
-|                |    gpt-5-nano    |
-|                |      gpt-4o      | **coming soon** |
-| **Perplexity** |       grok       | **coming soon** |
-| **Anthropic**  |      claude      | **coming soon** |
+| Stack           | Version / Models |    :chipmunk:    |
+| --------------- | :--------------: | :--------------: |
+| Flutter         |     ^3.38.3      |                  |
+| Dart            |     ^3.10.1      |                  |
+| DevTools        |     ^2.51.1      |                  |
+| Google AI       |        v         |                  |
+|                 | gemini-2.5-flash |   **enabled**    |
+|                 |  gemini-2.5-pro  |   **enabled**    |
+|                 |   nano-banana    |   experimental   |
+| OpenAI          |        v         |                  |
+|                 |     gpt-4.1      |   **enabled**    |
+|                 |      gpt-4o      |   **enabled**    |
+|                 |    gpt-5-nano    |   **enabled**    |
+| Anthropic       |        v         |                  |
+|                 |  claude-sonnet   |   **enabled**    |
+|                 |   claude-opus    |     planned      |
+| xAI             |        v         |                  |
+|                 |       grok       |   **enabled**    |
+|                 |    grok-mini     |     planned      |
+| Perplexity      |        v         |                  |
+|                 |  sonar / search  |     planned      |
+| Firebase        |        v         |                  |
+|                 |     Hosting      |   **enabled**    |
+|                 |    Functions     |   **enabled**    |
+|                 |  Authentication  |   **enabled**    |
+| Earth           |        v         |                  |
+|                 |     Weather      |     **live**     |
+|                 |       Wind       |     **live**     |
+|                 |    Wildfires     |     **live**     |
+|                 |      Carbon      |   **derived**    |
+|                 |    Tree-Time     |   **derived**    |
+|                 |     Glaciers     | **asset-backed** |
+|                 |      Ocean       |     research     |
+|                 |     Flights      |     research     |
+|                 |      Ships       |     research     |
+|                 |     Terrain      |     research     |
+| Agent Framework |        v         |                  |
+|                 |     random1y     |   **enabled**    |
+|                 |     knight1y     |   **enabled**    |
+|                 |     c0nnect      |   **enabled**    |
+|                 |     e1evate      |   **enabled**    |
+|                 |      Earth       |   **enabled**    |
+|                 | Glacier Summary  |     **MVP**      |
 
 </div>
 
@@ -78,36 +106,43 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 
 ## 🏫 <span style="color:#858585"><u> **HOW IT WORKS** </u></span>
 
-- rand0m
+- abc
+  - c1assr00m: the formal learning space.
+  - e1even: The formal testing space.
+
+- xyz
   - Public root/chat landing app for `rand0m.ai`.
-  - Mid level. Creative discovery, public chat, and ecosystem entry point.
-  - The default place to explore ideas before stepping into power-user workflows.
-    - <small>subject to change ... randomly</small>
+  - A single-app experience built around AI, utilities, environmental awareness, customization, experimentation, and a healthy amount of organized chaos
+  - Everything eventually flows through the XYZ repo.
 
-- knight1y
-  - Full premium/power-user app for agents, history, settings, and workflow control.
-  - Expert level. The production-like command center where best practices matter.
-  - Junior contributors observe first, then assist with clearly scoped tasks.
+- rk_core
+  - The shared foundation of the ecosystem.
+  - Common contracts, models, utilities, helpers, configuration, and reusable building blocks used across the project.
 
-- out1ine
-  - Oracle/lightweight future test app.
-  - Beginner-friendly shell for experiments with oracles, drawing, weather, and connection tools.
-  - Good for testing shared UI and service contracts before heavier apps adopt them.
+- rk_ai
+  - The AI abstraction layer.
+  - Handles model providers, request orchestration, provider configuration, token usage, cost tracking, environmental metrics, and future AI integrations.
+- rk_agents
+  - The agent framework.
+  - Defines agent contracts, behaviors, commands, capabilities, personalities, lifecycle management, and future agent execution patterns.
 
-- up10ad
-  - Creative render/upload tool.
-  - Advanced utility surface for FFmpeg, media workflows, uploads, and automation experiments.
-  - Primarily reference, tooling, and inspiration for shared media features.
+- rk_ui
+  - The shared user experience layer.
+  - Contains reusable widgets, layouts, navigation patterns, dialogs, visual components, animations, splash screens, progress systems, and other shared presentation logic.
 
-- c1assr00m
-  - The formal learning space. All junior contributors start here.
-  - Missions live as folders, not separate repos, keeping things simple and focused.
+- rk_branding
+  - The identity layer.
+  - Logos, icons, themes, colors, typography, visual assets, and the overall look and feel of the Random Knights ecosystem.
 
-- eng1neer
-  - The formal testing space. All QA contributors start here.
-  - Learn, add, and monitor our Regression tests w/open-source tools.
+- rk_media
+  - The media layer.
+  - Audio, video, images, rendering metadata, playback models, and future media processing contracts.
 
-<small>\*\*models, agents, 'kitts', and stuff is subject to change\*\*</small>
+- rk_data
+  - The data layer.
+  - Storage models, persistence contracts, local-first data structures, synchronization patterns, favorites, history, settings, and future data integrations.
+
+<small>\*\*models, providers, agent 'kitts', and stuff is subject to change\*\*</small>
 
 <!-- THEME -->
 <div align="center">
@@ -163,29 +198,76 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 
 ## <span style="color:#555555" name="rabbit-hole"><u> **ENTER THE RABBIT HOLE** </u></span>
 
-The objective of our work is to implement agentic frameworks to help the 🌎 keep personal data private and secure, give users more personalized customization and control, and to NEVER value profit/power over the product. Open-source and FREE for ALL (**aside from what the money hungry AI overlords require you to pay for increased API request limits; see your preferred AI lord's website for more info...**)
+We both Love & Hate `AI`, but we LOVE 🌍 way more!
 
-1. **GitHub Source Control:** The project utilizes GitHub for version control and collaborative development. This allows seamless code collaboration, version tracking, and easy integration with other tools in the testing pipeline.
+`Rand0m.AI` is an experiment in building technology that serves people first. We believe users should own their experience, control their data, understand what their software is doing, and decide how much automation belongs in their lives.
 
-2. **GitHug Actions CI/CD:** Codefresh is employed for continuous integration and continuous deployment (CI/CD). It automates the build, test, and deployment process, ensuring efficient code integration and reducing the time between code changes and deployment.
+This family passion project explores agentic systems, environmental awareness, digital ownership, personal productivity, creativity, and responsible AI. Some experiments will succeed. Some will fail. All of them will be **random** ... and **random** events can lead to extraordinary outcomes!
 
-3. **Cypress Automation:** Cypress is a powerful end-to-end testing framework used in this project. It provides an intuitive and developer-friendly interface to write and execute tests, making it easier to simulate user interactions and validate the behavior of the application.
+The objective of our work is to demonstrate the direct impact of technology, both in its ability to help create and destroy. The world is filled with enough physical and digital "Hot Garbage", how you want to contribute is up to you, but **ONLY YOU** can prevent garbage fires!
 
-4. **Flutter / Dart:** Flutter is an open-source UI toolkit for building natively compiled, multi-platform applications from a single codebase, while Dart is the programming language that powers Flutter. Developed by Google, they work in tandem to enable developers to create high-performance, visually appealing applications for mobile, web, desktop, and embedded systems.
+Open-source and FREE for ALL (**aside from what the money hungry AI overlords require you to pay for increased API request limits; see your preferred AI lord's website for more info...**) our mission is to NEVER value profit/power over the product.
 
-5. **Cucumber BDD:** Cucumber is utilized as the behavior-driven development (BDD) framework, enabling the creation of executable specifications in a human-readable format. It promotes collaboration between stakeholders and ensures that test cases align with business requirements.
+1. **Environmental Awareness** The platform incorporates carbon, tree-time, wildfire, weather, glacier, and Earth-awareness initiatives to help connect technology usage with real-world environmental impact.
+2. **GitHub Source Control:** GitHub provides version control, collaboration workflows, issue tracking, branch protection, code review, and release management across the ecosystem.
+
+3. **CI/CD:** GitHub Actions automates validation, testing, deployment, and release workflows, ensuring every change is verified before reaching production.
+
+4. **Test Automation** Cypress, Playwright, Flutter's native testing framework, and supporting QA tooling help validate functionality, performance, and user experience across web, mobile, and desktop platforms.
+
+5. **Flutter & Dart** Flutter and Dart provide a single codebase capable of powering mobile, web, desktop, and future platform experiences while maintaining a consistent user experience.
+
+6. **Behavior Driven Development** Cucumber BDD promotes collaboration between technical and non-technical stakeholders through human-readable specifications that align implementation with expected behavior.
+
+7. **AI & Agent Systems** XYZ leverages multiple AI providers and agentic workflows to deliver personalized experiences while maintaining transparency, user control, and provider independence wherever possible.
+
+8. **Data & Storage** Local-first storage, selective cloud integration, and user-controlled data ownership are foundational principles throughout the ecosystem.
+
+Dive in for knightly research, random side-projects, or just for plain old fun.
 
 [![ForScience][ForScience]][ForScience-url]
 
 [![ForDevs][ForDevs]][ForDevs-url]
 
+[![ForQAs][ForQAs]][ForQAs-url]
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- AGENTS -->
+
+## <span style="color:#555555" name="roadmap"><u> **AGENTS** </u></span>
+
+- 🌝 Dayi1y 🏫 Agents of Change:
+  - 🐿️ art1st `¯\_(ツ)_/¯`
+  - 🦥 ath1ete `run();`
+  - 🐈 auth0r `Once upon a while(true)...`
+  - 🦔 edit0r `Write-Output "Hello, $name!"`
+  - 🐾 navigat0r `Recalculating... again.`
+  - 🦫 eng1neer `Measure twice, deploy once.`
+  - 🐇 pr0ducer `#TODO: Figure out what I’m doing here`
+  - 🦨 recyc1er `rm -rf garbage/*`
+  - 🦊 sh0pper `if (sale) buy++;`
+
+- 🌚 Knight1y 🏰 Agent of Chaos:
+  - 🦦 act0r `System.exit("And scene.");`
+  - 🐹 c0median `print("LOL");`
+  - 🐁 c00k `sudo make sandwich`
+  - 🐈‍⬛ deve10per `Works on my machine™`
+  - 🐺 direct0r `stop(); // Hammertime!`
+  - 🦝 exp10rer `cd ../somewhere-interesting`
+  - 🐭 rep0rter `BREAKING: Something happened.`
+  - 🐀 scient1st `It worked once. Let's publish.`
+  - 🦡 pr0tect0r `Access denied. Nice try.`
+
+- 🗺️ Random1y ⚡ Agents of Order:
+  - 🐱 temp1ate `Ctrl+C, Ctrl+V, but professionally.`
+  - 🐰 va1idat0r `Trust, but verify();`
 
 <!-- ROADMAP -->
 
 ## <span style="color:#555555" name="roadmap"><u> **ROADMAP** </u></span>
 
-Below is a 1 year overview of the previous, current, and future efforts for `Random Knights, XYZ` and the `Rand0m.AI` contributors.
+Below is a 1 year overview of the previous, current, and future efforts for `Rand0m.AI` developed by `Randomly.Engineering` and the `Random Knights, XYZ` contributors.
 
 ```mermaid
 gantt
@@ -249,16 +331,16 @@ gitGraph
     commit id:"commit_02"
 
     %% Core feeder repos (ordered)
-    branch uti1ity
+    branch up10ad
     commit id:"commit_K01"
     commit id:"commit_K02"
     commit id:"commit_K03"
 
-    branch orac1es
+    branch out1ine
     commit id:"commit_C01"
     commit id:"commit_C02"
 
-    branch kn1ghts
+    branch knight1y
     commit id:"commit_O01"
     commit type:HIGHLIGHT id:"commit_O02"
 
@@ -277,11 +359,11 @@ gitGraph
     commit id:"commit_03"
     merge c1assr00m
     commit id:"commit_04"
-    merge orac1es
+    merge out1ine
     commit id:"commit_05"
-    merge uti1ity
+    merge up10ad
     commit id:"commit_06"
-    merge kn1ghts tag:"cherrypick"
+    merge knight1y tag:"cherrypick"
     merge exp10re tag:"demo"
 
     commit type:REVERSE id:"head"
@@ -291,136 +373,9 @@ gitGraph
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- AGENTS -->
-
-## <span style="color:#555555" name="regression"><u> **AGENTS** </u></span>
-
-```mermaid
-classDiagram
-    AI_Agent_DAYS <|-- Eng1neer
-    AI_Agent_DAYS <|-- Expl0rer
-    AI_Agent_DAYS <|-- Devel0per
-    AI_Agent_DAYS <|-- Scient1st
-    AI_Agent_DAYS <|-- Secur1ty
-    AI_Agent_DAYS : +envt | day5.rand0m.ai/agents
-    AI_Agent_DAYS : +org | Random Knights, XYZ
-    AI_Agent_DAYS: -user() [agent_name]@rand0m.ai
-    AI_Agent_DAYS: -roles() Manager | Viewer | Admin
-    class Eng1neer{
-      +biomedical
-      +civil
-      +electrical
-      +environmental
-      +mechanical
-      +software
-      -adapt()
-    }
-    class Expl0rer{
-      +archaeology
-      +ecology
-      +nature
-      +science
-      +space
-      +whatever
-      -find()
-    }
-    class Devel0per{
-      +backEnd
-      +devOps
-      +embedded
-      +frontEnd
-      +fullStack
-      +mobile
-      +systems
-      -build()
-      -break()
-    }
-    class Scient1st{
-      +business
-      +earth
-      +computer
-      +physical
-      +social
-      +theory
-      -test()
-    }
-    class Secur1ty{
-      +admin
-      +cyber
-      +digital
-      +economic
-      +financial
-      +operational
-      -protect()
-    }
-```
-
-```mermaid
-classDiagram
-    AI_Agent_NIGHTS <|-- Act0r
-    AI_Agent_NIGHTS <|-- Comed1an
-    AI_Agent_NIGHTS <|-- Art1st
-    AI_Agent_NIGHTS <|-- Edit0r
-    AI_Agent_NIGHTS <|-- Pr0ducer
-    AI_Agent_NIGHTS : +envt | kn1ghts.rand0m.ai/agents
-    AI_Agent_NIGHTS : +org | Random Knights, XYZ
-    AI_Agent_NIGHTS: -user() [agent_name]@rand0m.ai
-    AI_Agent_NIGHTS: -roles() Manager | Viewer | Admin
-    class Act0r{
-      +animation
-      +background
-      +tv/film
-      +socialMedia
-      +stage
-      +voice-over
-      -display()
-    }
-    class Comed1an{
-      +absurdist
-      +dark
-      +improv
-      +parody
-      +satire
-      +slapstick
-      -craft()
-    }
-    class Art1st{
-      +concept
-      +commercial
-      +graphical
-      +illustrator
-      +performance
-      +sculpt
-      +visual
-      -draft()
-      -design()
-      -detail()
-    }
-    class Edit0r{
-      +audio
-      +development
-      +content
-      +photo
-      +video
-      +writing
-      -fix()
-    }
-    class Pr0ducer{
-      +assist
-      +creative
-      +entertainment
-      +executive
-      +schedule
-      +talent
-      -guide()
-    }
-```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- WORKFLOWS -->
 
-## <span style="color:#555555" name="workflows"><u> **WORKFLOWS** </u></span>
+## <span style="color:#555555" name="workflows"><u> **TEST AUTOMATION** </u></span>
 
 **Xray <> Cucumber** <small>demo only</small>
 
@@ -456,6 +411,7 @@ E[Execute Cypress tests in CI environment] --> F[Report automation results to Ji
 
 ### **Database**
 
+[![HiveDB][HiveDB]][HiveDB-url]
 [![MongoDB][MongoDB]][MongoDB-url]
 [![PostgreSQL][PostgreSQL]][PostgreSQL-url]
 
@@ -516,7 +472,7 @@ E[Execute Cypress tests in CI environment] --> F[Report automation results to Ji
 ```js
 // EAT MORE TACOS [js]
 function tacosToEat() {
-  const message = document.getElementById("8Kit");
+  const message = document.getElementById("kitt");
   message.innerHTML = "";
   let x = document.getElementById("tacos").value;
   try {
@@ -626,6 +582,10 @@ To further define which tacos should be consumed, use the dropdown reference bel
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<div align="center">
+  🏰🛏️🌚ɯ0puɐɹ  kn1ghts🌝🛋️🏫
+</div>
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 <!-- DAY PALETTE GRADIENT PATCH -->
@@ -675,8 +635,8 @@ To further define which tacos should be consumed, use the dropdown reference bel
 [MongoDB-url]: https://www.mongodb.com/
 [PostgreSQL]: https://img.shields.io/badge/PostgreSQL-faafa5?style=for-the-badge&logo=postgresql&logoColor=white
 [PostgreSQL-url]: https://www.postgresql.org/
-[Hive]: https://img.shields.io/badge/Hive-faafa5?style=for-the-badge&logo=apachehive&logoColor=black
-[Hive-url]: https://pub.dev/packages/hive
+[HiveDB]: https://img.shields.io/badge/Hive-faafa5?style=for-the-badge&logo=apachehive&logoColor=white
+[HiveDB-url]: https://pub.dev/packages/hive
 
 <!-- TOOLS (C2: ad7a88) -->
 
@@ -693,11 +653,11 @@ To further define which tacos should be consumed, use the dropdown reference bel
 
 [ForDevs]: https://forthebadge.com/images/badges/built-by-developers.svg
 [ForDevs-url]: https://forthebadge.com
-[ForQAs]: https://forthebadge.com/images/badges/tested-by-engineers.svg
+[ForQAs]: https://forthebadge.com/api/badges/generate?panels=2&primaryLabel=TESTED+BY&secondaryLabel=ENGINEERS&primaryBGColor=%23ff4124&secondaryBGColor=%23faafa5&primaryTextColor=%23FFFFFF&primaryFontSize=12&primaryFontWeight=600&primaryLetterSpacing=2&primaryFontFamily=Roboto&primaryTextTransform=uppercase&secondaryTextColor=%23FFFFFF&secondaryFontSize=12&secondaryFontWeight=900&secondaryLetterSpacing=2&secondaryFontFamily=Montserrat&secondaryTextTransform=uppercase&secondaryIcon=testinglibrary&secondaryIconColor=%23FFFFFF&secondaryIconSize=16&secondaryIconPosition=right
 [ForQAs-url]: https://forthebadge.com
 [ForScience]: https://forthebadge.com/images/badges/built-with-science.svg
 [ForScience-url]: https://forthebadge.com
-[JavaScript]: https://img.shields.io/badge/JavaScript-e5bec8?style=for-the-badge&logo=javascript&logoColor=black
+[JavaScript]: https://img.shields.io/badge/JavaScript-e5bec8?style=for-the-badge&logo=javascript&logoColor=white
 [JavaScript-url]: https://www.javascript.com/
 [Node.js]: https://img.shields.io/badge/Node.js-e5bec8?style=for-the-badge&logo=node.js&logoColor=white
 [Node-url]: https://nodejs.org/
@@ -724,7 +684,7 @@ To further define which tacos should be consumed, use the dropdown reference bel
 [Lighthouse-url]: https://developer.chrome.com/docs/lighthouse/
 [Mocha.js]: https://img.shields.io/badge/Mocha-fadfdb?style=for-the-badge&logo=mocha&logoColor=white
 [Mocha-url]: https://mochajs.org/
-[Swagger.js]: https://img.shields.io/badge/Swagger-fadfdb?style=for-the-badge&logo=swagger&logoColor=black
+[Swagger.js]: https://img.shields.io/badge/Swagger-fadfdb?style=for-the-badge&logo=swagger&logoColor=white
 [Swagger-url]: https://swagger.io/
 [TestLibrary]: https://img.shields.io/badge/Testing_Library-fadfdb?style=for-the-badge&logo=testing-library&logoColor=white
 [TestLibrary-url]: https://testing-library.com/
