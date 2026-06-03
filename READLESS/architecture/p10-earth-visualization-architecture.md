@@ -11,6 +11,76 @@ Documentation boundary: `C:\Projects\dev-kitt` remains source-only. Architecture
 - `C:\Projects\dev-kitt\CODEX.md`
 - `C:\Projects\qa-kitt\.github\READLESS\architecture\p9-connect-earth-architecture-audit.md`
 
+## Current Earth Architecture Status
+
+Date: 2026-06-03
+
+This document is still the historical P10 visualization architecture, but the
+runtime Earth implementation has advanced through the P10.x, P12.x, P13.x, and
+P14.x phases. Treat the current architecture below as the active guidance when
+using this document.
+
+### Active Architecture
+
+Current Earth is an app-local, dashboard-first experience inside Rand0m. The
+authoritative information flow is:
+
+```text
+Dashboard
+-> Regional Health Dashboard
+-> Narratives
+-> Recommendations
+-> Planet Health Schematic
+-> Globe Preview
+-> Overlay Readiness
+```
+
+Dashboard, layer cards, regional summaries, and layer detail drilldowns remain
+the source of truth. The Planet Health Schematic and Globe Preview visualize
+that metadata; they do not replace it.
+
+### Implemented Since P10
+
+Current implementation includes:
+
+- Planet Health Schematic, layer maturity, data-kind labels, signal movement,
+  signal interactions, and layer detail panels.
+- Connection ownership foundation, provider ownership metadata, provider
+  status, and user-owned connection architecture.
+- Earth Health Score, regions, timeline, signal trends, Carbon Offset Projects,
+  Satellites, Cesium readiness, overlay governance, and provider selection
+  matrix.
+- Regional Health Dashboard, impact drivers, attention states, Earth
+  narratives, Earth recommendations, biodiversity/protected-area readiness, and
+  layer detail drilldowns.
+- Globe Preview, globe layer controls, overlay bridge, overlay safety gate,
+  broad regional overlay, overlay readiness drawer, dashboard/globe selection
+  synchronization, and multiple safe broad-region overlays.
+
+### Current Guardrails
+
+- Globe Preview is secondary, experimental, and broad-region only.
+- Overlays remain safety-gated; no unrestricted map mode, unrestricted globe
+  mode, live tracking, raw coordinate feeds, or sensitive species locations are
+  approved.
+- No new provider integration is implied unless a phase explicitly scopes it.
+- Signal correlations are educational relationships, not causation or proof.
+- Carbon Offset Projects remain educational metadata, not investment advice,
+  purchase guidance, quality ranking, or endorsement.
+- Satellites, flights, ships, and species layers remain non-tracking and
+  non-surveillance surfaces.
+- Dashboard/cards/detail panels remain the app-local source of truth for
+  attribution, freshness, limitations, and safety copy.
+
+### Superseded P10 Assumptions
+
+The sections below remain useful for provenance and early-stage rationale, but
+some "future" items are now implemented. In particular, Earth is no longer only
+card-based; the schematic, regions, health score, timeline, narratives,
+recommendations, overlay governance, Cesium readiness, and Globe Preview now
+exist. Any remaining future map/globe recommendations must be read through the
+current safety gate and provider matrix.
+
 ## Current Earth Implementation Audit
 
 ### Earth Tab Baseline
