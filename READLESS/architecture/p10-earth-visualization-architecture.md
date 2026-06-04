@@ -36,6 +36,7 @@ Planetary Intelligence
 -> Earth Vision Readiness
 -> Earth Verification Readiness
 -> Earth Evidence Traceability
+-> Earth Verification Candidates
 -> Planet Health Schematic
 -> Globe Preview
 -> Overlay Readiness
@@ -73,6 +74,11 @@ Current implementation includes:
   restoration indicators. Future narratives, recommendations, correlations,
   scenarios, and verification claims must cite evidence, attribution,
   comparison interval, confidence, and limitations.
+- Earth Verification Candidates for concrete future workflows such as forest
+  growth verification, tree loss detection, protected-area integrity checks,
+  habitat change research, conservation/restoration activity checks, and
+  carbon project verification readiness. Candidates remain metadata-only and
+  use future provider/source candidates without live integration.
 - Globe Preview, globe layer controls, overlay bridge, overlay safety gate,
   broad regional overlay, overlay readiness drawer, dashboard/globe selection
   synchronization, and multiple safe broad-region overlays.
@@ -105,6 +111,10 @@ Current implementation includes:
 - Earth Evidence is traceability metadata only. No verification claim should be
   presented without an attached evidence source, attribution, comparison
   interval, confidence, and limitations.
+- Earth Verification Candidates are workflow metadata only. They may name
+  source candidates and required evidence, but must not process imagery in
+  Flutter web, expose raw imagery, add overlays, integrate live providers, or
+  imply verified ecological outcomes.
 - Dashboard/cards/detail panels remain the app-local source of truth for
   attribution, freshness, limitations, and safety copy.
 
