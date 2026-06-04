@@ -13,6 +13,24 @@ The first implementation target is in-app brand/icon selection. Native launcher
 icons remain build-time assets unless a later platform-specific feature uses
 alternate icon APIs where supported.
 
+## Current App-Local Status
+
+As of P15.1, Rand0m keeps App Info customization app-local. The runtime owns:
+
+- the in-app icon picker and selected icon Hive setting
+- optional custom app bar logo PNG and light/dark HEX app bar colors
+- optional Vibe Spotify playlist URLs
+- optional Relax YouTube video URLs
+- optional About MP4 override
+- optional Utility Test flipcard PNGs
+
+These settings are local-only and stored through the app `settings` Hive box.
+Uploaded media is not synced, not committed, and not treated as package assets.
+Unknown or invalid values must fall back to shipped defaults.
+
+This does not change native launcher icons, PWA install icons, web manifest
+icons, Firebase identifiers, package identifiers, or canonical brand IDs.
+
 ## Current Asset Inventory
 
 Root staging folder:
@@ -293,5 +311,6 @@ The first implementation should not promise native launcher icon mutation.
 
 ## Recommended Next Step
 
-Start with Phase A in `rk_branding` only. Do not wire the app picker until the
-catalog assets and contracts are released and tagged.
+Keep the current App Info customization layer app-local until the settings and
+asset contracts stabilize. Revisit `rk_branding` / `rk_ui` extraction only when
+multiple apps need the same catalog, picker, and validation behavior.
