@@ -59,6 +59,7 @@ Planetary Intelligence
 -> Evidence Replay
 -> Earth Agent Context Bridge
 -> Earth Query Engine
+-> Earth Preview Engine
 -> HD Globe Transition
 -> Overlay Readiness
 ```
@@ -263,6 +264,17 @@ Current implementation includes:
   evidence references support them, and they must not perform company/entity
   lookup, live chat, provider calls, web search, overlay creation, or
   unsupported claim expansion.
+- Earth Preview Engine for converting supported `EarthQueryResult` metadata
+  into app-local preview descriptions. Supported preview types may include
+  Region Highlight, Region Comparison, Health Breakdown, Trend Preview,
+  Evidence Preview, Verification Preview, and Monitoring Preview. Preview
+  metadata may identify selected regions, layer emphasis, evidence support,
+  confidence, limitations, schematic readiness, globe readiness, and future
+  `@scient1st` compatibility. It may influence Planet Health Schematic and
+  Globe Preview emphasis through existing safe overlays only; it must not
+  create overlays, call providers, enable live chat, resolve
+  companies/entities, expose precise coordinates, or make visualization the
+  source of truth.
 - HD Globe Transition for defining the first path from Globe Preview toward a
   true HD Earth visualization platform. It stages globe capability modes,
   readiness labels, architecture constraints, safe/future/blocked overlay
@@ -311,6 +323,13 @@ Current implementation includes:
   become a resolver for companies/entities, activate `@scient1st` chat, call
   providers, create globe/map overlays, fetch web data, or strengthen claims
   beyond the attached evidence and limitations.
+- Earth Preview Engine is visualization request metadata only. Query-derived
+  previews may mark region focus, comparison focus, layer emphasis,
+  schematic/globe readiness, evidence support, and agent-compatible flags, but
+  they must consume existing dashboard and query state only. They must not add
+  providers, create new map/globe overlays, enable live tracking, expose
+  precise coordinates, guess company/entity regions, activate live chat, or
+  override the dashboard as source of truth.
 - HD Globe Transition is readiness metadata only. HD Globe and Future Live
   Globe modes remain disabled until token, WebGL, fallback, performance,
   attribution, evidence, monitoring, provider, and safety gates pass.
@@ -476,7 +495,8 @@ The sections below remain useful for provenance and early-stage rationale, but
 some "future" items are now implemented. In particular, Earth is no longer only
 card-based; the schematic, regions, health score, timeline, narratives,
 recommendations, Scenario Explorer, Earth Vision readiness, overlay governance,
-Cesium readiness, Globe Preview, and HD Globe Transition readiness now exist.
+Cesium readiness, Globe Preview, Earth Query/Preview engines, and HD Globe
+Transition readiness now exist.
 Any remaining future map/globe or Earth Vision or Earth Verification
 recommendations must be read through the current safety gate and provider
 matrix.
