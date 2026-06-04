@@ -60,6 +60,7 @@ Planetary Intelligence
 -> Earth Agent Context Bridge
 -> Earth Query Engine
 -> Earth Preview Engine
+-> Earth Agent Activation Preview
 -> HD Globe Transition
 -> Overlay Readiness
 ```
@@ -275,6 +276,14 @@ Current implementation includes:
   create overlays, call providers, enable live chat, resolve
   companies/entities, expose precise coordinates, or make visualization the
   source of truth.
+- Earth Agent Activation Preview for turning safe app-local Earth query results
+  into temporary, reversible preview state. Supported preview activation may
+  highlight broad regions, focus existing dashboard/schematic/globe sections,
+  and show source question, preview type, confidence, selected regions, and
+  limitations. Closing the preview must restore the previous Earth selection
+  and globe emphasis. It must not activate live chat, resolve entities,
+  perform company lookup, add overlays, call providers, expose precise
+  coordinates, or permanently mutate Earth state.
 - HD Globe Transition for defining the first path from Globe Preview toward a
   true HD Earth visualization platform. It stages globe capability modes,
   readiness labels, architecture constraints, safe/future/blocked overlay
@@ -330,6 +339,12 @@ Current implementation includes:
   providers, create new map/globe overlays, enable live tracking, expose
   precise coordinates, guess company/entity regions, activate live chat, or
   override the dashboard as source of truth.
+- Earth Agent Activation Preview is a temporary app-local state layer. It may
+  activate safe region/comparison/health/evidence/verification/monitoring
+  previews from existing query results, but close/reset must restore prior
+  selected region, time window, layer detail, and globe emphasis. Future
+  company/entity/VCM questions remain source-required and entity-resolution-
+  required; Earth must not guess operating regions.
 - HD Globe Transition is readiness metadata only. HD Globe and Future Live
   Globe modes remain disabled until token, WebGL, fallback, performance,
   attribution, evidence, monitoring, provider, and safety gates pass.
@@ -351,6 +366,10 @@ Current implementation includes:
 - Earth Vision should produce compact generated summaries before any future
   overlay work; raw large imagery belongs outside the app runtime unless a
   future phase explicitly approves a safe worker/storage contract.
+- Earth Fast GitHub Actions may validate `earth/**` branches and publish
+  guarded Firebase Hosting preview channels for the `randomknights-xyz.web.app`
+  Hosting site only when configured credentials are present. Earth branches
+  must not deploy to the production `rand0m.ai` live channel.
 - Earth Vision Data Pipeline is tooling/readiness plus compact artifact proof.
   Fixture/sample artifacts may document the JSON contract. Real source-backed
   artifacts must stay tiny, educational, source-attributed, limitation-bound,
