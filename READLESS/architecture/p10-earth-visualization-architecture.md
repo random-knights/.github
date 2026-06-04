@@ -50,6 +50,7 @@ Planetary Intelligence
 -> Soil Health Integrity Framework
 -> Human Encroachment Pressure Framework
 -> Forest Growth & Loss Verification Framework
+-> Forest Verification Pilot
 -> Restoration Outcome Verification Framework
 -> Planet Health Schematic
 -> Globe Preview
@@ -93,11 +94,13 @@ Current implementation includes:
   extraction, evidence artifact generation, and app asset/publication review.
   It defines a compact `earth-vision-evidence.v1` JSON artifact shape and a
   fixture sample path. P16.0 adds the first real source-backed compact Global
-  Forest Watch dashboard summary artifact, and P16.1 adds the first compact
+  Forest Watch dashboard summary artifact, P16.1 adds the first compact
   Protected Planet / WDPA protected-area profile artifact for a Yellowstone
-  pilot. Both preserve the same boundary: no live providers, raw imagery,
-  large raster files, sensitive coordinates, runtime Flutter web processing,
-  boundary geometry, species exposure, or ecological outcome claims.
+  pilot, and P16.2 uses the Global Forest Watch artifact for the first broad
+  forest verification pilot. These preserve the same boundary: no live
+  providers, raw imagery, large raster files, sensitive coordinates, runtime
+  Flutter web processing, boundary geometry, private-property monitoring,
+  species exposure, or ecological outcome claims.
 - Earth Vision Evidence Artifact Integration for parsing, validating, and
   displaying compact `earth-vision-evidence.v1` artifacts inside Earth
   Intelligence and dashboard readiness sections. Artifacts may support
@@ -167,6 +170,14 @@ Current implementation includes:
   candidates, attribution, relationship metadata, and safety constraints. No
   real forest growth, loss, reforestation, or restoration conclusion is
   generated yet.
+- Forest Verification Pilot for demonstrating a source-backed, broad forest
+  verification workflow using the compact Global Forest Watch artifact. The
+  pilot may show the selected source, broad Global region, evidence artifact,
+  confidence, limitations, attribution, readiness, and future monitoring path.
+  It must not expose raw imagery, sensitive coordinates, private land analysis,
+  individual property monitoring, enforcement framing, surveillance framing, or
+  real forest growth, loss, recovery, restoration, or ecological outcome
+  claims.
 - Restoration Outcome Verification Framework for connecting verification,
   monitoring, forest, habitat, biodiversity, soil, protected-area, Carbon, and
   Tree-Time evidence into future restoration outcome categories such as forest
@@ -305,6 +316,13 @@ Current implementation includes:
   real forest conclusions. Forest relationships with restoration indicators,
   biodiversity indicators, protected-area integrity, and carbon/tree-time
   signals remain educational relationships, not causation.
+- Forest Verification Pilots may use compact real source metadata as
+  educational evidence. They may improve readiness copy and show a future
+  monitoring path, but they are not live verification, do not prove forest
+  growth, forest loss, forest recovery, reforestation, restoration success, or
+  ecological outcomes, and must not expose raw imagery, sensitive coordinates,
+  private land analysis, individual property monitoring, enforcement language,
+  or surveillance framing.
 - Restoration Outcome Verification is an evidence/readiness framework only. It
   may define future outcome categories such as forest recovery, habitat
   recovery, biodiversity recovery, soil improvement, protected-area stability,
