@@ -56,6 +56,7 @@ Planetary Intelligence
 -> Earth Vision Monitoring Pipeline
 -> Planet Health Schematic
 -> Globe Preview
+-> Evidence Replay
 -> HD Globe Transition
 -> Overlay Readiness
 ```
@@ -234,6 +235,12 @@ Current implementation includes:
   driver metadata. Non-current frames must be labeled as preview/synthetic
   summary frames and must not be described as historical proof unless future
   evidence-backed regional history is explicitly added.
+- Earth Evidence Replay Layer for replaying compact evidence artifact frames
+  inside Globe Preview and Planetary Intelligence. Replay may use reviewed real
+  source-backed artifacts and clearly labeled sample/preview artifacts, but it
+  remains artifact-driven playback only. It must not show raw imagery, precise
+  coordinates, live tracking, new overlays, provider calls, or real-world
+  outcome claims.
 - HD Globe Transition for defining the first path from Globe Preview toward a
   true HD Earth visualization platform. It stages globe capability modes,
   readiness labels, architecture constraints, safe/future/blocked overlay
@@ -263,6 +270,12 @@ Current implementation includes:
   should update labels only. It must never imply live tracking, precise
   movement, real historical playback, or verified regional history without
   evidence-backed frames.
+- Evidence Replay may update artifact frame labels, confidence, limitations,
+  attribution, and generated dates from compact evidence artifacts. It is not
+  raw imagery, live tracking, precise coordinate playback, or an outcome claim.
+  Sample artifacts must stay sample/preview, and future restoration,
+  biodiversity, soil, and encroachment replay remains future-imagery-required
+  until reviewed compact artifacts exist.
 - HD Globe Transition is readiness metadata only. HD Globe and Future Live
   Globe modes remain disabled until token, WebGL, fallback, performance,
   attribution, evidence, monitoring, provider, and safety gates pass.
