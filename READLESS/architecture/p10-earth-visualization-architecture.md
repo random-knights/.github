@@ -37,6 +37,7 @@ Planetary Intelligence
 -> Earth Verification Readiness
 -> Earth Evidence Traceability
 -> Earth Verification Candidates
+-> Restoration Monitoring Readiness
 -> Planet Health Schematic
 -> Globe Preview
 -> Overlay Readiness
@@ -79,6 +80,10 @@ Current implementation includes:
   habitat change research, conservation/restoration activity checks, and
   carbon project verification readiness. Candidates remain metadata-only and
   use future provider/source candidates without live integration.
+- Restoration Monitoring Readiness for turning verification candidates into
+  future workflows around reforestation, forest growth, tree loss reduction,
+  protected-area integrity, habitat recovery, conservation programs, and
+  restoration projects. Monitoring remains readiness metadata only.
 - Globe Preview, globe layer controls, overlay bridge, overlay safety gate,
   broad regional overlay, overlay readiness drawer, dashboard/globe selection
   synchronization, and multiple safe broad-region overlays.
@@ -115,6 +120,11 @@ Current implementation includes:
   source candidates and required evidence, but must not process imagery in
   Flutter web, expose raw imagery, add overlays, integrate live providers, or
   imply verified ecological outcomes.
+- Restoration Monitoring is workflow readiness only. It may connect Earth
+  Vision, verification candidates, conservation records, and future provider
+  candidates, but it must not enable live monitoring, new provider calls,
+  runtime imagery processing, overlays, Cesium expansion, enforcement framing,
+  surveillance framing, or verified outcome claims.
 - Dashboard/cards/detail panels remain the app-local source of truth for
   attribution, freshness, limitations, and safety copy.
 
