@@ -228,6 +228,12 @@ Current implementation includes:
   restricted, and unavailable layers. Restricted layers remain blocked; evidence
   and provider requirements are metadata only until a future phase approves the
   source, attribution, artifact, and safety boundary.
+- Regional Health Timeline Animation for the first playable Globe Preview
+  animation path. It uses broad-region dashboard metadata only and may animate
+  educational preview frames derived from current health, trend, attention, and
+  driver metadata. Non-current frames must be labeled as preview/synthetic
+  summary frames and must not be described as historical proof unless future
+  evidence-backed regional history is explicitly added.
 - HD Globe Transition for defining the first path from Globe Preview toward a
   true HD Earth visualization platform. It stages globe capability modes,
   readiness labels, architecture constraints, safe/future/blocked overlay
@@ -251,6 +257,12 @@ Current implementation includes:
   require reviewed compact evidence artifacts; live tracking, raw wildfire
   markers, species locations, and carbon project point/purchase overlays remain
   restricted.
+- Regional Health playback may update labels, marker emphasis, and preview
+  frame copy for supported windows, but it remains an educational summary
+  animation. When reduced motion or motion-off states are active, playback
+  should update labels only. It must never imply live tracking, precise
+  movement, real historical playback, or verified regional history without
+  evidence-backed frames.
 - HD Globe Transition is readiness metadata only. HD Globe and Future Live
   Globe modes remain disabled until token, WebGL, fallback, performance,
   attribution, evidence, monitoring, provider, and safety gates pass.
