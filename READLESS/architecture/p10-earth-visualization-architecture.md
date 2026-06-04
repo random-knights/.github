@@ -13,7 +13,7 @@ Documentation boundary: `C:\Projects\dev-kitt` remains source-only. Architecture
 
 ## Current Earth Architecture Status
 
-Date: 2026-06-03
+Date: 2026-06-04
 
 This document is still the historical P10 visualization architecture, but the
 runtime Earth implementation has advanced through the P10.x, P12.x, P13.x, and
@@ -27,9 +27,11 @@ authoritative information flow is:
 
 ```text
 Planetary Intelligence
--> Dashboard / Regional Health Dashboard
--> Narratives
--> Recommendations
+-> Intelligence Summary
+-> Evidence Alignment
+-> Regional Health Dashboard
+-> Signals & Drivers
+-> Narratives & Recommendations
 -> Correlations
 -> Scenario Explorer
 -> Conservation & Restoration
@@ -52,6 +54,14 @@ Planetary Intelligence
 Dashboard, layer cards, regional summaries, and layer detail drilldowns remain
 the source of truth. The Planet Health Schematic and Globe Preview visualize
 that metadata; they do not replace it.
+
+Planetary Intelligence is the current top-level synthesis layer. It may
+summarize health, risk, recovery, restoration, verification, monitoring,
+research, scenarios, Earth Vision, and visualization readiness, but it must stay
+app-local and evidence-gated. It must not add providers, enable runtime imagery
+processing, enable new overlays, expose raw imagery, or turn relationships into
+causation, forecasts, verified outcome claims, investment advice, emergency
+guidance, surveillance framing, or enforcement framing.
 
 ### Implemented Since P10
 
@@ -125,6 +135,13 @@ Current implementation includes:
   requirements, provider candidates, intelligence alignment, relationship
   metadata, and safety constraints. No real restoration outcome conclusion is
   generated yet.
+- P15 Earth Intelligence Layer for consolidating Health, Risk, Recovery,
+  Restoration, Verification, Monitoring, and Research insights into the
+  dashboard-first Planetary Intelligence section. It links insights to evidence
+  metadata, summarizes Earth Vision readiness, shows the active dashboard
+  hierarchy, and preserves the runtime boundary: no live imagery processing, no
+  new providers, no map/globe expansion, no Cesium expansion, no Firebase
+  Functions, no OAuth, and no runtime provider calls.
 - Globe Preview, globe layer controls, overlay bridge, overlay safety gate,
   broad regional overlay, overlay readiness drawer, dashboard/globe selection
   synchronization, and multiple safe broad-region overlays.
