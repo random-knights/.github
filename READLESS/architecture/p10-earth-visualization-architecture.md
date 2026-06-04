@@ -222,6 +222,12 @@ Current implementation includes:
   globe time playback controls. Motion and playback are summary animation
   metadata only; they must never imply live tracking, precise movement,
   unsupported history, or unsupported forecasts.
+- Globe Playback Readiness for classifying each Earth layer before any
+  timeline animation path. Current readiness labels distinguish playable-now,
+  summary-animation-only, evidence-artifact-required, provider-required,
+  restricted, and unavailable layers. Restricted layers remain blocked; evidence
+  and provider requirements are metadata only until a future phase approves the
+  source, attribution, artifact, and safety boundary.
 - HD Globe Transition for defining the first path from Globe Preview toward a
   true HD Earth visualization platform. It stages globe capability modes,
   readiness labels, architecture constraints, safe/future/blocked overlay
@@ -239,6 +245,12 @@ Current implementation includes:
   come from the existing Earth time-window model, unsupported layers stay
   summary-only/readiness-only/provider-unsupported, reduced-motion settings
   remain respected, and the dashboard remains source of truth.
+- Playback readiness classifications must be shown before a layer participates
+  in globe playback. Regional Health is the first safe playable candidate;
+  Carbon/Tree-Time and Glaciers are summary-animation-only; Earth Vision layers
+  require reviewed compact evidence artifacts; live tracking, raw wildfire
+  markers, species locations, and carbon project point/purchase overlays remain
+  restricted.
 - HD Globe Transition is readiness metadata only. HD Globe and Future Live
   Globe modes remain disabled until token, WebGL, fallback, performance,
   attribution, evidence, monitoring, provider, and safety gates pass.
