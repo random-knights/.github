@@ -31,6 +31,7 @@ Dashboard
 -> Narratives
 -> Recommendations
 -> Scenario Explorer
+-> Earth Vision Readiness
 -> Planet Health Schematic
 -> Globe Preview
 -> Overlay Readiness
@@ -54,6 +55,9 @@ Current implementation includes:
 - Regional Health Dashboard, impact drivers, attention states, Earth
   narratives, Earth recommendations, Earth Scenario Explorer,
   biodiversity/protected-area readiness, and layer detail drilldowns.
+- Earth Vision readiness for tooling-first satellite/image comparison,
+  protected-area monitoring, forest growth/loss verification, and
+  encroachment research.
 - Globe Preview, globe layer controls, overlay bridge, overlay safety gate,
   broad regional overlay, overlay readiness drawer, dashboard/globe selection
   synchronization, and multiple safe broad-region overlays.
@@ -72,6 +76,12 @@ Current implementation includes:
   purchase guidance, quality ranking, or endorsement.
 - Satellites, flights, ships, and species layers remain non-tracking and
   non-surveillance surfaces.
+- Earth Vision remains tooling/research-first. No runtime Flutter web image
+  processing, raw imagery payloads, imagery downloads, surveillance framing,
+  enforcement/policing framing, or sensitive coordinate exposure are approved.
+- Earth Vision should produce compact generated summaries before any future
+  overlay work; raw large imagery belongs outside the app runtime unless a
+  future phase explicitly approves a safe worker/storage contract.
 - Dashboard/cards/detail panels remain the app-local source of truth for
   attribution, freshness, limitations, and safety copy.
 
@@ -80,9 +90,10 @@ Current implementation includes:
 The sections below remain useful for provenance and early-stage rationale, but
 some "future" items are now implemented. In particular, Earth is no longer only
 card-based; the schematic, regions, health score, timeline, narratives,
-recommendations, Scenario Explorer, overlay governance, Cesium readiness, and
-Globe Preview now exist. Any remaining future map/globe recommendations must be
-read through the current safety gate and provider matrix.
+recommendations, Scenario Explorer, Earth Vision readiness, overlay governance,
+Cesium readiness, and Globe Preview now exist. Any remaining future map/globe or
+Earth Vision recommendations must be read through the current safety gate and
+provider matrix.
 
 ## Current Earth Implementation Audit
 
