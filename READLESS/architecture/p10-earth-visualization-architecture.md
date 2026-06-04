@@ -43,6 +43,7 @@ Planetary Intelligence
 -> Soil Health Integrity Framework
 -> Human Encroachment Pressure Framework
 -> Forest Growth & Loss Verification Framework
+-> Restoration Outcome Verification Framework
 -> Planet Health Schematic
 -> Globe Preview
 -> Overlay Readiness
@@ -115,6 +116,14 @@ Current implementation includes:
   categories, evidence requirements, Earth Vision tooling alignment, provider
   candidates, attribution, relationship metadata, and safety constraints. No
   real forest growth, loss, reforestation, or restoration conclusion is
+  generated yet.
+- Restoration Outcome Verification Framework for connecting verification,
+  monitoring, forest, habitat, biodiversity, soil, protected-area, Carbon, and
+  Tree-Time evidence into future restoration outcome categories such as forest
+  recovery, habitat recovery, biodiversity recovery, soil improvement,
+  protected-area stability, and Carbon/Tree-Time support. It defines evidence
+  requirements, provider candidates, intelligence alignment, relationship
+  metadata, and safety constraints. No real restoration outcome conclusion is
   generated yet.
 - Globe Preview, globe layer controls, overlay bridge, overlay safety gate,
   broad regional overlay, overlay readiness drawer, dashboard/globe selection
@@ -201,6 +210,20 @@ Current implementation includes:
   real forest conclusions. Forest relationships with restoration indicators,
   biodiversity indicators, protected-area integrity, and carbon/tree-time
   signals remain educational relationships, not causation.
+- Restoration Outcome Verification is an evidence/readiness framework only. It
+  may define future outcome categories such as forest recovery, habitat
+  recovery, biodiversity recovery, soil improvement, protected-area stability,
+  and Carbon/Tree-Time support, plus future evidence requirements such as
+  forest verification, habitat indicators, biodiversity indicators, soil
+  indicators, protected-area indicators, restoration records, and source
+  attribution. It must not enable live imagery processing, runtime imagery
+  processing, runtime provider calls, new providers, map/globe expansion,
+  Cesium expansion, Firebase Functions, OAuth, surveillance framing,
+  enforcement language, precise species locations, investment recommendations,
+  unsupported ecological claims, guaranteed impact language, or real
+  restoration outcome conclusions. Restoration relationships with forest
+  verification, biodiversity, soil health, and protected-area integrity remain
+  educational relationships, not causation.
 - Dashboard/cards/detail panels remain the app-local source of truth for
   attribution, freshness, limitations, and safety copy.
 
