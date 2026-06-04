@@ -45,13 +45,18 @@ Planetary Intelligence
 -> Earth Verification Candidates
 -> Restoration Monitoring Readiness
 -> Protected Area Integrity Framework
+-> Protected Area Verification Pilot
 -> Biodiversity & Habitat Integrity Framework
 -> Soil Health Integrity Framework
 -> Human Encroachment Pressure Framework
 -> Forest Growth & Loss Verification Framework
+-> Forest Verification Pilot
 -> Restoration Outcome Verification Framework
+-> Restoration Verification Pilot
+-> Earth Vision Monitoring Pipeline
 -> Planet Health Schematic
 -> Globe Preview
+-> HD Globe Transition
 -> Overlay Readiness
 ```
 
@@ -91,20 +96,28 @@ Current implementation includes:
   source selection, imagery acquisition, preprocessing, comparison, summary
   extraction, evidence artifact generation, and app asset/publication review.
   It defines a compact `earth-vision-evidence.v1` JSON artifact shape and a
-  fixture-only sample path; it does not add live providers, raw imagery, large
-  raster files, sensitive coordinates, runtime Flutter web processing, or
-  ecological outcome claims.
+  fixture sample path. P16.0 adds the first real source-backed compact Global
+  Forest Watch dashboard summary artifact, P16.1 adds the first compact
+  Protected Planet / WDPA protected-area profile artifact for a Yellowstone
+  pilot, P16.2 uses the Global Forest Watch artifact for the first broad
+  forest verification pilot, and P16.3 uses existing compact evidence artifact
+  support for the first restoration verification pilot while still requiring
+  future imagery and restoration records before outcome claims. These preserve
+  the same boundary: no live providers, raw imagery, large raster files,
+  sensitive coordinates, runtime Flutter web processing, boundary geometry,
+  private-property monitoring, species exposure, or ecological outcome claims.
 - Earth Vision Evidence Artifact Integration for parsing, validating, and
   displaying compact `earth-vision-evidence.v1` artifacts inside Earth
   Intelligence and dashboard readiness sections. Artifacts may support
-  evidence alignment when available, but sample artifacts remain preview-only
-  and not live verification.
-- Evidence-Backed Verification Views for surfacing compact sample/preview
-  artifacts inside Verification Candidates, Forest Growth & Loss Verification,
-  Protected Area Integrity, Restoration Outcome Verification, and Planetary
-  Intelligence evidence summaries. Artifact availability may change readiness
-  copy, but it must not create real-world verification, restoration,
-  protected-area, forest, or outcome claims.
+  evidence alignment when available. Sample artifacts remain preview-only; real
+  source-backed artifacts remain educational, source-attributed, limitation-
+  bound, and not live verification.
+- Evidence-Backed Verification Views for surfacing compact real source-backed
+  and sample/preview artifacts inside Verification Candidates, Forest Growth &
+  Loss Verification, Protected Area Integrity, Restoration Outcome
+  Verification, and Planetary Intelligence evidence summaries. Artifact
+  availability may change readiness copy, but it must not create real-world
+  verification, restoration, protected-area, forest, or outcome claims.
 - Claim Traceability for labeling Planetary Intelligence, narratives,
   recommendations, correlations, scenarios, and verification views as
   evidence-backed, model-derived, source-metadata, educational, readiness-only,
@@ -132,6 +145,13 @@ Current implementation includes:
   Vision monitoring target around protected-area status, future pressure
   categories, evidence requirements, provider candidates, attribution, and
   safety constraints. No real integrity conclusion is generated yet.
+- Protected Area Verification Pilot for demonstrating a source-backed,
+  profile-only protected-area workflow using a compact Protected Planet / WDPA
+  artifact. The pilot may show a public protected-area name, broad region,
+  source, site id, reported area, confidence, limitations, attribution, and a
+  future monitoring path. It must not expose boundary geometry, raw imagery,
+  precise species locations, sensitive coordinates, enforcement framing,
+  surveillance framing, or real conservation/integrity outcome claims.
 - Biodiversity & Habitat Integrity Framework for extending Earth Vision into
   generalized region-only biodiversity and habitat readiness, including
   sensitivity states, future threat categories, evidence requirements, provider
@@ -155,6 +175,14 @@ Current implementation includes:
   candidates, attribution, relationship metadata, and safety constraints. No
   real forest growth, loss, reforestation, or restoration conclusion is
   generated yet.
+- Forest Verification Pilot for demonstrating a source-backed, broad forest
+  verification workflow using the compact Global Forest Watch artifact. The
+  pilot may show the selected source, broad Global region, evidence artifact,
+  confidence, limitations, attribution, readiness, and future monitoring path.
+  It must not expose raw imagery, sensitive coordinates, private land analysis,
+  individual property monitoring, enforcement framing, surveillance framing, or
+  real forest growth, loss, recovery, restoration, or ecological outcome
+  claims.
 - Restoration Outcome Verification Framework for connecting verification,
   monitoring, forest, habitat, biodiversity, soil, protected-area, Carbon, and
   Tree-Time evidence into future restoration outcome categories such as forest
@@ -163,6 +191,24 @@ Current implementation includes:
   requirements, provider candidates, intelligence alignment, relationship
   metadata, and safety constraints. No real restoration outcome conclusion is
   generated yet.
+- Restoration Verification Pilot for demonstrating how restoration outcome
+  readiness can reference compact evidence artifact support while still
+  requiring future imagery, forest/vegetation signals, protected-area context,
+  restoration records/source metadata, comparison windows, attribution, and
+  limitations before any outcome claim. The pilot may show target readiness,
+  evidence status, confidence, artifact id, required future inputs, provider
+  fit, and Planetary Intelligence alignment. It must remain educational and
+  must not claim restoration success, ecological outcomes, offset quality,
+  investment value, enforcement value, or surveillance use.
+- Earth Vision Monitoring Pipeline for turning protected-area, forest,
+  restoration, habitat, soil, and encroachment pilots into planned repeatable
+  monitoring runs. It defines target selection, evidence/source selection,
+  comparison window, repeat interval, artifact output, review state,
+  publication gate, attribution, limitations, and safety boundaries. Monitoring
+  pipelines are planned and require reviewed evidence artifacts; no automated
+  live monitoring, cloud artifact upload, live provider integration, runtime
+  imagery processing, or Earth Intelligence claim publication workflow is
+  enabled.
 - P15 Earth Intelligence Layer for consolidating Health, Risk, Recovery,
   Restoration, Verification, Monitoring, and Research insights into the
   dashboard-first Planetary Intelligence section. It links insights to evidence
@@ -173,10 +219,22 @@ Current implementation includes:
 - Globe Preview, globe layer controls, overlay bridge, overlay safety gate,
   broad regional overlay, overlay readiness drawer, dashboard/globe selection
   synchronization, and multiple safe broad-region overlays.
+- HD Globe Transition for defining the first path from Globe Preview toward a
+  true HD Earth visualization platform. It stages globe capability modes,
+  readiness labels, architecture constraints, safe/future/blocked overlay
+  classifications, HD region/overlay requirements, attribution requirements,
+  evidence integration requirements, monitoring integration requirements, and
+  the current Cesium recommendation while preserving Earth Intelligence as the
+  source of truth. It does not enable live tracking, new providers, new imagery
+  processing, Cesium expansion, map/globe expansion, Firebase Functions, OAuth,
+  or unrestricted HD overlays.
 
 ### Current Guardrails
 
 - Globe Preview is secondary, experimental, and broad-region only.
+- HD Globe Transition is readiness metadata only. HD Globe and Future Live
+  Globe modes remain disabled until token, WebGL, fallback, performance,
+  attribution, evidence, monitoring, provider, and safety gates pass.
 - Overlays remain safety-gated; no unrestricted map mode, unrestricted globe
   mode, live tracking, raw coordinate feeds, or sensitive species locations are
   approved.
@@ -195,26 +253,29 @@ Current implementation includes:
 - Earth Vision should produce compact generated summaries before any future
   overlay work; raw large imagery belongs outside the app runtime unless a
   future phase explicitly approves a safe worker/storage contract.
-- Earth Vision Data Pipeline is tooling/readiness only. Fixture/sample
-  artifacts may document the JSON contract, but app publication requires human
-  review for source terms, attribution, file size, raw imagery, sensitive
-  coordinates, surveillance/enforcement framing, investment framing, and
-  unsupported ecological claims. The recommended first source order is Global
-  Forest Watch for summary-first forest context, Landsat/Sentinel for later
-  imagery comparison, Protected Planet/WDPA for protected-area context, and
-  NASA Earthdata for deeper future Earth observation workflows.
+- Earth Vision Data Pipeline is tooling/readiness plus compact artifact proof.
+  Fixture/sample artifacts may document the JSON contract. Real source-backed
+  artifacts must stay tiny, educational, source-attributed, limitation-bound,
+  and free of raw imagery, sensitive coordinates, surveillance/enforcement
+  framing, investment framing, and unsupported ecological claims. The
+  recommended first source order remains Global Forest Watch for summary-first
+  forest context, Landsat/Sentinel for later imagery comparison, Protected
+  Planet/WDPA for protected-area context, and NASA Earthdata for deeper future
+  Earth observation workflows.
 - Earth Vision Evidence Artifacts must stay compact and schema-gated. Runtime
   parsing must reject missing required fields, malformed values, unsupported
   schema versions, raw imagery payload references, large raster payloads, and
   sensitive coordinate references. Display copy must identify fixture artifacts
-  as sample/preview only, not live verification, and no raw imagery included.
+  as sample/preview only, and real artifacts as source-backed educational
+  evidence. Neither artifact type is live verification, and no raw imagery is
+  included.
 - Evidence-Backed Verification Views are display/readiness surfaces only. They
   may show artifact id/title, target, region, confidence, comparison window,
   signal summary, limitations, attribution, and generated date, but they must
-  label fixture artifacts as sample evidence, preview only, and not live
-  verification. They must not expose raw imagery, sensitive coordinates, or
-  use artifact availability to imply confirmed, proven, or real-world
-  verification outcomes.
+  label fixture artifacts as sample evidence and real artifacts as source-
+  backed educational evidence. They must not expose raw imagery, sensitive
+  coordinates, or use artifact availability to imply confirmed, proven, or
+  real-world verification outcomes.
 - Claim Traceability guardrails must distinguish evidence-backed statements,
   model-derived summaries, educational relationships, source metadata,
   readiness-only notes, and sample/preview information. Use compact labels such
@@ -246,6 +307,12 @@ Current implementation includes:
   must not enable live imagery processing, new providers, overlays, boundary
   enforcement, surveillance framing, emergency guidance, precise species
   locations, or real integrity conclusions.
+- Protected Area Verification Pilots may use compact real source metadata as
+  educational evidence. They may improve readiness copy and show a future
+  monitoring path, but they are not live verification, do not prove protected-
+  area integrity or conservation outcomes, and must not expose boundary
+  geometry, raw imagery, precise species locations, sensitive coordinates,
+  enforcement language, or surveillance framing.
 - Biodiversity & Habitat Integrity is an evidence/readiness framework only. It
   may define future pressure categories such as habitat loss, habitat
   fragmentation, human encroachment, climate pressure, fire impact, water
@@ -284,6 +351,13 @@ Current implementation includes:
   real forest conclusions. Forest relationships with restoration indicators,
   biodiversity indicators, protected-area integrity, and carbon/tree-time
   signals remain educational relationships, not causation.
+- Forest Verification Pilots may use compact real source metadata as
+  educational evidence. They may improve readiness copy and show a future
+  monitoring path, but they are not live verification, do not prove forest
+  growth, forest loss, forest recovery, reforestation, restoration success, or
+  ecological outcomes, and must not expose raw imagery, sensitive coordinates,
+  private land analysis, individual property monitoring, enforcement language,
+  or surveillance framing.
 - Restoration Outcome Verification is an evidence/readiness framework only. It
   may define future outcome categories such as forest recovery, habitat
   recovery, biodiversity recovery, soil improvement, protected-area stability,
@@ -298,6 +372,22 @@ Current implementation includes:
   restoration outcome conclusions. Restoration relationships with forest
   verification, biodiversity, soil health, and protected-area integrity remain
   educational relationships, not causation.
+- Restoration Verification Pilots may use compact evidence artifact support to
+  improve readiness copy, but they are not live verification and do not prove
+  forest recovery, habitat recovery, biodiversity recovery, soil improvement,
+  protected-area stability, Carbon/Tree-Time impact, restoration success, or
+  ecological outcomes. They must not expose raw imagery, sensitive coordinates,
+  precise species locations, enforcement language, surveillance framing,
+  investment language, or unsupported outcome claims.
+- Earth Vision Monitoring Pipeline is planned workflow metadata only. It may
+  describe monitoring targets, schedules, statuses, review states, required
+  evidence, provider candidates, and future compact artifact outputs, but it
+  must not enable automated live monitoring, runtime provider calls, cloud
+  artifact upload, runtime imagery processing, unreviewed publication,
+  unrestricted claims, maps/globe expansion, surveillance framing, enforcement
+  framing, or outcome conclusions. Artifacts must be reviewed before
+  influencing Earth Intelligence claims; unsafe artifacts cannot be published,
+  and sample artifacts remain sample/preview.
 - Dashboard/cards/detail panels remain the app-local source of truth for
   attribution, freshness, limitations, and safety copy.
 
@@ -307,9 +397,10 @@ The sections below remain useful for provenance and early-stage rationale, but
 some "future" items are now implemented. In particular, Earth is no longer only
 card-based; the schematic, regions, health score, timeline, narratives,
 recommendations, Scenario Explorer, Earth Vision readiness, overlay governance,
-Cesium readiness, and Globe Preview now exist. Any remaining future map/globe or
-Earth Vision or Earth Verification recommendations must be read through the
-current safety gate and provider matrix.
+Cesium readiness, Globe Preview, and HD Globe Transition readiness now exist.
+Any remaining future map/globe or Earth Vision or Earth Verification
+recommendations must be read through the current safety gate and provider
+matrix.
 
 ## Current Earth Implementation Audit
 
