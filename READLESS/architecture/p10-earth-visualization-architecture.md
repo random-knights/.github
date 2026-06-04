@@ -29,6 +29,7 @@ authoritative information flow is:
 Planetary Intelligence
 -> Intelligence Summary
 -> Evidence Alignment
+-> Claim Traceability
 -> Regional Health Dashboard
 -> Signals & Drivers
 -> Narratives & Recommendations
@@ -104,6 +105,12 @@ Current implementation includes:
   Intelligence evidence summaries. Artifact availability may change readiness
   copy, but it must not create real-world verification, restoration,
   protected-area, forest, or outcome claims.
+- Claim Traceability for labeling Planetary Intelligence, narratives,
+  recommendations, correlations, scenarios, and verification views as
+  evidence-backed, model-derived, source-metadata, educational, readiness-only,
+  or sample/preview. Claim support should cite artifact ids, provider/source
+  metadata, model inputs, limitations, confidence, and safe fallback labels
+  where available.
 - Earth Verification readiness for future forest growth, tree loss, habitat
   change, protected-area integrity, conservation activity, and restoration
   activity checks, plus Carbon Project Verification Readiness.
@@ -208,6 +215,15 @@ Current implementation includes:
   verification. They must not expose raw imagery, sensitive coordinates, or
   use artifact availability to imply confirmed, proven, or real-world
   verification outcomes.
+- Claim Traceability guardrails must distinguish evidence-backed statements,
+  model-derived summaries, educational relationships, source metadata,
+  readiness-only notes, and sample/preview information. Use compact labels such
+  as Preview, Educational model, Evidence available, Sample evidence, Readiness
+  only, and Relationship, not causation. Do not use verified or confirmed
+  language unless a future phase provides sufficient non-sample evidence with
+  confidence and limitations; never use proven language, investment
+  recommendations, emergency guidance, surveillance/enforcement framing, or
+  causation claims from correlations.
 - Earth Verification is readiness/metadata only. No runtime imagery processing,
   live imagery download, new provider integration, verified ecological outcome
   claim, enforcement/policing use case, surveillance framing, or globe overlay
