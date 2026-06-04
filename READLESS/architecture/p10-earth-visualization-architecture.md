@@ -38,6 +38,7 @@ Planetary Intelligence
 -> Earth Evidence Traceability
 -> Earth Verification Candidates
 -> Restoration Monitoring Readiness
+-> Protected Area Integrity Framework
 -> Planet Health Schematic
 -> Globe Preview
 -> Overlay Readiness
@@ -84,6 +85,10 @@ Current implementation includes:
   future workflows around reforestation, forest growth, tree loss reduction,
   protected-area integrity, habitat recovery, conservation programs, and
   restoration projects. Monitoring remains readiness metadata only.
+- Protected Area Integrity Framework for staging the first concrete Earth
+  Vision monitoring target around protected-area status, future pressure
+  categories, evidence requirements, provider candidates, attribution, and
+  safety constraints. No real integrity conclusion is generated yet.
 - Globe Preview, globe layer controls, overlay bridge, overlay safety gate,
   broad regional overlay, overlay readiness drawer, dashboard/globe selection
   synchronization, and multiple safe broad-region overlays.
@@ -125,6 +130,12 @@ Current implementation includes:
   candidates, but it must not enable live monitoring, new provider calls,
   runtime imagery processing, overlays, Cesium expansion, enforcement framing,
   surveillance framing, or verified outcome claims.
+- Protected Area Integrity is an evidence/readiness framework only. It may
+  define future pressure categories such as tree loss, habitat fragmentation,
+  human encroachment, land-use change, fire impact, and data unavailable, but it
+  must not enable live imagery processing, new providers, overlays, boundary
+  enforcement, surveillance framing, emergency guidance, precise species
+  locations, or real integrity conclusions.
 - Dashboard/cards/detail panels remain the app-local source of truth for
   attribution, freshness, limitations, and safety copy.
 
