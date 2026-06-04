@@ -26,12 +26,15 @@ Current Earth is an app-local, dashboard-first experience inside Rand0m. The
 authoritative information flow is:
 
 ```text
-Dashboard
--> Regional Health Dashboard
+Planetary Intelligence
+-> Dashboard / Regional Health Dashboard
 -> Narratives
 -> Recommendations
+-> Correlations
 -> Scenario Explorer
+-> Conservation & Restoration
 -> Earth Vision Readiness
+-> Earth Verification Readiness
 -> Planet Health Schematic
 -> Globe Preview
 -> Overlay Readiness
@@ -55,9 +58,15 @@ Current implementation includes:
 - Regional Health Dashboard, impact drivers, attention states, Earth
   narratives, Earth recommendations, Earth Scenario Explorer,
   biodiversity/protected-area readiness, and layer detail drilldowns.
+- Planetary Intelligence consolidation, educational correlations, and
+  scenario-driven research paths that describe relationships without implying
+  causation, forecasts, or scientific certainty.
 - Earth Vision readiness for tooling-first satellite/image comparison,
   protected-area monitoring, forest growth/loss verification, and
   encroachment research.
+- Earth Verification readiness for future forest growth, tree loss, habitat
+  change, protected-area integrity, conservation activity, and restoration
+  activity checks.
 - Globe Preview, globe layer controls, overlay bridge, overlay safety gate,
   broad regional overlay, overlay readiness drawer, dashboard/globe selection
   synchronization, and multiple safe broad-region overlays.
@@ -82,6 +91,10 @@ Current implementation includes:
 - Earth Vision should produce compact generated summaries before any future
   overlay work; raw large imagery belongs outside the app runtime unless a
   future phase explicitly approves a safe worker/storage contract.
+- Earth Verification is readiness/metadata only. No runtime imagery processing,
+  live imagery download, new provider integration, verified ecological outcome
+  claim, enforcement/policing use case, surveillance framing, or globe overlay
+  expansion is approved.
 - Dashboard/cards/detail panels remain the app-local source of truth for
   attribution, freshness, limitations, and safety copy.
 
@@ -92,8 +105,8 @@ some "future" items are now implemented. In particular, Earth is no longer only
 card-based; the schematic, regions, health score, timeline, narratives,
 recommendations, Scenario Explorer, Earth Vision readiness, overlay governance,
 Cesium readiness, and Globe Preview now exist. Any remaining future map/globe or
-Earth Vision recommendations must be read through the current safety gate and
-provider matrix.
+Earth Vision or Earth Verification recommendations must be read through the
+current safety gate and provider matrix.
 
 ## Current Earth Implementation Audit
 
