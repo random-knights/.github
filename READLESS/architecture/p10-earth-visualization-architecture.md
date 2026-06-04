@@ -91,20 +91,22 @@ Current implementation includes:
   source selection, imagery acquisition, preprocessing, comparison, summary
   extraction, evidence artifact generation, and app asset/publication review.
   It defines a compact `earth-vision-evidence.v1` JSON artifact shape and a
-  fixture-only sample path; it does not add live providers, raw imagery, large
-  raster files, sensitive coordinates, runtime Flutter web processing, or
-  ecological outcome claims.
+  fixture sample path. P16.0 adds the first real source-backed compact Global
+  Forest Watch dashboard summary artifact while preserving the same boundary:
+  no live providers, raw imagery, large raster files, sensitive coordinates,
+  runtime Flutter web processing, or ecological outcome claims.
 - Earth Vision Evidence Artifact Integration for parsing, validating, and
   displaying compact `earth-vision-evidence.v1` artifacts inside Earth
   Intelligence and dashboard readiness sections. Artifacts may support
-  evidence alignment when available, but sample artifacts remain preview-only
-  and not live verification.
-- Evidence-Backed Verification Views for surfacing compact sample/preview
-  artifacts inside Verification Candidates, Forest Growth & Loss Verification,
-  Protected Area Integrity, Restoration Outcome Verification, and Planetary
-  Intelligence evidence summaries. Artifact availability may change readiness
-  copy, but it must not create real-world verification, restoration,
-  protected-area, forest, or outcome claims.
+  evidence alignment when available. Sample artifacts remain preview-only; real
+  source-backed artifacts remain educational, source-attributed, limitation-
+  bound, and not live verification.
+- Evidence-Backed Verification Views for surfacing compact real source-backed
+  and sample/preview artifacts inside Verification Candidates, Forest Growth &
+  Loss Verification, Protected Area Integrity, Restoration Outcome
+  Verification, and Planetary Intelligence evidence summaries. Artifact
+  availability may change readiness copy, but it must not create real-world
+  verification, restoration, protected-area, forest, or outcome claims.
 - Claim Traceability for labeling Planetary Intelligence, narratives,
   recommendations, correlations, scenarios, and verification views as
   evidence-backed, model-derived, source-metadata, educational, readiness-only,
@@ -195,26 +197,29 @@ Current implementation includes:
 - Earth Vision should produce compact generated summaries before any future
   overlay work; raw large imagery belongs outside the app runtime unless a
   future phase explicitly approves a safe worker/storage contract.
-- Earth Vision Data Pipeline is tooling/readiness only. Fixture/sample
-  artifacts may document the JSON contract, but app publication requires human
-  review for source terms, attribution, file size, raw imagery, sensitive
-  coordinates, surveillance/enforcement framing, investment framing, and
-  unsupported ecological claims. The recommended first source order is Global
-  Forest Watch for summary-first forest context, Landsat/Sentinel for later
-  imagery comparison, Protected Planet/WDPA for protected-area context, and
-  NASA Earthdata for deeper future Earth observation workflows.
+- Earth Vision Data Pipeline is tooling/readiness plus compact artifact proof.
+  Fixture/sample artifacts may document the JSON contract. Real source-backed
+  artifacts must stay tiny, educational, source-attributed, limitation-bound,
+  and free of raw imagery, sensitive coordinates, surveillance/enforcement
+  framing, investment framing, and unsupported ecological claims. The
+  recommended first source order remains Global Forest Watch for summary-first
+  forest context, Landsat/Sentinel for later imagery comparison, Protected
+  Planet/WDPA for protected-area context, and NASA Earthdata for deeper future
+  Earth observation workflows.
 - Earth Vision Evidence Artifacts must stay compact and schema-gated. Runtime
   parsing must reject missing required fields, malformed values, unsupported
   schema versions, raw imagery payload references, large raster payloads, and
   sensitive coordinate references. Display copy must identify fixture artifacts
-  as sample/preview only, not live verification, and no raw imagery included.
+  as sample/preview only, and real artifacts as source-backed educational
+  evidence. Neither artifact type is live verification, and no raw imagery is
+  included.
 - Evidence-Backed Verification Views are display/readiness surfaces only. They
   may show artifact id/title, target, region, confidence, comparison window,
   signal summary, limitations, attribution, and generated date, but they must
-  label fixture artifacts as sample evidence, preview only, and not live
-  verification. They must not expose raw imagery, sensitive coordinates, or
-  use artifact availability to imply confirmed, proven, or real-world
-  verification outcomes.
+  label fixture artifacts as sample evidence and real artifacts as source-
+  backed educational evidence. They must not expose raw imagery, sensitive
+  coordinates, or use artifact availability to imply confirmed, proven, or
+  real-world verification outcomes.
 - Claim Traceability guardrails must distinguish evidence-backed statements,
   model-derived summaries, educational relationships, source metadata,
   readiness-only notes, and sample/preview information. Use compact labels such
