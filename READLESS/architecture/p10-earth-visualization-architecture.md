@@ -38,6 +38,7 @@ Planetary Intelligence
 -> Earth Vision Readiness
 -> Earth Vision Data Pipeline
 -> Earth Vision Evidence Artifacts
+-> Evidence-Backed Verification Views
 -> Earth Verification Readiness
 -> Earth Evidence Traceability
 -> Earth Verification Candidates
@@ -97,6 +98,12 @@ Current implementation includes:
   Intelligence and dashboard readiness sections. Artifacts may support
   evidence alignment when available, but sample artifacts remain preview-only
   and not live verification.
+- Evidence-Backed Verification Views for surfacing compact sample/preview
+  artifacts inside Verification Candidates, Forest Growth & Loss Verification,
+  Protected Area Integrity, Restoration Outcome Verification, and Planetary
+  Intelligence evidence summaries. Artifact availability may change readiness
+  copy, but it must not create real-world verification, restoration,
+  protected-area, forest, or outcome claims.
 - Earth Verification readiness for future forest growth, tree loss, habitat
   change, protected-area integrity, conservation activity, and restoration
   activity checks, plus Carbon Project Verification Readiness.
@@ -194,6 +201,13 @@ Current implementation includes:
   schema versions, raw imagery payload references, large raster payloads, and
   sensitive coordinate references. Display copy must identify fixture artifacts
   as sample/preview only, not live verification, and no raw imagery included.
+- Evidence-Backed Verification Views are display/readiness surfaces only. They
+  may show artifact id/title, target, region, confidence, comparison window,
+  signal summary, limitations, attribution, and generated date, but they must
+  label fixture artifacts as sample evidence, preview only, and not live
+  verification. They must not expose raw imagery, sensitive coordinates, or
+  use artifact availability to imply confirmed, proven, or real-world
+  verification outcomes.
 - Earth Verification is readiness/metadata only. No runtime imagery processing,
   live imagery download, new provider integration, verified ecological outcome
   claim, enforcement/policing use case, surveillance framing, or globe overlay
