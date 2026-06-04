@@ -57,6 +57,7 @@ Planetary Intelligence
 -> Planet Health Schematic
 -> Globe Preview
 -> Evidence Replay
+-> Earth Agent Context Bridge
 -> HD Globe Transition
 -> Overlay Readiness
 ```
@@ -241,6 +242,15 @@ Current implementation includes:
   remains artifact-driven playback only. It must not show raw imagery, precise
   coordinates, live tracking, new overlays, provider calls, or real-world
   outcome claims.
+- Earth Agent Context Bridge for preparing app-local Earth context packets for
+  future `@scient1st` questions and Earth Preview requests. The packet may
+  include selected region, time window, health score, trends, top drivers,
+  attention states, evidence labels, limitations, and available layers. It must
+  exclude secrets, raw imagery payloads, unsupported provider claims, precise
+  sensitive coordinates, and live chat activation. Company/entity operating
+  region questions remain future-supported and source-required; Earth must not
+  guess operating regions or enable company/entity lookup without approved
+  source data.
 - HD Globe Transition for defining the first path from Globe Preview toward a
   true HD Earth visualization platform. It stages globe capability modes,
   readiness labels, architecture constraints, safe/future/blocked overlay
@@ -276,6 +286,13 @@ Current implementation includes:
   Sample artifacts must stay sample/preview, and future restoration,
   biodiversity, soil, and encroachment replay remains future-imagery-required
   until reviewed compact artifacts exist.
+- Earth Agent Context Bridge is readiness/context metadata only. `@scient1st`
+  affordances may show what Earth context would be shared and prepare future
+  Earth Preview request shapes, but they must not activate live chat, perform
+  provider calls, run live web search, expose raw imagery, expose secrets,
+  expose precise sensitive coordinates, or guess company/entity operating
+  regions. Entity/company region lookup requires approved source data or
+  user-supplied regions before preview generation.
 - HD Globe Transition is readiness metadata only. HD Globe and Future Live
   Globe modes remain disabled until token, WebGL, fallback, performance,
   attribution, evidence, monitoring, provider, and safety gates pass.
