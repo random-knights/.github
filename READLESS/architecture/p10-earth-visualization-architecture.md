@@ -35,6 +35,7 @@ Planetary Intelligence
 -> Conservation & Restoration
 -> Earth Vision Readiness
 -> Earth Verification Readiness
+-> Earth Evidence Traceability
 -> Planet Health Schematic
 -> Globe Preview
 -> Overlay Readiness
@@ -66,7 +67,12 @@ Current implementation includes:
   encroachment research.
 - Earth Verification readiness for future forest growth, tree loss, habitat
   change, protected-area integrity, conservation activity, and restoration
-  activity checks.
+  activity checks, plus Carbon Project Verification Readiness.
+- Earth Evidence traceability metadata for provider data, imagery comparison,
+  historical trends, conservation records, protected-area status, and
+  restoration indicators. Future narratives, recommendations, correlations,
+  scenarios, and verification claims must cite evidence, attribution,
+  comparison interval, confidence, and limitations.
 - Globe Preview, globe layer controls, overlay bridge, overlay safety gate,
   broad regional overlay, overlay readiness drawer, dashboard/globe selection
   synchronization, and multiple safe broad-region overlays.
@@ -82,7 +88,8 @@ Current implementation includes:
 - Scenarios are educational models, not forecasts, predictions, scientific
   certainty, financial guidance, or investment advice.
 - Carbon Offset Projects remain educational metadata, not investment advice,
-  purchase guidance, quality ranking, or endorsement.
+  purchase guidance, quality ranking, endorsement, or proof of impact,
+  quality, or legitimacy.
 - Satellites, flights, ships, and species layers remain non-tracking and
   non-surveillance surfaces.
 - Earth Vision remains tooling/research-first. No runtime Flutter web image
@@ -95,6 +102,9 @@ Current implementation includes:
   live imagery download, new provider integration, verified ecological outcome
   claim, enforcement/policing use case, surveillance framing, or globe overlay
   expansion is approved.
+- Earth Evidence is traceability metadata only. No verification claim should be
+  presented without an attached evidence source, attribution, comparison
+  interval, confidence, and limitations.
 - Dashboard/cards/detail panels remain the app-local source of truth for
   attribution, freshness, limitations, and safety copy.
 
