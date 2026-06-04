@@ -37,6 +37,7 @@ Planetary Intelligence
 -> Conservation & Restoration
 -> Earth Vision Readiness
 -> Earth Vision Data Pipeline
+-> Earth Vision Evidence Artifacts
 -> Earth Verification Readiness
 -> Earth Evidence Traceability
 -> Earth Verification Candidates
@@ -91,6 +92,11 @@ Current implementation includes:
   fixture-only sample path; it does not add live providers, raw imagery, large
   raster files, sensitive coordinates, runtime Flutter web processing, or
   ecological outcome claims.
+- Earth Vision Evidence Artifact Integration for parsing, validating, and
+  displaying compact `earth-vision-evidence.v1` artifacts inside Earth
+  Intelligence and dashboard readiness sections. Artifacts may support
+  evidence alignment when available, but sample artifacts remain preview-only
+  and not live verification.
 - Earth Verification readiness for future forest growth, tree loss, habitat
   change, protected-area integrity, conservation activity, and restoration
   activity checks, plus Carbon Project Verification Readiness.
@@ -183,6 +189,11 @@ Current implementation includes:
   Forest Watch for summary-first forest context, Landsat/Sentinel for later
   imagery comparison, Protected Planet/WDPA for protected-area context, and
   NASA Earthdata for deeper future Earth observation workflows.
+- Earth Vision Evidence Artifacts must stay compact and schema-gated. Runtime
+  parsing must reject missing required fields, malformed values, unsupported
+  schema versions, raw imagery payload references, large raster payloads, and
+  sensitive coordinate references. Display copy must identify fixture artifacts
+  as sample/preview only, not live verification, and no raw imagery included.
 - Earth Verification is readiness/metadata only. No runtime imagery processing,
   live imagery download, new provider integration, verified ecological outcome
   claim, enforcement/policing use case, surveillance framing, or globe overlay
