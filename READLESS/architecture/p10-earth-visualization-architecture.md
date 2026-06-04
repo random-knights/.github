@@ -45,6 +45,7 @@ Planetary Intelligence
 -> Earth Verification Candidates
 -> Restoration Monitoring Readiness
 -> Protected Area Integrity Framework
+-> Protected Area Verification Pilot
 -> Biodiversity & Habitat Integrity Framework
 -> Soil Health Integrity Framework
 -> Human Encroachment Pressure Framework
@@ -92,9 +93,11 @@ Current implementation includes:
   extraction, evidence artifact generation, and app asset/publication review.
   It defines a compact `earth-vision-evidence.v1` JSON artifact shape and a
   fixture sample path. P16.0 adds the first real source-backed compact Global
-  Forest Watch dashboard summary artifact while preserving the same boundary:
-  no live providers, raw imagery, large raster files, sensitive coordinates,
-  runtime Flutter web processing, or ecological outcome claims.
+  Forest Watch dashboard summary artifact, and P16.1 adds the first compact
+  Protected Planet / WDPA protected-area profile artifact for a Yellowstone
+  pilot. Both preserve the same boundary: no live providers, raw imagery,
+  large raster files, sensitive coordinates, runtime Flutter web processing,
+  boundary geometry, species exposure, or ecological outcome claims.
 - Earth Vision Evidence Artifact Integration for parsing, validating, and
   displaying compact `earth-vision-evidence.v1` artifacts inside Earth
   Intelligence and dashboard readiness sections. Artifacts may support
@@ -134,6 +137,13 @@ Current implementation includes:
   Vision monitoring target around protected-area status, future pressure
   categories, evidence requirements, provider candidates, attribution, and
   safety constraints. No real integrity conclusion is generated yet.
+- Protected Area Verification Pilot for demonstrating a source-backed,
+  profile-only protected-area workflow using a compact Protected Planet / WDPA
+  artifact. The pilot may show a public protected-area name, broad region,
+  source, site id, reported area, confidence, limitations, attribution, and a
+  future monitoring path. It must not expose boundary geometry, raw imagery,
+  precise species locations, sensitive coordinates, enforcement framing,
+  surveillance framing, or real conservation/integrity outcome claims.
 - Biodiversity & Habitat Integrity Framework for extending Earth Vision into
   generalized region-only biodiversity and habitat readiness, including
   sensitivity states, future threat categories, evidence requirements, provider
@@ -251,6 +261,12 @@ Current implementation includes:
   must not enable live imagery processing, new providers, overlays, boundary
   enforcement, surveillance framing, emergency guidance, precise species
   locations, or real integrity conclusions.
+- Protected Area Verification Pilots may use compact real source metadata as
+  educational evidence. They may improve readiness copy and show a future
+  monitoring path, but they are not live verification, do not prove protected-
+  area integrity or conservation outcomes, and must not expose boundary
+  geometry, raw imagery, precise species locations, sensitive coordinates,
+  enforcement language, or surveillance framing.
 - Biodiversity & Habitat Integrity is an evidence/readiness framework only. It
   may define future pressure categories such as habitat loss, habitat
   fragmentation, human encroachment, climate pressure, fire impact, water
