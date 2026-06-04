@@ -53,6 +53,7 @@ Planetary Intelligence
 -> Forest Verification Pilot
 -> Restoration Outcome Verification Framework
 -> Restoration Verification Pilot
+-> Earth Vision Monitoring Pipeline
 -> Planet Health Schematic
 -> Globe Preview
 -> Overlay Readiness
@@ -198,6 +199,15 @@ Current implementation includes:
   fit, and Planetary Intelligence alignment. It must remain educational and
   must not claim restoration success, ecological outcomes, offset quality,
   investment value, enforcement value, or surveillance use.
+- Earth Vision Monitoring Pipeline for turning protected-area, forest,
+  restoration, habitat, soil, and encroachment pilots into planned repeatable
+  monitoring runs. It defines target selection, evidence/source selection,
+  comparison window, repeat interval, artifact output, review state,
+  publication gate, attribution, limitations, and safety boundaries. Monitoring
+  pipelines are planned and require reviewed evidence artifacts; no automated
+  live monitoring, cloud artifact upload, live provider integration, runtime
+  imagery processing, or Earth Intelligence claim publication workflow is
+  enabled.
 - P15 Earth Intelligence Layer for consolidating Health, Risk, Recovery,
   Restoration, Verification, Monitoring, and Research insights into the
   dashboard-first Planetary Intelligence section. It links insights to evidence
@@ -356,6 +366,15 @@ Current implementation includes:
   ecological outcomes. They must not expose raw imagery, sensitive coordinates,
   precise species locations, enforcement language, surveillance framing,
   investment language, or unsupported outcome claims.
+- Earth Vision Monitoring Pipeline is planned workflow metadata only. It may
+  describe monitoring targets, schedules, statuses, review states, required
+  evidence, provider candidates, and future compact artifact outputs, but it
+  must not enable automated live monitoring, runtime provider calls, cloud
+  artifact upload, runtime imagery processing, unreviewed publication,
+  unrestricted claims, maps/globe expansion, surveillance framing, enforcement
+  framing, or outcome conclusions. Artifacts must be reviewed before
+  influencing Earth Intelligence claims; unsafe artifacts cannot be published,
+  and sample artifacts remain sample/preview.
 - Dashboard/cards/detail panels remain the app-local source of truth for
   attribution, freshness, limitations, and safety copy.
 
