@@ -58,6 +58,7 @@ Planetary Intelligence
 -> Globe Preview
 -> Evidence Replay
 -> Earth Agent Context Bridge
+-> Earth Query Engine
 -> HD Globe Transition
 -> Overlay Readiness
 ```
@@ -251,6 +252,17 @@ Current implementation includes:
   region questions remain future-supported and source-required; Earth must not
   guess operating regions or enable company/entity lookup without approved
   source data.
+- Earth Query Engine for turning Earth Intelligence and regional dashboard
+  metadata into structured, app-local query results. Supported query types may
+  include health score, region comparison, trend analysis, evidence summary,
+  verification status, monitoring status, recommendation summary, and scenario
+  summary. Results may include an answer, explanation, confidence, evidence
+  references, limitations, supported regions/time windows, future
+  `EarthPreviewRequest` linkage, and suitability flags for future agent
+  explanation. Query results remain educational/model-derived unless compact
+  evidence references support them, and they must not perform company/entity
+  lookup, live chat, provider calls, web search, overlay creation, or
+  unsupported claim expansion.
 - HD Globe Transition for defining the first path from Globe Preview toward a
   true HD Earth visualization platform. It stages globe capability modes,
   readiness labels, architecture constraints, safe/future/blocked overlay
@@ -293,6 +305,12 @@ Current implementation includes:
   expose precise sensitive coordinates, or guess company/entity operating
   regions. Entity/company region lookup requires approved source data or
   user-supplied regions before preview generation.
+- Earth Query Engine is the structured question layer between Earth
+  Intelligence and future Earth agents. It may produce evidence-aware answers
+  and future preview request metadata from current app state, but it must not
+  become a resolver for companies/entities, activate `@scient1st` chat, call
+  providers, create globe/map overlays, fetch web data, or strengthen claims
+  beyond the attached evidence and limitations.
 - HD Globe Transition is readiness metadata only. HD Globe and Future Live
   Globe modes remain disabled until token, WebGL, fallback, performance,
   attribution, evidence, monitoring, provider, and safety gates pass.
