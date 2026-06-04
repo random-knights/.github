@@ -36,6 +36,7 @@ Planetary Intelligence
 -> Scenario Explorer
 -> Conservation & Restoration
 -> Earth Vision Readiness
+-> Earth Vision Data Pipeline
 -> Earth Verification Readiness
 -> Earth Evidence Traceability
 -> Earth Verification Candidates
@@ -83,6 +84,13 @@ Current implementation includes:
 - Earth Vision readiness for tooling-first satellite/image comparison,
   protected-area monitoring, forest growth/loss verification, and
   encroachment research.
+- Earth Vision Data Pipeline for staging the first tooling-to-evidence path:
+  source selection, imagery acquisition, preprocessing, comparison, summary
+  extraction, evidence artifact generation, and app asset/publication review.
+  It defines a compact `earth-vision-evidence.v1` JSON artifact shape and a
+  fixture-only sample path; it does not add live providers, raw imagery, large
+  raster files, sensitive coordinates, runtime Flutter web processing, or
+  ecological outcome claims.
 - Earth Verification readiness for future forest growth, tree loss, habitat
   change, protected-area integrity, conservation activity, and restoration
   activity checks, plus Carbon Project Verification Readiness.
@@ -167,6 +175,14 @@ Current implementation includes:
 - Earth Vision should produce compact generated summaries before any future
   overlay work; raw large imagery belongs outside the app runtime unless a
   future phase explicitly approves a safe worker/storage contract.
+- Earth Vision Data Pipeline is tooling/readiness only. Fixture/sample
+  artifacts may document the JSON contract, but app publication requires human
+  review for source terms, attribution, file size, raw imagery, sensitive
+  coordinates, surveillance/enforcement framing, investment framing, and
+  unsupported ecological claims. The recommended first source order is Global
+  Forest Watch for summary-first forest context, Landsat/Sentinel for later
+  imagery comparison, Protected Planet/WDPA for protected-area context, and
+  NASA Earthdata for deeper future Earth observation workflows.
 - Earth Verification is readiness/metadata only. No runtime imagery processing,
   live imagery download, new provider integration, verified ecological outcome
   claim, enforcement/policing use case, surveillance framing, or globe overlay
