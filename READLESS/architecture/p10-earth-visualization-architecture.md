@@ -56,6 +56,7 @@ Planetary Intelligence
 -> Earth Vision Monitoring Pipeline
 -> Planet Health Schematic
 -> Globe Preview
+-> HD Globe Transition
 -> Overlay Readiness
 ```
 
@@ -218,10 +219,22 @@ Current implementation includes:
 - Globe Preview, globe layer controls, overlay bridge, overlay safety gate,
   broad regional overlay, overlay readiness drawer, dashboard/globe selection
   synchronization, and multiple safe broad-region overlays.
+- HD Globe Transition for defining the first path from Globe Preview toward a
+  true HD Earth visualization platform. It stages globe capability modes,
+  readiness labels, architecture constraints, safe/future/blocked overlay
+  classifications, HD region/overlay requirements, attribution requirements,
+  evidence integration requirements, monitoring integration requirements, and
+  the current Cesium recommendation while preserving Earth Intelligence as the
+  source of truth. It does not enable live tracking, new providers, new imagery
+  processing, Cesium expansion, map/globe expansion, Firebase Functions, OAuth,
+  or unrestricted HD overlays.
 
 ### Current Guardrails
 
 - Globe Preview is secondary, experimental, and broad-region only.
+- HD Globe Transition is readiness metadata only. HD Globe and Future Live
+  Globe modes remain disabled until token, WebGL, fallback, performance,
+  attribution, evidence, monitoring, provider, and safety gates pass.
 - Overlays remain safety-gated; no unrestricted map mode, unrestricted globe
   mode, live tracking, raw coordinate feeds, or sensitive species locations are
   approved.
@@ -384,9 +397,10 @@ The sections below remain useful for provenance and early-stage rationale, but
 some "future" items are now implemented. In particular, Earth is no longer only
 card-based; the schematic, regions, health score, timeline, narratives,
 recommendations, Scenario Explorer, Earth Vision readiness, overlay governance,
-Cesium readiness, and Globe Preview now exist. Any remaining future map/globe or
-Earth Vision or Earth Verification recommendations must be read through the
-current safety gate and provider matrix.
+Cesium readiness, Globe Preview, and HD Globe Transition readiness now exist.
+Any remaining future map/globe or Earth Vision or Earth Verification
+recommendations must be read through the current safety gate and provider
+matrix.
 
 ## Current Earth Implementation Audit
 
