@@ -52,6 +52,7 @@ Planetary Intelligence
 -> Forest Growth & Loss Verification Framework
 -> Forest Verification Pilot
 -> Restoration Outcome Verification Framework
+-> Restoration Verification Pilot
 -> Planet Health Schematic
 -> Globe Preview
 -> Overlay Readiness
@@ -96,11 +97,13 @@ Current implementation includes:
   fixture sample path. P16.0 adds the first real source-backed compact Global
   Forest Watch dashboard summary artifact, P16.1 adds the first compact
   Protected Planet / WDPA protected-area profile artifact for a Yellowstone
-  pilot, and P16.2 uses the Global Forest Watch artifact for the first broad
-  forest verification pilot. These preserve the same boundary: no live
-  providers, raw imagery, large raster files, sensitive coordinates, runtime
-  Flutter web processing, boundary geometry, private-property monitoring,
-  species exposure, or ecological outcome claims.
+  pilot, P16.2 uses the Global Forest Watch artifact for the first broad
+  forest verification pilot, and P16.3 uses existing compact evidence artifact
+  support for the first restoration verification pilot while still requiring
+  future imagery and restoration records before outcome claims. These preserve
+  the same boundary: no live providers, raw imagery, large raster files,
+  sensitive coordinates, runtime Flutter web processing, boundary geometry,
+  private-property monitoring, species exposure, or ecological outcome claims.
 - Earth Vision Evidence Artifact Integration for parsing, validating, and
   displaying compact `earth-vision-evidence.v1` artifacts inside Earth
   Intelligence and dashboard readiness sections. Artifacts may support
@@ -186,6 +189,15 @@ Current implementation includes:
   requirements, provider candidates, intelligence alignment, relationship
   metadata, and safety constraints. No real restoration outcome conclusion is
   generated yet.
+- Restoration Verification Pilot for demonstrating how restoration outcome
+  readiness can reference compact evidence artifact support while still
+  requiring future imagery, forest/vegetation signals, protected-area context,
+  restoration records/source metadata, comparison windows, attribution, and
+  limitations before any outcome claim. The pilot may show target readiness,
+  evidence status, confidence, artifact id, required future inputs, provider
+  fit, and Planetary Intelligence alignment. It must remain educational and
+  must not claim restoration success, ecological outcomes, offset quality,
+  investment value, enforcement value, or surveillance use.
 - P15 Earth Intelligence Layer for consolidating Health, Risk, Recovery,
   Restoration, Verification, Monitoring, and Research insights into the
   dashboard-first Planetary Intelligence section. It links insights to evidence
@@ -337,6 +349,13 @@ Current implementation includes:
   restoration outcome conclusions. Restoration relationships with forest
   verification, biodiversity, soil health, and protected-area integrity remain
   educational relationships, not causation.
+- Restoration Verification Pilots may use compact evidence artifact support to
+  improve readiness copy, but they are not live verification and do not prove
+  forest recovery, habitat recovery, biodiversity recovery, soil improvement,
+  protected-area stability, Carbon/Tree-Time impact, restoration success, or
+  ecological outcomes. They must not expose raw imagery, sensitive coordinates,
+  precise species locations, enforcement language, surveillance framing,
+  investment language, or unsupported outcome claims.
 - Dashboard/cards/detail panels remain the app-local source of truth for
   attribution, freshness, limitations, and safety copy.
 
