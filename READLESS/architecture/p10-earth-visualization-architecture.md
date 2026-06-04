@@ -30,6 +30,7 @@ Dashboard
 -> Regional Health Dashboard
 -> Narratives
 -> Recommendations
+-> Scenario Explorer
 -> Planet Health Schematic
 -> Globe Preview
 -> Overlay Readiness
@@ -51,8 +52,8 @@ Current implementation includes:
   Satellites, Cesium readiness, overlay governance, and provider selection
   matrix.
 - Regional Health Dashboard, impact drivers, attention states, Earth
-  narratives, Earth recommendations, biodiversity/protected-area readiness, and
-  layer detail drilldowns.
+  narratives, Earth recommendations, Earth Scenario Explorer,
+  biodiversity/protected-area readiness, and layer detail drilldowns.
 - Globe Preview, globe layer controls, overlay bridge, overlay safety gate,
   broad regional overlay, overlay readiness drawer, dashboard/globe selection
   synchronization, and multiple safe broad-region overlays.
@@ -65,6 +66,8 @@ Current implementation includes:
   approved.
 - No new provider integration is implied unless a phase explicitly scopes it.
 - Signal correlations are educational relationships, not causation or proof.
+- Scenarios are educational models, not forecasts, predictions, scientific
+  certainty, financial guidance, or investment advice.
 - Carbon Offset Projects remain educational metadata, not investment advice,
   purchase guidance, quality ranking, or endorsement.
 - Satellites, flights, ships, and species layers remain non-tracking and
@@ -77,9 +80,9 @@ Current implementation includes:
 The sections below remain useful for provenance and early-stage rationale, but
 some "future" items are now implemented. In particular, Earth is no longer only
 card-based; the schematic, regions, health score, timeline, narratives,
-recommendations, overlay governance, Cesium readiness, and Globe Preview now
-exist. Any remaining future map/globe recommendations must be read through the
-current safety gate and provider matrix.
+recommendations, Scenario Explorer, overlay governance, Cesium readiness, and
+Globe Preview now exist. Any remaining future map/globe recommendations must be
+read through the current safety gate and provider matrix.
 
 ## Current Earth Implementation Audit
 
