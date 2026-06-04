@@ -40,6 +40,7 @@ Planetary Intelligence
 -> Restoration Monitoring Readiness
 -> Protected Area Integrity Framework
 -> Biodiversity & Habitat Integrity Framework
+-> Soil Health Integrity Framework
 -> Planet Health Schematic
 -> Globe Preview
 -> Overlay Readiness
@@ -95,6 +96,11 @@ Current implementation includes:
   sensitivity states, future threat categories, evidence requirements, provider
   candidates, attribution, and safety constraints. No real biodiversity or
   habitat conclusion is generated yet.
+- Soil Health Integrity Framework for extending Earth Vision into evidence-
+  required soil health readiness, including soil dimensions, future threat
+  categories, evidence requirements, data requirements, provider candidates,
+  attribution, and safety constraints. No real soil, agricultural, restoration,
+  carbon storage, or habitat recovery conclusion is generated yet.
 - Globe Preview, globe layer controls, overlay bridge, overlay safety gate,
   broad regional overlay, overlay readiness drawer, dashboard/globe selection
   synchronization, and multiple safe broad-region overlays.
@@ -149,6 +155,15 @@ Current implementation includes:
   integration, precise species locations, maps/globe overlay expansion, Cesium
   expansion, surveillance framing, enforcement/policing framing, unsupported
   ecological claims, or real biodiversity conclusions.
+- Soil Health Integrity is an evidence/readiness framework only. It may define
+  soil dimensions such as organic carbon, moisture, erosion risk, fertility,
+  texture, salinity, compaction risk, and vegetation support, plus future
+  pressure categories such as erosion, drought/moisture stress, nutrient
+  depletion, salinity, land-use change, fire impact, human encroachment, and
+  data unavailable. It must not enable live provider integration, maps/globe
+  overlay expansion, Cesium expansion, unsupported agricultural or conservation
+  claims, land-use enforcement framing, surveillance framing, precision claims
+  without data support, or real soil conclusions.
 - Dashboard/cards/detail panels remain the app-local source of truth for
   attribution, freshness, limitations, and safety copy.
 
