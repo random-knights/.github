@@ -39,6 +39,7 @@ Planetary Intelligence
 -> Earth Verification Candidates
 -> Restoration Monitoring Readiness
 -> Protected Area Integrity Framework
+-> Biodiversity & Habitat Integrity Framework
 -> Planet Health Schematic
 -> Globe Preview
 -> Overlay Readiness
@@ -89,6 +90,11 @@ Current implementation includes:
   Vision monitoring target around protected-area status, future pressure
   categories, evidence requirements, provider candidates, attribution, and
   safety constraints. No real integrity conclusion is generated yet.
+- Biodiversity & Habitat Integrity Framework for extending Earth Vision into
+  generalized region-only biodiversity and habitat readiness, including
+  sensitivity states, future threat categories, evidence requirements, provider
+  candidates, attribution, and safety constraints. No real biodiversity or
+  habitat conclusion is generated yet.
 - Globe Preview, globe layer controls, overlay bridge, overlay safety gate,
   broad regional overlay, overlay readiness drawer, dashboard/globe selection
   synchronization, and multiple safe broad-region overlays.
@@ -136,6 +142,13 @@ Current implementation includes:
   must not enable live imagery processing, new providers, overlays, boundary
   enforcement, surveillance framing, emergency guidance, precise species
   locations, or real integrity conclusions.
+- Biodiversity & Habitat Integrity is an evidence/readiness framework only. It
+  may define future pressure categories such as habitat loss, habitat
+  fragmentation, human encroachment, climate pressure, fire impact, water
+  stress, and data unavailable, but it must not enable live provider
+  integration, precise species locations, maps/globe overlay expansion, Cesium
+  expansion, surveillance framing, enforcement/policing framing, unsupported
+  ecological claims, or real biodiversity conclusions.
 - Dashboard/cards/detail panels remain the app-local source of truth for
   attribution, freshness, limitations, and safety copy.
 
