@@ -42,6 +42,7 @@ Planetary Intelligence
 -> Biodiversity & Habitat Integrity Framework
 -> Soil Health Integrity Framework
 -> Human Encroachment Pressure Framework
+-> Forest Growth & Loss Verification Framework
 -> Planet Health Schematic
 -> Globe Preview
 -> Overlay Readiness
@@ -108,6 +109,13 @@ Current implementation includes:
   future pressure categories, evidence requirements, relationship metadata,
   provider candidates, attribution, and safety constraints. No real
   encroachment conclusion is generated yet.
+- Forest Growth & Loss Verification Framework for staging future verification
+  of forest growth, forest loss, reforestation, restoration success,
+  vegetation recovery, and protected forest integrity. It defines forest change
+  categories, evidence requirements, Earth Vision tooling alignment, provider
+  candidates, attribution, relationship metadata, and safety constraints. No
+  real forest growth, loss, reforestation, or restoration conclusion is
+  generated yet.
 - Globe Preview, globe layer controls, overlay bridge, overlay safety gate,
   broad regional overlay, overlay readiness drawer, dashboard/globe selection
   synchronization, and multiple safe broad-region overlays.
@@ -181,6 +189,18 @@ Current implementation includes:
   conclusions. Encroachment relationships with habitat integrity,
   protected-area integrity, and restoration outcomes remain educational
   correlations, not causation.
+- Forest Growth & Loss Verification is an evidence/readiness framework only.
+  It may define future verification targets such as forest growth, forest loss,
+  reforestation, restoration success, vegetation recovery, and protected forest
+  integrity, plus future change categories such as tree gain, tree loss,
+  regrowth, vegetation recovery, forest fragmentation, burn recovery, and data
+  unavailable. It must not enable live imagery processing, runtime imagery
+  processing, new providers, maps/globe overlay expansion, Cesium expansion,
+  Firebase Functions, OAuth, raw imagery payloads, raw sensitive coordinates,
+  enforcement language, surveillance framing, unsupported ecological claims, or
+  real forest conclusions. Forest relationships with restoration indicators,
+  biodiversity indicators, protected-area integrity, and carbon/tree-time
+  signals remain educational relationships, not causation.
 - Dashboard/cards/detail panels remain the app-local source of truth for
   attribution, freshness, limitations, and safety copy.
 
