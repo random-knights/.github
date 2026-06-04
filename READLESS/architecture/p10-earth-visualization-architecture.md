@@ -218,7 +218,10 @@ Current implementation includes:
   Functions, no OAuth, and no runtime provider calls.
 - Globe Preview, globe layer controls, overlay bridge, overlay safety gate,
   broad regional overlay, overlay readiness drawer, dashboard/globe selection
-  synchronization, and multiple safe broad-region overlays.
+  synchronization, multiple safe broad-region overlays, active motion cues, and
+  globe time playback controls. Motion and playback are summary animation
+  metadata only; they must never imply live tracking, precise movement,
+  unsupported history, or unsupported forecasts.
 - HD Globe Transition for defining the first path from Globe Preview toward a
   true HD Earth visualization platform. It stages globe capability modes,
   readiness labels, architecture constraints, safe/future/blocked overlay
@@ -232,6 +235,10 @@ Current implementation includes:
 ### Current Guardrails
 
 - Globe Preview is secondary, experimental, and broad-region only.
+- Globe motion and playback are summary controls only. Playback windows must
+  come from the existing Earth time-window model, unsupported layers stay
+  summary-only/readiness-only/provider-unsupported, reduced-motion settings
+  remain respected, and the dashboard remains source of truth.
 - HD Globe Transition is readiness metadata only. HD Globe and Future Live
   Globe modes remain disabled until token, WebGL, fallback, performance,
   attribution, evidence, monitoring, provider, and safety gates pass.
