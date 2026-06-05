@@ -16,7 +16,7 @@ repo, and automation repo are independent nested or sibling git repositories.
 | QA docs | `C:\Projects\qa-kitt\.github` | org docs / READLESS | Clean; `.github\README.md` is absent, so READLESS is the source of truth. |
 | Automation | `C:\Projects\qa-kitt\123` | generated test automation | Clean; manual runner and PR-comment workflows are manual-first. |
 | Classroom | `C:\Projects\qa-kitt\abc` | classroom / experiments | `assets/` is untracked and needs an explicit commit-or-ignore decision. |
-| Packages | `C:\Projects\dev-kitt\packages\rk_*` | shared package repos | Clean; no package-local workflows yet. |
+| Packages | `C:\Projects\dev-kitt\packages\rk_*` | shared package repos | Package validation workflows exist; private sibling dependency access requires CI SSH setup. |
 
 ## Root Scripts
 
@@ -89,13 +89,13 @@ tests, and a `v0.1.0` tag.
 
 | Package | Version | Tests | Workflow | Notes |
 | --- | --- | ---: | --- | --- |
-| `rk_core` | `0.1.0` | 3 | none | README reflects single-app compatibility. |
-| `rk_data` | `0.1.0` | 1 | none | README reflects data taxonomy boundaries. |
-| `rk_media` | `0.1.0` | 1 | none | README keeps render/media as package metadata, not app navigation. |
-| `rk_agents` | `0.1.0` | 1 | none | README reflects agent compatibility contracts. |
-| `rk_ai` | `0.1.0` | 2 | none | README reflects provider/env metadata boundaries. |
-| `rk_branding` | `0.1.0` | 1 | none | README reflects single-app branding scope. |
-| `rk_ui` | `0.1.0` | 1 | none | README reflects app-owned active navigation. |
+| `rk_core` | `0.1.0` | 3 | package validation | README reflects single-app compatibility. |
+| `rk_data` | `0.1.0` | 1 | package validation | README reflects data taxonomy boundaries. |
+| `rk_media` | `0.1.0` | 1 | package validation | README keeps render/media as package metadata, not app navigation. |
+| `rk_agents` | `0.1.0` | 1 | package validation | README reflects agent compatibility contracts. |
+| `rk_ai` | `0.1.0` | 2 | package validation | Depends on private `rk_core`; CI requires package-read SSH secret. |
+| `rk_branding` | `0.1.0` | 1 | package validation | README reflects single-app branding scope. |
+| `rk_ui` | `0.1.0` | 1 | package validation | Depends on private `rk_branding`, `rk_core`, and `rk_data`; CI requires package-read SSH secret. |
 
 Current package remotes use the human `github-devkitt` SSH alias. That is safe
 for manual package work, but Codex-managed package phases should either switch
@@ -111,8 +111,23 @@ Recommended package workflow path:
 - run package tests
 - avoid app web build unless the package is being consumed by an app release
 
-No package version bumps, tags, workflow files, or dependency changes were made
-for this audit.
+Package workflow dependency access:
+
+- Local package manifests may continue to use developer SSH aliases such as
+  `git@github-devkitt:random-knights/rk_core.git`.
+- GitHub-hosted runners do not know local aliases like `github-devkitt` and
+  cannot use one package repo's default `GITHUB_TOKEN` to read private sibling
+  repos.
+- Package validation workflows should use the `RK_PACKAGE_READ_SSH_KEY`
+  Actions secret when a package declares private `rk_*` git dependencies.
+- The secret should belong to the CI-only `github-actions-rk-package-read`
+  identity or an equivalent read-only key with access to required private
+  `rk_*` repos. Do not commit keys or tokens.
+- Workflows should rewrite local aliases to `git@github.com:random-knights/`
+  only after SSH credentials are configured.
+- Packages without private git dependencies may skip SSH setup.
+
+No package version bumps, tags, or dependency changes were made for this audit.
 
 ## Current GitHub Actions Findings
 
@@ -172,7 +187,7 @@ W1.1 implemented the first workflow files for the recommended segmentation.
 
 | Segment | Trigger paths | Commands | Skip | Artifacts | Secrets | Cost |
 | --- | --- | --- | --- | --- | --- | --- |
-| Packages | package repo PR/push/manual dispatch | `flutter pub get`, `dart format --set-exit-if-changed lib test`, `flutter analyze`, `flutter test` | app tests, app web build, Firebase | package test logs | none by default | Low |
+| Packages | package repo PR/push/manual dispatch | SSH setup for private git deps, `flutter pub get`, `dart format --set-exit-if-changed lib test`, `flutter analyze`, `flutter test` | app tests, app web build, Firebase | package test logs | `RK_PACKAGE_READ_SSH_KEY` only when private sibling deps exist | Low |
 | App Core | routing, shared services, home/core paths/manual dispatch | pub get, build runner, analyze, focused core tests | Firebase deploy, full suite/build | test logs | package-read key, app env secrets for generated env | Medium |
 | Earth | `earth/**` branches, Earth paths/manual dispatch | Earth Fast Cycle | full suite except checkpoint | web build, preview URL if configured | Firebase preview service account, package-read key | Medium |
 | Agents | agent config, provider/model UI, command lifecycle/manual dispatch | pub get, build runner, analyze, focused agent tests | Earth Fast, deploy, full suite/build | test logs | package-read key, app env secrets for generated env | Low-Medium |
@@ -311,3 +326,35 @@ Not changed:
 - Firebase secrets or deploy behavior
 - package versions or tags
 - classroom lessons/labs/assets
+
+## W1.2 CI Smoke Notes
+
+W1.2 smoke testing found the package workflow failure mode that W1.1 did not
+fully cover:
+
+- `rk_ai` failed when `flutter pub get` tried to clone
+  `git@github-devkitt:random-knights/rk_core.git`.
+- `rk_ui` failed when `flutter pub get` tried to clone private sibling package
+  repositories such as `rk_data` through the same local-only alias.
+- Plain HTTPS or the repo-scoped `GITHUB_TOKEN` is not sufficient for private
+  cross-repo package dependencies unless repository access has been explicitly
+  granted.
+
+The package workflow pattern is now:
+
+1. Detect whether `pubspec.yaml` declares local-alias git dependencies.
+2. If none exist, skip private SSH setup.
+3. If private git dependencies exist, require `RK_PACKAGE_READ_SSH_KEY`.
+4. Start `ssh-agent`, add the key, trust `github.com`, and rewrite
+   `github-devkitt`, `github-devbot`, and `github-qakitt` aliases to
+   `git@github.com:random-knights/`.
+5. Run `flutter pub get` after the SSH agent variables are exported.
+
+Segmented workflow smoke review also confirmed:
+
+- app segmented workflows remain non-deploying except for guarded Earth preview
+  behavior
+- repo 123 workflows remain manual/dry-run oriented
+- ABC classroom validation remains static and lightweight
+- deploy commands are intentionally absent from package, ABC, and repo 123
+  validation workflows
