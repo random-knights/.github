@@ -165,6 +165,41 @@ The sample is concise and illustrative. Formula-derived Tree-Time disclosures
 should use the MRT formula above unless a disclosure explicitly explains a
 different educational example value.
 
+## A1.1 Response Metrics Integration
+
+A1.1 integrates AIEDS v1 into response and reporting surfaces without adding
+provider-specific live measurement.
+
+Compact default display:
+
+- Carbon.
+- Energy.
+- Tree-Time.
+- Confidence.
+
+Expanded/details display:
+
+- Provider.
+- Model.
+- Latency.
+- Tokens.
+- Cost.
+- Driving distance comparison.
+- Phone charge comparison.
+- LED bulb time comparison.
+- Laptop time comparison.
+- Methodology and assumptions.
+
+Required copy:
+
+- `AIEDS v1 estimated disclosure`
+- `Energy and carbon are modeled estimates.`
+- `Tree-Time and equivalents are educational comparisons.`
+
+Reporting surfaces may show AIEDS readiness when runner metrics are not yet
+available. They must not fabricate execution impact, offsetting, restoration,
+or verified environmental claims.
+
 ## Current Boundary
 
 AIEDS v1 foundation work does not add:

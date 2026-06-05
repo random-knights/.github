@@ -1,8 +1,11 @@
-# P10.0 Earth Visualization Architecture
+# Earth Visualization Architecture
 
 Date: 2026-06-02
 
-Scope: architecture/design only. This document does not authorize Flutter runtime changes, maps, WebGL, new providers, Firebase Functions, command architecture changes, validation, or deploy.
+Scope: architecture/design only. This document covers the current Earth
+Visualization and Earth Intelligence architecture across phases. It does not
+authorize Flutter runtime changes, maps, WebGL, new providers, Firebase
+Functions, command architecture changes, validation, or deploy.
 
 Documentation boundary: `C:\Projects\dev-kitt` remains source-only. Architecture notes belong directly in `C:\Projects\qa-kitt\.github\READLESS\architecture`.
 
@@ -15,10 +18,10 @@ Documentation boundary: `C:\Projects\dev-kitt` remains source-only. Architecture
 
 Date: 2026-06-04
 
-This document is still the historical P10 visualization architecture, but the
-runtime Earth implementation has advanced through the P10.x, P12.x, P13.x, and
-P14.x phases. Treat the current architecture below as the active guidance when
-using this document.
+This document began as the historical P10 visualization architecture, but the
+runtime Earth implementation has advanced through later Earth Intelligence,
+Earth Vision, agent, preview, and HD globe phases. Treat the current
+architecture below as the active Earth guidance when using this document.
 
 ### Active Architecture
 
