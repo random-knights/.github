@@ -59,6 +59,7 @@ Planetary Intelligence
 -> Evidence Replay
 -> Earth Agent Context Bridge
 -> Earth Agent Command Surface
+-> Earth Scientist Preview Response
 -> Earth Query Engine
 -> Earth Preview Engine
 -> Earth Agent Activation Preview
@@ -263,6 +264,14 @@ Current implementation includes:
   provider calls, entity/company lookup, live web lookup, new overlays, secret
   exposure, raw imagery, precise species locations, or investment/purchase
   advice.
+- Earth Scientist Preview Response for turning a preview-only command into a
+  compact local response. The response may summarize interpreted intent,
+  selected region/time context, available Earth Intelligence context, the
+  preview that would be activated, evidence/claim support level, limitations,
+  and suggested next step. It must use existing app-local query, preview,
+  evidence, and dashboard metadata only, and must not activate live chat,
+  provider calls, entity/company lookup, VCM/project filtering, web lookup,
+  new overlays, or unsupported outcome claims.
 - Earth Query Engine for turning Earth Intelligence and regional dashboard
   metadata into structured, app-local query results. Supported query types may
   include health score, region comparison, trend analysis, evidence summary,
@@ -341,6 +350,12 @@ Current implementation includes:
   comparison, trend, evidence, verification, or monitoring summaries. Unsupported
   company/entity, live lookup, precise sensitive location, and investment
   questions must show source-required/future-supported copy and must not guess.
+- Earth Scientist Preview Response is local explanatory UI only. It may show
+  interpreted question, context used, preview intent, evidence/readiness support,
+  limitations, next step, and Activate Preview when previewable. Unsupported
+  company/entity or VCM questions must explain that approved source data or
+  manually selected regions are required; Earth must not guess operating
+  regions or project-region filters.
 - Earth Query Engine is the structured question layer between Earth
   Intelligence and future Earth agents. It may produce evidence-aware answers
   and future preview request metadata from current app state, but it must not
