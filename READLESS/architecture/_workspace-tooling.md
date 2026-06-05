@@ -358,3 +358,20 @@ Segmented workflow smoke review also confirmed:
 - ABC classroom validation remains static and lightweight
 - deploy commands are intentionally absent from package, ABC, and repo 123
   validation workflows
+
+W1.2 path filter tuning:
+
+- App Core no longer triggers for all `lib/services/settings/**` changes.
+  Provider/model setting paths now belong to the Agents validation segment.
+- App Core now includes branding, customization, and account model paths used
+  by its focused settings tests.
+- Agents validation now includes `default_ai_provider.dart` and
+  `random1y_pane_config.dart`, matching the focused provider/pane tests.
+- More/Experience validation now includes weather model/service paths and
+  oracle service paths, matching the focused weather and oracle tests.
+- Earth Fast removed a dead `tooling/scripts/earth/**` app-repo filter entry;
+  root workspace tooling remains local coordination and is not part of the
+  `random-knights/xyz` app workflow trigger surface.
+- App workflows now rewrite `github-devkitt`, `github-devbot`, and
+  `github-qakitt` aliases consistently before resolving private package
+  dependencies.
