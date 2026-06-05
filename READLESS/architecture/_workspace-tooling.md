@@ -1,14 +1,26 @@
-# Workspace Tooling
+# Workspace Tooling And Validation Scope
 
-This workspace uses lightweight root-owned PowerShell scripts for repeated
-validation across the primary app and shared packages. The scripts are explicit
-on purpose: they call the local Flutter SDK at
-`C:\Projects\dev-kitt\flutter\bin\flutter.bat` and target the known app and
-package folders directly.
+This note is the current architecture reference for Random Knights workspace
+tooling, validation scope, and segmented workflow recommendations.
 
-## Scripts
+The root workspace is `C:\Projects\dev-kitt`. It owns lightweight coordination
+scripts only. The production app, shared packages, QA documentation, classroom
+repo, and automation repo are independent nested or sibling git repositories.
 
-Run commands from the root workspace, `C:\Projects\dev-kitt`.
+## Current Workspace Shape
+
+| Area | Local path | Repo / role | Current audit finding |
+| --- | --- | --- | --- |
+| Root workspace | `C:\Projects\dev-kitt` | local-only coordination | Clean; no remote expected. |
+| App | `C:\Projects\dev-kitt\apps\rand0m` | `random-knights/xyz` | Clean; many completed short-lived branches remain available. |
+| QA docs | `C:\Projects\qa-kitt\.github` | org docs / READLESS | Clean; `.github\README.md` is absent, so READLESS is the source of truth. |
+| Automation | `C:\Projects\qa-kitt\123` | generated test automation | Clean; manual runner and PR-comment workflows are manual-first. |
+| Classroom | `C:\Projects\qa-kitt\abc` | classroom / experiments | `assets/` is untracked and needs an explicit commit-or-ignore decision. |
+| Packages | `C:\Projects\dev-kitt\packages\rk_*` | shared package repos | Clean; no package-local workflows yet. |
+
+## Root Scripts
+
+Run commands from `C:\Projects\dev-kitt`.
 
 ```powershell
 .\tooling\scripts\pub-get-all.ps1
@@ -29,49 +41,250 @@ Runs `flutter pub get` in:
 .\tooling\scripts\analyze-all.ps1
 ```
 
-Runs `flutter analyze` in the same apps and packages.
+Runs `flutter analyze` in the same app and package folders.
 
 ```powershell
 .\tooling\scripts\status-app-repos.ps1
 ```
 
-Runs `git status --short --branch` for each nested app repository:
+Runs `git status --short --branch` for nested app repositories:
 
 - `apps/rand0m`
+
+```powershell
+.\tooling\scripts\validate-earth-fast.ps1
+```
+
+Runs the local Earth Fast Cycle:
+
+1. `flutter analyze` in `apps/rand0m`
+2. `flutter test test\connect`
+3. `flutter build web`
+
+Use it only for Earth, Connect/Earth source registry, Globe Preview, Earth
+Vision, Earth tests, and Earth READLESS docs.
 
 ```powershell
 .\tooling\scripts\validate-all.ps1
 ```
 
-Runs the full local validation sequence:
+Runs the workspace validation sequence:
 
-1. pub get the primary app and all packages
-2. analyze the primary app and all packages
-3. show nested primary app repository status
+1. `pub-get-all.ps1`
+2. `analyze-all.ps1`
+3. normalize generated package artifacts
+4. verify package `.dart_tool\package_config.json` remains available
+5. run `flutter analyze --no-pub` in each package after cleanup
+6. run nested app git status checks
+7. print package git status
 
-Each script stops on the first failed command and prints which project was
-running when the failure occurred.
+`validate-all.ps1` does not currently run the full app test suite or app web
+build; release checkpoint instructions may still require those commands
+separately before or alongside `validate-all.ps1`.
 
-## Ownership
+## Package Audit
 
-The root repository owns these scripts and this documentation. The scripts do
-not change app source, package paths, Firebase configuration, environment
-files, git remotes, or repository boundaries.
+All seven package repos are clean on `main`, have `README.md`, `pubspec.yaml`,
+tests, and a `v0.1.0` tag.
 
-The primary app repository is `random-knights/xyz`. It remains checked out
-locally under `apps/rand0m` for now. The package repositories also remain
-independent nested git repos under `packages/rk_*`.
+| Package | Version | Tests | Workflow | Notes |
+| --- | --- | ---: | --- | --- |
+| `rk_core` | `0.1.0` | 3 | none | README reflects single-app compatibility. |
+| `rk_data` | `0.1.0` | 1 | none | README reflects data taxonomy boundaries. |
+| `rk_media` | `0.1.0` | 1 | none | README keeps render/media as package metadata, not app navigation. |
+| `rk_agents` | `0.1.0` | 1 | none | README reflects agent compatibility contracts. |
+| `rk_ai` | `0.1.0` | 2 | none | README reflects provider/env metadata boundaries. |
+| `rk_branding` | `0.1.0` | 1 | none | README reflects single-app branding scope. |
+| `rk_ui` | `0.1.0` | 1 | none | README reflects app-owned active navigation. |
 
-The root repository ignores both nested repo groups and owns only root workspace
-docs/tooling. The scripts still validate the nested package repos by explicit
-path; they do not require package source files to be tracked by the root repo.
+Current package remotes use the human `github-devkitt` SSH alias. That is safe
+for manual package work, but Codex-managed package phases should either switch
+the affected package remote to `github-devbot` before pushing or explicitly
+report the alias mismatch before push.
 
-## Future Melos Option
+Recommended package workflow path:
 
-Melos may become useful after the workspace needs package graph awareness,
-version orchestration, bootstrap hooks, or CI matrix generation. It is not
-needed yet for this phase because the current requirement is simple validation
-across a fixed set of apps and packages.
+- add one reusable package validation workflow template later
+- trigger on package repo pushes and PRs
+- run `dart pub get` / `flutter pub get` as appropriate
+- run package analyze
+- run package tests
+- avoid app web build unless the package is being consumed by an app release
 
-Revisit Melos after the next shared extraction wave creates more inter-package
-dependencies or when root CI is ready to own workspace validation.
+No package version bumps, tags, workflow files, or dependency changes were made
+for this audit.
+
+## Current GitHub Actions Findings
+
+### App / XYZ
+
+`apps/rand0m` currently has:
+
+- `firebase-hosting-pull-request.yml`: full app PR validation
+- `firebase-hosting-merge.yml`: full app main validation
+- `manual-firebase-deploy.yml`: protected manual production deploy
+- `earth-fast-validation.yml`: Earth branch validation plus guarded preview
+  deploy for `randomknights-xyz.web.app`
+
+Findings:
+
+- PR/main workflows run full app validation and web build. This is correct for
+  release paths but expensive for narrow feature/doc/package work.
+- Earth Fast is correctly restricted to `earth/**` and preview deploys only.
+- Earth Fast path filters currently focus on Connect/Earth model, service,
+  widget, and test paths. Later Earth Intelligence files outside those paths may
+  need the filter expanded so Earth-only pushes trigger the fast workflow.
+- Production deploy remains manual/protected and should stay separate from
+  Earth Fast preview deploys.
+
+### Repo 123
+
+`C:\Projects\qa-kitt\123` currently has:
+
+- `manual-generated-tests.yml`
+- `generated-test-execution-design.yml`
+- `pr-comment-summary.yml`
+
+Findings:
+
+- Workflows are `workflow_dispatch` only.
+- `dry_run` defaults protect execution/comment behavior.
+- Manual runner and PR comment paths are repo-side only; the app remains a
+  preview/control plane.
+- This repo should keep validation separate from Flutter app validation.
+
+### QA Docs / Org Profile
+
+No `.github\README.md` file exists in the local qa docs repo. READLESS remains
+the authoritative documentation home. No org-level workflow files were found in
+the local `.github` repo during this audit.
+
+### ABC Classroom
+
+No `.github\workflows` folder was found in `abc`. Classroom work can stay
+manual until lesson/lab generation needs a static docs or asset hygiene check.
+
+## Recommended Segmented Validation Workflows
+
+These are recommendations only; no workflow files were changed in W1.0.
+
+| Segment | Trigger paths | Commands | Skip | Artifacts | Secrets | Cost |
+| --- | --- | --- | --- | --- | --- | --- |
+| Packages | package repo PR/push, `packages/rk_*` release branches | package pub get, analyze, package tests | app tests, app web build, Firebase | package test logs | package-read key only when consuming private deps | Low |
+| App Core | routing, shared services, non-Earth app files | `flutter pub get`, `flutter analyze`, focused tests, full tests when broad | Firebase deploy | test logs | app env secrets only in CI env generation | Medium |
+| Earth | `earth/**` branches and Earth paths | Earth Fast Cycle | full suite except checkpoint | web build, preview URL if configured | Firebase preview service account, package-read key | Medium |
+| Agents | agent config, provider/model UI, command lifecycle | focused agent/provider tests, analyze | Earth Fast, deploy | test logs | no provider secrets unless env generation required | Low-Medium |
+| Test / Inspect | Utility/Test, recorder, repo 123 handoff models | focused utility tests, analyze | app web build unless release checkpoint | model/UI test logs | none | Low-Medium |
+| More / Experience | About, Relax, Vibe, Favorites, drawer/menu surfaces | focused page tests, analyze | Earth Fast, repo 123 checks | page test logs | none | Low-Medium |
+| Repo 123 Automation | `C:\Projects\qa-kitt\123` only | git status, workflow/static review, JSON/package syntax checks, secret scan | Flutter tests, web build, validate-all | sample artifacts only | none by default | Low |
+| ABC Classroom | `C:\Projects\qa-kitt\abc` only | markdown review, asset inventory, secret/binary scan | Flutter tests, app build | none | none | Low |
+| Full Release Gate | explicit release checkpoint/main merge/deploy | app analyze, app tests, app build web, `validate-all.ps1` | nothing relevant | build output, validation logs | package-read key, approved env/deploy secrets | High |
+
+## Change-To-Validation Matrix
+
+| Change type | Minimum validation |
+| --- | --- |
+| Docs-only in qa-kitt READLESS | markdown/static review and git status; no Flutter. |
+| Root docs/config only | static review and git status; no Flutter unless runtime config changed. |
+| Repo 123 docs/fixtures/workflows | workflow/static review, JSON/package syntax where relevant, secret scan; no Flutter. |
+| ABC classroom docs/assets | markdown review, asset inventory, binary/secret scan; no Flutter. |
+| Package source | package pub get, package analyze, package tests; app validation only before consumer release. |
+| App page/widget/service | focused app tests plus analyze; full app tests/build for broad or release scope. |
+| Earth-only app work | Earth Fast Cycle. |
+| Cross-system runtime work | full app validation and release-gate checks. |
+| Firebase Functions/auth/provider secret work | function-specific validation plus app validation if app runtime changed. |
+| Production deploy | full release gate and protected/manual deploy only. |
+
+The guardrail is intentional: do not run hundreds of Flutter tests or a web
+build when a task changes only repo 123, ABC, QA docs, or root docs/config that
+do not affect app runtime.
+
+## ABC Classroom Inventory
+
+Current tracked classroom content:
+
+- `README.md`
+- `lessons\intro.md`
+- `lessons\render-media-composition.md`
+- `labs\sandbox.md`
+- `labs\render-media-composition.md`
+
+Current untracked `assets/` inventory:
+
+- batch samples: `CALCULATOR.bat`, `GUESSING GAME.bat`,
+  `MR.ROBOT PC-CLEAN.bat`, `PASSWORD GENERATOR.bat`, `POKEMON.bat`,
+  `RAINBOW MATRIX.bat`, `REND3R.bat`, `TIC-TAC-TOE.bat`
+- MP3 samples: `beach.mp3`, `breeze.mp3`, `cafe.mp3`, `city.mp3`,
+  `crickets.mp3`, `fire.mp3`, `forest.mp3`, `rain.mp3`
+- Python samples: `asteroid-tracking.py`, `earth-vision.py`,
+  `iss-tracking.py`, `nasa-vision.py`
+
+No `ffmpeg.exe`, `ffprobe.exe`, archive, or video binary appeared in the
+classroom file list during this audit. That boundary should remain:
+
+- do not commit FFmpeg binaries
+- do not commit large generated media outputs
+- ABC README now points students to official FFmpeg installation guidance;
+  labs should continue to require FFmpeg on PATH
+- `REND3R.bat` should remain classroom-only and should not become an app
+  runtime dependency
+
+Recommended classroom next steps:
+
+- decide whether the untracked `assets/` folder is intended to be committed
+  or ignored
+- keep official FFmpeg download/install guidance visible in classroom docs
+- fill the remaining planned lessons/labs as separate curriculum phases
+- keep production Rand0m free of FFmpeg binaries, render tabs, local writers,
+  and browser-side muxing
+
+## Audit Recommendations
+
+Priority 1:
+
+- Keep validation-scope guardrails explicit in CODEX/RUNBOOK and completion
+  reports.
+- Do not run full app validation for repo 123, ABC, QA docs, or root docs-only
+  work.
+- Decide the classroom `assets/` commit/ignore policy before more classroom
+  phases.
+
+Priority 2:
+
+- Add package-local validation workflows when package phases resume.
+- Expand Earth Fast path filters when Earth Intelligence files outside
+  `lib/models/connect/earth_*.dart`, `lib/services/connect/earth_*.dart`, and
+  `lib/widgets/connect/**` become normal Earth work.
+- Add a lightweight repo 123 workflow lint/check job only if manual workflow
+  complexity grows.
+
+Priority 3:
+
+- Add an ABC markdown/asset hygiene workflow when classroom content becomes a
+  regular publishing surface.
+- Consider a future matrix-based app validation workflow that chooses focused
+  test groups by changed path, while preserving the full release gate on main
+  and release checkpoints.
+
+## W1.0 Validation
+
+W1.0 was an audit/docs phase. Heavy validation was intentionally skipped.
+
+Performed checks:
+
+- required guidance read for CODEX, RUNBOOK, repo 123 README, and ABC README
+- local repo status, branch, identity, remote, and recent commit audit
+- package README/pubspec/test/workflow/tag inventory
+- app and repo 123 workflow inspection
+- ABC lesson/lab/asset inventory
+- FFmpeg/binary pattern check for ABC
+- ABC README FFmpeg boundary alignment
+
+Skipped by scope:
+
+- `flutter test`
+- `flutter build web`
+- `validate-all.ps1`
+- package tests
+- workflow implementation
+- deployment
