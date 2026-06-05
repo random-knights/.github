@@ -120,20 +120,22 @@ for this audit.
 
 `apps/rand0m` currently has:
 
-- `firebase-hosting-pull-request.yml`: full app PR validation
-- `firebase-hosting-merge.yml`: full app main validation
+- `app-core-validation.yml`: App Core scoped validation
+- `agents-validation.yml`: Agents scoped validation
 - `manual-firebase-deploy.yml`: protected manual production deploy
+- `more-experience-validation.yml`: More/Experience scoped validation
+- `test-inspect-validation.yml`: Utility/Test/Inspect scoped validation
 - `earth-fast-validation.yml`: Earth branch validation plus guarded preview
   deploy for `randomknights-xyz.web.app`
+- `full-release-gate.yml`: broad release validation for main, PRs to main, and
+  manual dispatch
 
 Findings:
 
-- PR/main workflows run full app validation and web build. This is correct for
-  release paths but expensive for narrow feature/doc/package work.
-- Earth Fast is correctly restricted to `earth/**` and preview deploys only.
-- Earth Fast path filters currently focus on Connect/Earth model, service,
-  widget, and test paths. Later Earth Intelligence files outside those paths may
-  need the filter expanded so Earth-only pushes trigger the fast workflow.
+- Segmented workflows run path-scoped checks and do not deploy.
+- Full Release Gate is the only broad app validation workflow.
+- Earth Fast is restricted to `earth/**` for push preview behavior and now
+  includes broader Earth model, service, widget, test, and tooling paths.
 - Production deploy remains manual/protected and should stay separate from
   Earth Fast preview deploys.
 
@@ -166,16 +168,16 @@ manual until lesson/lab generation needs a static docs or asset hygiene check.
 
 ## Recommended Segmented Validation Workflows
 
-These are recommendations only; no workflow files were changed in W1.0.
+W1.1 implemented the first workflow files for the recommended segmentation.
 
 | Segment | Trigger paths | Commands | Skip | Artifacts | Secrets | Cost |
 | --- | --- | --- | --- | --- | --- | --- |
-| Packages | package repo PR/push, `packages/rk_*` release branches | package pub get, analyze, package tests | app tests, app web build, Firebase | package test logs | package-read key only when consuming private deps | Low |
-| App Core | routing, shared services, non-Earth app files | `flutter pub get`, `flutter analyze`, focused tests, full tests when broad | Firebase deploy | test logs | app env secrets only in CI env generation | Medium |
-| Earth | `earth/**` branches and Earth paths | Earth Fast Cycle | full suite except checkpoint | web build, preview URL if configured | Firebase preview service account, package-read key | Medium |
-| Agents | agent config, provider/model UI, command lifecycle | focused agent/provider tests, analyze | Earth Fast, deploy | test logs | no provider secrets unless env generation required | Low-Medium |
-| Test / Inspect | Utility/Test, recorder, repo 123 handoff models | focused utility tests, analyze | app web build unless release checkpoint | model/UI test logs | none | Low-Medium |
-| More / Experience | About, Relax, Vibe, Favorites, drawer/menu surfaces | focused page tests, analyze | Earth Fast, repo 123 checks | page test logs | none | Low-Medium |
+| Packages | package repo PR/push/manual dispatch | `flutter pub get`, `dart format --set-exit-if-changed lib test`, `flutter analyze`, `flutter test` | app tests, app web build, Firebase | package test logs | none by default | Low |
+| App Core | routing, shared services, home/core paths/manual dispatch | pub get, build runner, analyze, focused core tests | Firebase deploy, full suite/build | test logs | package-read key, app env secrets for generated env | Medium |
+| Earth | `earth/**` branches, Earth paths/manual dispatch | Earth Fast Cycle | full suite except checkpoint | web build, preview URL if configured | Firebase preview service account, package-read key | Medium |
+| Agents | agent config, provider/model UI, command lifecycle/manual dispatch | pub get, build runner, analyze, focused agent tests | Earth Fast, deploy, full suite/build | test logs | package-read key, app env secrets for generated env | Low-Medium |
+| Test / Inspect | Utility/Test paths/manual dispatch | pub get, build runner, analyze, utility test tab test | app web build unless release checkpoint | model/UI test logs | package-read key, app env secrets for generated env | Low-Medium |
+| More / Experience | About, Relax, Vibe, Favorites, media/weather paths/manual dispatch | pub get, build runner, analyze, focused experience tests | Earth Fast, repo 123 checks, full suite/build | page test logs | package-read key, app env secrets for generated env | Low-Medium |
 | Repo 123 Automation | `C:\Projects\qa-kitt\123` only | git status, workflow/static review, JSON/package syntax checks, secret scan | Flutter tests, web build, validate-all | sample artifacts only | none by default | Low |
 | ABC Classroom | `C:\Projects\qa-kitt\abc` only | markdown review, asset inventory, secret/binary scan | Flutter tests, app build | none | none | Low |
 | Full Release Gate | explicit release checkpoint/main merge/deploy | app analyze, app tests, app build web, `validate-all.ps1` | nothing relevant | build output, validation logs | package-read key, approved env/deploy secrets | High |
@@ -251,10 +253,10 @@ Priority 1:
 
 Priority 2:
 
-- Add package-local validation workflows when package phases resume.
-- Expand Earth Fast path filters when Earth Intelligence files outside
-  `lib/models/connect/earth_*.dart`, `lib/services/connect/earth_*.dart`, and
-  `lib/widgets/connect/**` become normal Earth work.
+- Review package-local validation workflows after their first CI runs and tune
+  package-specific commands if needed.
+- Review segmented app workflow path filters after their first CI runs and tune
+  any missed/overlapping paths.
 - Add a lightweight repo 123 workflow lint/check job only if manual workflow
   complexity grows.
 
@@ -288,3 +290,24 @@ Skipped by scope:
 - package tests
 - workflow implementation
 - deployment
+
+## W1.1 Implementation Notes
+
+W1.1 implemented segmented workflow files without changing runtime app,
+package, automation, or classroom features.
+
+Implemented:
+
+- app scoped workflows for App Core, Agents, Test/Inspect, More/Experience,
+  Earth, and Full Release Gate
+- one package validation workflow in each `rk_*` package repo
+- ABC classroom static validation workflow
+- root CODEX/RUNBOOK workflow guidance updates
+
+Not changed:
+
+- repo 123 workflow behavior; W1.0 found its workflows already manual/dry-run
+  guarded
+- Firebase secrets or deploy behavior
+- package versions or tags
+- classroom lessons/labs/assets
