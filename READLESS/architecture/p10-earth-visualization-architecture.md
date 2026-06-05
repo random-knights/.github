@@ -58,6 +58,7 @@ Planetary Intelligence
 -> Globe Preview
 -> Evidence Replay
 -> Earth Agent Context Bridge
+-> Earth Agent Command Surface
 -> Earth Query Engine
 -> Earth Preview Engine
 -> Earth Agent Activation Preview
@@ -254,6 +255,14 @@ Current implementation includes:
   region questions remain future-supported and source-required; Earth must not
   guess operating regions or enable company/entity lookup without approved
   source data.
+- Earth Agent Command Surface for visible Earth-local `@scient1st` question
+  preparation. The command surface may accept user text, show selected
+  region/time context, list supported and unsupported question examples, and
+  generate app-local `EarthAgentRequest`, `EarthAgentContextPacket`, and
+  `EarthPreviewRequest` metadata. It must remain preview-only: no live chat,
+  provider calls, entity/company lookup, live web lookup, new overlays, secret
+  exposure, raw imagery, precise species locations, or investment/purchase
+  advice.
 - Earth Query Engine for turning Earth Intelligence and regional dashboard
   metadata into structured, app-local query results. Supported query types may
   include health score, region comparison, trend analysis, evidence summary,
@@ -326,6 +335,12 @@ Current implementation includes:
   expose precise sensitive coordinates, or guess company/entity operating
   regions. Entity/company region lookup requires approved source data or
   user-supplied regions before preview generation.
+- Earth Agent Command Surface is the first visible Earth-native command
+  surface. Submitting a question must generate only preview-ready request
+  metadata from current Earth state. Supported questions may map to health,
+  comparison, trend, evidence, verification, or monitoring summaries. Unsupported
+  company/entity, live lookup, precise sensitive location, and investment
+  questions must show source-required/future-supported copy and must not guess.
 - Earth Query Engine is the structured question layer between Earth
   Intelligence and future Earth agents. It may produce evidence-aware answers
   and future preview request metadata from current app state, but it must not
