@@ -71,6 +71,34 @@ Dashboard, layer cards, regional summaries, and layer detail drilldowns remain
 the source of truth. The Planet Health Schematic and Globe Preview visualize
 that metadata; they do not replace it.
 
+### AIEDS Alignment Note
+
+A1.0 introduces the AI Environmental Disclosure Standard (AIEDS) v1 as the
+future ecosystem-wide standard for AI environmental reporting. Earth should
+align future Carbon and Tree-Time disclosures to AIEDS without changing the
+dashboard source-of-truth hierarchy.
+
+AIEDS keeps Carbon as the primary scientific metric and treats Tree-Time as an
+educational equivalency only. AIEDS v1 defines a Mature Reference Tree (MRT) as
+22 kg CO2e/year for future standard disclosures. Existing runtime/history
+surfaces may still show the earlier 21 kg/year Tree-Time assumption until a
+future adoption phase migrates and labels the methodology. Do not mix these
+methodologies without explicit disclosure.
+
+Future Earth alignment should remain:
+
+```text
+AI Response
+-> Carbon
+-> Tree-Time
+-> Earth Context
+-> Regional Context
+-> Restoration Context
+```
+
+A1.0 does not enable live regional grid context, restoration context, provider
+measurement, or Earth runtime linkage.
+
 Planetary Intelligence is the current top-level synthesis layer. It may
 summarize health, risk, recovery, restoration, verification, monitoring,
 research, scenarios, Earth Vision, and visualization readiness, but it must stay
