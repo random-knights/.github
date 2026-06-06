@@ -1203,3 +1203,431 @@ Stage 1/2 should be app-local and reversible:
 - No provider key changes.
 - No command architecture changes.
 - No deploy.
+
+## P21.0 Live Earth Layer Research And Provider Strategy
+
+Date: 2026-06-06
+
+Status: architecture/research only. This section does not authorize provider
+integration, API keys, Firebase Functions, OAuth, maps SDKs, WebGL, package
+changes, app runtime changes, validation workflow changes, or deployment.
+
+Current Earth state entering P21:
+
+- P19 established entity resolution and manual entity-to-region preview
+  metadata.
+- P20 established the globe-first Earth workstation foundation, including
+  entity-aware overlays, marker pulse, focus halo, synthetic flow, region-aware
+  motion routing, layer visibility, and visualization mode controls.
+- No real-time Earth provider integration exists yet.
+
+### Workstation Alignment
+
+The canonical Earth UX target remains the Earth workstation mockup. Future
+provider-backed layers must integrate into the existing workstation regions:
+
+```text
+Top center: @scient1st request anchor
+Top left:   selection, response context, active routing, entity/region focus
+Center:     dominant globe / Earth motion field
+Bottom left: layer controls, filters, visibility, mode controls
+Right:      Earth score, intelligence summary, drivers, evidence readiness
+```
+
+Reject architectures that turn Earth into a disconnected dashboard of provider
+cards. Provider data should enter through a shared Earth layer registry and
+render through the center globe, with supporting text in the left/right panels.
+
+Provider-backed layers must preserve the existing guardrail language:
+
+- Preview Only until a provider contract is approved and implemented.
+- No Live Provider Lookup unless data is fetched through an approved
+  server-side boundary.
+- Not Provider Verified unless verification evidence, attribution, interval,
+  and confidence are present.
+- No Verified Environmental Claims unless a future evidence standard explicitly
+  authorizes that claim type.
+
+### Layer Taxonomy
+
+Layer groups for the next architecture wave:
+
+| Group | Candidate layers | Primary interactions |
+| --- | --- | --- |
+| Earth Systems | Weather, wind, ocean currents, temperature, ice/glaciers | Show current/broad state, animate flow, compare region conditions, scrub history. |
+| Environmental | Wildfires, forests, biodiversity, protected areas, encroachment | Focus affected regions, show readiness/evidence, compare protected/project areas. |
+| Human Activity | Flights, ships, satellites | Show aggregated corridors or counts, never unrestricted tracking by default. |
+| Projects | Carbon projects, restoration projects, water projects | Map project metadata to broad regions, evidence artifacts, monitoring status. |
+| Entities | Companies, regions, operations, project groups | Resolve entity to known regions/projects, activate comparison and focus routing. |
+| Intelligence | Monitoring, verification, evidence, Earth Score | Summarize source freshness, confidence, limitations, and claim support. |
+
+Expected user interactions:
+
+- "Show Microsoft" should resolve a known entity, surface mapped regions in the
+  context panel, and activate entity/region layers without provider lookup.
+- "Compare Microsoft and Salesforce" should activate dual entity routing and
+  comparison visual mode.
+- "Show Indonesia" should focus the broad region, available Earth context, and
+  source readiness.
+- "Show VCM projects" should filter project layers and list evidence readiness
+  without implying verification.
+- "Show restoration projects" should show project metadata, monitoring
+  readiness, and evidence gaps.
+
+### Provider Evaluation Dimensions
+
+Every provider candidate remains unapproved until a source contract records the
+following dimensions:
+
+| Dimension | Requirement |
+| --- | --- |
+| License and attribution | Confirm allowed use, redistribution limits, attribution text, citation rules, and commercial restrictions. |
+| Pricing and quotas | Record free tier, paid plan, rate limits, quota ownership, and failure behavior before runtime use. |
+| API quality | Prefer documented, stable APIs with examples, schema clarity, versioning, and supportable authentication. |
+| Update frequency | Store source cadence, observed-at, fetched-at, expires-at, and stale-state rules per snapshot. |
+| Visualization suitability | Prefer data that can become broad-region summaries, coarse grids, vectors, markers, or evidence artifacts. |
+| Firebase compatibility | Do not expose secrets in Flutter web; future provider access should use an approved server-side/cache boundary. |
+| Browser compatibility | Avoid raw GeoTIFF, NetCDF, GRIB, dense vector tiles, and heavy provider SDKs in the client. |
+| Caching strategy | Define TTL, cache key, derived-payload shape, and stale-safe fallback before implementation. |
+| Safety and privacy | Default to broad regions/aggregates; restrict sensitive species, precise assets, flights, ships, and private land analysis. |
+
+The first approved provider path should favor a low-volume, server-cached
+weather/wind or wildfire/forest evidence snapshot. Do not begin with live
+tracking, bulk imagery, commercial-only registry data, or precise sensitive
+geometry.
+
+### Provider Candidate Matrix
+
+The following research is current as of 2026-06-06 and must be rechecked before
+implementation, contracting, or production use.
+
+| Layer need | Recommended first candidate | Secondary candidates | Current evaluation |
+| --- | --- | --- | --- |
+| Weather and temperature | Open-Meteo | NOAA/NWS for US alerts/forecasts, ECMWF Open Data for advanced model products, Copernicus Climate Data Store for climate history | Open-Meteo is simple and browser-friendly for prototyping, but free use is non-commercial and commercial use requires subscription/API key. NWS is free/open for US-only data with rate limits. ECMWF became fully open-data in 2025 under CC BY 4.0 for open products, but model products are heavier and should be backend-cached. CDS is open/free for climate data but is not a low-latency product feed. |
+| Wind flow | Open-Meteo weather/wind fields | ECMWF Open Data, NWS for US | Use Open-Meteo for first provider-backed flow prototype if commercial terms are accepted. Use ECMWF only after a gridded-data worker/cache exists. |
+| Ocean currents and waves | Open-Meteo Marine API | Copernicus Marine, NOAA CO-OPS for US stations | Open-Meteo Marine is the easiest point/route prototype and includes ocean current fields. Copernicus Marine provides authoritative OGC/CMDS APIs and free/full/open Copernicus access, but data volume requires backend tiling/caching. NOAA CO-OPS is strong for US tide/current stations, not global flow. |
+| Wildfires | NASA FIRMS | Global Forest Watch fire layers | NASA FIRMS remains the primary active-fire candidate. Keep as summary/region markers until coordinate precision, attribution, update interval, and safety copy are approved. |
+| Glaciers and ice | WGMS plus GLIMS | NSIDC/NASA Earthdata | WGMS data policy is open access with citation/CC BY 4.0 alignment. GLIMS provides downloads plus WMS/WFS access. Prefer broad glacier metadata and trend summaries before any boundary rendering. |
+| Flights | No default live provider | OpenSky for research/license-gated use, ADS-B Exchange for commercial data | OpenSky requires written license for operational REST API use and for commercial entities. ADS-B Exchange offers production subscription products and live data, but any integration must be opt-in, aggregated, safety-reviewed, and never unrestricted tracking. |
+| Ships | No default live provider | NOAA MarineCadastre historical US AIS, MarineTraffic/Kpler for commercial AIS | NOAA MarineCadastre is useful for historical US AIS and planning; live/global AIS usually requires commercial licensing. Ship layers should begin as aggregated corridors/counts, not individual vessel tracking. |
+| Satellites and Earth observation | Copernicus Data Space Ecosystem | NASA Earthdata CMR/STAC, Sentinel Hub, Google Earth Engine | Copernicus Sentinel data is free/full/open and CDSE exposes catalog/SDA/openEO/S3/Traceability APIs. NASA CMR/STAC is strong for discovery. Sentinel Hub is paid/OAuth and useful for processing/tiles. Earth Engine is powerful but pricing/terms require careful backend governance. |
+| Protected areas | Protected Planet API v4 for non-commercial/research | IBAT for commercial use | Protected Planet v4 is current after the WDPA/WD-OECM merge; commercial use is not allowed through the free API. Any commercial app path likely needs IBAT or another licensed source. Do not render sensitive boundaries by default. |
+| Biodiversity | GBIF | iNaturalist, IUCN/IBAT where licensed | GBIF provides REST APIs and open-access occurrence data with standardized licenses (CC0, CC BY, CC BY-NC). Use broad richness/observation summaries only; never expose sensitive species coordinates in the workstation. |
+| Forest monitoring | Global Forest Watch Data API | NASA/UMD/Hansen datasets through Earthdata/STAC where needed | GFW Data API has OpenAPI documentation, account/API-key authentication, and many datasets with CC BY 4.0 metadata. Good candidate for forest loss/gain, alerts, and source-backed evidence artifacts. |
+| Carbon projects | Climate Action Data Trust metadata | Verra Registry, Gold Standard exports, ACR registry/terms, paid aggregators | CAD Trust is the strongest open metadata direction for carbon market transparency. Verra is authoritative but registry/API access and terms require review. Gold Standard states there is no current Impact Registry API and uses manual export. Start with public metadata/evidence links only. |
+| Restoration projects | Restor as research/reference candidate | Partner exports, project owner-provided records, future registries | Restor is a free restoration/conservation platform with site mapping and scientific monitoring context, but no approved app API contract is documented here. Treat restoration integration as partner/export-first until terms and API access are confirmed. |
+
+### Provider Source Notes
+
+Primary source references used for this pass:
+
+- Open-Meteo pricing and terms: https://open-meteo.com/en/pricing and
+  https://open-meteo.com/en/terms
+- NWS API: https://www.weather.gov/documentation/services-web-api
+- Open-Meteo Marine API:
+  https://open-meteo.com/en/docs/marine-weather-api
+- Copernicus access: https://www.copernicus.eu/en/terms-use/how-access-data
+- Copernicus Data Space APIs:
+  https://documentation.dataspace.copernicus.eu/APIs.html
+- Copernicus Data Space terms:
+  https://dataspace.copernicus.eu/terms-and-conditions
+- Copernicus Marine APIs:
+  https://help.marine.copernicus.eu/en/articles/4794731-which-apis-are-provided
+- Copernicus Climate Data Store:
+  https://climate.copernicus.eu/climate-data-store
+- ECMWF open data:
+  https://www.ecmwf.int/node/29013
+- NOAA CO-OPS:
+  https://www.co-ops.nos.noaa.gov/web_services_info.html
+- NASA FIRMS:
+  https://firms.modaps.eosdis.nasa.gov/active_fire/
+- WGMS data policy:
+  https://wgms.ch/data_policy/
+- GLIMS glacier data:
+  https://www.glims.org/glacierdata/index.php
+- NASA Earthdata CMR/STAC:
+  https://www.earthdata.nasa.gov/about/esdis/eosdis/cmr and
+  https://cmr.earthdata.nasa.gov/stac/docs/index.html
+- Sentinel Hub billing/authentication:
+  https://docs.sentinel-hub.com/api/latest/api/overview/billing/ and
+  https://docs.sentinel-hub.com/api/latest/api/overview/authentication/
+- Google Earth Engine pricing:
+  https://cloud.google.com/earth-engine/pricing
+- OpenSky terms:
+  https://opensky-network.org/about/terms-of-use
+- ADS-B Exchange:
+  https://www.adsbexchange.com/
+- MarineTraffic API docs:
+  https://servicedocs.marinetraffic.com/
+- NOAA MarineCadastre AIS:
+  https://marinecadastre.gov/accessais/ and
+  https://www.coast.noaa.gov/digitalcoast/data/marine-cadastre.html
+- Protected Planet API:
+  https://api.protectedplanet.net/ and
+  https://api.protectedplanet.net/documentation
+- GBIF terms and API:
+  https://www.gbif.org/terms and
+  https://techdocs.gbif.org/en/openapi/v1/occurrence
+- Global Forest Watch Data API:
+  https://data-api.globalforestwatch.org/
+- Climate Action Data Trust:
+  https://climateactiondata.org/ and
+  https://climateactiondata.org/frequently-asked-questions/
+- Verra Registry:
+  https://verra.org/registry/overview/
+- Gold Standard Impact Registry FAQ:
+  https://goldstandardhelp.freshdesk.com/support/solutions/articles/44002763127-gold-standard-impact-registry
+- Restor platform:
+  https://intercom.help/restor/en/articles/6903700-what-is-restor
+
+### Architecture Recommendation
+
+Do not connect providers directly to Flutter web. Use a staged provider
+boundary:
+
+```text
+Provider source
+-> source contract
+-> server-side fetch / scheduled ingest / manual evidence artifact
+-> normalized EarthLayerSnapshot
+-> cache
+-> workstation view model
+-> globe renderer + context/control/right-side summaries
+```
+
+Recommended normalized shape:
+
+```text
+EarthLayerSnapshot
+- layer_id
+- layer_group
+- provider_id
+- provider_name
+- source_url
+- license_label
+- attribution
+- fetched_at
+- observed_at
+- expires_at
+- region_scope
+- precision_scope
+- freshness_state
+- confidence_state
+- data_kind
+- geometry_policy
+- summary_metrics
+- visualization_payload
+- evidence_links
+- guardrails
+```
+
+Geometry policy is mandatory. Each layer must declare whether it can show:
+
+- no geometry
+- broad region only
+- point markers
+- aggregated grid/cell
+- approximate corridor
+- approved polygon
+
+Default to broad region or aggregate. Precise positions, sensitive species
+locations, private land analysis, unrestricted flight/ship tracking, and
+provider-backed environmental claims require separate approval.
+
+### Motion Architecture Strategy
+
+Migration path:
+
+```text
+Synthetic Flow
+-> Provider-backed Flow
+-> Multi-layer Earth Motion
+```
+
+Stage 1: keep the current synthetic flow painter and route state. Add no
+providers.
+
+Stage 2: introduce provider-backed flow snapshots for weather/wind or ocean in
+one broad region. Render as low-resolution vectors or route arcs in the existing
+center globe. Cache snapshots server-side. Labels must include source,
+observed-at, freshness, and "not verified environmental claims".
+
+Stage 3: add multiple provider-backed layers with a compositor:
+
+```text
+base globe
++ earth systems vectors
++ environmental alerts
++ entity/project markers
++ focus halo
++ comparison halo
++ timeline highlight
++ evidence badges
+```
+
+Stage 4: consider map/globe engine upgrades only after source contracts,
+caching, attribution, and performance budgets are proven. Do not introduce
+WebGL/Three.js/OpenLayers/Mapbox/ArcGIS as the next step.
+
+### Entity Intelligence Integration
+
+Entity relationships should resolve before provider lookup:
+
+```text
+Company
+-> known/manual regions
+-> known/manual projects
+-> approved Earth context layers
+-> monitoring/evidence readiness
+-> verification eligibility
+```
+
+```text
+VCM or restoration project
+-> project registry/public profile
+-> broad region
+-> Earth context
+-> evidence artifact
+-> monitoring path
+-> verification readiness
+```
+
+Entity layers should never infer operating regions from provider data without a
+source. Company/project/region mapping remains manual/source-backed until a
+future entity-source contract exists.
+
+### Layer Controls Strategy
+
+Controls should remain bottom-left and scale through hierarchy, not more cards:
+
+```text
+Layers
+- Earth Systems
+  - Weather
+  - Wind
+  - Ocean
+  - Temperature
+  - Ice / Glaciers
+- Environmental
+  - Wildfires
+  - Forests
+  - Biodiversity
+  - Protected Areas
+  - Encroachment
+- Human Activity
+  - Flights
+  - Ships
+  - Satellites
+- Projects
+  - Carbon
+  - Restoration
+  - Water
+- Entities
+  - Companies
+  - Regions
+  - Operations
+  - Project Groups
+- Intelligence
+  - Monitoring
+  - Verification
+  - Evidence
+  - Earth Score
+```
+
+Recommended control patterns:
+
+- Group accordions for categories.
+- Switches for layer visibility.
+- Segmented control for visualization mode.
+- Sliders only for intensity or timeline playback.
+- Source/freshness chips in the right panel, not repeated under every layer.
+- Disabled states for planned or unlicensed layers.
+- Search/filter for large layer lists before adding more permanent panels.
+
+### Timeline Strategy
+
+Timeline remains part of the globe experience, not a separate product.
+
+Timeline event types:
+
+- provider observation
+- provider refresh
+- monitoring event
+- evidence artifact
+- project milestone
+- entity mapping update
+- verification candidate change
+- Earth Score snapshot
+
+Timeline interactions:
+
+- scrub or step changes the active globe snapshot
+- focused event updates context panel
+- evidence event updates right-side evidence summary
+- layer availability follows source/freshness windows
+- unavailable historical data is shown as disabled, not inferred
+
+Do not implement playback until at least one provider-backed snapshot source and
+cache contract exists.
+
+### Caching And Firebase Strategy
+
+Preferred caching layers:
+
+1. Manual/static evidence artifacts for current preview phases.
+2. Scheduled server-side fetch into compact JSON snapshots.
+3. Edge/CDN cache for public, non-sensitive, attribution-safe layer snapshots.
+4. Client memory cache for active workstation session only.
+
+Firebase compatibility notes:
+
+- Do not expose provider secrets in Flutter web.
+- Public no-key sources may still need server-side caching to control cost,
+  rate limits, attribution, and shape normalization.
+- Use callable/HTTPS functions or scheduled jobs only in a future approved
+  provider phase.
+- Store compact derived snapshots, not raw raster or bulk geospatial products.
+- Keep large raster/vector processing outside Flutter web runtime.
+
+Browser compatibility notes:
+
+- First provider-backed layers should render with existing Flutter widgets and
+  CustomPainter.
+- Avoid raw GeoTIFF, NetCDF, GRIB, heavy STAC asset reads, and large vector
+  tiles in-browser.
+- Normalize to compact JSON, bins, vectors, markers, and summaries before the
+  app sees the data.
+
+### Risks And Mitigations
+
+| Risk | Mitigation |
+| --- | --- |
+| Provider lock-in | Normalize all sources into `EarthLayerSnapshot`; keep provider-specific fields in source contracts only. |
+| Cost spikes | Server-side cache, quota budgets, stale-safe fallbacks, no client fan-out, paid-provider approval gates. |
+| Licensing drift | Recheck terms before implementation; store license label and attribution per snapshot. |
+| Data freshness confusion | Always show observed-at/fetched-at/expires-at and freshness state. |
+| Browser performance | No raw raster/bulk geospatial data in Flutter web; compact snapshots only. |
+| Mobile performance | Low-resolution default layers, progressive disclosure, reduced animation, no dense live streams. |
+| Sensitive locations | Broad regions/aggregates by default; protected-area boundaries, species, flights, ships require safety review. |
+| Verification overclaiming | Evidence and monitoring can support readiness; verified claims require explicit evidence standard and review. |
+| Entity inference | No automatic company/project region inference without a source-backed relationship. |
+| Timeline complexity | Timeline consumes snapshots/events; it does not own provider fetching. |
+
+### Recommended Next Phases
+
+1. P21.1 Source Contract Design:
+   define `EarthProviderContract`, `EarthLayerSnapshot`, attribution, freshness,
+   geometry policy, caching policy, and guardrails without integrating a real
+   provider.
+2. P21.2 Weather/Wind Prototype Plan:
+   select Open-Meteo or NWS/ECMWF for a server-side cached, low-resolution
+   broad-region prototype; no direct Flutter web key.
+3. P21.3 Wildfire/Forest Evidence Plan:
+   align NASA FIRMS and Global Forest Watch with existing Earth Vision evidence
+   artifacts and region-safe markers.
+4. P21.4 Entity/Project Source Mapping Plan:
+   define how company, VCM, restoration, water, and regional sources are
+   accepted, cited, and mapped before any provider lookup.
+
+P21.0 recommendation: start with source contracts and snapshot normalization,
+not a live provider implementation.
