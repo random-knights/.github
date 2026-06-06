@@ -1631,3 +1631,134 @@ Browser compatibility notes:
 
 P21.0 recommendation: start with source contracts and snapshot normalization,
 not a live provider implementation.
+
+## P21.1 Provider Source Contract And Snapshot Schema
+
+Date: 2026-06-06
+
+Status: app-local schema implementation only. P21.1 defines provider-agnostic
+models and deterministic fixtures in `apps/rand0m`; it does not authorize live
+provider calls, provider credentials, Firebase Functions, OAuth, persistence,
+deployment, workflow changes, or verified environmental claims.
+
+### Implemented App Model
+
+Concrete app model path:
+
+```text
+apps/rand0m/lib/models/connect/earth_layer_snapshot.dart
+```
+
+The schema introduces:
+
+- `EarthProviderSource`
+- `EarthLayerSourceDefinition`
+- `EarthLayerSnapshot`
+- `EarthLayerSnapshotRecord`
+- `EarthLayerSnapshotMetadata`
+- `EarthLayerFreshness`
+- `EarthLayerAttribution`
+- `EarthLayerLicense`
+- `EarthLayerVisualizationHint`
+
+Layer group taxonomy is encoded as:
+
+- Earth Systems
+- Environmental
+- Human Activity
+- Projects
+- Entities
+- Intelligence
+
+### Snapshot Shape
+
+`EarthLayerSnapshot` normalizes future provider or evidence inputs into:
+
+- layer id
+- layer group
+- source id
+- region/entity/project scope
+- captured-at timestamp
+- optional valid-from/valid-to window
+- freshness state
+- confidence label
+- attribution
+- license summary
+- records
+- visualization hints
+- caveats and guardrails
+
+`EarthLayerSnapshotRecord` intentionally supports only preview-safe generalized
+shapes:
+
+- point
+- region label
+- path
+- grid summary
+- event marker
+- metric summary
+
+No provider-specific payload, raw provider response, precise sensitive
+coordinate feed, raster, vector tile, GeoTIFF, NetCDF, GRIB, or bulk geospatial
+blob is part of P21.1.
+
+### Freshness And Cache Metadata
+
+Freshness states are:
+
+- fresh
+- stale
+- expired
+- unavailable
+- preview fixture
+
+The model records cache key, TTL, source update cadence, last refresh label,
+and provider caveats, but does not implement caching or persistence. Future
+provider phases must still define server-side cache ownership, source cadence,
+expiration behavior, stale fallback, attribution, and quota controls before
+runtime use.
+
+### Visualization Readiness Mapping
+
+Snapshot records can advertise readiness for existing Earth workstation
+concepts without changing UI behavior:
+
+- overlay marker
+- motion layer
+- focus region
+- timeline event
+- right-side summary
+- context panel detail
+
+This preserves the P21.0 workstation strategy: provider data flows through
+normalized snapshots into the dominant globe, top-left context, bottom-left
+controls, and right-side intelligence instead of creating new dashboard regions.
+
+### Fixture Snapshots
+
+P21.1 includes deterministic fixture snapshots for:
+
+- weather/wind preview
+- wildfire/forest evidence preview
+
+Fixture snapshots are labeled:
+
+- Preview Fixture
+- Preview Only
+- Not Live Data
+- No Live Provider Lookup
+- Not Provider Verified
+- No Verified Environmental Claims
+
+These fixtures are schema/validation aids only. They are not provider data,
+not cached data, not evidence of environmental state, and not a live lookup
+path.
+
+### Next Architecture Step
+
+P21.2 should design the first weather/wind provider prototype plan against this
+schema, including the source contract, server-side cache boundary, attribution,
+quota/rate limits, fixture-to-provider migration path, and workstation mapping.
+The preferred implementation target remains a low-volume, server-cached
+broad-region weather/wind snapshot. Do not begin with live tracking, raw
+imagery, bulk gridded data, commercial-only registries, or sensitive geometry.
