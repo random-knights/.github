@@ -1951,6 +1951,88 @@ P21.2 preserves these boundaries:
 - no raw provider payloads in app runtime
 - no direct client fan-out to providers
 
-Recommended next phase: P21.3 Weather/Wind Cache Fixture Adapter, defining the
-server-cache request/response shape and a mock normalized snapshot adapter
-without connecting to Open-Meteo yet.
+P21.3 implements this next step as an app-local cache fixture adapter without
+connecting to Open-Meteo.
+
+## P21.3 Weather/Wind Cache Fixture Adapter
+
+Date: 2026-06-06
+
+Status: app-local fixture adapter and snapshot-normalization implementation
+only. P21.3 does not authorize live provider calls, external API integration,
+provider keys, Firebase Functions, scheduled jobs, persistence, deployment,
+workflow changes, or verified environmental claims.
+
+### Implemented App Model
+
+Concrete app model path:
+
+```text
+apps/rand0m/lib/models/connect/earth_layer_snapshot.dart
+```
+
+P21.3 adds:
+
+- `EarthWeatherWindProviderFixture`
+- `EarthWeatherWindCacheFixture`
+- `EarthWeatherWindSnapshotAdapter`
+
+The adapter accepts an Open-Meteo-shaped deterministic fixture payload and
+normalizes it into an `EarthLayerSnapshot`. The fixture includes generalized
+latitude/longitude, capture and validity windows, temperature, wind speed, wind
+direction, humidity, pressure, region label, source label, and caveats. It is
+not a real provider response and must not be treated as live weather data.
+
+### Cache Fixture Contract
+
+The cache fixture simulates the future server-cache boundary:
+
+```text
+cache key: fixture:earth-systems:open-meteo-shaped:weather-wind:indonesia
+freshness: Preview Fixture
+ttl: 30 minutes
+last refresh: P21.3 cache fixture; no provider refresh
+source cadence: simulated 30m cache cadence
+```
+
+This lets Earth test freshness, TTL, source cadence, stale-safe labels, and
+cache-key handling before any Firebase, server worker, scheduled job, or
+provider implementation exists.
+
+### Normalized Snapshot Records
+
+The adapter produces compact records for:
+
+- broad region label
+- generalized weather marker
+- temperature summary
+- humidity summary
+- pressure summary
+- symbolic wind flow hint
+- coarse weather/wind grid summary
+- captured/valid timeline label
+
+The records map to the current workstation targets:
+
+- globe flow layer
+- generalized overlay marker
+- right-side summary
+- top-left context panel
+- bottom-left layer controls
+- timeline label
+
+### Guardrails
+
+Every generated snapshot and record remains labeled:
+
+- Preview Fixture
+- Preview Only
+- Not Live Data
+- No Live Provider Lookup
+- Not Provider Verified
+- No Verified Environmental Claims
+
+P21.3 is the fixture-to-cache adapter bridge only. The next visualization phase
+can safely consume these normalized records for globe highlighting, overlay
+summary, layer controls, and timeline labels while still avoiding real provider
+fetching.
