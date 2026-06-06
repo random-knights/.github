@@ -1762,3 +1762,195 @@ quota/rate limits, fixture-to-provider migration path, and workstation mapping.
 The preferred implementation target remains a low-volume, server-cached
 broad-region weather/wind snapshot. Do not begin with live tracking, raw
 imagery, bulk gridded data, commercial-only registries, or sensitive geometry.
+
+## P21.2 Weather/Wind Provider Prototype Plan
+
+Date: 2026-06-06
+
+Status: provider prototype plan and app-local source-definition mapping only.
+P21.2 does not authorize live provider calls, client-side provider keys,
+Firebase Functions, scheduled jobs, persistence, deployment, workflow changes,
+or verified environmental claims.
+
+### Provider Candidate Review
+
+The first provider-backed Earth Systems prototype should use the smallest
+possible weather/wind surface: broad-region weather summary plus low-resolution
+wind flow metadata, normalized into `EarthLayerSnapshot`.
+
+| Candidate | Data fit | Access and terms | Prototype suitability |
+| --- | --- | --- | --- |
+| Open-Meteo | Point forecast, temperature, precipitation, wind speed, wind direction, hourly time series, multiple model APIs. | Free API is non-commercial and rate limited; commercial app use requires subscription/API key. Data terms reference CC BY 4.0 attribution. | Recommended first prototype because JSON shape is simple and maps cleanly to point, metric, grid summary, and motion hint records. Must be server-cached for production/commercial use. |
+| National Weather Service | US forecasts, alerts, observations, JSON-LD API, cache-friendly lifecycle. | Public US government service, free/open for any purpose, with reasonable non-public rate limits. | Good US-only fallback and alerts candidate. Not global enough for first Earth workstation weather/wind prototype. |
+| ECMWF Open Data | Global forecast model products, 10m/100m wind components, temperature, precipitation, wave fields. | Open products use CC BY 4.0 and can be redistributed commercially with attribution; access has simultaneous connection limits and rolling archive behavior. | Excellent future authoritative source, but GRIB/model products are too heavy for the first Flutter-facing prototype. Requires backend worker/cache and derived compact JSON. |
+| Copernicus Climate Data Store | Climate/reanalysis and dataset retrieval through API/batch access. | Terms vary by dataset and prohibit implying ECMWF/EU endorsement; CDS content is supplied as-is. | Better for climate context and historical/evidence workflows than low-latency weather/wind preview. Use later for climate summaries, not the first flow prototype. |
+
+Recommendation: start with Open-Meteo as a server-cached prototype candidate
+only. The free tier is suitable for evaluation, but commercial Rand0m use must
+not rely on client-side free API calls. Production use requires subscription,
+API-key governance, cache-before-provider, attribution, and stale-safe fallback.
+
+Primary source references checked for P21.2:
+
+- Open-Meteo pricing: https://open-meteo.com/en/pricing
+- Open-Meteo terms: https://open-meteo.com/en/terms
+- Open-Meteo forecast docs: https://open-meteo.com/en/docs
+- NWS API docs: https://www.weather.gov/documentation/services-web-api
+- ECMWF open data: https://www.ecmwf.int/en/forecasts/datasets/open-data
+- Copernicus Climate Data Store: https://climate.copernicus.eu/climate-data-store
+- CDS terms: https://cds.climate.copernicus.eu/licences/terms-of-use-cds
+
+### P21.1 Contract Mapping
+
+App-local model path:
+
+```text
+apps/rand0m/lib/models/connect/earth_layer_snapshot.dart
+```
+
+P21.2 adds inert prototype source definitions for:
+
+- `weather-provider-prototype`
+- `wind-provider-prototype`
+
+The selected planned provider source maps as:
+
+```text
+EarthProviderSource
+- id: open-meteo-weather-wind-prototype
+- access: serverCached
+- requiresServerBoundary: true
+- liveLookupEnabled: false
+- sourceUrl: https://open-meteo.com/en/docs
+- attribution: Open-Meteo / Weather Forecast API
+- license: CC BY 4.0 data with commercial subscription gated
+- caveats: Provider Prototype Plan, Preview Only, No Live Provider Lookup,
+  Server Boundary Required, Cache Before Provider, Not Provider Verified,
+  No Verified Environmental Claims, Commercial Terms Review Required
+```
+
+Weather source definition:
+
+```text
+EarthLayerSourceDefinition
+- layerId: weather-provider-prototype
+- group: Earth Systems
+- supported records: region label, point, grid summary, metric summary,
+  event marker
+- visualization hints: overlay marker, right-side summary, context panel
+  detail, timeline event
+- freshness policy: unavailable, planned 30m TTL, server cache required
+```
+
+Wind source definition:
+
+```text
+EarthLayerSourceDefinition
+- layerId: wind-provider-prototype
+- group: Earth Systems
+- supported records: region label, path, grid summary, metric summary
+- visualization hints: motion layer, focus region, right-side summary,
+  timeline event
+- freshness policy: unavailable, planned 30m TTL, server cache required
+```
+
+The existing P21.1 `weather-wind-preview` fixture remains the fixture parity
+target. It already demonstrates region label, generalized marker, symbolic
+path, grid summary, metric summary, motion-layer hint, focus-region hint, and
+right-side summary hint without provider data.
+
+### Snapshot Record Mapping
+
+Future normalized weather/wind snapshots should avoid raw provider payloads and
+produce compact records:
+
+| Record shape | Weather mapping | Wind mapping | Notes |
+| --- | --- | --- | --- |
+| point forecast | generalized selected-region point summary | optional generalized flow anchor | No precise sensitive or user-specific coordinate display. |
+| region summary | region label plus conditions summary | selected broad region wind context | Drives top-left context and right-side summary. |
+| grid summary | coarse cell count and range labels | low-resolution vector/grid summary | Derived server-side; no raw GRIB/NetCDF/tiles in Flutter web. |
+| metric summary | temperature, precipitation, condition confidence | wind speed/direction/intensity summary | Units, confidence, validity window, and source must be explicit. |
+| motion layer hint | usually disabled or marker-only | low-resolution flow vector hint | Feeds current globe flow layer without live movement claims. |
+| timeline event | captured/valid window label | captured/valid window label | Timeline labels source validity; it does not imply history or forecast proof. |
+
+Required metadata for every provider-backed snapshot:
+
+- `capturedAt`
+- `validFrom`
+- `validTo`
+- freshness state and TTL
+- confidence label
+- attribution and source URL
+- license summary
+- caveats and guardrails
+- source update cadence
+- cache key
+- geometry policy
+- precision scope
+
+### Cache And Firebase Plan
+
+The safest first cache path remains future-only:
+
+```text
+Open-Meteo
+-> approved server fetch
+-> normalized weather/wind EarthLayerSnapshot
+-> compact cache document/blob
+-> app reads normalized snapshot
+-> workstation view model
+```
+
+Rules:
+
+- No direct Flutter web calls to Open-Meteo in production.
+- No client-side provider keys.
+- No raw provider payload storage unless a future phase approves it.
+- Cache before provider, with low-volume prototype quotas.
+- Store compact normalized snapshots, not raw weather archives.
+- Show stale-safe fallback when refresh is unavailable.
+- Recheck terms, rate limits, and attribution before implementation.
+
+### Visualization Integration Plan
+
+Provider-backed weather/wind snapshots should map into the existing
+workstation without disrupting the synthetic flow preview:
+
+- center globe: current synthetic flow remains default; future wind snapshot
+  can supply low-resolution motion hints
+- overlay marker: generalized weather marker only, no precise live points
+- right-side summary: source, last updated, confidence, caveats, selected
+  region, metric summaries
+- top-left context panel: selected broad region, validity window, source
+  status, provider boundary
+- bottom-left layer controls: weather/wind source state, provider-backed label,
+  disabled/stale states
+- timeline label: captured/valid window only
+
+Future UI labels must include:
+
+- Provider-backed
+- Last updated
+- Source
+- Confidence
+- Caveats
+- Not verified by Random Knights unless separately verified
+
+### Implementation Guardrails
+
+P21.2 preserves these boundaries:
+
+- no live provider calls
+- no external API integration
+- no Firebase Functions or scheduled jobs
+- no OAuth
+- no provider keys
+- no deployment
+- no workflow changes
+- no verified environmental claims
+- no raw provider payloads in app runtime
+- no direct client fan-out to providers
+
+Recommended next phase: P21.3 Weather/Wind Cache Fixture Adapter, defining the
+server-cache request/response shape and a mock normalized snapshot adapter
+without connecting to Open-Meteo yet.
