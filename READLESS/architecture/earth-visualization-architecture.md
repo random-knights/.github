@@ -345,6 +345,32 @@ Current implementation includes:
 
 ### Current Guardrails
 
+#### Earth Rendering Principle
+
+- Earth must be represented as a sphere/globe with country and broad-region
+  boundaries plus data-driven visual layers. The long-term direction is an
+  interactive Earth visualization workstation, not a scrolling dashboard or a
+  flat map disguised as a globe.
+- Drag interaction should rotate the sphere/globe. Wheel and trackpad zoom must
+  preserve spherical/circular aspect ratio and must not stretch the Earth into
+  an ellipse, panel, or translated texture.
+- Do not simulate Earth by sliding, panning, or superimposing a flat map texture
+  across a circular globe. A temporary texture may be acceptable only as a
+  first-pass visual asset when it is clipped, rotated, and treated as a renderer
+  placeholder rather than the renderer architecture.
+- Future Earth color, motion, and emphasis should be driven by Earth data layers
+  such as wind, ocean currents, particles, chemical filters, weather, wildfire,
+  ecological overlays, project overlays, entity overlays, monitoring overlays,
+  and verification overlays.
+- The desired direction is similar in spirit to earth.nullschool: layer-driven
+  Earth systems visualization with clear filters, attribution, and motion. The
+  Random Knights implementation must use its own governed data contracts and
+  must not import nullschool-class fields or behavior without an approved
+  source and license review.
+- If Flutter CustomPainter becomes the wrong long-term renderer for spherical
+  boundaries, particle fields, or layer compositing, introduce a renderer
+  adapter path instead of forcing flat-map behavior into the app.
+
 - Globe Preview is secondary, experimental, and broad-region only.
 - Globe motion and playback are summary controls only. Playback windows must
   come from the existing Earth time-window model, unsupported layers stay
@@ -751,6 +777,102 @@ Candidate tools:
 - advanced map engine
 
 Decision: long-term only. This requires a dedicated visual engine phase, browser/mobile QA, performance budgets, and data-layer contracts.
+
+## Part I - Earth Renderer Strategy
+
+Purpose: keep Earth visualization moving toward a true spherical, data-layered
+workstation while the current Flutter implementation remains a first-pass,
+preview-safe renderer.
+
+### UI/UX Renderer Strategy
+
+Spherical globe:
+
+- The primary Earth surface should be circular/spherical at every zoom level.
+- Drag rotates the globe state, not a page, card, or unconstrained flat texture.
+- Zoom changes camera/scale while preserving the globe's aspect ratio.
+- Region focus, overlays, motion layers, and future provider-backed layers must
+  stay attached to the globe coordinate model as it rotates and zooms.
+
+Country and region boundaries:
+
+- Boundaries should come from approved boundary geometry, simplified topology,
+  or reviewed broad-region fixtures.
+- Broad regions remain the safe default until country/region boundary sources,
+  licensing, precision, attribution, and performance are approved.
+- Sensitive coordinates, private property interpretation, species locations,
+  unrestricted flight/ship tracks, and provider-backed claims require separate
+  approval before display.
+
+Data-driven coloring:
+
+- Earth colors should eventually be derived from normalized
+  `EarthLayerSnapshot.visualization_payload` data, not hard-coded decoration.
+- Each layer must define its color ramp, confidence state, source attribution,
+  freshness, precision scope, and geometry policy.
+- Carbon, Tree-Time, weather, wind, ocean, wildfire, glacier, project, company,
+  monitoring, and verification layers should share the same layer-composition
+  contract instead of each inventing a renderer path.
+
+Animated currents, wind, and particles:
+
+- Motion should be generated from normalized vector/field snapshots, route
+  summaries, or approved synthetic preview fixtures.
+- Wind, ocean currents, particles, and chemical/filter layers should animate as
+  layer data attached to globe coordinates, not as independent screen-space
+  decoration.
+- Reduced-motion settings must remain respected. When reduced motion is active,
+  renderer output should preserve labels/state while disabling unnecessary
+  animation.
+
+Layer filters:
+
+- Filters belong to the Earth workstation layer controls and should drive the
+  renderer through view models, not direct provider calls.
+- The renderer should support a small number of active layers first, then grow
+  through grouped categories: Earth Systems, Environmental, Human Activity,
+  Projects, Entities, Intelligence, Monitoring, and Verification.
+- Disabled, unlicensed, source-required, not-provider-verified, and
+  preview-only states must stay visible in controls and summaries.
+
+Future renderer adapter path:
+
+```text
+Earth workstation state
+-> EarthLayerSnapshot / EarthRendererLayer view models
+-> EarthRendererAdapter
+-> current Flutter CustomPainter renderer
+-> future WebGL / Three.js / Globe.GL / Cesium-style renderer when approved
+```
+
+The adapter should expose renderer capabilities such as:
+
+- spherical projection
+- boundary rendering
+- broad-region focus
+- field/vector rendering
+- particle rendering
+- color-ramp compositing
+- hit testing
+- timeline playback
+- reduced-motion fallback
+- attribution display
+- screenshot/test hooks
+
+Current CustomPainter work may remain the first-pass renderer for schematic,
+preview, and bounded globe interactions. It must not become an excuse to rely
+on flat-map-over-globe behavior. If the next visual phase needs real spherical
+projection, boundary topology, or high-density vector fields, create an adapter
+spike rather than stretching the current painter beyond its fit.
+
+### V1.5 Boundary
+
+V1.5 documents this renderer strategy and may make trivial guardrail polish only.
+It does not authorize a new renderer, WebGL engine, Cesium expansion, provider
+calls, Firebase Functions, OAuth, deploy, or verified environmental claims.
+Future Earth renderer work must preserve the principle that Earth is a
+spherical, layer-driven visualization surface.
+
 
 ## Visualization Entity Model
 
