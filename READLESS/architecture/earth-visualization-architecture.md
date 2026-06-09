@@ -1445,14 +1445,100 @@ V2.7 contract tests should cover:
 
 ### V2.8 Implementation Gate
 
-The next safe implementation step is auth/App Check planning while keeping the
-callable disabled/fallback-only:
+V2.8 may add authentication, App Check, and deployment classification metadata
+while keeping the callable disabled/fallback-only. Classification does not
+authorize live token delivery, runtime Cesium activation, provider fetching,
+Functions deploy, OAuth, production renderer sessions, or preview/reference
+activation.
+
+Auth classification labels:
+
+- `authenticatedRand0mOrg`
+- `authenticatedNonOrg`
+- `unauthenticated`
+- `selfHostedUserProvided`
+- `ciContractTest`
+- `unknown`
+
+App Check classification labels:
+
+- `verified`
+- `missing`
+- `unavailableLocalDev`
+- `emulator`
+- `unknown`
+
+Deployment classification labels:
+
+- `localDev`
+- `test`
+- `production`
+- `protectedPreview`
+- `selfHosted`
+- `ci`
+- `unknown`
+
+V2.8 audit labels:
+
+- `authClassification`
+- `appCheckClassification`
+- `deploymentClassification`
+- `authPolicyOutcome`
+- `appCheckPolicyOutcome`
+
+These labels must never include raw auth token values, email addresses, UIDs,
+claims payloads, cookies, headers, App Check tokens, provider secrets, PII, or
+raw host/origin headers. Logs may include only sanitized host labels,
+allowlist outcomes, classification labels, policy outcomes, and redaction
+state.
+
+Policy matrix for future activation:
+
+| Deployment | Auth policy outcome | App Check policy outcome | Future activation rule |
+| --- | --- | --- | --- |
+| local dev | disabled fallback allowed | not required for local dev | self-host/user-provided token path only; no org token |
+| test | future rand0m org auth required unless classified as org | future App Check required unless verified | org bridge possible later with preferred App Check |
+| production | future rand0m org auth required unless classified as org | future App Check required unless verified | org bridge later; public bounded access still requires product decision |
+| protected preview | blocked by environment | blocked by environment | denied by default |
+| self-hosted | self-hosted user managed | self-hosted user managed | user-provided token or compatible self-owned bridge |
+| CI | contract only | contract only | schema/redaction tests only; no token |
+
+V2.8 disabled callable behavior:
 
 1. Keep `requestEarthRendererSession` disabled.
-2. Add requester classification rules.
-3. Add App Check/auth requirement metadata.
-4. Add tests for anonymous/authenticated/service/CI classifications.
-5. Do not fetch or return real token values.
+2. Continue using V2.7 domain allowlist and protected-preview denial.
+3. Return `disabled` plus CustomPainter fallback for otherwise valid
+   allowlisted requests.
+4. Return `denied` plus CustomPainter fallback for invalid, unknown, or
+   protected-preview requests.
+5. Add auth/App Check/deployment classifications to the redacted audit event.
+6. Add policy outcome labels for future activation requirements.
+7. Return `tokenValue: null`.
+8. Keep CI independent from real Cesium tokens.
+
+V2.8 contract tests should cover:
+
+- authenticated org classification label
+- unauthenticated classification label
+- missing App Check classification label
+- local dev deployment/App Check classification
+- production deployment classification
+- protected preview remains denied
+- CI contract-test classification
+- audit event omits raw auth/App Check payloads
+- bridge remains disabled/fallback regardless of classification
+- no token values in response or audit
+
+### V2.9 Implementation Gate
+
+The next safe implementation step is rate-limit planning while keeping the
+callable disabled/fallback-only unless a later phase explicitly approves token
+delivery:
+
+1. Keep CI independent from real Cesium tokens.
+2. Define low-volume issuance buckets for future sessions.
+3. Define fallback-on-limit behavior.
+4. Do not fetch or return real token values.
 
 
 ## Visualization Entity Model
