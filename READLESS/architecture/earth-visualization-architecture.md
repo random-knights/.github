@@ -2968,6 +2968,106 @@ secure test session bridge. Before any live Cesium globe is rendered:
 
 `V3.4 Country Boundaries + Base Globe`
 
+## V3.4 Country Boundaries + Base Globe
+
+Date: 2026-06-09
+
+Status: inert boundary and base-globe readiness only. V3.4 does not activate
+Cesium, fetch or deliver a Cesium token, read `.env`, call providers, deploy
+Firebase Functions, change workflows, touch hosting, or commit large boundary
+datasets.
+
+### Boundary Strategy
+
+V3.4 adds contracts for future country and region boundaries without selecting
+or bundling a real world boundary dataset yet. The active runtime remains
+CustomPainter, and Cesium remains the preferred candidate for future true-globe
+boundaries after secure activation.
+
+The strategy is:
+
+- keep boundary readiness as metadata and tiny non-geographic fixtures only
+- avoid external fetches and provider calls
+- avoid committing large GeoJSON, vector tile, or terrain assets
+- require source, license, attribution, size, and sensitivity review before any
+  real boundary source is used
+- reject flat-map-over-globe behavior as the final Earth model
+- preserve CustomPainter as the fallback renderer
+
+Future boundary source candidates include Natural Earth/Admin 0, geoBoundaries,
+OpenStreetMap-derived boundaries, Cesium-supported vector/tile assets, and
+specialized sources such as protected-area datasets after license and
+sensitivity review. No candidate is approved by V3.4.
+
+### Contract Additions
+
+The app-side model now includes:
+
+- `EarthBoundaryLayer`
+- `EarthBoundaryLayerSource`
+- `EarthBoundaryLayerStatus`
+- `EarthBoundaryGeometryMode`
+- `EarthBoundaryRendererCompatibility`
+- `EarthBaseGlobeVisualModel`
+
+The model supports country boundaries, region boundaries, administrative
+boundaries, protected areas later, and project/entity overlays later. It marks
+CustomPainter as limited for true-globe boundaries and Cesium as the candidate
+renderer for spherical country/region boundary work.
+
+### Data View Readiness Updates
+
+The Earth Data View renderer readiness card now reports:
+
+- Country Boundaries: Renderer Required / Cesium Candidate
+- Base Globe: CustomPainter fallback / Cesium candidate
+- Geometry Mode: Country / Region Boundary
+- Data Color Layers: Planned
+- Animated Layers: Planned
+- Terrain / Imagery: Disabled
+- CustomPainter boundary role: CustomPainter Limited
+- Boundary source: Contract only / no dataset committed
+- Next Phase: Data Layer Adapter
+
+These are readiness labels only. They do not mean the app has loaded a real
+boundary dataset or rendered a live Cesium globe.
+
+### Guardrails Confirmed
+
+V3.4 preserves these guardrails:
+
+- No Large Boundary Dataset
+- No External Fetch
+- No Provider Calls
+- No Token Delivery
+- No Runtime Cesium Activation
+- CustomPainter Fallback Active
+- No Flat Map Sliding
+- No Oval Distortion
+- No Verified Claims
+- Not Provider Verified
+
+### V3.5 Prerequisites
+
+V3.5 can proceed to a data layer adapter only if it remains disabled-safe or
+receives separate activation approval. Before renderer-attached data layers are
+enabled:
+
+1. `EarthLayerSnapshot` and renderer-layer contracts must map to renderer
+   primitives without exposing raw provider payloads.
+2. CustomPainter fallback must remain available.
+3. Real provider-backed layers must remain separately gated.
+4. Boundary source selection must complete license, attribution, size, and
+   sensitivity review before runtime use.
+5. Token delivery, rate limits, budget guards, telemetry, and audit redaction
+   must remain visible in readiness surfaces.
+6. Data coloring and animated layer adapters must preserve spherical geometry
+   and avoid flat-map texture sliding.
+
+### Next Recommended Command
+
+`V3.5 Data Layer Adapter`
+
 ## Visualization Entity Model
 
 ### EarthLayer
