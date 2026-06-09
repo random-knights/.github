@@ -2864,6 +2864,110 @@ V3.3 may begin test-environment activation only after:
 
 `V3.3 Test Environment Cesium Activation`
 
+## V3.3 Test Environment Cesium Activation
+
+Date: 2026-06-09
+
+Status: modeled test-environment activation gate only. V3.3 does not activate
+live Cesium, fetch or deliver a Cesium token, read `.env`, call providers,
+deploy Firebase Functions, change workflows, touch production hosting, touch
+test hosting, or touch protected preview hosting.
+
+### Activation Preconditions Result
+
+The V3.3 audit found that the app can safely represent the test activation
+path, but cannot safely render a live Cesium globe yet:
+
+- the Flutter web embed host boundary exists
+- the bridge request/response contract exists
+- runtime readiness and Data View labels exist
+- rate-limit, budget, usage, storage, and audit readiness labels exist
+- the bridge is still disabled/stubbed and returns CustomPainter fallback
+- token delivery remains disabled
+- no runtime CesiumJS asset, terrain, imagery, tile, or boundary load is
+  approved
+
+Because secure token delivery is not active, V3.3 implements a first-class
+activation decision model and an inert test-host path only.
+
+### Activation Gate Model
+
+The app now models these renderer activation environments:
+
+- Production
+- Protected Preview
+- Local Development
+- CI
+- Test Environment
+- Self-hosted User Managed
+
+The gate decisions are:
+
+| Environment | Decision | Runtime renderer | Notes |
+| --- | --- | --- | --- |
+| Production | Production Blocked | CustomPainter | Cesium production activation is not approved. |
+| Protected Preview | Protected Preview Blocked | CustomPainter | The reference preview environment remains untouched. |
+| CI | CI Blocked | CustomPainter | CI validates contracts and fallback only, with no token. |
+| Local Development | Local Disabled | CustomPainter | The Flutter client never reads local Cesium credentials directly. |
+| Test Environment without session shape | Secure Session Required | CustomPainter | Missing session config keeps fallback active. |
+| Test Environment with session shape | Eligible / Inert Test Host | CustomPainter | Only an inert host may mount; no CesiumJS assets load. |
+| Self-hosted | User Managed / Org Token Unavailable | CustomPainter | Self-hosters must provide their own token or bridge path. |
+
+### Data View Readiness Updates
+
+The Earth Data View renderer readiness card now reports:
+
+- Current renderer: CustomPainter
+- Candidate renderer: Cesium
+- Activation decision: Eligible / Inert Test Host
+- Test activation eligibility: Eligible / inert only
+- Production: Cesium blocked
+- Protected preview: Cesium blocked
+- Inert embed host: Allowed / inert only
+- Token Delivery: Disabled
+- Fallback: CustomPainter
+- Next Phase: Country Boundaries + Base Globe
+
+These labels are readiness metadata only. They do not mean the app has started
+a real Cesium runtime.
+
+### Guardrails Confirmed
+
+V3.3 preserves these guardrails:
+
+- Test Environment Only
+- Production Blocked
+- Protected Preview Blocked
+- Secure Session Required
+- CustomPainter Fallback Active
+- No Provider Calls
+- No Token Delivery
+- Inert Embed Only
+
+The app still uses sentinel-only token labels and must not render,
+screenshoot, log, test, commit, or document a real Cesium Ion token value.
+
+### V3.4 Prerequisites
+
+V3.4 can proceed toward country boundaries and a base globe only if it stays
+inside the same disabled-safe boundary or receives a separate approval for a
+secure test session bridge. Before any live Cesium globe is rendered:
+
+1. The bridge must provide a short-lived test-only session configuration
+   without exposing the token value to source, logs, screenshots, docs, or
+   tests.
+2. Production and protected preview must remain blocked.
+3. CustomPainter fallback must remain available for unavailable, denied,
+   limited, expired, unsupported, or bridge-failed outcomes.
+4. Attribution, budget, rate, telemetry, and usage dashboard guardrails must
+   stay visible.
+5. Provider-backed layers remain separately gated and are not implied by the
+   renderer activation path.
+
+### Next Recommended Command
+
+`V3.4 Country Boundaries + Base Globe`
+
 ## Visualization Entity Model
 
 ### EarthLayer
