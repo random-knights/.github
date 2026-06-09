@@ -2386,6 +2386,69 @@ The next safe implementation step after V2.17 is either an observe-only storage
 stub behind an explicit test-environment flag, or a usage dashboard read-model
 spike. It is still not live Cesium activation.
 
+### V2.18 Implementation Gate
+
+V2.18 may add an observe-only Firestore aggregate storage stub behind an
+explicit test-environment flag. The flag is a non-secret contract label, not a
+provider key, and it must remain disabled by default. V2.18 may simulate that
+an aggregate-only write would be accepted by the stub in the test environment,
+but it must not connect to Firestore, import or call Firestore Admin write APIs,
+enable persistent counters, deliver a token, activate Cesium, deploy Functions,
+or change runtime renderer behavior.
+
+Test flag contract:
+
+- `EARTH_RENDERER_TELEMETRY_OBSERVE_ONLY_ENABLED`
+- non-secret
+- default disabled
+- test-environment scope only
+- no production effect
+- no protected-preview effect
+- no runtime Cesium activation effect
+
+Observe-only stub outcomes:
+
+- `dryRun`
+- `observeOnlyEligible`
+- `observeOnlyWouldWrite`
+- `observeOnlyBlocked`
+
+Current behavior remains:
+
+- storage remains disabled
+- `storageWriteEnabled: false`
+- `writeExecuted: false`
+- `writeEligible: false`
+- no Firestore Admin SDK is imported or called
+- no persistent counter write occurs
+- CustomPainter fallback remains active
+- disabled bridge response remains unchanged
+
+Environment rules:
+
+- Test: the explicit flag may produce an `observeOnlyWouldWrite` stub outcome
+  in contract tests only. The plan still does not execute a write.
+- Production: blocked even if the flag is requested.
+- Protected preview: blocked even if the flag is requested.
+- Local/CI: dry-run only.
+- Self-hosted: user-managed and not enabled by hosted policy.
+
+V2.18 contract tests should cover:
+
+- flag disabled by default
+- test environment eligible but dry-run by default
+- test flag enables observe-only simulated plan only
+- production remains blocked even if the flag is set
+- protected preview remains blocked even if the flag is set
+- no Firestore Admin/write call is represented
+- no token values or raw identifiers appear
+- disabled bridge responses still return CustomPainter fallback
+
+The next safe implementation step after V2.18 is either a reviewed usage
+dashboard read-model spike or a narrow observe-only emulator/test harness. It
+is still not production storage, protected-preview storage, or live Cesium
+activation.
+
 ## Visualization Entity Model
 
 ### EarthLayer
