@@ -1531,14 +1531,110 @@ V2.8 contract tests should cover:
 
 ### V2.9 Implementation Gate
 
-The next safe implementation step is rate-limit planning while keeping the
-callable disabled/fallback-only unless a later phase explicitly approves token
-delivery:
+V2.9 may add disabled-safe rate-limit planning metadata while keeping the
+callable disabled/fallback-only. Rate-limit planning does not authorize
+persistent counters, raw IP capture, raw user identifiers, live token delivery,
+runtime Cesium activation, provider fetching, Functions deploy, OAuth,
+production renderer sessions, or preview/reference activation.
 
-1. Keep CI independent from real Cesium tokens.
-2. Define low-volume issuance buckets for future sessions.
-3. Define fallback-on-limit behavior.
-4. Do not fetch or return real token values.
+Rate-limit policy metadata:
+
+- `policyId`
+- `windowLabel`
+- `requestScope`
+- `limitLabel`
+- `remainingLabel`
+- `resetLabel`
+- `enforcementMode`
+- `fallbackOnLimit`
+- `auditRequired`
+
+Allowed request scopes:
+
+- `perHost`
+- `perDeployment`
+- `perAuthClassification`
+- `perRenderer`
+- `perCapability`
+- `global`
+
+Allowed enforcement modes:
+
+- `disabled`
+- `planned`
+- `observeOnly`
+- `enforceLater`
+
+Disabled-safe rate-limit outcomes:
+
+- `notEvaluatedBridgeDisabled`
+- `allowedPlanned`
+- `observeOnlyAllowed`
+- `wouldRateLimit`
+- `rateLimitedFallback`
+- `unavailable`
+
+V2.9 audit labels:
+
+- rate-limit policy id
+- scope
+- outcome
+- enforcement mode
+- fallback used
+- audit required
+- window/limit/remaining/reset labels
+
+These labels must never include raw user identifiers, IP addresses, auth
+payloads, App Check tokens, cookies, headers, PII, provider secrets, or raw
+host/origin headers.
+
+Current disabled behavior:
+
+1. Keep `requestEarthRendererSession` disabled.
+2. Continue using V2.7 domain allowlist and V2.8 auth/App Check/deployment
+   classification.
+3. Return `disabled` plus CustomPainter fallback for otherwise valid
+   allowlisted requests.
+4. Include `notEvaluatedBridgeDisabled` as the default current rate-limit
+   outcome.
+5. Include planned low-volume policy metadata for future issuance review.
+6. Return `denied` plus CustomPainter fallback for invalid, unknown, or
+   protected-preview requests.
+7. Return `tokenValue: null`.
+8. Keep CI independent from real Cesium tokens.
+
+Future enforcement behavior:
+
+- `observeOnlyAllowed` may record safe labels while still allowing fallback.
+- `wouldRateLimit` may show that a future policy would have limited issuance
+  without blocking during observe-only phases.
+- `rateLimitedFallback` must return fallback, not a token.
+- Persistent counters require a later reviewed server-side storage design.
+- Buckets must be derived from privacy-safe labels or hashed/salted server
+  values only after approval; no raw IP or raw user id storage is allowed.
+
+V2.9 contract tests should cover:
+
+- rate-limit policy metadata exists
+- bridge-disabled requests include `notEvaluatedBridgeDisabled`
+- simulated future `rateLimitedFallback` returns CustomPainter fallback
+- observe-only/allowed outcomes remain disabled-safe
+- audit event includes redacted rate-limit labels
+- audit/response omit raw identifiers, IPs, headers, cookies, PII, and token
+  values
+- CustomPainter fallback remains active
+
+### V2.10 Implementation Gate
+
+The next safe implementation step is budget/cost guard planning while keeping
+the callable disabled/fallback-only unless a later phase explicitly approves
+token delivery:
+
+1. Define budget policy ids, cost buckets, circuit-breaker outcomes, and
+   fallback-on-budget behavior.
+2. Keep CI independent from real Cesium tokens.
+3. Do not fetch, log, or return real token values.
+4. Do not deploy Functions or enable runtime Cesium activation.
 
 
 ## Visualization Entity Model
