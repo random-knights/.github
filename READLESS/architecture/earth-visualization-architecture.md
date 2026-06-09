@@ -2779,6 +2779,91 @@ V3.2 still must not authorize production Cesium activation.
 
 `V3.2 Secure Session Bridge Runtime Readiness`
 
+## V3.2 Secure Session Bridge Runtime Readiness
+
+Date: 2026-06-09
+
+Status: runtime-readiness alignment only. V3.2 does not activate Cesium at
+runtime, fetch a renderer token, read `.env`, call providers, deploy Firebase
+Functions, change workflows, or touch production/test/preview hosting.
+
+### Runtime Readiness Result
+
+V3.2 aligns the renderer bridge, embed host, activation state, Data View
+readiness display, and future test-environment activation checklist.
+
+Current runtime state:
+
+- Renderer: `CustomPainter`
+- Candidate: `Cesium`
+- Embed Host: `Ready`
+- Bridge: `Ready` as a redacted contract/stub boundary
+- Session Config: `Ready` as a disabled-safe contract shape
+- Token Delivery: `Disabled`
+- Runtime Activation: `Blocked`
+- Next Phase: `Test Environment Activation`
+
+The bridge still returns CustomPainter fallback. "Ready" means the app-side
+contract and readiness labels exist, not that live Cesium is enabled.
+
+### Activation State Model
+
+V3.2 represents these activation labels:
+
+- `RendererDisabled`
+- `RendererReady`
+- `RendererBlocked`
+- `RendererBridgeRequired`
+- `RendererTokenRequired`
+- `RendererActivationPending`
+
+The current fixture state is `RendererBlocked` because token delivery and
+runtime activation remain disabled by policy.
+
+### Test-Environment Activation Checklist
+
+V3.2 readiness checklist:
+
+- Embed Host Ready: ready
+- Bridge Ready: ready
+- Session Config Ready: ready
+- Audit Ready: ready
+- Rate Limits Ready: ready
+- Budget Guards Ready: ready
+- Usage Dashboard Ready: ready
+- Storage Ready: ready, writes disabled
+- Token Bridge Pending: pending
+
+### Activation Blockers
+
+Remaining blockers before V3.3:
+
+- token bridge pending
+- real Cesium session delivery disabled
+- runtime Cesium activation disabled
+- test-environment activation approval required
+- production activation approval not granted
+- provider layers still require separate source, attribution, and evidence gates
+
+### V3.3 Prerequisites
+
+V3.3 may begin test-environment activation only after:
+
+1. The bridge can return a short-lived, redacted Cesium session config in the
+   test environment only.
+2. The token value remains server-controlled and never appears in Dart source,
+   generated files, logs, screenshots, docs, or tests.
+3. Domain allowlist, auth/App Check classification, rate-limit labels, budget
+   guard labels, telemetry redaction, and usage dashboard readiness remain
+   present.
+4. The app still falls back to CustomPainter for all denied, limited, expired,
+   unsupported, or bridge-unavailable outcomes.
+5. Protected preview and production stay disabled unless separately approved.
+
+### Next Recommended Command
+
+`V3.3 Test Environment Cesium Activation`
+
 ## Visualization Entity Model
 
 ### EarthLayer
