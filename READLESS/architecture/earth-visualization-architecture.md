@@ -1395,15 +1395,63 @@ Production Cesium activation remains blocked until the callable, secret storage,
 App Check/auth, rate/budget controls, audit behavior, attribution, deployment
 policy, and renderer smoke strategy are all reviewed together.
 
-### V2.7 Implementation Gate
+### V2.7 Domain Allowlist Enforcement
 
-The next safe implementation step is domain allowlist enforcement while keeping
-the callable disabled/fallback-only:
+V2.7 may enforce sanitized domain/host labels while keeping
+`requestEarthRendererSession` disabled/fallback-only. Domain allowlisting does
+not authorize token delivery, runtime Cesium activation, provider fetching,
+Functions deploy, OAuth, App Check enforcement, or production renderer
+sessions.
+
+Allowed host labels:
+
+- production: `rand0m.ai`, `ai-rand0m.web.app`
+- test: `ai-rand0m.web.app`
+- local development: `localhost`, `127.0.0.1`
+- CI: `ci`, `github-actions`
+- self-hosted: user-managed sanitized host labels, excluding protected preview
+
+Protected preview/reference:
+
+- `randomknights-xyz.web.app` is blocked by default.
+- `protected-preview` environment requests are blocked by default.
+- Preview/reference must not receive renderer sessions unless a future phase
+  explicitly authorizes that environment.
+
+V2.7 disabled callable behavior:
+
+1. Validate the sanitized `domainLabel`.
+2. Return `disabled` plus CustomPainter fallback for allowlisted production,
+   test, local, CI, or self-hosted labels.
+3. Return `denied` plus CustomPainter fallback for unknown, invalid, or
+   protected-preview labels.
+4. Include `allowlistOutcome` in the redacted audit event.
+5. Log only sanitized host labels and allowlist outcomes.
+6. Never log raw host/origin headers, cookies, private headers, raw auth
+   payloads, PII, or secrets.
+7. Return `tokenValue: null`.
+8. Keep CI independent from real Cesium tokens.
+
+V2.7 contract tests should cover:
+
+- allowed production host returns bridge-disabled fallback
+- allowed test host returns bridge-disabled fallback
+- localhost returns bridge-disabled fallback
+- unknown hosted domain returns denied/fallback
+- protected preview host returns denied/fallback by default
+- malicious host input is sanitized before response or logging
+- audit event records allowlist outcome safely
+- self-host and CI labels do not require token delivery
+
+### V2.8 Implementation Gate
+
+The next safe implementation step is auth/App Check planning while keeping the
+callable disabled/fallback-only:
 
 1. Keep `requestEarthRendererSession` disabled.
-2. Reject unknown hosted domains with fallback response.
-3. Add tests for production/test/preview/self-host/CI domain behavior.
-4. Keep CI independent from real Cesium tokens.
+2. Add requester classification rules.
+3. Add App Check/auth requirement metadata.
+4. Add tests for anonymous/authenticated/service/CI classifications.
 5. Do not fetch or return real token values.
 
 
