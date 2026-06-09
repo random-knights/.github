@@ -2151,6 +2151,103 @@ The next safe implementation step after V2.14 is either a Firestore aggregate
 storage design review or a usage dashboard read-model spike. It is still not
 live Cesium activation.
 
+### V2.15 Implementation Gate
+
+V2.15 may design the future Firestore aggregate storage model for renderer
+bridge telemetry while keeping all storage disabled. This phase does not
+authorize Firestore writes, persistent counters, token delivery, runtime Cesium
+activation, provider fetching, Functions deploy, OAuth, production renderer
+sessions, or protected-preview activation.
+
+Recommended future Firestore aggregate shape:
+
+```text
+earth_renderer_telemetry/{windowId}
+earth_renderer_telemetry/{windowId}/dimensions/{dimensionKey}
+```
+
+Path rules:
+
+- `windowId` must be server-selected and match an approved aggregate window
+  pattern such as `hourly-{yyyymmdd}t{hh}`, `daily-{yyyymmdd}`, or
+  `monthly-{yyyymm}`.
+- `dimensionKey` must be derived from redacted log labels only.
+- Paths must never include exact hostnames, user ids, email addresses, IP
+  addresses, request ids, session ids, trace ids, raw auth data, App Check
+  tokens, billing/account identifiers, token-derived ids, cookies, headers,
+  secrets, or free-form policy text.
+
+Allowed aggregate fields:
+
+- `totalRequests`
+- `approvedSessions`
+- `fallbackSessions`
+- `deniedSessions`
+- `rateLimitEvents`
+- `budgetLimitEvents`
+- `protectedPreviewDenials`
+- `unknownHostDenials`
+- `tokenExposureEvents`
+- `redactedAuditEvents`
+- `schemaId`
+- `windowId`
+- `dimensionKey`
+- `rollupLevel`
+- `createdAt`
+- `updatedAt`
+
+Counter fields must be increment-only. Metadata fields must use safe labels or
+server timestamps. No raw event payload should be stored.
+
+Future write strategy:
+
+1. Callable evaluates the request and produces redacted telemetry log labels.
+2. Server derives `windowId` from the current aggregate window.
+3. Server derives `dimensionKey` from approved low-cardinality labels.
+4. Server writes with atomic increments and merge semantics only.
+5. Failed aggregate writes must not block CustomPainter fallback.
+6. Storage remains disabled by default until an explicit enablement phase.
+
+Future read strategy:
+
+- dashboard reads aggregate-only window summaries
+- latest window summary for near-real-time usage
+- daily window summary for trends
+- category counters for fallback, denial, rate-limit, budget, token exposure,
+  and redaction compliance
+- no public client writes
+- reads limited to admin/dev or future authorized dashboard roles
+
+Retention and rollup:
+
+- short retention for active hourly windows
+- roll hourly windows into daily summaries
+- roll daily summaries into monthly summaries where useful
+- delete fine-grained windows after approved rollup schedule
+- retain no raw events
+
+Security expectations:
+
+- writes only from a trusted server callable
+- public clients cannot write telemetry
+- reads restricted to admin/dev or future authorized dashboard access
+- self-hosted deployments own their telemetry project, rules, and retention
+- Firestore rules are design-only until storage writes are explicitly enabled
+
+V2.15 contract tests should cover:
+
+- storage model metadata exists
+- collection and document path templates are safe
+- unsafe window/path inputs are rejected
+- dimension keys use redacted log labels only
+- allowed fields are aggregate counters or safe metadata
+- write/read/retention/security plans remain disabled-safe
+- disabled bridge responses still return CustomPainter fallback
+- no token values or raw identifiers appear
+
+The next safe implementation step after V2.15 is an inert Firestore write stub
+or a dashboard read-model spike. It is still not live Cesium activation.
+
 ## Visualization Entity Model
 
 ### EarthLayer
