@@ -2248,6 +2248,67 @@ V2.15 contract tests should cover:
 The next safe implementation step after V2.15 is an inert Firestore write stub
 or a dashboard read-model spike. It is still not live Cesium activation.
 
+### V2.16 Implementation Gate
+
+V2.16 may add an inert Firestore aggregate write stub for renderer bridge
+telemetry. The stub may build a write plan for tests and future review, but it
+must not import a Firestore Admin SDK, execute a Firestore write, enable
+persistent counters, deliver a token, activate Cesium, deploy Functions, or
+change runtime renderer behavior.
+
+Current disabled write-stub behavior:
+
+- `storageWriteEnabled: false`
+- `writeExecuted: false`
+- `noFirestoreAdminCall: true`
+- `noPersistentCounterWrite: true`
+- CustomPainter fallback remains active
+- failed or disabled telemetry writes never block fallback
+- no raw event payload is stored
+
+The write plan may include only:
+
+- plan id
+- plan status
+- storage enabled flag
+- write executed flag
+- window path
+- dimension path
+- dimension key
+- allowed counter increment names
+- merge strategy label
+- fallback behavior label
+- disabled reason
+- redaction status
+- rejected input labels
+
+The write plan must be built from redacted telemetry log labels and approved
+aggregate window identifiers only. It must exclude raw hostnames, request ids,
+session ids, trace ids, user ids, emails, IPs, raw auth payloads, App Check
+tokens, headers, cookies, billing/account identifiers, token values, secrets,
+and exact hostnames.
+
+Callable integration may attach the inert write plan to the redacted audit
+event for contract tests, but callable responses do not need to expose the full
+plan. Logs should continue to use compact redacted labels only and should not
+include the full write plan.
+
+V2.16 contract tests should cover:
+
+- write plan is built
+- write execution remains false
+- storage write enabled remains false
+- no Firestore Admin/write call is represented
+- unsafe window/path identifiers collapse to safe labels
+- dimension path uses sanitized aggregate key
+- compact log labels do not include full write plan
+- disabled bridge responses still return CustomPainter fallback
+- no token values or raw identifiers appear
+
+The next safe implementation step after V2.16 is an observe-only storage
+enablement design or a usage dashboard read-model spike. It is still not live
+Cesium activation.
+
 ## Visualization Entity Model
 
 ### EarthLayer
