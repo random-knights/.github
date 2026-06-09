@@ -1731,15 +1731,124 @@ V2.10 contract tests should cover:
 
 ### V2.11 Implementation Gate
 
-The next safe implementation step is usage dashboard/readiness planning while
-keeping the callable disabled/fallback-only unless a later phase explicitly
-approves token delivery:
+V2.11 may add usage dashboard readiness metadata while keeping the callable
+disabled/fallback-only. Usage dashboard readiness does not authorize persistent
+dashboard storage, raw event streams, live token delivery, runtime Cesium
+activation, provider fetching, Functions deploy, OAuth, production renderer
+sessions, or preview/reference activation.
 
-1. Summarize redacted allowlist, auth/App Check, rate-limit, and budget labels.
-2. Keep CI independent from real Cesium tokens.
-3. Do not fetch, log, or return real token values.
-4. Do not deploy Functions or enable runtime Cesium activation.
+Usage summary metadata:
 
+- `summaryWindowLabel`
+- `rendererRequestsLabel`
+- `approvedSessionsLabel`
+- `fallbackSessionsLabel`
+- `deniedSessionsLabel`
+- `rateLimitEventsLabel`
+- `budgetGuardEventsLabel`
+- `protectedPreviewDenialsLabel`
+- `unknownHostDenialsLabel`
+- `tokenExposureEventsLabel`
+- `auditRedactionStateLabel`
+
+Dashboard categories:
+
+- Renderer Usage
+- Fallbacks
+- Denials
+- Rate Limits
+- Budget Guards
+- Domain Policy
+- Auth/App Check Policy
+- Audit Redaction
+- Token Safety
+
+Each dashboard category must include:
+
+- label
+- status
+- caveat
+- future source
+- safe display flag
+
+Allowed category status labels:
+
+- `planned`
+- `readyForSafeAggregates`
+- `blockedUntilStorageApproved`
+- `notImplemented`
+
+Safe aggregate rules:
+
+- no user identifiers
+- no raw IP addresses
+- no emails
+- no UIDs
+- no raw auth claims
+- no App Check tokens
+- no cookies
+- no headers
+- no billing, payment, or account identifiers
+- no token values
+- sanitized host labels only
+
+Token safety:
+
+- `tokenExposureEventsLabel` must remain `0` or not applicable while the
+  bridge is disabled.
+- Token exposure metrics must never be derived from token values.
+- Token values must never appear in response, audit event, usage dashboard
+  metadata, logs, tests, or screenshots.
+
+Audit summary metadata:
+
+- `totalEventsLabel`
+- `redactedEventsLabel`
+- `rejectedEventsLabel`
+- `fallbackEventsLabel`
+- `latestDecisionLabel`
+- `latestPolicyReasonLabel`
+- `redactionPolicyLabel`
+
+Current disabled behavior:
+
+1. Keep `requestEarthRendererSession` disabled.
+2. Continue using V2.7 domain allowlist, V2.8 classification, V2.9
+   rate-limit planning, and V2.10 budget guard planning.
+3. Return `disabled`, `denied`, `rateLimited`, or `budgetLimited` plus
+   CustomPainter fallback according to the disabled contract path.
+4. Include usage dashboard readiness metadata in the audit event only.
+5. Use label-only summaries for latest decision/fallback/denial state.
+6. Use `not implemented` for storage state.
+7. Return `tokenValue: null`.
+8. Keep CI independent from real Cesium tokens.
+
+Future dashboard phases:
+
+- A later storage design may write redacted aggregate summaries only after
+  privacy and retention review.
+- Firestore, BigQuery, or log-derived summaries must use approved aggregate
+  schemas, not raw callable payloads.
+- Dashboard UI must consume aggregate labels and counts only.
+- Raw auth, App Check, cookie, header, IP, billing, account, PII, and token
+  material must remain unavailable to dashboard surfaces.
+
+V2.11 contract tests should cover:
+
+- usage summary metadata exists
+- all required dashboard categories are represented
+- every category has a safe display flag
+- safe aggregate rules are explicit
+- token exposure label remains zero or not applicable while disabled
+- audit summary labels exist
+- future rate-limit and budget-limited outcomes remain dashboard-safe
+- audit/usage metadata omit billing ids, payment details, raw account
+  identifiers, raw user identifiers, IPs, headers, cookies, PII, auth payloads,
+  App Check tokens, and token values
+- CustomPainter fallback remains active
+
+The next safe implementation step after V2.11 is storage and telemetry design
+for redacted usage aggregates, not live Cesium token delivery.
 
 ## Visualization Entity Model
 
