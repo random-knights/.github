@@ -2051,6 +2051,106 @@ The next safe implementation step after V2.13 is either a reviewed aggregate
 schema for Firestore counters or a narrow log-query/dashboard read model. It is
 still not live Cesium activation.
 
+### V2.14 Implementation Gate
+
+V2.14 may define the future Firestore aggregate schema for the renderer bridge
+without enabling storage writes, persistent counters, token delivery, runtime
+Cesium activation, provider fetching, Functions deploy, OAuth, production
+renderer sessions, or protected-preview activation.
+
+Contract review finding:
+
+- V2.9 rate-limit metadata, V2.10 budget metadata, V2.11 usage dashboard
+  readiness, V2.12 telemetry storage planning, and V2.13 redacted log labels
+  intentionally overlap as planning layers.
+- The future Firestore schema should be the canonical storage shape and must be
+  smaller than the full audit event.
+- Firestore should store aggregate counters and low-cardinality dimensions only.
+- Raw audit events, exact hostnames, request ids, session ids, trace ids,
+  policy text, full readiness objects, and full storage plans are not valid
+  aggregate dimensions.
+
+The planned aggregate schema is:
+
+```text
+earthRendererBridgeAggregates/{windowId}
+```
+
+Current storage state:
+
+- schema status: planned, no storage
+- storage writes: disabled
+- raw event storage: forbidden
+- aggregate window writes: disabled
+- CustomPainter fallback: active
+- bridge token delivery: disabled
+
+Allowed aggregate dimensions:
+
+- renderer
+- deployment classification
+- allowlist outcome
+- auth classification
+- App Check classification
+- decision
+- fallback used
+- rate-limit outcome
+- budget outcome
+- token exposure status
+- redaction status
+
+Planned aggregate counters:
+
+- total requests
+- approved sessions
+- fallback sessions
+- denied sessions
+- rate-limit events
+- budget-limit events
+- protected-preview denials
+- unknown-host denials
+- token exposure events
+- redacted audit events
+
+The aggregate schema must exclude:
+
+- token values
+- user identifiers
+- email
+- UID
+- raw IP addresses
+- cookies
+- headers
+- raw auth payloads
+- App Check tokens
+- billing identifiers
+- payment details
+- account identifiers
+- raw host strings
+- exact hostnames
+- request identifiers
+- session identifiers
+- trace identifiers
+- free-form policy text
+- raw audit event objects
+- full usage dashboard readiness objects
+- full telemetry storage plan objects
+
+V2.14 contract tests should cover:
+
+- aggregate schema metadata exists
+- storage writes remain disabled
+- raw event storage remains forbidden
+- dimensions are low-cardinality and align with redacted log labels
+- planned counters are aggregate-only
+- sensitive and high-cardinality fields are excluded
+- disabled bridge responses still return CustomPainter fallback
+- no token values appear
+
+The next safe implementation step after V2.14 is either a Firestore aggregate
+storage design review or a usage dashboard read-model spike. It is still not
+live Cesium activation.
+
 ## Visualization Entity Model
 
 ### EarthLayer
