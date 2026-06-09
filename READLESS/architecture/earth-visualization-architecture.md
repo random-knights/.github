@@ -1355,21 +1355,56 @@ CI:
 - Must not print token values, generated env output, auth payloads, cookies,
   headers, or PII.
 
-### V2.6 Implementation Gate
+### V2.6 Disabled Callable Stub
 
-V2.6 should remain disabled/stubbed unless the owner explicitly approves live
-bridge work. The next safe implementation step is:
+V2.6 may export `requestEarthRendererSession` only as a deliberately disabled
+callable stub. Exporting the callable does not authorize token delivery,
+runtime Cesium activation, provider fetching, Functions deploy, OAuth, App
+Check enforcement, or production renderer sessions.
 
-1. Keep `requestEarthRendererSession` unexported or disabled.
-2. Add callable schema tests or Functions build validation.
-3. Add app-side mapping tests from server response states to existing
-   `EarthRendererBridgeResult` fallback outcomes.
-4. Keep CustomPainter as the active renderer.
-5. Do not fetch or return real token values.
+The disabled callable must:
+
+1. Accept the future renderer session request shape.
+2. Validate renderer, capability, environment, host, purpose, fallback, and TTL
+   fields.
+3. Build a redacted deterministic audit event.
+4. Return a disabled or denied response.
+5. Force `customPainter` as the fallback renderer.
+6. Include safe labels:
+   - `Bridge Disabled`
+   - `Secure Bridge Not Implemented`
+   - `CustomPainter Fallback Active`
+   - `No Token Exposed`
+   - `No Network Call`
+   - `No Runtime Cesium Activation`
+7. Return `tokenValue: null`.
+8. Avoid reading local `.env`, Firebase secrets, Cesium credentials, provider
+   keys, cookies, private headers, or raw auth payloads.
+9. Log, if at all, only redacted audit labels and never raw payloads.
+
+V2.6 contract tests should cover:
+
+- valid Cesium request returns disabled CustomPainter fallback
+- invalid renderer returns denied unsupported response
+- redacted audit event omits token/auth/cookie/header/PII payloads
+- response contains no secret-like values
+- environment token reads are not required
+- CustomPainter remains available
 
 Production Cesium activation remains blocked until the callable, secret storage,
-rate/budget controls, audit behavior, attribution, and renderer smoke strategy
-are all reviewed together.
+App Check/auth, rate/budget controls, audit behavior, attribution, deployment
+policy, and renderer smoke strategy are all reviewed together.
+
+### V2.7 Implementation Gate
+
+The next safe implementation step is domain allowlist enforcement while keeping
+the callable disabled/fallback-only:
+
+1. Keep `requestEarthRendererSession` disabled.
+2. Reject unknown hosted domains with fallback response.
+3. Add tests for production/test/preview/self-host/CI domain behavior.
+4. Keep CI independent from real Cesium tokens.
+5. Do not fetch or return real token values.
 
 
 ## Visualization Entity Model
