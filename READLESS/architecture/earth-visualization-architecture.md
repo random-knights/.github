@@ -1983,6 +1983,74 @@ V2.12 contract tests should cover:
 The next safe implementation step after V2.12 is a reviewed redacted-log
 telemetry spike or aggregate storage schema review, not live Cesium activation.
 
+### V2.13 Implementation Gate
+
+V2.13 may add a redacted Cloud Logging telemetry helper while keeping the
+callable disabled/fallback-only. The helper is a Phase 1 logging spike only and
+does not authorize persistent counters, Firestore writes, BigQuery export, raw
+event storage, live token delivery, runtime Cesium activation, provider
+fetching, Functions deploy, OAuth, production renderer sessions, or
+preview/reference activation.
+
+Redacted telemetry log labels may include:
+
+- renderer
+- decision
+- fallback used
+- deployment classification
+- allowlist outcome
+- auth classification
+- App Check classification
+- rate-limit outcome
+- budget outcome
+- telemetry storage phase
+- storage write enabled flag
+- token exposure status
+- redaction status
+
+The helper must exclude:
+
+- token values
+- user identifiers
+- email
+- UID
+- raw IP addresses
+- cookies
+- headers
+- raw auth payloads
+- App Check tokens
+- billing or account identifiers
+- raw host strings
+- secrets
+- policy text that could accidentally include request details
+- full audit event objects
+- full usage dashboard readiness objects
+- full telemetry storage plan objects
+
+Current disabled behavior:
+
+1. Keep `requestEarthRendererSession` disabled.
+2. Return CustomPainter fallback.
+3. Build compact redacted logging labels from the existing audit event.
+4. Log safe labels only.
+5. Keep `storageWriteEnabled` as `false`.
+6. Return `tokenValue: null`.
+7. Do not persist counters or aggregate windows.
+8. Keep CI independent from real Cesium tokens.
+
+V2.13 contract tests should cover:
+
+- telemetry helper output includes expected safe labels
+- telemetry helper excludes raw sensitive fields
+- callable logging payload shape remains compact and redacted
+- disabled bridge response remains unchanged
+- no token values appear
+- no storage write is enabled
+
+The next safe implementation step after V2.13 is either a reviewed aggregate
+schema for Firestore counters or a narrow log-query/dashboard read model. It is
+still not live Cesium activation.
+
 ## Visualization Entity Model
 
 ### EarthLayer
