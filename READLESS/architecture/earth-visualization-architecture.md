@@ -2523,6 +2523,178 @@ readiness display consuming this inert model, or a test/emulator-only aggregate
 read harness. It is still not production storage, protected-preview storage, or
 live Cesium activation.
 
+## V3.0 Earth Renderer Provider Decision And Cesium Activation Plan
+
+Date: 2026-06-09
+
+Status: architecture decision and activation planning only. V3.0 does not
+activate Cesium at runtime, fetch a renderer token, read `.env`, deploy Firebase
+Functions, call a provider, change production hosting, or remove the
+CustomPainter fallback.
+
+### Renderer Provider Comparison
+
+| Renderer option | Fit | Strengths | Gaps / risks | Decision role |
+| --- | --- | --- | --- | --- |
+| CustomPainter | Active fallback | Deterministic, cheap, offline, Flutter-native, easy to test, safe for preview-only metadata. | Prototype-level Earth representation, no true geospatial globe, no native terrain/tiles, country boundaries and animated data layers would be mostly hand-built. | Keep active as the default and fallback renderer until a gated WebGL renderer is proven. |
+| CesiumJS / Cesium ion | Best long-term candidate | Purpose-built 3D geospatial web globe, WGS84 globe, terrain/imagery, 3D Tiles, vectors/GeoJSON/CZML/KML, time-dynamic visualization, desktop/mobile web support. | Requires Flutter web embedding, token/session governance for ion assets, quota/cost monitoring, attribution/licensing review, and WebGL performance validation. | Recommended next activation path behind the existing renderer bridge. |
+| Globe.GL / Three.js | Viable lightweight alternate | WebGL/Three.js globe with points, arcs, polygons, paths, heatmaps, tiles, particles, labels, HTML elements, 3D objects, and custom layers. OSS/self-host friendly. | Less complete as a geospatial platform; terrain, country boundary workflows, tile/asset governance, and provider-grade Earth semantics would be custom work. | Keep as contingency or fast OSS spike if Cesium cost/security blocks. |
+| deck.gl GlobeView | Useful but not primary | Strong data visualization ecosystem and globe rendering option. | GlobeView is explicitly experimental and focused on whole-globe overview use cases; not the safest primary renderer for the Earth workstation yet. | Track for data-layer experiments, not primary activation. |
+| MapLibre / deck.gl map stack | Strong map and terrain stack | Open map ecosystem, vector/raster layers, 3D terrain, style control, self-host-friendly mapping path. | Better suited to maps and regional views than the primary rotating spherical Earth workstation. | Use later for regional/detail maps, not as the primary globe renderer. |
+| Flutter web HTML renderer bridge | Required integration mechanism | `HtmlElementView` can host a browser-native HTML/WebGL element in Flutter web, enabling Cesium or Three.js while preserving Flutter workstation UI. | Platform views add browser overlay/performance/lifecycle complexity; must isolate resize, pointer, z-order, accessibility, and fallback handling. | Use as the likely embed mechanism for V3.1/V3.2 spikes. |
+
+### Decision Criteria
+
+The Earth renderer must support:
+
+- spherical globe rendering
+- country and region boundary display
+- drag rotation
+- wheel zoom without aspect distortion
+- data-driven globe coloring
+- animated wind, ocean, current, and particle layers
+- layer filters and intensity controls
+- entity, company, project, monitoring, and verification overlays
+- secure fallback to CustomPainter
+- no token leakage to source control, logs, screenshots, tests, or raw UI state
+
+### Decision
+
+The formal V3.0 decision is:
+
+1. Keep CustomPainter as the active production renderer and guaranteed fallback.
+2. Proceed toward CesiumJS / Cesium ion as the preferred true-globe renderer.
+3. Do not activate Cesium in production until the bridge, token, budget,
+   rate-limit, telemetry, and test-environment gates are proven.
+4. Keep Globe.GL / Three.js as the fallback WebGL candidate if Cesium ion cost,
+   licensing, token delivery, or Flutter embedding risks block activation.
+5. Keep MapLibre/deck.gl primarily for future regional/detail maps and data
+   layer experiments, not as the workstation globe baseline.
+
+This path avoids forcing the CustomPainter prototype into a role it cannot
+reasonably own long term while preserving the safe renderer currently deployed.
+
+### Cesium Activation Roadmap
+
+#### V3.1 Cesium Web Embed Spike
+
+- Add a disabled/inert Flutter web embed proof for CesiumJS.
+- Use a local/test-only safe placeholder configuration.
+- Prove bounded layout, resize, drag rotation, wheel zoom, and fallback swap.
+- No production token, no provider calls, no production activation.
+
+#### V3.2 Secure Session Bridge Runtime Readiness
+
+- Connect the app-side renderer adapter to the existing disabled bridge shape.
+- Validate domain allowlist, auth/App Check classification, rate-limit planning,
+  budget guard planning, redacted telemetry labels, and fallback behavior.
+- Keep token delivery disabled until a dedicated approval gate.
+
+#### V3.3 Test Environment Cesium Activation
+
+- Enable Cesium only in the approved test environment.
+- Use a narrowly scoped token/session path with URL restrictions, minimal
+  asset permissions, redacted logging, and explicit budget/rate guardrails.
+- Confirm no protected-preview or production activation.
+
+#### V3.4 Country Boundaries And Base Globe
+
+- Add country/region boundary proof through Cesium-supported vectors or tiles.
+- Confirm boundaries rotate and zoom with the globe.
+- Preserve labels that distinguish preview, fixture, provider-backed, and
+  verified layers.
+
+#### V3.5 Data Layer Adapter
+
+- Map EarthLayerSnapshot and renderer layer contracts into Cesium primitives.
+- Support weather, wind, ocean, wildfire, forest, project, company, monitoring,
+  and verification layer adapters without raw provider payload exposure.
+- Keep CustomPainter fallback for unsupported or failed layers.
+
+#### V3.6 Production Readiness Review
+
+- Review cost, quotas, token handling, attribution, accessibility, mobile
+  performance, browser support, telemetry, and incident rollback.
+- Require explicit production approval before runtime activation.
+
+### Data Layer Compatibility
+
+Cesium is the preferred renderer candidate for the future layer stack because
+it can represent globe-attached data rather than sliding flat map imagery across
+a circular mask. The renderer bridge should preserve compatibility for:
+
+- weather
+- wind
+- wildfires
+- forests
+- ocean and currents
+- marine and ships
+- flights
+- satellites
+- biodiversity and species
+- protected areas
+- companies
+- projects
+- monitoring
+- verification
+- Earth Score
+
+Globe.GL remains useful for rapid visual experiments around arcs, particles,
+points, polygons, paths, and custom WebGL layers. MapLibre/deck.gl remain useful
+for regional map panels, provider debugging, and detail views where a full
+spherical globe is not required.
+
+### Security And Cost Guardrails
+
+Cesium activation must follow the V2 bridge guardrails:
+
+- Cesium ion keys must never be committed, logged, screenshotted, or exposed in
+  tests.
+- Production must not read client `.env` values for renderer secrets.
+- The callable bridge must not return raw secrets.
+- Domain allowlisting, auth/App Check classification, rate-limit planning,
+  budget guard planning, redacted log labels, and usage dashboard readiness must
+  remain in place before token delivery.
+- Test-environment activation must precede production activation.
+- Protected preview must remain untouched unless a separately approved manual
+  workflow explicitly targets it.
+- CustomPainter fallback must remain available for budget limits, rate limits,
+  bridge failures, unsupported browsers, and self-hosted deployments.
+- Self-hosted/user-managed deployments may use their own token, asset source,
+  or OSS globe stack, but rand0m-hosted production must use the approved bridge.
+
+### Risk Register
+
+| Risk | Impact | Mitigation |
+| --- | --- | --- |
+| Token leakage | Account abuse, quota/cost exposure. | Server-mediated session bridge, minimal scopes, URL restrictions, redacted logs, no `.env` client reads. |
+| Cost/usage spikes | Unexpected Cesium ion spend or quota exhaustion. | Rate-limit and budget guard phases before activation, usage dashboard readiness, fallback on limit. |
+| Flutter web platform-view complexity | Pointer, z-order, resize, and performance regressions. | V3.1 embed spike, isolated renderer shell, screenshot/manual QA, CustomPainter fallback. |
+| Vendor lock-in | Migration cost if Cesium becomes unsuitable. | Keep renderer adapter abstraction and Globe.GL / self-host fallback path. |
+| Mobile/browser performance | Poor workstation usability on smaller devices. | Test environment activation, mobile viewport QA, progressive layer enablement. |
+| Overclaiming from visual layers | Users may treat preview visuals as verified environmental claims. | Keep preview/provider/verified labels, attribution, source freshness, and caveats attached to layers. |
+
+### Reference Sources
+
+- CesiumJS platform documentation:
+  `https://cesium.com/platform/cesiumjs/`
+- Cesium ion access token guidance:
+  `https://cesium.com/learn/ion/cesium-ion-access-tokens/`
+- Cesium ion pricing and quota reference:
+  `https://cesium.com/platform/cesium-ion/pricing/`
+- Globe.GL project documentation:
+  `https://github.com/vasturiano/globe.gl`
+- deck.gl GlobeView documentation:
+  `https://deck.gl/docs/api-reference/core/globe-view`
+- MapLibre GL JS terrain documentation:
+  `https://maplibre.org/maplibre-gl-js/docs/examples/3d-terrain/`
+- Flutter web `HtmlElementView` documentation:
+  `https://api.flutter.dev/flutter/widgets/HtmlElementView-class.html`
+
+### Next Recommended Command
+
+`V3.1 Cesium Web Embed Spike`
+
 ## Visualization Entity Model
 
 ### EarthLayer
