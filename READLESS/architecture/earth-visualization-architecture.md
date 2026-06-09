@@ -1145,6 +1145,232 @@ V2.2 must not turn Cesium into a live provider-backed Earth layer. Cesium is a
 renderer surface; Earth Intelligence, dashboard models, layer snapshots,
 evidence, and guardrails remain the source of truth.
 
+## V2.5 Renderer Bridge Callable Boundary
+
+Purpose: define the future server boundary for creating short-lived Earth
+renderer sessions without enabling live Cesium token delivery, runtime Cesium
+activation, provider-backed layer fetches, or Firebase Functions deployment in
+this phase.
+
+V2.5 aligns the app-side `EarthRendererBridgeRequest`,
+`EarthRendererBridgeResult`, `EarthRendererBridgeAuditEvent`, and
+`EarthRendererSessionConfig` contracts with a future callable boundary. The
+callable design is intentionally inert until a later implementation phase
+reviews secret storage, App Check/auth, rate limits, budget caps, audit storage,
+and deployment controls.
+
+### Callable Name And Responsibility
+
+Recommended callable name:
+
+- `requestEarthRendererSession`
+
+Acceptable aliases if implementation constraints require them:
+
+- `getEarthRendererSession`
+- `createEarthRendererSession`
+
+The callable is responsible for:
+
+- authenticating or classifying the requester when the phase enables auth
+- validating requested renderer and requested capabilities
+- validating environment, deployment target, host/domain, platform, and session
+  purpose
+- enforcing hosted domain allowlists
+- enforcing future App Check/auth, rate-limit, and budget policies
+- creating a redacted audit event before returning a decision
+- returning a safe renderer session config when approved
+- returning a CustomPainter fallback config when denied, limited, disabled, or
+  unavailable
+- returning an audit reference id and redacted policy labels
+- never returning broad account secrets
+
+The callable is not responsible for:
+
+- Earth provider data fetching
+- weather, wind, wildfire, satellite, flight, ship, company, project, or
+  verification layer fetching
+- Earth score calculation
+- verification scoring
+- long-lived token exposure
+- raw Cesium token logging
+- raw auth payload, cookies, headers, or user PII handling
+
+### Request Validation Contract
+
+The future server must validate:
+
+- renderer is known: `customPainter` or `cesium`
+- requested capabilities are allowlisted Earth renderer capabilities
+- host/domain is allowed for hosted production and hosted test paths
+- app environment matches deployment target and host
+- requested TTL is short and bounded
+- session purpose is known and non-sensitive
+- fallback renderer is known
+- client metadata contains labels only, not raw auth payloads
+- payload does not include cookies, private headers, broad secrets, or PII
+
+The callable should reject with one of these normalized reasons:
+
+- `unsupportedRenderer`
+- `unsupportedCapability`
+- `invalidEnvironment`
+- `invalidHost`
+- `unauthenticated`
+- `rateLimited`
+- `budgetLimited`
+- `bridgeDisabled`
+- `policyViolation`
+
+Client and server names should remain close enough that the Flutter
+`EarthRendererBridgeError` and `EarthRendererBridgeAuditOutcome` labels can map
+without translation-heavy glue.
+
+### Response Contract
+
+Server response states:
+
+- `approved`
+- `fallback`
+- `denied`
+- `rateLimited`
+- `budgetLimited`
+- `unavailable`
+- `disabled`
+
+Every response must include:
+
+- renderer session config
+- fallback renderer
+- status label
+- TTL label or no-session label
+- caveats
+- audit reference id
+- redacted token policy
+- fallback reason labels when fallback is used
+
+The response must not include:
+
+- raw secrets
+- broad Cesium credentials
+- private provider tokens unless a future phase intentionally scopes and
+  approves them
+- cookies
+- auth headers
+- PII
+- raw server environment values
+- raw provider payloads
+
+The default denial/unavailable response should keep CustomPainter active and
+mark Cesium as disabled or bridge-required. CI and local fallback paths should
+not require a real token.
+
+### Redacted Audit Log Contract
+
+Audit event shape:
+
+- event id
+- timestamp
+- requester classification, not PII
+- renderer requested
+- capabilities requested
+- decision
+- fallback used
+- environment
+- host/domain label
+- rate-limit state
+- budget state
+- policy reason
+- redaction status
+
+Required redaction flags:
+
+- token redacted
+- auth redacted
+- cookies redacted
+- headers redacted
+- PII omitted
+
+Early development may use console logs only when the log payload is already
+redacted and contains no token values. Later phases may add:
+
+- Firestore audit collection for reviewed operational history
+- BigQuery/export for usage analysis if needed
+- dashboard summaries for rate, budget, and renderer health
+
+Audit storage must not become a secret sink.
+
+### Rate And Budget Control Phases
+
+The bridge should progress in controlled phases:
+
+| Phase | Control | Behavior |
+|---|---|---|
+| V2.6 | disabled/stub | Validate schemas and fallback paths only. |
+| V2.7 | domain allowlist | Deny unknown hosted domains and keep fallback active. |
+| V2.8 | auth/App Check | Require approved app/requester classification where feasible. |
+| V2.9 | rate limit | Enforce low-volume session issuance per user/session/IP bucket. |
+| V2.10 | budget/cost guard | Add budget cap, circuit breaker, and fallback-on-limit behavior. |
+| Later | usage dashboard | Show usage, denial, fallback, and budget trends. |
+
+No enforcement is enabled by V2.5. Only the contract shape and inert
+server-boundary schema are defined.
+
+### Environment Behavior
+
+Open-source self-host:
+
+- Random Knights org credentials are never shipped.
+- Self-hosters may provide their own restricted token or compatible bridge.
+- Public browser tokens remain the self-hoster's quota and cost risk.
+
+Local dev:
+
+- Defaults to CustomPainter fallback.
+- Developer-owned experiments must not commit, print, log, screenshot, or test
+  real token values.
+- Local dev does not imply production bridge readiness.
+
+Random Knights test:
+
+- Uses test-scoped bridge settings only after a later approved implementation.
+- Keeps short TTLs, low issuance limits, and fallback-on-limit behavior.
+
+Random Knights production:
+
+- Uses org-managed bridge after release approval.
+- Requires allowed production host/domain labels, redacted audit logs, budget
+  guardrails, and explicit production release validation.
+
+Protected preview/reference:
+
+- Remains untouched by ordinary test and production release paths.
+- Does not receive live renderer sessions unless a future phase explicitly
+  authorizes it.
+
+CI:
+
+- Never requires a real Cesium token.
+- May validate schema and redaction behavior.
+- Must not print token values, generated env output, auth payloads, cookies,
+  headers, or PII.
+
+### V2.6 Implementation Gate
+
+V2.6 should remain disabled/stubbed unless the owner explicitly approves live
+bridge work. The next safe implementation step is:
+
+1. Keep `requestEarthRendererSession` unexported or disabled.
+2. Add callable schema tests or Functions build validation.
+3. Add app-side mapping tests from server response states to existing
+   `EarthRendererBridgeResult` fallback outcomes.
+4. Keep CustomPainter as the active renderer.
+5. Do not fetch or return real token values.
+
+Production Cesium activation remains blocked until the callable, secret storage,
+rate/budget controls, audit behavior, attribution, and renderer smoke strategy
+are all reviewed together.
+
 
 ## Visualization Entity Model
 
