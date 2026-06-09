@@ -1850,6 +1850,139 @@ V2.11 contract tests should cover:
 The next safe implementation step after V2.11 is storage and telemetry design
 for redacted usage aggregates, not live Cesium token delivery.
 
+### V2.12 Implementation Gate
+
+V2.12 may add storage and telemetry design contracts while keeping the
+callable disabled/fallback-only. Storage/telemetry design does not authorize
+persistent counters, Firestore writes, BigQuery export, raw event storage, live
+token delivery, runtime Cesium activation, provider fetching, Functions deploy,
+OAuth, production renderer sessions, or preview/reference activation.
+
+Future telemetry needs:
+
+- safe aggregate windows
+- audit summary labels
+- fallback counts
+- denial counts
+- rate-limit outcome counts
+- budget guard outcome counts
+- protected-preview denial counts
+- unknown-host denial counts
+- token-safety indicators
+- redaction compliance indicators
+
+Telemetry contract names:
+
+- `EarthRendererTelemetryAggregate`
+- `EarthRendererTelemetryWindow`
+- `EarthRendererTelemetryCategory`
+- `EarthRendererTelemetryRetentionPolicy`
+- `EarthRendererTelemetryRedactionPolicy`
+- `EarthRendererTelemetryStoragePlan`
+
+Safe aggregate labels/counts may include:
+
+- total requests
+- fallbacks
+- denials
+- rate-limit outcomes
+- budget outcomes
+- protected-preview denials
+- unknown-host denials
+- token exposure event count
+- redaction compliance count
+
+Telemetry must never store:
+
+- raw IP addresses
+- emails
+- UIDs
+- auth payloads
+- App Check tokens
+- cookies
+- headers
+- billing or account identifiers
+- payment details
+- token values
+- raw host strings beyond sanitized labels
+- PII
+- secrets
+
+Storage options comparison:
+
+| Option | Privacy risk | Cost risk | Complexity | Dashboard fit | Retention control | Redaction enforceability |
+| --- | --- | --- | --- | --- | --- | --- |
+| No storage / logs only during early phases | lowest | lowest | lowest | planning only; no history | no stored telemetry | contract labels only |
+| Cloud Logging structured redacted logs | low | low | low | good for early smoke and incident summaries | short log retention / sinks | redacted before logging |
+| Firestore aggregate documents | low | medium | medium | best for dashboard counters/windows | delete or roll up aggregate docs | counters and labels only |
+| BigQuery aggregate export | medium | medium | deferred | research aggregates only | dataset retention / expiration | aggregate rows after privacy review |
+
+Recommended phased path:
+
+1. Phase 1: redacted Cloud Logging labels only, with short retention and no
+   raw event payloads.
+2. Phase 2: Firestore aggregate counter documents, no raw events, no raw host
+   strings, no user/account identifiers, no billing identifiers, and no token
+   values.
+3. Phase 3: optional BigQuery/export for research aggregates only after
+   privacy, retention, and cost review.
+
+Current disabled behavior:
+
+1. Keep `requestEarthRendererSession` disabled.
+2. Continue using V2.7 domain allowlist, V2.8 classification, V2.9
+   rate-limit planning, V2.10 budget guard planning, and V2.11 usage
+   dashboard readiness metadata.
+3. Return CustomPainter fallback.
+4. Include telemetry storage plan metadata in the audit event only.
+5. Set `storageWriteEnabled` to `false`.
+6. Use latest-event labels only; do not persist aggregate windows.
+7. Return `tokenValue: null`.
+8. Keep CI independent from real Cesium tokens.
+
+Retention policy:
+
+- Redacted audit events, if later approved, use short retention.
+- Aggregate counters may retain longer after rollup approval.
+- Fine-grained aggregate windows should roll up to coarse aggregate labels.
+- Aggregate documents should be deleted or rolled up on an approved schedule.
+- Raw secrets, PII, auth payloads, App Check tokens, cookies, headers, IP
+  addresses, billing/account identifiers, raw host strings, and token values
+  have no retention because they must never be accepted into telemetry.
+
+Redaction policy:
+
+- Redaction happens before log or storage.
+- Telemetry models accept safe labels and counts only.
+- Raw sensitive values are not valid telemetry input.
+- Sanitized host labels are allowed; raw host/origin headers are not.
+- Token exposure indicators are explicit safety counts and must never be
+  derived from token values.
+
+Dashboard readiness:
+
+- Future dashboard reads aggregate windows only.
+- Dashboard categories mirror V2.11 readiness categories.
+- Dashboard may show latest redacted policy summary labels.
+- Dashboard may show cost/rate guard summaries after aggregate storage review.
+- Dashboard must not read raw callable payloads or live provider payloads.
+- No live dashboard storage reads are implemented in V2.12.
+
+V2.12 contract tests should cover:
+
+- telemetry aggregate metadata exists
+- storage options are represented
+- storage writes remain disabled
+- retention policy labels exist
+- redaction policy labels exist
+- safe aggregate labels omit raw sensitive values
+- token exposure remains zero/not stored while bridge is disabled
+- protected-preview and unknown-host denial labels are represented
+- disabled bridge still returns CustomPainter fallback
+
+The next safe implementation step after V2.12 is a reviewed redacted-log
+telemetry spike or aggregate storage schema review, not live Cesium activation.
+
 ## Visualization Entity Model
 
 ### EarthLayer
