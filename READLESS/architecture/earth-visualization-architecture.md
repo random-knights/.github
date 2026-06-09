@@ -873,6 +873,278 @@ calls, Firebase Functions, OAuth, deploy, or verified environmental claims.
 Future Earth renderer work must preserve the principle that Earth is a
 spherical, layer-driven visualization surface.
 
+## V2.1 Secure Renderer Token Bridge Design
+
+Purpose: define how the future Cesium renderer can receive only the minimum
+safe renderer session configuration without exposing Cesium Ion credentials in
+committed Flutter web code, logs, tests, screenshots, generated files, or public
+client configuration.
+
+V2.1 is architecture/design only. It does not enable runtime Cesium rendering,
+perform a token fetch, add a Firebase Function, deploy Hosting, add OAuth,
+change provider configuration, or authorize provider-backed Earth layers.
+
+### Existing Secret And Config Pattern
+
+Current app configuration uses the root ecosystem `.env` as the canonical local
+source. CI writes a generated root `.env` from GitHub secrets for validation and
+release workflows, and generated Flutter env artifacts must remain uncommitted.
+Existing app code already uses Firebase callable Functions for AI proxy and
+wildfire-style service boundaries, with safe error labels and no raw provider
+secret exposure in UI.
+
+That pattern is acceptable for server-side provider calls, but it is not
+sufficient for a live Cesium renderer if a token is embedded in the Flutter web
+bundle. Envied obfuscation is not a security boundary for web clients. A Cesium
+Ion token compiled into client code, written into generated env output, printed
+in logs, or visible in screenshots must be treated as exposed.
+
+V2.0 adds the renderer adapter/token-policy contract:
+
+- `EarthRendererAdapter`
+- `EarthRendererType`
+- `EarthRendererCapabilities`
+- `EarthRendererTokenPolicy`
+
+The Cesium adapter remains blocked until a secure token bridge is available.
+The client may know whether a renderer path is configured, unavailable, or
+blocked, but it must not receive broad secret access.
+
+### Token Bridge Options
+
+Option 1: Firebase callable returns short-lived renderer session config.
+
+- Security risk: low when App Check/auth/rate limits are added and the callable
+  returns only a scoped session config.
+- Complexity: medium. Requires a Functions implementation, server-side secret
+  storage, budget controls, logging hygiene, and client fallback handling.
+- Open-source friendliness: good. OSS users can self-host their own bridge or
+  disable Cesium.
+- Rate/cost controls: strong. Callable can enforce per-user, per-IP/session,
+  and per-environment limits before minting or returning session config.
+- Domain restrictions: compatible with domain-restricted Cesium tokens and
+  server-side environment checks.
+- Flutter web compatibility: good.
+- Future mobile/desktop compatibility: good if the callable contract remains
+  platform-neutral.
+
+Option 2: Firebase Hosting rewrite to protected token/config endpoint.
+
+- Security risk: medium. It can hide the origin endpoint, but it still needs a
+  backend service, App Check/auth, and rate limiting. A public rewrite alone is
+  not protection.
+- Complexity: medium-high. Requires Hosting rewrite plus backend service.
+- Open-source friendliness: moderate. Self-hosters must reproduce both Hosting
+  and backend config.
+- Rate/cost controls: good if backed by a Function/service.
+- Domain restrictions: good for hosted web.
+- Flutter web compatibility: good.
+- Future mobile/desktop compatibility: weaker because mobile/desktop do not
+  naturally use Hosting rewrites.
+
+Option 3: user-provided Cesium Ion token for open-source deployments.
+
+- Security risk: owned by the self-hosting user. Public browser exposure may be
+  acceptable only if the user intentionally creates a restricted public token.
+- Complexity: low for OSS users, but documentation must be very clear.
+- Open-source friendliness: high.
+- Rate/cost controls: controlled by the self-hosting user's Cesium account.
+- Domain restrictions: depends on user configuration.
+- Flutter web compatibility: good.
+- Future mobile/desktop compatibility: moderate; platform-specific storage and
+  threat models still need review.
+
+Option 4: public restricted Cesium token with domain restrictions.
+
+- Security risk: medium. Domain restrictions help but do not remove scraping,
+  abuse, quota, or misconfiguration risk.
+- Complexity: low.
+- Open-source friendliness: poor if the org token ships with OSS client code.
+- Rate/cost controls: limited to Cesium-side restrictions and monitoring.
+- Domain restrictions: supported in spirit, but must be verified with the
+  selected Cesium account policy before use.
+- Flutter web compatibility: good.
+- Future mobile/desktop compatibility: weak unless platform restrictions are
+  separately configured.
+
+Option 5: no org token in OSS client; org-hosted deployment only gets org
+bridge.
+
+- Security risk: lowest for the Random Knights org.
+- Complexity: medium because hosted production still needs Option 1 or a
+  similarly protected bridge.
+- Open-source friendliness: high if OSS users can provide their own bridge or
+  token policy.
+- Rate/cost controls: strong for hosted deployment; delegated for self-host.
+- Domain restrictions: strong for hosted deployment.
+- Flutter web compatibility: good.
+- Future mobile/desktop compatibility: good if the bridge contract stays
+  platform-neutral.
+
+### Recommended Phased Architecture
+
+Use a hybrid of Option 1, Option 3, and Option 5:
+
+1. Open-source/self-hosted deployments do not receive a Random Knights Cesium
+   token. They may provide their own Cesium token or renderer bridge at their
+   own risk and cost.
+2. Random Knights hosted environments use an org-managed secure bridge that
+   returns renderer session configuration, not broad secret access.
+3. The Flutter client keeps Cesium disabled unless the bridge reports a
+   configured, allowed, budget-safe, attribution-ready renderer session.
+4. The client must never commit, log, render, screenshot, or test against real
+   token values.
+5. The renderer falls back to the current CustomPainter/metadata prototype when
+   the bridge is unavailable, rate-limited, unauthorized, or over budget.
+
+Recommended future flow:
+
+```text
+Earth workstation
+-> EarthRendererAdapter selects candidate renderer
+-> client requests renderer session config
+-> secure bridge verifies environment, auth/App Check, domain, rate, budget
+-> bridge returns redacted renderer config and scoped token/session metadata
+-> Cesium renderer initializes with allowed base globe only
+-> Earth layer overlays attach only after separate governance gates
+```
+
+The bridge should return only a bounded `EarthRendererSessionConfig` shape:
+
+- renderer type: `cesium`
+- session id
+- token value or token reference, depending on implementation
+- expiration timestamp / TTL
+- allowed domain/environment
+- base globe enabled
+- country/boundary capability status
+- allowed layer ids
+- attribution labels
+- safety labels
+- error/fallback state
+
+The bridge must not return provider API keys, broad account credentials, raw
+Earth provider payloads, private coordinates, unrestricted imagery, or
+unreviewed layer data.
+
+### Runtime Contract Sketch
+
+Future inert contract names:
+
+- `EarthRendererSessionConfig`
+- `EarthRendererCredentialSource`
+- `EarthRendererSecurityMode`
+- `EarthRendererSessionStatus`
+
+Suggested credential sources:
+
+- `none`: renderer unavailable; use CustomPainter fallback.
+- `userProvided`: OSS/self-host user supplied their own restricted token or
+  bridge.
+- `hostedBridge`: Random Knights hosted bridge supplied a scoped session.
+- `publicRestricted`: intentionally public restricted token, only if approved.
+
+Suggested security modes:
+
+- `disabled`
+- `localDevelopment`
+- `selfHostedUserManaged`
+- `hostedTest`
+- `hostedProduction`
+
+Suggested session statuses:
+
+- `unavailable`
+- `missingConfiguration`
+- `unauthorized`
+- `rateLimited`
+- `budgetExceeded`
+- `ready`
+- `expired`
+- `fallback`
+
+No runtime fetch is implemented in V2.1. These names are reserved for V2.2+
+implementation planning and should map cleanly onto the V2.0
+`EarthRendererAdapter` token policy.
+
+### Environment Boundaries
+
+Local development:
+
+- Local `.env` may contain a Cesium value for developer-owned experiments, but
+  the Flutter web bundle must not expose the Random Knights org token.
+- Local dev should default to CustomPainter fallback unless an explicit
+  developer-owned bridge/token path is active.
+- Do not log or print token values.
+
+Open-source self-host:
+
+- No Random Knights org token is shipped.
+- Self-hosters may configure their own Cesium account, restricted token, or
+  compatible bridge.
+- Docs must tell self-hosters that browser-exposed public tokens carry their
+  own cost/quota risk.
+
+Random Knights hosted test:
+
+- Use a test-scoped bridge configuration.
+- Prefer short TTLs, strict rate limits, and reduced quotas.
+- Test deploy channels must not touch the protected reference environment.
+
+Random Knights hosted production:
+
+- Use a protected production bridge with explicit budget caps, domain allowlist,
+  App Check/auth policy when approved, and audit-safe logs.
+- Production activation requires release validation plus renderer smoke checks.
+
+Protected preview/reference:
+
+- Do not wire org Cesium credentials or live renderer sessions unless a future
+  phase explicitly authorizes preview/reference renderer behavior.
+- Preview/reference should remain a safe comparison environment.
+
+CI:
+
+- CI may include secret names and configured/missing status checks.
+- CI must not print token values, snapshot token-bearing HTML, commit generated
+  env output, or require real Cesium activation for domain validation.
+
+### Cost And Abuse Controls
+
+Before production renderer activation, the bridge must define:
+
+- domain allowlist for hosted web origins
+- App Check and/or auth requirement when feasible
+- per-user/session/IP rate limits
+- budget cap and circuit breaker
+- short session TTL and explicit expiration handling
+- cache policy for renderer config that does not cache raw secrets in git or
+  screenshots
+- audit logs that record status and environment without token values
+- fallback to CustomPainter when the bridge fails
+- disabled state for missing, unauthorized, rate-limited, or over-budget
+  sessions
+- attribution and Cesium terms display separate from Earth data attribution
+
+### V2.2 Implementation Plan
+
+V2.2 should implement only an inert/stub bridge contract unless the owner
+explicitly authorizes live runtime token delivery. Recommended next steps:
+
+1. Add app-side `EarthRendererSessionConfig` and security-mode models with
+   fixture data only.
+2. Add UI/readiness copy that shows bridge state without fetching tokens.
+3. Add tests proving no token values render and fallback remains active.
+4. Design a Firebase callable `getEarthRendererSessionConfig` separately.
+5. Only after approval, implement the callable using server-side secret storage,
+   redacted logging, rate limits, TTL, and environment checks.
+6. Only after the callable is reviewed, allow a Cesium renderer runtime spike to
+   request the session config.
+
+V2.2 must not turn Cesium into a live provider-backed Earth layer. Cesium is a
+renderer surface; Earth Intelligence, dashboard models, layer snapshots,
+evidence, and guardrails remain the source of truth.
+
 
 ## Visualization Entity Model
 
