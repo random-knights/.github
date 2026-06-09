@@ -1626,12 +1626,116 @@ V2.9 contract tests should cover:
 
 ### V2.10 Implementation Gate
 
-The next safe implementation step is budget/cost guard planning while keeping
-the callable disabled/fallback-only unless a later phase explicitly approves
-token delivery:
+V2.10 may add disabled-safe budget/cost guard planning metadata while keeping
+the callable disabled/fallback-only. Budget planning does not authorize
+persistent spend tracking, payment metadata collection, billing account
+storage, live token delivery, runtime Cesium activation, provider fetching,
+Functions deploy, OAuth, production renderer sessions, or preview/reference
+activation.
 
-1. Define budget policy ids, cost buckets, circuit-breaker outcomes, and
-   fallback-on-budget behavior.
+Budget guard metadata:
+
+- `budgetPolicyId`
+- `budgetScope`
+- `periodLabel`
+- `budgetLimitLabel`
+- `spendStateLabel`
+- `remainingBudgetLabel`
+- `resetLabel`
+- `enforcementMode`
+- `fallbackOnBudgetLimit`
+- `auditRequired`
+
+Allowed budget scopes:
+
+- `perDeployment`
+- `perHost`
+- `perRenderer`
+- `perEnvironment`
+- `orgGlobal`
+- `selfHostedUserManaged`
+
+Allowed enforcement modes:
+
+- `disabled`
+- `planned`
+- `observeOnly`
+- `enforceLater`
+
+Disabled-safe budget outcomes:
+
+- `notEvaluatedBridgeDisabled`
+- `allowedPlanned`
+- `observeOnlyAllowed`
+- `wouldBudgetLimit`
+- `budgetLimitedFallback`
+- `unavailable`
+- `selfHostedUserManaged`
+
+V2.10 audit labels:
+
+- budget policy id
+- budget scope
+- period label
+- budget limit label
+- spend state label
+- remaining budget label
+- reset label
+- outcome
+- enforcement mode
+- fallback used
+- audit required
+
+These labels must never include payment details, billing ids, raw account
+identifiers, raw user identifiers, IP addresses, auth payloads, App Check
+tokens, cookies, headers, PII, provider secrets, or raw host/origin headers.
+
+Current disabled behavior:
+
+1. Keep `requestEarthRendererSession` disabled.
+2. Continue using V2.7 domain allowlist, V2.8 classification, and V2.9
+   rate-limit planning.
+3. Return `disabled` plus CustomPainter fallback for otherwise valid
+   allowlisted requests.
+4. Include `notEvaluatedBridgeDisabled` as the default current budget outcome
+   for Random Knights managed environments.
+5. Include `selfHostedUserManaged` for self-hosted budget responsibility.
+6. Include planned org-global budget metadata for future spend review.
+7. Return `denied` plus CustomPainter fallback for invalid, unknown, or
+   protected-preview requests.
+8. Return `tokenValue: null`.
+9. Keep CI independent from real Cesium tokens.
+
+Future enforcement behavior:
+
+- `observeOnlyAllowed` may record safe labels while still allowing fallback.
+- `wouldBudgetLimit` may show that a future policy would have limited issuance
+  without blocking during observe-only phases.
+- `budgetLimitedFallback` must return fallback, not a token.
+- Persistent spend tracking requires a later reviewed server-side storage and
+  cost attribution design.
+- Circuit breakers must use safe budget state labels and never log payment,
+  billing, account, raw user, or raw IP material.
+
+V2.10 contract tests should cover:
+
+- budget guard metadata exists
+- bridge-disabled requests include `notEvaluatedBridgeDisabled`
+- simulated future `budgetLimitedFallback` returns CustomPainter fallback
+- self-hosted user-managed budget state is represented
+- observe-only/allowed outcomes remain disabled-safe
+- audit event includes redacted budget labels
+- audit/response omit billing ids, payment details, raw account identifiers,
+  raw user identifiers, IPs, headers, cookies, PII, and token values
+- CustomPainter fallback remains active
+
+### V2.11 Implementation Gate
+
+The next safe implementation step is usage dashboard/readiness planning while
+keeping the callable disabled/fallback-only unless a later phase explicitly
+approves token delivery:
+
+1. Summarize redacted allowlist, auth/App Check, rate-limit, and budget labels.
 2. Keep CI independent from real Cesium tokens.
 3. Do not fetch, log, or return real token values.
 4. Do not deploy Functions or enable runtime Cesium activation.
