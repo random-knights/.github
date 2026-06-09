@@ -2449,6 +2449,80 @@ dashboard read-model spike or a narrow observe-only emulator/test harness. It
 is still not production storage, protected-preview storage, or live Cesium
 activation.
 
+### V2.19 Implementation Gate
+
+V2.19 may add an inert usage dashboard read-model contract for the renderer
+bridge. The read model may prepare a compact display shape for future Earth
+Data View renderer readiness surfaces, but it must not read Firestore, write
+Firestore, enable persistent counters, deliver a token, activate Cesium, deploy
+Functions, or change runtime renderer behavior.
+
+Read-model contract shape:
+
+- selected window label
+- renderer usage summary
+- fallback summary
+- denial summary
+- rate-limit summary
+- budget guard summary
+- domain policy summary
+- auth/App Check policy summary
+- audit redaction summary
+- token safety summary
+- storage status summary
+
+Current disabled fixture behavior:
+
+- `modelStatus: plannedReadModelReady`
+- selected window is a disabled readiness fixture
+- live Firestore reads are disabled
+- live Firestore writes are disabled
+- persistent counters are disabled
+- raw event reads are forbidden
+- CustomPainter fallback remains active
+- Cesium remains disabled
+- token exposure events remain `0 / not applicable`
+
+Future Firestore read path:
+
+- read aggregate windows only
+- no raw events
+- admin/dev-only dashboard access until access rules are finalized
+- dashboard read failures must not affect renderer fallback
+- self-hosted deployments own dashboard configuration, rules, and retention
+
+The read model must exclude:
+
+- user identifiers
+- emails
+- UIDs
+- raw IPs
+- exact hostnames
+- request ids
+- session ids
+- trace ids
+- raw auth payloads
+- App Check tokens
+- cookies
+- headers
+- billing/account identifiers
+- token values
+- secrets
+
+V2.19 contract tests should cover:
+
+- read model exists and is aggregate-only
+- disabled fixture shows no live reads, writes, or counters
+- token exposure metric does not expose token values
+- CustomPainter fallback remains active
+- no Firestore read/write call is represented
+- sensitive identifiers and raw host strings are excluded
+
+The next safe implementation step after V2.19 is either a compact Data View
+readiness display consuming this inert model, or a test/emulator-only aggregate
+read harness. It is still not production storage, protected-preview storage, or
+live Cesium activation.
+
 ## Visualization Entity Model
 
 ### EarthLayer
