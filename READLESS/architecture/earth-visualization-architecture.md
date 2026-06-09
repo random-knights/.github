@@ -2695,6 +2695,90 @@ Cesium activation must follow the V2 bridge guardrails:
 
 `V3.1 Cesium Web Embed Spike`
 
+## V3.1 Cesium Web Embed Spike Result
+
+Date: 2026-06-09
+
+Status: app-side inert embed spike. V3.1 adds a disabled-safe Flutter web
+platform-view host path for a future Cesium renderer, but it does not load
+CesiumJS, request terrain or tiles, read `.env`, fetch a token, call the
+renderer bridge, call providers, deploy Functions, or activate Cesium in
+production.
+
+### Embed Architecture
+
+V3.1 adds an app-side readiness contract and widget boundary:
+
+- `EarthRendererEmbedMode`
+- `EarthCesiumEmbedSpikeReadiness`
+- `EarthCesiumEmbedSpikeFixtures`
+- `EarthRendererWebEmbedHost`
+- `EarthCesiumEmbedSpike`
+
+The embed host uses the existing Flutter conditional import pattern:
+
+- non-web platforms receive a normal Flutter fallback widget
+- web builds can register an `HtmlElementView` platform view
+- the web view is an inert local container only
+- no external Cesium script, asset, terrain, imagery, or tile request is made
+- no package dependency is added
+
+The Data View renderer readiness card reports:
+
+- Cesium Embed Spike: `Available / Inert`
+- Embed mode: `Disabled by default`
+- Runtime activation: `Blocked`
+- Token policy: `Secure Bridge Required / No Token Exposed`
+- Fallback: `CustomPainter`
+
+### HtmlElementView Viability
+
+The V3.1 result is that Flutter web can host a future renderer container through
+the platform-view path while preserving non-web fallback behavior. This proves
+the application can carry a renderer embed boundary without replacing the
+workstation, without making Cesium the active renderer, and without exposing a
+token.
+
+The spike intentionally does not prove a live Cesium globe yet. A real Cesium
+globe remains blocked until V3.2/V3.3 approve secure session configuration,
+token delivery, environment gating, and cost controls.
+
+### Token And Security Handling
+
+V3.1 uses sentinel-only labels:
+
+- `TOKEN_REQUIRED_BY_SECURE_BRIDGE`
+- `CESIUM_TOKEN_NOT_CONFIGURED`
+- `REDACTED`
+
+The app does not read local secrets and does not render sentinel values in the
+fallback UI. Real Cesium ion keys remain forbidden in Dart, JS, HTML, tests,
+logs, screenshots, generated files, and docs.
+
+### CustomPainter Fallback
+
+CustomPainter remains the active renderer and guaranteed fallback. The Cesium
+embed path is disabled by default, not selected automatically, and not mounted
+unless a future local/test spike mode explicitly opts into the inert host.
+
+### V3.2 Requirements
+
+V3.2 must connect runtime readiness to the secure renderer bridge without
+delivering real tokens yet. It should verify:
+
+- bridge request shape is still redacted
+- domain allowlist remains enforced
+- auth/App Check classification remains coarse
+- rate-limit and budget labels remain present
+- telemetry labels remain low-cardinality and redacted
+- CustomPainter fallback remains active for every blocked outcome
+
+V3.2 still must not authorize production Cesium activation.
+
+### Next Recommended Command
+
+`V3.2 Secure Session Bridge Runtime Readiness`
+
 ## Visualization Entity Model
 
 ### EarthLayer
