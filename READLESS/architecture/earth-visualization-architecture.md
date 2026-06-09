@@ -2309,6 +2309,83 @@ The next safe implementation step after V2.16 is an observe-only storage
 enablement design or a usage dashboard read-model spike. It is still not live
 Cesium activation.
 
+### V2.17 Implementation Gate
+
+V2.17 may define observe-only storage enablement policy for future renderer
+bridge telemetry writes. It may add policy fields to the inert write plan, but
+it must not execute Firestore writes, import or call Firestore Admin write APIs,
+enable persistent counters, deliver a token, activate Cesium, deploy Functions,
+or change runtime renderer behavior.
+
+Observe-only policy fields:
+
+- `observeOnlyStorageEligible`
+- `observeOnlyStorageEnvironment`
+- `storageActivationMode`
+- `storageActivationStatus`
+- `writeDryRun`
+- `writeEligible`
+- `writeBlockedReason`
+- `productionWriteAllowed`
+- `previewWriteAllowed`
+- `testWriteAllowed`
+- `localWriteAllowed`
+- `ciWriteAllowed`
+
+Activation modes:
+
+- `disabled`
+- `dryRun`
+- `observeOnly`
+- `enforceLater`
+
+Current default:
+
+- storage remains disabled
+- write plans remain dry-run/not executed
+- production writes are not allowed
+- protected-preview writes are not allowed
+- test writes are eligible later but disabled now
+- local and CI remain dry-run only
+
+Environment rules:
+
+- Local dev: dry run only unless a future emulator-specific phase explicitly
+  configures local aggregate storage.
+- Test: eligible for first observe-only aggregate writes later, after approval.
+- Production: disabled until explicit approval after test burn-in.
+- Protected preview: always disabled unless explicitly overridden by a future
+  protected-reference workflow.
+- Self-hosted: user-owned telemetry policy and rules.
+- CI: dry run only.
+
+Safety preconditions before observe-only writes can be enabled:
+
+- Firestore rules reviewed
+- aggregate-only schema frozen
+- no raw events
+- no high-cardinality dimensions
+- retention policy approved
+- cost budget guard approved
+- test environment burn-in plan approved
+- rollback/disable switch documented
+
+V2.17 contract tests should cover:
+
+- observe-only fields exist
+- current default remains disabled
+- production writes are not allowed
+- protected-preview writes are not allowed
+- test environment is eligible later but not enabled now
+- CI and local dev remain dry-run only
+- no Firestore Admin/write call is represented
+- disabled bridge responses still return CustomPainter fallback
+- no token values or raw identifiers appear
+
+The next safe implementation step after V2.17 is either an observe-only storage
+stub behind an explicit test-environment flag, or a usage dashboard read-model
+spike. It is still not live Cesium activation.
+
 ## Visualization Entity Model
 
 ### EarthLayer
