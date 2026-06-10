@@ -4364,9 +4364,119 @@ Next implementation phase:
 - Add a disabled generalized provider result adapter that models raw-to-safe
   FIRMS transformation before validation/write planning.
 
+### P22.13 NASA FIRMS Cached Snapshot Generalized Provider Result Adapter Stub
+
+Status: disabled-safe generalized provider result adapter stub only. P22.13
+adds an inert raw-to-safe transformation contract for future NASA FIRMS
+provider results. It does not call NASA FIRMS, perform HTTP/fetch, read `.env`,
+read an API key, accept raw provider payloads, return raw payloads, store raw
+payloads, store precise geometry, write Firestore, or enable verified
+environmental claims.
+
+Adapter entry point:
+
+- `createDisabledEarthWildfireSnapshotProviderResultAdapter`
+
+Adapter contract:
+
+- `EarthWildfireSnapshotProviderResultAdapter`
+- `EarthWildfireSnapshotProviderResult`
+- `EarthWildfireSnapshotGeneralizedResult`
+- `EarthWildfireSnapshotProviderResultStatus`
+
+Supported provider result statuses:
+
+- `disabled`
+- `skippedFixtureOnly`
+- `rawPayloadNotAccepted`
+- `generalizedResultPlanned`
+- `generalizationFailed`
+- `validationRequired`
+- `deniedByPolicy`
+
+Current callable behavior:
+
+- Valid request still returns `fixtureFallback`.
+- Invalid request still returns `denied`.
+- Cache read remains disabled.
+- Provider fetch remains disabled.
+- Provider result processing remains fixture-only.
+- Cache write remains disabled.
+- Provider result adapter labels are included only as compact response,
+  audit, and log metadata.
+- No raw FIRMS payload is accepted, returned, stored, or logged.
+- No precise geometry is returned or stored.
+- No verified environmental claims are generated.
+
+Response/audit/log labels now include:
+
+- `providerResultStatus`
+- `noRawPayloadAccepted`
+- `generalizedCandidateBuilt`
+- `validationRequiredBeforeWrite`
+- `rawPayloadStored`
+- `preciseGeometryStored`
+
+Default disabled result:
+
+- status: `skippedFixtureOnly`
+- no raw payload accepted: true
+- raw payload stored: false
+- raw payload returned: false
+- precise geometry stored: false
+- precise geometry returned: false
+- generalized candidate built: false
+- validation required before write: true
+- fallback required: true
+- geometry generalization policy: broad region labels only
+- metric generalization policy: bounded labels only
+- validated candidate only: true
+
+Raw-to-safe transformation model:
+
+- Raw provider detection rows are never exposed directly.
+- Precise latitude/longitude or point geometry is generalized into broad
+  region, event, timeline, and summary labels.
+- Confidence, count, and freshness values become bounded labels or safe
+  generalized metrics.
+- Attribution labels, caveats, redaction flags, and guardrails are attached
+  before validation.
+- No verified environmental claims are created.
+- The result becomes a validator candidate only; validation still determines
+  whether a future trusted server write could be considered.
+
+Future generalized result fixture:
+
+- A deterministic `generalizedResultPlanned` fixture can produce a safe
+  validator candidate for contract tests.
+- The candidate includes attribution, caveats, guardrails, redaction flags,
+  generalized records, and no verified claims.
+- The candidate validates against the disabled storage validator but remains
+  write-ineligible because cache writes are still disabled.
+
+Guardrails remain:
+
+- no Firestore/Admin read
+- no Firestore/Admin write
+- no live NASA FIRMS provider call
+- no HTTP/fetch call
+- no API key read
+- no `.env` read
+- no provider URL exposure
+- no raw FIRMS payload accepted or exposed
+- no precise geometry
+- no verified environmental claims
+- no Functions or rules deploy
+
+Next implementation phase:
+
+- Add a live-provider readiness gate that reviews the complete cache-first,
+  provider-after-cache, generalize-before-validate, validate-before-write
+  sequence before any real NASA FIRMS fetch is enabled.
+
 ### Next Recommended Command
 
-`P22.13 NASA FIRMS Cached Snapshot Generalized Provider Result Adapter Stub`
+`P22.14 NASA FIRMS Cached Snapshot Live Provider Readiness Gate`
 
 ## Visualization Entity Model
 
