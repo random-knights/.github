@@ -3708,9 +3708,69 @@ storage boundary. It records tooling status, future test location, emulator-only
 execution, planned contexts, planned test cases, and the rules-vs-server
 validation split. Runtime behavior remains fixture fallback only.
 
+### P22.6 NASA FIRMS Cached Snapshot Inert Rules Draft
+
+Status: disabled-safe Firestore rules draft only. P22.6 changes the local
+rules file but does not deploy Firestore rules, does not read or write
+Firestore/cache storage, does not call NASA FIRMS, does not read a FIRMS API
+key, and does not create verified wildfire or environmental claims.
+
+Existing rules audit:
+
+- The broad verified-user catch-all previously lived at `match /{document=**}`.
+- In Firestore rules, a more specific `allow false` does not override another
+  matching `allow true`; all matching rules are ORed for access decisions.
+- Therefore, placing deny rules before the old recursive catch-all would not
+  actually protect `earth_wildfire_snapshots`.
+- P22.6 changes the broad catch-all to `match /{collection}/{document=**}` and
+  excludes the `earth_wildfire_snapshots` top-level collection from that allow
+  condition.
+- Non-FIRMS collections retain the existing verified Rand0m user behavior.
+
+Rules draft added:
+
+- `match /earth_wildfire_snapshots/{cacheKey}`
+- `match /earth_wildfire_snapshots/{scopeKey}/windows/{windowKey}`
+- `match /earth_wildfire_snapshots/{document=**}`
+
+All three FIRMS cache matches deny client reads and writes with `if false`.
+The recursive FIRMS match covers any additional nested future cache documents.
+
+Catch-all ordering and behavior:
+
+- FIRMS-specific matches appear before the broad non-FIRMS catch-all for
+  readability and future maintainability.
+- The important protection is the catch-all exclusion:
+  `!futureEarthWildfireSnapshotCollection(collection)`.
+- This keeps verified-user access for existing non-FIRMS collections while
+  preventing the broad allow from matching FIRMS cache paths.
+
+Client access behavior:
+
+- unauthenticated reads: denied
+- verified client reads: denied
+- verified client writes: denied
+- safe aggregate reads: still disabled until explicitly approved
+- direct client writes: denied
+
+Server/Admin write model:
+
+- Server/Admin SDK writes bypass client Firestore rules.
+- Future server writes must pass the server validator before storage.
+- Server validation must allow only generalized scope/cache keys, TTL/freshness
+  labels, allowed fields, redaction flags, attribution, caveats, and guardrails.
+- Forbidden future cache fields remain API keys/tokens/map keys, raw FIRMS
+  payloads, provider URLs, precise geometry, bbox/lat/lon/coordinates,
+  auth/user identifiers, cookies, headers, request ids, session ids, and trace
+  ids.
+
+The Functions contract now marks the FIRMS security rules coverage as
+`explicitDenyDrafted`, while preserving `notDeployed`, disabled client access,
+and no live storage behavior. Runtime behavior remains fixture fallback only.
+
 ### Next Recommended Command
 
-`P22.6 NASA FIRMS Cached Snapshot Inert Rules Draft`
+`P22.7 NASA FIRMS Cached Snapshot Rules Emulator Harness`
 
 ## Visualization Entity Model
 
