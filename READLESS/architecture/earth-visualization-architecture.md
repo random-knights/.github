@@ -5305,6 +5305,44 @@ Recommended next command:
 
 ## Visualization Entity Model
 
+## C3.E2 Cesium Activation + Earth Data Workspace Sprint
+
+Status: gated implementation sprint. C3.E2 adds the first redacted
+server-session Cesium bridge path and a selectable app-side Cesium renderer
+control, but the default kill switch remains closed and CustomPainter remains
+the production/default fallback.
+
+Implemented:
+
+- server-only Cesium token/session accessor contract with redacted metadata
+- gated renderer session helper requiring explicit kill switch, live renderer
+  flag, allowed host, and server token availability
+- app-side renderer selector that falls back to CustomPainter when Cesium is
+  blocked or unavailable
+- Data View workspace layout with one active full-page section at a time
+- Data View @scient1st prompt bar
+- System Status labels for Cesium availability, kill switch, token source, and
+  CustomPainter fallback
+
+Guardrails preserved:
+
+- no raw Cesium token in client code, tests, logs, or READLESS
+- no production activation by default
+- no protected-preview activation
+- no provider calls
+- no deployment or workflow changes
+
+Remaining blockers before real Cesium test activation:
+
+1. Approve a test deployment target.
+2. Configure server-only Cesium session secret/config.
+3. Wire the deployed callable to the gated session helper.
+4. Run one controlled test-environment renderer smoke.
+
+Recommended next command:
+
+`C3.E3 Cesium Test Environment Smoke`
+
 ### EarthLayer
 
 Represents a user-facing Earth topic.
