@@ -4602,9 +4602,143 @@ Next implementation phase:
 - Prepare the test-environment live-provider activation plan once Java 21 rules
   validation and test-environment approval are available.
 
+### P22.15 NASA FIRMS Cached Snapshot Test Environment Live Provider Activation Plan
+
+Status: test-environment activation plan only. P22.15 adds an inert activation
+sequence contract for the P22 cached NASA FIRMS snapshot callable. It does not
+call NASA FIRMS, perform HTTP/fetch, read `.env`, read an API key, deploy
+Firebase Functions, read or write Firestore, enable cache writes, expose raw
+provider payloads, store precise geometry, use legacy `getWildfireSummary`, or
+make verified environmental claims.
+
+Plan entry point:
+
+- `buildEarthWildfireTestLiveActivationPlan`
+
+Plan contracts:
+
+- `EarthWildfireTestLiveActivationPlan`
+- `EarthWildfireTestLiveActivationStep`
+- `EarthWildfireTestLiveActivationStatus`
+- `EarthWildfireLiveProviderKillSwitch`
+- `EarthWildfireLiveProviderRuntimeGuard`
+- `EarthWildfireTestLiveFirstRequestShape`
+
+Current status:
+
+- test live activation status: `planned`
+- active: false
+- live call enabled: false
+- key read enabled: false
+- cache read enabled: false
+- cache write enabled: false
+- production enabled: false
+- protected preview enabled: false
+- kill switch: closed
+- first live scope: preset generalized area only
+- first live day range: 1 day
+- fallback on failure: true
+
+Activation gap audit:
+
+- Java 21 rules harness verification
+- server-side key configuration
+- approved test deployment target
+- test-only cache read implementation
+- test-only provider fetch implementation
+- provider result generalizer implementation
+- validator-before-write approval
+- test-only cache write implementation
+- operational kill switch approval
+- rate and budget guard enforcement
+- redacted logging review
+
+First live request shape:
+
+- source: NASA FIRMS
+- source id: `nasa-firms`
+- one preset generalized region only
+- day range max: 1
+- summary-only response
+- no map tiles
+- no raw payload returned
+- no precise geometry returned
+- no client-provided provider URL
+- server-side key only
+- bounded timeout
+- cache-first required
+- fallback on any failure
+
+Runtime guards:
+
+- test environment only
+- production hard block
+- protected preview hard block
+- missing key fails closed
+- cache unavailable returns fixture or safe stale fallback
+- provider timeout returns fallback
+- validator failure blocks write and returns fallback
+- budget/rate guard blocks live call and returns fallback
+- redacted logging only
+
+Cache-first transition sequence:
+
+1. Verify Firestore rules harness under Java 21+.
+2. Configure server-only NASA FIRMS key without client exposure.
+3. Enable test-only cache read before any provider fetch.
+4. Enable bounded test-only provider fetch after cache miss or stale cache.
+5. Generalize provider rows into broad labels and bounded metrics.
+6. Validate generalized result before any trusted server write.
+7. Write only safe cache document fields after approval.
+8. Read the safe cache document through the cache adapter.
+9. Return generalized snapshot only, with caveats and attribution.
+10. Wire app Data View/test UI after backend gate is proven.
+
+Callable response/audit/log labels now include:
+
+- `testLiveActivationStatus`
+- `liveCallEnabled`
+- `keyReadEnabled`
+- `testCacheReadEnabled`
+- `testCacheWriteEnabled`
+- `productionEnabled`
+- `previewEnabled`
+- `killSwitch`
+- `firstLiveScope`
+- `firstLiveDayRange`
+- `fallbackOnFailure`
+
+Important separation:
+
+- `getEarthWildfireSnapshot` remains the P22 cached snapshot callable and is
+  still disabled/inert.
+- Existing legacy `getWildfireSummary` can perform live FIRMS behavior, but it
+  is not the P22 cached snapshot activation path and must not be reused to
+  bypass the safer cache-first plan.
+- P22 activation must remain cache-first, provider-after-cache, generalized,
+  validated-before-write, redacted, and fallback-safe.
+
+P22.16 implementation criteria:
+
+- Java 21+ rules harness available and passing.
+- Test environment target approved.
+- Server-only NASA FIRMS key configured but never exposed to clients/logs/tests.
+- Kill switch default remains closed until explicit activation.
+- Cache read implementation exists before provider fetch.
+- Provider fetch is bounded, test-only, and after cache miss/stale only.
+- Raw payloads are transformed immediately into generalized records.
+- Storage validator passes before any write.
+- Cache writes remain test-only and safe-field-only.
+- Production and protected preview remain hard-blocked.
+
+Next implementation phase:
+
+- Add a disabled-safe test-environment cache read adapter implementation stub
+  for the P22 cached snapshot path, still without live provider calls.
+
 ### Next Recommended Command
 
-`P22.15 NASA FIRMS Cached Snapshot Test Environment Live Provider Activation Plan`
+`P22.16 NASA FIRMS Cached Snapshot Test Cache Read Adapter Implementation Stub`
 
 ## Visualization Entity Model
 
