@@ -3639,9 +3639,78 @@ policy, planned path templates, allowed and forbidden field labels,
 server-validation responsibilities, and future rules-test coverage. Runtime
 behavior remains fixture fallback only.
 
+### P22.5 NASA FIRMS Cached Snapshot Rules Test Harness Plan
+
+Status: rules harness planning only. P22.5 does not change active
+`firestore.rules`, does not deploy rules, does not add package dependencies,
+does not connect to a live Firebase project, does not read or write Firestore,
+does not call NASA FIRMS, and does not create verified wildfire or
+environmental claims.
+
+Rules/test tooling audit:
+
+- `firestore.rules` exists and is referenced by `firebase.json`.
+- Current rules still use the broad verified Rand0m user catch-all identified in
+  P22.4.
+- No `@firebase/rules-unit-testing` dependency is installed.
+- No Firestore rules test script is configured.
+- No Firestore emulator rules test folder exists.
+- Existing Functions tests are pure contract tests and do not start emulators.
+- Adding a runnable rules harness would require package/dependency changes, so
+  P22.5 records the harness plan and does not add a skipped or non-running test
+  skeleton.
+
+Planned harness:
+
+- test project id: `earth-wildfire-rules-test`
+- execution: Firebase Emulator only
+- live Firebase project required: no
+- network access required: no
+- rules file under test: `firestore.rules`
+- future test location:
+  `test/rules/earth_wildfire_snapshots.rules.test.ts`
+- unauthenticated context: unauthenticated test context
+- verified user context: verified `rand0m.ai` user test context
+- admin/server context: Admin SDK bypass or server-context simulation after
+  trusted server validation is implemented
+- active rules changed: no
+- rules deploy required: no
+- Firebase data mutation allowed in this phase: no
+
+Future rules test cases:
+
+- unauthenticated read denied
+- verified client read denied by default
+- verified client write denied
+- safe aggregate read allowed only if future policy enables it
+- raw payload field rejected
+- API key, token, or map key field rejected
+- precise geometry field rejected
+- raw provider URL rejected
+- auth/user fields rejected
+- trusted server/admin write path allowed only through server/admin context or
+  Admin SDK bypass after server validation
+
+Rules vs server validation split:
+
+- Firestore rules should enforce path, method, authentication state, denied
+  client writes, default-denied client reads, future safe aggregate read gates,
+  allowlisted field names, and forbidden sensitive field names.
+- Server validation must still enforce cache-key sanitation, day-range limits,
+  TTL/freshness labels, generalized records, raw-payload rejection,
+  precise-geometry rejection, provider URL/key rejection, auth/user field
+  rejection, guardrail labels, attribution, and caveats.
+- Trusted server writes should rely on Admin SDK bypass only after the server
+  validator emits allowed generalized fields.
+
+The Functions contract now carries an inert rules harness plan on the FIRMS
+storage boundary. It records tooling status, future test location, emulator-only
+execution, planned contexts, planned test cases, and the rules-vs-server
+validation split. Runtime behavior remains fixture fallback only.
+
 ### Next Recommended Command
 
-`P22.5 NASA FIRMS Cached Snapshot Rules Test Harness Plan`
+`P22.6 NASA FIRMS Cached Snapshot Inert Rules Draft`
 
 ## Visualization Entity Model
 
