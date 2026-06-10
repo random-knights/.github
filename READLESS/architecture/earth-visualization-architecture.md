@@ -5213,6 +5213,49 @@ Recommended next command:
 
 `P23.1 NASA FIRMS Test Callable Wiring + Emulator Review`
 
+### P23.1 NASA FIRMS Test Callable Wiring + Emulator Review
+
+Status: emulator/fake-only callable execution path. P23.1 wires the P23.0
+test live-provider gate into a pure test callable evaluator so Functions tests
+can exercise the fake server-key accessor and fake provider fetcher without
+changing default callable behavior.
+
+The default cached snapshot callable remains unchanged:
+
+- valid request: fixture fallback
+- invalid request: denied
+- production/protected preview: blocked for live test fetch
+- no live NASA FIRMS call
+- no real key read
+- no `.env` read
+- no Firestore/Admin read or write
+
+The emulator path requires all of:
+
+- explicit test environment
+- explicit live test flag
+- open kill switch
+- fake key accessor
+- fake provider fetcher
+- approved NASA FIRMS preset
+- day range of 1
+
+The safest default final result remains fixture fallback. Tests may explicitly
+opt into a generalized test result, but even that result remains generalized,
+redacted, non-verified, and cache-write disabled.
+
+Remaining blocker before real test environment invocation:
+
+1. Replace the fake key accessor with approved server-only secret/config access.
+2. Replace the fake provider fetcher with bounded server-only NASA FIRMS fetch.
+3. Keep production and protected preview blocked.
+4. Keep cache writes disabled until a separate approval phase.
+5. Run the first live test only in an explicitly selected test environment.
+
+Recommended next command:
+
+`P23.2 NASA FIRMS Server Key Secret Boundary + Test Invocation Plan`
+
 ## Visualization Entity Model
 
 ### EarthLayer
