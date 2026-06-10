@@ -3238,9 +3238,58 @@ Before production renderer readiness or provider-backed P22 layers:
 6. No layer may claim verified environmental truth without source evidence and
    review.
 
+### P22.0 NASA FIRMS Wildfire Snapshot Foundation
+
+Status: inert source-readiness and fixture mapping only. P22.0 does not
+activate live NASA FIRMS access, does not read a FIRMS API key, does not deploy
+Functions, and does not create verified wildfire or environmental claims.
+
+The app records NASA FIRMS as the required Earth source candidate for wildfire
+and active-fire readiness:
+
+- source id: `nasa-firms`
+- source type: wildfire / active fire
+- readiness label: NASA FIRMS Ready
+- live access: Disabled
+- auth label: API key required later / not read
+- cache requirement: cache before provider
+- geometry policy: generalized regions and broad event markers only
+
+The deterministic fixture is normalized through `EarthLayerSnapshot` before it
+reaches renderer planning. It carries:
+
+- source metadata, attribution, license, and caveat labels
+- preview freshness metadata
+- generalized region labels
+- generalized event marker records
+- summary metric records
+- a timeline metadata record
+- guardrails for Preview Fixture, Source Candidate, No Live Provider Lookup,
+  Not Provider Verified In This Session, No Verified Environmental Claims, and
+  Generalized Geometry
+
+The `EarthDataLayerAdapter` maps the FIRMS fixture into renderer-neutral layers:
+
+- NASA FIRMS wildfire event marker layer
+- NASA FIRMS wildfire intensity/readiness layer
+- NASA FIRMS wildfire timeline layer
+- NASA FIRMS wildfire summary metric layer
+
+CustomPainter may show simplified marker and summary readiness. Cesium remains
+the preferred future renderer for globe-attached active-fire detections and
+color layers. Globe.GL / Three.js remains a contingency path if Cesium cannot
+meet cost, token, or hosting constraints.
+
+Future live FIRMS integration must add an approved server/cache boundary before
+any provider request. That later phase must define quota and budget behavior,
+FIRMS attribution, acquisition/freshness labels, cache TTL, redaction/audit
+labels, sensitive geometry policy, and stale-safe fallback behavior. Raw fire
+coordinates, emergency guidance, and verified environmental claims remain out
+of scope until explicitly approved.
+
 ### Next Recommended Command
 
-`V3.6 Renderer Production Readiness Review`
+`P22.1 NASA FIRMS Cache Boundary Plan`
 
 ## Visualization Entity Model
 
