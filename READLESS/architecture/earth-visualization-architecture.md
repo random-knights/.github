@@ -3068,6 +3068,180 @@ enabled:
 
 `V3.5 Data Layer Adapter`
 
+## V3.5 Data Layer Adapter
+
+Date: 2026-06-09
+
+Status: renderer-neutral data-layer adapter contract only. V3.5 does not
+activate Cesium, fetch or deliver a Cesium token, read `.env`, call providers,
+deploy Firebase Functions, change workflows, touch hosting, or add large
+datasets.
+
+### Adapter Contract
+
+V3.5 adds an app-side adapter between Earth data snapshots and renderer-ready
+visual layers. The adapter keeps providers/source snapshots independent from
+CustomPainter, Cesium, or any future WebGL renderer.
+
+The app-side model includes:
+
+- `EarthDataLayerAdapter`
+- `EarthRendererDataLayer`
+- `EarthRendererLayerType`
+- `EarthRendererLayerSource`
+- `EarthRendererLayerStatus`
+- `EarthRendererLayerAnimationMode`
+- `EarthRendererLayerGeometryMode`
+- `EarthRendererLayerStyle`
+- `EarthRendererLayerGuardrail`
+- `EarthRendererDataLayerCompatibility`
+
+The adapter is intentionally deterministic. It maps existing fixtures and
+readiness contracts into layer metadata, not live renderer primitives.
+
+### Layer Taxonomy
+
+Supported layer families are:
+
+- Weather
+- Wind
+- Ocean
+- Wildfire
+- Forest
+- Glacier
+- Carbon
+- Biodiversity
+- Protected Area
+- Species
+- Habitat
+- Restoration
+- Flight
+- Ship
+- Satellite
+- Company
+- Project
+- Monitoring
+- Verification
+- Earth Score
+
+Supported geometry modes are:
+
+- Point
+- Line / Path
+- Particle / Vector Field
+- Heat / Color Field
+- Boundary Overlay
+- Region Fill
+- Entity / Project Marker
+- Metric Summary
+- Timeline Event
+
+Supported animation modes are:
+
+- None
+- Pulse
+- Particle Flow
+- Vector Flow
+- Time Step
+- Replay
+- Heat Shift
+
+### Snapshot To Layer Mapping
+
+The deterministic V3.5 fixture adapter maps:
+
+| Source fixture | Renderer layers |
+| --- | --- |
+| Weather/Wind cache fixture | Weather Metric Layer, Wind Vector / Flow Layer, Weather/Wind Summary Timeline Layer |
+| Wildfire/Forest evidence fixture | Wildfire Event Marker Layer, Forest Readiness Layer, Wildfire/Forest Timeline Layer |
+| V3.4 boundary/base-globe readiness | Country / Region Boundary Overlay Layer, Base Globe Readiness Layer |
+
+These mappings use existing `EarthLayerSnapshot` records and V3.4 boundary
+readiness labels. They do not fetch provider data, infer real environmental
+conditions, or represent unverified AI output as environmental fact.
+
+### Renderer Compatibility
+
+The adapter marks renderer compatibility per layer:
+
+- CustomPainter can preview simplified markers, summaries, broad readiness
+  colors, and symbolic motion.
+- CustomPainter is limited for true-globe boundaries, vector fields, particle
+  fields, and reviewed high-detail overlays.
+- Cesium is preferred for true-globe boundaries, data-driven color fields,
+  vector/particle wind or ocean layers, and renderer-attached overlays after
+  secure activation.
+- Globe.GL / Three.js remains a contingency path if Cesium cost, token, or
+  hosting constraints block activation.
+
+The active runtime still remains CustomPainter. Cesium remains candidate/inert.
+
+### Guardrails
+
+Every V3.5 layer carries guardrails such as:
+
+- Preview Only
+- Fixture
+- Not Live Data
+- Not Provider Verified
+- No Verified Environmental Claims
+- Aggregated / Generalized Geometry
+- Sensitive Geometry Protected
+- No Live Provider Lookup
+- No Token Delivery
+
+The model supports `Provider Backed` as a future label, but V3.5 fixture layers
+are provider-inert and token-free.
+
+### Data View Readiness Updates
+
+The Earth Data View renderer readiness card now reports:
+
+- Data Layer Adapter: Ready
+- Weather/Wind: Fixture mapped
+- Wildfire/Forest: Fixture mapped
+- Boundaries: Renderer layer ready
+- Live Providers: Disabled
+- Renderer Compatibility: CustomPainter fallback / Cesium preferred
+
+These labels are readiness metadata only. They do not mean a live provider,
+live Cesium runtime, or verified environmental claim is active.
+
+### Future Provider Integration Path
+
+Future provider integrations should produce normalized `EarthLayerSnapshot`
+records first. The adapter then maps those records into renderer-ready layer
+metadata. Renderer implementations should consume adapter output rather than
+calling providers directly.
+
+Provider-backed phases must still define:
+
+1. source attribution and license terms
+2. cache/server boundary behavior
+3. precision and sensitivity policy
+4. renderer compatibility
+5. audit, rate, budget, and usage labels
+6. guardrail labels for unverified or preview-only claims
+
+### V3.6 / P22 Prerequisites
+
+Before production renderer readiness or provider-backed P22 layers:
+
+1. The adapter must remain the source-to-renderer boundary.
+2. Provider snapshots must stay normalized and guardrailed before visual
+   rendering.
+3. Real weather, wind, wildfire, marine, flight, satellite, ecological,
+   project, and verification layers must remain separately approved.
+4. Cesium token delivery must remain disabled until the secure bridge is
+   approved for a test environment.
+5. CustomPainter fallback must remain available.
+6. No layer may claim verified environmental truth without source evidence and
+   review.
+
+### Next Recommended Command
+
+`V3.6 Renderer Production Readiness Review`
+
 ## Visualization Entity Model
 
 ### EarthLayer
