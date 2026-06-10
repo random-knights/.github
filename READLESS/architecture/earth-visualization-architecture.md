@@ -5165,6 +5165,54 @@ Remaining blockers before live test-environment calls:
 
 `P22.M Wildfire Stack Merge + Main Validation`
 
+### P23.0 NASA FIRMS Test Live Provider Fetch Behind Kill Switch
+
+Status: test-environment fetch boundary only. P23.0 introduces the first
+modeled NASA FIRMS live-provider path behind a closed-by-default kill switch,
+but it does not deploy Functions, call NASA FIRMS, read `.env`, read a real API
+key, write cache documents, return raw payloads, or activate production/preview
+provider behavior.
+
+The callable default remains unchanged:
+
+- valid request: fixture fallback
+- invalid request: denied
+- production: blocked
+- protected preview: blocked
+- missing server key: fail closed
+- invalid preset: blocked
+- day range greater than 1: blocked
+
+The new boundary is intentionally test-only:
+
+- approved source: NASA FIRMS
+- approved preset: `global-fire-readiness-preview`
+- max day range: 1
+- output: summary/generalized result only
+- timeout model: bounded
+- cache writes: disabled
+- raw FIRMS payload: not returned or stored
+- precise geometry: not returned or stored
+- provider URL/key material: never returned, logged, or placed in audit labels
+
+The server-only key accessor added in this phase is a fake test accessor that
+returns metadata only. It models key availability and fail-closed behavior
+without exposing a key value or reading local environment variables.
+
+Remaining blockers before a real test invocation:
+
+1. Select the test hosting/Functions environment explicitly.
+2. Configure the NASA FIRMS key as server-only secret/config.
+3. Keep production and protected preview blocked.
+4. Keep the kill switch closed by default and open only for an approved test run.
+5. Preserve the one-day/preset-region constraints.
+6. Keep cache writes disabled until storage approval is complete.
+7. Confirm generalized output validation before any future write.
+
+Recommended next command:
+
+`P23.1 NASA FIRMS Test Callable Wiring + Emulator Review`
+
 ## Visualization Entity Model
 
 ### EarthLayer
