@@ -4253,9 +4253,120 @@ Next implementation phase:
   fetch planning while still requiring cache-first behavior, API key guardrails,
   generalized provider output, and fixture fallback.
 
+### P22.12 NASA FIRMS Cached Snapshot Provider Fetch Adapter Stub
+
+Status: disabled-safe provider fetch adapter stub only. P22.12 adds an inert
+provider-after-cache adapter contract for future server-side NASA FIRMS
+wildfire snapshot fetches. It does not call NASA FIRMS, perform HTTP/fetch,
+read `.env`, read an API key, include provider URLs, expose raw payloads, read
+or write Firestore, store precise geometry, or enable verified environmental
+claims.
+
+Adapter entry point:
+
+- `createDisabledEarthWildfireSnapshotProviderFetchAdapter`
+
+Adapter contract:
+
+- `EarthWildfireSnapshotProviderFetchAdapter`
+- `EarthWildfireSnapshotProviderFetchResult`
+- `EarthWildfireSnapshotProviderFetchStatus`
+
+Supported provider fetch statuses:
+
+- `disabled`
+- `skippedFixtureOnly`
+- `providerAfterCacheRequired`
+- `providerKeyRequiredLater`
+- `fetchPlanned`
+- `fetchBlocked`
+- `providerUnavailable`
+- `providerTimeoutPlanned`
+- `deniedByPolicy`
+
+Current callable behavior:
+
+- Valid request still returns `fixtureFallback`.
+- Invalid request still returns `denied`.
+- Cache read remains disabled.
+- Provider fetch remains disabled.
+- Cache write remains disabled.
+- Provider fetch adapter result is included only as compact labels.
+- No NASA FIRMS provider call occurs.
+- No HTTP/fetch call occurs.
+- No API key or `.env` read occurs.
+- No raw provider payload, provider URL, precise geometry, secrets, PII, or
+  verified claims are returned.
+
+Response/audit/log labels now include:
+
+- `providerFetchStatus`
+- `noProviderCall`
+- `noApiKeyRead`
+- `noRawPayload`
+- `providerAfterCachePolicy`
+- `providerBlockedReason`
+
+Default disabled result:
+
+- status: `disabled`
+- provider-after-cache policy: `fetchOnlyAfterCacheMissOrStale`
+- cache read status: `notEvaluated`
+- provider needed decision: `blockedBeforeCacheRead`
+- no provider call: true
+- no API key read: true
+- no raw payload: true
+- HTTP call attempted: false
+- provider URL included: false
+- fallback required: true
+- server-side key policy: required later, not read
+- provider blocked reason: bridge disabled
+
+Provider-after-cache behavior:
+
+- Provider fetch may only be modeled after request validation, cache key
+  construction, cache read, and a provider-needed decision.
+- Fixture-only and fresh-cache outcomes do not need provider fetch.
+- Cache miss and stale-cache outcomes may model `providerAfterCacheRequired`
+  but still do not call the provider while disabled.
+- Future provider fetch requires a server-side key path and must never accept
+  client-supplied keys, provider URLs, headers, cookies, auth payloads, or raw
+  request material.
+
+Future fetch behavior model:
+
+- Provider fetch occurs only after cache miss or stale cache and explicit
+  provider enablement.
+- API key use is server-side only.
+- Provider response is generalized immediately.
+- Raw provider payload is never returned and never stored.
+- Precise geometry is never returned and never stored.
+- Provider timeout, unavailable, or error states return safe fallback or a
+  validated stale cache with caveats.
+- Validation still runs before any future cache write.
+
+Guardrails remain:
+
+- no Firestore/Admin read
+- no Firestore/Admin write
+- no live NASA FIRMS provider call
+- no HTTP/fetch call
+- no API key read
+- no `.env` read
+- no provider URL exposure
+- no raw FIRMS payload
+- no precise geometry
+- no verified environmental claims
+- no Functions or rules deploy
+
+Next implementation phase:
+
+- Add a disabled generalized provider result adapter that models raw-to-safe
+  FIRMS transformation before validation/write planning.
+
 ### Next Recommended Command
 
-`P22.12 NASA FIRMS Cached Snapshot Callable Provider Fetch Adapter Stub`
+`P22.13 NASA FIRMS Cached Snapshot Generalized Provider Result Adapter Stub`
 
 ## Visualization Entity Model
 
