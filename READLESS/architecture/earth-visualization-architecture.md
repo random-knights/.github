@@ -4146,9 +4146,116 @@ Next implementation phase:
 - Add a disabled cache-write adapter stub that accepts only validator-approved
   generalized candidates and still never writes Firestore while disabled.
 
+### P22.11 NASA FIRMS Cached Snapshot Cache Write Adapter Stub
+
+Status: disabled-safe cache write adapter stub only. P22.11 adds an inert
+validate-before-write adapter contract for future NASA FIRMS wildfire snapshot
+cache writes. It does not import Firestore Admin, read Firestore, write
+Firestore, call NASA FIRMS, read `.env`, read an API key, expose raw payloads,
+store precise geometry, or enable verified environmental claims.
+
+Adapter entry point:
+
+- `createDisabledEarthWildfireSnapshotCacheWriteAdapter`
+
+Adapter contract:
+
+- `EarthWildfireSnapshotCacheWriteAdapter`
+- `EarthWildfireSnapshotCacheWriteResult`
+- `EarthWildfireSnapshotCacheWriteStatus`
+
+Supported write statuses:
+
+- `disabled`
+- `skippedFixtureOnly`
+- `validationRequired`
+- `validationFailed`
+- `writePlanned`
+- `writeBlocked`
+- `unavailable`
+- `deniedByPolicy`
+
+Current callable behavior:
+
+- Valid request still returns `fixtureFallback`.
+- Invalid request still returns `denied`.
+- Cache read remains disabled.
+- Provider fetch remains disabled.
+- Cache write adapter result is included only as compact labels.
+- Storage validation runs before the modeled write result.
+- No Firestore write occurs.
+- No Admin SDK call occurs.
+- No raw provider payload, precise geometry, secrets, PII, or verified claims
+  are returned.
+
+Response/audit/log labels now include:
+
+- `cacheWriteStatus`
+- `noFirestoreWrite`
+- `writeExecuted`
+- `validateBeforeWritePolicy`
+- `writeBlockedReason`
+
+Default disabled result:
+
+- status: `disabled`
+- validate-before-write policy: `validatorRequiredBeforeWrite`
+- validation status: `notEvaluated`
+- no Firestore write: true
+- no Admin SDK call: true
+- write executed: false
+- fallback required: true
+- raw payload storage: not stored
+- precise geometry storage: not stored
+- verified claims storage: not stored
+- write blocked reason: bridge disabled
+
+Validate-before-write behavior:
+
+- A generalized candidate fixture validates successfully but still returns
+  `skippedFixtureOnly` because storage is disabled.
+- A candidate containing raw FIRMS payload, provider keys, provider URLs,
+  precise geometry, auth/user fields, cookies, headers, request ids, or
+  verified environmental claims returns `validationFailed` before any modeled
+  write can proceed.
+- Invalid callable requests use `deniedByPolicy` and still skip cache writes.
+- Future live write enablement must keep the validator before any trusted
+  server/Admin write path.
+
+Future write behavior model:
+
+- Provider results must be generalized before validation.
+- Validator must reject forbidden fields before write.
+- Attribution, caveats, redaction flags, guardrails, capped day range, and
+  generalized broad-region records are required.
+- If validation passes and storage is explicitly enabled later, only allowed
+  safe fields may be written.
+- Write failure must fall back safely without exposing the write candidate.
+- Raw FIRMS payload, precise coordinates/geometry, provider keys, provider
+  URLs, auth/user material, cookies, headers, PII, and verified claims must
+  never be stored.
+
+Guardrails remain:
+
+- no Firestore/Admin read
+- no Firestore/Admin write
+- no live provider call
+- no API key read
+- no `.env` read
+- no raw FIRMS payload
+- no precise geometry
+- no verified environmental claims
+- no Functions or rules deploy
+
+Next implementation phase:
+
+- Add a disabled provider fetch adapter stub that models cache-miss provider
+  fetch planning while still requiring cache-first behavior, API key guardrails,
+  generalized provider output, and fixture fallback.
+
 ### Next Recommended Command
 
-`P22.11 NASA FIRMS Cached Snapshot Callable Cache Write Adapter Stub`
+`P22.12 NASA FIRMS Cached Snapshot Callable Provider Fetch Adapter Stub`
 
 ## Visualization Entity Model
 
