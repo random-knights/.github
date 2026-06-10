@@ -3813,9 +3813,120 @@ Operational note:
   with Java 17 can keep the harness files but cannot complete local emulator
   execution until the JDK is upgraded or CI provides Java 21+.
 
+### P22.8 NASA FIRMS Cached Snapshot Server Validator Stub
+
+Status: disabled-safe server validation stub only. P22.8 adds a pure
+server-side storage-candidate validator for future
+`earth_wildfire_snapshots` writes, but still does not read or write Firestore,
+call NASA FIRMS, read provider keys, deploy Functions, deploy rules, or enable
+client cache reads.
+
+Validator entry points:
+
+- `buildEarthWildfireSnapshotStorageCandidateFixture`
+- `validateEarthWildfireSnapshotStorageCandidate`
+
+Structured validator result:
+
+- `valid` / `invalid`
+- `reasons`
+- `acceptedFields`
+- `rejectedFields`
+- `cacheWriteEligible: false`
+- `clientReadEligible: false`
+- redaction status
+- generalized geometry status
+- attribution status
+- guardrails status
+- source/scope/day-range status
+- verified-claims status
+
+Accepted storage schema:
+
+- `sourceId`
+- `generalizedScope`
+- `cacheStatus`
+- `dayRangeLabel`
+- `freshnessLabel`
+- `ttlLabel`
+- `attributionLabels`
+- `caveatLabels`
+- `generalizedRecords`
+- `guardrailLabels`
+- `redactionFlags`
+- `verifiedClaimsLabel`
+- `updatedAt`
+
+Forbidden storage fields:
+
+- `apiKey`
+- `providerApiKey`
+- `secret`
+- `token`
+- `mapKey`
+- `rawPayload`
+- `rawFirmsPayload`
+- `rawProviderPayload`
+- `providerUrl`
+- `firmsUrl`
+- `url`
+- `providerResponse`
+- `preciseGeometry`
+- `exactFireGeometry`
+- `bbox`
+- `boundingBox`
+- `lat`
+- `latitude`
+- `lon`
+- `longitude`
+- `coordinates`
+- `geometry`
+- `userId`
+- `rawUserIdentifier`
+- `email`
+- `uid`
+- `auth`
+- `authPayload`
+- `rawAuthPayload`
+- `cookie`
+- `cookies`
+- `headers`
+- `requestId`
+- `sessionId`
+- `traceId`
+
+Validation-before-write boundary:
+
+- A valid generalized fixture can pass schema validation.
+- Passing schema validation still does not authorize cache writes or client
+  reads.
+- The disabled callable now validates the fixture storage candidate before
+  returning fixture fallback.
+- Invalid request or invalid storage candidate produces a denied/fallback-only
+  result with side-effect flags still false.
+- Future Admin SDK writes must call the validator before storage because
+  Firestore rules do not protect Admin SDK bypass writes.
+
+Current guardrails remain:
+
+- no cache read
+- no cache write
+- no live provider call
+- no API key or `.env` read
+- no raw FIRMS payload
+- no precise geometry
+- no verified environmental claims
+- no rules or Functions deploy
+
+Rules harness note:
+
+- The P22.7 rules harness remains present.
+- Local `npm run test:rules` is still blocked on machines with Java 17 because
+  current Firebase CLI emulator execution requires Java 21 or newer.
+
 ### Next Recommended Command
 
-`P22.8 NASA FIRMS Cached Snapshot Server Validator Stub`
+`P22.9 NASA FIRMS Cached Snapshot Callable Cache Read/Write Plan`
 
 ## Visualization Entity Model
 
