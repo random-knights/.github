@@ -5012,9 +5012,100 @@ Remaining blockers before cache write activation:
 - rate and budget guard enforcement
 - production and protected preview hard blocks retained
 
+### P22.19 NASA FIRMS Cached Snapshot Test Cache Write Adapter Implementation Stub
+
+Status: test-environment cache write adapter stub only. P22.19 adds a
+mock/inert validate-before-write decision path for generalized NASA FIRMS
+snapshot candidates. It can plan a safe write candidate after validation, but
+it never writes Firestore, calls Admin SDK, persists cache documents, performs
+HTTP/fetch, calls NASA FIRMS, reads `.env`, reads an API key, exposes raw
+provider payloads, stores precise geometry, uses legacy `getWildfireSummary`,
+or makes verified environmental claims.
+
+New test-only entry points:
+
+- `createInertTestEarthWildfireSnapshotCacheWriteAdapter`
+- `evaluateEarthWildfireSnapshotCacheWriteDecision`
+- `buildEarthWildfireSnapshotMockWritePlan`
+
+Mock cache write statuses:
+
+- `mockWritePlanned`
+- `validationFailed`
+- `writeBlocked`
+- `deniedByPolicy`
+- `storageDisabled`
+- `unavailable`
+
+Validate-before-write flow:
+
+1. Validate the request first.
+2. Evaluate cache read before provider fetch.
+3. Evaluate mock provider fetch only after cache miss or stale cache.
+4. Generalize safe mock provider candidates only.
+5. Run the generalized candidate through the storage validator.
+6. Plan a mock write only if validation passes.
+7. Keep `writeExecuted: false`.
+8. Keep `noFirestoreWrite: true`.
+9. Keep `noAdminSdkCall: true`.
+10. Return fallback on validation failure, write block, denied policy,
+    storage-disabled, or unavailable states.
+
+Safe mock write plan behavior:
+
+- storage path/key labels only
+- source id: `nasa-firms`
+- generalized scope: `global-fire-readiness-preview`
+- freshness label
+- TTL label
+- attribution labels
+- caveat labels
+- guardrail labels
+- records summary labels
+- safe field labels from validator
+- no raw FIRMS payload
+- no provider URL
+- no API key or token
+- no precise geometry, coordinates, lat/lon, or bbox
+- no verified environmental claims
+- write execution disabled
+
+Callable response/audit/log labels now include:
+
+- `testCacheWriteDecision`
+- `mockCacheWriteStatus`
+- `mockWritePlanned`
+- `liveWriteExecuted`
+- `safeFieldsOnly`
+- `writeBlockedReason`
+
+Default callable behavior:
+
+- valid request: `fixtureFallback`
+- invalid request: `denied`
+- cache write: disabled/fixture-only or denied
+- test cache write decision: `notEvaluatedDefaultDisabled`
+- mock cache write status: `notEvaluated`
+- mock write planned: false
+- live write executed: false
+- safe fields only: false
+
+Remaining blockers before live cache persistence:
+
+- approved test environment target
+- server-only NASA FIRMS key configuration without client/log/test exposure
+- trusted server provider fetch implementation
+- live raw payload immediate discard/generalization implementation
+- trusted server Firestore/Admin write boundary
+- cache write telemetry and redaction review
+- server-side write idempotency and retry policy
+- operational kill switch approval
+- rate and budget guard enforcement
+- production and protected preview hard blocks retained
+
 ### Next Recommended Command
 
-`P22.19 NASA FIRMS Cached Snapshot Test Cache Write Adapter Implementation Stub`
+`P22.20 NASA FIRMS Cached Snapshot Test Read-After-Write Adapter Stub`
 
 ## Visualization Entity Model
 
