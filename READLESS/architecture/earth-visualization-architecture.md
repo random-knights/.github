@@ -4914,9 +4914,107 @@ Remaining blockers before live provider fetch:
 - rate and budget guard enforcement
 - production and protected preview hard blocks retained
 
+### P22.18 NASA FIRMS Cached Snapshot Test Provider Result Generalizer Implementation Stub
+
+Status: test-environment provider result generalizer stub only. P22.18 adds a
+mock/inert result-generalization path for the P22 cached NASA FIRMS snapshot
+callable. It accepts only safe mock provider candidates and transforms them
+into generalized snapshot candidates that can be validated before any future
+cache write. It does not accept raw FIRMS payloads, perform HTTP/fetch, call
+NASA FIRMS, read `.env`, read an API key, include provider URLs, read or write
+Firestore, deploy Functions, expose raw provider payloads, store precise
+geometry, use legacy `getWildfireSummary`, or make verified environmental
+claims.
+
+New test-only entry points:
+
+- `createInertTestEarthWildfireSnapshotProviderResultAdapter`
+- `generalizeEarthWildfireSnapshotMockProviderResult`
+- `buildEarthWildfireSnapshotGeneralizedProviderCandidate`
+
+Mock provider result generalization statuses:
+
+- `skippedFixtureOnly`
+- `mockGeneralized`
+- `rawPayloadRejected`
+- `preciseGeometryRejected`
+- `guardrailsMissing`
+- `attributionMissing`
+- `validationFailed`
+- `deniedByPolicy`
+
+Generalization flow:
+
+1. Validate the request first.
+2. Evaluate cache read before provider fetch.
+3. Evaluate mock provider fetch only after cache miss or stale cache.
+4. Reject any raw payload before result generalization.
+5. Reject candidates with precise geometry, provider URLs, raw payload fields,
+   missing attribution, missing caveats, or missing guardrails.
+6. Build a generalized candidate from safe mock provider candidates only.
+7. Run the generalized candidate through the existing storage validator.
+8. Prepare the candidate for the disabled cache-write adapter.
+9. Keep write eligibility false because cache writes remain disabled.
+10. Callable default behavior remains fixture fallback or denied unless tests
+    explicitly exercise the mock adapter.
+
+Safe generalized candidate behavior:
+
+- source id: `nasa-firms`
+- generalized scope: `global-fire-readiness-preview`
+- day range label: `1 day planned`
+- bounded metric labels only
+- confidence label: not provider verified
+- freshness label: mock/provider-after-cache only
+- attribution labels present
+- caveat labels present
+- guardrail labels present
+- no raw FIRMS payload
+- no API key or token
+- no provider URL
+- no precise geometry, coordinates, lat/lon, or bbox
+- validator result: valid for future server-side schema only
+- client reads remain disabled
+- cache writes remain disabled
+
+Callable response/audit/log labels now include:
+
+- `testProviderResultGeneralization`
+- `mockGeneralizedCandidateBuilt`
+- `rawPayloadRejected`
+- `preciseGeometryRejected`
+- `validationBeforeWritePassed`
+- `generalizedCandidateWriteEligible`
+
+Default callable behavior:
+
+- valid request: `fixtureFallback`
+- invalid request: `denied`
+- provider result: disabled/fixture-only or denied
+- test provider result generalization: `notEvaluatedDefaultDisabled`
+- mock generalized candidate built: false
+- raw payload rejected: false
+- precise geometry rejected: false
+- validation before write passed: false
+- generalized candidate write eligible: false
+
+Remaining blockers before cache write activation:
+
+- approved test environment target
+- server-only NASA FIRMS key configuration without client/log/test exposure
+- trusted server provider fetch implementation
+- raw payload immediate discard/generalization implementation
+- validator-before-write approval in the live path
+- disabled cache-write adapter replacement with trusted server write adapter
+- Firestore/Admin write boundary implementation
+- cache-write telemetry and redaction review
+- operational kill switch approval
+- rate and budget guard enforcement
+- production and protected preview hard blocks retained
+
 ### Next Recommended Command
 
-`P22.18 NASA FIRMS Cached Snapshot Test Provider Result Generalizer Implementation Stub`
+`P22.19 NASA FIRMS Cached Snapshot Test Cache Write Adapter Implementation Stub`
 
 ## Visualization Entity Model
 
