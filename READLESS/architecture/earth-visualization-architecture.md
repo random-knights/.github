@@ -4718,27 +4718,106 @@ Important separation:
 - P22 activation must remain cache-first, provider-after-cache, generalized,
   validated-before-write, redacted, and fallback-safe.
 
-P22.16 implementation criteria:
+### P22.16 NASA FIRMS Cached Snapshot Test Cache Read Adapter Implementation Stub
 
-- Java 21+ rules harness available and passing.
-- Test environment target approved.
-- Server-only NASA FIRMS key configured but never exposed to clients/logs/tests.
-- Kill switch default remains closed until explicit activation.
-- Cache read implementation exists before provider fetch.
-- Provider fetch is bounded, test-only, and after cache miss/stale only.
-- Raw payloads are transformed immediately into generalized records.
-- Storage validator passes before any write.
-- Cache writes remain test-only and safe-field-only.
-- Production and protected preview remain hard-blocked.
+Status: test-environment cache read adapter stub only. P22.16 adds a
+mock/inert cache-read decision path for the P22 cached NASA FIRMS snapshot
+callable. It does not read Firestore, import or call Admin SDK, call NASA
+FIRMS, perform HTTP/fetch, read `.env`, read an API key, write cache documents,
+deploy Functions, expose raw provider payloads, store precise geometry, use
+legacy `getWildfireSummary`, or make verified environmental claims.
 
-Next implementation phase:
+New test-only entry points:
 
-- Add a disabled-safe test-environment cache read adapter implementation stub
-  for the P22 cached snapshot path, still without live provider calls.
+- `createInertTestEarthWildfireSnapshotCacheReadAdapter`
+- `evaluateEarthWildfireSnapshotCacheReadDecision`
+- `buildEarthWildfireSnapshotMockCachedCandidateFixture`
+
+Mock cache read statuses:
+
+- `cacheHitFresh`
+- `cacheHitStale`
+- `cacheMiss`
+- `unavailable`
+- `deniedByPolicy`
+
+Decision flow:
+
+1. Validate the request first.
+2. Decide whether the cache read is eligible.
+3. Simulate a mock-only cache-read attempt.
+4. Fresh mock cache hit returns a safe generalized cached candidate.
+5. Stale mock cache hit returns a stale-with-caveat candidate with fallback
+   available.
+6. Cache miss requires the provider path, but the provider remains disabled.
+7. Unavailable or denied states return fallback.
+8. Callable default behavior remains fixture fallback or denied unless tests
+   explicitly exercise the mock adapter.
+
+Mock-only guardrails:
+
+- `noFirestoreRead: true`
+- `noAdminSdkCall: true`
+- `mockOnly: true`
+- `liveReadExecuted: false`
+- `fallbackAvailable: true`
+- no raw FIRMS payload
+- no precise geometry
+- no provider URL
+- no client read eligibility
+- no cache write eligibility
+- no verified environmental claims
+
+Safe mock cached candidate:
+
+- source id: `nasa-firms`
+- generalized scope: `global-fire-readiness-preview`
+- day range label: `1 day planned`
+- cache statuses: `cacheHit` or `cacheStale`
+- attribution labels present
+- caveat labels present
+- guardrail labels present
+- redaction flags present
+- validator result: valid for future server-side schema only
+- client reads remain disabled
+- cache writes remain disabled
+
+Callable response/audit/log labels now include:
+
+- `testCacheReadDecision`
+- `mockCacheReadStatus`
+- `mockOnly`
+- `liveReadExecuted`
+- `safeCachedCandidateAvailable`
+
+Default callable behavior:
+
+- valid request: `fixtureFallback`
+- invalid request: `denied`
+- cache read: disabled/fixture-only or denied
+- test cache read decision: `notEvaluatedDefaultDisabled`
+- mock cache read status: `notEvaluated`
+- mock-only: false
+- live read executed: false
+- safe cached candidate available: false
+
+Remaining blockers before live cache read:
+
+- Java 21+ rules harness verification
+- approved test environment target
+- server-only NASA FIRMS key configuration without client/log/test exposure
+- Firestore/Admin trusted server adapter implementation
+- redacted cache-read telemetry review
+- provider-after-cache implementation for miss/stale paths
+- validator-before-write approval
+- cache write implementation and write-gate approval
+- operational kill switch approval
+- rate and budget guard enforcement
+- production and protected preview hard blocks retained
 
 ### Next Recommended Command
 
-`P22.16 NASA FIRMS Cached Snapshot Test Cache Read Adapter Implementation Stub`
+`P22.17 NASA FIRMS Cached Snapshot Test Provider Fetch Adapter Implementation Stub`
 
 ## Visualization Entity Model
 
