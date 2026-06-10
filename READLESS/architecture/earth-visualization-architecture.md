@@ -3453,9 +3453,94 @@ or another approved storage boundary, quota/rate/budget enforcement, stale-safe
 fallback, provider attribution freshness, and server-side FIRMS key access
 before any live provider request is allowed.
 
+### P22.3 NASA FIRMS Cached Snapshot Storage Boundary Plan
+
+Status: disabled-safe storage boundary contract only. P22.3 does not activate
+live NASA FIRMS access, does not read a FIRMS API key, does not read or write
+Firestore/cache storage, does not deploy Functions, and does not create
+verified wildfire or environmental claims.
+
+The callable contract now includes an inert cache-storage boundary for future
+generalized FIRMS snapshots while continuing to return deterministic fixture
+fallbacks. Current behavior remains:
+
+- response state: `fixtureFallback` for valid requests
+- cache status: `fixtureOnly`
+- storage boundary: disabled
+- storage reads: disabled
+- storage writes: disabled
+- Firestore Admin import: not present
+- provider calls: disabled
+- API key reads: disabled
+- raw FIRMS payload exposure: not exposed
+- precise fire geometry: excluded
+
+Firestore-safe cache key and path planning:
+
+- source id: `nasa-firms`
+- preset area: `global-fire-readiness-preview`
+- product/feed label: `viirs-noaa20-nrt-planned`
+- day range label: `1-day`
+- date bucket label: `fixture-window`
+- composed cache key:
+  `nasa-firms__global-fire-readiness-preview__viirs-noaa20-nrt-planned__1-day__fixture-window`
+- collection path: `earth_wildfire_snapshots`
+- storage path:
+  `earth_wildfire_snapshots/nasa-firms__global-fire-readiness-preview__viirs-noaa20-nrt-planned__1-day__fixture-window`
+
+Cache keys are built from generalized scope labels only. They must not include
+raw bounding boxes, coordinates, latitude/longitude, user identifiers, request
+ids, session ids, trace ids, provider URLs, provider keys, headers, cookies,
+raw payloads, raw provider responses, or exact fire geometry. The boundary
+rejects sensitive path labels and exposes only low-cardinality audit-safe
+labels.
+
+Planned storage states:
+
+- `disabled`
+- `fixtureOnly`
+- `cacheMiss`
+- `cacheHitPlanned`
+- `cacheStalePlanned`
+- `cacheExpiredPlanned`
+- `writePlanned`
+- `writeBlocked`
+
+All current and planned states remain read/write disabled until a later phase
+explicitly approves cache persistence. Future cache hits, misses, stale reads,
+expired reads, and writes must still fall back safely when provider/cache policy
+is not approved.
+
+Retention and redaction planning:
+
+- retention policy id: `earth-wildfire-snapshot-retention-v1-disabled`
+- TTL label: `planned 30m ttl`
+- retention window label: `planned 24h cache retention`
+- freshness label: `fixture-only; no live cache freshness`
+- stale behavior: future stale cache falls back with a stale caveat
+- expired behavior: future expired cache falls back to fixture/provider-disabled
+  state
+- raw FIRMS payloads: excluded
+- precise geometry: excluded
+- provider keys and URLs: excluded
+- user/request/session/trace identifiers: excluded
+- redaction occurs before any future storage boundary
+
+Safe logging now includes storage status and storage path labels alongside the
+existing callable, source, state, cache, provider, side-effect, raw-payload, and
+redaction labels. Logs and responses must not include token values, raw auth
+payloads, cookies, headers, IP addresses, PII, billing/account identifiers, or
+raw provider payloads.
+
+Future implementation phases must still add Firestore security rules or another
+approved storage boundary, real TTL enforcement, rate and budget gates, stale
+fallback behavior, provider attribution freshness handling, and server-side
+FIRMS key access before any live NASA FIRMS provider request or cache write is
+allowed.
+
 ### Next Recommended Command
 
-`P22.3 NASA FIRMS Cached Snapshot Storage Boundary Plan`
+`P22.4 NASA FIRMS Cached Snapshot Security Rules Plan`
 
 ## Visualization Entity Model
 
