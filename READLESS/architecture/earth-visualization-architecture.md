@@ -4815,9 +4815,108 @@ Remaining blockers before live cache read:
 - rate and budget guard enforcement
 - production and protected preview hard blocks retained
 
+### P22.17 NASA FIRMS Cached Snapshot Test Provider Fetch Adapter Implementation Stub
+
+Status: test-environment provider fetch adapter stub only. P22.17 adds a
+mock/inert provider-after-cache decision path for the P22 cached NASA FIRMS
+snapshot callable. It does not perform HTTP/fetch, call NASA FIRMS, read `.env`,
+read an API key, include provider URLs, read or write Firestore, deploy
+Functions, expose raw provider payloads, store precise geometry, use legacy
+`getWildfireSummary`, or make verified environmental claims.
+
+New test-only entry points:
+
+- `createInertTestEarthWildfireSnapshotProviderFetchAdapter`
+- `evaluateEarthWildfireSnapshotProviderFetchDecision`
+- `buildEarthWildfireSnapshotMockProviderCandidateFixture`
+
+Mock provider fetch statuses:
+
+- `fetchPlanned`
+- `providerUnavailable`
+- `providerTimeoutPlanned`
+- `fetchBlocked`
+- `deniedByPolicy`
+
+Provider-after-cache decision flow:
+
+1. Validate the request first.
+2. Evaluate cache read decision first.
+3. Skip provider fetch after a fresh cache hit.
+4. Mark provider needed after cache miss.
+5. Mark provider needed after stale cache, with fallback available.
+6. Block provider when live activation is disabled.
+7. Provider unavailable or timeout states return fallback.
+8. Denied cache policy skips provider and returns denied fallback.
+9. Callable default behavior remains fixture fallback or denied unless tests
+   explicitly exercise the mock adapter.
+
+Mock-only guardrails:
+
+- `noProviderCall: true`
+- `noApiKeyRead: true`
+- `noRawPayload: true`
+- `httpCallAttempted: false`
+- `providerUrlIncluded: false`
+- `mockOnly: true`
+- `liveProviderCallAttempted: false`
+- `fallbackAvailable: true`
+- no raw FIRMS payload
+- no precise geometry
+- no provider URL
+- no verified environmental claims
+
+Safe mock provider candidate:
+
+- source id: `nasa-firms`
+- generalized scope: `global-fire-readiness-preview`
+- attribution labels present
+- caveat labels present
+- guardrail labels present
+- redaction flags present
+- no raw payload
+- no provider URL
+- no precise geometry
+- validator result: valid for future server-side schema only
+- client reads remain disabled
+- cache writes remain disabled
+
+Callable response/audit/log labels now include:
+
+- `testProviderFetchDecision`
+- `mockProviderFetchStatus`
+- `mockProviderOnly`
+- `liveProviderCallAttempted`
+- `providerNeededAfterCache`
+
+Default callable behavior:
+
+- valid request: `fixtureFallback`
+- invalid request: `denied`
+- provider fetch: disabled/fixture-only or denied
+- test provider fetch decision: `notEvaluatedDefaultDisabled`
+- mock provider fetch status: `notEvaluated`
+- mock provider only: false
+- live provider call attempted: false
+- provider needed after cache: false
+
+Remaining blockers before live provider fetch:
+
+- Java 21+ rules harness verification
+- approved test environment target
+- server-only NASA FIRMS key configuration without client/log/test exposure
+- test-only trusted server provider fetch implementation
+- bounded timeout and provider error fallback implementation
+- raw payload immediate generalization path
+- validator-before-write approval
+- cache write implementation and write-gate approval
+- operational kill switch approval
+- rate and budget guard enforcement
+- production and protected preview hard blocks retained
+
 ### Next Recommended Command
 
-`P22.17 NASA FIRMS Cached Snapshot Test Provider Fetch Adapter Implementation Stub`
+`P22.18 NASA FIRMS Cached Snapshot Test Provider Result Generalizer Implementation Stub`
 
 ## Visualization Entity Model
 
