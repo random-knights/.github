@@ -3768,9 +3768,54 @@ The Functions contract now marks the FIRMS security rules coverage as
 `explicitDenyDrafted`, while preserving `notDeployed`, disabled client access,
 and no live storage behavior. Runtime behavior remains fixture fallback only.
 
+### P22.7 NASA FIRMS Cached Snapshot Rules Emulator Harness
+
+Status: local emulator harness only. P22.7 adds an app-level Firestore rules
+test script and a Node test file for `earth_wildfire_snapshots` without
+deploying rules, reading or writing live Firestore, calling NASA FIRMS, reading
+provider keys, or enabling client cache access.
+
+Harness setup:
+
+- `npm run test:rules`
+- `test/rules/earth_wildfire_snapshots.rules.test.mjs`
+- `@firebase/rules-unit-testing` plus the Firebase JS SDK as dev-only test
+  dependencies
+- `firebase emulators:exec --project earth-wildfire-rules-test --only firestore`
+
+Rules tests covered:
+
+- unauthenticated reads to `earth_wildfire_snapshots/{cacheKey}` are denied
+- verified Rand0m client reads to `earth_wildfire_snapshots/{cacheKey}` are
+  denied
+- verified Rand0m client writes to `earth_wildfire_snapshots/{cacheKey}` are
+  denied
+- nested snapshot-window reads are denied
+- nested snapshot-window writes are denied
+- forbidden raw payload / key / precise-geometry fields are denied because all
+  client FIRMS cache writes remain denied
+- verified Rand0m user access to non-FIRMS collections is preserved
+- unverified users remain denied from non-FIRMS collections
+
+Server-validation-only gap:
+
+- Firestore rules now prove the client-side FIRMS cache surface is closed.
+- They do not validate Admin SDK writes because trusted server writes bypass
+  client rules.
+- Future server/cache writes still require an explicit server validator for
+  cache key shape, TTL/freshness, allowed fields, raw payload rejection,
+  provider URL/key rejection, precise geometry rejection, auth/user field
+  rejection, redaction flags, attribution, caveats, and guardrails.
+
+Operational note:
+
+- Current Firebase CLI emulator execution requires Java 21 or newer. Machines
+  with Java 17 can keep the harness files but cannot complete local emulator
+  execution until the JDK is upgraded or CI provides Java 21+.
+
 ### Next Recommended Command
 
-`P22.7 NASA FIRMS Cached Snapshot Rules Emulator Harness`
+`P22.8 NASA FIRMS Cached Snapshot Server Validator Stub`
 
 ## Visualization Entity Model
 
