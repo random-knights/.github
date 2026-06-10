@@ -4062,9 +4062,93 @@ Next implementation phase:
   miss, and unavailable outcomes without importing Firestore Admin or reading
   live data.
 
+### P22.10 NASA FIRMS Cached Snapshot Cache Read Adapter Stub
+
+Status: disabled-safe cache read adapter stub only. P22.10 adds an inert cache
+read adapter contract for future cache-first NASA FIRMS wildfire snapshot
+reads. It does not import Firestore Admin, read Firestore, write Firestore,
+call NASA FIRMS, read `.env`, read an API key, expose raw payloads, or enable
+verified environmental claims.
+
+Adapter entry point:
+
+- `createDisabledEarthWildfireSnapshotCacheReadAdapter`
+
+Adapter contract:
+
+- `EarthWildfireSnapshotCacheReadAdapter`
+- `EarthWildfireSnapshotCacheReadResult`
+- `EarthWildfireSnapshotCacheReadStatus`
+
+Supported read statuses:
+
+- `disabled`
+- `skippedFixtureOnly`
+- `missPlanned`
+- `hitFreshPlanned`
+- `hitStalePlanned`
+- `unavailable`
+- `deniedByPolicy`
+
+Current callable behavior:
+
+- Valid request still returns `fixtureFallback`.
+- Invalid request still returns `denied`.
+- Cache read adapter result is included only as compact labels.
+- No Firestore read occurs.
+- No Admin SDK call occurs.
+- No provider fetch occurs.
+- No cache write occurs.
+
+Response/audit/log labels now include:
+
+- `cacheReadStatus`
+- `noFirestoreRead`
+- `noAdminSdkCall`
+- `fallbackRequired`
+- `cacheFirstPolicy`
+
+Default disabled result:
+
+- status: `disabled`
+- cache-first policy: `readBeforeProvider`
+- no Firestore read: true
+- no Admin SDK call: true
+- fallback required: true
+- raw payload exposure: not exposed
+- API key read required: false
+- verified claims label: No Verified Environmental Claims
+
+Future read behavior model:
+
+- Cache read must be attempted before any provider fetch.
+- Fresh cache hit can return a generalized cached snapshot.
+- Stale cache can return stale-with-caveat if the provider is disabled.
+- Cache miss can fall back when provider is disabled.
+- Cache unavailable or denied-by-policy returns safe fallback.
+- All future outcomes still require generalized geometry, attribution, caveats,
+  redaction labels, and no verified environmental claims.
+
+Guardrails remain:
+
+- no Firestore/Admin read
+- no Firestore/Admin write
+- no live provider call
+- no API key read
+- no `.env` read
+- no raw FIRMS payload
+- no precise geometry
+- no verified environmental claims
+- no Functions or rules deploy
+
+Next implementation phase:
+
+- Add a disabled cache-write adapter stub that accepts only validator-approved
+  generalized candidates and still never writes Firestore while disabled.
+
 ### Next Recommended Command
 
-`P22.10 NASA FIRMS Cached Snapshot Callable Cache Read Adapter Stub`
+`P22.11 NASA FIRMS Cached Snapshot Callable Cache Write Adapter Stub`
 
 ## Visualization Entity Model
 
