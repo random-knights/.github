@@ -3353,9 +3353,109 @@ Future live FIRMS integration must still add a server-side callable, cache
 storage, quota and budget enforcement, attribution freshness handling, audit
 redaction, and stale-safe fallback before any provider request is allowed.
 
+### P22.2 NASA FIRMS Cached Snapshot Callable Contract
+
+Status: inert callable contract and disabled stub only. P22.2 does not activate
+live NASA FIRMS access, does not read a FIRMS API key, does not read or write
+cache storage, does not deploy Functions, and does not create verified wildfire
+or environmental claims.
+
+The app Functions workspace now has a pure contract and disabled callable stub:
+
+- callable name: `getEarthWildfireSnapshot`
+- contract file: `earthWildfireSnapshotContract`
+- current response: fixture fallback or denied
+- current cache behavior: no cache read, no cache write
+- current provider behavior: provider disabled, no provider call attempted
+- current key behavior: API key required later / not read
+- current geometry behavior: generalized broad region only
+- current raw payload behavior: not exposed
+
+Request schema:
+
+- source id: `nasa-firms`
+- scope label: `Global`
+- preset area: `global-fire-readiness-preview`
+- day range: `1`
+- cache preference: `cacheFirst`
+- generalized geometry: `true`
+- client environment label: safe low-cardinality label
+- requested freshness label: safe low-cardinality label
+
+Requests must not include:
+
+- API keys, tokens, secrets, or `RANDOM_NASA_FIRMS_API_KEY`
+- provider URLs or FIRMS URLs
+- raw headers, cookies, auth payloads, user ids, emails, or PII
+- raw bounding boxes, coordinates, latitude, longitude, or precise geometry
+- raw FIRMS payload requests
+- live-provider request flags
+
+Validation rules:
+
+- source id must be `nasa-firms`
+- scope must be the generalized global preview preset
+- day range is capped at 1 day
+- generalized geometry is required
+- raw payload exposure is prohibited
+- live provider access is disabled
+- cache-first behavior is required
+
+Rejection reasons:
+
+- `invalidSource`
+- `unsupportedScope`
+- `dayRangeTooLarge`
+- `preciseGeometryNotAllowed`
+- `rawPayloadProhibited`
+- `liveProviderDisabled`
+- `cacheUnavailable`
+- `providerKeyNotConfiguredLater`
+- `cacheFirstRequired`
+- `providerUrlProhibited`
+- `apiKeyProhibited`
+- `piiProhibited`
+- `policyViolation`
+
+Response states:
+
+- `fixtureFallback`
+- `cacheHit`
+- `cacheStale`
+- `cacheMissProviderDisabled`
+- `denied`
+- `unavailable`
+
+The disabled stub returns an EarthLayerSnapshot-compatible generalized fixture
+only for valid requests. Denied requests return safe denial metadata without a
+snapshot. Responses include cache status, freshness labels, attribution labels,
+caveats, guardrails, raw-payload exclusion, no-verified-claim labels, and
+side-effect flags proving no provider/cache/key/Firestore/env access occurred.
+
+Safe logging uses compact redacted labels only:
+
+- callable name
+- source id
+- state
+- rejection reason
+- cache status
+- provider status
+- day range label
+- scope/preset labels
+- sanitized client/freshness labels
+- side-effect flags
+- raw-payload exposure label
+- no-verified-claims label
+- redaction status
+
+Future implementation phases must add cache storage, Firestore/security rules
+or another approved storage boundary, quota/rate/budget enforcement, stale-safe
+fallback, provider attribution freshness, and server-side FIRMS key access
+before any live provider request is allowed.
+
 ### Next Recommended Command
 
-`P22.2 NASA FIRMS Cached Snapshot Callable Contract`
+`P22.3 NASA FIRMS Cached Snapshot Storage Boundary Plan`
 
 ## Visualization Entity Model
 
