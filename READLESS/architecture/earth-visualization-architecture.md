@@ -4474,9 +4474,137 @@ Next implementation phase:
   provider-after-cache, generalize-before-validate, validate-before-write
   sequence before any real NASA FIRMS fetch is enabled.
 
+### P22.14 NASA FIRMS Cached Snapshot Live Provider Readiness Gate
+
+Status: readiness gate only. P22.14 adds a disabled-safe activation gate for
+the cached NASA FIRMS snapshot callable. It does not call NASA FIRMS, perform
+HTTP/fetch, read `.env`, read an API key, deploy Firebase Functions, read or
+write Firestore, enable cache writes, expose raw provider payloads, store
+precise geometry, or make verified environmental claims.
+
+Gate entry point:
+
+- `buildEarthWildfireLiveProviderReadinessGate`
+
+Gate contracts:
+
+- `EarthWildfireLiveProviderReadinessGate`
+- `EarthWildfireLiveProviderActivationChecklistItem`
+- `EarthWildfireLiveProviderBlocker`
+- `EarthWildfireLiveProviderApprovalStatus`
+- `EarthWildfireLiveProviderServerKeyPlan`
+- `EarthWildfireLiveProviderFirstCallConstraints`
+
+Current approval state:
+
+- readiness: `blocked`
+- approval: `notApproved`
+- activation approved: false
+- production blocked: true
+- protected preview blocked: true
+- test environment required: true
+- provider key read disabled: true
+- live call disabled: true
+- cache-first required: true
+- fallback active: true
+
+Activation blockers:
+
+- live provider activation has not been approved
+- server-side provider key read remains disabled
+- Firebase Functions deploy has not been approved
+- Firestore rules harness still requires Java 21+ verification locally
+- test-environment deployment approval is missing
+- live cache read adapter remains disabled
+- live provider fetch adapter remains disabled
+- live cache write adapter remains disabled
+- production activation remains blocked
+- protected preview activation remains blocked
+
+Activation checklist:
+
+- Server-side NASA FIRMS key configured: not ready
+- Provider key never returned to clients: ready
+- Cache-first read path enabled before provider fetch: not ready
+- Provider fetch only after cache miss/stale: not ready
+- Day range cap enforced: ready
+- Generalized geometry enforced: ready
+- Raw payload excluded from response and storage: ready
+- Validator required before write: ready
+- Cache write disabled until explicit approval: ready
+- Rules harness runnable with Java 21+: not ready
+- Approved test environment selected: not ready
+- Production blocked: ready
+- Protected preview blocked: ready
+- Fixture or safe stale fallback active: ready
+
+Server-side key handling plan:
+
+- Key source is server-only secret/config.
+- Key read remains disabled until explicit test-environment approval.
+- Key is never returned to clients.
+- Key is never logged.
+- Key is never included in response fields.
+- Tests must not contain the key value.
+- Missing key fails closed to fixture or safe stale fallback.
+- First activation is test-environment only.
+
+First live call constraints:
+
+- one preset generalized area only
+- day range max: 1 day
+- cache-first always
+- no raw payload returned
+- generalized output only
+- bounded timeout
+- provider timeout/error maps to fixture or safe stale fallback
+- no verified environmental claims
+- no production activation
+- no protected preview activation
+
+Callable response/audit/log labels now include:
+
+- `liveProviderReadiness`
+- `activationApproved`
+- `productionBlocked`
+- `previewBlocked`
+- `testEnvironmentRequired`
+- `keyReadDisabled`
+- `liveCallDisabled`
+- `cacheFirstRequired`
+- `fallbackActive`
+
+Important separation:
+
+- `getEarthWildfireSnapshot` remains the P22 cached snapshot callable and is
+  disabled/inert.
+- Existing legacy wildfire provider code in `functions/src/index.ts` is not
+  modified by P22.14 and is not the approval path for the P22 cached snapshot
+  provider bridge.
+- Future activation must use the P22 cache-first/provider-after-cache/generalize
+  before validate/write path, not bypass it through unrelated provider code.
+
+P22.15 implementation criteria:
+
+- Java 21+ rules harness verification available and passing.
+- Explicit test-environment activation approval.
+- Server-only NASA FIRMS key delivery configured without client exposure.
+- Cache read adapter enabled before provider fetch.
+- Provider fetch enabled only after cache miss or stale cache.
+- Generalized provider result adapter accepts only transformed safe output.
+- Storage validator passes before any trusted server write.
+- Cache write remains disabled until separate explicit approval.
+- Fixture or safe stale fallback remains active for errors/timeouts.
+- Production and protected preview remain blocked.
+
+Next implementation phase:
+
+- Prepare the test-environment live-provider activation plan once Java 21 rules
+  validation and test-environment approval are available.
+
 ### Next Recommended Command
 
-`P22.14 NASA FIRMS Cached Snapshot Live Provider Readiness Gate`
+`P22.15 NASA FIRMS Cached Snapshot Test Environment Live Provider Activation Plan`
 
 ## Visualization Entity Model
 
