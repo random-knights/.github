@@ -5256,6 +5256,53 @@ Recommended next command:
 
 `P23.2 NASA FIRMS Server Key Secret Boundary + Test Invocation Plan`
 
+### P23.F NASA FIRMS Live Test Fetch Finish Sprint
+
+Status: test-live ready boundary without deployment or live invocation. P23.F
+finishes the callable-side test path with a server-only key accessor boundary,
+a bounded test provider fetcher, and a provider-row generalization adapter.
+Production/default behavior remains unchanged.
+
+Implemented boundaries:
+
+- server runtime key accessor stub: production-safe, disabled, fail-closed
+- fake test key accessor: metadata only, no key value exposure
+- bounded test provider fetcher: consumes injected provider-like rows only
+- provider row generalizer: converts rows into generalized snapshot candidates
+- callable test path: can return `generalizedTestResult` only by explicit test opt-in
+
+Still not active:
+
+- no Functions deploy
+- no live NASA FIRMS HTTP request
+- no real API key read
+- no `.env` read
+- no Firestore/Admin read or write
+- no cache persistence
+- no raw provider payload or precise geometry returned
+- no verified environmental claims
+
+What is now test-live ready:
+
+- server-only key boundary behavior is modeled
+- missing key fails closed
+- production and protected preview remain blocked
+- one approved preset and one-day range are enforced
+- provider-like rows can be generalized safely
+- cache writes remain disabled after generalization
+
+Remaining blockers before deploy/invocation:
+
+1. Configure the server-only NASA FIRMS key in the approved Functions test environment.
+2. Replace injected fake rows with a bounded server-side provider transport.
+3. Approve a Functions test deployment target.
+4. Keep production/protected preview blocked and kill switch closed by default.
+5. Run one approved test invocation and review logs for redaction.
+
+Recommended next command:
+
+`P23.M NASA FIRMS Test-Live Stack Merge + Main Validation`
+
 ## Visualization Entity Model
 
 ### EarthLayer
