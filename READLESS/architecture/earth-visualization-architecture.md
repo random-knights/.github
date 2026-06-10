@@ -5303,6 +5303,54 @@ Recommended next command:
 
 `P23.M NASA FIRMS Test-Live Stack Merge + Main Validation`
 
+### P23.FINAL NASA FIRMS Live Test Invocation Finish
+
+Status: server-only invocation boundary completed without production,
+protected-preview, Functions, rules, or Hosting deployment. P23.FINAL replaces
+the disabled runtime key stub with a server-context key accessor that can read
+only from injected Functions/server configuration and never returns, logs,
+audits, or stores key material.
+
+Implemented final test-live pieces:
+
+- server runtime key accessor: server-context gated, fail-closed, redacted
+- bounded server transport hook: test-only, internal key use, 3000 ms timeout
+- one local bounded invocation path: explicit test environment, live test flag,
+  open kill switch, approved preset, one-day range, server key available
+- compact labels: live test attempted, provider call attempted, server key used,
+  fallback used, generalized result returned, production blocked, preview blocked
+- generalized result output only; raw FIRMS payload, provider URL, precise
+  latitude/longitude, bbox, coordinates, cache writes, and verified claims
+  remain excluded
+
+Default callable behavior remains unchanged:
+
+- valid request: deterministic `fixtureFallback`
+- invalid request: `denied`
+- production/protected preview: blocked
+- kill switch: closed by default
+
+Invocation result:
+
+- local bounded invocation succeeded through injected server config and bounded
+  transport
+- no external FIRMS HTTP request was executed in local validation
+- no real secret value was printed or committed
+- no Firestore/Admin read or write occurred
+
+Remaining blockers before real external FIRMS invocation:
+
+1. Approve a Firebase Functions test deployment target.
+2. Configure NASA FIRMS key as server-only test secret/config.
+3. Wire the bounded transport to the real NASA FIRMS endpoint only in that test
+   environment.
+4. Run one approved external invocation and review redacted logs/output.
+5. Keep production and protected preview blocked until a later release gate.
+
+Recommended next command:
+
+`P24.0 NASA FIRMS Test Environment External Invocation`
+
 ## Visualization Entity Model
 
 ### EarthLayer
