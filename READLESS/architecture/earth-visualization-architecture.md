@@ -3924,9 +3924,147 @@ Rules harness note:
 - Local `npm run test:rules` is still blocked on machines with Java 17 because
   current Firebase CLI emulator execution requires Java 21 or newer.
 
+### P22.9 NASA FIRMS Cached Snapshot Callable Cache Read/Write Plan
+
+Status: disabled-safe execution plan only. P22.9 adds an inert callable cache
+execution state machine for future NASA FIRMS cached wildfire snapshots. It
+does not read or write Firestore, call NASA FIRMS, read `.env`, read an API
+key, deploy Functions, deploy rules, enable client reads, or make verified
+environmental claims.
+
+Execution plan entry point:
+
+- `buildEarthWildfireSnapshotCacheExecutionPlan`
+
+Callable integration:
+
+- The disabled `getEarthWildfireSnapshot` response now includes
+  `executionPlan`.
+- Redacted audit/log labels include only:
+  - execution plan id
+  - current execution states
+- The current response remains fixture fallback for valid disabled requests.
+- Invalid requests remain denied/fallback-only with no side effects.
+
+Current execution states:
+
+- `fixtureFallbackCurrent`
+- `cacheReadDisabled`
+- `providerFetchDisabled`
+- `cacheWriteDisabled`
+
+Planned future states:
+
+- `cacheReadPlanned`
+- `cacheHitFresh`
+- `cacheHitStale`
+- `cacheMiss`
+- `providerFetchPlanned`
+- `validationFailed`
+- `cacheWritePlanned`
+- `fallbackReturned`
+
+Execution order:
+
+1. Validate request.
+2. Build safe cache key.
+3. Read cache before provider.
+4. Evaluate cache freshness.
+5. Fetch provider only after cache miss or stale cache.
+6. Generalize provider result.
+7. Validate before write.
+8. Write safe cache document.
+9. Return cached snapshot or safe fallback.
+
+Current read plan:
+
+- plan id: `earth-wildfire-cache-read-plan-v1-disabled`
+- state: `cacheReadDisabled`
+- cache-first required: yes
+- read-before-provider required: yes
+- safe cache key required: yes
+- Firestore read enabled: no
+- Firestore read attempted: no
+
+Read-before-provider policy:
+
+- Future cache execution must validate the request and build a safe cache key
+  before any cache check.
+- Cache lookup must complete before provider fetch is considered.
+- Fresh cache hits should return generalized cached snapshots.
+- Stale cache or cache miss may consider provider fetch only after the cache
+  state is known.
+- If the provider is disabled or unavailable, return safe stale cache if
+  available, otherwise fixture fallback.
+
+Current provider fetch plan:
+
+- plan id: `earth-wildfire-provider-fetch-plan-v1-disabled`
+- state: `providerFetchDisabled`
+- provider fetch enabled: no
+- provider fetch attempted: no
+- API key read enabled: no
+- API key read attempted: no
+- `.env` read attempted: no
+- provider fetch after cache only: yes
+
+Current write plan:
+
+- plan id: `earth-wildfire-cache-write-plan-v1-disabled`
+- state: `cacheWriteDisabled`
+- validate-before-write required: yes
+- Firestore write enabled: no
+- Firestore write attempted: no
+- raw payload write allowed: no
+- precise geometry write allowed: no
+- verified claims write allowed: no
+
+Validate-before-write policy:
+
+- Provider results must be generalized before storage.
+- The P22.8 storage validator must pass before any future write.
+- The write candidate may include only allowed cache fields.
+- Forbidden fields remain rejected before storage.
+- Attribution, caveats, guardrails, redaction flags, source/scope/day-range
+  labels, and no-verified-claims labels are required.
+- Write failure must not expose raw provider data, keys, URLs, precise
+  geometry, or unvalidated write candidates.
+
+Failure/fallback matrix:
+
+| Failure mode | Planned state | Fallback behavior |
+| --- | --- | --- |
+| invalid request | `validationFailed` | Deny request and return safe fallback metadata only. |
+| cache unavailable | `cacheReadDisabled` | Return fixture fallback or safe stale cache if one is already validated. |
+| cache stale | `cacheHitStale` | Return stale-safe cache with caveat or fixture fallback when provider is unavailable. |
+| cache miss | `cacheMiss` | Consider provider only after miss; current disabled state returns fixture fallback. |
+| provider disabled | `providerFetchDisabled` | Return fixture fallback or safe stale cache without provider call. |
+| provider timeout | `providerFetchPlanned` | Return fallback and never expose partial raw provider payload. |
+| provider error | `providerFetchPlanned` | Return fallback with provider-error caveat and redacted labels only. |
+| validation failure | `validationFailed` | Discard candidate, skip write, and return safe fallback. |
+| write failure | `cacheWritePlanned` | Return generalized response or fallback without leaking write candidate. |
+
+Guardrails remain:
+
+- no live Firestore read
+- no live Firestore write
+- no provider call
+- no API key read
+- no `.env` read
+- no raw FIRMS payload
+- no precise geometry
+- no verified environmental claims
+- no Functions or rules deploy
+
+Next implementation phase:
+
+- Add a disabled cache-read adapter stub that can represent cache hit, stale,
+  miss, and unavailable outcomes without importing Firestore Admin or reading
+  live data.
+
 ### Next Recommended Command
 
-`P22.9 NASA FIRMS Cached Snapshot Callable Cache Read/Write Plan`
+`P22.10 NASA FIRMS Cached Snapshot Callable Cache Read Adapter Stub`
 
 ## Visualization Entity Model
 
