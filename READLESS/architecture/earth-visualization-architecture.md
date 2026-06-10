@@ -3287,9 +3287,75 @@ labels, sensitive geometry policy, and stale-safe fallback behavior. Raw fire
 coordinates, emergency guidance, and verified environmental claims remain out
 of scope until explicitly approved.
 
+### P22.1 NASA FIRMS Cache Boundary Plan
+
+Status: disabled-safe cache boundary contract only. P22.1 does not activate live
+NASA FIRMS access, does not read a FIRMS API key, does not deploy Functions, and
+does not create verified wildfire or environmental claims.
+
+The app now models the future cache-before-provider boundary for FIRMS wildfire
+snapshots while continuing to serve deterministic fixture data. The active
+runtime behavior remains:
+
+- CustomPainter fallback active
+- NASA FIRMS live provider lookup disabled
+- API key required later / not read
+- no callable request
+- no raw FIRMS payload exposed
+- no precise sensitive wildfire geometry
+- deterministic fixture fallback
+
+The cache boundary contract defines:
+
+- future callable: `getEarthWildfireSnapshot`
+- source id: `nasa-firms`
+- scope: global preview
+- preset area: `global-fire-readiness-preview`
+- geometry precision: generalized broad region only
+- cache key shape:
+  `nasa-firms:global:global-fire-readiness-preview:1-day-planned`
+- day range cap: 1 day planned
+- TTL label: planned
+- cache status: Fixture Only
+- boundary status: Cache Ready
+- provider status: Provider Disabled
+- raw payload label: Not Exposed
+
+The future callable responsibilities are intentionally explicit:
+
+- validate requested scope
+- enforce day range cap
+- check cache before provider
+- return only generalized cached snapshots
+- use the FIRMS API key only server-side
+- never return the API key
+- never return raw FIRMS payload
+- map provider/cache errors to safe fallback states
+
+Planned cache and provider outcomes:
+
+- Fixture Only
+- Cache Ready
+- Cache Fresh
+- Cache Stale
+- Cache Expired
+- Provider Disabled
+- Provider Unavailable
+- Provider Blocked
+- API Key Required Later
+
+The Earth Data View readiness surface now displays the cache boundary, cache
+status, TTL, day range cap, server-key requirement, raw-payload exposure state,
+generalized geometry, and renderer-layer mapping. These labels are preview-only
+planning signals; they are not live NASA FIRMS claims.
+
+Future live FIRMS integration must still add a server-side callable, cache
+storage, quota and budget enforcement, attribution freshness handling, audit
+redaction, and stale-safe fallback before any provider request is allowed.
+
 ### Next Recommended Command
 
-`P22.1 NASA FIRMS Cache Boundary Plan`
+`P22.2 NASA FIRMS Cached Snapshot Callable Contract`
 
 ## Visualization Entity Model
 
