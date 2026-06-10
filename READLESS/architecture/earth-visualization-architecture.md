@@ -3538,9 +3538,110 @@ fallback behavior, provider attribution freshness handling, and server-side
 FIRMS key access before any live NASA FIRMS provider request or cache write is
 allowed.
 
+### P22.4 NASA FIRMS Cached Snapshot Security Rules Plan
+
+Status: access-control and rules planning only. P22.4 does not deploy
+Firestore rules, does not activate live NASA FIRMS access, does not read a FIRMS
+API key, does not read or write Firestore/cache storage, and does not create
+verified wildfire or environmental claims.
+
+Current rules audit:
+
+- `firestore.rules` currently uses a broad verified Rand0m user catch-all.
+- That rule does not specifically protect future
+  `earth_wildfire_snapshots` paths.
+- Before any FIRMS cache path is enabled, the broad catch-all must be tightened
+  or excluded from these paths so Earth cache documents cannot be written by
+  app clients.
+- No active rules were changed in P22.4 because this phase is a plan and no
+  rules deploy is authorized.
+
+Future paths:
+
+- `earth_wildfire_snapshots/{cacheKey}`
+- `earth_wildfire_snapshots/{scopeKey}/windows/{windowKey}`
+
+Planned access policy:
+
+- client writes: deny all
+- unauthenticated reads: deny by default
+- app client reads: disabled by default
+- future safe aggregate reads: allowed only after policy explicitly permits
+  safe aggregate documents
+- trusted writes: server/admin context only after server validation is
+  implemented and approved
+- Admin SDK bypass: accepted only for trusted server code; never for client
+  writes
+
+Allowed cached snapshot fields:
+
+- `sourceId`
+- `generalizedScope`
+- `cacheStatus`
+- `freshnessLabel`
+- `ttlLabel`
+- `attributionLabels`
+- `caveatLabels`
+- `generalizedRecords`
+- `guardrailLabels`
+- `redactionFlags`
+- `updatedAt`
+
+Forbidden cached snapshot fields:
+
+- `apiKey`
+- `token`
+- `mapKey`
+- `rawPayload`
+- `rawFirmsPayload`
+- `providerUrl`
+- `preciseGeometry`
+- `bbox`
+- `lat`
+- `lon`
+- `coordinates`
+- `userId`
+- `email`
+- `uid`
+- `auth`
+- `cookies`
+- `headers`
+- `requestId`
+- `sessionId`
+- `traceId`
+
+Rules can help enforce path, auth, method, allowlisted field names, and
+forbidden field names. They should not be treated as the only schema validator.
+Server validation must still:
+
+- sanitize scope and cache key
+- reject precise geometry
+- reject raw payloads
+- enforce the day range cap
+- enforce TTL and freshness labels
+- produce generalized records only
+- attach attribution, caveats, and guardrails
+- write only allowed fields
+
+Future rules tests:
+
+- client write denied
+- unauthenticated read denied by default
+- safe aggregate read allowed only when policy permits
+- raw payload field rejected
+- precise geometry field rejected
+- API key or token field rejected
+- trusted server/admin write path required
+
+The Functions contract now carries an inert security rules plan on the FIRMS
+storage boundary. It records the current rules gap, disabled client read/write
+policy, planned path templates, allowed and forbidden field labels,
+server-validation responsibilities, and future rules-test coverage. Runtime
+behavior remains fixture fallback only.
+
 ### Next Recommended Command
 
-`P22.4 NASA FIRMS Cached Snapshot Security Rules Plan`
+`P22.5 NASA FIRMS Cached Snapshot Rules Test Harness Plan`
 
 ## Visualization Entity Model
 
