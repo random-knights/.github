@@ -54,6 +54,8 @@ orchestration, state management, and AI call logic are inlined in the page file.
 
 **Target:** `earth_tab.dart` below 1,500 lines after extraction.
 
+**Status (338ee40):** Phase 0 landed — `EarthScientistController` and `ScientistResponsePane` extracted — but `earth_tab.dart` is at **2,419 lines**, still above the CODEX 2,000-line threshold and the <1,500 target. A follow-up extraction pass is required before Phases 3–4 merge to main. Do not add features to `earth_tab.dart` until the follow-up extraction is complete.
+
 ---
 
 ## Phase 1 — In-flight state + request-token race safety
