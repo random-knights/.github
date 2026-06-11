@@ -56,7 +56,7 @@ orchestration, state management, and AI call logic are inlined in the page file.
 
 **Stretch goal:** below 1,500 lines, pursued via **Slice 2.5** (see below).
 
-**Status (338ee40):** Phase 0 landed — `EarthScientistController` and `ScientistResponsePane` extracted — but `earth_tab.dart` is at **2,419 lines**. The merge gate is not yet met. Slice 2.5 runs before Phases 3–4.
+**Status (6d2c6cb — closed):** All phases complete and merged to main. `earth_tab.dart` at **1,375 lines** — merge gate (<2,000) and stretch goal (<1,500) both met. Deployed: pending owner Production Release.
 
 ---
 

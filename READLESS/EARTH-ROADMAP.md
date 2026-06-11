@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-11 (session 8)
+**Last updated:** 2026-06-11 (session 9)
 
 ---
 
@@ -30,10 +30,11 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 | Air-Quality (18th live layer) + Ocean loader | merged to main | green | **✓ live** |
 | Earth Fast workflow test rewrite | merged to main | green | **✓ live** |
 | @scient1st real Earth-context AI responses | merged to main | green (+374, 0 failures) | **✓ live** |
+| scientist-session-continuity (6 commits) | merged to main | green | **pending** |
 
-`origin/main` (xyz) is at `01a070a`. Production Release `27374833292` succeeded — @scient1st, air-quality, ocean live cards, and UI cleanup are live on `rand0m.ai`.
+`origin/main` (xyz) is at `6d2c6cb` (scientist-session-continuity merged). Production Release `27374833292` covers all prior checkpoints. Session-continuity checkpoint deployed only after owner-confirmed release.
 
-Next checkpoint: after `earth/scientist-session-continuity` Phases 3–4 merge → owner triggers `90-production-release.yml` from `main`.
+Next checkpoint: owner triggers `90-production-release.yml` from `main` (`6d2c6cb`) to ship session-continuity live.
 
 ---
 
@@ -41,9 +42,9 @@ Next checkpoint: after `earth/scientist-session-continuity` Phases 3–4 merge �
 
 _Active — in flight or ready for immediate action._
 
-- **Earth agent:** `earth/scientist-session-continuity` Phases 0–2 complete (`338ee40`, not yet merged). Phase 0 extraction landed but `earth_tab.dart` is at 2,419 lines — <1,500 target unmet (see Pivots). Phases 3–4 are the next run.
-- **Docs agent:** session-continuity spec fully expanded and persisted to READLESS (session 6). Roadmap current. ✓
-- **Deploy:** Production Release `27374833292` succeeded — all prior checkpoints live on `rand0m.ai`. ✓
+- **Earth agent:** `earth/scientist-session-continuity` complete and merged to main (`6d2c6cb`). `earth_tab.dart` 2,387→1,375 lines — stretch goal met. Deployed: pending owner Production Release.
+- **Fixes agent:** F1.0 Dynamic Web Favicon on `feature/f1-0-*` — held; merges to main only after Earth session-continuity checkpoint deploy confirms clean. No branch switching in shared clone while merge is pending (see Pivots).
+- **Docs agent:** roadmap current. Pending-owner-approval queue open (see below). ✓
 
 ---
 
@@ -51,13 +52,11 @@ _Active — in flight or ready for immediate action._
 
 _Queued — approved scope, not yet started._
 
-1. **[PINNED — active Earth phase] `earth/scientist-session-continuity`** — spec at [`architecture/scientist-session-continuity-spec.md`](architecture/scientist-session-continuity-spec.md).
-   - ~~First run: Phases 0–2~~ ✓ done at `338ee40` (not yet merged).
-   - **Slice 2.5 (runs next, before Phases 3–4):** non-scientist `earth_tab.dart` extraction — renderer readiness/usage panels + data-view sections. **Merge gate: `earth_tab.dart` must be below 2,000 lines (CODEX threshold) before branch merges to main.** Stretch goal: below 1,500 lines (Fable PM ruling — see Pivots).
-   - **Second run:** Phases 3–4 — cumulative AIEDS session ledger + soft budget guard + stale packet-line fix + prompt size cap. Earth Fast Cycle validation.
-   - **Checkpoint after Phase 4:** full validation + Production Release if green.
-2. Delete stale/merged remote branches: `earth/earthview-ui-cleanup`, `earth/live-connections-batch`, `chore/earth-workflow-test-staleness`, `earth/scientist-live-ai-responses`. Delete abandoned branches: `earth/p17-7-scientist-context-bridge`, `earth/p18-0/1/2-*` (see Pivots).
-3. Begin next Earth phase (post-continuity) on a fresh `earth/**` branch.
+1. Owner triggers Production Release (`90-production-release.yml`) from `main` (`6d2c6cb`) — ships session-continuity live.
+2. After deploy confirmed: Fixes agent merges `feature/f1-0-*` (F1.0 Dynamic Web Favicon) to main.
+3. Delete stale/merged remote branches: `earth/earthview-ui-cleanup`, `earth/live-connections-batch`, `chore/earth-workflow-test-staleness`, `earth/scientist-live-ai-responses`, `earth/scientist-session-continuity`. Delete abandoned: `earth/p17-7-scientist-context-bridge`, `earth/p18-0/1/2-*` (see Pivots).
+4. **Pending owner approval** (see Pending Owner Approval section): scenario-engine ↔ @scient1st pre-spec; Connect-agent + Earth-Systems vertical agent staffing.
+5. Begin next Earth phase on a fresh `earth/**` branch once owner approves scope.
 
 ---
 
@@ -74,7 +73,7 @@ _Completed and on `main`._
 - **EARTH-ROADMAP.md created** — Docs agent. Living plan seeded and published to qa-kitt main. ✓
 - **@scient1st real Earth-context AI responses** (`01a070a`) — Earth agent. `earth/scientist-live-ai-responses` merged to main. Earth Fast Cycle green (+374, 0 failures; one async widget-test break fixed inline). **Deployed ✓** (Production Release `27374833292`).
 - **Production Release `27374833292`** — owner. @scient1st, air-quality, ocean live cards, UI cleanup live on `rand0m.ai`. ✓
-- **`earth/scientist-session-continuity` Phases 0–2** (`338ee40`) — Earth agent. `EarthScientistController` + `ScientistResponsePane` extracted; request-token race safety; bounded in-memory transcript (5 exchanges, exclusion-gated). Not yet merged. `earth_tab.dart` at 2,419 lines — <1,500 target unmet; follow-up extraction required.
+- **`earth/scientist-session-continuity`** (`6d2c6cb`, 6 commits) — Earth agent. Phases 0–2: `EarthScientistController` + `ScientistResponsePane` extracted; request-token race safety; bounded in-memory transcript (5 exchanges, exclusion-gated). Slice 2.5: renderer readiness/usage panels + data-view sections extracted. Phases 3–4: AIEDS session ledger + soft budget guard (`sessionTokenBudget=50000`, `maxPromptTokens=12000`); stale packet-line fix; prompt size cap. `earth_tab.dart` 2,387→1,375 lines — stretch goal met. Merged to main. Deployed: pending owner Production Release.
 
 ---
 
@@ -86,8 +85,10 @@ _Scope changes, strategy shifts, or deferred decisions._
 - Earth Vision (imagery/processing) is tooling/research-only until architecture is approved.
 - Air-quality is health/trend-neutral (`influencesEarthHealthScore/Trend = false`): live card only, not folded into Earth health score.
 - **`earth/p17-7-scientist-context-bridge`, `earth/p18-0-earth-agent-activation`, `earth/p18-1-scientist-command-surface`, `earth/p18-2-scientist-preview-response`** — abandoned. Audited: ~74k-line divergent rewrites vs main; not a safe merge basis. @scient1st shipped fresh on `earth/scientist-live-ai-responses` from current `main` instead. Candidates for deletion.
-- **`earth_tab.dart` merge gate (Fable PM ruling):** `earth_tab.dart` must be **below 2,000 lines** before `earth/scientist-session-continuity` merges to `main` — this is the firm CODEX gate. 1,500 lines is the stretch goal, pursued via Slice 2.5 (renderer readiness/usage panels + data-view sections extraction). At `338ee40` the file is 2,419 lines — gate not yet met. Do not merge the branch or add further features until Slice 2.5 brings it below 2,000. Spec updated to reflect this ruling.
-- **`EarthScientistConfig.liveProviderEnabled` is compile-time.** Disabling the live-AI path requires a code change, rebuild, and Production Release — it is not a runtime toggle. Live answers cost real tokens via the Default AI Provider through the `generateAIResponse` Firebase callable. The Phase 3 budget guard is soft and in-memory only; it does not hard-cap Firebase invocations across relaunches.
+- **`earth_tab.dart` extraction:** merge gate (<2,000 lines, CODEX threshold) and stretch goal (<1,500 lines) both met at `6d2c6cb` — file is at 1,375 lines. Gate closed.
+- **`EarthScientistConfig.liveProviderEnabled` is compile-time.** Disabling the live-AI path requires a code change, rebuild, and Production Release — not a runtime toggle. Live answers cost real tokens via the Default AI Provider through `generateAIResponse` Firebase callable.
+- **`sessionTokenBudget=50000` / `maxPromptTokens=12000` are compile-time in-memory soft guards.** They reset on app relaunch and do not hard-cap Firebase Function invocations. Owner-accepted at this checkpoint. Future infra queue: remote-config budget + runtime kill switch (separate approved phase required — do not implement without explicit instruction).
+- **F1.0 Dynamic Web Favicon containment (Fixes agent, owner-sanctioned exception):** `feature/f1-0-*` branch holds the favicon feature. It is an approved exception to the Earth-only lockdown. Merge order is enforced: `feature/f1-0-*` merges to main **only after** the `earth/scientist-session-continuity` checkpoint deploy is confirmed. Do not `git checkout` or `git switch` to `feature/f1-0-*` in the shared `apps/rand0m` clone while Earth's merge or deploy is pending.
 - **Ocean-currents catalog status:** remains `research` despite live-loader card wiring. Card surfaces the layer; underlying data feed is not live. Intentional — matches air-quality health-neutral, card-only pattern.
 
 ---
@@ -96,7 +97,8 @@ _Scope changes, strategy shifts, or deferred decisions._
 
 | Branch | Repo | Status | Action |
 | --- | --- | --- | --- |
-| `earth/scientist-session-continuity` | xyz (remote) | Phases 0–2 at `338ee40` — in progress, not merged | Phases 3–4 next |
+| `earth/scientist-session-continuity` | xyz (remote) | merged to main (`6d2c6cb`) — deployed: pending | delete after deploy |
+| `feature/f1-0-*` (F1.0 favicon) | xyz (remote) | held — merges after Earth checkpoint deploy | merge after deploy |
 | `earth/earthview-ui-cleanup` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
 | `earth/live-connections-batch` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
 | `earth/scientist-live-ai-responses` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
@@ -107,6 +109,36 @@ _Scope changes, strategy shifts, or deferred decisions._
 | `earth/p18-0-earth-agent-activation` | xyz (remote) | **abandoned** — diverged, not mergeable | delete |
 | `earth/p18-1-scientist-command-surface` | xyz (remote) | **abandoned** — diverged, not mergeable | delete |
 | `earth/p18-2-scientist-preview-response` | xyz (remote) | **abandoned** — diverged, not mergeable | delete |
+
+---
+
+## Pending Owner Approval
+
+_Items that require an explicit owner decision before any agent proceeds._
+
+**1. Scenario-engine ↔ @scient1st integration (pre-spec)**
+A pre-spec is proposed for wiring the Earth scenario engine into @scient1st
+response generation — scenarios inform context, @scient1st surfaces results.
+No implementation scope, timeline, or agent assignment is approved yet.
+Requires owner sign-off on: scope boundaries, whether scenario engine changes
+are in-scope for the next Earth phase, and which agent owns the work.
+
+**2. Connect-agent staffing (Fable proposal)**
+Fable proposes a dedicated Connect-agent role (parallel to Earth agent) to own
+the connection globe, source registry, provider/source management, and source
+onboarding surfaces. Currently all agent work is Earth-locked per CODEX.
+Requires owner decision on: whether to unlock Connect work, agent identity/
+repo access for a Connect agent, and how Connect and Earth coordinate on shared
+entry points (`c0nnect` route).
+
+**3. Earth-Systems vertical agent staffing (Fable proposal)**
+Fable proposes an Earth-Systems agent for deep Earth layer governance,
+data-provider contracts, and overlay policy — distinct from the Earth feature
+agent. Requires owner decision on: whether this split makes sense at current
+team scale, scope separation from Earth agent, and CODEX amendments needed.
+
+_Do not begin work on any of the above until the owner explicitly approves scope
+and assigns ownership._
 
 ---
 
