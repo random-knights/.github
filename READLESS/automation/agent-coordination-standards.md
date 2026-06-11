@@ -1,11 +1,11 @@
 # Agent Coordination Standards
 
-Date: 2026-06-11
-Author: Docs agent (from Fable PM ruling + owner session-8 directive)
+Date: 2026-06-11 (updated session 10)
+Author: Docs agent (from Fable PM ruling + owner directives)
 Scope: all agents operating in the Random Knights multi-agent ecosystem
 
 These standards apply to every agent session. They resolve coordination failure
-modes observed across Earth / Fixes / Docs / Fable parallel runs.
+modes observed across Earth / Fixes / Docs / Fable / Systems / Connect parallel runs.
 
 ---
 
@@ -14,10 +14,12 @@ modes observed across Earth / Fixes / Docs / Fable parallel runs.
 Each inter-agent callout targets exactly one recipient agent. Use fixed headings:
 
 ```
-DOCS:   <one line>
-FIXES:  <one line>
-EARTH:  <one line>
-FABLE:  <one line>
+DOCS:     <one line>
+FIXES:    <one line>
+EARTH:    <one line>
+FABLE:    <one line>
+SYSTEMS:  <one line>
+CONNECT:  <one line>
 ```
 
 Rules:
@@ -70,21 +72,74 @@ sufficient for the vast majority of sessions.
 
 ## 4. Path-Ownership Parallelism Matrix
 
-| Agent | Owns (write) | Read-only | Never touches |
-| --- | --- | --- | --- |
-| Earth | `apps/rand0m` — `lib/pages/earth/**`, `lib/widgets/earth/**`, `lib/services/earth/**`, `lib/models/earth/**`, `test/connect/earth_*` | all other app paths (read for context) | qa-kitt, CI workflows (unless phase explicitly scopes it) |
-| Fixes | `apps/rand0m` — CI workflows (`*.yml`), branch hygiene, stale test repair | all app paths (read for diagnosis) | earth feature files during an active Earth phase |
-| Docs | `qa-kitt/.github/READLESS/**`, `dev-kitt/CODEX.md` (local root) | all repos (read for context) | app runtime files, CI workflows, Flutter code |
-| Fable | none (read-only by default) | all repos | any file write without explicit owner directive |
+| Agent | Worktree | Owns (write) | Read-only | Never touches |
+| --- | --- | --- | --- | --- |
+| Earth | main clone (`apps/rand0m`) | `lib/pages/earth/**`, `lib/widgets/earth/**`, `lib/services/earth/**`, `lib/models/earth/**`, `test/connect/earth_*`; **sole owner of `earth_source_*_catalog.dart` + `earth_source_registry.dart`** | all other app paths | qa-kitt, CI workflows (unless phase explicitly scopes it) |
+| Systems | `worktrees\rand0m-systems` | Earth-Systems data paths: ocean/ice providers, data-layer adapters; registration deltas handed to Earth via `EARTH:` callout | Earth paths (read for context) | `earth_source_*_catalog.dart`, `earth_source_registry.dart` (Earth-agent-only), Connect paths |
+| Connect | `worktrees\rand0m-connect` | `lib/pages/connect/**`, `lib/widgets/connect/**`, `lib/services/connect/**`, `lib/models/connect/**` | Earth paths (read for context) | `earth_source_*_catalog.dart`, `earth_source_registry.dart`, Systems data paths |
+| Fixes | main clone (CI paths only) | CI workflows (`*.yml`), branch hygiene, stale test repair | all app paths (read for diagnosis) | earth/systems/connect feature files during an active feature phase |
+| Docs | qa-kitt clone | `qa-kitt/.github/READLESS/**`, `dev-kitt/CODEX.md` (local root) | all repos (read for context) | app runtime files, CI workflows, Flutter code |
+| Fable | none — read-only | none | all repos (read for context) | any file write without explicit owner directive |
 
 **Concurrent work is safe only when paths are disjoint.** If two agents need to
 touch the same file in the same session, the later agent must pull and rebase
 before editing.
 
-**No checkout/switch in a clone another agent holds.** If Earth is mid-run on
-`earth/scientist-session-continuity`, Fixes must not `git checkout` that branch
-in the same local clone. Use a separate worktree or wait for the active agent to
-push and hand off.
+**Writer cap: 5 simultaneous app writers maximum** (Earth, Systems, Connect, Fixes + 1 reserve). Do not add a sixth concurrent writer to `apps/rand0m` without owner approval and a dedicated worktree.
+
+### Earth Layer Taxonomy Status
+
+| Taxonomy group | Status | Notes |
+| --- | --- | --- |
+| Earth Systems (ocean, ice, atmosphere) | **Active** | Systems agent owns data vertical |
+| Environmental (air quality, biodiversity) | **Next-up** | Earth agent; not yet started |
+| Human Activity (flights, shipping, cities) | **Frozen** | Overlay governance restriction; do not implement without explicit approval |
+| Projects / VCM (carbon offsets, restoration) | **Spec-first** | Pending Fable governance specs; no implementation without approved spec |
+| Entities (species, protected areas) | **Spec-first** | Pending Fable governance specs; no implementation without approved spec |
+
+---
+
+## 7. Worktree Isolation Rule
+
+Every agent that writes to `apps/rand0m` in parallel **must use a dedicated git
+worktree**. Only Earth agent uses the main clone.
+
+| Agent | Worktree path |
+| --- | --- |
+| Earth | `C:\Projects\dev-kitt\apps\rand0m` (main clone) |
+| Systems | `C:\Projects\dev-kitt\worktrees\rand0m-systems` |
+| Connect | `C:\Projects\dev-kitt\worktrees\rand0m-connect` |
+| Fixes | main clone — CI/workflow paths only; no feature file checkout |
+
+Rules:
+
+- **No `git checkout` or `git switch` outside your own worktree.** Checking out
+  a branch in a worktree another agent holds corrupts that agent's working tree
+  without warning.
+- **Each worktree stays on its own branch** for the duration of a phase.
+  Do not share a branch across worktrees.
+- **Worktree setup (one-time, owner performs):**
+  ```powershell
+  git -C "C:\Projects\dev-kitt\apps\rand0m" worktree add ..\..\..\worktrees\rand0m-systems earth/data-ocean-live
+  git -C "C:\Projects\dev-kitt\apps\rand0m" worktree add ..\..\..\worktrees\rand0m-connect feature/c2-0-source-onboarding-pipeline
+  ```
+- **Worktree teardown:** run `git worktree remove <path>` after the branch merges
+  and the worktree is no longer needed.
+
+---
+
+## 8. Catalog Non-Touch Rule
+
+`earth_source_*_catalog.dart` and `earth_source_registry.dart` are
+**Earth-agent-only files**. No other agent edits them directly.
+
+- Systems agent and Connect agent that need to register new sources or layers
+  emit an `EARTH:` callout with the registration delta (source ID, metadata,
+  catalog entry shape). Earth agent applies the registration in its own worktree.
+- This prevents concurrent edit conflicts on the shared source-of-truth catalog
+  and ensures overlay governance rules are applied by the agent that owns them.
+- If a registration is urgent and Earth agent is unavailable, escalate via a
+  `DOCS:` callout so the owner can unblock manually. Do not bypass this rule.
 
 ---
 

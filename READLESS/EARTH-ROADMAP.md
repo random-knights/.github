@@ -4,21 +4,24 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-11 (session 9)
+**Last updated:** 2026-06-11 (session 10)
 
 ---
 
 ## Agent Roster
 
-| Agent | Identity | Focus |
-| --- | --- | --- |
-| Earth | `deve10per` / dev-kitt | Earth features, layers, governance |
-| Fixes | `deve10per` / dev-kitt | Bug fixes, test repair, CI |
-| Docs | `eng1neer` / qa-kitt | READLESS, CODEX, EARTH-ROADMAP |
+| Agent | Identity | Worktree | Active branch | Focus |
+| --- | --- | --- | --- | --- |
+| Earth | `deve10per` / dev-kitt | main clone | `earth/scientist-scenario-explain` | Earth features, layers, governance; sole catalog owner |
+| Systems | `deve10per` / dev-kitt | `worktrees\rand0m-systems` | `earth/data-ocean-live` | Earth-Systems data vertical: ocean/ice live feeds |
+| Connect | `deve10per` / dev-kitt | `worktrees\rand0m-connect` | `feature/c2-0-source-onboarding-pipeline` | Connect domain: source registry, onboarding pipeline |
+| Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | `feature/f1-0-*` (held) | Bug fixes, test repair, CI, branch hygiene |
+| Docs | `eng1neer` / qa-kitt | qa-kitt clone | `main` | READLESS, CODEX, EARTH-ROADMAP |
+| Fable | — | read-only | — | Audit, spec, PM rulings (no writes) |
 
-Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One owner per surface at a time.
+Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One owner per surface at a time. Writer cap: 5 simultaneous `apps/rand0m` writers — see coordination standards.
 
-**Coordination standards:** [`automation/agent-coordination-standards.md`](automation/agent-coordination-standards.md) — callout format, verify-from-git rule, scoped reads, path-ownership matrix, HANDOFF protocol.
+**Coordination standards:** [`automation/agent-coordination-standards.md`](automation/agent-coordination-standards.md) — callout format, verify-from-git, worktree isolation, catalog non-touch, path-ownership matrix, HANDOFF protocol.
 
 ---
 
@@ -42,9 +45,12 @@ Next checkpoint: owner triggers `90-production-release.yml` from `main` (`6d2c6c
 
 _Active — in flight or ready for immediate action._
 
-- **Earth agent:** `earth/scientist-session-continuity` complete and merged to main (`6d2c6cb`). `earth_tab.dart` 2,387→1,375 lines — stretch goal met. Deployed: pending owner Production Release.
-- **Fixes agent:** F1.0 Dynamic Web Favicon on `feature/f1-0-*` — held; merges to main only after Earth session-continuity checkpoint deploy confirms clean. No branch switching in shared clone while merge is pending (see Pivots).
-- **Docs agent:** roadmap current. Pending-owner-approval queue open (see below). ✓
+- **Earth agent:** on `earth/scientist-scenario-explain` — 3 phases + serialized registration slice (scenario-engine ↔ @scient1st explain flow). Branch in progress.
+- **Systems agent:** on `earth/data-ocean-live` (`worktrees\rand0m-systems`) — ocean live feed data vertical. Branch in progress.
+- **Connect agent:** on `feature/c2-0-source-onboarding-pipeline` (`worktrees\rand0m-connect`) — source-intake pipeline. Branch in progress.
+- **Fixes agent:** `feature/f1-0-*` (F1.0 Dynamic Web Favicon) — held pending Earth session-continuity deploy confirm. No branch switching in shared clone while pending (see Pivots).
+- **Docs agent:** staffing expansion recorded, coordination standards updated, roadmap current. ✓
+- **Deploy:** Production Release `27374833292` live. Session-continuity (`6d2c6cb`) merged to main — deployed: pending next release.
 
 ---
 
@@ -54,9 +60,11 @@ _Queued — approved scope, not yet started._
 
 1. Owner triggers Production Release (`90-production-release.yml`) from `main` (`6d2c6cb`) — ships session-continuity live.
 2. After deploy confirmed: Fixes agent merges `feature/f1-0-*` (F1.0 Dynamic Web Favicon) to main.
-3. Delete stale/merged remote branches: `earth/earthview-ui-cleanup`, `earth/live-connections-batch`, `chore/earth-workflow-test-staleness`, `earth/scientist-live-ai-responses`, `earth/scientist-session-continuity`. Delete abandoned: `earth/p17-7-scientist-context-bridge`, `earth/p18-0/1/2-*` (see Pivots).
-4. **Pending owner approval** (see Pending Owner Approval section): scenario-engine ↔ @scient1st pre-spec; Connect-agent + Earth-Systems vertical agent staffing.
-5. Begin next Earth phase on a fresh `earth/**` branch once owner approves scope.
+3. **Earth agent:** complete `earth/scientist-scenario-explain` (3 phases + serialized registration slice); Earth Fast Cycle; merge to main.
+4. **Systems agent:** complete `earth/data-ocean-live` ocean live feed; emit `EARTH:` callout with registration delta; Earth agent applies catalog entry.
+5. **Connect agent:** complete `feature/c2-0-source-onboarding-pipeline` source-intake pipeline; merge to main.
+6. Checkpoint after items 3–5: full validation + Production Release.
+7. Delete stale/merged remote branches: `earth/earthview-ui-cleanup`, `earth/live-connections-batch`, `chore/earth-workflow-test-staleness`, `earth/scientist-live-ai-responses`, `earth/scientist-session-continuity`. Delete abandoned: `earth/p17-7-scientist-context-bridge`, `earth/p18-0/1/2-*` (see Pivots).
 
 ---
 
@@ -123,22 +131,11 @@ No implementation scope, timeline, or agent assignment is approved yet.
 Requires owner sign-off on: scope boundaries, whether scenario engine changes
 are in-scope for the next Earth phase, and which agent owns the work.
 
-**2. Connect-agent staffing (Fable proposal)**
-Fable proposes a dedicated Connect-agent role (parallel to Earth agent) to own
-the connection globe, source registry, provider/source management, and source
-onboarding surfaces. Currently all agent work is Earth-locked per CODEX.
-Requires owner decision on: whether to unlock Connect work, agent identity/
-repo access for a Connect agent, and how Connect and Earth coordinate on shared
-entry points (`c0nnect` route).
+**2. Connect-agent staffing** ✓ **— approved.** Connect agent active on `feature/c2-0-source-onboarding-pipeline` (`worktrees\rand0m-connect`). Connect domain unlocked. See Agent Roster.
 
-**3. Earth-Systems vertical agent staffing (Fable proposal)**
-Fable proposes an Earth-Systems agent for deep Earth layer governance,
-data-provider contracts, and overlay policy — distinct from the Earth feature
-agent. Requires owner decision on: whether this split makes sense at current
-team scale, scope separation from Earth agent, and CODEX amendments needed.
+**3. Earth-Systems vertical agent staffing** ✓ **— approved.** Systems agent active on `earth/data-ocean-live` (`worktrees\rand0m-systems`). Earth-Systems data vertical active; Environmental next-up; Human Activity frozen; Projects/VCM + Entities spec-first. See coordination standards taxonomy table.
 
-_Do not begin work on any of the above until the owner explicitly approves scope
-and assigns ownership._
+_Items 2 and 3 are resolved. Item 1 (scenario-engine ↔ @scient1st) is in active development on `earth/scientist-scenario-explain`._
 
 ---
 
