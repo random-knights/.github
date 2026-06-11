@@ -52,9 +52,27 @@ orchestration, state management, and AI call logic are inlined in the page file.
 3. `earth_tab.dart` retains only orchestration and composition — it wires
    widgets and controller, does not implement response logic.
 
-**Target:** `earth_tab.dart` below 1,500 lines after extraction.
+**Merge gate (firm):** `earth_tab.dart` must be **below 2,000 lines** (CODEX architecture-review threshold) before `earth/scientist-session-continuity` merges to `main`. This is a hard gate — not a guideline.
 
-**Status (338ee40):** Phase 0 landed — `EarthScientistController` and `ScientistResponsePane` extracted — but `earth_tab.dart` is at **2,419 lines**, still above the CODEX 2,000-line threshold and the <1,500 target. A follow-up extraction pass is required before Phases 3–4 merge to main. Do not add features to `earth_tab.dart` until the follow-up extraction is complete.
+**Stretch goal:** below 1,500 lines, pursued via **Slice 2.5** (see below).
+
+**Status (338ee40):** Phase 0 landed — `EarthScientistController` and `ScientistResponsePane` extracted — but `earth_tab.dart` is at **2,419 lines**. The merge gate is not yet met. Slice 2.5 runs before Phases 3–4.
+
+---
+
+### Slice 2.5 — Non-scientist `earth_tab.dart` extraction (merge gate + stretch)
+
+Targets the remaining non-scientist accumulation in `earth_tab.dart` that Phase 0
+did not address. Runs on `earth/scientist-session-continuity` before Phases 3–4.
+
+Extraction targets (in order of size impact):
+
+1. **Renderer readiness / usage panels** → `lib/widgets/earth/earth_renderer_readiness_panel.dart`
+2. **Data-view sections** (layer grid, data card wrappers) → `lib/widgets/earth/earth_data_view_section.dart`
+
+Gate: stop when `earth_tab.dart` is below 2,000 lines. Continue toward 1,500
+if the remaining surface is cleanly separable without introducing new abstraction
+debt. Do not extract for extraction's sake below 2,000.
 
 ---
 
