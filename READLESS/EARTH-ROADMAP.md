@@ -8,43 +8,63 @@ Update this file at the start and end of every session.
 
 ---
 
+## Agent Roster
+
+| Agent | Identity | Focus |
+| --- | --- | --- |
+| Earth | `deve10per` / dev-kitt | Earth features, layers, governance |
+| Fixes | `deve10per` / dev-kitt | Bug fixes, test repair, CI |
+| Docs | `eng1neer` / qa-kitt | READLESS, CODEX, EARTH-ROADMAP |
+
+Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One owner per surface at a time.
+
+---
+
 ## Deploy Checkpoint Status
 
-| Checkpoint | Branches | CI | Deployed |
+| Checkpoint | State | CI | Deployed |
 | --- | --- | --- | --- |
-| Earth UI Cleanup + Live Connections | `earthview-ui-cleanup`, `live-connections-batch` | green | **pending** |
+| Earth UI Cleanup + Live Connections | **merged to main** | green | **pending** |
+| Air-Quality (18th live layer) + Ocean loader | **merged to main** | green | **pending** |
+| Earth Fast workflow test rewrite | **merged to main** | green | **pending** |
 
-Next checkpoint action: owner-triggered Production Release (`90-production-release.yml`) from `main` after merge.
+`origin/main` (xyz) is at `75e46b6`. All work is deployable. No Production Release has been triggered yet.
+
+Next checkpoint action: owner triggers `90-production-release.yml` (workflow_dispatch) from `main` → deploys `hosting:rand0m` → `rand0m.ai`.
 
 ---
 
 ## Now
 
-_Active branch(es) — in flight, not yet merged or deployed._
+_Active — in flight or ready for immediate action._
 
-- Nothing in flight. Checkpoint merge + deploy is the immediate next action.
+- **Docs agent:** CODEX.md `chore/d1-4` branch merged to `master` (local dev-kitt root). EARTH-ROADMAP.md updated and pushed to qa-kitt main. ✓
+- **Deploy checkpoint:** ready. All branches merged to main. Awaiting owner Production Release trigger.
 
 ---
 
 ## Next
 
-_Queued work — approved scope, not yet started._
+_Queued — approved scope, not yet started._
 
-1. Merge `earthview-ui-cleanup` → `main` (confirm CI still green, no conflicts).
-2. Merge `live-connections-batch` → `main`.
-3. Run Production Release checkpoint → deploy to `rand0m.ai`.
-4. Post-deploy smoke: verify Earth dashboard, live air/ocean connections, UI cleanup on production.
-5. Archive checkpoint in Done section below.
+1. Owner triggers Production Release (`90-production-release.yml`) from `main` on xyz.
+2. Post-deploy smoke: Earth dashboard, air-quality card, ocean live loader, UI cleanup on `rand0m.ai`.
+3. Confirm `earth/earthview-ui-cleanup` and `earth/live-connections-batch` stale branches can be deleted after deploy.
+4. Begin next Earth phase (p19+ or next planned phase) on a fresh `earth/**` branch.
 
 ---
 
 ## Done
 
-_Completed and shipped (or merged to main)._
+_Completed and on `main`._
 
-- **Dashboard + AIEDS + Docs** — shipped. CI fixes resolved. ✓
-- **Earth UI Cleanup** (`earthview-ui-cleanup`) — pushed, CI green, checkpoint pending.
-- **Live Connections Batch** (`live-connections-batch`) — pushed, CI green, checkpoint pending.
+- **Dashboard + AIEDS + Docs** — shipped to production previously. ✓
+- **Earth UI Cleanup** (`earthview-ui-cleanup`) — merged to main. Earth View score/summary to dashboard aesthetic; Earth+ squeeze fix; Oracles animated gif + custom font. ✓
+- **Live Connections Batch** (`live-connections-batch`) — merged to main. Air-quality + ocean governed live Data View cards; live-connection data vertical. ✓
+- **Air-Quality 18th Layer** (`1dea432`) — Earth agent. Governed `EarthLayerDefinition` for air-quality (Open-Meteo); live layer grid card; ocean-currents wired to live loader; registry/region-ready count updated 13→14; governance + registry tests added. ✓
+- **Earth Fast Workflow Test Rewrite** (`75e46b6`) — Fixes agent. `earth_fast_validation_test` rewritten to assert current numbered workflow scheme (01/80/90/99); retired stale workflow references. ✓
+- **CODEX.md — Session Bootstrap + EARTH-ROADMAP step** — Docs agent. Full Session Bootstrap, parallel-agent protocol, numbered workflow policy, and step 6 added. Merged to dev-kitt master. ✓
+- **EARTH-ROADMAP.md created** — Docs agent. Living plan seeded and published to qa-kitt main. ✓
 
 ---
 
@@ -52,14 +72,16 @@ _Completed and shipped (or merged to main)._
 
 _Scope changes, strategy shifts, or deferred decisions._
 
-- Cesium bridge planning frozen at V2.16. Next Cesium work is runtime implementation, not additional planning. No new Cesium planning phases until runtime begins.
-- Earth Vision (imagery/processing) is tooling/research-only. No Flutter web image processing until architecture is approved.
+- Cesium bridge planning frozen at V2.16. Next Cesium work is runtime implementation only.
+- Earth Vision (imagery/processing) is tooling/research-only until architecture is approved.
+- Air-quality is health/trend-neutral (`influencesEarthHealthScore/Trend = false`): live card only, not folded into Earth health score.
 
 ---
 
 ## Open Branches
 
-| Branch | Repo | Status | Notes |
+| Branch | Repo | Status | Action |
 | --- | --- | --- | --- |
-| `earthview-ui-cleanup` | dev-kitt/xyz | pushed, CI green | awaiting checkpoint merge |
-| `live-connections-batch` | dev-kitt/xyz | pushed, CI green | awaiting checkpoint merge |
+| `earth/earthview-ui-cleanup` | xyz (remote) | merged to main | delete after deploy |
+| `earth/live-connections-batch` | xyz (remote) | merged to main | delete after deploy |
+| `chore/d1-4-release-candidate-smoke-policy-review-docs` | dev-kitt (local) | merged to master | safe to delete |
