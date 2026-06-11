@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-11 (session 3)
+**Last updated:** 2026-06-11 (session 4)
 
 ---
 
@@ -39,8 +39,8 @@ Next checkpoint action: owner triggers `90-production-release.yml` (workflow_dis
 _Active — in flight or ready for immediate action._
 
 - **Docs agent:** CODEX.md `chore/d1-4` branch merged to `master` (local dev-kitt root). EARTH-ROADMAP.md updated and pushed to qa-kitt main. ✓
-- **Deploy checkpoint:** ready. All branches merged to main. Awaiting owner Production Release trigger.
-- **Earth agent:** @scient1st real Earth-context AI responses — audit complete, spec/plan ready. Implementation pending on a fresh `earth/**` branch.
+- **Deploy checkpoint:** ready. All prior branches merged to main. Awaiting owner Production Release trigger.
+- **Earth agent:** @scient1st real Earth-context AI responses — `earth/scientist-live-ai-responses` (`01a070a`), Earth Fast Cycle green. Merge + release pending.
 
 ---
 
@@ -48,10 +48,11 @@ _Active — in flight or ready for immediate action._
 
 _Queued — approved scope, not yet started._
 
-1. Owner triggers Production Release (`90-production-release.yml`) from `main` on xyz.
-2. Post-deploy smoke: Earth dashboard, air-quality card, ocean live loader, UI cleanup on `rand0m.ai`.
-3. Delete stale/merged remote branches: `earth/earthview-ui-cleanup`, `earth/live-connections-batch`, `chore/earth-workflow-test-staleness`. Delete abandoned branches: `earth/p17-7-scientist-context-bridge`, `earth/p18-0-earth-agent-activation`, `earth/p18-1-scientist-command-surface`, `earth/p18-2-scientist-preview-response` (see Pivots).
-4. **Earth agent:** implement @scient1st real Earth-context AI responses on a fresh `earth/**` branch (spec/plan already complete).
+1. Merge `earth/scientist-live-ai-responses` → `main` (Earth Fast Cycle already green).
+2. Owner triggers Production Release (`90-production-release.yml`) from `main` on xyz.
+3. Post-deploy smoke: Earth dashboard, @scient1st responses, air-quality card, ocean live loader, UI cleanup on `rand0m.ai`.
+4. Delete stale/merged remote branches: `earth/earthview-ui-cleanup`, `earth/live-connections-batch`, `chore/earth-workflow-test-staleness`. Delete abandoned branches: `earth/p17-7-scientist-context-bridge`, `earth/p18-0/1/2-*` (see Pivots).
+5. Begin next Earth phase on a fresh `earth/**` branch.
 
 ---
 
@@ -66,6 +67,7 @@ _Completed and on `main`._
 - **Earth Fast Workflow Test Rewrite** (`75e46b6`) — Earth + Fixes agents (converged). `earth_fast_validation_test` rewritten to assert current numbered workflow scheme (01/80/90/99); retired stale workflow references. FF'd to main this session. ✓
 - **CODEX.md — Session Bootstrap + EARTH-ROADMAP step** — Docs agent. Full Session Bootstrap, parallel-agent protocol, numbered workflow policy, and step 6 added. Merged to dev-kitt master. ✓
 - **EARTH-ROADMAP.md created** — Docs agent. Living plan seeded and published to qa-kitt main. ✓
+- **@scient1st real Earth-context AI responses** (`01a070a`) — Earth agent. `earth/scientist-live-ai-responses`; Earth Fast Cycle green; merge + release pending.
 
 ---
 
@@ -76,7 +78,7 @@ _Scope changes, strategy shifts, or deferred decisions._
 - Cesium bridge planning frozen at V2.16. Next Cesium work is runtime implementation only.
 - Earth Vision (imagery/processing) is tooling/research-only until architecture is approved.
 - Air-quality is health/trend-neutral (`influencesEarthHealthScore/Trend = false`): live card only, not folded into Earth health score.
-- **`earth/p17-7-scientist-context-bridge`, `earth/p18-0-earth-agent-activation`, `earth/p18-1-scientist-command-surface`, `earth/p18-2-scientist-preview-response`** — abandoned. Diverged with large rewrites that are not safely mergeable. @scient1st implementation will start fresh on a new `earth/**` branch from current `main`. These remote branches are candidates for deletion.
+- **`earth/p17-7-scientist-context-bridge`, `earth/p18-0-earth-agent-activation`, `earth/p18-1-scientist-command-surface`, `earth/p18-2-scientist-preview-response`** — abandoned. Audited: ~74k-line divergent rewrites vs main; not a safe merge basis. @scient1st shipped fresh on `earth/scientist-live-ai-responses` from current `main` instead. These remote branches are candidates for deletion.
 
 ---
 
@@ -86,6 +88,7 @@ _Scope changes, strategy shifts, or deferred decisions._
 | --- | --- | --- | --- |
 | `earth/earthview-ui-cleanup` | xyz (remote) | merged to main | delete after deploy |
 | `earth/live-connections-batch` | xyz (remote) | merged to main | delete after deploy |
+| `earth/scientist-live-ai-responses` | xyz (remote) | Earth Fast Cycle green — ready to merge | merge → main |
 | `earth/air-quality-layer-ocean-live` | xyz (remote) | deleted / pruned | — |
 | `chore/earth-workflow-test-staleness` | xyz (remote) | merged to main | safe to delete |
 | `chore/d1-4-release-candidate-smoke-policy-review-docs` | dev-kitt (local) | merged to master | safe to delete |
