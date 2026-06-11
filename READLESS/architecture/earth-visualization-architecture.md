@@ -1,5 +1,15 @@
 # Earth Visualization Architecture
 
+> STATUS (2026-06-11): **Cesium bridge planning is FROZEN at V2.16.** Do not add
+> V2.17+ planning to this document. The next Cesium work is runtime
+> implementation, not more planning phases.
+>
+> This 250 KB document is now **historical provenance** spanning renderer
+> strategy V1.5 → V2.16. For the current, concise source of truth see
+> [`earth-renderer-active-architecture.md`](earth-renderer-active-architecture.md).
+> Per the READLESS maintenance rule, make new active decisions in that document
+> and keep this one as the archived design record.
+
 Date: 2026-06-02
 
 Scope: architecture/design only. This document covers the current Earth

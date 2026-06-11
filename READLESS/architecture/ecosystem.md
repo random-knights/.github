@@ -1,61 +1,75 @@
 # Random Knights Ecosystem Blueprint
 
-Random Knights, XYZ is a Flutter and Firebase ecosystem for creative tools,
+> Status (2026-06-11): Reframed for the single-app architecture. Random Knights
+> ships as **one** Flutter web app, `apps/rand0m` (rand0m.ai). The earlier
+> four-app model (`rand0m`, `up10ad`, `out1ine`, `knight1y`) is **retired** —
+> those names now describe feature surfaces, routes, and legacy compatibility
+> metadata inside the single app, not separate products. See "Retired Four-App
+> Model" below.
+
+Random Knights, XYZ is a Flutter and Firebase platform for creative tools,
 AI-assisted workflows, privacy-aware connections, and playful agent-driven
-experiences. The platform should feel imaginative on the surface and disciplined
-underneath: shared packages, secure local development, transparent AI behavior,
-and clean boundaries between apps, support modules, backend services, and media.
+experiences. It is delivered as a single app backed by reusable `rk_*` packages.
+The platform should feel imaginative on the surface and disciplined underneath:
+shared packages, secure local development, transparent AI behavior, and clean
+domain boundaries between feature surfaces, backend services, and media.
 
 ## Platform Mission
 
-Build a family of connected apps that help people capture ideas, shape them into
-structured work, publish or share them safely, and collaborate with specialized
-AI agents without hiding cost, privacy, source, or environmental tradeoffs.
+Build one connected app that helps people capture ideas, shape them into
+structured work, share them safely, and collaborate with specialized AI agents
+without hiding cost, privacy, source, or environmental tradeoffs.
 
 The platform should prioritize:
 
 - Human agency over opaque automation.
-- Reusable product foundations across multiple apps.
+- Reusable product foundations that serve the single app and any future app.
 - Transparent AI provider, model, cost, token, and impact reporting.
 - Secure defaults for local development and production environments.
 - Contribution paths that future open-source collaborators can understand.
-- A plugin and agent architecture that can grow without rewriting each app.
+- A package, plugin, and agent architecture that can grow without rewrites.
 
-## Ecosystem Apps
+## The Single App: rand0m
 
-| App | Role | Primary User Need | Core Product Shape |
-| --- | --- | --- | --- |
-| `rand0m` | Creative launcher and discovery surface | Explore ideas, tools, agents, media, and experiments | Home base, playful discovery, cross-app identity, creative prompts |
-| `up10ad` | Upload, ingest, and media workflow app | Bring files, images, documents, and media into the ecosystem | File intake, validation, metadata, media processing, privacy checks |
-| `out1ine` | Structured thinking and planning app | Turn messy ideas into outlines, plans, drafts, and reusable structures | Notes, outlines, writing flows, project plans, AI-assisted organization |
-| `knight1y` | Agent command center, currently `kn1ghts` | Chat with agents, inspect history, coordinate tools, and manage workflows | Agent roster, chat, history, settings, dashboards, local tools |
+There is one active app: `apps/rand0m`, served at rand0m.ai. It is a creative
+launcher, multi-provider AI surface, agent command space, Earth Intelligence
+console, and utility hub in one shell. What were once envisioned as separate
+apps are now feature surfaces (pages/routes) inside it.
 
-`kn1ghts` is the current app implementation. `knight1y` is the product identity
-for the agent command center as the ecosystem matures.
+Feature surfaces inside `apps/rand0m`:
 
-## Support Modules
-
-| Module | Role | Responsibilities |
+| Surface | Role | Notes |
 | --- | --- | --- |
-| `c1assr00m` | Learning, onboarding, and guided practice module | Tutorials, curriculum, examples, contributor learning paths, classroom-like agent scenarios |
-| `e1even` | Operations, evaluation, and orchestration module | QA workflows, evaluation harnesses, agent benchmarks, release checks, internal automation |
+| Home / XYZ | Landing, discovery, active-agent terminal | Default `/` route |
+| `random1y` | Multi-provider AI chat | Provider/model selection, AIEDS impact disclosure |
+| `knight1y` | Agent command space | Roster, chat, history; a page, never the default route |
+| `c0nnect` / Earth | Connection graph + Earth Intelligence console | Two cooperating domains, distinct ownership |
+| `oracles` | Oracle content experiences | — |
+| `uti1ity` / Test Inspect | Local tooling and test generation | — |
+| `weather`, `draw`, `relax`, `vibe`, `favorites`, `about` | Utility and personalization surfaces | Plain-named, non-AI utilities |
 
-Support modules may have packages, Firebase Functions, Firestore collections,
-and docs, but they should not become hidden dependencies of every app. Apps
-should opt into their capabilities through shared contracts.
+Learning/onboarding (`c1assr00m`) and operations/evaluation (`e1even`) are future
+*capabilities*, not separate apps. If built, they ship as surfaces or tooling
+within the single app or the automation repos, opting into shared `rk_*`
+contracts rather than becoming hidden dependencies.
 
-## App Purpose Matrix
+## Retired Four-App Model
 
-| Capability | rand0m | up10ad | out1ine | knight1y | c1assr00m | e1even |
-| --- | --- | --- | --- | --- | --- | --- |
-| Identity and app shell | Primary | Shared | Shared | Shared | Shared | Shared |
-| Agent chat | Light | Assisted | Assisted | Primary | Guided | Evaluation |
-| File/media ingest | Light | Primary | Optional | Optional | Examples | Test fixtures |
-| Structured planning | Discovery | Metadata | Primary | Agent-assisted | Lessons | Runbooks |
-| AI usage reporting | Shared | Shared | Shared | Primary | Teaching | Auditing |
-| Connection graph | Discovery | Source links | Outline links | Agent/tool links | Learning paths | System links |
-| Local tools | Optional | Validation tools | Draft tools | Primary | Sandboxes | Automation |
-| Contributor workflows | Docs | Docs | Docs | Docs | Primary | Primary |
+The original blueprint described four products — `rand0m`, `up10ad`, `out1ine`,
+and `knight1y` — with separate user needs and a per-app capability matrix. That
+model is **retired**. Do not reintroduce it in navigation, deployment, package
+guidance, or documentation.
+
+What remains of those names:
+
+- They are valid **feature/route identities** inside `apps/rand0m` (e.g. the
+  `knight1y` page, the `random1y` chat surface).
+- Package contracts and the env contract may still expose them as **legacy
+  compatibility metadata** (IDs, labels, capabilities, reserved `KNIGHTS_*` env
+  keys, legacy icon IDs). Treat those as compatibility metadata; do not delete or
+  rename them without an explicitly scoped package/env phase.
+- They no longer imply separate apps, separate deploy targets, or separate
+  Firebase hosting sites.
 
 ## Shared Feature Strategy
 
@@ -111,11 +125,14 @@ outlines, media, tools, tasks, and external services.
 
 Examples:
 
-- A file uploaded in `up10ad` connects to an outline in `out1ine`.
-- An outline connects to an agent conversation in `knight1y`.
+- A media item connects to a structured outline or note.
+- An outline connects to an agent conversation in the `knight1y` surface.
 - An agent response connects to provider/model/cost/impact metadata.
-- A tutorial in `c1assr00m` connects to a reusable workflow template.
-- An evaluation in `e1even` connects to agent versions and test fixtures.
+- A guided lesson connects to a reusable workflow template.
+- An evaluation run connects to agent versions and test fixtures.
+
+(These are relationships between surfaces and objects inside the single app, not
+edges between separate apps.)
 
 The connection system should eventually provide:
 
@@ -126,11 +143,17 @@ The connection system should eventually provide:
 - Local-first development through Firebase emulators.
 - UI components for browsing provenance, related work, and agent/tool history.
 
-This concept belongs partly in `rk_core` for types, `rk_connections` for
-persistence, `rk_agents` for agent/tool edges, and `rk_pages`/`rk_ui` for
-visualization.
+This concept belongs partly in `rk_core` for types, `rk_data` for persistence,
+`rk_agents` for agent/tool edges, and `rk_ui` for visualization.
 
 ## Package Extraction Strategy
+
+> Current real packages (2026-06): `rk_core`, `rk_data`, `rk_media`, `rk_agents`,
+> `rk_ai`, `rk_branding`, `rk_ui`. The target direction below is aspirational and
+> names some packages (`rk_pages`, `rk_connections`, `rk_security`, `rk_platform`)
+> that do not exist yet; treat it as direction, not current state. Persistence and
+> Firebase adapters currently live in `rk_data`; branding/theme in `rk_branding`
+> and `rk_ui`.
 
 Target package direction:
 
