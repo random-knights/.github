@@ -56,7 +56,7 @@ orchestration, state management, and AI call logic are inlined in the page file.
 
 **Stretch goal:** below 1,500 lines, pursued via **Slice 2.5** (see below).
 
-**Status (6d2c6cb — closed):** All phases complete and merged to main. `earth_tab.dart` at **1,375 lines** — merge gate (<2,000) and stretch goal (<1,500) both met. Deployed: pending owner Production Release.
+**Status (6d2c6cb — pushed, merge pending):** All phases complete. `earth_tab.dart` at **1,375 lines** — merge gate (<2,000) and stretch goal (<1,500) both met. Branch pushed to remote but NOT merged to main (blocked by shared-clone contention in session 11). Merge pending Earth agent HANDOFF with git-verified `origin/main` SHA. Not deployed.
 
 ---
 

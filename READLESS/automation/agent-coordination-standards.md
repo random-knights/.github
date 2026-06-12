@@ -172,6 +172,82 @@ Rules:
 
 ---
 
+## 9. State-Row Git-Verification Rule (Binding)
+
+Roadmap rows that assert `merged` or `deployed` state require a git-verified SHA.
+**Unverified state is a documentation error**, not a minor omission — it causes
+downstream agents to act on false ground truth.
+
+Rules:
+
+- Before writing `merged to main` in any roadmap row, either:
+  (a) run `git fetch && git log -1 origin/main` and confirm the SHA matches, or
+  (b) copy the state verbatim from a Fable gate confirmation that itself carried
+  a git-verified SHA.
+- Before writing `deployed`, confirm the Production Release workflow run ID and
+  that `rand0m.ai` reflects the change.
+- If neither (a) nor (b) is available, write `pushed — merge unconfirmed` and
+  include the tip SHA of the feature branch only.
+- **Absence of git evidence means not done.** Do not infer merge from a prior
+  session's prose or a session-memory recap.
+
+---
+
+## 10. HANDOFF BLOCKED Line
+
+Every HANDOFF block (§5) must open with a `BLOCKED:` line if **any commanded
+step did not land** — whether due to clone contention, a failed push, a test
+gate that stopped a merge, or any other blocker.
+
+```
+DOCS: HANDOFF
+  BLOCKED: <one-line description of what did not land and why>
+  branch:  <branch> @ <sha>
+  state:   pushed | committed (NOT merged — merge did not happen)
+  ...
+```
+
+If every commanded step landed cleanly, the `BLOCKED:` line is omitted.
+Absence of a `BLOCKED:` line is an explicit assertion that nothing is stuck.
+
+---
+
+## 11. Main Clone Earth-Exclusive Rule (Permanent)
+
+The main `apps/rand0m` clone at `C:\Projects\dev-kitt\apps\rand0m` is
+**permanently reserved for Earth agent only.**
+
+- Earth agent is the only agent that may run `git checkout`, `git switch`,
+  `git merge`, or `git rebase` in the main clone.
+- All other agents with write access to `apps/rand0m` use dedicated worktrees
+  (see §7). No exceptions without explicit owner directive.
+- Fixes agent uses the main clone for CI/workflow paths (`*.yml`) only, and
+  must not checkout feature branches in the main clone.
+- Reason: shared-clone contention caused a merge block in session 11 when two
+  agents held the same clone on different branches concurrently.
+
+---
+
+## 12. `validate-earth-fast.ps1` Worktree Gap
+
+`validate-earth-fast.ps1` was written for the main clone path. It does not
+automatically resolve the correct working directory when invoked from a
+worktree at `worktrees\rand0m-systems` or `worktrees\rand0m-connect`.
+
+**Fixes agent parameterization fix (session 11):** Fixes agent has parameterized
+the script to accept a `-WorktreePath` argument so Systems and Connect agents
+can invoke Earth Fast Cycle validation from their own worktrees.
+
+Rules:
+- Systems and Connect agents must pass `-WorktreePath` when invoking
+  `validate-earth-fast.ps1` from a non-main-clone worktree.
+- Earth agent continues to invoke the script without the flag (defaults to main
+  clone path).
+- Do not modify `validate-earth-fast.ps1` scope/logic during feature work;
+  tooling changes require a dedicated chore branch.
+
+---
+
 ## 6. Roadmap-vs-Git Ancestry Anomaly (Closed)
 
 **Anomaly (sessions 1–2):** EARTH-ROADMAP.md listed `earthview-ui-cleanup` and

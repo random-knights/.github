@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-11 (session 10)
+**Last updated:** 2026-06-11 (session 11 — correction pass)
 
 ---
 
@@ -12,10 +12,10 @@ Update this file at the start and end of every session.
 
 | Agent | Identity | Worktree | Active branch | Focus |
 | --- | --- | --- | --- | --- |
-| Earth | `deve10per` / dev-kitt | main clone | `earth/scientist-scenario-explain` | Earth features, layers, governance; sole catalog owner |
-| Systems | `deve10per` / dev-kitt | `worktrees\rand0m-systems` | `earth/data-ocean-live` | Earth-Systems data vertical: ocean/ice live feeds |
-| Connect | `deve10per` / dev-kitt | `worktrees\rand0m-connect` | `feature/c2-0-source-onboarding-pipeline` | Connect domain: source registry, onboarding pipeline |
-| Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | `feature/f1-0-*` (held) | Bug fixes, test repair, CI, branch hygiene |
+| Earth | `deve10per` / dev-kitt | main clone (exclusive) | `earth/scientist-session-continuity` @ `6d2c6cb` (merge blocked); `earth/scientist-scenario-explain` @ `1792660` stacked | Earth features, layers, governance; sole catalog owner |
+| Systems | `deve10per` / dev-kitt | `worktrees\rand0m-systems` | `earth/data-ocean-live` @ `076eefb` — DONE, delta pending Earth catalog apply | Earth-Systems data vertical: ocean/ice live feeds |
+| Connect | `deve10per` / dev-kitt | `worktrees\rand0m-connect` | `feature/c2-0-source-onboarding-pipeline` @ `185857a` (slices 1–2 done) | Connect domain: source registry, onboarding pipeline |
+| Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | `feature/f1-0-*` @ `00aa2ad` (ready-to-merge, pending owner) | Bug fixes, test repair, CI, branch hygiene |
 | Docs | `eng1neer` / qa-kitt | qa-kitt clone | `main` | READLESS, CODEX, EARTH-ROADMAP |
 | Fable | — | read-only | — | Audit, spec, PM rulings (no writes) |
 
@@ -33,11 +33,13 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 | Air-Quality (18th live layer) + Ocean loader | merged to main | green | **✓ live** |
 | Earth Fast workflow test rewrite | merged to main | green | **✓ live** |
 | @scient1st real Earth-context AI responses | merged to main | green (+374, 0 failures) | **✓ live** |
-| scientist-session-continuity (6 commits) | merged to main | green | **pending** |
+| scientist-session-continuity (`6d2c6cb`) | **pushed — merge blocked** (shared-clone contention) | — | **not deployed** |
 
-`origin/main` (xyz) is at `6d2c6cb` (scientist-session-continuity merged). Production Release `27374833292` covers all prior checkpoints. Session-continuity checkpoint deployed only after owner-confirmed release.
+`origin/main` (xyz) is at `01a070a` (git-verified). `6d2c6cb` is pushed on `earth/scientist-session-continuity` but NOT merged. Production Release `27374833292` covers all rows above it only.
 
-Next checkpoint: owner triggers `90-production-release.yml` from `main` (`6d2c6cb`) to ship session-continuity live.
+⚠ **State rule:** rows may only show "merged" or "deployed" when a git-verified SHA from a Fable gate confirmation or `git log origin/main` check is recorded here. Do not assert merged/deployed from session memory.
+
+Next checkpoint: Earth agent resolves clone contention, merges `earth/scientist-session-continuity` → `main`, then stacks `earth/scientist-scenario-explain`. Owner triggers `90-production-release.yml` after both land.
 
 ---
 
@@ -45,12 +47,11 @@ Next checkpoint: owner triggers `90-production-release.yml` from `main` (`6d2c6c
 
 _Active — in flight or ready for immediate action._
 
-- **Earth agent:** on `earth/scientist-scenario-explain` — 3 phases + serialized registration slice (scenario-engine ↔ @scient1st explain flow). Branch in progress.
-- **Systems agent:** on `earth/data-ocean-live` (`worktrees\rand0m-systems`) — ocean live feed data vertical. Branch in progress.
-- **Connect agent:** on `feature/c2-0-source-onboarding-pipeline` (`worktrees\rand0m-connect`) — source-intake pipeline. Branch in progress.
-- **Fixes agent:** `feature/f1-0-*` (F1.0 Dynamic Web Favicon) — held pending Earth session-continuity deploy confirm. No branch switching in shared clone while pending (see Pivots).
-- **Docs agent:** staffing expansion recorded, coordination standards updated, roadmap current. ✓
-- **Deploy:** Production Release `27374833292` live. Session-continuity (`6d2c6cb`) merged to main — deployed: pending next release.
+- **Earth agent:** `earth/scientist-session-continuity` @ `6d2c6cb` — pushed, merge BLOCKED (shared-clone contention). `earth/scientist-scenario-explain` @ `1792660` — Phases 1–3 done, stacked on `6d2c6cb`. Neither merged to main. Unblock merge first, then stack scenario-explain.
+- **Systems agent:** `earth/data-ocean-live` @ `076eefb` — DONE. Registration delta emitted to Earth agent via `EARTH:` callout. Awaiting Earth to apply catalog entry in its own worktree.
+- **Connect agent:** `feature/c2-0-source-onboarding-pipeline` @ `185857a` — Slices 1–2 done.
+- **Fixes agent:** favicon `00aa2ad` — ready-to-merge, pending owner approval.
+- **Docs agent:** correction pass complete. Coordination standards updated. ✓
 
 ---
 
@@ -58,13 +59,12 @@ _Active — in flight or ready for immediate action._
 
 _Queued — approved scope, not yet started._
 
-1. Owner triggers Production Release (`90-production-release.yml`) from `main` (`6d2c6cb`) — ships session-continuity live.
-2. After deploy confirmed: Fixes agent merges `feature/f1-0-*` (F1.0 Dynamic Web Favicon) to main.
-3. **Earth agent:** complete `earth/scientist-scenario-explain` (3 phases + serialized registration slice); Earth Fast Cycle; merge to main.
-4. **Systems agent:** complete `earth/data-ocean-live` ocean live feed; emit `EARTH:` callout with registration delta; Earth agent applies catalog entry.
-5. **Connect agent:** complete `feature/c2-0-source-onboarding-pipeline` source-intake pipeline; merge to main.
-6. Checkpoint after items 3–5: full validation + Production Release.
-7. Delete stale/merged remote branches: `earth/earthview-ui-cleanup`, `earth/live-connections-batch`, `chore/earth-workflow-test-staleness`, `earth/scientist-live-ai-responses`, `earth/scientist-session-continuity`. Delete abandoned: `earth/p17-7-scientist-context-bridge`, `earth/p18-0/1/2-*` (see Pivots).
+1. **Earth agent:** resolve shared-clone contention; merge `earth/scientist-session-continuity` (`6d2c6cb`) → `main`; apply Systems registration delta from `EARTH:` callout; merge `earth/scientist-scenario-explain` (`1792660`) → `main`. HANDOFF must confirm each SHA with `git log origin/main`.
+2. **Fixes agent:** once Earth merge confirmed, merge favicon `00aa2ad` → `main` (pending owner approval).
+3. **Connect agent:** complete remaining slices on `feature/c2-0-source-onboarding-pipeline` (beyond `185857a`); merge to `main`.
+4. Owner triggers Production Release (`90-production-release.yml`) from `main` after items 1–3 land.
+5. Checkpoint: full validation + smoke on `rand0m.ai`.
+6. Delete stale/merged remote branches after deploy: `earth/earthview-ui-cleanup`, `earth/live-connections-batch`, `chore/earth-workflow-test-staleness`, `earth/scientist-live-ai-responses`, `earth/scientist-session-continuity`, `earth/scientist-scenario-explain`. Delete abandoned: `earth/p17-7-scientist-context-bridge`, `earth/p18-0/1/2-*`.
 
 ---
 
@@ -81,7 +81,8 @@ _Completed and on `main`._
 - **EARTH-ROADMAP.md created** — Docs agent. Living plan seeded and published to qa-kitt main. ✓
 - **@scient1st real Earth-context AI responses** (`01a070a`) — Earth agent. `earth/scientist-live-ai-responses` merged to main. Earth Fast Cycle green (+374, 0 failures; one async widget-test break fixed inline). **Deployed ✓** (Production Release `27374833292`).
 - **Production Release `27374833292`** — owner. @scient1st, air-quality, ocean live cards, UI cleanup live on `rand0m.ai`. ✓
-- **`earth/scientist-session-continuity`** (`6d2c6cb`, 6 commits) — Earth agent. Phases 0–2: `EarthScientistController` + `ScientistResponsePane` extracted; request-token race safety; bounded in-memory transcript (5 exchanges, exclusion-gated). Slice 2.5: renderer readiness/usage panels + data-view sections extracted. Phases 3–4: AIEDS session ledger + soft budget guard (`sessionTokenBudget=50000`, `maxPromptTokens=12000`); stale packet-line fix; prompt size cap. `earth_tab.dart` 2,387→1,375 lines — stretch goal met. Merged to main. Deployed: pending owner Production Release.
+- **`earth/scientist-session-continuity`** (`6d2c6cb`, 6 commits) — Earth agent. Phases 0–2: `EarthScientistController` + `ScientistResponsePane` extracted; request-token race safety; bounded in-memory transcript (5 exchanges, exclusion-gated). Slice 2.5: renderer readiness/usage panels + data-view sections extracted. Phases 3–4: AIEDS session ledger + soft budget guard (`sessionTokenBudget=50000`, `maxPromptTokens=12000`); stale packet-line fix; prompt size cap. `earth_tab.dart` 2,387→1,375 lines — stretch goal met. **Pushed, NOT merged** (merge blocked by shared-clone contention — `origin/main` still at `01a070a`). Merge pending Earth agent HANDOFF with git-verified SHA.
+- **`earth/scientist-scenario-explain`** (`1792660`) — Earth agent. Phases 1–3 done, stacked on `6d2c6cb`. Not merged. Pending session-continuity merge first.
 
 ---
 
@@ -105,8 +106,11 @@ _Scope changes, strategy shifts, or deferred decisions._
 
 | Branch | Repo | Status | Action |
 | --- | --- | --- | --- |
-| `earth/scientist-session-continuity` | xyz (remote) | merged to main (`6d2c6cb`) — deployed: pending | delete after deploy |
-| `feature/f1-0-*` (F1.0 favicon) | xyz (remote) | held — merges after Earth checkpoint deploy | merge after deploy |
+| `earth/scientist-session-continuity` | xyz (remote) | pushed @ `6d2c6cb` — **merge blocked** (clone contention) | merge to main (Earth) |
+| `earth/scientist-scenario-explain` | xyz (remote) | pushed @ `1792660` — stacked on `6d2c6cb`, not merged | merge after continuity lands |
+| `earth/data-ocean-live` | xyz (remote) | done @ `076eefb` — delta pending Earth catalog apply | merge after Earth applies registration |
+| `feature/c2-0-source-onboarding-pipeline` | xyz (remote) | slices 1–2 @ `185857a` — in progress | continue, then merge |
+| `feature/f1-0-*` (F1.0 favicon) | xyz (remote) | ready @ `00aa2ad` — pending owner approval | merge after Earth checkpoint |
 | `earth/earthview-ui-cleanup` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
 | `earth/live-connections-batch` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
 | `earth/scientist-live-ai-responses` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
