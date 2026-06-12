@@ -1,6 +1,6 @@
 # Agent Coordination Standards
 
-Date: 2026-06-11 (updated session 10)
+Date: 2026-06-12 (amended sessions 18, 23)
 Author: Docs agent (from Fable PM ruling + owner directives)
 Scope: all agents operating in the Random Knights multi-agent ecosystem
 
@@ -442,10 +442,26 @@ Rules:
   touched files should emit a `FIXES:` callout and continue — do not block on it.
   Do not disable or skip cursor-timer tests as a workaround.
 
+- **`flutter analyze` is the mandatory final step of every slice** (amended
+  session 23). After the last edit of a slice — before committing — run:
+  ```powershell
+  flutter analyze
+  ```
+  A scoped `flutter test` run does not substitute for a closing analyze pass.
+  Analyze catches undefined symbols, missing imports, and type errors that test
+  files may not exercise. A slice is not shippable until analyze exits clean.
+
 **Why this exists:** full-suite local runs are slow, frequently fail on
 unrelated flaky tests, and give agents false confidence or false blocks.
 Scoped runs are faster, more attributable, and the CI gate provides the
 authoritative broad check.
+
+**Motivating case for the analyze amendment:** `earth/scientist-entity-resolution`
+passed local scoped tests but CI went red on `undefined SourceLifecycleStatus`
+in `earth_entity_region_context_test.dart` — a missing import of
+`models/connect/source_intake.dart` (enum not re-exported by `entity_record.dart`).
+A closing `flutter analyze` would have caught the undefined symbol before push.
+This was the first instance of local-scoped-green vs CI-red in this codebase.
 
 ---
 
@@ -483,3 +499,34 @@ scope to an already-declared bundle without a new Fable ruling.
 
 If a slice misses the declared bundle, it rolls to the next cycle — it does
 not automatically delay the checkpoint.
+
+---
+
+## 20. Merge Origin/Main — Never Copy Files Across Branches (Binding)
+
+When a branch needs code that lives on `origin/main`, **merge `origin/main`
+into the branch**. Never copy files from another branch or from main directly.
+
+```powershell
+git fetch origin
+git merge origin/main   # correct
+```
+
+**Prohibited:**
+```
+# WRONG — copying files across branches
+git checkout origin/main -- lib/models/earth/earth_region_registry.dart
+cp ../main-clone/lib/models/connect/source_intake.dart .
+```
+
+**Why this exists (session 23):** Connect S5 needed three Countries files
+that had just landed on main. Instead of merging, the agent copied the files
+byte-for-byte — which was benign this time because the files were identical.
+But the same pattern with any divergence (even a one-line change) would create
+a ghost commit that looks like the agent authored the change. The copied files
+will be deduped by Git at R7 merge time, but the pattern is structurally
+unsafe and prohibited going forward.
+
+**Rule:** needing code that lives on main = `git merge origin/main`. No
+exceptions. If a merge produces conflicts, resolve them; do not copy files
+to avoid the conflict.

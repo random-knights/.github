@@ -5,7 +5,7 @@ Author: Design agent (spec); Docs agent (persisted per §15)
 Ratified by: Fable (session 19)
 Amendment: Design agent implements D1–D6 in `worktrees\rand0m-design`;
   Earth agent is integrator and merge gate for all D-slices.
-Status: D1 deployed `ca91443` (R6); D2 gate-passed `0381603` (R7); D3 in flight; §6 formally appended
+Status: D1 deployed `ca91443` (R6); D2 gate-passed `0381603` (R7); D3 gate-passed `fdb5b7f`; D4 in flight; §6 amended (sparkline ruling)
 
 ---
 
@@ -103,8 +103,8 @@ spec before the violation can merge.
 | --- | --- | --- | --- |
 | D1 | Earth+ workstation shell — tab rail restructure; pill BOTTOM-LEFT (ruling resolved); filtered score gauge TOP-RIGHT; dark-canvas AppColors | Pill ruling resolved ✓ | **deployed** `ca91443` (R6) |
 | D2 | 6→3 workspace consolidation (relocation-only); renderer readiness panel merged into shell; planetary-intelligence split deferred to D4 | D1 deployed ✓ | **gate-passed** `0381603` (R7) |
-| D3 | Layer grid card taxonomy + density rules applied; data section wrappers removed | D2 merged | **in flight** |
-| D4 | Detail workspace scaffold; expanded card pattern; replaces overlay/modal; planetary-intelligence surface (deferred from D2) | D3 merged | queued |
+| D3 | Layer grid card taxonomy + density rules applied; detail-surface substitution (taxonomy classes deleted analyze-forced; caveat copy survives per-layer); data section wrappers removed | D2 gate-passed ✓ | **gate-passed** `fdb5b7f` |
+| D4 | Detail workspace scaffold; expanded card pattern; replaces overlay/modal; planetary-intelligence surface (deferred from D2) | D3 gate-passed ✓ | **in flight** |
 | D5 | Cleanup pass — remove usage/session panels, stale empty-state cards, dead wrappers; confirm globe-inheritance constraint compliance | D4 merged | queued |
 | D6 | Deletion verdicts pass — final review of consolidated view; remove any remaining containers confirmed dead | **Gated on owner review of consolidated view after D5** | queued |
 
@@ -174,9 +174,24 @@ Session-20 placeholder promoted to binding §6._
 | Chip / badge | `AppColors` surface + on-surface tokens; no custom tint |
 | Pill (Earth+) | Position: **bottom-left** (owner ruling, binding); `AppColors` primary |
 | Filtered score gauge | Position: **top-right**; defaults to Earth (unfiltered); filter-reactive state uses `AppColors` filter-active token |
+| Sparklines | **DROPPED** — see Fable ruling below; use trend chips instead |
 
 _If a component is not listed, use the nearest `AppColors` token and emit a `DOCS:` callout
 so this table can be updated before the D-slice merges._
+
+### Fable Ruling — Sparklines (Session 23, Binding)
+
+**Synthetic trend-shaped sparklines are dropped from D1–D6.**
+
+- Sparklines require a real time-series. D-slices do not have access to
+  per-layer historical series at the rendering layer.
+- Synthetic / trend-shaped sparklines (generated from a trend direction, not
+  real data) are prohibited — they misrepresent data quality to the user.
+- **Replacement:** use trend chips (up/down/flat indicator; `AppColors` tokens)
+  wherever a sparkline was specced. Trend chips are honest about their
+  data-resolution level.
+- A real sparkline may be introduced in a future slice only when a real
+  time-series source is wired to the layer. That requires a new Fable spec.
 
 ---
 
