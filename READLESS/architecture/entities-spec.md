@@ -4,7 +4,7 @@ Date: 2026-06-12
 Author: Fable agent (spec); Docs agent (persisted per §15)
 Ratified by: Fable (session 17); owner-approved (session 16)
 Assigned to: Connect agent
-Status: E1 in progress — slice 1 at 081c4f5 (gate-passed)
+Status: E1 active — slices 1–2 deployed @ `4148495`; slice 3 in progress (resolver contract)
 
 ---
 
@@ -47,8 +47,10 @@ cover full UI surfacing or @scient1st entity context (those are E2+ phases).
 
 | Slice | Description | Status |
 | --- | --- | --- |
-| 1 | Entity model (`EntityDefinition`) with mandatory `sourceRef`; unsourced mapping guard; Connect intake pipeline integration | gate-passed @ `081c4f5` |
-| 2+ | Entity-to-region mapping; entity-to-source association; catalog registration via `EARTH:` delta | queued |
+| 1 | Entity model (`EntityDefinition`) with mandatory `sourceRef`; unsourced mapping guard; Connect intake pipeline integration | **Deployed ✓** (`4148495`) |
+| 2 | Entity-to-region mapping; entity-to-source association | **Deployed ✓** (`4148495`) |
+| 3 | Resolver contract — Connect owns resolver; Earth owns consumption (see Earth/Connect Boundary below) | in progress |
+| 4+ | Catalog registration via `EARTH:` delta; @scient1st entity context (E2+) | queued |
 
 ---
 
@@ -62,6 +64,28 @@ cover full UI surfacing or @scient1st entity context (those are E2+ phases).
 
 Entity types not in this list require a separate Fable spec before
 implementation.
+
+---
+
+## Earth / Connect Resolver Boundary (Session 18, Binding)
+
+Slice 3 introduces the resolver contract between Connect and Earth. The
+boundary is:
+
+- **Connect owns the resolver.** Connect agent implements and maintains the
+  entity resolver service — the component that looks up, validates, and returns
+  `EntityDefinition` records by ID or query. Connect is the sole writer of the
+  resolver interface.
+- **Earth owns consumption.** Earth agent calls the resolver to populate entity
+  context in Earth layers, Data View cards, and @scient1st context assembly.
+  Earth does not re-implement resolution logic — it calls the Connect-owned
+  interface.
+- **No cross-ownership.** Earth must not write to the resolver; Connect must
+  not directly assemble Earth layer context. If a change requires both sides,
+  the interface contract is updated first (Fable spec or owner directive), then
+  each agent applies their side.
+- **Interface contract changes** require a `DOCS:` callout so Docs agent can
+  record the revision in this spec before implementation proceeds.
 
 ---
 

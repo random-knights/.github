@@ -411,3 +411,37 @@ Rules:
 checkpoints because agents waited for browser tooling that was not available.
 The owner visual check is faster, more reliable for auth flows, and does not
 block the checkpoint gate.
+
+---
+
+## 18. Scoped Local Validation — Named Test Files Only (Binding)
+
+Local slice validation runs **named test files for the touched surface area
+only**. Full-suite local runs are prohibited during development.
+
+Rules:
+
+- **Named test files only.** When running `flutter test` locally, pass the
+  specific test file(s) that cover the changed surface:
+  ```powershell
+  flutter test test/earth/earth_scientist_controller_test.dart
+  flutter test test/connect/entity_resolver_test.dart
+  ```
+  Do not run `flutter test` without a path argument during slice work.
+- **`validate-earth-fast.ps1` gains `-TestPaths` parameter** (Fixes agent
+  chore — in progress). Until that parameter lands, agents run named test
+  files directly and note which files were checked in the HANDOFF.
+- **CI release smoke is the authoritative broad gate.** The 80-validation and
+  90-release workflows run the full suite. Agents do not replicate this locally.
+  A green local named-file run + green CI is the merge bar.
+- **Known flaky-harness issue (non-deterministic mid-suite crash):** the
+  cursor-timer family of tests causes non-deterministic crashes mid-suite
+  under certain harness configurations. This is a known issue tracked under
+  a Fixes chore branch. Agents who hit a mid-suite crash that is NOT in their
+  touched files should emit a `FIXES:` callout and continue — do not block on it.
+  Do not disable or skip cursor-timer tests as a workaround.
+
+**Why this exists:** full-suite local runs are slow, frequently fail on
+unrelated flaky tests, and give agents false confidence or false blocks.
+Scoped runs are faster, more attributable, and the CI gate provides the
+authoritative broad check.

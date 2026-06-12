@@ -1,10 +1,10 @@
 # VCM / Carbon-Offset Data Vertical — Governance Spec
 
-Date: 2026-06-12
+Date: 2026-06-12 (amended session 18)
 Author: Fable agent (spec); Docs agent (persisted per §15)
-Ratified by: Fable (session 17); owner-approved (session 16)
+Ratified by: Fable (session 17, amended session 18); owner-approved (session 16)
 Assigned to: Systems agent
-Status: approved — implementation queued after Environmental biodiversity slice deployed
+Status: active — slice 1 @ `70fafbf` built to original scope; slice 2 amending per session-18 scope ruling
 
 ---
 
@@ -32,7 +32,32 @@ the vertical from being mistaken for financial advice or investment framing.
 
 Acceptable data fields for catalog entry: project ID, region (coarse), project
 type, registry name, vintage year range, volume (issued/retired, aggregate at
-region level). No per-project financial fields.
+region level), latitude/longitude (stored for map/globe readiness — see
+Geographic Readiness section). No per-project financial fields.
+
+---
+
+## Scope Filter (Amended Session 18)
+
+Not all BCTP project records are in scope. Include only projects that meet:
+
+```
+(creditsIssued > 0 OR creditsRetired > 0) AND lat IS NOT NULL AND long IS NOT NULL
+```
+
+Rationale: projects with zero issued and zero retired credits have no registry
+accountability signal. Projects without coordinates cannot support future
+map/globe readiness. Filtering at ingest keeps the dataset meaningful.
+
+**`creditsIssued` and `creditsRetired` are neutral registry-accountability
+fields** — they record what the public registry has issued or retired, not a
+price or valuation. They are permitted in models and display. They must not be
+presented as a financial metric (e.g., "worth X", "valued at X").
+
+**Permanently banned financial fields** (unaffected by this amendment):
+`price`, `pricePerTonne`, `valuation`, `currency`, `marketValue`, `marketCap`,
+`return`, `yield`, `opportunityCost`, `roi`, and any field that names a
+monetary amount.
 
 ---
 
@@ -53,7 +78,8 @@ every layer: data models, catalog entries, display widgets, @scient1st context.
 response context, or Earth layer description):
 
 > "invest", "investment", "buy", "purchase", "portfolio", "return", "yield",
-> "profit", "financial performance", "market value", "price"
+> "profit", "financial performance", "market value", "price", "valuation",
+> "currency", "opportunity cost"
 
 Implementation note: apply banned-term enforcement at the governance layer
 (a named, independently testable function, not inlined in a widget) before any
@@ -66,12 +92,29 @@ not a follow-up.
 ## Coarse Regions Only
 
 VCM catalog entries aggregate at coarse region level (country or multi-country
-area). No project-level geographic coordinates or precise boundaries.
+area) for display and @scient1st context.
 
-Rationale: project-level coordinates can identify specific land parcels and
-implicitly expose ownership information. Coarse aggregation (e.g., "South
-America — Brazil / Peru corridor") is sufficient for Earth layer context and
-avoids inadvertent entity exposure.
+Rationale: coarse aggregation (e.g., "South America — Brazil / Peru corridor")
+is sufficient for Earth layer context and avoids inadvertent entity exposure
+via precise land-parcel identification.
+
+---
+
+## Geographic Readiness — Lat/Long Stored, No Rendering (Session 18)
+
+Project-level latitude/longitude coordinates are stored in the data model for
+future map/globe readiness. They are **not rendered** at this stage.
+
+Rules:
+
+- `lat` and `long` are stored on the `VcmProjectRecord` (or equivalent) model.
+- No coordinate rendering in the Earth layer, Data View card, or any widget
+  until an explicit map/globe rendering phase is approved.
+- Globe rendering is frozen at Cesium V2.16. Do not implement coordinate
+  rendering without a new Cesium phase and an explicit owner directive.
+- The `summary`/`research` catalog status for the VCM layer reflects this:
+  data is available and registry-accountable, but the layer is not yet
+  map/globe-ready. Do not promote to `live` without rendering phase approval.
 
 ---
 
@@ -110,7 +153,7 @@ spec on record.
 
 | Step | Description | Gate |
 | --- | --- | --- |
-| 1 | Systems agent data vertical: BCTP source adapter, coarse-region aggregation, asset-backed refresh | Banned-term guard implemented as named testable function before merge |
+| 1 | Systems agent data vertical: BCTP source adapter, coarse-region aggregation, asset-backed refresh; scope filter (creditsIssued>0 OR creditsRetired>0 AND lat/long present) | Banned-term guard implemented as named testable function before merge. **Slice 1 @ `70fafbf` built to pre-amendment spec — slice 2 applies scope filter + lat/long storage** |
 | 2 | Earth agent catalog registration: `earth_source_vcm_catalog.dart` entry via `EARTH:` delta | Registration applied after Systems slice merges |
 | 3 | Earth agent layer wire-up: Data View card for VCM layer | No financial fields; no entity links; governance tests added |
 
@@ -118,6 +161,5 @@ spec on record.
 
 ## Sequencing Constraint
 
-Do not begin VCM implementation until the Environmental biodiversity slice
-(`e9f9e47`) is deployed. Reason: both biodiversity and VCM run on the Systems
-worktree. Avoid parallel vertical work in the same worktree.
+Biodiversity (`e9f9e47`) is now deployed at `4148495` — VCM sequencing constraint
+is unblocked. Systems agent is active on VCM slice 2.
