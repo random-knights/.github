@@ -32,7 +32,7 @@
 <small>from Random Knights, XYZ</small>
 
 ... a structured learning environment designed to introduce contributors
-to software development, AI concepts, automation workflows, and S.T.E.A.M.
+to software development, AI concepts, automation processes, and S.T.E.A.M.
 foundations through guided missions and hands-on practice.
 
 Instead of separate repositories, learning modules live as organized
@@ -42,7 +42,7 @@ real skills within a unified workspace.
 Featuring:
 
 - 🎓 Guided missions for step-by-step learning
-- 🧠 Foundations in AI, automation, and development workflows
+- 🧠 Foundations in AI, automation, and development processes
 - 🧩 Practical hands-on coding exercises
 - 📚 Structured curriculum organized by skill level
 - 🤝 Safe environment for junior contributor growth
@@ -54,7 +54,7 @@ Featuring:
 
 ## <span style="color:#D8D8D8"><u> **POINTS OF CONTACT** </u></span>
 
-If any issues arise for any of the below mentioned areas, please draft a strongly worded email and never send it to: **admin@rand0m.ai**
+If any issues arise for any of the below mentioned areas, please draft a strongly worded email and never send it to: **<PUBLIC_CONTACT>**
 
 <div align="center">
 
@@ -111,7 +111,7 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 
 </span>
 
-- eng1neer
+- engineering reviewer
   - The formal testing space. All QA contributors start here.
   - Learn, add, and monitor our Regression tests w/open-source tools.
 
@@ -246,9 +246,9 @@ gitGraph
 
 <small>😉 RUOK-CE</small>
 
-<!-- WORKFLOWS -->
+<!-- processes -->
 
-## <span style="color:#555555" name="workflows"><u> **TEST AUTOMATION** </u></span>
+## <span style="color:#555555" name="processes"><u> **TEST AUTOMATION** </u></span>
 
 **Xray <> Cucumber** <small>demo only</small>
 

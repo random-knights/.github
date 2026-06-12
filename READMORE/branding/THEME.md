@@ -4,12 +4,12 @@
 <br />
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/random-knights/.github/blob/main/assets/uti1ity/uti1ity-drk.gif">
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/random-knights/.github/blob/main/assets/uti1ity/uti1ity-lte.png">
-    <img alt="Shows a Day/Night themed markedown gif based on AM/PM." src="https://github.com/random-knights/.github/blob/main/assets/uti1ity/uti1ity-drk.gif">
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/random-knights/.github/blob/main/assets/ruok-drk.gif">
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/random-knights/.github/blob/main/assets/ruok-lte.png">
+    <img alt="Shows a Day/Night themed markedown gif based on AM/PM." src="https://github.com/random-knights/.github/blob/main/assets/ruok-drk.gif">
   </picture>
 
-<h3 align="center" style="color:#ff4124">Random Knights, XYZ - uti1ity</h3>
+<h3 align="center" style="color:#ff4124">Random Knights, XYZ</h3>
 
   <p align="center">
     rand0m.ai & randomly.engineering
@@ -27,96 +27,16 @@
 
 ## <span style="color:#FAAFA5"><u> **OVERVIEW** </u></span>
 
-[Uti1ity](https://uti1ity.rand0m.ai) [`Custom Uti1ity Automations: Vide0 and Audi0 Rend3r`]
-</br>
-<small>from Random Knights, XYZ</small>
+powered by K1TT: "Keep IT Together" >> manage your random days & nights...
 
-... a batch-based rendering utility built on **FFmpeg** for creating custom short and
-long form ambient videos (e.g. 8-hour fireplace, forest, city, mountains, etc.)
-by programatically looping MP4 animations and looping MP3 soundscapes.
-
-It is designed for **YouTube ambience content**, testing processes, and high-resolution
-static-background animations with perfectly synced audio.
+It is Rand0m. It is made by Knights.
 
 Featuring:
 
-- 🎥 Loop short MP4 videos into long-form outputs (seconds → hours)
-- 🔊 Loop and sync MP3 audio seamlessly
-- ⏱ Configurable targets and durations (test mode or production)
-- 📦 Menu-driven batch interface
-- 🕒 Timestamped outputs to prevent overwrites
-- 🚀 Fast renders using stream copy (no video re-encoding)
-- 🧪 Test mode (e.g. 88-second outputs)
-- 🏭 Production mode (8+ hour outputs)
+ 
 
-<p align="center">
-  <img src="https://github.com/random-knights/.github/blob/main/assets/uti1ity/uti1ity.gif" alt="Rand0m: Uti1ity" title="Random Knights, XYZ">
-</p>
-
-## <span style="color:#D8D8D8"><u> **POINTS OF CONTACT** </u></span>
-
-If any issues arise for any of the below mentioned areas, please draft a strongly worded email and never send it to: **<PUBLIC_CONTACT>**
-
-<div align="center">
-
-## <span style="color:#858585"><u> **CORE SOLUTIONS** </u></span>
-
-| Stack          |     Versions     |   :chipmunk:    |
-| -------------- | :--------------: | :-------------: |
-| Flutter        |     ^3.38.3      |
-| Dart           |     ^3.10.1      |
-| DevTools       |     ^2.51.1      |
-| GoogleAI       |        v         |
-|                | gemini-2.5-flash |
-|                |  gemini-2.5-pro  |
-|                |   nano-banana    | **coming soon** |
-| OpenAI         |        v         |
-|                |     gpt-4.1      |
-|                |    gpt-5-nano    |
-|                |      gpt-4o      | **coming soon** |
-| **Perplexity** |       grok       | **coming soon** |
-| **Anthropic**  |      claude      | **coming soon** |
-
-</div>
-
-## 🏫 <span style="color:#555555"><u> **LEARN + PLAY + CREATE** </u></span>
-
-- rand0m
-  - A true sandbox. Experiments, ideas, and creative chaos are encouraged.
-  - Mid level. AI, Agents, and Hive DB History.
-  - A pre-production project t ostep up your AI game.
-  - Junior contributors observe first, then assist gradually.
-    - <small>subject to change ... randomly</small>
-
-- kn1ghts
-  - Expert level. Everything combined, all in 1 app.
-  - A production-like project where best practices matter.
-  - Junior contributors observe only.
-
-- orac1es
-  - A Beginner level introduction to Flutter App concepts through:
-    - Shell - the App template used for all current projects.
-    - Intro to animations, styling, and Easter-Eggs.
-    - Small interactive Crystal Ball "Orac1es".
-  - Companion _Rabbit R1_ app Creation mini-project.
-
-<span style="color:#FF4124">
-
-- **uti1ity**
-  - **Advanced tools and scripts (batch, ffmpeg, automation, and more).**
-  - **Primarily reference and inspiration.**
-
-</span>
-
-- c1assr00m
-  - The formal learning space. All junior contributors start here.
-  - Missions live as folders, not separate repos, keeping things simple and focused.
-
-- engineering reviewer
-  - The formal testing space. All QA contributors start here.
-  - Learn, add, and monitor our Regression tests w/open-source tools.
-
-<small>\*\*models, agents, 'kitts', and stuff is subject to change; all projects contain easter-eggs ga10re, but first you must exp10re\*\*</small>
+- RAND0M: 🌞 ☀️ 🌤️ ⛅ 🌥️ ⛅ ☁️ 🌦️ - WORK
+- KN1GHTS: 🌑 🌒 🌓 🌔 🌕 🌖 🌗 🌘 - PLAY
 
 <!-- THEME -->
 <div align="center">
@@ -200,98 +120,69 @@ _For more information, please visit: [GitHub Manifesto](https://lmgtfy.app/?q=ho
 <small>**EXAMPLE:**</small>
 
 ```mermaid
-%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':true,'mainBranchName': 'rand0m'}} }%%
-  gitGraph
-        commit id:"commit_01"
-        commit id:"commit_02"
-        branch uti1ity
-        commit id:"commit_T01"
-        commit id:"commit_T02"
-        commit id:"commit_T03"
-        branch rend3r
-        commit id:"commit_K01"
-        commit type: HIGHLIGHT id:"commit_K02"
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel': true, 'mainBranchName': 'rand0m'} } }%%
+gitGraph
+    %% rand0m (AI shell / PROD)
+    commit id:"commit_01"
+    commit id:"commit_02"
 
-        checkout rand0m
-        commit id:"commit_03"
-        merge rend3r
-        commit id:"commit_05"
-        commit id:"commit_06"
-        merge uti1ity tag:"cherrypick"
+    %% Core feeder repos (ordered)
+    branch uti1ity
+    commit id:"commit_K01"
+    commit id:"commit_K02"
+    commit id:"commit_K03"
 
+    branch orac1es
+    commit id:"commit_C01"
+    commit id:"commit_C02"
 
-        commit type:REVERSE id:"head"
+    branch kn1ghts
+    commit id:"commit_O01"
+    commit type:HIGHLIGHT id:"commit_O02"
+
+    %% Experimental / learning repos
+    branch c1assr00m
+    commit id:"commit_U01"
+
+    %% Demo / testing repo (LAST, spans everything)
+    branch exp10re
+    commit id:"commit_E01"
+    commit id:"commit_E02"
+    commit id:"commit_E03"
+
+    %% Back to rand0m – controlled integrations
+    checkout rand0m
+    commit id:"commit_03"
+    merge c1assr00m
+    commit id:"commit_04"
+    merge orac1es
+    commit id:"commit_05"
+    merge uti1ity
+    commit id:"commit_06"
+    merge kn1ghts tag:"cherrypick"
+    merge exp10re tag:"demo"
+
+    commit type:REVERSE id:"head"
 ```
 
 <small>😉 RUOK-CE</small>
 
-<!-- UTILITIES -->
+<!-- processes -->
 
-## <span style="color:#555555" name="utilities"><u> **BREAKDOWN** </u></span>
+## <span style="color:#555555" name="processes"><u> **TEST AUTOMATION** </u></span>
+
+**Xray <> Cucumber** <small>demo only</small>
 
 ```mermaid
-classDiagram
-    Uti1ity <|-- Ana1izer
-    Uti1ity <|-- Insp3ct
-    Uti1ity <|-- Rend3r
-    Uti1ity <|-- Scaff0ld
-    Uti1ity <|-- Temp1ate
-
-    Uti1ity : +envt | uti1ity.rand0m.ai
-    Uti1ity : +org | Random Knights, XYZ
-    Uti1ity: -user() [uti1ity_name]@rand0m.ai
-    Uti1ity: -roles() Manager | Viewer | Admin
-
-    class Ana1izer{
-      +scan
-      +probe
-      +measure
-      +report
-      +audit
-      +forecast
-      -summarize()
-    }
-
-    class Insp3ct{
-      +analyze
-      +verify
-      +extend
-      +metadata
-      +reverse
-      +export
-      -sanitize()
-    }
-
-    class Rend3r{
-      +assemble
-      +mux
-      +encode
-      +scale
-      +package
-      +version
-      -audio/video()
-    }
-
-    class Scaff0ld{
-      +init
-      +structure
-      +profile
-      +template
-      +organize
-      +cleanup
-      -enforce()
-    }
-
-    class Temp1ate{
-      +inspect
-      +normalize
-      +standardize
-      +create
-      +mix
-      +export
-      -validate()
-    }
+graph LR
+A[ID Manual Tests for Automation in Jira] --> B
+B[Convert to Cucumber Tests in Jira] --> C
+C[Export Cucumber Feature files from Jira] --> D
+D[Impliment Step Definitions in Cypress] --> E
+E[Execute Cypress tests in CI environment] --> F[Report automation results to Jira]
 ```
+
+<small>\*\*implimentation requires broader community engagement</small>
 
 <!-- BADGES -->
 
@@ -365,8 +256,6 @@ classDiagram
 [![CypressCloud][CypressCloud]][CypressCloud-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-🏰🛏️🌚ɯ0puɐɹ kn1ghts🌝🛋️🏫
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->

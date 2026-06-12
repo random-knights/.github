@@ -4,9 +4,9 @@
 <br />
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/random-knights/.github/blob/main/assets/rand0m/rand0m-drk.gif">
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/random-knights/.github/blob/main/assets/rand0m/rand0m-lte.png">
-    <img alt="Shows a Day/Night themed markedown gif based on AM/PM." src="https://github.com/random-knights/.github/blob/main/assets/rand0m/rand0m-drk.gif">
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/random-knights/.github/blob/main/assets/rand0m/<PROJECT_ID>.gif">
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/random-knights/.github/blob/main/assets/rand0m/<PROJECT_ID>.png">
+    <img alt="Shows a Day/Night themed markedown gif based on AM/PM." src="https://github.com/random-knights/.github/blob/main/assets/rand0m/<PROJECT_ID>.gif">
   </picture>
 
 <h3 align="center" style="color:#ff4124">Random Knights, XYZ - ɯ0puɐɹ</h3>
@@ -32,7 +32,7 @@
 <small>from Random Knights, XYZ</small>
 
 ... a creative sandbox and experimental AI playground where ideas are tested,
-agents are unleashed, and workflows evolve in unpredictable ways. Rand0m
+agents are unleashed, and processes evolve in unpredictable ways. Rand0m
 serves as the pre-production environment for exploring automation concepts,
 agent orchestration, data persistence, and iterative development practices.
 
@@ -44,11 +44,11 @@ Featuring: Rand0m Agents of Chaos...
 
 - 🐿️ `Unpredictably helpful AI Agents`
   - `¯\_(ツ)_/¯` :robot:
-- 🧪 Experimental AI workflows and agent orchestration
+- 🧪 Experimental AI processes and agent orchestration
 - 🗃️ Hive DB history tracking and state persistence
 - 🔄 Rapid prototyping environment for new ideas
 - 🎲 Sandbox testing before production migration
-- 💻 Mid-level contributor collaboration workflows
+- 💻 Mid-level contributor collaboration processes
 
 <p align="center">
   <img src="https://github.com/random-knights/.github/blob/main/assets/rand0m/rand0m.gif" alt="Rand0m: Kn1ghts" title="Random Knights, XYZ">
@@ -56,7 +56,7 @@ Featuring: Rand0m Agents of Chaos...
 
 ## <span style="color:#D8D8D8"><u> **POINTS OF CONTACT** </u></span>
 
-If any issues arise for any of the below mentioned areas, please draft a strongly worded email and never send it to: **admin@rand0m.ai**
+If any issues arise for any of the below mentioned areas, please draft a strongly worded email and never send it to: **<PUBLIC_CONTACT>**
 
 <div align="center">
 
@@ -113,7 +113,7 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
   - The formal learning space. All junior contributors start here.
   - Missions live as folders, not separate repos, keeping things simple and focused.
 
-- eng1neer
+- engineering reviewer
   - The formal testing space. All QA contributors start here.
   - Learn, add, and monitor our Regression tests w/open-source tools.
 
@@ -232,16 +232,16 @@ _For more information, please visit: [GitHub Manifesto](https://lmgtfy.app/?q=ho
 
 ```mermaid
 classDiagram
-    AI_Agent_DAY5 <|-- Eng1neer
+    AI_Agent_DAY5 <|-- engineering reviewer
     AI_Agent_DAY5 <|-- Expl0rer
     AI_Agent_DAY5 <|-- Devel0per
-    AI_Agent_DAY5 <|-- Scient1st
+    AI_Agent_DAY5 <|-- science reviewer
     AI_Agent_DAY5 <|-- Secur1ty
     AI_Agent_DAY5 : +envt | day5.rand0m.ai/agents
     AI_Agent_DAY5 : +org | Random Knights, XYZ
     AI_Agent_DAY5: -user() [agent_name]@rand0m.ai
     AI_Agent_DAY5: -roles() Manager | Viewer | Admin
-    class Eng1neer{
+    class engineering reviewer{
       +biomedical
       +civil
       +electrical
@@ -270,7 +270,7 @@ classDiagram
       -build()
       -break()
     }
-    class Scient1st{
+    class science reviewer{
       +business
       +earth
       +computer
