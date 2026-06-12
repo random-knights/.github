@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-12 (session 25)
+**Last updated:** 2026-06-12 (sessions 26–27; session-26 content folded — did not land on roadmap)
 
 ---
 
@@ -34,17 +34,16 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 
 _**End goal: animated planetary flow globe (nullschool-class) + governed AI assistant.**_
 
-_Position: **C8** (R7 deployed). Risks: Cesium Ion token ruling pending (Fable); D8 BE series provisioning._
+_Position: **C9** (Cesium in flight; R8 pending owner approval). Risks: Ion token = owner action (RANDOM_CESIUM_ION_TOKEN in root .env, domain-restricted scoped token); Cesium bridge slice 2 required before renderer swap._
 
 | Cycle | Release | Work | Gate |
 | --- | --- | --- | --- |
 | **C7** | **R7** ✓ **DEPLOYED** (`c150405`, release `27423312204`) | D2–D5 + scientist RESOLVE-OR-EXPLAIN + call-site + S5/S3 + uniformity + timer-leak + ISO table (Codex T1); Systems+Connect RETIRED | CI green; HTTP smoke ✓; owner visual review #1 ✓ |
-| **C8** | — | D7 Earth View nullschool mode (Design); BE chart-series provisions + Cesium data groundwork (Earth); Codex T3 fixtures banked | R7 deployed; Cesium Ion token ruling from Fable pending |
-| **C9** | — | Cesium renderer swap into D7 shell (Design+Earth); D8 Data View chart vocabulary; Tier 2 aggregate density vertical (Fable spec required) | C8 complete; governance spec on record |
-| **C10** | — | Tier 1 symbolic motion cues (RETAINED GLOBE INVENTORY); region-tap → Detail workspace; @scient1st globe-context wiring | C9 complete |
-| **C10/R8** | **R8** | Globe review release | Owner globe visual review (≤5 items); Fable gate |
-| **C11** | — | Hardening: performance, governance tests, token-economy audit | R8 ✓ |
-| **C12** | **R9 FINAL** | earth.nullschool+AI — animated planetary flow globe + governed AI assistant | C11 complete; Fable final gate; owner sign-off |
+| **C8** | **R8** *(pending owner approval)* | D7 Earth View nullschool mode + D8 Data View chart vocabulary + BE chart-series + scroll-helper + CustomPainter globe in new shell → **UI consolidation release**. Owner review #2 = ≤5 viewport/chart items (post-deploy). | D7 gate-passed (C8); D8 gate-passed `e35a31d`; chart-series gate-passed `33db79b`; owner R8 approval required |
+| **C9** | — | Cesium-runtime-base **slice 1** `760c51a` ✓ (governance core: selection model, runtime abstraction, fallback; NO browser bridge — slice 2 required); Ion token owner action pending | R8 deployed |
+| **C9/R9** | **R9** | Cesium boot + flow fields — **nullschool release**. Browser bridge (slice 2); Cesium renderer swap into D7 shell; animated flow field layer. Owner visual review (globe-specific). | Cesium slice 2 complete; Ion token set; Fable gate |
+| **C10** | — | Tier 1 symbolic motion cues (RETAINED GLOBE INVENTORY); Tier 2 aggregate density vertical (Fable spec required); @scient1st globe-context wiring; region-tap → Detail workspace | R9 deployed |
+| **C10/R10** | **R10 FINAL** | earth.nullschool+AI — animated planetary flow globe + governed AI assistant + hardening | C10 complete; Fable final gate; owner sign-off |
 
 **Visual smoke suspension:** R5+R6 checklist items suspended until R7 consolidated visual review. Post-R7: ≤5 items per release window, only when UI changed (§21b).
 
@@ -87,8 +86,10 @@ _Position: **C8** (R7 deployed). Risks: Cesium Ion token ruling pending (Fable);
 | Timer-leak fix | merged to main | green | **✓ live** (R7 `c150405`) |
 | Uniformity fixes | merged to main | green | **✓ live** (R7 `c150405`) |
 | Full ISO country table (Codex T1 — 249 countries) | merged to main | green | **✓ live** (R7 `c150405`) |
-| D7 Earth View nullschool mode | in progress (Design) | — | **pending** — C8 |
-| BE chart-series provisions + Cesium data groundwork | in progress (Earth) | — | **pending** — C8 |
+| D7 Earth View nullschool mode | gate-passed (C8) — branch `earth/design-d7-nullschool-shell` | — | **pending R8** |
+| BE chart-series provisions (`earth/chart-series-provisioning`) | gate-passed `33db79b` (C8) | — | **pending R8** |
+| D8 Data View chart vocabulary (`earth/design-d8-chart-vocabulary`) | gate-passed `e35a31d` (C8/C9) — 5 chart types bound to real series; streamgraph/treemap/scatter-bubble dropped (no real backing) | — | **pending R8** |
+| Cesium-runtime-base slice 1 (`760c51a`) | gate-passed (C9) — governance core: selection model, runtime abstraction, fallback; NO browser bridge | — | **pending R9** |
 
 `origin/main` (xyz) is at `c150405` (Production Release `27423312204`; Fable-verified).
 
@@ -96,9 +97,11 @@ _Position: **C8** (R7 deployed). Risks: Cesium Ion token ruling pending (Fable);
 
 ⚠ **Visual suspension LIFTED at R7.** Owner consolidated visual review #1 complete (session 25). Post-R7 visual reviews bounded to ≤5 items per release window (§21b).
 
-⚠ **Fable ruling pending:** Cesium Ion token handling — required before Cesium renderer swap (C9). Do not implement Cesium Ion integration without ruling on record.
+⚠ **Owner action required:** Cesium Ion token — set `RANDOM_CESIUM_ION_TOKEN` (domain-restricted, scoped) in root `.env` before Cesium renderer swap (C9/R9). Do not implement Ion integration without token on record.
 
-Next checkpoint **R8** — C8 complete + C9 Cesium swap + D8 + Tier 2 vertical → R8 globe review release.
+⚠ **Owner action required:** R8 approval — required before R8 release. R8 bundle = D7+D8+chart-series+scroll-helper+CustomPainter globe. Owner review #2 (≤5 viewport/chart items) post-deploy.
+
+Next checkpoint **R8** — owner approval required → D7+D8+chart-series+scroll-helper+CustomPainter globe UI consolidation release.
 
 ---
 
@@ -106,10 +109,10 @@ Next checkpoint **R8** — C8 complete + C9 Cesium swap + D8 + Tier 2 vertical �
 
 _Active — in flight or ready for immediate action._
 
-- **Earth agent:** R7 deployed `c150405`. C8 in flight — BE chart-series provisions (gap-aware series objects for D8 chart types); Cesium data groundwork (vector adapters + country boundary data). D7 merge gate active.
-- **Design agent:** D7 in flight — Earth View nullschool mode (no-scroll viewport-fit; globe hero; score gauge TOP-RIGHT; stacked proportional row; time-scrubber histogram; pill BOTTOM-LEFT persistent). Reference mocks = inspiration only; adapt to viewport.
-- **Fixes agent:** `validate-earth-fast` `-TestPaths` in progress post-R7. Harness hygiene.
-- **Docs agent:** session-25 update ✓ — R7 deployed `c150405`; Systems+Connect retired; IA v2 appended (D7+D8); C8 cycle active; Fable Ion ruling noted pending.
+- **Earth agent:** R8 integration — merging D7+D8+chart-series+scroll-helper+CustomPainter globe into new shell for R8 UI consolidation release. Gate: owner R8 approval required.
+- **Design agent:** D7 gate-passed (C8); D8 gate-passed `e35a31d`. Pending R8 merge by Earth. C9 Design scope: Cesium FE shell once browser bridge (slice 2) lands.
+- **Fixes agent:** `validate-earth-fast` `-TestPaths` in progress. Harness hygiene post-R7.
+- **Docs agent:** sessions 26–27 update ✓ — D7/D8/chart-series gate-passed; cesium-runtime-base s1 `760c51a` gate-passed; R8/R9/R10 release split recorded; §20 standard amended; owner actions noted.
 
 ---
 
@@ -117,16 +120,14 @@ _Active — in flight or ready for immediate action._
 
 _Queued — approved scope, not yet started._
 
-1. **C8 (active):**
-   - Design: D7 Earth View nullschool mode — complete and gate-pass to Earth.
-   - Earth: BE chart-series provisions (gap-aware series for D8 chart types); Cesium vector adapter + country boundary data groundwork.
-   - Grunt Pool: Codex T3 fixtures banked (in progress).
-   - Gate: Fable Cesium Ion token ruling required before C9 Cesium renderer swap.
-2. **C9 (queued):** Cesium renderer swap into D7 shell (Design + Earth); D8 Data View chart vocabulary (Design; BE series required per chart type); Tier 2 aggregate density vertical first pass (Fable governance spec required before catalog entry).
-3. **C10 (queued):** Tier 1 symbolic motion cues (corridors/lanes/orbital bands; RETAINED GLOBE INVENTORY — D6 deletion pass must not quarantine); region-tap → Detail workspace; @scient1st globe-context wiring.
-4. **R8 (queued):** globe review release → owner visual review (≤5 items; §21b).
-5. **C11 (queued):** hardening — performance, governance tests, token-economy audit.
-6. **R9 FINAL (queued):** earth.nullschool+AI production release.
+1. **R8 (pending owner approval):** D7+D8+chart-series+scroll-helper+CustomPainter globe in new shell — UI consolidation release. Earth integrates bundle; owner approves release; owner review #2 (≤5 viewport/chart items) post-deploy.
+2. **C9 — Cesium in flight:**
+   - Slice 1 `760c51a` gate-passed: governance core (selection model, runtime abstraction, fallback). ✓
+   - Slice 2: browser bridge — required before renderer swap. In progress (Earth).
+   - Owner action: `RANDOM_CESIUM_ION_TOKEN` (domain-restricted scoped Ion token) in root `.env`.
+3. **R9 (queued):** Cesium boot + flow fields — nullschool release. Requires: Cesium slice 2 browser bridge complete + Ion token set + Fable gate. Owner visual review (globe-specific).
+4. **C10 (queued):** Tier 2 aggregate density vertical (Fable governance spec required per vertical); Tier 1 symbolic motion cues (RETAINED GLOBE INVENTORY); @scient1st globe-context wiring; region-tap → Detail workspace.
+5. **R10 FINAL (queued):** earth.nullschool+AI production release. Same scope as prior R9 FINAL — pushed one release by R8/R9 split.
 7. **Cleanup ledger (post-R7):** all pre-R7 branches safe to delete. `c2-0` kept open per owner. Delete abandoned `earth/p17-7-*`, `earth/p18-0/1/2-*`.
 8. **Future-infra queue:** GFW near-real-time forest alerts (FIRMS pattern, new callable); remote-config budget + kill switch.
 
@@ -249,6 +250,13 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **R7 DEPLOYED (session 25):** `c150405`, Production Release `27423312204`. D2–D5 + scientist RESOLVE-OR-EXPLAIN + call-site + Countries S3 + Connect S5 + timer-leak + uniformity + Codex T1 ISO table all live. `origin/main` = `c150405`.
 - **Systems + Connect RETIRED (session 25):** wind-down complete. Scopes absorbed by Earth. Worktrees torn down. Post-R7 roster = Fable + Earth + Design + Fixes + Docs + CODEX Grunt Pool.
 - **Owner visual review #1 — approved direction, consolidate further (session 25):** post-R7 consolidated visual review complete. Verdict: approved direction; consolidate further → IA v2. Visual suspension lifted. IA v2 spec appended to [`architecture/earth-ia-consolidation-spec.md`](architecture/earth-ia-consolidation-spec.md).
+- **Release split — R8/R9/R10 (sessions 26–27, owner directive):** prior R8 (globe review) split into three releases. R8 = UI consolidation (D7+D8+chart-series+scroll-helper+CustomPainter globe; owner review #2 ≤5 viewport/chart items post-deploy). R9 = Cesium boot + flow fields (nullschool release; own visual review). R10 FINAL = Tier 2 density + @scient1st globe-context + hardening. Same end goal; same end date. Cycle table updated.
+- **Cesium-runtime-base slice 1 gate-passed `760c51a` (session 27):** governance core only — Cesium selection model, runtime abstraction, and fallback path. NO browser bridge in this slice; slice 2 (browser bridge) required before renderer swap. Ion token not yet set — owner action required (RANDOM_CESIUM_ION_TOKEN in root .env, domain-restricted scoped token).
+- **D8 gate-passed `e35a31d` (sessions 26–27):** Data View chart vocabulary — donut/funnel/radar bound to real EarthChartProvisioning series; streamgraph/treemap/scatter-bubble dropped (no real backing data). SECOND copy-instead-of-merge incident (byte-identical, benign — D8 branch picked up chart-series files; dedupes at merge). §20 standard amended — see coordination-standards §20.
+- **D7 gate-passed (C8):** Earth View nullschool mode — no-scroll viewport-fit; globe hero; score gauge TOP-RIGHT; stacked proportional row; time-scrubber histogram; pill BOTTOM-LEFT persistent. Pending R8 merge by Earth.
+- **BE chart-series gate-passed `33db79b` (C8):** `earth/chart-series-provisioning` — gap-aware EarthChartSeries/EarthChartRadar/EarthChartProvisioning series objects for D8. Pending R8 merge by Earth.
+- **§20 standard amended — explicit merge step in commands (sessions 26–27):** D8 = second copy-instead-of-merge incident (first: Connect S5, session 23). Amendment: any agent command or HANDOFF that has an unmerged-branch dependency must name the explicit merge step (`git merge origin/<branch>`) inline in the command. It is not sufficient to assume the receiving agent will discover the dependency. Codified in [`automation/agent-coordination-standards.md`](automation/agent-coordination-standards.md) §20.
+- **Owner action items (session 27):** (a) Set `RANDOM_CESIUM_ION_TOKEN` (domain-restricted scoped Ion token) in root `.env` — required before Cesium renderer swap starts. (b) Approve R8 release. (c) Perform owner review #2 post-R8-deploy (≤5 viewport/chart items).
 - **IA v2 — D7 + D8 (session 25, owner directive):** D6 deletion-pass superseded. D7 = Earth View nullschool mode (no-scroll viewport-fit; globe hero; gauge TOP-RIGHT filter-reactive; stacked proportional row; interactive time-scrubber histogram; pill BOTTOM-LEFT persistent while sheet open; reference mocks = inspiration only). D8 = Data View chart vocabulary (donut/rings, radar, streamgraph, treemap, scatter/bubble, funnel; binding rule: every chart binds to real model series — synthetic data prohibited; BE provisions gap-aware series).
 - **Cycle table updated for IA v2 (session 25):** C8 = D7 + BE chart-series + Cesium data groundwork; C9 = Cesium renderer swap into D7 shell + D8 + Tier 2 density vertical; C10 = motion cues + region-tap + @scient1st globe-context → R8. Codex T3 fixtures banked in C8.
 - **Fable ruling pending — Cesium Ion token handling (session 25):** required before C9 Cesium renderer swap. Do not implement Cesium Ion integration without ruling on record. Fable to deliver ruling before C9 opens.
@@ -272,8 +280,10 @@ _Scope changes, strategy shifts, or deferred decisions._
 
 | Branch | Repo | Status | Action |
 | --- | --- | --- | --- |
-| `earth/design-d7` (or equivalent) | xyz (remote) | in progress (Design) — nullschool mode; no-scroll viewport-fit; globe hero; time-scrubber | C8 |
-| `earth/be-chart-series` (or equivalent) | xyz (remote) | in progress (Earth) — gap-aware series provisions; Cesium data groundwork | C8 |
+| `earth/design-d7-nullschool-shell` | xyz (remote) | gate-passed (C8) — nullschool mode; no-scroll viewport-fit; globe hero; time-scrubber | pending R8 merge by Earth |
+| `earth/chart-series-provisioning` | xyz (remote) | gate-passed `33db79b` (C8) — EarthChartSeries/EarthChartRadar/EarthChartProvisioning | pending R8 merge by Earth |
+| `earth/design-d8-chart-vocabulary` | xyz (remote) | gate-passed `e35a31d` (C9) — D8 chart vocabulary; merged chart-series | pending R8 merge by Earth |
+| `earth/cesium-runtime-base` (or equivalent) | xyz (remote) | slice 1 `760c51a` gate-passed (C9) — governance core only; slice 2 browser bridge in progress | C9 — pending slice 2 |
 | `chore/timer-leak` | xyz (remote) | merged to main — **deployed ✓** (`c150405`, R7) | safe to delete |
 | `chore/uniformity` | xyz (remote) | merged to main — **deployed ✓** (`c150405`, R7) | safe to delete |
 | `earth/countries-s3` | xyz (remote) | `5897b5d` — merged to main, **deployed ✓** (`c150405`, R7) | safe to delete |

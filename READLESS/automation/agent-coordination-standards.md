@@ -1,6 +1,6 @@
 # Agent Coordination Standards
 
-Date: 2026-06-12 (amended sessions 18, 23, 24)
+Date: 2026-06-12 (amended sessions 18, 23, 24, 27)
 Author: Docs agent (from Fable PM ruling + owner directives)
 Scope: all agents operating in the Random Knights multi-agent ecosystem
 
@@ -530,6 +530,26 @@ unsafe and prohibited going forward.
 **Rule:** needing code that lives on main = `git merge origin/main`. No
 exceptions. If a merge produces conflicts, resolve them; do not copy files
 to avoid the conflict.
+
+**Amendment (session 27) — name the merge step explicitly in commands:**
+
+A second copy-instead-of-merge incident occurred on D8: D8 needed
+`earth_chart_series.dart` from an unmerged branch (`origin/earth/chart-series-provisioning`).
+The file was present byte-identically after merge, but the pattern recurred.
+
+**Rule:** any agent command, HANDOFF, or `next:` field that has an
+unmerged-branch dependency **must name the explicit merge step inline**:
+
+```powershell
+# If your branch depends on unmerged work, say so explicitly in the command:
+git merge --no-edit origin/earth/chart-series-provisioning
+# then proceed with your slice work
+```
+
+It is not sufficient to assume the receiving agent will discover the dependency
+by reading the codebase or context. The merge step must appear word-for-word in
+the handoff command. This applies to Docs-agent command templates, HANDOFF
+`next:` fields, and any Next-section command starters in EARTH-ROADMAP.md.
 
 ---
 
