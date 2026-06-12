@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-11 (session 14)
+**Last updated:** 2026-06-11 (session 15)
 
 ---
 
@@ -12,10 +12,10 @@ Update this file at the start and end of every session.
 
 | Agent | Identity | Worktree | Active branch | Focus |
 | --- | --- | --- | --- | --- |
-| Earth | `deve10per` / dev-kitt | main clone (exclusive) | `earth/glaciers-data-view-wiring` @ `6316893` — gate passed, merging | Earth features, layers, governance; sole catalog owner |
-| Systems | `deve10per` / dev-kitt | `worktrees\rand0m-systems` | Environmental audit COMPLETE — findings persisted to READLESS; implementation order approved | Earth-Systems complete → Environmental (forest → protected-areas → biodiversity) |
-| Connect | `deve10per` / dev-kitt | `worktrees\rand0m-connect` | `feature/c2-0-source-onboarding-pipeline` @ `ed7f3f4` slices 1–3 — gate passed, merging | Connect domain: source registry, onboarding pipeline |
-| Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | `feature/f1-0-*` — re-rebase pending owner; `chore/test-deterministic-cursor` (cursor-timer harness fix) | Bug fixes, test repair, CI, branch hygiene |
+| Earth | `deve10per` / dev-kitt | main clone (exclusive) | `earth/forest-layer` @ `d3a8885` — gate passed, merging with registration; 19th layer | Earth features, layers, governance; sole catalog owner |
+| Systems | `deve10per` / dev-kitt | `worktrees\rand0m-systems` | Environmental: forest ✓ → protected-areas in flight (WDPA monthly, metadata/integrity only) | Environmental vertical (forest → protected-areas → biodiversity) |
+| Connect | `deve10per` / dev-kitt | `worktrees\rand0m-connect` | `feature/c2-0-source-onboarding-pipeline` @ `bc0e0a2` slice 4 — merging | Connect domain: source registry, onboarding pipeline |
+| Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | `chore/test-deterministic-cursor` @ `9b987a5` — merging; `feature/f1-0-*` @ `da79ec6` favicon owner-gated | Bug fixes, test repair, CI, branch hygiene |
 | Docs | `eng1neer` / qa-kitt | qa-kitt clone | `main` | READLESS, CODEX, EARTH-ROADMAP |
 | Fable | — | read-only | — | Audit, spec, PM rulings (no writes) |
 
@@ -36,15 +36,19 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 | scientist-session-continuity (`6d2c6cb`) | merged to main | green | **✓ live** |
 | scientist-scenario-explain (`1792660`) | merged to main | green | **✓ live** |
 | Earth-Systems ocean live + registration | merged to main | green | **✓ live** |
-| Glaciers integration + registration (`36d2901`, `57869fc`) | merged to main | green | **pending** |
-| Glaciers data-view wiring (`6316893`) | gate passed — merging | — | **pending** — release in progress |
-| Connect slices 1–3 (`ed7f3f4`) | gate passed — merging | — | **pending** — release in progress |
+| Glaciers integration + registration (`36d2901`, `57869fc`) | merged to main | green | **✓ live** |
+| Glaciers data-view wiring (`6316893`) | merged to main | green | **✓ live** |
+| Connect slices 1–3 (`ed7f3f4`) | merged to main | green | **✓ live** |
+| Forest layer (`d3a8885`) | gate passed — merging | — | **pending** — RC accumulation, no release this cycle |
+| `chore/test-deterministic-cursor` (`9b987a5`) | gate passed — merging | — | **pending** — RC accumulation |
+| Connect slice 4 (`bc0e0a2`) | gate passed — merging | — | **pending** — RC accumulation |
+| F1.0 favicon (`da79ec6`) | owner-gated | — | **pending** — awaiting owner approval |
 
-`origin/main` (xyz) is at `57869fc` (pre-integration RC; Fable-verified). In-flight merges (`6316893`, `ed7f3f4`) not yet confirmed on main. Checkpoint Production Release in progress per Earth HANDOFF — run ID not yet confirmed.
+`origin/main` (xyz) is at `9298e84` (Production Release `27390760970`; Fable-verified). In-flight: `d3a8885`, `9b987a5`, `bc0e0a2` accumulating for next RC — no release this cycle.
 
 ⚠ **State rule:** rows may only show "merged" or "deployed" when a git-verified SHA from a Fable gate confirmation or `git log origin/main` check is recorded here. Do not assert merged/deployed from session memory. Deployed rows updated only when Earth confirms Production Release run ID.
 
-Next checkpoint: Earth confirms merge SHAs + run ID → Docs agent updates deployed rows.
+Next checkpoint: forest + cursor-timer + Connect slice 4 land → full validation + Production Release.
 
 ---
 
@@ -52,11 +56,11 @@ Next checkpoint: Earth confirms merge SHAs + run ID → Docs agent updates deplo
 
 _Active — in flight or ready for immediate action._
 
-- **Earth agent:** `earth/glaciers-data-view-wiring` @ `6316893` — gate passed, merging. Production Release in progress (run ID not yet confirmed). Glaciers catalog status flagged as open question (see Pivots).
-- **Systems agent:** Environmental audit COMPLETE. Findings persisted to [`architecture/environmental-data-vertical-audit.md`](architecture/environmental-data-vertical-audit.md) (Fable-ratified). Implementation order: forest → protected-areas → biodiversity. Open question: glaciers catalog `research` status — confirm or amend via `EARTH:` delta.
-- **Connect agent:** `feature/c2-0-source-onboarding-pipeline` @ `ed7f3f4` slices 1–3 — gate passed, merging.
-- **Fixes agent:** favicon re-rebase pending owner; `chore/test-deterministic-cursor` in progress (vendored-SDK cursor-timer test hang fix).
-- **Docs agent:** Environmental audit persisted. Roadmap updated to in-flight state. Deployed rows held until Earth confirms run ID. ✓
+- **Earth agent:** `earth/forest-layer` @ `d3a8885` — gate passed, merging with registration. 19th layer (dedicated `forest` id; Fable-ratified ruling — human-encroachment block unchanged, distinct concepts). No release this cycle (RC accumulation).
+- **Systems agent:** Environmental Phase 1 (forest) ✓ → Phase 2: protected-areas in flight (WDPA monthly, metadata/integrity only, structural no-geometry constraint).
+- **Connect agent:** `feature/c2-0-source-onboarding-pipeline` @ `bc0e0a2` slice 4 — gate passed, merging. Slices 1–3 deployed ✓ (`9298e84`); render tests skip-marked per CODEX pending harness chore.
+- **Fixes agent:** `chore/test-deterministic-cursor` @ `9b987a5` — merging. Favicon `da79ec6` re-rebase pending owner approval.
+- **Docs agent:** session-15 update ✓ — deployed rows confirmed, RC accumulation state recorded, Environmental progress updated.
 
 ---
 
@@ -64,14 +68,15 @@ _Active — in flight or ready for immediate action._
 
 _Queued — approved scope, not yet started._
 
-1. **Docs agent:** receive Earth HANDOFF with confirmed merge SHAs + Production Release run ID → update deployed rows in roadmap.
-2. **Systems agent:** confirm or amend glaciers catalog `research` status via `EARTH:` delta callout; Earth agent applies if amendment needed.
-3. **Fixes agent:** owner approves favicon re-rebase; merge to main. `chore/test-deterministic-cursor` merge after passing.
-4. **Earth agent:** begin Environmental Phase 1 (forest cover, asset-backed refresh) on fresh `earth/**` branch — spec in [`architecture/environmental-data-vertical-audit.md`](architecture/environmental-data-vertical-audit.md).
-5. **Connect agent:** complete remaining slices (4+) on `feature/c2-0-source-onboarding-pipeline`.
-6. Checkpoint after items 3–5: full validation + Production Release.
-7. Delete stale branches after deploy: `earth/earthview-ui-cleanup`, `earth/live-connections-batch`, `chore/earth-workflow-test-staleness`, `earth/scientist-live-ai-responses`, `earth/scientist-session-continuity`, `earth/scientist-scenario-explain`, `earth/data-ocean-live`, `earth/glaciers-data-view-wiring`. Delete abandoned: `earth/p17-7-scientist-context-bridge`, `earth/p18-0/1/2-*`.
-8. **Pending owner approval** (see Pending Owner Approval): VCM/Entities governance specs.
+1. **Earth agent:** confirm forest merge to main (`d3a8885`) + begin Environmental Phase 2 (protected-areas, WDPA monthly) after forest lands — spec in [`architecture/environmental-data-vertical-audit.md`](architecture/environmental-data-vertical-audit.md).
+2. **Systems agent:** complete protected-areas data vertical; emit `EARTH:` registration delta for Earth to apply.
+3. **Connect agent:** complete remaining slices (5+) on `feature/c2-0-source-onboarding-pipeline`.
+4. **Fixes agent:** owner approves favicon re-rebase (`da79ec6`) → merge to main.
+5. Checkpoint after forest + cursor-timer + Connect slice 4 land: full validation + Production Release.
+6. **Earth agent:** Environmental Phase 3 (biodiversity/habitat, keyless GBIF, coarse aggregates) — only after protected-areas is deployed and suppression guard precondition is implemented (non-negotiable, per audit spec).
+7. **Future-infra queue (approved; requires dedicated implementation phase):** GFW near-real-time forest alerts via Firebase callable proxy (FIRMS pattern, new callable required); remote-config budget + runtime kill switch.
+8. Delete stale branches after next deploy: `earth/glaciers-data-view-wiring`, `feature/c2-0-source-onboarding-pipeline` (slices 1–3 base). Delete abandoned: `earth/p17-7-scientist-context-bridge`, `earth/p18-0/1/2-*`.
+9. **Pending owner approval** (see Pending Owner Approval): VCM/Entities governance specs (3rd presentation — Entities prerequisite now deployed).
 
 ---
 
@@ -93,11 +98,11 @@ _Completed and on `main`._
 - **Earth-Systems: `earth/data-ocean-live`** (`076eefb`) — Systems agent. Ocean live feed data vertical; registration applied by Earth agent in catalog. Earth-Systems vertical **COMPLETE**. **Deployed ✓** (Production Release `27388323458`).
 - **Production Release `27388323458`** (`14d422f`) — owner. All above + prior checkpoints live on `rand0m.ai`. `origin/main` = `14d422f` (Fable-verified). ✓
 - **Glaciers verdict** (`6e0b130`) — Earth + Systems agents. WGMS FoG asset-backed refresh pipeline implemented; no governed live source (verdict: assets only). ✓
-- **Glaciers integration + registration** (`36d2901`, `57869fc`) — Earth agent. Glaciers data integrated and registered on main. Deployed: pending release in progress.
-- **Glaciers data-view wiring** (`6316893`) — Earth agent. Gate passed, merging. Release in progress; deployed rows held for confirmed run ID.
-- **Connect slices 1–3** (`ed7f3f4`) — Connect agent. Gate passed, merging. Release in progress.
+- **Glaciers integration + registration** (`36d2901`, `57869fc`) — Earth agent. Glaciers data integrated and registered on main. **Deployed ✓** (Production Release `27390760970` @ `9298e84`).
+- **Glaciers data-view wiring** (`6316893`) — Earth agent. Data View wiring for glaciers layer. **Deployed ✓** (Production Release `27390760970` @ `9298e84`).
+- **Connect slices 1–3** (`ed7f3f4`) — Connect agent. Source onboarding pipeline slices 1–3. Connect stall resolved (two-cycle bootstrap gap fixed via §14). Render tests skip-marked per CODEX pending harness chore. **Deployed ✓** (Production Release `27390760970` @ `9298e84`).
+- **Production Release `27390760970`** (`9298e84`) — owner. Glaciers wiring + Connect slices 1–3 live on `rand0m.ai`. `origin/main` = `9298e84` (Fable-verified). ✓
 - **Environmental Data Vertical audit** — Systems agent (Fable-ratified). Findings persisted to [`architecture/environmental-data-vertical-audit.md`](architecture/environmental-data-vertical-audit.md). Implementation order approved: forest → protected-areas → biodiversity.
-- **`chore/test-deterministic-cursor`** — Fixes agent. Harness fix for vendored-SDK cursor-timer test hangs (known issue, see Pivots). In progress.
 
 ---
 
@@ -115,7 +120,11 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **Checkpoint cadence:** Production Releases run approximately every 2 phases. Fable may defer a checkpoint if the phase delta is too small to warrant a release. Do not assume a release follows every merge.
 - **Connect worktree bootstrap gap:** two-cycle stall on slice 3 traced to fresh-worktree environment not matching the main-clone environment (Flutter PATH, `env.g.dart`, generated registrants). Mandatory bootstrap sequence now in coordination standards §14. All worktree agents must run it before any `analyze`, `test`, or `build` call.
 - **Cursor-timer test hangs (known issue):** vendored-SDK cursor-timer tests hang non-deterministically under the current test harness. Fixes agent `chore/test-deterministic-cursor` is the approved fix. Do not disable or skip these tests as a workaround — wait for the harness fix to land.
-- **Glaciers catalog status open question:** glaciers layer intentionally stays `research` while source metadata is connected (`assetBacked`/`previewFixture` access). Earth agent flagged; Systems agent to confirm or amend via `EARTH:` registration delta. Do not promote glaciers to `assetBacked` without Systems sign-off.
+- **Glaciers catalog status:** glaciers layer intentionally stays `research` while source metadata is connected (`assetBacked`/`previewFixture` access). Deployed at `9298e84`. Systems agent to confirm or amend catalog promotion via `EARTH:` delta; Earth applies if change required. Do not promote to `assetBacked` without Systems sign-off.
+- **Forest layer (19th) — Fable ruling (session 15):** dedicated `forest` layer id added to catalog (not a sub-group of an existing layer). Human-encroachment block remains unchanged — human encroachment is a distinct concept and is not blocked by the forest governance entry. Do not conflate the two.
+- **Connect render tests skip-marked:** Connect slices 1–3 render tests are skip-marked per CODEX pending harness chore (`chore/test-deterministic-cursor`). Do not un-skip without the harness fix landing first.
+- **Future-infra queue — GFW near-real-time forest alerts:** GFW live forest alerts are technically feasible via a Firebase callable proxy following the FIRMS pattern. A new callable is required. This is an approved concept placed in the infra queue — do not implement without an explicit approved infra slice directive from the owner.
+- **Future-infra queue — remote-config budget + kill switch:** runtime kill switch and remote-config-backed budget for `sessionTokenBudget`/`maxPromptTokens` are approved in concept. Do not implement without explicit instruction (separate approved phase required).
 - **Branch disjointness checks:** always use three-dot diff (`git diff main...branch`), never two-dot (`git diff main..branch`). Two-dot includes main drift in the diff and produces false-alarm conflicts. This occurred in session 12 and is now codified in coordination standards §13.
 - **`EarthScientistConfig.liveProviderEnabled` is compile-time.** Disabling the live-AI path requires a code change, rebuild, and Production Release — not a runtime toggle. Live answers cost real tokens via the Default AI Provider through `generateAIResponse` Firebase callable.
 - **`sessionTokenBudget=50000` / `maxPromptTokens=12000` are compile-time in-memory soft guards.** They reset on app relaunch and do not hard-cap Firebase Function invocations. Owner-accepted at this checkpoint. Future infra queue: remote-config budget + runtime kill switch (separate approved phase required — do not implement without explicit instruction).
@@ -128,10 +137,12 @@ _Scope changes, strategy shifts, or deferred decisions._
 
 | Branch | Repo | Status | Action |
 | --- | --- | --- | --- |
-| `earth/glaciers-data-view-wiring` | xyz (remote) | `6316893` — gate passed, merging; release in progress | await confirmed run ID |
-| `feature/c2-0-source-onboarding-pipeline` | xyz (remote) | `ed7f3f4` slices 1–3 — gate passed, merging; release in progress | await confirmed run ID |
-| `chore/test-deterministic-cursor` | xyz (remote) | in progress (Fixes) — cursor-timer harness fix | merge after passing |
-| `feature/f1-0-*` (F1.0 favicon) | xyz (remote) | re-rebase pending owner approval | merge after owner approves |
+| `earth/forest-layer` | xyz (remote) | `d3a8885` — gate passed, merging with registration; 19th layer | merge after passing |
+| `chore/test-deterministic-cursor` | xyz (remote) | `9b987a5` — gate passed, merging (Fixes) | merge after passing |
+| `feature/c2-0-source-onboarding-pipeline` (slice 4) | xyz (remote) | `bc0e0a2` — gate passed, merging | merge after passing |
+| `feature/f1-0-*` (F1.0 favicon) | xyz (remote) | `da79ec6` — re-rebase pending owner approval | merge after owner approves |
+| `earth/glaciers-data-view-wiring` | xyz (remote) | `6316893` — merged to main, deployed ✓ | safe to delete |
+| `feature/c2-0-source-onboarding-pipeline` (slices 1–3 base) | xyz (remote) | `ed7f3f4` — merged to main, deployed ✓ | safe to delete |
 | `earth/scientist-session-continuity` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
 | `earth/scientist-scenario-explain` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
 | `earth/data-ocean-live` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
@@ -167,9 +178,9 @@ are in-scope for the next Earth phase, and which agent owns the work.
 
 **5. VCM / Carbon-offset governance spec** — pending Fable governance spec. No implementation without approved spec. Do not promote VCM or carbon-offset sources to the catalog without explicit governance phase.
 
-**6. Entities governance spec** — pending Fable governance spec. No implementation without approved spec.
+**6. Entities governance spec** — pending Fable governance spec. No implementation without approved spec. Note: the Entities prerequisite (Connect source intake pipeline) is now deployed (`9298e84`) — Entities implementation is unblocked on the infra side pending only the governance spec.
 
-_Items 1 (scenario-explain), 2 (Connect), 3 (Systems ocean) resolved/deployed. Item 4 approved + active. Items 5–6 require Fable governance specs before any agent proceeds._
+_Items 1 (scenario-explain), 2 (Connect), 3 (Systems ocean) resolved/deployed. Item 4 approved + active. Items 5–6 require Fable governance specs before any agent proceeds. Item 6 prerequisite (Connect intake) now deployed — third owner presentation appropriate._
 
 ---
 
