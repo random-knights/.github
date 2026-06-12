@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-11 (session 12 — Fable-verified reconciliation)
+**Last updated:** 2026-06-11 (session 13)
 
 ---
 
@@ -12,10 +12,10 @@ Update this file at the start and end of every session.
 
 | Agent | Identity | Worktree | Active branch | Focus |
 | --- | --- | --- | --- | --- |
-| Earth | `deve10per` / dev-kitt | main clone (exclusive) | `main` @ `14d422f` — deployed; next phase TBD | Earth features, layers, governance; sole catalog owner |
-| Systems | `deve10per` / dev-kitt | `worktrees\rand0m-systems` | Earth-Systems vertical **COMPLETE**; rollover to Environmental pending owner approval (audit-first) | Earth-Systems → Environmental data vertical |
-| Connect | `deve10per` / dev-kitt | `worktrees\rand0m-connect` | `feature/c2-0-source-onboarding-pipeline` @ `185857a` — slices 3–4 re-issued with BLOCKED-line requirement | Connect domain: source registry, onboarding pipeline |
-| Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | `feature/f1-0-*` @ `3fe700f` (rebased, ready-to-merge, pending owner) | Bug fixes, test repair, CI, branch hygiene |
+| Earth | `deve10per` / dev-kitt | main clone (exclusive) | `earth/glaciers-data-view-wiring` (owner-approved) | Earth features, layers, governance; sole catalog owner |
+| Systems | `deve10per` / dev-kitt | `worktrees\rand0m-systems` | Environmental audit — re-issued (owner command = approval); findings → DOCS: callout next cycle | Earth-Systems complete → Environmental data vertical |
+| Connect | `deve10per` / dev-kitt | `worktrees\rand0m-connect` | `feature/c2-0-source-onboarding-pipeline` @ `185857a` — slice 3 re-issued with bootstrap fix (§14) | Connect domain: source registry, onboarding pipeline |
+| Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | `feature/f1-0-*` @ `3fe700f` (pending owner approval) | Bug fixes, test repair, CI, branch hygiene |
 | Docs | `eng1neer` / qa-kitt | qa-kitt clone | `main` | READLESS, CODEX, EARTH-ROADMAP |
 | Fable | — | read-only | — | Audit, spec, PM rulings (no writes) |
 
@@ -36,12 +36,13 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 | scientist-session-continuity (`6d2c6cb`) | merged to main | green | **✓ live** |
 | scientist-scenario-explain (`1792660`) | merged to main | green | **✓ live** |
 | Earth-Systems ocean live + registration | merged to main | green | **✓ live** |
+| Glaciers integration + registration (`36d2901`, `57869fc`) | merged to main | green | **pending** — checkpoint deferred |
 
-`origin/main` (xyz) is at `14d422f` (Fable-verified). Production Release `27388323458` succeeded — session-continuity, scenario-explain, ocean live + registration all live on `rand0m.ai`.
+`origin/main` (xyz) is at `57869fc` (glaciers registration; Fable-verified). Last release: `27388323458` @ `14d422f`. Next checkpoint deferred by Fable (~2 phases since last release; cadence observed).
 
 ⚠ **State rule:** rows may only show "merged" or "deployed" when a git-verified SHA from a Fable gate confirmation or `git log origin/main` check is recorded here. Do not assert merged/deployed from session memory.
 
-Next checkpoint: Connect slices 3–4 + favicon → owner triggers `90-production-release.yml` from `main` after both land.
+Next checkpoint: after Earth `earth/glaciers-data-view-wiring` + Connect slice 3 land → owner triggers `90-production-release.yml` from `main`.
 
 ---
 
@@ -49,11 +50,11 @@ Next checkpoint: Connect slices 3–4 + favicon → owner triggers `90-productio
 
 _Active — in flight or ready for immediate action._
 
-- **Earth agent:** `main` @ `14d422f` — all prior branches deployed. ✓ Next phase TBD pending owner direction.
-- **Systems agent:** Earth-Systems vertical COMPLETE (`earth/data-ocean-live` + registration deployed). Rollover to Environmental vertical pending owner approval (audit-first before any implementation).
-- **Connect agent:** `feature/c2-0-source-onboarding-pipeline` @ `185857a` — slices 3–4 re-issued. BLOCKED-line requirement now in force (§10). No progress confirmed yet this session.
-- **Fixes agent:** favicon @ `3fe700f` (rebased) — ready-to-merge, pending owner approval.
-- **Docs agent:** session-12 reconciliation applied. Three-dot diff rule added to coordination standards. ✓
+- **Earth agent:** `earth/glaciers-data-view-wiring` — in progress (owner-approved). Glaciers integration + registration (`36d2901`, `57869fc`) already on main; this phase wires the data-view UI.
+- **Systems agent:** Environmental audit re-issued — owner command constitutes approval (§15); no roadmap re-gate needed. Findings due to Docs agent via `DOCS:` callout this cycle for same-cycle READLESS persistence.
+- **Connect agent:** slice 3 re-issued with worktree bootstrap fix (§14) applied. Root cause of two-cycle stall recorded. BLOCKED-line (§10) required on HANDOFF.
+- **Fixes agent:** favicon @ `3fe700f` — pending owner approval. No change this cycle.
+- **Docs agent:** session-13 state corrected; three new binding standards added; Environmental approval re-gating resolved. ✓
 
 ---
 
@@ -61,13 +62,14 @@ _Active — in flight or ready for immediate action._
 
 _Queued — approved scope, not yet started._
 
-1. **Owner approval:** Systems agent Environmental vertical — audit-first; approve scope before any implementation.
-2. **Connect agent:** land slices 3–4 on `feature/c2-0-source-onboarding-pipeline` (from `185857a`); HANDOFF must carry BLOCKED line if anything doesn't land; merge to `main`.
-3. **Fixes agent:** owner approves favicon `3fe700f`; merge to `main`.
-4. Owner triggers Production Release (`90-production-release.yml`) from `main` after items 2–3 land.
-5. Checkpoint: full validation + smoke on `rand0m.ai`.
-6. Delete stale branches after deploy: `earth/earthview-ui-cleanup`, `earth/live-connections-batch`, `chore/earth-workflow-test-staleness`, `earth/scientist-live-ai-responses`, `earth/scientist-session-continuity`, `earth/scientist-scenario-explain`, `earth/data-ocean-live`. Delete abandoned: `earth/p17-7-scientist-context-bridge`, `earth/p18-0/1/2-*`.
-7. **Pending owner approval** (see Pending Owner Approval): VCM/Entities governance specs; Systems Environmental vertical; next Earth phase.
+1. **Earth agent:** complete `earth/glaciers-data-view-wiring`; Earth Fast Cycle; merge to main.
+2. **Connect agent:** land slice 3 on `feature/c2-0-source-onboarding-pipeline` from `185857a` using §14 bootstrap sequence; HANDOFF must carry BLOCKED line (§10) if anything doesn't land.
+3. **Systems agent:** deliver Environmental audit findings via `DOCS:` callout this cycle; Docs agent persists as READLESS architecture note same cycle.
+4. Owner triggers Production Release (`90-production-release.yml`) after items 1–2 land (checkpoint cadence: ~2 phases).
+5. **Fixes agent:** owner approves favicon `3fe700f`; merge to main at or before item-4 release.
+6. Checkpoint: full validation + smoke on `rand0m.ai`.
+7. Delete stale branches after deploy: `earth/earthview-ui-cleanup`, `earth/live-connections-batch`, `chore/earth-workflow-test-staleness`, `earth/scientist-live-ai-responses`, `earth/scientist-session-continuity`, `earth/scientist-scenario-explain`, `earth/data-ocean-live`. Delete abandoned: `earth/p17-7-scientist-context-bridge`, `earth/p18-0/1/2-*`.
+8. **Pending owner approval** (see Pending Owner Approval): VCM/Entities governance specs; Connect slices 4+.
 
 ---
 
@@ -88,7 +90,8 @@ _Completed and on `main`._
 - **`earth/scientist-scenario-explain`** (`1792660`) — Earth agent. Phases 1–3: scenario-engine ↔ @scient1st explain flow, serialized registration slice. **Deployed ✓** (Production Release `27388323458`).
 - **Earth-Systems: `earth/data-ocean-live`** (`076eefb`) — Systems agent. Ocean live feed data vertical; registration applied by Earth agent in catalog. Earth-Systems vertical **COMPLETE**. **Deployed ✓** (Production Release `27388323458`).
 - **Production Release `27388323458`** (`14d422f`) — owner. All above + prior checkpoints live on `rand0m.ai`. `origin/main` = `14d422f` (Fable-verified). ✓
-- **Glaciers verdict** (`6e0b130`) — Earth + Systems agents. WGMS FoG asset-backed refresh pipeline implemented; no governed live source (verdict: assets only). Integration + registration with Earth agent completed this cycle. Deployed ✓.
+- **Glaciers verdict** (`6e0b130`) — Earth + Systems agents. WGMS FoG asset-backed refresh pipeline implemented; no governed live source (verdict: assets only). ✓
+- **Glaciers integration + registration** (`36d2901`, `57869fc`) — Earth agent. Glaciers data integrated and registered on main. Data-view UI wiring in progress on `earth/glaciers-data-view-wiring`. Deployed: pending next checkpoint.
 
 ---
 
@@ -102,7 +105,9 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **`earth/p17-7-scientist-context-bridge`, `earth/p18-0-earth-agent-activation`, `earth/p18-1-scientist-command-surface`, `earth/p18-2-scientist-preview-response`** — abandoned. Audited: ~74k-line divergent rewrites vs main; not a safe merge basis. @scient1st shipped fresh on `earth/scientist-live-ai-responses` from current `main` instead. Candidates for deletion.
 - **`earth_tab.dart` extraction:** merge gate (<2,000 lines) and stretch goal (<1,500 lines) both met and deployed at `6d2c6cb` — file is at 1,375 lines. Gate closed.
 - **Earth-Systems vertical:** COMPLETE and deployed (`14d422f`). Systems agent rolls over to Environmental vertical pending owner approval (audit-first).
-- **Glaciers:** no governed live source. WGMS FoG pipeline is asset-backed refresh only (`6e0b130`). Do not promote glaciers to a live catalog entry without an explicit governance phase.
+- **Glaciers:** no governed live source. WGMS FoG pipeline is asset-backed refresh only (`6e0b130`). Integration + registration on main (`57869fc`); data-view wiring in progress. Do not promote glaciers to a live catalog entry without an explicit governance phase.
+- **Checkpoint cadence:** Production Releases run approximately every 2 phases. Fable may defer a checkpoint if the phase delta is too small to warrant a release. Do not assume a release follows every merge.
+- **Connect worktree bootstrap gap:** two-cycle stall on slice 3 traced to fresh-worktree environment not matching the main-clone environment (Flutter PATH, `env.g.dart`, generated registrants). Mandatory bootstrap sequence now in coordination standards §14. All worktree agents must run it before any `analyze`, `test`, or `build` call.
 - **Branch disjointness checks:** always use three-dot diff (`git diff main...branch`), never two-dot (`git diff main..branch`). Two-dot includes main drift in the diff and produces false-alarm conflicts. This occurred in session 12 and is now codified in coordination standards §13.
 - **`EarthScientistConfig.liveProviderEnabled` is compile-time.** Disabling the live-AI path requires a code change, rebuild, and Production Release — not a runtime toggle. Live answers cost real tokens via the Default AI Provider through `generateAIResponse` Firebase callable.
 - **`sessionTokenBudget=50000` / `maxPromptTokens=12000` are compile-time in-memory soft guards.** They reset on app relaunch and do not hard-cap Firebase Function invocations. Owner-accepted at this checkpoint. Future infra queue: remote-config budget + runtime kill switch (separate approved phase required — do not implement without explicit instruction).
@@ -115,10 +120,11 @@ _Scope changes, strategy shifts, or deferred decisions._
 
 | Branch | Repo | Status | Action |
 | --- | --- | --- | --- |
-| `earth/scientist-session-continuity` | xyz (remote) | merged to main — deployed ✓ | delete after cleanup pass |
-| `earth/scientist-scenario-explain` | xyz (remote) | merged to main — deployed ✓ | delete after cleanup pass |
-| `earth/data-ocean-live` | xyz (remote) | merged to main — deployed ✓ | delete after cleanup pass |
-| `feature/c2-0-source-onboarding-pipeline` | xyz (remote) | slices 3–4 in progress @ `185857a` — BLOCKED-line required | complete + merge to main |
+| `earth/glaciers-data-view-wiring` | xyz (remote) | in progress (owner-approved) | Earth Fast Cycle + merge |
+| `earth/scientist-session-continuity` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
+| `earth/scientist-scenario-explain` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
+| `earth/data-ocean-live` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
+| `feature/c2-0-source-onboarding-pipeline` | xyz (remote) | slice 3 in progress @ `185857a` — bootstrap fix applied (§14); BLOCKED required | complete slice 3 + merge |
 | `feature/f1-0-*` (F1.0 favicon) | xyz (remote) | rebased @ `3fe700f` — pending owner approval | merge after owner approves |
 | `earth/earthview-ui-cleanup` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
 | `earth/live-connections-batch` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
@@ -148,13 +154,13 @@ are in-scope for the next Earth phase, and which agent owns the work.
 
 **3. Earth-Systems vertical** ✓ **— COMPLETE and deployed.** Ocean live feed + registration live at `14d422f`. Systems agent ready for rollover.
 
-**4. Systems-agent rollover to Environmental vertical** — pending owner approval. Audit-first (no implementation until scope approved). Systems agent is available; worktree intact.
+**4. Systems-agent rollover to Environmental vertical** ✓ **— approved by owner command (session 13).** Audit underway; findings due this cycle via `DOCS:` callout. No implementation until audit findings are ratified. Per §15: owner issuing the command is the approval; no roadmap re-gate required.
 
 **5. VCM / Carbon-offset governance spec** — pending Fable governance spec. No implementation without approved spec. Do not promote VCM or carbon-offset sources to the catalog without explicit governance phase.
 
 **6. Entities governance spec** — pending Fable governance spec. No implementation without approved spec.
 
-_Item 1 (scenario-engine ↔ @scient1st) deployed at `14d422f`. Items 4–6 require owner decisions before any agent proceeds._
+_Items 1 (scenario-explain), 2 (Connect), 3 (Systems ocean) resolved/deployed. Item 4 approved + active. Items 5–6 require Fable governance specs before any agent proceeds._
 
 ---
 

@@ -248,6 +248,89 @@ Rules:
 
 ---
 
+## 14. Worktree Bootstrap Sequence (Mandatory — All dev-kitt Worktree Agents)
+
+Every agent that works in a dedicated dev-kitt worktree (`worktrees\rand0m-systems`,
+`worktrees\rand0m-connect`, or any future worktree) must run the following
+bootstrap sequence before any `flutter analyze`, `flutter test`, or
+`flutter build` call. Skipping it causes silent failures and environment drift
+from the main clone.
+
+**Root cause:** Connect agent stalled for two cycles because a fresh worktree did
+not have the vendored Flutter on PATH, `env.g.dart` was not generated, and
+generated registrants were accidentally committed. Mandatory bootstrap prevents
+recurrence.
+
+```powershell
+# 1. Add vendored Flutter to PATH for this session
+$env:PATH = "C:\Projects\dev-kitt\flutter\bin;$env:PATH"
+
+# 2. Verify Flutter resolves correctly
+flutter --version
+
+# 3. Get pub dependencies
+flutter pub get
+
+# 4. Generate env.g.dart and other build_runner outputs
+dart run build_runner build --delete-conflicting-outputs
+
+# 5. Confirm analyze is clean before writing any code
+flutter analyze
+```
+
+**Pre-commit rule:** generated files (`env.g.dart`, generated registrants,
+`*.g.dart`, `*.freezed.dart`) must be **reverted before committing** unless the
+phase explicitly produces a new generated file as its output. Check with
+`git diff --name-only` before staging.
+
+**Applies to:** all worktree agents. Earth agent (main clone) is exempt — the
+main clone already has Flutter on PATH via the workspace profile.
+
+---
+
+## 15. Audit-Only DOCS Callout Requirement (Binding)
+
+Audit-only work (no code changes) must deliver full findings via a `DOCS:`
+callout in the same cycle so Docs agent can persist them as a READLESS
+architecture note immediately.
+
+Rules:
+
+- Findings must be delivered in the `DOCS:` callout body, not in prose relayed
+  through the owner or summarized in a handoff. Fable ratifies from the qa-kitt
+  READLESS note, never from relayed prose.
+- The `DOCS:` callout must be emitted before the HANDOFF block.
+- Docs agent persists the findings as a READLESS architecture note in the same
+  session the callout arrives.
+- If findings are too large for a single callout line, emit multiple `DOCS:`
+  lines or reference a branch+file where the findings were committed.
+
+---
+
+## 16. Owner Command = Approval (Binding)
+
+When an owner issues a command that includes a scope (e.g., "run the
+Environmental audit"), that command is the approval for that scope. Agents
+must not re-gate the work by checking roadmap approval rows or pending-approval
+queue entries.
+
+Rules:
+
+- **Do not re-gate.** If an owner command names a task, proceed. The command
+  supersedes any "pending owner approval" state in the roadmap.
+- **Docs agent:** update the roadmap approval row to "approved by owner command
+  (session N)" and move the item out of the pending queue.
+- **Why this exists:** the Environmental audit was idled for a full cycle because
+  the Systems agent re-checked the roadmap approval row and found "pending owner
+  approval — audit-first." The owner had already approved it by issuing the
+  audit command. This cost one cycle.
+- **Exception:** items in the pending queue that are explicitly marked "requires
+  Fable governance spec" or "requires owner decision on X" are not superseded
+  by a general command. Those items name a specific decision the owner must make;
+  a general "proceed" command is not sufficient.
+
+---
+
 ## 13. Branch Disjointness Check — Three-Dot Diff (Binding)
 
 All branch boundary and disjointness checks must use **three-dot diff**:
