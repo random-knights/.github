@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-12 (session 18)
+**Last updated:** 2026-06-12 (session 19)
 
 ---
 
@@ -12,16 +12,35 @@ Update this file at the start and end of every session.
 
 | Agent | Identity | Worktree | Active branch | Focus |
 | --- | --- | --- | --- | --- |
-| Earth | `deve10per` / dev-kitt | main clone (exclusive) | Countries-mapping spec audit (registry-level only; `earth_region_registry` expansion) | Earth features, layers, governance; sole catalog owner |
-| Systems | `deve10per` / dev-kitt | `worktrees\rand0m-systems` | VCM slice 2 — amending to session-18 scope (creditsIssued/Retired filter + lat/long storage) | VCM data vertical |
-| Connect | `deve10per` / dev-kitt | `worktrees\rand0m-connect` | E1 slice 3 — resolver contract (Connect owns resolver; Earth owns consumption); `chore/connect-sheet-test-stall` under Fixes | Entities domain + Connect |
-| Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | `chore/connect-sheet-test-stall` diagnosing; `validate-earth-fast` `-TestPaths` param (§18) | Bug fixes, CI, harness hygiene |
+| Earth | `deve10per` / dev-kitt | main clone (exclusive) | Countries S1 in flight (registry expansion; ISO tier); merge gate for Design D-slices | Earth features, layers, governance; sole catalog owner + D-slice merge gate |
+| Systems | `deve10per` / dev-kitt | `worktrees\rand0m-systems` | VCM slice 2 gate-passed — R5 in flight | VCM data vertical |
+| Connect | `deve10per` / dev-kitt | `worktrees\rand0m-connect` | E1 slice 3 gate-passed — R5 in flight; E1 slice 4 (minimal) queued | Entities domain + Connect |
+| Design | `deve10per` / dev-kitt | `worktrees\rand0m-design` | D1 in flight (Earth+ shell restructure; pill reposition **BLOCKED** on owner corner ruling) | IA consolidation D1–D6; presentation/layout only; no data/catalog files |
+| Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | `chore/connect-sheet-test-stall` diagnosing; `validate-earth-fast` `-TestPaths` (§18) | Bug fixes, CI, harness hygiene |
 | Docs | `eng1neer` / qa-kitt | qa-kitt clone | `main` | READLESS, CODEX, EARTH-ROADMAP |
-| Fable | — | read-only | — | Audit, spec, PM rulings (no writes) |
+| Fable | — | read-only | — | Audit, spec, PM rulings; declares checkpoint bundles one cycle ahead (§19) |
 
 Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One owner per surface at a time. Writer cap: 5 simultaneous `apps/rand0m` writers — see coordination standards.
 
 **Coordination standards:** [`automation/agent-coordination-standards.md`](automation/agent-coordination-standards.md) — callout format, verify-from-git, worktree isolation, catalog non-touch, path-ownership matrix, HANDOFF protocol.
+
+---
+
+## 14-Day Earth-Ready Plan (target ~2026-06-26)
+
+_Velocity target: ~4 releases / 2 days. Risks: Cesium V2.16 sizing, timer leak (flaky harness)._
+
+| Cycle | Work | Gate |
+| --- | --- | --- |
+| **R5** (running) | VCM slice 2 + E1 S3 + harness chore | CI green; owner HTTP smoke |
+| **Countries S1–S3 + E1 S4-minimal + Design D1–D2** | Registry expansion (ISO tier; fail-explicit); Entities minimal registration; shell restructure + renderer panel merge | Countries spec ratified ✓; D1 unblocked after pill ruling |
+| **R6** | Registry frozen; design spec ratified in production | Owner HTTP smoke; Fable checkpoint bundle declared |
+| **Resolver wiring + Intelligence summary + Design D3–D5** | E1 resolver → Earth consumption; @scient1st regional context scaffold; card taxonomy + density + cleanup pass | D2 merged; E1 slice 3 deployed |
+| **R7** | Consolidated UI live | Owner visual checklist re-enabled (visual suspension lifted after D5 merges) |
+| **Cesium V2.16 runtime** | Runtime implementation (separate approved phase) | New Fable spec required |
+| **Final checkpoint** | Full validation; production release | — |
+
+**Visual smoke suspension:** owner visual checklists suspended until Design D5 merges (R7). Checkpoints verify via HTTP smoke + CI release smoke only. Reason: Data View surfaces are being redesigned — visual spot-checks against pre-consolidation layout would be misleading and are not meaningful gates until the consolidated view is live.
 
 ---
 
@@ -49,17 +68,18 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 | Biodiversity layer (`e9f9e47` — GBIF, fail-closed suppression guard, zero coordinate fields) | merged to main | green | **✓ live** ⚠ owner visual pending |
 | F1.0 favicon | merged to main | green | **✓ live** ⚠ owner visual pending |
 | Entities E1 slices 1–2 | merged to main | green | **✓ live** ⚠ owner visual pending |
-| VCM slice 2 (scope amendment — creditsIssued/Retired filter + lat/long) | in progress | — | **pending** |
-| Entities E1 slice 3 (resolver contract) | in progress | — | **pending** |
-| Countries-mapping spec audit | in progress (Earth) | — | **pending** |
+| VCM slice 2 (scope amendment — creditsIssued/Retired filter + lat/long) | gate-passed — R5 in flight | — | **pending** — R5 |
+| Entities E1 slice 3 (resolver contract) | gate-passed — R5 in flight | — | **pending** — R5 |
+| Countries S1 (ISO tier, `earth_region_registry` expansion) | in progress (Earth) | — | **pending** |
+| Design D1 (Earth+ shell; pill BLOCKED) | in progress (Design) | — | **pending** — blocked on pill corner ruling |
 
 `origin/main` (xyz) is at `4148495` (Production Release `27394511208`; Fable-verified).
 
-⚠ **State rule:** rows may only show "merged" or "deployed" when a git-verified SHA from a Fable gate confirmation or `git log origin/main` check is recorded here. Do not assert merged/deployed from session memory. Deployed rows updated only when Earth confirms Production Release run ID.
+⚠ **State rule:** rows may only show "merged" or "deployed" when a git-verified SHA from a Fable gate confirmation or `git log origin/main` check is recorded here. Do not assert merged/deployed from session memory.
 
-⚠ **Owner visual checklist PENDING** (Production Release `27394511208`): biodiversity Data View card, favicon display, Entities E1 UI — not marked visually verified until owner confirms (§17).
+⚠ **Owner visual checklist SUSPENDED** — visual spot-checks deferred until Design D5 merges (R7). HTTP smoke + CI release smoke only until then. See 14-Day Plan.
 
-Next checkpoint: VCM slice 2 + Entities E1 slice 3 + Countries-mapping spec → full validation + Production Release.
+Next checkpoint R5: VCM slice 2 + E1 S3 + harness → Production Release.
 
 ---
 
@@ -67,11 +87,12 @@ Next checkpoint: VCM slice 2 + Entities E1 slice 3 + Countries-mapping spec → 
 
 _Active — in flight or ready for immediate action._
 
-- **Earth agent:** Countries-mapping spec audit underway — registry-level only; `earth_region_registry` country-granularity expansion; DATA/REGISTRY only, no globe boundary rendering (Cesium V2.16 freeze unchanged).
-- **Systems agent:** VCM slice 2 in progress — amending to session-18 scope (scope filter: creditsIssued>0 OR creditsRetired>0 AND lat/long present; lat/long stored for map readiness, not rendered). Spec: [`architecture/vcm-governance-spec.md`](architecture/vcm-governance-spec.md).
-- **Connect agent:** E1 slice 3 — resolver contract in progress (Connect owns resolver; Earth owns consumption; see [`architecture/entities-spec.md`](architecture/entities-spec.md)). `chore/connect-sheet-test-stall` under Fixes diagnosis; two tests remain skip-marked per CODEX.
-- **Fixes agent:** `chore/connect-sheet-test-stall` diagnosing. `validate-earth-fast` `-TestPaths` parameter in progress (§18 scoped validation). Known flaky-harness issue (non-deterministic mid-suite crash, cursor-timer family) tracked as separate chore.
-- **Docs agent:** session-18 update ✓ — PR 27394511208 deployed rows confirmed; VCM spec amended; Entities spec updated (slices 1–2 deployed, slice 3 resolver contract, Earth/Connect boundary); §18 scoped validation standard added; EARTH-ROADMAP updated.
+- **Earth agent:** Countries S1 in flight (ISO tier, `earth_region_registry` expansion, fail-explicit lookups; spec RATIFIED). Merge gate for Design D-slices. No globe boundary rendering (Cesium V2.16 freeze).
+- **Systems agent:** VCM slice 2 gate-passed (R5 in flight) — scope amendment applied; creditsIssued/Retired filter + lat/long storage. Spec: [`architecture/vcm-governance-spec.md`](architecture/vcm-governance-spec.md).
+- **Connect agent:** E1 slice 3 gate-passed (R5 in flight) — resolver contract. E1 slice 4 (minimal registration) queued. `chore/connect-sheet-test-stall` under Fixes; two tests skip-marked.
+- **Design agent:** D1 in flight — Earth+ shell restructure, tab rail. **Pill reposition BLOCKED** on owner corner ruling (spec: bottom-right; code+mockups: bottom-left). Spec: [`architecture/earth-ia-consolidation-spec.md`](architecture/earth-ia-consolidation-spec.md).
+- **Fixes agent:** `chore/connect-sheet-test-stall` diagnosing. `validate-earth-fast` `-TestPaths` (§18) in progress.
+- **Docs agent:** session-19 update ✓ — 14-day plan added; IA consolidation spec persisted; Countries spec ratified; Design agent rostered; visual suspension recorded; §19 standards added.
 
 ---
 
@@ -79,14 +100,16 @@ _Active — in flight or ready for immediate action._
 
 _Queued — approved scope, not yet started._
 
-1. **Owner visual checklist:** confirm biodiversity Data View card, favicon, Entities E1 UI on `rand0m.ai` (Production Release `27394511208`). Mark checkpoint visually verified.
-2. **Earth agent:** complete Countries-mapping spec audit → emit `DOCS:` callout with findings for Docs to persist. DATA/REGISTRY only; feeds Entities region groups + @scient1st regional answers.
-3. **Systems agent:** complete VCM slice 2 (scope amendment + lat/long storage); emit `EARTH:` registration delta.
-4. **Connect agent:** complete E1 slice 3 (resolver contract); advance E1 slice 4+ (catalog registration via `EARTH:` delta).
-5. **Fixes agent:** resolve `chore/connect-sheet-test-stall`; land `validate-earth-fast` `-TestPaths` param (§18); address flaky-harness chore.
-6. Checkpoint: VCM slice 2 + Entities E1 slice 3 + Countries-mapping spec → full validation + Production Release.
-7. Delete stale branches: `data-forest-refresh`, `data-forest-registration`, `test-deterministic-cursor`, `data-protected-areas-refresh`, `data-protected-areas-registration`, `earth/biodiversity-layer`, `feature/f1-0-*` (post-deploy). `c2-0` kept open until Entities stacking confirmed. Delete abandoned: `earth/p17-7-scientist-context-bridge`, `earth/p18-0/1/2-*`.
-8. **Future-infra queue (approved concept; requires dedicated implementation phase):** GFW near-real-time forest alerts via Firebase callable proxy (FIRMS pattern, new callable required); remote-config budget + runtime kill switch.
+1. **R5 checkpoint:** VCM slice 2 + E1 S3 + harness → Production Release; HTTP smoke + CI gate (visual suspension in effect).
+2. **Owner decision required:** pill corner ruling for D1 (bottom-right per spec vs bottom-left per code/mockups) — Design D1 pill reposition is blocked until owner decides.
+3. **Earth agent:** Countries S1–S3 (ISO tier; fail-explicit lookups; S2 closes E1 gap; VCM coord→country mapping; 5-slice plan).
+4. **Design agent:** D1 (unblocked after pill ruling) → D2 → D3 → D4 → D5 → D6 (gated on owner review of consolidated view). All in `worktrees\rand0m-design`; Earth merge gates each slice.
+5. **Connect agent:** E1 slice 4 (minimal catalog registration via `EARTH:` delta); advance resolver wiring post-R5.
+6. **Fixes agent:** resolve `chore/connect-sheet-test-stall`; land `validate-earth-fast` `-TestPaths`; flaky-harness chore.
+7. R6 checkpoint: registry frozen + design spec ratified in production. R7: consolidated UI.
+8. Cesium V2.16 runtime (requires new Fable spec + owner directive; separate phase).
+9. Delete stale branches after R5: `data-forest-refresh`, `data-forest-registration`, `test-deterministic-cursor`, `data-protected-areas-refresh`, `data-protected-areas-registration`, `earth/biodiversity-layer`, `feature/f1-0-*`. `c2-0` kept open until Entities stacking confirmed. Delete abandoned: `earth/p17-7-scientist-context-bridge`, `earth/p18-0/1/2-*`.
+10. **Future-infra queue:** GFW near-real-time forest alerts (FIRMS pattern, new callable); remote-config budget + kill switch.
 
 ---
 
@@ -150,7 +173,10 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **VCM spec amendment (session 18, Fable ruling):** scope filter added — include only projects with `creditsIssued>0 OR creditsRetired>0 AND lat/long present`. `creditsIssued`/`creditsRetired` are neutral registry-accountability fields (permitted). Lat/long stored for map readiness, not rendered (Cesium freeze). Slice 1 @ `70fafbf` built to pre-amendment spec; slice 2 applying amendment. Full ruling in [`architecture/vcm-governance-spec.md`](architecture/vcm-governance-spec.md).
 - **Earth/Connect resolver boundary (session 18, binding):** Connect owns the entity resolver; Earth owns consumption. No cross-ownership. Interface contract changes require `DOCS:` callout before implementation. Codified in [`architecture/entities-spec.md`](architecture/entities-spec.md).
 - **Scoped local validation (§18, binding):** named test files for touched surface only; no full-suite local runs; CI is the authoritative broad gate. `validate-earth-fast` gains `-TestPaths` (Fixes chore in progress). Known flaky-harness: non-deterministic mid-suite crash (cursor-timer family) — emit `FIXES:` callout and continue; do not block.
-- **Owner visual checklist PENDING (session 18):** Production Release `27394511208` — biodiversity Data View card, favicon, Entities E1 UI not yet visually confirmed by owner. Rows marked ⚠ in Done and Deploy Checkpoint until owner confirms (§17).
+- **Owner visual checklists SUSPENDED (session 19, owner directive):** visual spot-checks against `rand0m.ai` deferred until Design D5 merges (R7). Checkpoints verified by HTTP smoke + CI release smoke only. Reason: Data View surfaces under active redesign (D1–D6); visual checks against pre-consolidation layout are not meaningful gates. Will be re-enabled after R7. Previous ⚠ rows for PR `27394511208` superseded by this suspension — reviewed in post-R7 visual pass.
+- **Countries spec RATIFIED (session 19, Fable):** ISO tier; no `EarthRegionIds.all` expansion (breaks existing lookups); fail-explicit lookups (missing country = explicit error, not silent fallback); S2 closes E1 gap (resolver queryable by country); VCM coord→country mapping (lat/long → ISO at ingest, not display); 5-slice plan (S1 registry, S2 resolver, S3 VCM mapping, S4 @scient1st regional, S5 cleanup).
+- **Design agent — IA consolidation (session 19, owner directive):** promoted from audit to implementation. Worktree `worktrees\rand0m-design`; owns D1–D6 presentation slices. Spec: [`architecture/earth-ia-consolidation-spec.md`](architecture/earth-ia-consolidation-spec.md). Earth agent is merge gate for every D-slice. D1 in flight; pill corner ruling PENDING owner.
+- **Fable checkpoint bundle cadence (§19):** Fable declares checkpoint bundles one cycle ahead — agents know what the next release gate includes before the cycle starts.
 - **Authenticated/visual smoke — owner-performed (§17, binding):** authenticated smoke and visual verification of `rand0m.ai` is performed by the **owner personally**. Agents perform HTTP-level smoke only. Checkpoint HANDOFFs close with an owner visual checklist (not agent-executed). Checkpoints are not marked visually verified until the owner confirms. No browser automation, no Claude-in-Chrome for smoke. Codified in coordination standards §17.
 - **Protected-areas — Fable ruling (session 16):** `wdpa-protected-area-summary` catalog availability = metadata-source axis only. `earth_protected_area_integrity` stays `insufficientEvidence` — integrity is a separate axis and is not unified with availability. Do not conflate. License constraint: WDPA data is non-commercial/no-redistribution; enforce at the catalog layer.
 - **`connect-card-overflow-fix` (session 16):** 0.118px RenderFlex on `connect_source_card.dart:88` broke `validate-earth-fast` green on every run. Fixed and merged at `3ab6786`. This was a known recurring CI noise issue — record as resolved.
@@ -171,10 +197,11 @@ _Scope changes, strategy shifts, or deferred decisions._
 
 | Branch | Repo | Status | Action |
 | --- | --- | --- | --- |
-| `earth/countries-mapping-spec` | xyz (remote) | in progress — Earth spec audit (DATA/REGISTRY only) | audit complete → `DOCS:` callout |
-| `earth/vcm-slice2` | xyz (remote) | in progress — Systems; scope amendment (creditsIssued/Retired filter + lat/long) | merge after passing |
-| `earth/entities-e1-slice3` | xyz (remote) | in progress — Connect; resolver contract | merge after passing |
-| `chore/connect-sheet-test-stall` | xyz (remote) | in progress (Fixes) — Connect sheet render-test hang | merge after fix confirmed |
+| `earth/countries-s1` | xyz (remote) | in progress — Earth; ISO tier registry expansion | merge after passing |
+| `design/ia-d1` | xyz (remote) | in progress — Design; shell restructure; **pill BLOCKED** on owner ruling | merge after pill ruling + Earth gate |
+| `earth/vcm-slice2` | xyz (remote) | gate-passed — R5 in flight | merge to main (R5) |
+| `earth/entities-e1-slice3` | xyz (remote) | gate-passed — R5 in flight | merge to main (R5) |
+| `chore/connect-sheet-test-stall` | xyz (remote) | in progress (Fixes) — sheet render-test hang | merge after fix confirmed |
 | `earth/biodiversity-layer` | xyz (remote) | `e9f9e47` — merged to main, **deployed ✓** (`4148495`) | safe to delete |
 | `feature/f1-0-*` (F1.0 favicon) | xyz (remote) | merged to main, **deployed ✓** (`4148495`) | safe to delete |
 | `earth/entities-e1-slice1` | xyz (remote) | `081c4f5` — merged to main, **deployed ✓** (`4148495`) | safe to delete |
@@ -225,7 +252,9 @@ are in-scope for the next Earth phase, and which agent owns the work.
 
 **6. Entities domain** ✓ **— OWNER-APPROVED (session 16).** Assigned to Connect agent. Started this cycle — prerequisite Connect intake pipeline (`c2-0`) at `3ab6786`. Per §16: owner command is the approval; no re-gate required. Fable governance spec to be delivered before catalog registration.
 
-_All items resolved or approved. Items 5–6 approved by owner command (session 16) — Fable governance specs required before catalog registration in each case._
+**7. Earth+ pill corner ruling (D1 blocker)** — Design spec recommends bottom-right; current code + mockups show bottom-left. D1 pill reposition is blocked until owner selects one. Earth agent will not merge D1 with the pill position unresolved.
+
+_Items 1–6 resolved or approved. Item 7 requires explicit owner decision before D1 proceeds._
 
 ---
 

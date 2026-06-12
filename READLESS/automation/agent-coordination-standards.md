@@ -77,7 +77,8 @@ sufficient for the vast majority of sessions.
 | Earth | main clone (`apps/rand0m`) | `lib/pages/earth/**`, `lib/widgets/earth/**`, `lib/services/earth/**`, `lib/models/earth/**`, `test/connect/earth_*`; **sole owner of `earth_source_*_catalog.dart` + `earth_source_registry.dart`** | all other app paths | qa-kitt, CI workflows (unless phase explicitly scopes it) |
 | Systems | `worktrees\rand0m-systems` | Earth-Systems data paths: ocean/ice providers, data-layer adapters; registration deltas handed to Earth via `EARTH:` callout | Earth paths (read for context) | `earth_source_*_catalog.dart`, `earth_source_registry.dart` (Earth-agent-only), Connect paths |
 | Connect | `worktrees\rand0m-connect` | `lib/pages/connect/**`, `lib/widgets/connect/**`, `lib/services/connect/**`, `lib/models/connect/**` | Earth paths (read for context) | `earth_source_*_catalog.dart`, `earth_source_registry.dart`, Systems data paths |
-| Fixes | main clone (CI paths only) | CI workflows (`*.yml`), branch hygiene, stale test repair | all app paths (read for diagnosis) | earth/systems/connect feature files during an active feature phase |
+| Fixes | main clone (CI paths only) | CI workflows (`*.yml`), branch hygiene, stale test repair | all app paths (read for diagnosis) | earth/systems/connect/design feature files during an active feature phase |
+| Design | `worktrees\rand0m-design` | Workstation-shell + tab presentation slices D1–D6: `lib/pages/earth/earth_workstation*.dart`, `lib/widgets/earth/earth_tab_rail*.dart`, and equivalent container/layout files | Earth paths (read for context) | `earth_source_*_catalog.dart`, `earth_source_registry.dart`, data models, Cesium bridge, CI workflows |
 | Docs | qa-kitt clone | `qa-kitt/.github/READLESS/**`, `dev-kitt/CODEX.md` (local root) | all repos (read for context) | app runtime files, CI workflows, Flutter code |
 | Fable | none — read-only | none | all repos (read for context) | any file write without explicit owner directive |
 
@@ -445,3 +446,40 @@ Rules:
 unrelated flaky tests, and give agents false confidence or false blocks.
 Scoped runs are faster, more attributable, and the CI gate provides the
 authoritative broad check.
+
+---
+
+## 19. Callout Completeness + Fable Checkpoint Bundle Cadence (Binding)
+
+Two standards codified in session 19:
+
+### 19a. Empty Callouts Read "None"
+
+When an agent has no callout for a recipient, the HANDOFF must still include
+the callout heading with the value `none`:
+
+```
+DOCS:    none
+FIXES:   none
+EARTH:   none
+```
+
+Do not omit the heading entirely. An absent heading is ambiguous — it may mean
+"nothing to report" or it may mean the agent forgot to check. Explicit `none`
+is unambiguous and required for HANDOFF completeness.
+
+### 19b. Fable Declares Checkpoint Bundles One Cycle Ahead
+
+Fable agent declares what the next Production Release checkpoint will include
+at the **start** of the cycle before it, not at merge time. This declaration:
+
+- Names the branches/slices expected in the bundle.
+- Notes any gate conditions (e.g., "R6 includes Countries S1–S3 + E1 S4 only
+  if E1 S4 passes gate before R6 opens").
+- Is recorded in the roadmap Now section by Docs agent.
+
+Agents use the pre-declared bundle to scope their slice work and avoid adding
+scope to an already-declared bundle without a new Fable ruling.
+
+If a slice misses the declared bundle, it rolls to the next cycle — it does
+not automatically delay the checkpoint.
