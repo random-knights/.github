@@ -383,3 +383,31 @@ before recording it in the roadmap. Never copy a SHA from a prior session's
 prose without re-running the git command.
 
 **Status: closed.**
+
+---
+
+## 17. Authenticated / Visual Smoke — Owner-Performed (Binding)
+
+Authenticated smoke and visual verification of `rand0m.ai` is performed by the
+**owner personally**. Agents do not perform browser automation, authenticated
+session testing, or visual spot-checks of the deployed app.
+
+Rules:
+
+- **Agents perform HTTP-level smoke only** (e.g., `Invoke-WebRequest` to public
+  endpoints, CI health-check assertions). No authenticated requests, no
+  browser-driven flows.
+- **Checkpoint HANDOFFs include an owner visual checklist**, not agent-executed
+  results. The HANDOFF `next:` field should list the specific screens or flows
+  the owner should check, not assert that they have been verified.
+- **Checkpoints are not marked visually verified** in the roadmap until the
+  owner explicitly confirms. Do not write "visually verified ✓" or equivalent
+  in any roadmap or READLESS doc without a direct owner confirmation.
+- **No browser automation tools** (Claude-in-Chrome, Playwright, Puppeteer,
+  Selenium, etc.) for smoke at checkpoint time. This is not a tooling gap to
+  close — it is a deliberate boundary.
+
+**Why this exists:** authenticated smoke was skipped for two consecutive
+checkpoints because agents waited for browser tooling that was not available.
+The owner visual check is faster, more reliable for auth flows, and does not
+block the checkpoint gate.
