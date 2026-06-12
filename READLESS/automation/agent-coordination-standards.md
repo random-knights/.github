@@ -1,6 +1,6 @@
 # Agent Coordination Standards
 
-Date: 2026-06-12 (amended sessions 18, 23)
+Date: 2026-06-12 (amended sessions 18, 23, 24)
 Author: Docs agent (from Fable PM ruling + owner directives)
 Scope: all agents operating in the Random Knights multi-agent ecosystem
 
@@ -94,7 +94,7 @@ before editing.
 | --- | --- | --- |
 | Earth Systems (ocean, ice, atmosphere) | **Active** | Systems agent owns data vertical |
 | Environmental (air quality, biodiversity) | **Next-up** | Earth agent; not yet started |
-| Human Activity (flights, shipping, cities) | **Frozen** | Overlay governance restriction; do not implement without explicit approval |
+| Human Activity (flights, shipping, cities) | **Tier 1+2 LIFTED (session 24)** | Tier 1: symbolic motion cues (static corridors/lanes/orbital bands; no live data). Tier 2: aggregate density verticals (identity-suppressed, ≥24h delay floor, fail-closed, Fable spec per vertical). Tier 3 live per-vehicle tracking remains BANNED. See [`architecture/human-activity-governance-amendment.md`](../architecture/human-activity-governance-amendment.md) |
 | Projects / VCM (carbon offsets, restoration) | **Spec-first** | Pending Fable governance specs; no implementation without approved spec |
 | Entities (species, protected areas) | **Spec-first** | Pending Fable governance specs; no implementation without approved spec |
 
@@ -530,3 +530,53 @@ unsafe and prohibited going forward.
 **Rule:** needing code that lives on main = `git merge origin/main`. No
 exceptions. If a merge produces conflicts, resolve them; do not copy files
 to avoid the conflict.
+
+---
+
+## 21. Token-Economy Standards (Binding — Session 24)
+
+These standards apply to every agent run. They exist to keep slice work
+predictable, reviewable, and cost-bounded.
+
+### 21a. Thread-Sized Slices
+
+Each agent run implements exactly one coherent slice. A slice ends when the
+atomic unit of work is committed and pushed — not when context is exhausted.
+Do not start a second slice in the same run unless the first is fully shipped
+(committed, pushed, HANDOFF emitted).
+
+### 21b. One Visual Sign-Off Per Release Window
+
+Visual sign-offs (owner confirmation of UI changes) are bounded to:
+- **At most one** consolidated sign-off per release window (R-cycle).
+- **At most 5 items** per sign-off list.
+- **Only when UI actually changed** in that release. If no UI files were
+  touched, no visual sign-off is requested.
+
+Do not accumulate visual debt across releases. If the 5-item cap would be
+exceeded, scope the release to fit.
+
+### 21c. Governance-Critical Tests Only
+
+New tests are written for:
+1. **Governance-critical paths** — suppression guards, banned-term enforcement,
+   unsourced-mapping guards, and equivalent hard invariants.
+2. **One FE layout guard per D-slice** — a single widget test that asserts the
+   key layout constraint of the slice (e.g., pill position, workspace count).
+
+Do not write tests for internal implementation details, happy-path widget
+rendering, or code that is already covered by existing tests. CI is the
+authoritative broad gate; slice tests are targeted governance probes.
+
+### 21d. Single Bounded Failure-Triage Pass
+
+When a test or CI check fails during slice work:
+- One triage pass: read the error, identify the root cause, apply the fix.
+- If the fix is not clear in one pass, emit a `FIXES:` callout and continue
+  with the slice. Do not enter a repair loop.
+- A repair loop (multiple fix → run → fail → fix cycles on the same failure)
+  is a signal the failure is out of slice scope. Stop, callout, continue.
+
+**Why:** repair loops consume context, delay the HANDOFF, and often produce
+fixes that mask rather than resolve root causes. The CI gate catches what
+scoped triage misses.

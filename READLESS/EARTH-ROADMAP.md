@@ -4,44 +4,53 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-12 (session 23)
+**Last updated:** 2026-06-12 (session 24 — strategic restructure)
 
 ---
 
 ## Agent Roster
 
+_Effective at R7: Systems and Connect retire (branches merged, scope transferred to Earth). Post-R7 roster is Fable + Earth + Design + Fixes + Docs + CODEX Grunt Pool._
+
 | Agent | Identity | Worktree | Active branch | Focus |
 | --- | --- | --- | --- | --- |
-| Earth | `deve10per` / dev-kitt | main clone (exclusive) | scientist `3d04b23` **PASS** (resolve-or-explain + multi-source summary); CI fix pending (`SourceLifecycleStatus` import — `earth_entity_region_context_test.dart`); call-site micro-slice assigned; D-slice merge gate active | Earth features, layers, governance; sole catalog owner + D-slice merge gate |
-| Systems | `deve10per` / dev-kitt | `worktrees\rand0m-systems` | timer-leak on remote (slip reset); three-outcome closure in progress | Timer-leak owner; three-outcome closure |
-| Connect | `deve10per` / dev-kitt | `worktrees\rand0m-connect` | S5 `4ec0d24` provisional pass — write-path validation; E1 integrity gap closed; R7 merge pending; file-copy dedupes at R7 | Entities domain + Connect |
-| Design | `deve10per` / dev-kitt | `worktrees\rand0m-design` | D3 `fdb5b7f` **PASS** (detail-surface substitution; taxonomy classes; caveat copy per-layer); D4 in flight | IA consolidation D1–D6; presentation/layout only; no data/catalog files |
-| Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | timer-leak on remote (slip reset, UNPROVEN — crash recurred; READY = 3 clean combined runs); uniformity on remote (slip reset); `validate-earth-fast` `-TestPaths` in progress | Bug fixes, CI, harness hygiene |
+| Earth | `deve10per` / dev-kitt | main clone (exclusive) | scientist `3d04b23` PASS (CI fix pending); call-site micro-slice; D-slice merge gate; **post-R7: absorbs Systems + Connect scopes** | Earth features, layers, governance; catalog owner; D-slice gate; integrator/deploy |
+| Systems | `deve10per` / dev-kitt | `worktrees\rand0m-systems` | timer-leak on remote (UNPROVEN; 3 clean runs pending) — **RETIRING after R7 merge** | Timer-leak closure; wind-down |
+| Connect | `deve10per` / dev-kitt | `worktrees\rand0m-connect` | S5 `4ec0d24` provisional pass; R7 merge pending — **RETIRING after R7 merge** | S5 merge; wind-down (Earth/Connect code boundary unchanged post-retire) |
+| Design | `deve10per` / dev-kitt | `worktrees\rand0m-design` | D3 `fdb5b7f` PASS; D4 in flight | IA consolidation D4–D6; Cesium FE globe (C8+); presentation/layout only |
+| Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | timer-leak UNPROVEN (3 clean runs); uniformity on remote; `-TestPaths` in progress | CI, harness, QA; token-economy triage (§21d) |
 | Docs | `eng1neer` / qa-kitt | qa-kitt clone | `main` | READLESS, CODEX, EARTH-ROADMAP |
-| Fable | — | read-only | — | Audit, spec, PM rulings; declares checkpoint bundles one cycle ahead (§19) |
+| Fable | — | read-only | — | PM/gates; spec ratification; checkpoint bundles (§19) |
+| **CODEX Grunt Pool** | OpenAI (per CODEX.md) | isolated task scope | task-by-task | Low-risk mechanical tasks only: named files + acceptance command + do-not-touch list per task. **Never:** guards, gates, catalog files, governance logic, suppression functions, any file in the do-not-touch list. |
 
-Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One owner per surface at a time. Writer cap: 5 simultaneous `apps/rand0m` writers — see coordination standards.
+**Systems wind-down (post-R7):** timer-leak branch merges; `worktrees\rand0m-systems` torn down; data-vertical scope (ocean/ice/atmosphere/VCM/biodiversity) transfers to Earth agent.
 
-**Coordination standards:** [`automation/agent-coordination-standards.md`](automation/agent-coordination-standards.md) — callout format, verify-from-git, worktree isolation, catalog non-touch, path-ownership matrix, HANDOFF protocol.
+**Connect wind-down (post-R7):** S5 branch merges; `worktrees\rand0m-connect` torn down; Entities domain + Connect source pipeline scope transfers to Earth agent. **Architectural Earth/Connect code boundary is unchanged** — the `lib/pages/connect/`, `lib/models/connect/` etc. module boundaries remain; Earth agent now maintains both sides.
+
+Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One owner per surface at a time.
+
+**Coordination standards:** [`automation/agent-coordination-standards.md`](automation/agent-coordination-standards.md) — callout format, verify-from-git, worktree isolation, catalog non-touch, path-ownership matrix, HANDOFF protocol, token-economy (§21).
 
 ---
 
-## 14-Day Earth-Ready Plan (target ~2026-06-26)
+## Earth Roadmap Plan (C7–C12)
 
-_Velocity target: ~4 releases / 2 days. Risks: Cesium V2.16 sizing, timer leak (flaky harness). Position: **C6** — on track for R7 at C7. CI fix (scientist branch) costs a push, not a cycle. Watch item: timer-leak UNPROVEN (crash recurred; must prove 3 clean combined runs before R7 merge)._
+_**End goal: animated planetary flow globe (nullschool-class) + governed AI assistant.**_
 
-| Cycle | Work | Gate |
-| --- | --- | --- |
-| **R5** ✓ **DEPLOYED** (`1702eaa`, release `27413467093`) | VCM slice 2 + `berkeley-vcm-registry-summary` + E1 S3 resolver + ripples | CI green; HTTP smoke ✓ |
-| **Pre-R6 gates** ✓ **PASSED** | Countries S2 `58361b4` ✓; Design D1 `3cd4255` ✓; Connect `af62d6f` ✓ (zero skips) | All gates passed |
-| **R6** ✓ **DEPLOYED** (`ca91443`, release `27415455211`) | Countries S1+S2 + Design D1 + Connect flips + E1 S4 — uniformity + timer-leak SLIPPED to R7 | CI green; HTTP smoke ✓ |
-| **Pre-R7 gates** | D2 `0381603` ✓; D3 `fdb5b7f` ✓; Connect S5 `4ec0d24` provisional ✓; scientist `3d04b23` ✓ (CI fix pending); Countries S3 `5897b5d` provisional ✓; timer-leak on remote (UNPROVEN); uniformity on remote | In progress |
-| **R7** _(C7 target)_ | **Order:** timer-leak (READY) → uniformity → Countries S3 → c2-0 tip → scientist branch (CI fix) + call-site micro-slice → D2–D5 stack → release | D1 deployed ✓; D2+D3 gate-passed ✓ |
-| **R7 close** | Consolidated UI live; owner visual checklist re-enabled | Owner consolidated visual review: VCM card, biodiversity card, favicon, E1 UI, Countries cards |
-| **Cesium V2.16 runtime** | Runtime implementation (separate approved phase) | New Fable spec required |
-| **Final checkpoint** | Full validation; production release | — |
+_Position: **C7** (R7 in flight). Risks: timer-leak UNPROVEN; D4/D5 chain; Cesium runtime sizing._
 
-**Visual smoke suspension:** owner visual checklists suspended until Design D5 merges (R7). Checkpoints verify via HTTP smoke + CI release smoke only. Reason: Data View surfaces are being redesigned — visual spot-checks against pre-consolidation layout would be misleading and are not meaningful gates until the consolidated view is live.
+| Cycle | Release | Work | Gate |
+| --- | --- | --- | --- |
+| **C7** | **R7** _(in flight)_ | timer-leak → uniformity → Countries S3 → c2-0 tip → scientist CI fix + call-site → D2–D5 stack → **Systems + Connect RETIRE** | timer-leak READY; D4/D5 merged; CI green |
+| **R7 close** | — | Owner **consolidated visual review** (≤5 items: D-stack UI, Countries cards, E1 entity cards, VCM/biodiversity/favicon from R5/R6) | Owner confirms; visual suspension lifts |
+| **C8** | — | Cesium kickoff: FE base globe in D1 shell (Design); BE vector adapters + country boundaries (Earth); Codex 249-country table (Grunt Pool) | R7 deployed; post-retire Earth absorbs Systems+Connect |
+| **C9** | — | Flow-field layers (wind/ocean Cesium overlays, Earth); Tier 2 aggregate density vertical — first vertical (Fable spec required) | C8 complete; governance spec on record |
+| **C10** | — | Tier 1 symbolic motion cues (corridors/lanes/orbital bands — RETAINED GLOBE INVENTORY); region-tap → Detail workspace; @scient1st globe-context | C9 complete |
+| **C10/R8** | **R8** | Globe review release | Owner globe visual review (≤5 items); Fable gate |
+| **C11** | — | Hardening: performance, governance tests, token-economy audit | R8 ✓ |
+| **C12** | **R9 FINAL** | earth.nullschool+AI — animated planetary flow globe + governed AI assistant | C11 complete; Fable final gate; owner sign-off |
+
+**Visual smoke suspension:** R5+R6 checklist items suspended until R7 consolidated visual review. Post-R7: ≤5 items per release window, only when UI changed (§21b).
 
 ---
 
@@ -232,6 +241,11 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **§18 analyze amendment (session 23):** `flutter analyze` is the mandatory final step of every slice, after the last edit. Scoped test runs do not substitute. Motivating case: `earth/scientist-entity-resolution` passed local scoped tests; CI went red on undefined symbol that analyze would have caught. Codified in [`automation/agent-coordination-standards.md`](automation/agent-coordination-standards.md) §18.
 - **Fable ruling — sparklines dropped (session 23):** synthetic trend-shaped sparklines banned from D1–D6. Real sparklines require a real time-series source (future slice, new Fable spec required). Replacement: trend chips (`AppColors` tokens). Codified in [`architecture/earth-ia-consolidation-spec.md`](architecture/earth-ia-consolidation-spec.md) §6.
 - **Connect S2 callout CLOSED (session 23):** standing S2 callout resolved — Connect S5 `4ec0d24` already wired the validate path; Earth call-site micro-slice closes the remaining gap. No further S2 action needed.
+- **STRATEGIC RESTRUCTURE (session 24, owner directive):** end-goal established; governance amended; agent roster restructured; token-economy standards bound. See pivots below.
+- **End-goal established (session 24):** animated planetary flow globe (nullschool-class) + governed AI assistant. Roadmap plan updated to C7–C12 (R7→R8→R9 FINAL). Prior 14-day framing retired.
+- **Human Activity freeze LIFTED at Tiers 1+2 (session 24, owner directive):** Tier 1 (symbolic motion cues — static corridors/lanes/orbital bands; no live data; RETAINED GLOBE INVENTORY; D6 must not quarantine motion-suite assets) and Tier 2 (aggregate density verticals — flights/ships/satellites; public datasets; identity-suppressed, ≥24h delay floor, fail-closed, health/trend-neutral; Fable spec per vertical) are unblocked. Tier 3 live per-vehicle tracking remains BANNED. Governance spec: [`architecture/human-activity-governance-amendment.md`](architecture/human-activity-governance-amendment.md). Coordination standards §4 taxonomy updated.
+- **Agent restructure — effective at R7 (session 24, owner directive):** roster post-R7 = Fable + Earth + Design + Fixes + Docs + CODEX Grunt Pool. Systems retires after timer-leak branch merges; Connect retires after S5 merges. Earth absorbs both scopes. Architectural Earth/Connect code boundary unchanged. CODEX Grunt Pool (OpenAI) handles low-risk mechanical tasks only — named files + acceptance command + do-not-touch list per task; never touches guards, gates, catalog files, or governance logic.
+- **Token-economy standards (session 24, binding §21):** thread-sized slices (one coherent unit per run); one visual sign-off per release window (≤5 items, only when UI changed); tests only for governance-critical paths + one FE layout guard per D-slice; single bounded failure-triage pass (no repair loops). Codified in [`automation/agent-coordination-standards.md`](automation/agent-coordination-standards.md) §21.
 - **Authenticated/visual smoke — owner-performed (§17, binding):** authenticated smoke and visual verification of `rand0m.ai` is performed by the **owner personally**. Agents perform HTTP-level smoke only. Checkpoint HANDOFFs close with an owner visual checklist (not agent-executed). Checkpoints are not marked visually verified until the owner confirms. No browser automation, no Claude-in-Chrome for smoke. Codified in coordination standards §17.
 - **Protected-areas — Fable ruling (session 16):** `wdpa-protected-area-summary` catalog availability = metadata-source axis only. `earth_protected_area_integrity` stays `insufficientEvidence` — integrity is a separate axis and is not unified with availability. Do not conflate. License constraint: WDPA data is non-commercial/no-redistribution; enforce at the catalog layer.
 - **`connect-card-overflow-fix` (session 16):** 0.118px RenderFlex on `connect_source_card.dart:88` broke `validate-earth-fast` green on every run. Fixed and merged at `3ab6786`. This was a known recurring CI noise issue — record as resolved.
