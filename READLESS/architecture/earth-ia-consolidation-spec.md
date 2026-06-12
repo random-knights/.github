@@ -1,11 +1,11 @@
-# Earth IA Consolidation — Spec (D1–D6)
+# Earth IA Consolidation — Spec (D1–D8)
 
-Date: 2026-06-12 (§6 Design Language formally appended session 21)
+Date: 2026-06-12 (IA v2 appended session 25)
 Author: Design agent (spec); Docs agent (persisted per §15)
-Ratified by: Fable (session 19)
-Amendment: Design agent implements D1–D6 in `worktrees\rand0m-design`;
+Ratified by: Fable (session 19); IA v2 owner directive (session 25)
+Amendment: Design agent implements all D-slices in `worktrees\rand0m-design`;
   Earth agent is integrator and merge gate for all D-slices.
-Status: D1 deployed `ca91443` (R6); D2 gate-passed `0381603` (R7); D3 gate-passed `fdb5b7f`; D4 in flight; §6 amended (sparkline ruling)
+Status: D1–D5 deployed `c150405` (R7); D6 SUPERSEDED by IA v2; D7 in flight (C8); D8 queued (C9)
 
 ---
 
@@ -104,13 +104,14 @@ spec before the violation can merge.
 | D1 | Earth+ workstation shell — tab rail restructure; pill BOTTOM-LEFT (ruling resolved); filtered score gauge TOP-RIGHT; dark-canvas AppColors | Pill ruling resolved ✓ | **deployed** `ca91443` (R6) |
 | D2 | 6→3 workspace consolidation (relocation-only); renderer readiness panel merged into shell; planetary-intelligence split deferred to D4 | D1 deployed ✓ | **gate-passed** `0381603` (R7) |
 | D3 | Layer grid card taxonomy + density rules applied; detail-surface substitution (taxonomy classes deleted analyze-forced; caveat copy survives per-layer); data section wrappers removed | D2 gate-passed ✓ | **gate-passed** `fdb5b7f` |
-| D4 | Detail workspace scaffold; expanded card pattern; replaces overlay/modal; planetary-intelligence surface (deferred from D2) | D3 gate-passed ✓ | **in flight** |
-| D5 | Cleanup pass — remove usage/session panels, stale empty-state cards, dead wrappers; confirm globe-inheritance constraint compliance | D4 merged | queued |
-| D6 | Deletion verdicts pass — final review of consolidated view; remove any remaining containers confirmed dead | **Gated on owner review of consolidated view after D5** | queued |
+| D4 | Detail workspace scaffold; expanded card pattern; replaces overlay/modal; planetary-intelligence surface (deferred from D2) | D3 gate-passed ✓ | **deployed** `c150405` (R7) |
+| D5 | Cleanup pass — remove usage/session panels, stale empty-state cards, dead wrappers; confirm globe-inheritance constraint compliance | D4 merged ✓ | **deployed** `c150405` (R7) |
+| D6 | ~~Deletion verdicts pass~~ | **SUPERSEDED** — owner visual review #1 (session 25) directed consolidate-further → IA v2 (D7+D8) rather than a standalone deletion pass. D6 scope absorbed into D7. | superseded |
+| D7 | Earth View nullschool mode — no-scroll viewport-fit; globe hero; score gauge TOP-RIGHT filter-reactive; stacked proportional row; interactive time-scrubber histogram; Earth+ pill BOTTOM-LEFT persistent while sheet open | D5 deployed ✓; owner visual review #1 ✓ | **in flight** (C8) |
+| D8 | Data View chart vocabulary — donut/rings, radar, streamgraph, treemap, scatter/bubble, funnel; all charts bound to real model series (no fabricated data) | D7 merged; BE series provisioned | queued (C9) |
 
-**D6 note:** D6 is not a spec-driven slice — it is an owner-review-driven
-cleanup. Do not attempt D6 without the owner having reviewed the live
-consolidated view (§17: owner visual confirmation required before D6 can open).
+**D7 note:** owner reference mocks are inspiration only — web extends widths
+beyond mobile constraints. Design agent adapts layouts; does not pixel-match mocks.
 
 ---
 
@@ -199,7 +200,75 @@ so this table can be updated before the D-slice merges._
 
 | Role | Agent | Scope |
 | --- | --- | --- |
-| Implementation | Design agent | D1–D6 workstation-shell + tab presentation in `worktrees\rand0m-design` |
-| Integration + merge gate | Earth agent | Reviews every D-slice PR; confirms no catalog/data/Cesium files touched; merges to main |
+| Implementation | Design agent | D1–D8 workstation-shell + tab presentation + chart vocabulary in `worktrees\rand0m-design` |
+| Integration + merge gate | Earth agent | Reviews every D-slice PR; confirms no catalog/data/Cesium files touched; merges to main; provisions BE chart series for D8 |
 | Spec ratification | Fable agent | Ratified this spec; amends on Design agent DOCS: callout |
 | State tracking | Docs agent | Owns this file; records D-slice progress and interface contract changes |
+
+---
+
+## IA v2 — D7 + D8 (Session 25, Owner Directive)
+
+_Owner visual review #1 verdict (session 25): approved direction; consolidate further → IA v2.
+D6 deletion-pass superseded. D7 + D8 replace it._
+
+### D7 — Earth View Nullschool Mode
+
+Owner directive: the Earth View becomes a nullschool-class animated planetary
+globe surface. Layout and constraints:
+
+- **No-scroll viewport-fit.** The Earth View fills the viewport exactly; no
+  vertical scroll. Every element must fit within the fixed frame.
+- **Globe hero.** The Cesium globe occupies the primary visual weight. All
+  other elements are secondary overlays or floating components.
+- **Score gauge — TOP-RIGHT, filter-reactive.** Filtered score gauge stays
+  top-right (session-20 ruling, unchanged). Defaults to Earth unfiltered state;
+  becomes filter-reactive when a layer filter is active.
+- **Stacked proportional row.** Layer data represented as a stacked proportional
+  row beneath the globe — compact, no scroll, proportional to relative values.
+- **Interactive time-scrubber histogram.** A time-scrubber histogram surface
+  for temporal layer data. Interactive (tap/drag to scrub). Positioned within
+  the no-scroll frame; must not push content off-screen.
+- **Earth+ pill — BOTTOM-LEFT, persistent while sheet open.** Pill stays
+  bottom-left (session-20 ruling). Remains visible and tappable while any
+  sheet or overlay is open — do not z-index it below sheets.
+
+**Reference mocks:** owner reference mocks are **inspiration only**. Web
+extends widths beyond mobile viewport constraints. Design agent adapts
+proportions and spacing to the device viewport; pixel-matching mocks is
+not the goal. If a mock element cannot fit in the no-scroll frame, it is
+omitted or resized — not forced.
+
+### D8 — Data View Chart Vocabulary
+
+Owner directive: the Data View gains a governed chart vocabulary for layer data.
+
+**Approved chart types:**
+
+| Chart type | Use case |
+| --- | --- |
+| Donut / rings | Proportional composition (e.g., VCM project-type breakdown) |
+| Radar | Multi-axis layer health comparison |
+| Streamgraph | Time-series flow volume (e.g., biodiversity observation density over time) |
+| Treemap | Hierarchical area comparison (e.g., regional forest coverage) |
+| Scatter / bubble | Two-variable correlation with optional magnitude dimension |
+| Funnel | Sequential-stage attrition (e.g., data pipeline coverage) |
+
+**Binding rule — real data only:**
+
+Every chart in D8 must bind to a real model series. No fabricated, synthetic,
+or illustrative data in any chart widget.
+
+- **Generalization of the sparkline ruling (§6/Fable, session 23):** that
+  ruling covered sparklines specifically; this binding rule covers all chart
+  types. Synthetic data in any chart is prohibited for the same reason:
+  it misrepresents data quality to the user.
+- **BE provisions series gaps.** If a layer does not yet have a time-series
+  or multi-point series in the data model, Earth agent provisions a typed
+  gap-aware series object (empty series with metadata) so the chart renders
+  an explicit empty/loading state rather than fabricated data.
+- A chart type may only be used for a layer when a real series exists in the
+  model. If no series exists, the chart slot shows a loading/unavailable state.
+
+**`DOCS:` callout required** when Earth agent provisions a new series type —
+Docs agent records the series contract in this spec.
