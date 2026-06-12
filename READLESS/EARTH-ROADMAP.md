@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-12 (session 30)
+**Last updated:** 2026-06-12 (session 32)
 
 ---
 
@@ -34,7 +34,7 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 
 _**End goal: animated planetary flow globe (nullschool-class) + governed AI assistant.**_
 
-_Position: **R9 bundle FINAL** — cesium slice 3 `b826abb`, D6 `8c6857d`, and attribution corrections `79d9295` all gate-passed (C10); density slipped to R10 (Earth session died mid-slice, WIP never pushed). Risks: **⛔ HARD BLOCKER — RANDOM_CESIUM_ION_TOKEN needed in root `.env` AND as a GitHub Actions secret** (third ask; production CI builds do not read local `.env`; release build falls back to CustomPainter until both are set)._
+_Position: **C11 in flight** — R9 deployed `d5ba6c1` (release `27436691750`). **THE NULLSCHOOL MILESTONE IS SHIPPED.** Cesium V2.16 runtime live; flow fields live; attribution + D6 verdicts live. Density WIP salvage succeeded (branch on remote). Now: density completion + Tier 1 motion cues + @scient1st globe-context → R10 FINAL. Combined owner visual review (R8+R9, 7 items) PENDING._
 
 | Cycle | Release | Work | Gate |
 | --- | --- | --- | --- |
@@ -42,9 +42,9 @@ _Position: **R9 bundle FINAL** — cesium slice 3 `b826abb`, D6 `8c6857d`, and a
 | **C8** | **R8** ✓ **DEPLOYED** (`e1e49c7`, release `27432166050`) | D7 nullschool shell + D8 chart vocabulary + BE chart-series + scroll-helper + CustomPainter globe in new shell → **UI consolidation release**. Owner review #2 verdict PENDING (post-deploy). | D7/D8/chart-series gate-passed; CI green; HTTP smoke ✓ |
 | **C9** | — | Cesium slice 1 `760c51a` ✓ (governance core); Cesium slice 2 ✓ (browser bridge; vendored CesiumJS; env-injected token; `KNIGHTS_CESIUM_ION_API_KEY` fallback) | R8 deployed ✓ |
 | **C10** | — | Cesium slice 3 `b826abb` ✓ (wind+ocean flow fields); D6 `8c6857d` ✓ (schematic deleted; preview pair quarantined — T5 evidence; motion suite RETAINED); attribution corrections `79d9295` ✓; density vertical NEVER PUSHED — Earth session died mid-slice; WIP salvage → R10 (slip=1) | C9 complete ✓ |
-| **C10/R9** | **R9** *(FINAL — density slipped to R10)* | D6 → attribution corrections → cesium-runtime-base (slices 1–3) + Production Release workflow token injection → **nullschool release**. Owner visual review #3 (globe-specific, nullschool). | D6/attribution/slice 3 gate-passed ✓; Ion token (root `.env` + Actions secret) required; Fable gate; owner approval |
-| **C11** | — | Tier 2 density vertical restart/salvage (WIP from dead session); Tier 1 symbolic motion cues (RETAINED GLOBE INVENTORY); @scient1st globe-context wiring; region-tap → Detail workspace | R9 deployed |
-| **C11/R10** | **R10 FINAL** | Tier 2 density (restart/salvage) + Tier 1 motion cues + @scient1st globe-context + hardening → **R10 FINAL release**. Owner final review. | C11 complete; Fable final gate; owner sign-off |
+| **C10/R9** | **R9** ✓ **DEPLOYED** (`d5ba6c1`, release `27436691750`) | D6 → attribution corrections → Cesium V2.16 runtime (slices 1–3) + env-injected `RANDOM_CESIUM_ION_API_KEY` + `KNIGHTS` fallback + wind+ocean flow fields → **nullschool release**. ★ NULLSCHOOL MILESTONE. Combined owner visual review #2+#3 (R8+R9, 7 items) PENDING. | All C10 gate-passes ✓; Ion token set ✓; CI green ✓; owner deployed ✓ |
+| **C11** | — | **In flight:** Tier 2 density vertical completion (WIP salvage succeeded; branch on remote); Tier 1 symbolic motion cues (IA §7; RETAINED GLOBE INVENTORY); @scient1st globe-context wiring | R9 deployed ✓ |
+| **C12/R10** | **R10 FINAL** | Tier 2 density completion + Tier 1 motion cues + @scient1st globe-context + perf hardening verdict → **R10 FINAL release**. Owner final review. | C11 complete; Fable final gate; owner sign-off |
 
 **Visual smoke suspension:** R5+R6 checklist items suspended until R7 consolidated visual review. Post-R7: ≤5 items per release window, only when UI changed (§21b).
 
@@ -92,22 +92,23 @@ _Position: **R9 bundle FINAL** — cesium slice 3 `b826abb`, D6 `8c6857d`, and a
 | D8 Data View chart vocabulary (`earth/design-d8-chart-vocabulary`) | merged to main | green | **✓ live** (R8 `e1e49c7`) |
 | Scroll-helper + CustomPainter globe shell | merged to main | green | **✓ live** (R8 `e1e49c7`) |
 | Cesium slice 2 — browser bridge, vendored CesiumJS, env-injected token | gate-passed (C9); merged to main | green | **✓ live** (R8 or post-R8; Fable-verified SHA not yet recorded — verify before promoting) |
-| Cesium slice 3 — wind+ocean flow fields (`b826abb`) | gate-passed (C10); pending R9 merge | — | **pending R9** |
-| Attribution corrections — GBIF/Berkeley/WGMS/Hansen/WDPA/Open-Meteo/FIRMS (`79d9295`) | gate-passed (C10); pending R9 merge | — | **pending R9** |
-| D6 verdicts pass — schematic deleted; preview pair quarantined (T5 evidence); motion suite RETAINED (`8c6857d`) | gate-passed (C10); pending R9 merge | — | **pending R9** |
-| Tier 2 density vertical | **NEVER PUSHED** — Earth session died mid-slice; local WIP only; WIP salvage step required; **slipped to R10** (slip=1) | — | **R10** |
+| Cesium V2.16 runtime — slices 1–3 (`760c51a`/slice2/`b826abb`); env-injected `RANDOM_CESIUM_ION_API_KEY`; JS bridge; wind+ocean flow fields | merged to main | green | **✓ live** (R9 `d5ba6c1`) |
+| Attribution corrections — GBIF/Berkeley/WGMS/Hansen/WDPA/Open-Meteo/FIRMS (`79d9295`) | merged to main | green | **✓ live** (R9 `d5ba6c1`) |
+| D6 verdicts pass — schematic deleted; preview pair quarantined (T5 evidence); motion suite RETAINED (`8c6857d`) | merged to main | green | **✓ live** (R9 `d5ba6c1`) |
+| **Production Release `27436691750`** (`d5ba6c1`) — owner. Cesium V2.16 nullschool globe + flow fields + attribution + D6 verdicts live on `rand0m.ai`. ★ NULLSCHOOL MILESTONE. `origin/main` = `d5ba6c1` (Fable-verified). Combined visual review #2+#3 (R8+R9, 7 items) PENDING. | — | — | **✓ live** |
+| Tier 2 density vertical | WIP salvage succeeded — branch on remote; **R10 completes it** | — | **R10** |
 
-`origin/main` (xyz) is at `e1e49c7` (Production Release `27432166050`; Fable-verified).
+`origin/main` (xyz) is at `d5ba6c1` (Production Release `27436691750`; Fable-verified). R9 deployed ✓ — NULLSCHOOL MILESTONE.
 
 ⚠ **State rule:** rows may only show "merged" or "deployed" when a git-verified SHA from a Fable gate confirmation or `git log origin/main` check is recorded here. Do not assert merged/deployed from session memory.
 
 ⚠ **Visual suspension LIFTED at R7.** Owner consolidated visual review #1 complete (session 25). Post-R7 visual reviews bounded to ≤5 items per release window (§21b).
 
-⛔ **HARD BLOCKER — owner action required (third ask):** Set `RANDOM_CESIUM_ION_TOKEN` in **both** (a) root `.env` AND (b) as a **GitHub Actions secret**. Production CI builds do not read the local `.env` — a release build without the Actions secret will always fall back to CustomPainter. First ask: session 27; second ask: session 28; escalated to HARD BLOCKER: session 30. See [`architecture/env-contract-notes.md`](architecture/env-contract-notes.md).
+~~⛔ HARD BLOCKER~~ **RESOLVED (session 32):** `RANDOM_CESIUM_ION_API_KEY` set in root `.env` and as GitHub Actions secret. Cesium V2.16 live at R9.
 
-⚠ **Owner review #2 PENDING:** post-R8 deploy visual review (≤5 viewport/chart items; §21b). Verdict not yet recorded.
+⚠ **Combined visual review #2+#3 PENDING (R8+R9, 7 items):** post-R8 viewport/chart items + post-R9 nullschool globe items. Owner to perform; ≤7 items total (§21b exception for combined review). Verdict not yet recorded.
 
-Next checkpoint **R9** — C10 work lands: slice 3 flow fields + density guard-gate + D6 verdicts → R9 nullschool release. Ion token must be set before release.
+Next checkpoint **R10 FINAL** — C11 work: density completion + Tier 1 motion cues (IA §7) + @scient1st globe-context + perf hardening verdict → R10 FINAL release.
 
 ---
 
@@ -115,10 +116,9 @@ Next checkpoint **R9** — C10 work lands: slice 3 flow fields + density guard-g
 
 _Active — in flight or ready for immediate action._
 
-- **Earth agent:** C10 gates complete — cesium slice 3 `b826abb` ✓, attribution corrections `79d9295` ✓, D6 `8c6857d` ✓. R9 bundle FINAL; awaiting ⛔ HARD BLOCKER resolution (token in both places) + owner R9 approval before release.
-- **Design agent:** D6 gate-passed `8c6857d` — schematic deleted; preview pair quarantined (T5 evidence pointer); motion suite RETAINED. R8 owner review #2 verdict still PENDING.
-- **Fixes agent:** `validate-earth-fast` `-TestPaths` in progress. Harness hygiene.
-- **Docs agent:** session-30 update — C10 gate passes recorded; density slip to R10; HARD BLOCKER escalated (third ask, GitHub Actions secret); R9 bundle FINAL; R10 scope defined; env-contract-notes updated.
+- **Earth agent:** C11 in flight — Tier 2 density vertical completion (WIP salvage on remote); Tier 1 symbolic motion cues (IA §7); @scient1st globe-context wiring. R9 deployed `d5ba6c1` ✓.
+- **Fixes agent:** post-R9 branch deletions; legacy graveyard sweep (Codex T15); stale worktree prune.
+- **Docs agent:** session-32 update — R9 deployed; NULLSCHOOL MILESTONE recorded; density WIP salvage noted; R10 FINAL declared; launch checklist section added; HARD BLOCKER resolved; env-contract-notes updated.
 
 ---
 
@@ -126,17 +126,17 @@ _Active — in flight or ready for immediate action._
 
 _Queued — approved scope, not yet started._
 
-1. **R9 release (ready to trigger — blocked on token + owner approval):**
-   - ⛔ Owner: set `RANDOM_CESIUM_ION_TOKEN` in root `.env` **AND** as a GitHub Actions secret. Third ask. See [`architecture/env-contract-notes.md`](architecture/env-contract-notes.md).
-   - Owner: approve R9 release. R9 bundle FINAL: D6 (`8c6857d`) → attribution corrections (`79d9295`) → cesium-runtime-base slices 1–3 (`760c51a`/slice2/`b826abb`) + Production Release workflow token injection.
-   - Owner: perform review #2 post-R8-deploy (≤5 viewport/chart items; §21b) — verdict still pending.
-   - Owner: after R9 deploy — owner visual review #3 (globe-specific, nullschool; ≤5 items; §21b).
-2. **C11 (queued — starts after R9 deployed):**
-   - Earth: Tier 2 density vertical restart/salvage. **Before implementation:** `git log origin/earth/data-human-activity-density` to assess salvageable WIP; if none, restart guard-first (suppression function as named testable function before catalog entry). Fable spec required per vertical. **Before test suite:** `git merge --no-edit origin/codex/density-fixtures` (T9 pre-staged fixtures; §20 explicit merge step).
-   - Earth: Tier 1 symbolic motion cues (RETAINED GLOBE INVENTORY); @scient1st globe-context wiring; region-tap → Detail workspace.
-3. **R10 FINAL (queued):** Tier 2 density + Tier 1 motion cues + @scient1st globe-context + hardening → final release.
-7. **Cleanup ledger (post-R7):** all pre-R7 branches safe to delete. `c2-0` kept open per owner. Delete abandoned `earth/p17-7-*`, `earth/p18-0/1/2-*`.
-8. **Future-infra queue:** GFW near-real-time forest alerts (FIRMS pattern, new callable); remote-config budget + kill switch.
+1. **C11 (active):**
+   - Earth: Tier 2 density vertical completion. **Before implementation:** `git log origin/earth/data-human-activity-density` — WIP salvage succeeded; branch on remote. Pull and resume guard-first. **Before test suite:** `git merge --no-edit origin/codex/density-fixtures` (T9 pre-staged fixtures; §20 explicit merge step). Fable spec required per vertical.
+   - Earth: Tier 1 symbolic motion cues (IA §7; RETAINED GLOBE INVENTORY) — static corridors/lanes/orbital bands; no live data.
+   - Earth: @scient1st globe-context wiring; perf hardening verdict (scope TBD — Fable ruling required before implementation).
+   - Owner: combined visual review #2+#3 (R8+R9, 7 items; §21b exception). Perform against `rand0m.ai`; verdict required before R10 approval.
+2. **R10 FINAL (declared):** Tier 2 density completion + Tier 1 motion cues + @scient1st globe-context + perf hardening → final release + final review. Gate: C11 complete; Fable final gate; owner sign-off.
+3. **Cleanup ledger (post-R9):**
+   - Fixes: delete post-R9 merged branches (cesium-runtime-base, source-attribution-corrections, design-d6-dead-surface).
+   - Codex T15: legacy graveyard sweep.
+   - Earth: stale worktree prune (`earth/p17-7-*`, `earth/p18-0/1/2-*`).
+4. **Future-infra queue:** GFW near-real-time forest alerts (FIRMS pattern, new callable); remote-config budget + kill switch.
 
 ---
 
@@ -266,12 +266,17 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **Open Branches table rewritten from reality (session 29, T10 audit):** entire prior table was stale — contained branches that had never existed on the remote, inferred names with "(or equivalent)" placeholders, and deployed rows that belonged in Deploy Checkpoints. Table rebuilt from confirmed remote branches only. Lesson recorded in coordination standards §2: Open Branches rows update on Fable gate confirmation only, same as Deploy Checkpoint rows.
 - **T8 attribution audit — correction slice in R9 bundle (session 29):** Codex T8 ran an attribution audit across all deployed data verticals. Findings requiring correction: (a) GBIF — mixed-license records (some CC-BY-NC 4.0); license constraint must be explicit in governance drawer. (b) Berkeley VCM — non-commercial restriction (BCTP terms) must appear verbatim, not just implied. (c) WGMS, Hansen (GFW), WDPA — missing or incomplete formal citation strings. (d) Open-Meteo, FIRMS — attribution text absent from governance drawer. Correction slice: `earth/source-attribution-corrections` (R9 bundle). At R9, the governance-drawer text becomes legally exact for all seven sources.
 - **T9 density fixtures — pre-staged T3 deliverables (session 29):** Codex T9 pre-staged density test fixtures as T3 deliverables in branch `codex/density-fixtures`. These are consumed by `earth/data-human-activity-density` (the in-flight C10 density vertical). The fixtures branch is an R9 dependency — not an orphan. Earth agent must `git merge --no-edit origin/codex/density-fixtures` into the density branch before its test suite runs.
+- **★ R9 DEPLOYED — NULLSCHOOL MILESTONE (session 32):** `d5ba6c1`, Production Release `27436691750`. Cesium V2.16 runtime live (slices 1–3: governance core + JS bridge with env-injected `RANDOM_CESIUM_ION_API_KEY` + `KNIGHTS_CESIUM_ION_API_KEY` fallback + wind+ocean flow fields); attribution corrections live (GBIF/Berkeley/WGMS/Hansen/WDPA/Open-Meteo/FIRMS governance-drawer text now legally exact); D6 verdicts live (schematic deleted, preview pair quarantined, motion suite RETAINED). `origin/main` = `d5ba6c1`. Combined visual review R8+R9 (7 items) PENDING.
+- **Density WIP salvage SUCCEEDED (session 32):** `earth/data-human-activity-density` branch is on remote. Slip=1 erased — C11 completes the vertical. No restart required; Earth agent pulls and resumes from WIP.
+- **HARD BLOCKER RESOLVED (session 32):** `RANDOM_CESIUM_ION_API_KEY` was set in root `.env` AND as a GitHub Actions secret. Note: deployed env var name is `RANDOM_CESIUM_ION_API_KEY` (API key naming convention), not `RANDOM_CESIUM_ION_TOKEN` as originally specified. env-contract-notes.md updated with actual deployed name.
+- **R10 FINAL declared (session 32):** Tier 2 density completion + Tier 1 motion cues (IA §7) + @scient1st globe-context + perf hardening verdict → R10 FINAL release + final review. C12 on plan.
+- **Launch checklist established (session 32):** (a) READMORE publishes via `abc` repo (purpose expanded; CODEX.md line update queued; history-review or fresh-seed required pre-flip). (b) `.github` private permanently. (c) All repos private (owner-confirmed). (d) Codex T13 reorg awaiting owner ratification. (e) T14 held for launch. See Launch Checklist section.
 - **C10 gates all passed (session 30):** Cesium slice 3 `b826abb` (wind+ocean flow fields) ✓; attribution corrections `79d9295` ✓; D6 `8c6857d` ✓ (schematic deleted; preview pair quarantined — T5 evidence pointer confirms preview-only scope; motion suite RETAINED per human-activity governance amendment).
-- **Density vertical slip=1 (session 30):** Earth session died mid-slice with local WIP never pushed to remote. `earth/data-human-activity-density` has no remote commits. Density moves to R10; WIP salvage step added to C11 command. R9 bundle is FINAL without density.
-- **R9 bundle FINAL declared (session 30):** D6 → attribution corrections → cesium-runtime-base (slices 1–3) + Production Release workflow token injection. No density in R9. Gate: ⛔ HARD BLOCKER (token both places) + Fable gate + owner approval.
-- **HARD BLOCKER escalation (session 30, third ask):** `RANDOM_CESIUM_ION_TOKEN` first flagged session 27 (root `.env` only). Session 28: second ask. Session 30 escalation: production CI builds run in GitHub Actions and do not read the local root `.env` file. Token must be set as a **GitHub Actions secret** in addition to root `.env`, or every release build will fall back to CustomPainter. Updated in [`architecture/env-contract-notes.md`](architecture/env-contract-notes.md).
+- **Density vertical slip=1 (session 30):** Earth session died mid-slice with local WIP never pushed to remote. `earth/data-human-activity-density` had no remote commits. Density moved to R10; WIP salvage step added to C11 command. Salvage succeeded in session 32 — branch on remote.
+- **R9 bundle FINAL declared (session 30):** D6 → attribution corrections → cesium-runtime-base (slices 1–3) + Production Release workflow token injection. No density in R9. Gate: HARD BLOCKER (token both places) + Fable gate + owner approval — all resolved by session 32.
+- **HARD BLOCKER escalation (session 30, third ask):** `RANDOM_CESIUM_ION_TOKEN` first flagged session 27 (root `.env` only). Session 28: second ask. Session 30 escalation: production CI builds run in GitHub Actions and do not read the local root `.env` file. Resolved session 32.
 - **R10 FINAL scope defined (session 30):** Tier 2 density vertical (restart/salvage from dead session) + Tier 1 symbolic motion cues (RETAINED GLOBE INVENTORY) + @scient1st globe-context wiring + hardening → R10 FINAL release + owner final review.
-- **Owner open items (session 30):** (a) Set `RANDOM_CESIUM_ION_TOKEN` in root `.env` AND as GitHub Actions secret (⛔ HARD BLOCKER, third ask). (b) R8 owner review #2 verdict PENDING (post-R8-deploy, ≤5 viewport/chart items). (c) Approve R9 release.
+- **Owner open items (session 30):** (a) Set token in root `.env` AND as GitHub Actions secret — RESOLVED session 32. (b) R8 owner review #2 verdict PENDING — folded into combined R8+R9 review (7 items). (c) Approve R9 release — DONE session 32.
 - **R8 DEPLOYED (session 28):** `e1e49c7`, Production Release `27432166050`. D7 nullschool shell + D8 chart vocabulary + chart-series + scroll-helper live. `origin/main` = `e1e49c7`. Owner review #2 verdict PENDING (post-deploy, ≤5 viewport/chart items).
 - **Cesium slice 2 gate-passed exemplary (session 28):** browser bridge, vendored CesiumJS (`web/cesium/` + `VENDOR.md`), env-injected token, `KNIGHTS_CESIUM_ION_API_KEY` reserved fallback mirroring the weather provider pattern. Merge discipline: main-merged-into-branch (§20 followed). Token pattern documented in [`architecture/env-contract-notes.md`](architecture/env-contract-notes.md). Full env-injection approach: `RANDOM_CESIUM_ION_TOKEN` in root `.env`; fallback produces graceful CustomPainter globe, not a crash.
 - **BLOCKER — RANDOM_CESIUM_ION_TOKEN unset (sessions 27–28, second ask):** Ion token has not been set in root `.env`. R9 nullschool deliverable falls back to CustomPainter globe until owner sets it. Owner must provide a domain-restricted scoped Cesium Ion token. Do not mark R9 ready without confirming token is present.
@@ -311,11 +316,24 @@ _Rows reflect current remote branches confirmed by Fable gate or `git log origin
 
 | Branch | Repo | Status | R9 bundle |
 | --- | --- | --- | --- |
-| `earth/cesium-runtime-base` | xyz | Slices 1 (`760c51a`) + 2 gate-passed; slice 3 `b826abb` gate-passed (C10); **pending R9 merge** | R9 |
-| `earth/source-attribution-corrections` | xyz | `79d9295` gate-passed (C10); **pending R9 merge** | R9 |
-| `earth/design-d6-dead-surface` | xyz | `8c6857d` gate-passed (C10); schematic deleted; preview pair quarantined; motion suite RETAINED; **pending R9 merge** | R9 |
-| `earth/data-human-activity-density` | xyz | **NEVER PUSHED** — Earth session died mid-slice; local WIP only; salvage/restart required; **slipped to R10** (slip=1) | R10 — depends on `codex/density-fixtures` |
+| `earth/data-human-activity-density` | xyz | WIP salvage succeeded — branch on remote; **C11 completes it** | R10 — depends on `codex/density-fixtures` |
 | `codex/density-fixtures` | xyz | Pre-staged T3 deliverables — density test fixtures for density vertical | R10 dependency — consumed by `earth/data-human-activity-density`; not an orphan |
+
+_Branches deployed at R9 and safe to delete (post-R9 cleanup — Fixes):_ `earth/cesium-runtime-base`, `earth/source-attribution-corrections`, `earth/design-d6-dead-surface`.
+
+---
+
+## Launch Checklist
+
+_Items that must be resolved before or at the R10 FINAL release. Owner-confirmed scope (session 32)._
+
+| Item | Status | Notes |
+| --- | --- | --- |
+| READMORE publishes via `abc` repo | ⚠ **Pre-flip required** | Purpose expanded. CODEX.md line update queued. History-review or fresh-seed required before flip. Owner to confirm readiness. |
+| `.github` repo visibility | ✓ **Private permanently** | Owner-confirmed. Not a launch blocker. |
+| All repos private | ✓ **Owner-confirmed** | All `random-knights/*` repos private. |
+| Codex T13 reorg | ⏳ **Awaiting owner ratification** | Structural reorg; owner must ratify before proceeding. |
+| Codex T14 | ⏳ **Held for launch** | Launch-gated. Do not execute before R10 FINAL. |
 
 ---
 

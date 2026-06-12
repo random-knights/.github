@@ -1,6 +1,6 @@
 # Environment Variable Contract Notes
 
-Date: 2026-06-12 (created session 28; updated session 30)
+Date: 2026-06-12 (created session 28; updated sessions 30, 32)
 Author: Docs agent (from Earth agent exemplary Cesium slice 2 gate)
 Scope: runtime environment variables consumed by rand0m apps/rand0m
 
@@ -24,7 +24,7 @@ weather provider integration. All tokens are:
 
 | Variable | Service | Kind | Status | Notes |
 | --- | --- | --- | --- | --- |
-| `RANDOM_CESIUM_ION_TOKEN` | Cesium Ion | Access token | **⛔ HARD BLOCKER — UNSET** | Domain-restricted scoped token. Must be set in **both** root `.env` (local dev) AND as a **GitHub Actions secret** (production CI). R9 release build falls back to CustomPainter until both are set. Third request logged (sessions 27 → 28 → 30). |
+| `RANDOM_CESIUM_ION_API_KEY` | Cesium Ion | API key | ✓ **SET** (session 32) | Domain-restricted scoped token. Set in root `.env` AND as GitHub Actions secret. Live at R9 (`d5ba6c1`). **Note:** originally specified as `RANDOM_CESIUM_ION_TOKEN` in sessions 27–30; deployed variable name is `RANDOM_CESIUM_ION_API_KEY` (API key naming convention). |
 | *(weather token)* | Weather provider | API key | Set | Established the env-injection pattern; Cesium mirrors this. |
 
 ---
@@ -43,10 +43,9 @@ pattern:
 - Do not substitute a real Ion token under `KNIGHTS_CESIUM_ION_API_KEY` — it
   is a fallback identifier, not a second token slot.
 
-**Owner action:** set `RANDOM_CESIUM_ION_TOKEN` (domain-restricted, scoped Ion token) in
-**both** root `.env` (local builds) **and** as a **GitHub Actions secret** (production CI builds).
-Local `.env` alone is insufficient — production release builds run in GitHub Actions and do not
-read root `.env`. Without the Actions secret, every release build falls back to CustomPainter.
+~~**Owner action (RESOLVED session 32):**~~ `RANDOM_CESIUM_ION_API_KEY` has been set in both root `.env`
+and as a GitHub Actions secret. Cesium V2.16 live at R9 (`d5ba6c1`). No further action required.
+Pattern confirmed: production release builds require the GitHub Actions secret in addition to root `.env`.
 
 ---
 
