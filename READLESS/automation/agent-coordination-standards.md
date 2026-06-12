@@ -1,6 +1,6 @@
 # Agent Coordination Standards
 
-Date: 2026-06-12 (amended sessions 18, 23, 24, 27)
+Date: 2026-06-12 (amended sessions 18, 23, 24, 27, 29)
 Author: Docs agent (from Fable PM ruling + owner directives)
 Scope: all agents operating in the Random Knights multi-agent ecosystem
 
@@ -51,6 +51,14 @@ Handoff must include:
 The receiving agent verifies the SHA with `git log` before acting. If the SHA
 does not exist in the remote, the handoff is incomplete — stop and emit a
 `DOCS:` callout flagging the discrepancy rather than proceeding on stale state.
+
+**Open Branches table — same rule as Deploy Checkpoint rows (Codex T10 audit, session 29):**
+Open Branches rows are updated **only on a Fable gate confirmation** — the same
+standard that governs Deploy Checkpoint rows. Agents must not add, edit, or
+remove Open Branches rows based on session memory, transcript claims, or
+self-reported work. The branch table represents reality as confirmed by Fable;
+anything else is assumed stale until verified. When a gate is confirmed, emit a
+`DOCS:` callout with branch name + tip SHA; Docs agent applies the update.
 
 ---
 

@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-12 (session 28)
+**Last updated:** 2026-06-12 (session 29)
 
 ---
 
@@ -117,7 +117,7 @@ _Active — in flight or ready for immediate action._
 - **Earth agent:** C10 in flight — Cesium slice 3 (flow fields); Tier 2 density vertical (guard-first, Fable spec required); slice 2 browser bridge on main. ⚠ Session replaced (memory; protocol held — fresh session resumes from command + git).
 - **Design agent:** D6 verdicts pass in progress — motion suite RETAINED per governance; scoped cleanup verdicts only. R8 deployed; review #2 verdict pending owner.
 - **Fixes agent:** `validate-earth-fast` `-TestPaths` in progress. Harness hygiene.
-- **Docs agent:** session-28 update ✓ — R8 deployed `e1e49c7`; Cesium slice 2 gate-passed; C10 in flight; R9 bundle declared; env-contract-notes.md created; BLOCKER token noted (second ask).
+- **Docs agent:** session-29 update ✓ — Open Branches table rebuilt from reality (T10); T8 attribution audit + correction slice recorded; T9 density fixtures noted; Archive section added; §2 Open Branches rule codified in coordination standards.
 
 ---
 
@@ -127,7 +127,7 @@ _Queued — approved scope, not yet started._
 
 1. **C10 (active):**
    - Earth: Cesium slice 3 flow fields. Merge step: `git merge --no-edit origin/main` then proceed.
-   - Earth: Tier 2 density vertical — guard-first (suppression function as named testable function before catalog entry). Fable spec required per vertical.
+   - Earth: Tier 2 density vertical — guard-first (suppression function as named testable function before catalog entry). Fable spec required per vertical. **Before test suite:** `git merge --no-edit origin/codex/density-fixtures` (T9 pre-staged fixtures; §20 explicit merge step).
    - Design: D6 verdicts pass — deletion verdicts only; motion suite RETAINED (per human-activity governance amendment); confirm no globe geometry files removed.
    - Owner: set `RANDOM_CESIUM_ION_TOKEN` (domain-restricted scoped Ion token) in root `.env` — required before R9 release. See [`architecture/env-contract-notes.md`](architecture/env-contract-notes.md).
    - Owner: perform review #2 post-R8-deploy (≤5 viewport/chart items; §21b).
@@ -262,6 +262,9 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **R7 DEPLOYED (session 25):** `c150405`, Production Release `27423312204`. D2–D5 + scientist RESOLVE-OR-EXPLAIN + call-site + Countries S3 + Connect S5 + timer-leak + uniformity + Codex T1 ISO table all live. `origin/main` = `c150405`.
 - **Systems + Connect RETIRED (session 25):** wind-down complete. Scopes absorbed by Earth. Worktrees torn down. Post-R7 roster = Fable + Earth + Design + Fixes + Docs + CODEX Grunt Pool.
 - **Owner visual review #1 — approved direction, consolidate further (session 25):** post-R7 consolidated visual review complete. Verdict: approved direction; consolidate further → IA v2. Visual suspension lifted. IA v2 spec appended to [`architecture/earth-ia-consolidation-spec.md`](architecture/earth-ia-consolidation-spec.md).
+- **Open Branches table rewritten from reality (session 29, T10 audit):** entire prior table was stale — contained branches that had never existed on the remote, inferred names with "(or equivalent)" placeholders, and deployed rows that belonged in Deploy Checkpoints. Table rebuilt from confirmed remote branches only. Lesson recorded in coordination standards §2: Open Branches rows update on Fable gate confirmation only, same as Deploy Checkpoint rows.
+- **T8 attribution audit — correction slice in R9 bundle (session 29):** Codex T8 ran an attribution audit across all deployed data verticals. Findings requiring correction: (a) GBIF — mixed-license records (some CC-BY-NC 4.0); license constraint must be explicit in governance drawer. (b) Berkeley VCM — non-commercial restriction (BCTP terms) must appear verbatim, not just implied. (c) WGMS, Hansen (GFW), WDPA — missing or incomplete formal citation strings. (d) Open-Meteo, FIRMS — attribution text absent from governance drawer. Correction slice: `earth/source-attribution-corrections` (R9 bundle). At R9, the governance-drawer text becomes legally exact for all seven sources.
+- **T9 density fixtures — pre-staged T3 deliverables (session 29):** Codex T9 pre-staged density test fixtures as T3 deliverables in branch `codex/density-fixtures`. These are consumed by `earth/data-human-activity-density` (the in-flight C10 density vertical). The fixtures branch is an R9 dependency — not an orphan. Earth agent must `git merge --no-edit origin/codex/density-fixtures` into the density branch before its test suite runs.
 - **R8 DEPLOYED (session 28):** `e1e49c7`, Production Release `27432166050`. D7 nullschool shell + D8 chart vocabulary + chart-series + scroll-helper live. `origin/main` = `e1e49c7`. Owner review #2 verdict PENDING (post-deploy, ≤5 viewport/chart items).
 - **Cesium slice 2 gate-passed exemplary (session 28):** browser bridge, vendored CesiumJS (`web/cesium/` + `VENDOR.md`), env-injected token, `KNIGHTS_CESIUM_ION_API_KEY` reserved fallback mirroring the weather provider pattern. Merge discipline: main-merged-into-branch (§20 followed). Token pattern documented in [`architecture/env-contract-notes.md`](architecture/env-contract-notes.md). Full env-injection approach: `RANDOM_CESIUM_ION_TOKEN` in root `.env`; fallback produces graceful CustomPainter globe, not a crash.
 - **BLOCKER — RANDOM_CESIUM_ION_TOKEN unset (sessions 27–28, second ask):** Ion token has not been set in root `.env`. R9 nullschool deliverable falls back to CustomPainter globe until owner sets it. Owner must provide a domain-restricted scoped Cesium Ion token. Do not mark R9 ready without confirming token is present.
@@ -297,54 +300,21 @@ _Scope changes, strategy shifts, or deferred decisions._
 
 ## Open Branches
 
-| Branch | Repo | Status | Action |
+_Rows reflect current remote branches confirmed by Fable gate or `git log origin/main`. All stale/never-existed rows removed (T10 audit, session 29). **Rule: Open Branches updates come from Fable gate confirmations only — same standard as Deploy Checkpoint rows.** Codified in coordination standards §2._
+
+| Branch | Repo | Status | R9 bundle |
 | --- | --- | --- | --- |
-| `earth/design-d7-nullschool-shell` | xyz (remote) | merged to main — **deployed ✓** (`e1e49c7`, R8) | safe to delete |
-| `earth/chart-series-provisioning` | xyz (remote) | `33db79b` — merged to main, **deployed ✓** (`e1e49c7`, R8) | safe to delete |
-| `earth/design-d8-chart-vocabulary` | xyz (remote) | `e35a31d` — merged to main, **deployed ✓** (`e1e49c7`, R8) | safe to delete |
-| `earth/cesium-slice-2` (or equivalent) | xyz (remote) | gate-passed (C9) — browser bridge; vendored CesiumJS; env-injected; on main | safe to delete post SHA verify |
-| `earth/cesium-slice-3` (or equivalent) | xyz (remote) | in progress (Earth) — flow fields | C10 |
-| `earth/tier-2-density` (or equivalent) | xyz (remote) | in progress (Earth) — guard-first | C10 — Fable spec required |
-| `earth/design-d6-verdicts` (or equivalent) | xyz (remote) | in progress (Design) — scoped cleanup; motion suite RETAINED | C10 |
-| `chore/timer-leak` | xyz (remote) | merged to main — **deployed ✓** (`c150405`, R7) | safe to delete |
-| `chore/uniformity` | xyz (remote) | merged to main — **deployed ✓** (`c150405`, R7) | safe to delete |
-| `earth/countries-s3` | xyz (remote) | `5897b5d` — merged to main, **deployed ✓** (`c150405`, R7) | safe to delete |
-| `earth/scientist-entity-resolution` | xyz (remote) | merged to main — **deployed ✓** (`c150405`, R7) | safe to delete |
-| `earth/design-d2` through `design-d5` | xyz (remote) | merged to main — **deployed ✓** (`c150405`, R7) | safe to delete |
-| `connect/s5-write-path` (or equivalent) | xyz (remote) | merged to main — **deployed ✓** (`c150405`, R7) | safe to delete |
-| `earth/countries-s1` | xyz (remote) | merged to main — **deployed ✓** (`ca91443`, R6) | safe to delete post-verify |
-| `earth/countries-s2` | xyz (remote) | merged to main — **deployed ✓** (`ca91443`, R6) | safe to delete post-verify |
-| `earth/design-d1-globe-primary` | xyz (remote) | merged to main — **deployed ✓** (`ca91443`, R6) | safe to delete post-verify |
-| `earth/connect-flips-e1s4` | xyz (remote) | merged to main — **deployed ✓** (`ca91443`, R6) | safe to delete |
-| `earth/vcm-slice2` | xyz (remote) | merged to main — **deployed ✓** (`1702eaa`) | safe to delete |
-| `earth/entities-e1-slice3` | xyz (remote) | merged to main — **deployed ✓** (`1702eaa`) | safe to delete |
-| `chore/connect-sheet-test-stall` | xyz (remote) | **CLOSED** — zero skips confirmed by `af62d6f` | safe to delete |
-| `earth/biodiversity-layer` | xyz (remote) | `e9f9e47` — merged to main, **deployed ✓** (`4148495`) | safe to delete |
-| `feature/f1-0-*` (F1.0 favicon) | xyz (remote) | merged to main, **deployed ✓** (`4148495`) | safe to delete |
-| `earth/entities-e1-slice1` | xyz (remote) | `081c4f5` — merged to main, **deployed ✓** (`4148495`) | safe to delete |
-| `earth/entities-e1-slice2` | xyz (remote) | merged to main, **deployed ✓** (`4148495`) | safe to delete |
-| `earth/data-forest-refresh` | xyz (remote) | merged to main — **deployed ✓** (`716c4d3`) | safe to delete |
-| `earth/data-forest-registration` | xyz (remote) | merged to main — **deployed ✓** (`716c4d3`) | safe to delete |
-| `chore/test-deterministic-cursor` | xyz (remote) | merged to main — **deployed ✓** (`716c4d3`) | safe to delete |
-| `feature/c2-0-source-onboarding-pipeline` (slice 4+5 / base) | xyz (remote) | merged to main — **deployed ✓** (`716c4d3`) — kept per owner until Entities stacking confirmed | keep open |
-| `earth/data-protected-areas-refresh` | xyz (remote) | merged to main — **deployed ✓** (`716c4d3`) | safe to delete |
-| `earth/data-protected-areas-registration` | xyz (remote) | merged to main — **deployed ✓** (`716c4d3`) | safe to delete |
-| `earth/data-glaciers-live` | xyz (remote) | **deleted** — merged ancestor | — |
-| `earth/glaciers-data-view-wiring` | xyz (remote) | `6316893` — merged to main, deployed ✓ | safe to delete |
-| `feature/c2-0-source-onboarding-pipeline` (slices 1–3 base) | xyz (remote) | `ed7f3f4` — merged to main, deployed ✓ | safe to delete |
-| `earth/scientist-session-continuity` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
-| `earth/scientist-scenario-explain` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
-| `earth/data-ocean-live` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
-| `earth/earthview-ui-cleanup` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
-| `earth/live-connections-batch` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
-| `earth/scientist-live-ai-responses` | xyz (remote) | merged to main — deployed ✓ | safe to delete |
-| `earth/air-quality-layer-ocean-live` | xyz (remote) | deleted / pruned | — |
-| `chore/earth-workflow-test-staleness` | xyz (remote) | merged to main | safe to delete |
-| `chore/d1-4-release-candidate-smoke-policy-review-docs` | dev-kitt (local) | merged to master | safe to delete |
-| `earth/p17-7-scientist-context-bridge` | xyz (remote) | **abandoned** — diverged, not mergeable | delete |
-| `earth/p18-0-earth-agent-activation` | xyz (remote) | **abandoned** — diverged, not mergeable | delete |
-| `earth/p18-1-scientist-command-surface` | xyz (remote) | **abandoned** — diverged, not mergeable | delete |
-| `earth/p18-2-scientist-preview-response` | xyz (remote) | **abandoned** — diverged, not mergeable | delete |
+| `earth/cesium-runtime-base` | xyz | Slices 1 (`760c51a`) + 2 on main; **slice 3 (flow fields) in progress** (Earth) | Slices 2+3 in R9 |
+| `earth/data-human-activity-density` | xyz | In progress (Earth) — guard-first; Fable spec required per vertical | R9 (on guard-gate pass) — depends on `codex/density-fixtures` |
+| `earth/design-d6-dead-surface` | xyz | In progress (Design) — scoped dead-surface verdicts; motion suite **RETAINED** per governance | R9 |
+| `earth/source-attribution-corrections` | xyz | In progress (Earth) — T8 attribution audit corrections (GBIF/Berkeley/WGMS/Hansen/WDPA/Open-Meteo/FIRMS) | R9 |
+| `codex/density-fixtures` | xyz | Pre-staged T3 deliverables — density test fixtures for density vertical | R9 dependency — consumed by `earth/data-human-activity-density`; not an orphan |
+
+---
+
+## Archive (Historical Notes)
+
+_Architecture notes in [`READLESS/architecture/`](architecture/) with no active inbound links are **retained history** — not orphans to delete. T10 audit (session 29) identified these files as informational/reference only; they document completed phases and decisions made before the current roadmap. Do not delete. If a file needs to be referenced again, link it from a Pivot entry._
 
 ---
 
