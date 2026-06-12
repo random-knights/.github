@@ -4,7 +4,7 @@ Date: 2026-06-12
 Author: Fable agent (spec); Docs agent (persisted per §15)
 Ratified by: Fable (session 17); owner-approved (session 16)
 Assigned to: Connect agent
-Status: E1 active — slices 1–2 deployed @ `4148495`; slice 3 in progress (resolver contract)
+Status: E1 active — slices 1–3 deployed @ `1702eaa`; slice 4 (minimal) gate-passed `af62d6f` (R6 bundle)
 
 ---
 
@@ -49,8 +49,9 @@ cover full UI surfacing or @scient1st entity context (those are E2+ phases).
 | --- | --- | --- |
 | 1 | Entity model (`EntityDefinition`) with mandatory `sourceRef`; unsourced mapping guard; Connect intake pipeline integration | **Deployed ✓** (`4148495`) |
 | 2 | Entity-to-region mapping; entity-to-source association | **Deployed ✓** (`4148495`) |
-| 3 | Resolver contract — Connect owns resolver; Earth owns consumption (see Earth/Connect Boundary below) | in progress |
-| 4+ | Catalog registration via `EARTH:` delta; @scient1st entity context (E2+) | queued |
+| 3 | Resolver contract — Connect owns resolver; Earth owns consumption (see Earth/Connect Boundary below) | **Deployed ✓** (`1702eaa`) |
+| 4 | Minimal catalog registration via `EARTH:` delta | **gate-passed** `af62d6f` — R6 bundle |
+| 5+ | Full resolver wiring (E1→Earth consumption); @scient1st entity context (E2+) | R7 bundle |
 
 ---
 

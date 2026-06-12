@@ -1,11 +1,11 @@
 # Earth IA Consolidation — Spec (D1–D6)
 
-Date: 2026-06-12 (owner rulings appended session 20)
+Date: 2026-06-12 (§6 Design Language formally appended session 21)
 Author: Design agent (spec); Docs agent (persisted per §15)
 Ratified by: Fable (session 19)
 Amendment: Design agent implements D1–D6 in `worktrees\rand0m-design`;
   Earth agent is integrator and merge gate for all D-slices.
-Status: D1 in flight (pill ruling resolved; design-language section appended); D2–D6 queued
+Status: D1 gate-passed `3cd4255` (branch `earth/design-d1-globe-primary`); §6 formally appended (Design DOCS callout); D2–D6 queued
 
 ---
 
@@ -101,7 +101,7 @@ spec before the violation can merge.
 
 | Slice | Description | Gate / dependency | Status |
 | --- | --- | --- | --- |
-| D1 | Earth+ workstation shell — tab rail restructure; pill BOTTOM-LEFT (ruling resolved); filtered score gauge TOP-RIGHT; dark-canvas AppColors | Pill ruling resolved ✓ | in flight |
+| D1 | Earth+ workstation shell — tab rail restructure; pill BOTTOM-LEFT (ruling resolved); filtered score gauge TOP-RIGHT; dark-canvas AppColors | Pill ruling resolved ✓ | **gate-passed** `3cd4255` (`earth/design-d1-globe-primary`) |
 | D2 | Renderer readiness panel → merge into workstation shell; remove standalone widget | D1 merged | queued |
 | D3 | Layer grid card taxonomy + density rules applied; data section wrappers removed | D2 merged | queued |
 | D4 | Detail workspace scaffold; expanded card pattern; replaces overlay/modal | D3 merged | queued |
@@ -149,21 +149,34 @@ Rules:
 
 ---
 
-## Design Language Section (Design Agent — Appended Session 20)
+## §6 — Design Language (Formally Appended Session 21)
 
-_This section is appended by Design agent based on owner reference images.
-Token and component rules from reference images are authoritative for D1–D6._
+_Formally appended per Design agent DOCS: callout (session 21), following D1 gate-pass at `3cd4255`.
+Token and component rules from owner reference images are authoritative for D1–D6.
+Session-20 placeholder promoted to binding §6._
+
+### Core Rules
+
+- **AppColors only.** No hardcoded hex values in any D-slice widget. Every color
+  reference must resolve to a named `AppColors` token.
+- **Dark-canvas treatment.** Container backgrounds use the dark-canvas tier of
+  `AppColors`. White or light-neutral backgrounds are prohibited in D-slice surfaces.
+- **Density target.** Err toward higher information density, not whitespace.
+  Reference images provided to Design agent are the authoritative density benchmark.
+
+### Token / Component Table
 
 | Token / Component | Rule |
 | --- | --- |
-| Container backgrounds | Dark-canvas tier from `AppColors` |
+| Container backgrounds | Dark-canvas tier from `AppColors` — no white, no light neutrals |
 | Gauge component | Dark canvas; `AppColors` accent for filled arc; no hardcoded hex |
 | Donut component | `AppColors` palette; segment colors from defined data-tier palette |
 | Chip / badge | `AppColors` surface + on-surface tokens; no custom tint |
-| Pill (Earth+) | Position: bottom-left (owner ruling); `AppColors` primary |
-| Filtered score gauge | Position: top-right; filter-reactive state uses `AppColors` filter-active token |
+| Pill (Earth+) | Position: **bottom-left** (owner ruling, binding); `AppColors` primary |
+| Filtered score gauge | Position: **top-right**; defaults to Earth (unfiltered); filter-reactive state uses `AppColors` filter-active token |
 
-_Design agent to expand this table with specific token names as D1 implementation proceeds. If a component is not listed, use the nearest `AppColors` token and emit a `DOCS:` callout for this table to be updated._
+_If a component is not listed, use the nearest `AppColors` token and emit a `DOCS:` callout
+so this table can be updated before the D-slice merges._
 
 ---
 
