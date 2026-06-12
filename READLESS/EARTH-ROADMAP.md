@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-12 (session 21)
+**Last updated:** 2026-06-12 (session 22)
 
 ---
 
@@ -12,11 +12,11 @@ Update this file at the start and end of every session.
 
 | Agent | Identity | Worktree | Active branch | Focus |
 | --- | --- | --- | --- | --- |
-| Earth | `deve10per` / dev-kitt | main clone (exclusive) | Countries S1 `f82c595` gate-passed; Countries S2 `58361b4` **PASS** — referential validation + stale schematic fix; D-slice merge gate active | Earth features, layers, governance; sole catalog owner + D-slice merge gate |
-| Systems | `deve10per` / dev-kitt | `worktrees\rand0m-systems` | **CONNECTION-HARDENING DATA LAYER COMPLETE** — all planned verticals shipped; idle post-R5 | VCM deployed ✓ — awaiting next owner directive |
-| Connect | `deve10per` / dev-kitt | `worktrees\rand0m-connect` | `af62d6f` **PASS** — all 3 render tests ENABLED; zero skips remain; E1 S4 minimal | Entities domain + Connect |
-| Design | `deve10per` / dev-kitt | `worktrees\rand0m-design` | D1 `3cd4255` **PASS** (`earth/design-d1-globe-primary`); §6 Design Language formally appended | IA consolidation D1–D6; presentation/layout only; no data/catalog files |
-| Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | `chore/connect-sheet-test-stall` diagnosing; `validate-earth-fast` `-TestPaths` (§18) | Bug fixes, CI, harness hygiene |
+| Earth | `deve10per` / dev-kitt | main clone (exclusive) | **R6 deployed** `ca91443`; scientist-entity-resolution in flight (gate flips: resolve-or-explain + Intelligence regional summary); D-slice merge gate active | Earth features, layers, governance; sole catalog owner + D-slice merge gate |
+| Systems | `deve10per` / dev-kitt | `worktrees\rand0m-systems` | **CONNECTION-HARDENING COMPLETE** — idle; timer-leak **escalated** (slip=2) → three-outcome closure pending | VCM deployed ✓ — timer-leak chore owner; three-outcome closure |
+| Connect | `deve10per` / dev-kitt | `worktrees\rand0m-connect` | S5 `4ec0d24` **provisional pass** — write-path validation wired; E1 integrity gap closed at runtime; R7 merge pending | Entities domain + Connect |
+| Design | `deve10per` / dev-kitt | `worktrees\rand0m-design` | D2 `0381603` **PASS** (6→3 workspaces, relocation-only; planetary-intelligence deferred to D4); D3 in flight | IA consolidation D1–D6; presentation/layout only; no data/catalog files |
+| Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | timer-leak **escalated** (slip=2, single-item run); uniformity **escalated** (slip=2); `validate-earth-fast` `-TestPaths` (§18) in progress | Bug fixes, CI, harness hygiene |
 | Docs | `eng1neer` / qa-kitt | qa-kitt clone | `main` | READLESS, CODEX, EARTH-ROADMAP |
 | Fable | — | read-only | — | Audit, spec, PM rulings; declares checkpoint bundles one cycle ahead (§19) |
 
@@ -28,15 +28,16 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 
 ## 14-Day Earth-Ready Plan (target ~2026-06-26)
 
-_Velocity target: ~4 releases / 2 days. Risks: Cesium V2.16 sizing, timer leak (flaky harness). Position: **C4** — on schedule. Watch item: D2–D5 chain._
+_Velocity target: ~4 releases / 2 days. Risks: Cesium V2.16 sizing, timer leak (flaky harness). Position: **C5** — on schedule. Watch item: timer-leak + uniformity slip escalation (2 slips each)._
 
 | Cycle | Work | Gate |
 | --- | --- | --- |
 | **R5** ✓ **DEPLOYED** (`1702eaa`, release `27413467093`) | VCM slice 2 + `berkeley-vcm-registry-summary` + E1 S3 resolver + ripples | CI green; HTTP smoke ✓ |
 | **Pre-R6 gates** ✓ **PASSED** | Countries S2 `58361b4` ✓; Design D1 `3cd4255` ✓; Connect `af62d6f` ✓ (zero skips) | All gates passed |
-| **R6** _(in integration)_ | Countries S1+S2, Design D1, Connect flips + E1 S4 — **uniformity fixes + timer-leak chore SLIPPED to R7** (branches never reached remote) | Release approval at integration; owner HTTP smoke; Fable gates |
-| **R7** _(bundle declared)_ | Design D2–D5 + resolver wiring (E1→Earth consumption) + Intelligence summary + Countries S3 + uniformity fixes + timer-leak chore | D1 deployed; D2 gate: D1 merged |
-| **R7 close** | Consolidated UI live; owner visual checklist re-enabled | Owner visual review: VCM card, biodiversity card, favicon, E1 UI, Countries cards |
+| **R6** ✓ **DEPLOYED** (`ca91443`, release `27415455211`) | Countries S1+S2 + Design D1 + Connect flips + E1 S4 — uniformity + timer-leak SLIPPED to R7 | CI green; HTTP smoke ✓ |
+| **Pre-R7 gates** | D2 `0381603` ✓; Connect S5 `4ec0d24` provisional ✓; timer-leak slip=2 (escalated); uniformity slip=2 (escalated) | In progress |
+| **R7** _(integration order declared)_ | **Order:** timer-leak → uniformity → Countries S3 → c2-0 tip → D2–D5 stack → release | D1 deployed ✓; D2 gate-passed ✓ |
+| **R7 close** | Consolidated UI live; owner visual checklist re-enabled | Owner consolidated visual review: VCM card, biodiversity card, favicon, E1 UI, Countries cards |
 | **Cesium V2.16 runtime** | Runtime implementation (separate approved phase) | New Fable spec required |
 | **Final checkpoint** | Full validation; production release | — |
 
@@ -70,20 +71,25 @@ _Velocity target: ~4 releases / 2 days. Risks: Cesium V2.16 sizing, timer leak (
 | Entities E1 slices 1–2 | merged to main | green | **✓ live** ⚠ owner visual pending |
 | VCM slice 2 + `berkeley-vcm-registry-summary` registration | merged to main | green | **✓ live** (R5 `1702eaa`) |
 | Entities E1 slice 3 (resolver contract) + ripples | merged to main | green | **✓ live** (R5 `1702eaa`) |
-| Countries S1 (`f82c595` — additive-only, RegionIds guard) | gate-passed | — | **pending** — R6 bundle |
-| Countries S2 (`58361b4` — referential validation; stale schematic fix; E1 gap closed) | **gate-passed** | — | **pending** — R6 bundle |
-| Design D1 (`3cd4255` — `earth/design-d1-globe-primary`; pill BOTTOM-LEFT; gauge TOP-RIGHT; dark-canvas) | **gate-passed** | — | **pending** — R6 bundle |
-| Connect flips + E1 S4 (`af62d6f` — all render tests ENABLED; zero skips) | **gate-passed** | — | **pending** — R6 bundle |
-| Uniformity fixes | **SLIPPED to R7** — branch never reached remote | — | R7 bundle |
-| Timer-leak chore | **SLIPPED to R7** — branch never reached remote | — | R7 bundle |
+| Countries S1 (`f82c595` — additive-only, RegionIds guard) | merged to main | green | **✓ live** (R6 `ca91443`) |
+| Countries S2 (`58361b4` — EarthRegionResolver; stale schematic fix; E1 gap closed) | merged to main | green | **✓ live** (R6 `ca91443`) — resolver unwired until Countries S3/S5 |
+| Design D1 (`3cd4255` — `earth/design-d1-globe-primary`; pill BOTTOM-LEFT; gauge TOP-RIGHT; dark-canvas) | merged to main | green | **✓ live** (R6 `ca91443`) |
+| Connect flips + E1 S4 (`af62d6f` — all render tests ENABLED; zero skips; E1 S4 minimal) | merged to main | green | **✓ live** (R6 `ca91443`) |
+| Design D2 (`0381603` — 6→3 workspaces, relocation-only; planetary-intelligence deferred to D4) | **gate-passed** | — | **pending** — R7 bundle |
+| Connect S5 (`4ec0d24` — write-path validation; E1 integrity gap closed at runtime) | **provisional pass** | — | **pending** — R7 merge |
+| Uniformity fixes | **SLIPPED to R7** — slip=2 (escalated; Fixes single-item run) | — | R7 bundle |
+| Timer-leak chore | **SLIPPED to R7** — slip=2 (escalated; Systems three-outcome closure) | — | R7 bundle (first in integration order) |
+| scientist-entity-resolution | in progress (Earth) | — | R7 bundle |
+| Countries S3 (VCM coord→country mapping; lat/long→ISO at ingest) | queued | — | R7 bundle |
+| Design D3 | in progress (Design; gate: D2) | — | R7 bundle |
 
-`origin/main` (xyz) is at `1702eaa` (Production Release `27413467093`; Fable-verified).
+`origin/main` (xyz) is at `ca91443` (Production Release `27415455211`; Fable-verified).
 
 ⚠ **State rule:** rows may only show "merged" or "deployed" when a git-verified SHA from a Fable gate confirmation or `git log origin/main` check is recorded here. Do not assert merged/deployed from session memory.
 
-⚠ **Owner visual checklist SUSPENDED** — R5 checklist items (VCM card, biodiversity card, favicon, E1 UI) fold into R7 post-design visual review. HTTP smoke + CI only until D5/R7. See 14-Day Plan.
+⚠ **Owner visual checklist SUSPENDED** — R5+R6 checklist items fold into R7 post-design visual review. HTTP smoke + CI only until D5/R7. See 14-Day Plan.
 
-Next checkpoint **R6**: Countries S1+S2 + Design D1 + Connect flips + E1 S4 — all gates passed; awaiting R6 release SHA (git-verified, from Earth HANDOFF).
+Next checkpoint **R7** — integration order: timer-leak → uniformity → Countries S3 → c2-0 tip → D2–D5 stack → release → owner consolidated visual review.
 
 ---
 
@@ -91,12 +97,12 @@ Next checkpoint **R6**: Countries S1+S2 + Design D1 + Connect flips + E1 S4 — 
 
 _Active — in flight or ready for immediate action._
 
-- **Earth agent:** Countries S1 `f82c595` + S2 `58361b4` gate-passed; D1 merge-gated ✓ (`3cd4255`); Connect `af62d6f` gate-gated ✓. R6 integration — awaiting release SHA from Earth HANDOFF.
-- **Systems agent:** CONNECTION-HARDENING DATA LAYER COMPLETE — all planned data verticals shipped and live. Idle post-R5; awaiting next owner directive.
-- **Connect agent:** `af62d6f` gate-passed — all 3 render tests ENABLED; zero skips remain. E1 S4 minimal registration included. `chore/connect-sheet-test-stall` resolved (zero skips confirm).
-- **Design agent:** D1 `3cd4255` gate-passed (`earth/design-d1-globe-primary`). §6 Design Language formally appended to [`architecture/earth-ia-consolidation-spec.md`](architecture/earth-ia-consolidation-spec.md). D2 queued (gate: D1 merged).
-- **Fixes agent:** `validate-earth-fast` `-TestPaths` (§18) in progress. Timer-leak chore in R7 bundle (slipped from R6 — branch never reached remote).
-- **Docs agent:** session-21 update ✓ — pre-R6 gates recorded; R6 final bundle (uniformity+timer-leak slip noted); §6 IA spec appended; R7 bundle declared; 14-day tracker at C4.
+- **Earth agent:** R6 deployed `ca91443`. scientist-entity-resolution in flight — gate flips (resolve-or-explain) + Intelligence regional summary. D-slice merge gate active for D3+.
+- **Systems agent:** idle post-R5. Timer-leak chore owner — escalated (slip=2); three-outcome closure pending for R7.
+- **Connect agent:** S5 `4ec0d24` provisional pass — write-path validation wired; E1 integrity gap closed at runtime. Awaiting R7 merge slot per integration order.
+- **Design agent:** D2 `0381603` gate-passed (6→3 workspaces; relocation-only; planetary-intelligence deferred to D4 as specced). D3 in flight.
+- **Fixes agent:** timer-leak escalated (slip=2, single-item run per escalation protocol). Uniformity escalated (slip=2). `validate-earth-fast` `-TestPaths` (§18) in progress.
+- **Docs agent:** session-22 update ✓ — R6 deployed `ca91443`; pre-R7 gates recorded; R7 integration order declared; slip tracking added; IA spec D2 updated.
 
 ---
 
@@ -104,15 +110,20 @@ _Active — in flight or ready for immediate action._
 
 _Queued — approved scope, not yet started._
 
-1. **R6 release:** all gates passed (Countries S1+S2, D1, Connect flips+E1 S4); Earth HANDOFF with git-verified SHA needed → owner HTTP smoke → Production Release R6.
-2. **R7 bundle (declared):** Design D2–D5 + resolver wiring (E1→Earth consumption) + Intelligence summary + Countries S3 + uniformity fixes + timer-leak chore → R7 release → owner visual review (suspended checklist items: VCM card, biodiversity card, favicon, E1 UI, Countries cards).
-3. **Design agent:** D2 (renderer panel merge, gate: D1 deployed) → D3 (card taxonomy) → D4 (detail workspace) → D5 (cleanup pass); Earth merge-gates each. D6 gated on owner review of consolidated view post-D5.
-4. **Earth agent:** Countries S3 (VCM coord→country mapping at ingest, lat/long→ISO) for R7.
-5. **Connect agent:** resolver wiring (E1 resolver → Earth consumption) for R7.
-6. **Fixes agent:** land `validate-earth-fast` `-TestPaths` (§18); timer-leak chore (R7 bundle).
-7. R7 close: owner visual checklist re-enabled → R5+R6 checklist items reviewed (VCM card, biodiversity card, favicon, E1 UI, Countries cards).
-7. Cesium V2.16 runtime (requires new Fable spec + owner directive; separate phase).
-8. Cleanup ledger (post-R5): delete `earth/vcm-slice2`, `earth/entities-e1-slice3`, `earth/countries-s1` (post-merge). Delete stale: `data-forest-refresh`, `data-forest-registration`, `test-deterministic-cursor`, `data-protected-areas-refresh`, `data-protected-areas-registration`, `earth/biodiversity-layer`, `feature/f1-0-*`. `c2-0` kept open. Delete abandoned: `earth/p17-7-scientist-context-bridge`, `earth/p18-0/1/2-*`.
+1. **R7 integration order (declared):**
+   1. timer-leak chore (Systems three-outcome closure; Fixes single-item run) — escalated, must close first
+   2. uniformity fixes (Fixes; escalated slip=2)
+   3. Countries S3 (Earth; VCM coord→country mapping, lat/long→ISO at ingest)
+   4. c2-0 tip (Connect S5 `4ec0d24` merge)
+   5. D2–D5 stack (Design; Earth merge-gates each — D3 in flight → D4 → D5)
+   6. Release → owner consolidated visual review
+2. **R7 owner consolidated visual review (suspended checklist items):** VCM card, biodiversity card, F1.0 favicon, E1 UI, Countries cards, D1 shell/pill/gauge, D2–D5 consolidated Data View.
+3. **Design agent:** D3 (card taxonomy + density rules) → D4 (detail workspace scaffold) → D5 (cleanup pass); Earth merge-gates each. D6 gated on owner review of consolidated view post-D5.
+4. **scientist-entity-resolution (Earth):** gate flips (resolve-or-explain); Intelligence regional summary. Feeds R7 bundle.
+5. **Fixes agent:** timer-leak single-item run (escalated); uniformity single-item run (escalated); land `validate-earth-fast` `-TestPaths` (§18).
+6. **Systems agent:** timer-leak three-outcome closure (slip=2 escalation path).
+7. **Cesium V2.16 runtime:** separate phase; requires new Fable spec + owner directive.
+8. **Cleanup ledger:** `earth/countries-s1`, `earth/countries-s2`, `earth/design-d1-globe-primary` safe to delete (post-verify). Delete `earth/vcm-slice2`, `earth/entities-e1-slice3`. Delete stale: `data-forest-refresh`, `data-forest-registration`, `test-deterministic-cursor`, `data-protected-areas-refresh`, `data-protected-areas-registration`, `earth/biodiversity-layer`, `feature/f1-0-*`. `c2-0` kept open. Delete abandoned: `earth/p17-7-*`, `earth/p18-0/1/2-*`.
 9. **Future-infra queue:** GFW near-real-time forest alerts (FIRMS pattern, new callable); remote-config budget + kill switch.
 
 ---
@@ -157,6 +168,10 @@ _Completed and on `main`._
 - **Entities E1 slice 3 (resolver contract) + ripples** — Connect + Earth agents. Connect owns resolver; Earth owns consumption. Ripple fixes included. **Deployed ✓** (Production Release `27413467093` @ `1702eaa`).
 - **Production Release `27413467093`** (`1702eaa`) — owner. VCM slice 2 + E1 S3 resolver + ripples live on `rand0m.ai`. `origin/main` = `1702eaa` (Fable-verified). HTTP smoke ✓; visual checklist items fold into R7 post-design review. ✓
 - **CONNECTION-HARDENING DATA LAYER — COMPLETE** 🔒 — all planned Earth-Systems + Environmental + VCM data verticals shipped and live: ocean live feed, ice/glaciers, air-quality, forest (GLAD/Hansen), protected-areas (WDPA), biodiversity (GBIF), VCM (Berkeley BCTP). Data layer frozen; next major work is Countries registry + UI consolidation (Design) + Entities domain.
+- **Countries S1 + S2** — Earth agent. S1: additive-only `earth_region_registry` expansion; `RegionIds` guard. S2: fail-explicit `EarthRegionResolver`; E1 referential gap closed; stale schematic copy fixed. Resolver on main — unwired until Countries S3/S5. **Deployed ✓** (Production Release `27415455211` @ `ca91443`).
+- **Design D1** (`3cd4255` — `earth/design-d1-globe-primary`) — Design agent. Earth+ workstation shell: tab rail restructure; pill BOTTOM-LEFT; filtered score gauge TOP-RIGHT; dark-canvas AppColors. §6 Design Language formally appended to spec. **Deployed ✓** (Production Release `27415455211` @ `ca91443`).
+- **Connect flips + E1 S4** (`af62d6f`) — Connect agent. Connect flips; E1 slice 4 minimal registration; all 3 render tests ENABLED — zero skips remain. `chore/connect-sheet-test-stall` closed. **Deployed ✓** (Production Release `27415455211` @ `ca91443`).
+- **Production Release `27415455211`** (`ca91443`) — owner. Countries registry (S1+S2), Design D1 shell, Connect flips + E1 S4 live on `rand0m.ai`. `origin/main` = `ca91443` (Fable-verified). HTTP smoke ✓; visual items fold into R7 consolidated review. ✓
 
 ---
 
@@ -195,6 +210,14 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **Design D1 gate-passed (session 21):** `3cd4255` (`earth/design-d1-globe-primary`) — presentation-only; pill BOTTOM-LEFT ✓; gauge TOP-RIGHT ✓; dark-canvas AppColors. Design's DOCS: callout resolved — §6 formally appended to [`architecture/earth-ia-consolidation-spec.md`](architecture/earth-ia-consolidation-spec.md).
 - **Connect render tests ENABLED (session 21):** `af62d6f` — all 3 render tests enabled; zero skips remain in Connect. `chore/connect-sheet-test-stall` resolved by this gate-pass.
 - **R7 bundle declared (session 21):** Design D2–D5 + resolver wiring + Intelligence summary + Countries S3 + uniformity fixes + timer-leak chore. R7 closes with owner consolidated visual review (suspended checklist items folded in: VCM card, biodiversity card, favicon, E1 UI).
+- **R6 DEPLOYED (session 22):** `ca91443`, Production Release `27415455211` — Countries S1+S2, Design D1, Connect flips + E1 S4. `origin/main` = `ca91443`.
+- **Countries S1+S2 deployed note (session 22):** `EarthRegionResolver` is on main but **unwired** — countries are in the registry; resolver is not yet called by Earth layers or @scient1st. Wire-up happens at Countries S3 (VCM coord→country) and S5 (cleanup). Do not assert country-level routing is active until S3/S5 land.
+- **Connect render-test stall CLOSED (session 22):** `af62d6f` confirmed zero skips — all 3 render tests enabled. `chore/connect-sheet-test-stall` pivot closed. Skip-marked-tests constraint from CODEX lifted for Connect.
+- **R7 integration order declared (session 22):** timer-leak → uniformity → Countries S3 → c2-0 tip → D2–D5 stack → release → owner consolidated visual review. Order is binding — do not resequence without owner directive.
+- **SLIP TRACKING added (session 22):** timer-leak and uniformity each at slip=2 (two consecutive cycles missed remote). Escalation path: Fixes runs single-item isolation; Systems runs three-outcome closure (pass / root-cause / descope). Slip counter must be recorded on in-flight rows in Deploy Checkpoint. A third slip triggers owner escalation.
+- **D2 planetary-intelligence split deferred (session 22):** planetary-intelligence surface will be implemented in D4 as originally specced — D2 is relocation-only (6→3 workspace consolidation). Do not attempt intelligence wiring in D2 or D3.
+- **D2 gate-passed (session 22):** `0381603` — 6→3 workspace relocation; presentation-only; no catalog/Cesium files. Earth gate confirmed.
+- **Connect S5 provisional pass (session 22):** `4ec0d24` — write-path validation wired; E1 integrity gap closed at runtime. Provisional pending full R7 integration — not a final gate.
 - **Authenticated/visual smoke — owner-performed (§17, binding):** authenticated smoke and visual verification of `rand0m.ai` is performed by the **owner personally**. Agents perform HTTP-level smoke only. Checkpoint HANDOFFs close with an owner visual checklist (not agent-executed). Checkpoints are not marked visually verified until the owner confirms. No browser automation, no Claude-in-Chrome for smoke. Codified in coordination standards §17.
 - **Protected-areas — Fable ruling (session 16):** `wdpa-protected-area-summary` catalog availability = metadata-source axis only. `earth_protected_area_integrity` stays `insufficientEvidence` — integrity is a separate axis and is not unified with availability. Do not conflate. License constraint: WDPA data is non-commercial/no-redistribution; enforce at the catalog layer.
 - **`connect-card-overflow-fix` (session 16):** 0.118px RenderFlex on `connect_source_card.dart:88` broke `validate-earth-fast` green on every run. Fixed and merged at `3ab6786`. This was a known recurring CI noise issue — record as resolved.
@@ -215,13 +238,19 @@ _Scope changes, strategy shifts, or deferred decisions._
 
 | Branch | Repo | Status | Action |
 | --- | --- | --- | --- |
-| `earth/countries-s1` | xyz (remote) | `f82c595` — gate-passed (additive-only; RegionIds guard) | merge to main (R6) |
-| `earth/countries-s2` | xyz (remote) | `58361b4` — **gate-passed**; fail-explicit EarthRegionResolver; stale schematic fix | merge to main (R6) |
-| `earth/design-d1-globe-primary` | xyz (remote) | `3cd4255` — **gate-passed**; presentation-only; pill BOTTOM-LEFT; gauge TOP-RIGHT; dark-canvas | merge after Earth gate (R6) |
-| `earth/connect-flips-e1s4` | xyz (remote) | `af62d6f` — **gate-passed**; all render tests ENABLED; zero skips; E1 S4 minimal | merge to main (R6) |
+| `earth/design-d2` (or equivalent) | xyz (remote) | `0381603` — **gate-passed** (6→3 workspaces, relocation-only; planetary-intelligence deferred D4) | R7 bundle (first in D-stack) |
+| `connect/s5-write-path` (or equivalent) | xyz (remote) | `4ec0d24` — **provisional pass**; write-path validation; E1 integrity gap closed | R7 merge per integration order |
+| `earth/scientist-entity-resolution` | xyz (remote) | in progress (Earth) — gate flips; Intelligence regional summary | R7 bundle |
+| `chore/timer-leak` | xyz (remote) | **slip=2 escalated** — Fixes single-item; Systems three-outcome closure | R7 bundle (first in integration order) |
+| `chore/uniformity` | xyz (remote) | **slip=2 escalated** — Fixes single-item run | R7 bundle |
+| `earth/countries-s3` | xyz (remote) | queued — VCM coord→country mapping; lat/long→ISO at ingest | R7 bundle |
+| `earth/countries-s1` | xyz (remote) | merged to main — **deployed ✓** (`ca91443`, R6) | safe to delete post-verify |
+| `earth/countries-s2` | xyz (remote) | merged to main — **deployed ✓** (`ca91443`, R6) | safe to delete post-verify |
+| `earth/design-d1-globe-primary` | xyz (remote) | merged to main — **deployed ✓** (`ca91443`, R6) | safe to delete post-verify |
+| `earth/connect-flips-e1s4` | xyz (remote) | merged to main — **deployed ✓** (`ca91443`, R6) | safe to delete |
 | `earth/vcm-slice2` | xyz (remote) | merged to main — **deployed ✓** (`1702eaa`) | safe to delete |
 | `earth/entities-e1-slice3` | xyz (remote) | merged to main — **deployed ✓** (`1702eaa`) | safe to delete |
-| `chore/connect-sheet-test-stall` | xyz (remote) | in progress (Fixes) — sheet render-test hang | merge after fix confirmed |
+| `chore/connect-sheet-test-stall` | xyz (remote) | **CLOSED** — zero skips confirmed by `af62d6f` | safe to delete |
 | `earth/biodiversity-layer` | xyz (remote) | `e9f9e47` — merged to main, **deployed ✓** (`4148495`) | safe to delete |
 | `feature/f1-0-*` (F1.0 favicon) | xyz (remote) | merged to main, **deployed ✓** (`4148495`) | safe to delete |
 | `earth/entities-e1-slice1` | xyz (remote) | `081c4f5` — merged to main, **deployed ✓** (`4148495`) | safe to delete |

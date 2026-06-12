@@ -5,7 +5,7 @@ Author: Design agent (spec); Docs agent (persisted per §15)
 Ratified by: Fable (session 19)
 Amendment: Design agent implements D1–D6 in `worktrees\rand0m-design`;
   Earth agent is integrator and merge gate for all D-slices.
-Status: D1 gate-passed `3cd4255` (branch `earth/design-d1-globe-primary`); §6 formally appended (Design DOCS callout); D2–D6 queued
+Status: D1 deployed `ca91443` (R6); D2 gate-passed `0381603` (R7); D3 in flight; §6 formally appended
 
 ---
 
@@ -101,10 +101,10 @@ spec before the violation can merge.
 
 | Slice | Description | Gate / dependency | Status |
 | --- | --- | --- | --- |
-| D1 | Earth+ workstation shell — tab rail restructure; pill BOTTOM-LEFT (ruling resolved); filtered score gauge TOP-RIGHT; dark-canvas AppColors | Pill ruling resolved ✓ | **gate-passed** `3cd4255` (`earth/design-d1-globe-primary`) |
-| D2 | Renderer readiness panel → merge into workstation shell; remove standalone widget | D1 merged | queued |
-| D3 | Layer grid card taxonomy + density rules applied; data section wrappers removed | D2 merged | queued |
-| D4 | Detail workspace scaffold; expanded card pattern; replaces overlay/modal | D3 merged | queued |
+| D1 | Earth+ workstation shell — tab rail restructure; pill BOTTOM-LEFT (ruling resolved); filtered score gauge TOP-RIGHT; dark-canvas AppColors | Pill ruling resolved ✓ | **deployed** `ca91443` (R6) |
+| D2 | 6→3 workspace consolidation (relocation-only); renderer readiness panel merged into shell; planetary-intelligence split deferred to D4 | D1 deployed ✓ | **gate-passed** `0381603` (R7) |
+| D3 | Layer grid card taxonomy + density rules applied; data section wrappers removed | D2 merged | **in flight** |
+| D4 | Detail workspace scaffold; expanded card pattern; replaces overlay/modal; planetary-intelligence surface (deferred from D2) | D3 merged | queued |
 | D5 | Cleanup pass — remove usage/session panels, stale empty-state cards, dead wrappers; confirm globe-inheritance constraint compliance | D4 merged | queued |
 | D6 | Deletion verdicts pass — final review of consolidated view; remove any remaining containers confirmed dead | **Gated on owner review of consolidated view after D5** | queued |
 
