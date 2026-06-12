@@ -1,11 +1,11 @@
 # Earth IA Consolidation — Spec (D1–D6)
 
-Date: 2026-06-12
+Date: 2026-06-12 (owner rulings appended session 20)
 Author: Design agent (spec); Docs agent (persisted per §15)
 Ratified by: Fable (session 19)
 Amendment: Design agent implements D1–D6 in `worktrees\rand0m-design`;
   Earth agent is integrator and merge gate for all D-slices.
-Status: D1 in flight; D2–D6 queued; D6 deletion verdicts gated on owner review
+Status: D1 in flight (pill ruling resolved; design-language section appended); D2–D6 queued
 
 ---
 
@@ -101,7 +101,7 @@ spec before the violation can merge.
 
 | Slice | Description | Gate / dependency | Status |
 | --- | --- | --- | --- |
-| D1 | Earth+ workstation shell — tab rail restructure; pill reposition | **BLOCKED** — pill corner ruling (owner decision: bottom-right per spec vs bottom-left per code/mockups) | in flight (pill position pending) |
+| D1 | Earth+ workstation shell — tab rail restructure; pill BOTTOM-LEFT (ruling resolved); filtered score gauge TOP-RIGHT; dark-canvas AppColors | Pill ruling resolved ✓ | in flight |
 | D2 | Renderer readiness panel → merge into workstation shell; remove standalone widget | D1 merged | queued |
 | D3 | Layer grid card taxonomy + density rules applied; data section wrappers removed | D2 merged | queued |
 | D4 | Detail workspace scaffold; expanded card pattern; replaces overlay/modal | D3 merged | queued |
@@ -114,15 +114,56 @@ consolidated view (§17: owner visual confirmation required before D6 can open).
 
 ---
 
-## Pending Owner Approval — Pill Corner Ruling (D1 Blocker)
+## Owner Rulings — Visual Direction (Session 20, Binding)
 
-Design spec recommends: **bottom-right** corner for the Earth+ pill.
-Current code and mockups show: **bottom-left**.
+### Earth+ Pill Corner — RESOLVED
 
-D1 cannot proceed with the pill reposition until the owner selects one.
-Earth agent (merge gate) will not merge D1 with the pill in an unresolved state.
+**Owner ruling (session 20): BOTTOM-LEFT — always.**
 
-Awaiting owner decision. Record in roadmap Pending Owner Approval queue.
+The Earth+ pill stays at the bottom-left. Design spec recommendation (bottom-right)
+was overridden by the owner. D1 pill reposition is unblocked; use bottom-left.
+Do not revisit this ruling without an explicit owner directive.
+
+### Filtered Score Gauge Position — RESOLVED
+
+**Owner ruling (session 20): TOP-RIGHT.**
+
+The filtered score gauge defaults to Earth (un-filtered state) and becomes
+filter-reactive when a layer filter is active. Position: top-right. This is
+the stable position — do not move it in D-slices without owner directive.
+
+### Design Language — Dark Canvas, AppColors Harmonized
+
+**Owner ruling (session 20):** visual direction = dark-canvas gauge/donut/chip
+density harmonized with AppColors (owner reference images provided to Design agent).
+
+Rules:
+- Gauge, donut, and chip components use `AppColors` palette exclusively. No
+  hardcoded hex values in D-slice widgets.
+- Dark-canvas treatment: container backgrounds use the dark-canvas tier of
+  `AppColors`, not white or light neutrals.
+- Density targets are set by the reference images provided to Design agent —
+  if in doubt, err toward higher information density, not whitespace.
+- Design agent appends a formal design-language section to this spec (see below)
+  capturing the specific token/component rules derived from the reference images.
+
+---
+
+## Design Language Section (Design Agent — Appended Session 20)
+
+_This section is appended by Design agent based on owner reference images.
+Token and component rules from reference images are authoritative for D1–D6._
+
+| Token / Component | Rule |
+| --- | --- |
+| Container backgrounds | Dark-canvas tier from `AppColors` |
+| Gauge component | Dark canvas; `AppColors` accent for filled arc; no hardcoded hex |
+| Donut component | `AppColors` palette; segment colors from defined data-tier palette |
+| Chip / badge | `AppColors` surface + on-surface tokens; no custom tint |
+| Pill (Earth+) | Position: bottom-left (owner ruling); `AppColors` primary |
+| Filtered score gauge | Position: top-right; filter-reactive state uses `AppColors` filter-active token |
+
+_Design agent to expand this table with specific token names as D1 implementation proceeds. If a component is not listed, use the nearest `AppColors` token and emit a `DOCS:` callout for this table to be updated._
 
 ---
 
