@@ -248,6 +248,39 @@ Rules:
 
 ---
 
+## 13. Branch Disjointness Check — Three-Dot Diff (Binding)
+
+All branch boundary and disjointness checks must use **three-dot diff**:
+
+```powershell
+git diff main...branch   # correct — shows only commits unique to branch
+```
+
+Never use two-dot diff for this purpose:
+
+```powershell
+git diff main..branch    # WRONG for disjointness — includes main drift
+```
+
+**Why:** two-dot diff (`main..branch`) shows every commit reachable from
+`branch` but not from `main`, including commits that are on `main` but were
+present before the branch diverged and have since drifted. This produces
+false-alarm conflicts and phantom overlap between disjoint branches. Three-dot
+diff (`main...branch`) computes the symmetric difference from the common
+ancestor, showing only what is genuinely unique to the branch.
+
+**When to use three-dot diff:**
+
+- Verifying that a vertical agent's branch does not touch Earth catalog files.
+- Confirming that two parallel branches do not overlap before running concurrent
+  validation.
+- Any disjointness check described in §4 path-ownership matrix.
+
+This rule was codified after a false-alarm conflict in session 12 caused by a
+two-dot diff picking up main drift on a Systems branch.
+
+---
+
 ## 6. Roadmap-vs-Git Ancestry Anomaly (Closed)
 
 **Anomaly (sessions 1–2):** EARTH-ROADMAP.md listed `earthview-ui-cleanup` and
