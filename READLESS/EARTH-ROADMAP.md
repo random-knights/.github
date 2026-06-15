@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-15 (session 36 — batched release f9697be; external-access gate; functions; beta path; CI economy)
+**Last updated:** 2026-06-15 (session 37 — beta-readiness audit; functions live; deploy confirmed; cleanup)
 
 ---
 
@@ -35,7 +35,7 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 
 _**End goal: animated planetary flow globe (nullschool-class) + governed AI assistant.**_
 
-_Position: **batched release `f9697be` live** (external-access gate + taco icon + FIRMS wildfire + donation + data-refresh frontend). `origin/main` = `f9697be` (Fable-verified). `earthWindGfsRefresh` function DEPLOYED; `earthAirQualityRefresh` + `earthWildfireRefresh` PENDING owner manual deploy (static fallback until then). External-access allowlist live (fail-closed RC). `earth/filter-ux-v2` in flight; Data View Scenario/Regional distillation `c1f5844` merging. 86 stale branches bulk-deleted. CI now metered (Team Org) — batched-release standard in effect._
+_Position: **`f9697be` live** (release `27571417246` ✓ success). All three scheduled refresh functions DEPLOYED (`earthWindGfsRefresh` + `earthAirQualityRefresh` + `earthWildfireRefresh` — live cached data). Owner allowlist device-pass DONE. Beta MVP = T5/T6 UX-feedback scope (trusted testers; BETA-DISCLAIMER route satisfies legal-safeguards for allowlisted beta). 87 merged branches + worktrees pruned; qa-kitt/.github = 2 branches (main + readless-readmore-reorg). CI path-filters (01–07) + concurrency confirmed. 20 unmerged xyz branches kept (low-priority triage). `chore/idle-spin-test` redundant/deletable._
 
 | Cycle | Release | Work | Gate |
 | --- | --- | --- | --- |
@@ -48,7 +48,7 @@ _Position: **batched release `f9697be` live** (external-access gate + taco icon 
 | **C12/R10** | **R10** ✓ **DEPLOYED** (`bde2a28`) | CesiumJS vendored + activated; P1–P4 chrome; density + countries + all data verticals convergence. ★ **NULLSCHOOL MILESTONE — Cesium V2.16 live.** | Vendor step ✓; CI green ✓; byte-hash delivery ✓ |
 | **C13** | — | Deploy-integrity fix `086226e` ✓; Outline Globe `37aea29` ✓ (Natural Earth coastline/admin-0; satellite terrain removed; wind dimming fixed); Wind Phase 1a `f56d1f2` ✓ (animated global wind; static CC0 representative climatology; gate-lift ratified) | Byte-hash delivery ✓ each; owner device pass ✓ (wind gate-lift) |
 | **C14** | — | Wind Phase 1b ✓ (live NOAA-GFS wind + rotation-trail fix); Firebase functions deploy = owner one-time manual | Phase 1b live on device ✓ (owner-verified) |
-| **C15** | **batched release** ✓ **DEPLOYED** (`f9697be`, run `2976856` — confirm final; was in_progress at audit) | External-access Remote Config gate `2976856`; taco icon `22d699d`; FIRMS wildfire snapshot + taco `769bc67`; donation-reconcile; data-refresh frontend `9f174a2` | Byte-hash delivery ✓; external-access allowlist live; owner gate device-pass PENDING |
+| **C15** | **batched release** ✓ **DEPLOYED** (`f9697be`, release `27571417246` ✓ success) | External-access RC gate; taco icon `22d699d`; FIRMS wildfire snapshot + taco `769bc67`; donation-reconcile; data-refresh frontend `9f174a2`; all three refresh functions deployed (earthWindGfsRefresh + earthAirQualityRefresh + earthWildfireRefresh); owner device-pass ✓ | Byte-hash delivery ✓; allowlist live; device-pass ✓ |
 
 **Visual smoke suspension:** R5+R6 checklist items suspended until R7 consolidated visual review. Post-R7: ≤5 items per release window, only when UI changed (§21b).
 
@@ -112,7 +112,7 @@ _Position: **batched release `f9697be` live** (external-access gate + taco icon 
 | **Wind Phase 1a** (`f56d1f2`) — animated global wind field on Cesium; renderer = `earth_flow_field.js` + `EarthWindGrid` contract + `syncFlowField`; static CC0 representative climatology; gate-lift ratified (owner device pass reviewed+live) | merged to main | green | **✓ live** |
 | **Wind Phase 1b** — live NOAA-GFS wind data + rotation-trail fix; Firebase function deployed via owner one-time manual `firebase deploy --only functions:<name>` (workflow 90 stays HOSTING-ONLY — no CI functions deploy); `origin/main` tip SHA TBD (Fable-verify) | merged to main | green | **✓ live** |
 
-`origin/main` (xyz) is at `f9697be` (batched release — Fable-verified). Run `2976856` — confirm final status (was in_progress at audit time).
+`origin/main` (xyz) is at `f9697be` (release `27571417246` ✓ success — Fable-verified).
 
 ⚠ **State rule:** rows may only show "merged" or "deployed" when a git-verified SHA from a Fable gate confirmation or `git log origin/main` check is recorded here. Do not assert merged/deployed from session memory.
 
@@ -134,16 +134,19 @@ _Position: **batched release `f9697be` live** (external-access gate + taco icon 
 
 ⚠ **Firebase functions deploy — manual owner action (binding):** workflow 90 is HOSTING-ONLY. Firebase callable + scheduled functions are deployed via manual `firebase deploy --only functions:<name>` by the owner (requires local git pull first — stale local checkout was root cause of prior missed deploy). Agents do NOT trigger function deploys via CI. Do not add functions to workflow 90.
 
-⚠ **Scheduled refresh functions status:**
-- `earthWindGfsRefresh` — ✓ DEPLOYED (live NOAA-GFS wind refresh)
-- `earthAirQualityRefresh` — ⏳ PENDING owner manual deploy (`firebase deploy --only functions:earthAirQualityRefresh,earthWildfireRefresh` after `git pull`). Layers read static fallback until deployed.
-- `earthWildfireRefresh` — ⏳ PENDING (same deploy command as above)
+✅ **Scheduled refresh functions — ALL DEPLOYED (session 37):**
+- `earthWindGfsRefresh` — ✓ live NOAA-GFS wind refresh
+- `earthAirQualityRefresh` — ✓ live (owner manual deploy confirmed)
+- `earthWildfireRefresh` — ✓ live (owner manual deploy confirmed)
+All three layers now serve live cached data.
 
-⚠ **External-access gate (session 36, live):** `external_access_allowlist` Remote Config key is live and fail-closed. Access = domain OR allowlist; verified accounts only; Access ≠ Owner. **Add-a-tester procedure:** (1) add email to `external_access_allowlist` array in RC; (2) owner performs mandatory gate device-pass: verify allowlisted account can access + non-allowlisted/domain account is blocked; (3) only after device-pass: tester all-clear. Do not skip the device-pass.
+⚠ **External-access gate (live):** `external_access_allowlist` RC key live + fail-closed. Domain OR allowlist; verified-only; Access ≠ Owner. Owner device-pass ✓ DONE (session 37). **Add-a-tester procedure:** (1) add email to `external_access_allowlist` in RC; (2) owner gate device-pass — allow allowlisted ✓ / block non-allowlisted ✓ / domain ✓; (3) tester all-clear. ⚠ **Security P0:** callables currently enforce domain-only — allowlisted non-domain testers will 403 on callable-backed features. Fix before any callable flows are included in beta scope. See [`READLESS/internal/architecture/test-page-beta-readiness.md`](internal/architecture/test-page-beta-readiness.md) Finding 2.
+
+⚠ **Beta MVP = T5/T6 scope (Fable ruling, session 37):** trusted allowlisted testers; Record + Create flows only (client-side; no callable-backed features until callable gate mismatch is fixed). BETA-DISCLAIMER route (tester-intro note + data-layer governance) satisfies legal-safeguards for this allowlisted beta scope. **The FULL per-element disclosure audit remains the HARD GATE for public (non-allowlisted) launch.** Full beta-readiness checklist: [`READLESS/internal/architecture/test-page-beta-readiness.md`](internal/architecture/test-page-beta-readiness.md).
 
 ⚠ **CI economy — Actions metered (Team Org, binding):** batched-release standard now in effect. Deploy every few passes, not per-pass. Workflow 90 byte-hash is the delivery gate. Path-filters (01–07) and concurrency confirmed. Minimize unnecessary workflow triggers.
 
-⚠ **Branch hygiene (binding, session 35+36):** delete branch + worktree post-merge. `git worktree remove --force` safe when only generated artifacts remain. Revert generated plugin-registrants before every commit. 86 merged branches were bulk-deleted (Fixes, session 36) — the sprawl caused the earlier EPERM outage. Standing rule: no merged branches linger on the remote.
+⚠ **Branch hygiene (binding, session 35–37):** delete branch + worktree post-merge. `git worktree remove --force` safe when only generated artifacts remain. Revert generated plugin-registrants before every commit. 87 merged branches bulk-deleted + worktrees pruned (session 37). Active worktrees: main + `rand0m-design-dv` only. 20 unmerged xyz branches kept (low-priority triage). `chore/idle-spin-test` is redundant/deletable. `rand0m-mainmerge` leftover directory needs manual `rm` (not a worktree). Standing rule: no merged branches linger.
 
 ⚠ **One-owner-per-Earth-surface (session 35, binding):** serialize chrome / renderer / earth_tab edits — no parallel agents editing Earth-page files. Violating this = merge conflict + lost work. Codified alongside POST-LAUNCH serialization.
 
@@ -159,11 +162,11 @@ Next track: **LAYERED-ANIMATION PROGRAM** — Phase 2 Ocean (OSCAR; reuses rende
 
 _Active — in flight or ready for immediate action._
 
-- **Earth agent:** `earth/filter-ux-v2` in flight (outside-click-close, remove All-Layers, random built-layer default one-at-a-time, disable inactive layers). Data View Scenario/Regional distillation `c1f5844` merging this cycle.
-- **Owner (immediate):** deploy pending refresh functions — `firebase deploy --only functions:earthAirQualityRefresh,earthWildfireRefresh` (after `git pull`). Then owner gate device-pass for external-access allowlist.
-- **Fixes agent:** 86 merged branches bulk-deleted ✓; `chore/idle-spin-test` unmerged test fix still queued; VCM test failures (3 pre-existing) still open.
-- **Test agent:** AUDIT-FIRST — audit Test/Inspect/Automate page; spec per Fable rulings; no build until ratified.
-- **Docs agent:** session 36 catch-up — deploy chain, functions state, external-access gate, CI economy, beta path, branch cleanup all recorded.
+- **Earth agent:** `earth/filter-ux-v2` in flight (outside-click-close, remove All-Layers, random built-layer default, disable inactive); Data View Scenario/Regional distillation `c1f5844` merging. Callable gate mismatch (P0 security) to fix before callables are in beta scope.
+- **Owner:** T7 provisioning — GitHub App or PAT scoped to `/123` for generated-test write path. `rm -rf rand0m-mainmerge` leftover directory on local dev-kitt.
+- **Fixes agent:** 87 branches bulk-deleted + worktrees pruned ✓; `chore/idle-spin-test` redundant/deletable; VCM test failures (3 pre-existing) still open.
+- **Test agent:** beta-readiness audit complete (persisted); callable gate mismatch P0 + repo-123 infra leak P0 must be fixed before callable features enter beta scope; T5/T6 client flows are beta-ready now.
+- **Docs agent:** session 37 — beta-readiness spec written; deploy confirmed; Fable beta-MVP ruling recorded; cleanup state updated.
 
 ---
 
@@ -173,11 +176,9 @@ _Queued — approved scope, not yet started. **Serialize Earth-page edits — on
 
 > **Channels note:** iteration deploys to prod (owner-locked); workflow 80 staging available; prod is the review surface. Workflow 90 = HOSTING-ONLY; Firebase functions via owner manual deploy.
 
-### Owner action (immediate)
-1. `git pull` on local checkout (was stale — root cause of missed function deploy).
-2. `firebase deploy --only functions:earthAirQualityRefresh,earthWildfireRefresh`
-3. Owner gate device-pass: allowlisted account CAN access; non-allowlisted/domain account IS blocked.
-4. Confirm batched release run `2976856` final status; record here.
+### Owner action (queued)
+- T7: provision GitHub App or PAT scoped to `/123` for generated-test write path (stored as Firebase Function env secret — never in client bundle).
+- `rm -rf rand0m-mainmerge` leftover directory on local dev-kitt (not a worktree; manual cleanup only).
 
 ### Earth — in flight (serialized, one lineage)
 - `earth/filter-ux-v2`: outside-click-close + remove All-Layers + random built-layer default one-at-a-time + disable inactive layers.
@@ -237,9 +238,10 @@ Fable architecture rulings (binding):
 1. Release lands + byte-hash delivery confirmed.
 2. Owner deploys refresh functions (`firebase deploy --only functions:...` after `git pull`).
 3. Owner gate device-pass (allowlist allow + block + domain — all three).
-4. Test agent: beta-readiness hardening (checklist — persist as READLESS note when it lands).
-5. Testers log in at **T5/T6 scope** (record / create — no submit yet).
-6. **FULL submit beta needs T7**: owner GitHub App / token for `/123` write path. Do not promise submit to testers before T7 is wired.
+4. Fix P0 security findings before adding callable flows to beta scope (callable gate mismatch + repo-123 infra leak — see [`READLESS/internal/architecture/test-page-beta-readiness.md`](../READLESS/internal/architecture/test-page-beta-readiness.md)).
+5. Testers log in at **T5/T6 scope** (record / create — client-only; no callable-backed features until P0s fixed).
+6. **FULL submit beta needs T7**: owner GitHub App / PAT for `/123` write path (Firebase Function env secret; never client-side). Do not promise submit to testers before T7 provisioned.
+7. **T8**: live test-result sync (Firebase real-time or polling callable) — separate phase after T7.
 
 ### Pre-launch gate
 - **LEGAL-SAFEGUARDS AUDIT** (HARD GATE — see state notes above): all disclosure UI labels before any public/non-owner exposure. Owner + Fable to open.
@@ -247,6 +249,8 @@ Fable architecture rulings (binding):
 - Codex T14 (held for launch).
 
 ### Future track (Fable spec + owner directive required)
+- OSCAR live ocean (Phase 2 layered-animation; reuses renderer).
+- Free-tier provider models (AI cost reduction; separate spec).
 - Country-outline boundaries + per-layer geo-animations (vector geometry pipeline).
 - GFW near-real-time forest alerts (FIRMS pattern, new callable).
 - Remote-config budget + kill switch.
@@ -315,7 +319,11 @@ _Completed and on `main`._
 - **Scroll-helper + CustomPainter globe shell** — Earth agent. Scroll-helper and CustomPainter globe in new shell. **Deployed ✓** (Production Release `27432166050` @ `e1e49c7`).
 - **Production Release `27432166050`** (`e1e49c7`) — owner. D7 nullschool shell + D8 chart vocabulary + chart-series + scroll-helper live on `rand0m.ai`. `origin/main` = `e1e49c7` (Fable-verified). HTTP smoke ✓. Owner review #2 verdict pending. ✓
 - **Cesium slice 2 — browser bridge** — Earth agent. JS bridge; `VENDOR.md` + env-injected token; `KNIGHTS_CESIUM_ION_API_KEY` reserved fallback. Slice 2 gate-passed (C9). ⚠ **CORRECTED (session 33):** `web/cesium/` contained `VENDOR.md` only — CesiumJS bundle was absent; runtime rendered CustomPainter fallback at all R9 and prior builds. True vendor step is a separate R10 gate. **On main** (merged). ✓
-- **Batched release `f9697be`** — owner. External-access Remote Config gate (`2976856`); taco icon (`22d699d`); FIRMS wildfire snapshot/taco (`769bc67`); donation-reconcile; data-refresh frontend (`9f174a2`). Run confirm pending (in_progress at audit). `origin/main` = `f9697be` (Fable-verified). **Deployed ✓** (run `2976856` — confirm final). ✓
+- **Batched release `f9697be`** (release `27571417246` ✓ success) — owner. External-access RC gate; taco icon (`22d699d`); FIRMS wildfire snapshot/taco (`769bc67`); donation-reconcile; data-refresh frontend (`9f174a2`). `origin/main` = `f9697be` (Fable-verified). **Deployed ✓**. ✓
+- **All three refresh functions DEPLOYED (session 37)** — owner manual deploy. `earthWindGfsRefresh` + `earthAirQualityRefresh` + `earthWildfireRefresh` all live. Layers serve live cached data. ✓
+- **Owner allowlist device-pass DONE (session 37)** — allowlisted ✓ / non-allowlisted blocked ✓ / domain ✓. Beta tester onboarding unblocked for T5/T6 client flows. ✓
+- **87 merged branches + worktrees pruned (session 37)** — Fixes agent. Active worktrees: main + `rand0m-design-dv` only. `rand0m-mainmerge` dir leftover — needs manual `rm` (not a worktree). ✓
+- **Test page beta-readiness audit (session 37)** — Test agent + Docs. Persisted at [`READLESS/internal/architecture/test-page-beta-readiness.md`](internal/architecture/test-page-beta-readiness.md). Beta MVP = T5/T6 client flows; two P0 security findings (callable gate mismatch + repo-123 infra leak) block callable features from beta. ✓
 - **External-access Remote Config gate** (`2976856`) — Earth agent. `external_access_allowlist` fail-closed allowlist live; domain OR allowlist; verified-only; Access ≠ Owner. Owner gate device-pass PENDING. **On main** (`f9697be`). ✓
 - **FIRMS wildfire snapshot + taco icon** (`769bc67`, `22d699d`) — Earth agent. FIRMS wildfire data snapshot integrated; taco icon shipped. **On main** (`f9697be`). ✓
 - **Data-refresh frontend** (`9f174a2`) — Earth agent. Frontend data-refresh wiring. **On main** (`f9697be`). ✓
@@ -400,6 +408,10 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **Task 13 reorg merged `6886c25` (session 33):** READLESS reorganized — active specs now under `READLESS/internal/architecture/`; archive under `READLESS/archive/architecture/`; coordination standards under `READLESS/internal/automation/`. All roadmap path references updated this session. Earth agent hit a phantom-empty-folder on the old `architecture/` path — root cause confirmed as stale links. Do not use bare `architecture/` paths in agent commands; always use `READLESS\internal\architecture\`.
 - **Fixes triage (session 33):** 3 pre-existing VCM test failures confirmed as pre-existing (not introduced by C11 work). Build-size report queued. Fixes agent to resolve or descope VCM failures independently.
 - **Review count updated to 8 (session 33):** combined R8+R9+R10 items = 8. Single FINAL review performed after R10 deploy. §21b exception: ≤8 items for combined multi-release review.
+- **Beta MVP = T5/T6 UX-feedback scope (session 37, Fable ruling):** trusted allowlisted testers; Record + Create client flows only. BETA-DISCLAIMER route (tester-intro note + data-layer governance) satisfies legal-safeguards for this allowlisted-only beta. The FULL per-element disclosure audit remains the HARD GATE for public (non-allowlisted) launch. Two P0 security findings must be fixed before callable features enter beta scope: (1) repo-123 handoff infra leak — internal `/123` path must not be visible to testers; (2) callable gate mismatch — callables enforce domain-only but RC gate allows allowlist; non-domain allowlisted testers hit callable 403s. See [`READLESS/internal/architecture/test-page-beta-readiness.md`](internal/architecture/test-page-beta-readiness.md).
+- **Refresh functions all DEPLOYED (session 37):** `earthAirQualityRefresh` + `earthWildfireRefresh` deployed by owner (after `git pull` — stale checkout was root cause of prior miss). All three layers now serve live cached data. Standing standard confirmed: `git pull` before every `firebase deploy --only functions:...`.
+- **CI path-filters (01–07) + concurrency confirmed (session 37):** path-filter and concurrency configuration verified for Actions metered plan. Batched-release standard binding.
+- **20 unmerged xyz branches kept (session 37):** low-priority triage; not blocking. `chore/idle-spin-test` is redundant/deletable. `rand0m-mainmerge` leftover directory needs manual `rm` (not a worktree — cannot be removed with git worktree commands).
 - **Batched release f9697be (session 36):** external-access gate + taco icon + FIRMS wildfire + donation-reconcile + data-refresh frontend all batched into one release. CI now metered (Team Org) — batched-release standard binding: deploy every few passes, not per-pass. Workflow 90 byte-hash is delivery gate; path-filters (01–07) + concurrency confirmed.
 - **filter-ux/random-default DID NOT LAND (session 36):** prior filter UX branch was re-run as `earth/filter-ux-v2` — outside-click-close, remove All-Layers, random built-layer default one-at-a-time, disable inactive layers. Record once merged; do not assert landed until gate-passed.
 - **Data View Scenario/Regional distillation c1f5844 (session 36):** built-but-unmerged; Earth merging this cycle. Record SHA in Done when confirmed on main.
@@ -471,15 +483,15 @@ _Scope changes, strategy shifts, or deferred decisions._
 
 _Rows reflect current remote branches confirmed by Fable gate or `git log origin/main`. All stale/never-existed rows removed (T10 audit, session 29). **Rule: Open Branches updates come from Fable gate confirmations only — same standard as Deploy Checkpoint rows.** Codified in coordination standards §2._
 
-_Rebuilt from `git branch -r` on qa-kitt/.github post-session-36 cleanup. xyz app repo branches NOT enumerable here — Earth agent runs `git branch -r` on xyz to confirm. 86 merged xyz branches bulk-deleted (Fixes, session 36)._
+_Rebuilt from `git branch -r` session 37. qa-kitt/.github: 2 branches only (main + readless-readmore-reorg) — all legacy research-era branches deleted in session 36+37 bulk cleanup. xyz app repo: 20 unmerged survivors (low-priority triage; Earth agent to enumerate with `git branch -r` on xyz)._
 
 | Branch | Repo | Status | Notes |
 | --- | --- | --- | --- |
-| `readless-readmore-reorg` | qa-kitt/.github | Active — Docs branch | All READLESS/READMORE updates; not merged to main yet |
-| `earth/filter-ux-v2` | xyz | In flight | Outside-click-close + remove All-Layers + random default + disable inactive; record when merged |
-| `chore/idle-spin-test` | xyz | Unmerged test fix | Merge when green; CI/hygiene only |
+| `readless-readmore-reorg` | qa-kitt/.github | Active — Docs branch | All READLESS/READMORE updates; not yet merged to main |
+| `earth/filter-ux-v2` | xyz | In flight | Outside-click-close + remove All-Layers + random default + disable inactive; record SHA when merged |
+| `chore/idle-spin-test` | xyz | Redundant/deletable | Test fix superseded; Fixes agent to confirm and delete |
 
-_Stale qa-kitt/.github research-era branches (do not delete without owner review):_ `feature/v3-*`, `feature/p21-*`, `feature/c3e*`, `feature/a1-*`, `feature/r1-*`, `feature/p23-*`, `earth/p14-*–p18-*`, `chore/w1-*`.
+_xyz 20 unmerged survivors: low-priority; not blocking. Earth agent to run `git branch -r` on xyz and triage. Do not delete without owner review._
 
 ---
 
@@ -495,9 +507,11 @@ _Items that were required before/at R10 FINAL release. R10 deployed (`bde2a28`).
 | Codex T13 reorg | ✓ **Merged** (`6886c25`) | READLESS reorganized: active specs → `internal/architecture/`; archive → `archive/architecture/`; standards → `internal/automation/`. All roadmap path refs updated (session 33). |
 | Codex T14 | ⏳ **Held for launch** | Launch-gated. Do not execute before public launch. |
 | **LEGAL-SAFEGUARDS AUDIT** | ⛔ **HARD GATE** | All on-screen disclosure labels (representative data, "not current conditions", etc.) must be audited + added before any public/non-owner exposure. Fable + owner open this gate. No disclosure UI implemented until then. |
-| **T7 — GitHub App / token for /123** | ⛔ **Required for full submit beta** | Owner GitHub App or token needed for generated-test write path to `/123`. T5/T6 (record/create) can proceed without T7; submit cannot. |
+| **T7 — GitHub App / token for /123** | ⛔ **Required for full submit beta** | Owner provisions GitHub App or PAT scoped to `/123`; stored as Firebase Function env secret (never client-side). T5/T6 client flows proceed without T7; submit/CI trigger cannot. |
+| **P0 security — callable gate mismatch** | ⛔ **Fix before callable features in beta** | Callables enforce domain-only; allowlisted non-domain testers hit 403. Fix: callables must honour RC allowlist. Until fixed: beta scope = T5/T6 client flows only. See beta-readiness doc. |
+| **P0 security — repo-123 infra leak** | ⛔ **Fix before callable features in beta** | `/123` internal path must not appear in client bundles, error messages, or network responses visible to testers. Audit + remediate via callable proxy. |
 | abc READMORE public-launch seeding | ⚠ **Pre-flip required** | History-review or fresh-seed required; CODEX.md line update queued. |
-| Owner gate device-pass (external-access) | ⚠ **Pending** | After refresh functions deployed: verify allowlisted can access + non-allowlisted blocked + domain pass. Required before any tester all-clear. |
+| Owner gate device-pass (external-access) | ✅ **DONE (session 37)** | Allowlisted ✓ / non-allowlisted blocked ✓ / domain ✓. |
 
 ---
 
