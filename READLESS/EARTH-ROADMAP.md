@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-14 (major reconciliation)
+**Last updated:** 2026-06-14 (session 34 — deploy-integrity fix + PASS A/B/C plan)
 
 ---
 
@@ -34,7 +34,7 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 
 _**End goal: animated planetary flow globe (nullschool-class) + governed AI assistant.**_
 
-_Position: **★ NULLSCHOOL MILESTONE SHIPPED.** Cesium V2.16 vendored, activated, and live on `rand0m.ai`. P1–P4 nullschool-mode chrome + R10 convergence all merged; `origin/main` = `bde2a28`. P4 production release dispatched (run ID pending). **POST-LAUNCH phase open:** flow-field rendering, globe-state persistence, country-outline boundaries, per-layer geo-animations. Iteration deploys directly to prod (owner-locked); workflow 80 staging available as review surface._
+_Position: **★ NULLSCHOOL MILESTONE SHIPPED.** Cesium V2.16 vendored, activated, and live on `rand0m.ai`. `origin/main` = `bde2a28`. **POST-LAUNCH phase:** PASS A (globe-lifecycle) → PASS B (globe-chrome) → PASS C (Data View redesign) — serialized, ONE lineage, no parallel Earth-page edits. Deploy-integrity fix shipped (verify-delivery now required). Iteration deploys to prod (owner-locked); workflow 80 staging available._
 
 | Cycle | Release | Work | Gate |
 | --- | --- | --- | --- |
@@ -103,6 +103,7 @@ _Position: **★ NULLSCHOOL MILESTONE SHIPPED.** Cesium V2.16 vendored, activate
 | ~~VENDOR BLOCKER~~ **RESOLVED** — CesiumJS vendored + placed in `web/cesium/`; pinned in `VENDOR.md` | merged to main | green | **✓ live** (R10 `bde2a28`) |
 | P1–P4 nullschool-mode chrome (black stage, rotate toggle, credits footer, minimal context) | merged to main | green | **✓ live** (R10 `bde2a28`) |
 | **Production Release R10** (`bde2a28`) — P4 release dispatched; run ID pending. CesiumJS V2.16 vendored + activated; nullschool chrome; density + countries + all data verticals. ★ NULLSCHOOL MILESTONE — **first true Cesium boot live on `rand0m.ai`**. | — | — | **✓ live** (run ID TBD) |
+| **Deploy-integrity fix** — workflow 90 "success" was serving stale assets; `Last-Modified` not advancing + markers absent. Fixed. Verify-delivery now required after every production release (session 34). | merged to main | green | **✓ live** |
 
 `origin/main` (xyz) is at `bde2a28` (R10; P4 production release dispatched; Fable-verified).
 
@@ -120,7 +121,11 @@ _Position: **★ NULLSCHOOL MILESTONE SHIPPED.** Cesium V2.16 vendored, activate
 
 ⚠ **Spec path (binding):** Earth spec files live at `READMORE/architecture/earth/` (not `READLESS/internal/architecture/`). Use `../READMORE/architecture/earth/<file>` in all roadmap links. Agent commands: `Only read C:\Projects\qa-kitt\.github\READLESS\EARTH-ROADMAP.md` — do not read READMORE spec files unless the agent command lists them explicitly.
 
-Next track: **POST-LAUNCH** — flow-field rendering, globe-state persistence, country-outline boundaries, per-layer geo-animations.
+⚠ **Verify-delivery standard (session 34, binding):** after every production release, confirm asset delivery: `Last-Modified` header must advance and version markers must be present in the live response. The workflow 90 "success" status alone is not sufficient — previous deploys succeeded but served stale assets. Agents must emit a `FIXES:` callout if delivery cannot be confirmed; do not close a release checkpoint without a delivery verification record.
+
+⚠ **POST-LAUNCH serialization (session 34, binding):** PASS A → PASS B → PASS C are strictly serialized on a single lineage. **No parallel edits to Earth-page files.** Divergence = merge conflict + lost work. Each PASS must be gate-passed and merged before the next opens.
+
+Next track: **POST-LAUNCH** — PASS A (globe-lifecycle) → PASS B (globe-chrome) → PASS C (Data View redesign).
 
 ---
 
@@ -128,41 +133,66 @@ Next track: **POST-LAUNCH** — flow-field rendering, globe-state persistence, c
 
 _Active — in flight or ready for immediate action._
 
-- **Earth agent:** POST-LAUNCH phase open. No active build work. Next: (a) confirm/wire wind+ocean flow-field rendering in Cesium context (see POST-LAUNCH track below).
-- **Fixes agent:** 3 pre-existing VCM test failures triaged (not C11-introduced); build-size report queued; post-R9 branch deletions pending; Codex T15 legacy graveyard sweep pending.
-- **Docs agent:** major reconciliation — R10 shipped; spec path fixed (`READMORE/architecture/earth/`); POST-LAUNCH track opened; channels noted.
+- **Earth agent:** PASS A — globe-lifecycle (IndexedStack + keep-alive + Cesium viewer persistence; painter = invisible failure-only fallback; fixes globe-disappear + painter-flash + state persistence). Gate-pass required before PASS B opens.
+- **Fixes agent:** 3 pre-existing VCM test failures (not C11-introduced) + build-size report queued + post-R9 branch deletions + Codex T15 sweep pending. Parallel to PASS A (CI/hygiene only, no Earth-page edits).
+- **Docs agent:** session 34 — deploy-integrity standard recorded; PASS A/B/C plan persisted; Data View redesign spec seeded in READMORE.
 
 ---
 
 ## Next
 
-_Queued — approved scope, not yet started._
+_Queued — approved scope, not yet started. **Serialized — one lineage. No parallel Earth-page edits.**_
 
-### POST-LAUNCH track
+> **Channels note:** iteration deploys to prod (owner-locked); workflow 80 staging available; prod is the review surface.
 
-> **Channels note:** iteration deploys go directly to prod (owner-locked); workflow 80 staging available as review surface. Prod is the primary review surface.
+### PASS A — Globe-lifecycle (Earth, active)
+Fix globe-disappear + painter-flash + Addendum C state persistence by wiring `IndexedStack` keep-alive and Cesium viewer reuse.
+- `IndexedStack` keep-alive: Earth tab is kept alive across Data↔Earth toggle (no teardown/rebuild).
+- Cesium viewer persistence: viewer instance reused across tab switches; lifecycle tied to keep-alive, not widget rebuild.
+- CustomPainter: remains as **invisible failure-only fallback** — NOT deleted. Only shown when Cesium fails to initialize. Do not remove it; owner may revisit.
+- Addendum C state persistence: globe state (camera position, active layer, etc.) survives app-nav per Addendum C spec.
+- Gate: CI green + owner visual confirm (globe persists across toggle; no painter-flash).
 
-1. **(a) Wind+ocean flow-field rendering (Earth, immediate):**
-   Confirm/wire flow-field rendering paths in the Cesium context. Cesium slice 3 (`b826abb`) wired flow fields against the CustomPainter fallback; verify the same paths activate against the live Cesium renderer. Earth agent to audit + wire; leave Fixes callout if CI issues arise.
+### PASS B — Globe-chrome redesign (Design, after PASS A gate-passed)
+Adjust the nullschool-mode chrome overlay layout. Strictly presentation-only; no Cesium/lifecycle files.
+- Context block → **bottom-right** (move from current position).
+- Top-right: score gauge + `<region> Health Score` label + `estimation` qualifier **only** — remove breakdown chips, Stable chips, Live-Asset-Research counts.
+- Remove broken rotate toggle entirely.
+- Keep drag-hint top-left (unchanged).
+- Gate: CI green + owner visual confirm (chrome layout matches spec above).
 
-2. **(b) Globe-state persistence (Earth):**
-   Renderer lifecycle management + app-shell `IndexedStack`/keep-alive wiring + Cesium viewer reuse across Data↔Earth toggle and app-nav. Prevents Cesium viewer teardown/rebuild on every tab switch.
+### PASS C — Data View redesign (Design, after PASS B gate-passed)
+Restructure the Data View surface for layperson↔researcher progressive disclosure.
 
-3. **(c) Country-outline boundaries + per-layer geo-animations (Earth, future):**
-   End-goal: visible country outlines on the Cesium globe + layer-specific animated geometry overlays. Requires vector geometry pipeline (not yet in scope). Fable spec required before implementation.
+**3-section structure:**
+1. **Overview** — planet-level summary; accessible to any user.
+2. **Layers** — per-layer cards with progressive disclosure.
+3. **Data Sources** — provenance, attribution, update cadence.
 
-4. **(d) Data View Chrome-extension polish (optional):**
-   Standalone polish session for the Data View surface. Owner-directed; not yet scheduled.
+**4-question content contract (owner-approved IA):**
+- _What is this?_ — plain-language description.
+- _Where does this come from?_ — source name + license.
+- _What does it mean?_ — interpretation for a layperson.
+- _How can I act on it?_ — actionable framing (or explicitly "informational only").
 
-### Fixes (parallel, ongoing)
-- VCM test failures: 3 pre-existing; triage recorded (not C11-introduced). Fixes agent to resolve or descope.
+**Removal list (hard):**
+- All dev telemetry (token counts, latency, internal flags).
+- All staged/placeholder data — real data only.
+- Any references to internal pipeline state visible to users.
+
+Spec persisted at: [`../READMORE/architecture/earth/data-view-redesign-spec.md`](../READMORE/architecture/earth/data-view-redesign-spec.md).
+Gate: CI green + owner visual confirm (3-section structure; no dev telemetry; content contract satisfied).
+
+### Fixes (parallel, ongoing — no Earth-page edits)
+- VCM test failures: 3 pre-existing; triage recorded. Fixes agent to resolve or descope.
 - Build-size report: generate + record findings.
 - Post-R9 branch deletions: `earth/cesium-runtime-base`, `earth/source-attribution-corrections`, `earth/design-d6-dead-surface`.
 - Codex T15: legacy graveyard sweep.
 
-### Future-infra queue
-- GFW near-real-time forest alerts (FIRMS pattern, new callable — do not implement without explicit owner directive).
-- Remote-config budget + kill switch (separate approved phase required).
+### Future track (requires Fable spec + owner directive before starting)
+- Country-outline boundaries + per-layer geo-animations (vector geometry pipeline required).
+- GFW near-real-time forest alerts (FIRMS pattern, new callable).
+- Remote-config budget + kill switch (separate approved phase).
 
 ---
 
@@ -302,6 +332,9 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **Task 13 reorg merged `6886c25` (session 33):** READLESS reorganized — active specs now under `READLESS/internal/architecture/`; archive under `READLESS/archive/architecture/`; coordination standards under `READLESS/internal/automation/`. All roadmap path references updated this session. Earth agent hit a phantom-empty-folder on the old `architecture/` path — root cause confirmed as stale links. Do not use bare `architecture/` paths in agent commands; always use `READLESS\internal\architecture\`.
 - **Fixes triage (session 33):** 3 pre-existing VCM test failures confirmed as pre-existing (not introduced by C11 work). Build-size report queued. Fixes agent to resolve or descope VCM failures independently.
 - **Review count updated to 8 (session 33):** combined R8+R9+R10 items = 8. Single FINAL review performed after R10 deploy. §21b exception: ≤8 items for combined multi-release review.
+- **Deploy-integrity bug FIXED (session 34):** workflow 90 "success" was returning while serving stale assets — `Last-Modified` did not advance and version markers were absent in the live response. Fix shipped. **Verify-delivery is now a required release step (binding):** after every production release, confirm `Last-Modified` advances + markers present. Agents emit `FIXES:` callout if delivery cannot be confirmed; checkpoint rows do not close without a delivery verification record.
+- **POST-LAUNCH serialization (session 34, binding):** PASS A → PASS B → PASS C are strictly serialized on a single lineage. No parallel Earth-page edits — divergence = merge conflict + lost work. Each PASS must be gate-passed and merged before the next opens. Painter-removal decision: kept as invisible failure-only fallback per Fable rec; owner may revisit later.
+- **PASS A/B/C scope ratified (session 34):** (A) Earth globe-lifecycle — IndexedStack keep-alive + Cesium viewer persistence + Addendum C state + painter = failure-only fallback; (B) Design globe-chrome — context block→bottom-right, top-right = score + label + estimation only, remove breakdown/chips/counts, remove broken rotate toggle, keep drag-hint; (C) Design Data View redesign — 3 sections (Overview/Layers/Data Sources), 4-question content contract, remove ALL dev telemetry + staged data, real data only. Data View redesign spec persisted at `READMORE/architecture/earth/data-view-redesign-spec.md`.
 - **Major reconciliation (this session):** R10 shipped — `bde2a28` live on `rand0m.ai`; ★ NULLSCHOOL MILESTONE confirmed. Spec path corrected everywhere: `READMORE/architecture/earth/` (was `READLESS/internal/architecture/`). POST-LAUNCH track opened: (a) flow-field rendering, (b) globe-state persistence, (c) country-outline boundaries, (d) Chrome-extension polish. Channels noted: iteration deploys to prod (owner-locked); workflow 80 staging available. Agent Roster stale notes cleared.
 - **R10 DEPLOYED (P4 release dispatched):** `bde2a28`. CesiumJS V2.16 vendored + activated; P1–P4 nullschool chrome; density + countries + all data verticals live. ★ NULLSCHOOL MILESTONE. `origin/main` = `bde2a28`.
 - **R9 DEPLOYED (session 32):** `d5ba6c1`, Production Release `27436691750`. D6 verdicts + attribution corrections + Cesium token infrastructure + flow-field wiring live. Note: R9 deployed CustomPainter globe — Cesium bundle absent (corrected session 33). `origin/main` = `d5ba6c1`. Visual review carried forward to R10 FINAL (8 items).
