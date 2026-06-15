@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-15 (session 38 — rebase-before-merge standard; P0 beta-hardening state; T7 secrets set; Data View blocked→v2)
+**Last updated:** 2026-06-15 (session 39 — Phase A/B/T7 live; prod b7f9849; AIEDS whitepaper published; anim bugs; cleanup)
 
 ---
 
@@ -14,7 +14,7 @@ _Post-R7 roster active. Systems and Connect retired (wind-down complete, scopes 
 
 | Agent | Identity | Worktree | Active branch | Focus |
 | --- | --- | --- | --- | --- |
-| Earth | `deve10per` / dev-kitt | main clone (exclusive) | live=`f9c1f33`; `4b82e9b` P0-hardening UNDEPLOYED; `earth/design-dataview-v2` queued | Earth features, layers, governance; catalog owner; integrator/deploy; absorbs Systems+Connect scopes |
+| Earth | `deve10per` / dev-kitt | main clone (exclusive) | prod=`b7f9849`; `earth/anim-bugfix` in flight | Earth features, layers, governance; catalog owner; integrator/deploy; absorbs Systems+Connect scopes |
 | Design | `deve10per` / dev-kitt | `worktrees\rand0m-design` | POST-LAUNCH; no active D-slice | IA v2 D7+D8; Cesium FE globe shell; presentation/layout only |
 | Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | CI/hygiene; no Earth-page edits | CI, harness, QA; token-economy triage (§21d) |
 | Docs | `eng1neer` / qa-kitt | qa-kitt clone | `readless-readmore-reorg` | READLESS, CODEX, EARTH-ROADMAP |
@@ -35,7 +35,7 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 
 _**End goal: animated planetary flow globe (nullschool-class) + governed AI assistant.**_
 
-_Position: **live = `f9c1f33`**. `origin/main` = `4b82e9b` (P0 beta-hardening — hides domain-only URL tools + tester intro — **UNDEPLOYED**; owner decision pending: ship-hidden-beta-now vs do-it-all-first). T7 GitHub App secrets SET (`GITHUB_APP_ID` / `INSTALLATION_ID` / `PRIVATE_KEY` — Path B). Data View distillation BLOCKED-needs-rebase → re-attempt as `earth/design-dataview-v2`. Fixes carries: orphan worktree dirs `rand0m-dvmerge` + `rand0m-mainmerge` (Windows handle locks, manual rm) + `idle-spin`._
+_Position: **prod = `b7f9849`**. Phase A (URL tools enabled), Phase B/T7 (githubProxy submit), Data-View-v2 distillation — all LIVE. AIEDS whitepaper published to READMORE. Open bugs: ocean animation + view-switch trails → `earth/anim-bugfix` in flight. Cleanup: 4 merged branches deletable + orphan worktree dirs `rand0m-dvmerge` + `rand0m-mainmerge` (Windows handle locks)._
 
 | Cycle | Release | Work | Gate |
 | --- | --- | --- | --- |
@@ -49,7 +49,7 @@ _Position: **live = `f9c1f33`**. `origin/main` = `4b82e9b` (P0 beta-hardening �
 | **C13** | — | Deploy-integrity fix `086226e` ✓; Outline Globe `37aea29` ✓ (Natural Earth coastline/admin-0; satellite terrain removed; wind dimming fixed); Wind Phase 1a `f56d1f2` ✓ (animated global wind; static CC0 representative climatology; gate-lift ratified) | Byte-hash delivery ✓ each; owner device pass ✓ (wind gate-lift) |
 | **C14** | — | Wind Phase 1b ✓ (live NOAA-GFS wind + rotation-trail fix); Firebase functions deploy = owner one-time manual | Phase 1b live on device ✓ (owner-verified) |
 | **C15** | **batched release** ✓ **DEPLOYED** (`f9697be`, release `27571417246` ✓ success) | External-access RC gate; taco icon `22d699d`; FIRMS wildfire snapshot + taco `769bc67`; donation-reconcile; data-refresh frontend `9f174a2`; all three refresh functions deployed (earthWindGfsRefresh + earthAirQualityRefresh + earthWildfireRefresh); owner device-pass ✓ | Byte-hash delivery ✓; allowlist live; device-pass ✓ |
-| **C16** | — | `f9c1f33` — filter-ux-v2 + other passes (live). `4b82e9b` — P0 beta-hardening (hides domain-only URL tools + tester intro); **UNDEPLOYED** pending owner decision | Owner decides: Option 1 ship-hidden-beta-now / Option 2 do-it-all-first |
+| **C16** | ✓ **DEPLOYED** (`b7f9849`) | P0 beta-hardening (URL tools hidden + tester intro); Phase A (URL tools enabled); Phase B/T7 (githubProxy callable + GitHub App submit to `/123`); Data-View-v2 distillation (rebase-before-merge applied) | All LIVE; byte-hash delivery ✓ |
 
 **Visual smoke suspension:** R5+R6 checklist items suspended until R7 consolidated visual review. Post-R7: ≤5 items per release window, only when UI changed (§21b).
 
@@ -113,9 +113,13 @@ _Position: **live = `f9c1f33`**. `origin/main` = `4b82e9b` (P0 beta-hardening �
 | **Wind Phase 1a** (`f56d1f2`) — animated global wind field on Cesium; renderer = `earth_flow_field.js` + `EarthWindGrid` contract + `syncFlowField`; static CC0 representative climatology; gate-lift ratified (owner device pass reviewed+live) | merged to main | green | **✓ live** |
 | **Wind Phase 1b** — live NOAA-GFS wind data + rotation-trail fix; Firebase function deployed via owner one-time manual `firebase deploy --only functions:<name>` (workflow 90 stays HOSTING-ONLY — no CI functions deploy) | merged to main | green | **✓ live** |
 | **`f9c1f33`** — filter-ux-v2 + subsequent passes; live prod tip | merged to main | green | **✓ live** |
-| **P0 beta-hardening (`4b82e9b`)** — hides domain-only URL tools; adds tester intro copy | merged to main | green | ⏳ **UNDEPLOYED** — owner Option 1/2 decision pending |
+| **Phase A — URL tools enabled** — domain-only URL tools surfaced for allowlisted testers; tester intro copy live | merged to main | green | **✓ live** (`b7f9849`) |
+| **Phase B/T7 — githubProxy submit** — GitHub App callable (`GITHUB_APP_ID`/`INSTALLATION_ID`/`PRIVATE_KEY` Path B); submit to `/123` wired end-to-end | merged to main | green | **✓ live** (`b7f9849`) |
+| **Data-View-v2 distillation** — rebase-before-merge applied (not auto-merge); Data View Scenario/Regional distillation live | merged to main | green | **✓ live** (`b7f9849`) |
+| ⚠ **Open bug: ocean animation** — animation issue on ocean layer; tracked → `earth/anim-bugfix` | — | — | bug open |
+| ⚠ **Open bug: view-switch trails** — ghost trails on Earth↔Data view switch; tracked → `earth/anim-bugfix` | — | — | bug open |
 
-`origin/main` (xyz) is at `4b82e9b` (P0 beta-hardening — Fable-verified; **UNDEPLOYED**). Live prod = `f9c1f33`.
+`origin/main` (xyz) is at `b7f9849` (C16 — Fable-verified; prod = `b7f9849`).
 
 ⚠ **State rule:** rows may only show "merged" or "deployed" when a git-verified SHA from a Fable gate confirmation or `git log origin/main` check is recorded here. Do not assert merged/deployed from session memory.
 
@@ -157,12 +161,9 @@ All three layers now serve live cached data.
 
 ⚠ **Worktree cleanup (session 35, binding):** `git worktree remove --force` is safe post-merge when only generated artifacts remain on a merged branch. Revert generated plugin-registrants before every commit — the EPERM mkdir outage root cause was worktree sprawl + committed generated registrants causing path conflicts. ⚠ **Windows handle locks:** orphan dirs `rand0m-dvmerge` + `rand0m-mainmerge` cannot be removed with git commands due to Windows handle locks — requires manual `rm` after confirming no process holds them. `idle-spin` worktree also orphaned.
 
-⚠ **T7 GitHub App secrets SET (session 38, Path B):** `GITHUB_APP_ID`, `INSTALLATION_ID`, and `PRIVATE_KEY` are provisioned. Firebase callable can now use the GitHub App to write to `/123`. Phase A (enable T7 callable + test submit flow) and Phase B (ship) have NOT yet run — secrets are set, integration is not yet wired or deployed.
+✅ **T7 GitHub App — LIVE (session 39):** `GITHUB_APP_ID`, `INSTALLATION_ID`, `PRIVATE_KEY` (Path B) wired into Firebase callable (`githubProxy`). Submit to `/123` end-to-end tested and deployed at `b7f9849`. Phase A (URL tools enabled) + Phase B (submit wired) both shipped.
 
-⚠ **URL-tools hide-vs-enable decision PENDING owner (session 38):** P0 beta-hardening (`4b82e9b`) hides domain-only URL tools + adds tester intro copy. UNDEPLOYED pending owner choice:
-- **Option 1 — ship-hidden-beta-now:** deploy `4b82e9b` as-is; testers get the hidden UI + intro; URL tools fully wired later (Phase A/B after T7 integration).
-- **Option 2 — do-it-all-first:** wire T7 callable + enable URL tools, then deploy as a single complete pass.
-Phase A (enable + T7 integration) and Phase B (ship) have NOT run. No agent proceeds on Phase A/B without owner ruling.
+✅ **URL-tools decision resolved (session 39):** owner chose Option 2 (do-it-all-first). Phase A (enable URL tools) + Phase B/T7 (githubProxy submit) shipped together at `b7f9849`.
 
 ⚠ **LEGAL-SAFEGUARDS AUDIT — pre-launch hard gate:** all on-screen disclosure labels (e.g. representative-wind "not current conditions") are DEFERRED to a pre-launch LEGAL-SAFEGUARDS AUDIT. This audit is a **HARD GATE** before any public/non-owner exposure. Governance-catalog obligations remain TRUE at the data layer; only UI disclosure surfacing is deferred (owner-gated dev site). No agent proceeds with disclosure UI implementation until this gate is opened by Fable + owner.
 
@@ -174,11 +175,11 @@ Next track: **LAYERED-ANIMATION PROGRAM** — Phase 2 Ocean (OSCAR; reuses rende
 
 _Active — in flight or ready for immediate action._
 
-- **Owner (decision required):** URL-tools hide-vs-enable — Option 1 (ship-hidden-beta-now `4b82e9b`) vs Option 2 (do-it-all-first + Phase A/B). No agent proceeds until ruling.
-- **Earth agent:** `earth/design-dataview-v2` — Data View distillation re-attempt via rebase (not auto-merge); apply REBASE-BEFORE-MERGE standard.
-- **Fixes agent:** orphan worktree dirs `rand0m-dvmerge` + `rand0m-mainmerge` + `idle-spin` — Windows handle locks require manual `rm`; track and confirm once clear. VCM test failures (3 pre-existing) still open.
-- **Test agent:** P0 security findings (callable gate mismatch + repo-123 infra leak) to fix before callable features in beta scope; T7 secrets are SET — Phase A integration not yet run.
-- **Docs agent:** session 38 — rebase-before-merge standard; state + T7 secrets; Data View block; owner decision recorded.
+- **Earth agent:** `earth/anim-bugfix` — fix ocean animation regression + view-switch ghost trails (open bugs from C16 deploy `b7f9849`).
+- **Owner (manual action):** `rm -rf rand0m-dvmerge rand0m-mainmerge` — orphan worktree dirs with Windows handle locks; confirm no process holds them before removing.
+- **Fixes agent:** delete 4 merged branches (`test-external-tools`, `test-t7-submit`, `design-dataview-v2`, `design-dataview-scenario`); confirm `chore/idle-spin-test` deletable; VCM test failures (3 pre-existing) still open.
+- **Test agent:** P0 security findings (callable gate mismatch + repo-123 infra leak) — fix before callable features enter beta scope.
+- **Docs agent:** session 39 complete — Phase A/B/T7 + Data-View-v2 + AIEDS whitepaper recorded and committed.
 
 ---
 
@@ -188,18 +189,9 @@ _Queued — approved scope, not yet started. **Serialize Earth-page edits — on
 
 > **Channels note:** iteration deploys to prod (owner-locked); workflow 80 staging available; prod is the review surface. Workflow 90 = HOSTING-ONLY; Firebase functions via owner manual deploy.
 
-### Owner decision (BLOCKING)
-**URL-tools hide-vs-enable:** choose one before Earth deploys `4b82e9b`:
-- **Option 1 — ship-hidden-beta-now:** deploy `4b82e9b` as-is (URL tools hidden, tester intro added). Testers get clean UX. Phase A (T7 wire + enable tools) runs later as a follow-on.
-- **Option 2 — do-it-all-first:** hold `4b82e9b`; run Phase A (wire T7 callable + enable URL tools) first; deploy as one complete pass.
-
-### Earth — in flight (rebase-before-merge; one lineage)
-- `earth/design-dataview-v2`: Data View distillation re-attempt. **Must rebase onto current `origin/main` tip** (not auto-merge — prior `c1f5844` blocked by Earth-page divergence). Hand-resolve + test after rebase. Gate: CI green + owner visual confirm.
-- After owner URL-tools decision: Phase A (T7 callable integration + enable URL tools) → Phase B (deploy with full T7 submit flow).
-
 ### Earth — in flight (serialized, one lineage)
-- `earth/filter-ux-v2`: outside-click-close + remove All-Layers + random built-layer default one-at-a-time + disable inactive layers.
-- Data View Scenario/Regional distillation `c1f5844`: merge this cycle.
+- `earth/anim-bugfix`: fix ocean animation regression + view-switch ghost trails. Gate: CI green + owner device pass.
+- `earth/filter-ux-v2`: outside-click-close + remove All-Layers + random built-layer default one-at-a-time + disable inactive layers (in flight — record SHA when merged).
 - Gate each before next opens.
 
 ### LAYERED-ANIMATION PROGRAM (Earth — after filter-ux-v2 + distillation merged)
@@ -279,6 +271,10 @@ Fable architecture rulings (binding):
 
 _Completed and on `main`._
 
+- **Phase A — URL tools enabled** (`b7f9849`) — domain-only URL tools surfaced for allowlisted testers; tester intro copy live. ✓
+- **Phase B/T7 — githubProxy submit** (`b7f9849`) — GitHub App callable (`GITHUB_APP_ID`/`INSTALLATION_ID`/`PRIVATE_KEY` Path B); submit to `/123` wired end-to-end. ✓
+- **Data-View-v2 distillation** (`b7f9849`) — rebase-before-merge applied (REBASE-BEFORE-MERGE standard; not auto-merge); Data View Scenario/Regional distillation live. ✓
+- **AIEDS whitepaper + adoption guide published** — open standard published to `READMORE/architecture/aieds/` (CC BY 4.0; sanitized; no internal infra/identities). Session 39. ✓
 - **Dashboard + AIEDS + Docs** — shipped to production previously. ✓
 - **Earth UI Cleanup** (`earthview-ui-cleanup`) — merged to main. Earth View score/summary to dashboard aesthetic; Earth+ squeeze fix; Oracles animated gif + custom font. ✓
 - **Live Connections Batch** (`live-connections-batch`) — merged to main. Air-quality + ocean governed live Data View cards; live-connection data vertical. Ocean-currents catalog status remains **research** (card-only surface; "wired to live loader" refers to the card wiring, not a live data feed — intentional, consistent with air-quality health-neutral pivot). ✓
@@ -441,6 +437,11 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **External-access gate ratified (session 36):** fail-closed `external_access_allowlist` Remote Config live. Domain OR allowlist; verified accounts only; Access ≠ Owner. **Mandatory add-a-tester procedure:** add email to RC → owner gate device-pass (allow + block + domain all three) → tester all-clear. No tester onboarded without device-pass.
 - **Beta path declared (session 36):** steady-state = release → owner function deploy → owner device-pass → Test beta-readiness hardening → testers at T5/T6 (record/create). Full submit beta requires T7 (owner GitHub App/token for `/123` write path) — do not promise submit before T7 wired. Test agent to persist beta-readiness checklist as READLESS note.
 - **CI economy (session 36, binding):** GitHub Actions now metered on Team Org plan. Batched-release standard: deploy every few passes. Minimize workflow triggers. Workflow 90 byte-hash is the sole delivery gate — no supplementary checks.
+- **Phase A/B/T7 shipped (session 39):** owner chose Option 2 (do-it-all-first). Phase A (URL tools enabled) + Phase B/T7 (githubProxy callable + GitHub App submit to `/123`) shipped together at `b7f9849`. T7 secrets (`GITHUB_APP_ID`/`INSTALLATION_ID`/`PRIVATE_KEY` Path B) wired into Firebase callable. URL-tools decision closed.
+- **Data-View-v2 shipped via rebase (session 39):** REBASE-BEFORE-MERGE standard applied. Data View distillation re-attempted as `earth/design-dataview-v2` with proper rebase onto `origin/main` tip — not auto-merge. Live at `b7f9849`.
+- **AIEDS open standard published (session 39):** AIEDS v1 whitepaper + adoption guide published to `READMORE/architecture/aieds/` (CC BY 4.0). Sanitized of internal infra/identities. First public-facing spec from qa-kitt.
+- **Open animation bugs → earth/anim-bugfix (session 39):** C16 deploy revealed ocean animation regression + view-switch ghost trails. Tracked as open bugs → `earth/anim-bugfix` in flight.
+- **4 merged branches deletable (session 39):** `test-external-tools`, `test-t7-submit`, `design-dataview-v2`, `design-dataview-scenario` — all merged; safe to delete. Fixes agent to execute.
 - **86 merged branches bulk-deleted (session 36):** Fixes agent purged 86 merged remote branches. Sprawl was root cause of EPERM mkdir outage. Binding hygiene: delete branch + worktree immediately post-merge; `--force` safe when only generated artifacts remain; revert generated plugin-registrants pre-commit.
 - **Deploy-integrity standard CORRECTED (session 35):** session 34 recorded "Last-Modified + markers" as the verify-delivery standard. **WRONG — corrected here.** Root cause of the stale-deploy bug: `release-sha.txt` side-channel check proved file-freshness not recompile; `flutter build web` reused stale state. Fix at `086226e`: `flutter clean` + per-run-unique artifact + live `main.dart.js` **byte-hash** assertion. The workflow now self-fails on a stale bundle. `Last-Modified` is unreliable; `Global Health Score` UI-string marker is empirically absent even in valid builds. **Binding standard: byte-hash is the source of truth.** A passing workflow 90 with byte-hash is sufficient.
 - **Outline Globe shipped `37aea29`:** Natural Earth public-domain coastline + admin-0 base geometry on Cesium; satellite terrain removed; wind-layer dimming fixed. No license encumbrance (public domain).
@@ -505,15 +506,22 @@ _Scope changes, strategy shifts, or deferred decisions._
 
 _Rows reflect current remote branches confirmed by Fable gate or `git log origin/main`. All stale/never-existed rows removed (T10 audit, session 29). **Rule: Open Branches updates come from Fable gate confirmations only — same standard as Deploy Checkpoint rows.** Codified in coordination standards §2._
 
-_Rebuilt from `git branch -r` session 37. qa-kitt/.github: 2 branches only (main + readless-readmore-reorg) — all legacy research-era branches deleted in session 36+37 bulk cleanup. xyz app repo: 20 unmerged survivors (low-priority triage; Earth agent to enumerate with `git branch -r` on xyz)._
+_Rebuilt session 39 from git + session state. qa-kitt/.github: 2 branches (main + readless-readmore-reorg). xyz app repo: survivors post-C16; 4 branches confirmed deletable (merged at b7f9849)._
 
 | Branch | Repo | Status | Notes |
 | --- | --- | --- | --- |
 | `readless-readmore-reorg` | qa-kitt/.github | Active — Docs branch | All READLESS/READMORE updates; not yet merged to main |
+| `earth/anim-bugfix` | xyz | In flight | Ocean animation regression + view-switch ghost trails from C16; open bugs |
 | `earth/filter-ux-v2` | xyz | In flight | Outside-click-close + remove All-Layers + random default + disable inactive; record SHA when merged |
+| `test-external-tools` | xyz | ✅ Merged — deletable | Merged at `b7f9849`; Fixes agent to delete |
+| `test-t7-submit` | xyz | ✅ Merged — deletable | Merged at `b7f9849`; Fixes agent to delete |
+| `design-dataview-v2` | xyz | ✅ Merged — deletable | Merged at `b7f9849`; Fixes agent to delete |
+| `design-dataview-scenario` | xyz | ✅ Merged (superseded) — deletable | Superseded by design-dataview-v2; Fixes agent to delete |
 | `chore/idle-spin-test` | xyz | Redundant/deletable | Test fix superseded; Fixes agent to confirm and delete |
 
-_xyz 20 unmerged survivors: low-priority; not blocking. Earth agent to run `git branch -r` on xyz and triage. Do not delete without owner review._
+⚠ **Orphan worktree dirs (Windows handle locks):** `rand0m-dvmerge` + `rand0m-mainmerge` — cannot remove via git; manual `rm -rf` required by owner after confirming no process holds them.
+
+_xyz remaining unmerged branches: low-priority; not blocking. Earth agent to enumerate with `git branch -r` on xyz and triage. Do not delete without owner review._
 
 ---
 
@@ -529,7 +537,7 @@ _Items that were required before/at R10 FINAL release. R10 deployed (`bde2a28`).
 | Codex T13 reorg | ✓ **Merged** (`6886c25`) | READLESS reorganized: active specs → `internal/architecture/`; archive → `archive/architecture/`; standards → `internal/automation/`. All roadmap path refs updated (session 33). |
 | Codex T14 | ⏳ **Held for launch** | Launch-gated. Do not execute before public launch. |
 | **LEGAL-SAFEGUARDS AUDIT** | ⛔ **HARD GATE** | All on-screen disclosure labels (representative data, "not current conditions", etc.) must be audited + added before any public/non-owner exposure. Fable + owner open this gate. No disclosure UI implemented until then. |
-| **T7 — GitHub App / token for /123** | ⛔ **Required for full submit beta** | Owner provisions GitHub App or PAT scoped to `/123`; stored as Firebase Function env secret (never client-side). T5/T6 client flows proceed without T7; submit/CI trigger cannot. |
+| **T7 — GitHub App / token for /123** | ✅ **LIVE (`b7f9849`)** | `GITHUB_APP_ID`/`INSTALLATION_ID`/`PRIVATE_KEY` Path B wired into `githubProxy` Firebase callable. Submit to `/123` end-to-end deployed. |
 | **P0 security — callable gate mismatch** | ⛔ **Fix before callable features in beta** | Callables enforce domain-only; allowlisted non-domain testers hit 403. Fix: callables must honour RC allowlist. Until fixed: beta scope = T5/T6 client flows only. See beta-readiness doc. |
 | **P0 security — repo-123 infra leak** | ⛔ **Fix before callable features in beta** | `/123` internal path must not appear in client bundles, error messages, or network responses visible to testers. Audit + remediate via callable proxy. |
 | abc READMORE public-launch seeding | ⚠ **Pre-flip required** | History-review or fresh-seed required; CODEX.md line update queued. |
