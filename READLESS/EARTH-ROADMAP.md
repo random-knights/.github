@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-14 (session 34 — deploy-integrity fix + PASS A/B/C plan)
+**Last updated:** 2026-06-15 (session 35 — major catch-up: outline globe + wind phases + new standards)
 
 ---
 
@@ -16,9 +16,10 @@ _Post-R7 roster active. Systems and Connect retired (wind-down complete, scopes 
 | --- | --- | --- | --- | --- |
 | Earth | `deve10per` / dev-kitt | main clone (exclusive) | **R10 deployed** `bde2a28`; POST-LAUNCH phase open | Earth features, layers, governance; catalog owner; integrator/deploy; absorbs Systems+Connect scopes |
 | Design | `deve10per` / dev-kitt | `worktrees\rand0m-design` | POST-LAUNCH; no active D-slice | IA v2 D7+D8; Cesium FE globe shell; presentation/layout only |
-| Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | `-TestPaths` in progress; post-R7 harness | CI, harness, QA; token-economy triage (§21d) |
-| Docs | `eng1neer` / qa-kitt | qa-kitt clone | `main` | READLESS, CODEX, EARTH-ROADMAP |
-| Fable | — | read-only | — | PM/gates; spec ratification; checkpoint bundles (§19); Cesium Ion token ruling pending |
+| Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | CI/hygiene; no Earth-page edits | CI, harness, QA; token-economy triage (§21d) |
+| Docs | `eng1neer` / qa-kitt | qa-kitt clone | `readless-readmore-reorg` | READLESS, CODEX, EARTH-ROADMAP |
+| Fable | — | read-only | — | PM/gates; spec ratification; checkpoint bundles (§19) |
+| **Test** | `deve10per` / dev-kitt | `worktrees\rand0m-test` | AUDIT-FIRST; no build until spec ratified | Test/Inspect/Automate page — `lib/pages/agents/secret*`, `services/utility/test_*`; file-disjoint from Earth |
 | **CODEX Grunt Pool** | OpenAI (per CODEX.md) | isolated task scope | task-by-task (Codex T3 fixtures banked) | Low-risk mechanical tasks only: named files + acceptance command + do-not-touch list. **Never:** guards, gates, catalog files, governance logic. |
 
 ~~Systems~~ — **RETIRED** (R7). Timer-leak + data-vertical scope absorbed by Earth. `worktrees\rand0m-systems` torn down.
@@ -34,7 +35,7 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 
 _**End goal: animated planetary flow globe (nullschool-class) + governed AI assistant.**_
 
-_Position: **★ NULLSCHOOL MILESTONE SHIPPED.** Cesium V2.16 vendored, activated, and live on `rand0m.ai`. `origin/main` = `bde2a28`. **POST-LAUNCH phase:** PASS A (globe-lifecycle) → PASS B (globe-chrome) → PASS C (Data View redesign) — serialized, ONE lineage, no parallel Earth-page edits. Deploy-integrity fix shipped (verify-delivery now required). Iteration deploys to prod (owner-locked); workflow 80 staging available._
+_Position: **★ OUTLINE GLOBE + WIND PHASE 1b LIVE.** Cesium V2.16 + Natural Earth coastlines/admin-0 + animated NOAA-GFS live wind + rotation-trail fix all on `rand0m.ai`. `origin/main` = Phase 1b tip (SHA TBD — verify with Fable before recording). **LAYERED-ANIMATION PROGRAM in flight:** Phase 2 Ocean next (OSCAR; reuses renderer). Disclosure UI deferred to pre-launch legal-safeguards audit. Iteration deploys to prod (owner-locked); workflow 90 = HOSTING-ONLY (Firebase functions via manual owner deploy)._
 
 | Cycle | Release | Work | Gate |
 | --- | --- | --- | --- |
@@ -44,7 +45,9 @@ _Position: **★ NULLSCHOOL MILESTONE SHIPPED.** Cesium V2.16 vendored, activate
 | **C10** | — | Cesium slice 3 `b826abb` ✓ (flow-field wiring); D6 `8c6857d` ✓; attribution corrections `79d9295` ✓; density slipped (salvage in C11) | C9 complete ✓ |
 | **C10/R9** | **R9** ✓ **DEPLOYED** (`d5ba6c1`, release `27436691750`) | D6 + attribution + Cesium token infrastructure + flow-field wiring deployed. Note: CesiumJS bundle absent until R10; R9 rendered CustomPainter fallback. Attribution + D6 verdicts live. | All C10 gate-passes ✓; CI green ✓; owner deployed ✓ |
 | **C11** | — | Density `c7c68b9` ✓; remediation `9abbc16` ✓ (3 source registrations + suppression-guard); motion cues `e38cb9e` ✓; globe-context `c3c6d81` ✓; CesiumJS vendor step + P1–P4 nullschool-mode chrome (black stage, rotate toggle, credits footer, minimal context) | R9 deployed ✓ |
-| **C12/R10** | **R10** ✓ **DEPLOYED** (`bde2a28`, release pending run ID) | CesiumJS vendored + activated; P1–P4 chrome; density + countries + all data verticals convergence. ★ **NULLSCHOOL MILESTONE — Cesium V2.16 live.** Single owner FINAL review (8 items) pending. | Vendor step ✓; CI green ✓; P4 release dispatched ✓ |
+| **C12/R10** | **R10** ✓ **DEPLOYED** (`bde2a28`) | CesiumJS vendored + activated; P1–P4 chrome; density + countries + all data verticals convergence. ★ **NULLSCHOOL MILESTONE — Cesium V2.16 live.** | Vendor step ✓; CI green ✓; byte-hash delivery ✓ |
+| **C13** | — | Deploy-integrity fix `086226e` ✓; Outline Globe `37aea29` ✓ (Natural Earth coastline/admin-0; satellite terrain removed; wind dimming fixed); Wind Phase 1a `f56d1f2` ✓ (animated global wind; static CC0 representative climatology; gate-lift ratified) | Byte-hash delivery ✓ each; owner device pass ✓ (wind gate-lift) |
+| **C14** | — | Wind Phase 1b ✓ (live NOAA-GFS wind + rotation-trail fix; `origin/main` tip — SHA TBD Fable-verify); Firebase functions deploy = owner one-time manual | Phase 1b live on device ✓ (owner-verified) |
 
 **Visual smoke suspension:** R5+R6 checklist items suspended until R7 consolidated visual review. Post-R7: ≤5 items per release window, only when UI changed (§21b).
 
@@ -103,9 +106,12 @@ _Position: **★ NULLSCHOOL MILESTONE SHIPPED.** Cesium V2.16 vendored, activate
 | ~~VENDOR BLOCKER~~ **RESOLVED** — CesiumJS vendored + placed in `web/cesium/`; pinned in `VENDOR.md` | merged to main | green | **✓ live** (R10 `bde2a28`) |
 | P1–P4 nullschool-mode chrome (black stage, rotate toggle, credits footer, minimal context) | merged to main | green | **✓ live** (R10 `bde2a28`) |
 | **Production Release R10** (`bde2a28`) — P4 release dispatched; run ID pending. CesiumJS V2.16 vendored + activated; nullschool chrome; density + countries + all data verticals. ★ NULLSCHOOL MILESTONE — **first true Cesium boot live on `rand0m.ai`**. | — | — | **✓ live** (run ID TBD) |
-| **Deploy-integrity fix** — workflow 90 "success" was serving stale assets; `Last-Modified` not advancing + markers absent. Fixed. Verify-delivery now required after every production release (session 34). | merged to main | green | **✓ live** |
+| **Deploy-integrity fix** (`086226e`) — root cause: side-channel `release-sha.txt` check proved file-freshness, not recompile; `flutter build web` reused stale build state. Fix: `flutter clean` + per-run-unique artifact + live `main.dart.js` byte-hash assertion. ⚠ **CORRECTED (session 35):** session 34 stated "Last-Modified + markers" as the standard — WRONG. Standard is live-bundle **byte-hash** (workflow self-verifies). `Last-Modified` is unreliable; `Global Health Score` marker is empirically absent even in valid builds. | merged to main | green | **✓ live** |
+| **Outline Globe** (`37aea29`) — Natural Earth public-domain coastline + admin-0 base geometry on Cesium globe; satellite terrain removed; wind-layer dimming fixed | merged to main | green | **✓ live** |
+| **Wind Phase 1a** (`f56d1f2`) — animated global wind field on Cesium; renderer = `earth_flow_field.js` + `EarthWindGrid` contract + `syncFlowField`; static CC0 representative climatology; gate-lift ratified (owner device pass reviewed+live) | merged to main | green | **✓ live** |
+| **Wind Phase 1b** — live NOAA-GFS wind data + rotation-trail fix; Firebase function deployed via owner one-time manual `firebase deploy --only functions:<name>` (workflow 90 stays HOSTING-ONLY — no CI functions deploy); `origin/main` tip SHA TBD (Fable-verify) | merged to main | green | **✓ live** |
 
-`origin/main` (xyz) is at `bde2a28` (R10; P4 production release dispatched; Fable-verified).
+`origin/main` (xyz) is at Phase 1b tip — **SHA TBD; verify with Fable before recording.** Last Fable-verified SHA: `bde2a28` (R10).
 
 ⚠ **State rule:** rows may only show "merged" or "deployed" when a git-verified SHA from a Fable gate confirmation or `git log origin/main` check is recorded here. Do not assert merged/deployed from session memory.
 
@@ -121,11 +127,19 @@ _Position: **★ NULLSCHOOL MILESTONE SHIPPED.** Cesium V2.16 vendored, activate
 
 ⚠ **Spec path (binding):** Earth spec files live at `READMORE/architecture/earth/` (not `READLESS/internal/architecture/`). Use `../READMORE/architecture/earth/<file>` in all roadmap links. Agent commands: `Only read C:\Projects\qa-kitt\.github\READLESS\EARTH-ROADMAP.md` — do not read READMORE spec files unless the agent command lists them explicitly.
 
-⚠ **Verify-delivery standard (session 34, binding):** after every production release, confirm asset delivery: `Last-Modified` header must advance and version markers must be present in the live response. The workflow 90 "success" status alone is not sufficient — previous deploys succeeded but served stale assets. Agents must emit a `FIXES:` callout if delivery cannot be confirmed; do not close a release checkpoint without a delivery verification record.
+⚠ **Verify-delivery standard (session 34, CORRECTED session 35, binding):** after every production release, delivery is verified by the workflow's **live-bundle byte-hash assertion** — the workflow self-fails on a stale bundle. NEVER use `Last-Modified` (unreliable) or UI-string greps (`Global Health Score` is empirically absent even in valid builds). Root cause of the stale-deploy bug: side-channel `release-sha.txt` check + `flutter build web` reusing stale state; fixed at `086226e` (`flutter clean` + per-run artifact + byte-hash). A passing workflow 90 with byte-hash assertion is now a sufficient delivery gate.
 
 ⚠ **POST-LAUNCH serialization (session 34, binding):** PASS A → PASS B → PASS C are strictly serialized on a single lineage. **No parallel edits to Earth-page files.** Divergence = merge conflict + lost work. Each PASS must be gate-passed and merged before the next opens.
 
-Next track: **POST-LAUNCH** — PASS A (globe-lifecycle) → PASS B (globe-chrome) → PASS C (Data View redesign).
+⚠ **Firebase functions deploy — manual owner action (binding):** workflow 90 is HOSTING-ONLY. Firebase callable functions are deployed via one-time manual `firebase deploy --only functions:<name>` by the owner. Agents do NOT trigger function deploys via CI. Do not add functions to workflow 90.
+
+⚠ **One-owner-per-Earth-surface (session 35, binding):** serialize chrome / renderer / earth_tab edits — no parallel agents editing Earth-page files. Violating this = merge conflict + lost work. Codified alongside POST-LAUNCH serialization.
+
+⚠ **Worktree cleanup (session 35, binding):** `git worktree remove --force` is safe post-merge when only generated artifacts remain on a merged branch. Revert generated plugin-registrants before every commit — the EPERM mkdir outage root cause was worktree sprawl + committed generated registrants causing path conflicts.
+
+⚠ **LEGAL-SAFEGUARDS AUDIT — pre-launch hard gate:** all on-screen disclosure labels (e.g. representative-wind "not current conditions") are DEFERRED to a pre-launch LEGAL-SAFEGUARDS AUDIT. This audit is a **HARD GATE** before any public/non-owner exposure. Governance-catalog obligations remain TRUE at the data layer; only UI disclosure surfacing is deferred (owner-gated dev site). No agent proceeds with disclosure UI implementation until this gate is opened by Fable + owner.
+
+Next track: **LAYERED-ANIMATION PROGRAM** — Phase 2 Ocean (OSCAR; reuses renderer) → point-based layers (wildfires etc.) → PASS A/B/C chrome + Data View → pre-launch legal-safeguards audit.
 
 ---
 
@@ -133,66 +147,78 @@ Next track: **POST-LAUNCH** — PASS A (globe-lifecycle) → PASS B (globe-chrom
 
 _Active — in flight or ready for immediate action._
 
-- **Earth agent:** PASS A — globe-lifecycle (IndexedStack + keep-alive + Cesium viewer persistence; painter = invisible failure-only fallback; fixes globe-disappear + painter-flash + state persistence). Gate-pass required before PASS B opens.
-- **Fixes agent:** 3 pre-existing VCM test failures (not C11-introduced) + build-size report queued + post-R9 branch deletions + Codex T15 sweep pending. Parallel to PASS A (CI/hygiene only, no Earth-page edits).
-- **Docs agent:** session 34 — deploy-integrity standard recorded; PASS A/B/C plan persisted; Data View redesign spec seeded in READMORE.
+- **Earth agent:** Phase 2 Ocean (live OSCAR source; reuses `earth_flow_field.js` renderer). Serialized — no parallel Earth-page edits.
+- **Fixes agent:** VCM test failures (3 pre-existing, not C11-introduced) + build-size report + branch deletions + Codex T15 sweep; also `chore/idle-spin-test` unmerged test fix queued. CI/hygiene only, no Earth-page edits.
+- **Test agent:** AUDIT-FIRST — audit Test/Inspect/Automate page current state; spec out architecture per Fable rulings; do not build until Fable + owner ratify.
+- **Docs agent:** session 35 major catch-up — deploy chain recorded; new standards; layered-animation program; Test workstream; donation button; legal-safeguards gate.
 
 ---
 
 ## Next
 
-_Queued — approved scope, not yet started. **Serialized — one lineage. No parallel Earth-page edits.**_
+_Queued — approved scope, not yet started. **Serialize Earth-page edits — one owner, one lineage.**_
 
-> **Channels note:** iteration deploys to prod (owner-locked); workflow 80 staging available; prod is the review surface.
+> **Channels note:** iteration deploys to prod (owner-locked); workflow 80 staging available; prod is the review surface. Workflow 90 = HOSTING-ONLY; Firebase functions via owner manual deploy.
 
-### PASS A — Globe-lifecycle (Earth, active)
-Fix globe-disappear + painter-flash + Addendum C state persistence by wiring `IndexedStack` keep-alive and Cesium viewer reuse.
-- `IndexedStack` keep-alive: Earth tab is kept alive across Data↔Earth toggle (no teardown/rebuild).
-- Cesium viewer persistence: viewer instance reused across tab switches; lifecycle tied to keep-alive, not widget rebuild.
-- CustomPainter: remains as **invisible failure-only fallback** — NOT deleted. Only shown when Cesium fails to initialize. Do not remove it; owner may revisit.
-- Addendum C state persistence: globe state (camera position, active layer, etc.) survives app-nav per Addendum C spec.
-- Gate: CI green + owner visual confirm (globe persists across toggle; no painter-flash).
+### LAYERED-ANIMATION PROGRAM (Earth — serialized)
 
-### PASS B — Globe-chrome redesign (Design, after PASS A gate-passed)
-Adjust the nullschool-mode chrome overlay layout. Strictly presentation-only; no Cesium/lifecycle files.
-- Context block → **bottom-right** (move from current position).
-- Top-right: score gauge + `<region> Health Score` label + `estimation` qualifier **only** — remove breakdown chips, Stable chips, Live-Asset-Research counts.
-- Remove broken rotate toggle entirely.
-- Keep drag-hint top-left (unchanged).
-- Gate: CI green + owner visual confirm (chrome layout matches spec above).
+**Renderer contract:** `earth_flow_field.js` + `EarthWindGrid` + `syncFlowField`. All animation layers reuse this renderer — do not fork.
 
-### PASS C — Data View redesign (Design, after PASS B gate-passed)
-Restructure the Data View surface for layperson↔researcher progressive disclosure.
+**Phase 2 — Ocean (next):**
+- Live OSCAR ocean-current data via Firebase callable (mirrors GFS wind pattern).
+- Reuses `earth_flow_field.js` renderer; separate data contract only.
+- Static-rep → live-OSCAR fast-follow pattern.
+- Owner deploys Firebase function manually; workflow 90 untouched.
+- Gate: CI green + owner device pass.
 
-**3-section structure:**
-1. **Overview** — planet-level summary; accessible to any user.
-2. **Layers** — per-layer cards with progressive disclosure.
-3. **Data Sources** — provenance, attribution, update cadence.
+**Point-based layers (future, after Phase 2):**
+- Wildfires and similar point-source layers.
+- Requires separate renderer extension; Fable spec required before implementation.
 
-**4-question content contract (owner-approved IA):**
-- _What is this?_ — plain-language description.
-- _Where does this come from?_ — source name + license.
-- _What does it mean?_ — interpretation for a layperson.
-- _How can I act on it?_ — actionable framing (or explicitly "informational only").
+### Globe-chrome + Data View (Design — after each Earth pass gates)
 
-**Removal list (hard):**
-- All dev telemetry (token counts, latency, internal flags).
-- All staged/placeholder data — real data only.
-- Any references to internal pipeline state visible to users.
+**PASS A — Globe-lifecycle (Earth):**
+`IndexedStack` keep-alive + Cesium viewer reuse + Addendum C state persistence. CustomPainter = invisible failure-only fallback (NOT deleted; owner may revisit). Fixes globe-disappear + painter-flash.
 
-Spec persisted at: [`../READMORE/architecture/earth/data-view-redesign-spec.md`](../READMORE/architecture/earth/data-view-redesign-spec.md).
-Gate: CI green + owner visual confirm (3-section structure; no dev telemetry; content contract satisfied).
+**PASS B — Globe-chrome (Design, after PASS A):**
+Context block → bottom-right; top-right = score + `<region> Health Score` + `estimation` only; remove breakdown/Stable chips/Live-Asset-Research counts; remove broken rotate toggle; keep drag-hint top-left.
 
-### Fixes (parallel, ongoing — no Earth-page edits)
-- VCM test failures: 3 pre-existing; triage recorded. Fixes agent to resolve or descope.
-- Build-size report: generate + record findings.
-- Post-R9 branch deletions: `earth/cesium-runtime-base`, `earth/source-attribution-corrections`, `earth/design-d6-dead-surface`.
+**PASS C — Data View redesign (Design, after PASS B):**
+3 sections (Overview / Layers / Data Sources); 4-question content contract (What / Where-from / What-it-means / How-to-act); remove ALL dev telemetry + staged data; real data only. Spec: [`../READMORE/architecture/earth/data-view-redesign-spec.md`](../READMORE/architecture/earth/data-view-redesign-spec.md).
+
+### Donation button (Earth + Design — fold into Ocean pass)
+- Earth View: top-left button (fold into Ocean/Phase 2 pass).
+- Design non-Earth surfaces: separate Design pass.
+- Public READMORE README/CONTRIBUTING: single-sourced from the About buymeacoffee link.
+
+### Test / Inspect / Automate page (Test agent — AUDIT FIRST)
+Current state: CUSTOM CODE (no AI agent); record/collect/create/export-PLAN built; GitHub/Jira OAuth + live push + test execution NOT wired.
+
+Fable architecture rulings (binding):
+- Record-playback = **bookmarklet MVP** for users' external sites (same-origin policy blocks web-app cross-origin recorder) + same-origin overlay for org `/123` dogfooding.
+- GitHub/Jira OAuth **MUST** go through Firebase callable proxies (no client secrets; account-scoped; CODEX Provider Rules).
+- Generated-test writes to `/123` use `github-qabot` + `eng1neer` identity (CODEX 123 rules).
+- Test execution = trigger user's GitHub Actions CI + report results in-app (not in-browser).
+
+**Test agent is AUDIT/SPEC-first — do not build until Fable + owner ratify the spec.** Agent owns `lib/pages/agents/secret*` + `services/utility/test_*`; worktree `rand0m-test`; file-disjoint from Earth.
+
+### Fixes (parallel, CI/hygiene only — no Earth-page edits)
+- VCM test failures: 3 pre-existing; triage recorded. Resolve or descope.
+- `chore/idle-spin-test`: unmerged test fix — merge when green.
+- Build-size report: generate + record.
+- Branch deletions: `earth/cesium-runtime-base`, `earth/source-attribution-corrections`, `earth/design-d6-dead-surface`, `earth/data-human-activity-density`, `codex/density-fixtures`.
 - Codex T15: legacy graveyard sweep.
 
-### Future track (requires Fable spec + owner directive before starting)
-- Country-outline boundaries + per-layer geo-animations (vector geometry pipeline required).
+### Pre-launch gate
+- **LEGAL-SAFEGUARDS AUDIT** (HARD GATE — see state notes above): all disclosure UI labels before any public/non-owner exposure. Owner + Fable to open.
+- abc READMORE public-launch seeding (history-review or fresh-seed required; CODEX.md line update queued).
+- Codex T14 (held for launch).
+
+### Future track (Fable spec + owner directive required)
+- Country-outline boundaries + per-layer geo-animations (vector geometry pipeline).
 - GFW near-real-time forest alerts (FIRMS pattern, new callable).
-- Remote-config budget + kill switch (separate approved phase).
+- Remote-config budget + kill switch.
+- Data View Scenario/Regional cleanup (parked → Design, post-PASS C).
 
 ---
 
@@ -257,6 +283,10 @@ _Completed and on `main`._
 - **Scroll-helper + CustomPainter globe shell** — Earth agent. Scroll-helper and CustomPainter globe in new shell. **Deployed ✓** (Production Release `27432166050` @ `e1e49c7`).
 - **Production Release `27432166050`** (`e1e49c7`) — owner. D7 nullschool shell + D8 chart vocabulary + chart-series + scroll-helper live on `rand0m.ai`. `origin/main` = `e1e49c7` (Fable-verified). HTTP smoke ✓. Owner review #2 verdict pending. ✓
 - **Cesium slice 2 — browser bridge** — Earth agent. JS bridge; `VENDOR.md` + env-injected token; `KNIGHTS_CESIUM_ION_API_KEY` reserved fallback. Slice 2 gate-passed (C9). ⚠ **CORRECTED (session 33):** `web/cesium/` contained `VENDOR.md` only — CesiumJS bundle was absent; runtime rendered CustomPainter fallback at all R9 and prior builds. True vendor step is a separate R10 gate. **On main** (merged). ✓
+- **Deploy-integrity fix** (`086226e`) — Earth/Fixes agents. `flutter clean` + per-run artifact + live `main.dart.js` byte-hash assertion in workflow 90. Every release self-fails on stale bundle. ⚠ Session 34 standard (Last-Modified/markers) **CORRECTED**: byte-hash is the source of truth. **Deployed ✓**. ✓
+- **Outline Globe** (`37aea29`) — Earth agent. Natural Earth public-domain coastline + admin-0 base geometry on Cesium; satellite terrain removed; wind-layer dimming fixed. **Deployed ✓**. ✓
+- **Wind Phase 1a** (`f56d1f2`) — Earth agent. Animated global wind field; renderer = `earth_flow_field.js` + `EarthWindGrid` + `syncFlowField`; static CC0 representative climatology. Gate-lift ratified (owner device pass, reviewed+live). **Deployed ✓**. ✓
+- **Wind Phase 1b** — Earth agent. Live NOAA-GFS wind data + rotation-trail fix; Firebase function deployed via owner one-time manual `firebase deploy --only functions:<name>`; workflow 90 stays HOSTING-ONLY. `origin/main` tip SHA TBD (Fable-verify). **Deployed ✓**. ✓
 - **CesiumJS vendor step** — Earth agent. Pin latest-stable CesiumJS at vendor time; bundle placed in `web/cesium/`; exact version + checksum recorded in `VENDOR.md`. Fable HOLD lifted. ★ Gate: first true Cesium renderer boot. **Deployed ✓** (R10 `bde2a28`). ✓
 - **P1–P4 nullschool-mode chrome** — Earth + Design agents. Black stage; rotate toggle; credits footer; minimal @scient1st context. **Deployed ✓** (R10 `bde2a28`). ✓
 - **R10 convergence: density + countries + all data verticals** — density `c7c68b9`, remediation `9abbc16`, motion cues `e38cb9e`, globe-context `c3c6d81` + P1–P4 chrome + CesiumJS vendor bundle → `bde2a28`. **Deployed ✓** (R10 `bde2a28`). ✓
@@ -332,6 +362,16 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **Task 13 reorg merged `6886c25` (session 33):** READLESS reorganized — active specs now under `READLESS/internal/architecture/`; archive under `READLESS/archive/architecture/`; coordination standards under `READLESS/internal/automation/`. All roadmap path references updated this session. Earth agent hit a phantom-empty-folder on the old `architecture/` path — root cause confirmed as stale links. Do not use bare `architecture/` paths in agent commands; always use `READLESS\internal\architecture\`.
 - **Fixes triage (session 33):** 3 pre-existing VCM test failures confirmed as pre-existing (not introduced by C11 work). Build-size report queued. Fixes agent to resolve or descope VCM failures independently.
 - **Review count updated to 8 (session 33):** combined R8+R9+R10 items = 8. Single FINAL review performed after R10 deploy. §21b exception: ≤8 items for combined multi-release review.
+- **Deploy-integrity standard CORRECTED (session 35):** session 34 recorded "Last-Modified + markers" as the verify-delivery standard. **WRONG — corrected here.** Root cause of the stale-deploy bug: `release-sha.txt` side-channel check proved file-freshness not recompile; `flutter build web` reused stale state. Fix at `086226e`: `flutter clean` + per-run-unique artifact + live `main.dart.js` **byte-hash** assertion. The workflow now self-fails on a stale bundle. `Last-Modified` is unreliable; `Global Health Score` UI-string marker is empirically absent even in valid builds. **Binding standard: byte-hash is the source of truth.** A passing workflow 90 with byte-hash is sufficient.
+- **Outline Globe shipped `37aea29`:** Natural Earth public-domain coastline + admin-0 base geometry on Cesium; satellite terrain removed; wind-layer dimming fixed. No license encumbrance (public domain).
+- **Wind Phase 1a shipped `f56d1f2`:** animated global wind on Cesium; renderer = `earth_flow_field.js` + `EarthWindGrid` + `syncFlowField`; static CC0 representative climatology. Gate-lift ratified by owner device pass (reviewed+live). Renderer contract is the extension point for all future animation layers — do not fork.
+- **Wind Phase 1b shipped (SHA TBD):** live NOAA-GFS wind + rotation-trail fix. Firebase function deployed via owner one-time manual `firebase deploy --only functions:<name>`. **Workflow 90 stays HOSTING-ONLY — no CI functions deploy.** This is a binding constraint: adding function deploys to workflow 90 requires explicit owner directive.
+- **Layered-animation program declared (session 35):** Phase 1a wind ✓; Phase 1b live GFS ✓; Phase 2 Ocean in flight (OSCAR; reuses renderer; static-rep→live-OSCAR fast-follow); then point-based layers (wildfires etc.). All layers reuse `earth_flow_field.js` renderer.
+- **DISCLOSURE UI DEFERRED (session 35, Fable ruling, binding):** all on-screen disclosure labels (e.g. representative-wind "not current conditions") are DEFERRED to a pre-launch LEGAL-SAFEGUARDS AUDIT. HARD GATE before any public/non-owner exposure. Governance-catalog obligations stay TRUE at the data layer; UI surfacing only is deferred. No agent implements disclosure UI without Fable + owner opening this gate.
+- **One-owner-per-Earth-surface (session 35, binding):** serialize chrome/renderer/earth_tab edits — no parallel agents on Earth-page files. Divergence = merge conflict + lost work. Codified alongside POST-LAUNCH serialization.
+- **Worktree cleanup + generated registrants (session 35, binding):** `git worktree remove --force` is safe post-merge when only generated artifacts remain. Revert generated plugin-registrants before every commit. Root cause of EPERM mkdir outage: worktree sprawl + committed generated registrants → path conflicts.
+- **Test/Inspect/Automate workstream opened (session 35):** current state = CUSTOM CODE; record/collect/create/export-PLAN built; OAuth + live push + execution NOT wired. Fable architecture rulings: bookmarklet MVP (cross-origin) + same-origin overlay for `/123`; OAuth via Firebase callable proxies (CODEX Provider Rules); generated tests write via `github-qabot`; execution = trigger user CI + report in-app. Test agent = AUDIT/SPEC-first; worktree `rand0m-test`; file-disjoint from Earth. Build only after Fable + owner ratify.
+- **Donation button scoped (session 35):** Earth View top-left (fold into Ocean pass) + Design non-Earth surfaces + public READMORE README/CONTRIBUTING; single-sourced from About buymeacoffee link.
 - **Deploy-integrity bug FIXED (session 34):** workflow 90 "success" was returning while serving stale assets — `Last-Modified` did not advance and version markers were absent in the live response. Fix shipped. **Verify-delivery is now a required release step (binding):** after every production release, confirm `Last-Modified` advances + markers present. Agents emit `FIXES:` callout if delivery cannot be confirmed; checkpoint rows do not close without a delivery verification record.
 - **POST-LAUNCH serialization (session 34, binding):** PASS A → PASS B → PASS C are strictly serialized on a single lineage. No parallel Earth-page edits — divergence = merge conflict + lost work. Each PASS must be gate-passed and merged before the next opens. Painter-removal decision: kept as invisible failure-only fallback per Fable rec; owner may revisit later.
 - **PASS A/B/C scope ratified (session 34):** (A) Earth globe-lifecycle — IndexedStack keep-alive + Cesium viewer persistence + Addendum C state + painter = failure-only fallback; (B) Design globe-chrome — context block→bottom-right, top-right = score + label + estimation only, remove breakdown/chips/counts, remove broken rotate toggle, keep drag-hint; (C) Design Data View redesign — 3 sections (Overview/Layers/Data Sources), 4-question content contract, remove ALL dev telemetry + staged data, real data only. Data View redesign spec persisted at `READMORE/architecture/earth/data-view-redesign-spec.md`.
@@ -385,13 +425,18 @@ _Scope changes, strategy shifts, or deferred decisions._
 
 _Rows reflect current remote branches confirmed by Fable gate or `git log origin/main`. All stale/never-existed rows removed (T10 audit, session 29). **Rule: Open Branches updates come from Fable gate confirmations only — same standard as Deploy Checkpoint rows.** Codified in coordination standards §2._
 
-_No active feature branches. R10 merged to main (`bde2a28`)._
+_Table rebuilt from `git branch -r` on qa-kitt/.github remote (session 35). xyz app repo branches are NOT enumerable from this repo — Earth agent must run `git branch -r` on xyz to confirm active feature branches. Rows below reflect qa-kitt/.github remote only; xyz app branches TBD._
 
-| Branch | Repo | Status | Release |
+| Branch | Repo | Status | Notes |
 | --- | --- | --- | --- |
-| _(none)_ | — | — | — |
+| `readless-readmore-reorg` | qa-kitt/.github | Active — Docs branch | All READLESS/READMORE updates land here; not yet merged to main |
+| `feature/v3-4-country-boundaries-base-globe` | qa-kitt/.github | Legacy research | Stale — outline globe shipped via different path; safe to review for deletion |
+| `feature/v3-5-earth-data-layer-adapter` | qa-kitt/.github | Legacy research | Stale; safe to review for deletion |
+| `chore/idle-spin-test` | xyz (unconfirmed) | Unmerged test fix | Merge when green; CI/hygiene only |
 
-_Safe to delete (Fixes pending):_ `earth/cesium-runtime-base`, `earth/source-attribution-corrections`, `earth/design-d6-dead-surface`, `earth/data-human-activity-density`, `codex/density-fixtures`.
+_Safe to delete (Fixes pending, post-merge):_ `earth/cesium-runtime-base`, `earth/source-attribution-corrections`, `earth/design-d6-dead-surface`, `earth/data-human-activity-density`, `codex/density-fixtures`. Confirm on xyz remote before deleting.
+
+_Legacy stale (qa-kitt/.github, research-era — do not delete without owner review):_ `earth/p14-*`, `earth/p15-*–p18-*`, `chore/w1-*`, `feature/p21-*`, `feature/v3-0–v3-3`, `feature/c3e*`, `feature/a1-*`, `feature/r1-*`, `feature/p23-*`, `feature/p15-1`._
 
 ---
 
@@ -405,7 +450,9 @@ _Items that were required before/at R10 FINAL release. R10 deployed (`bde2a28`).
 | `.github` repo visibility | ✓ **Private permanently** | Owner-confirmed. Not a launch blocker. |
 | All repos private | ✓ **Owner-confirmed** | All `random-knights/*` repos private. |
 | Codex T13 reorg | ✓ **Merged** (`6886c25`) | READLESS reorganized: active specs → `internal/architecture/`; archive → `archive/architecture/`; standards → `internal/automation/`. All roadmap path refs updated (session 33). |
-| Codex T14 | ⏳ **Held for launch** | Launch-gated. Do not execute before R10 FINAL. |
+| Codex T14 | ⏳ **Held for launch** | Launch-gated. Do not execute before public launch. |
+| **LEGAL-SAFEGUARDS AUDIT** | ⛔ **HARD GATE** | All on-screen disclosure labels (representative data, "not current conditions", etc.) must be audited + added before any public/non-owner exposure. Fable + owner open this gate. No disclosure UI implemented until then. |
+| abc READMORE public-launch seeding | ⚠ **Pre-flip required** | History-review or fresh-seed required; CODEX.md line update queued. |
 
 ---
 
