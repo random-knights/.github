@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-12 (session 33)
+**Last updated:** 2026-06-14 (major reconciliation)
 
 ---
 
@@ -14,8 +14,8 @@ _Post-R7 roster active. Systems and Connect retired (wind-down complete, scopes 
 
 | Agent | Identity | Worktree | Active branch | Focus |
 | --- | --- | --- | --- | --- |
-| Earth | `deve10per` / dev-kitt | main clone (exclusive) | **R7 deployed** `c150405`; C8 in flight — BE chart-series + Cesium data groundwork; D7 merge gate | Earth features, layers, governance; catalog owner; integrator/deploy; absorbs Systems+Connect scopes |
-| Design | `deve10per` / dev-kitt | `worktrees\rand0m-design` | D7 in flight (nullschool mode; no-scroll viewport-fit; globe hero; time-scrubber histogram) | IA v2 D7+D8; Cesium FE globe shell (C8+); presentation/layout only |
+| Earth | `deve10per` / dev-kitt | main clone (exclusive) | **R10 deployed** `bde2a28`; POST-LAUNCH phase open | Earth features, layers, governance; catalog owner; integrator/deploy; absorbs Systems+Connect scopes |
+| Design | `deve10per` / dev-kitt | `worktrees\rand0m-design` | POST-LAUNCH; no active D-slice | IA v2 D7+D8; Cesium FE globe shell; presentation/layout only |
 | Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | `-TestPaths` in progress; post-R7 harness | CI, harness, QA; token-economy triage (§21d) |
 | Docs | `eng1neer` / qa-kitt | qa-kitt clone | `main` | READLESS, CODEX, EARTH-ROADMAP |
 | Fable | — | read-only | — | PM/gates; spec ratification; checkpoint bundles (§19); Cesium Ion token ruling pending |
@@ -34,17 +34,17 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 
 _**End goal: animated planetary flow globe (nullschool-class) + governed AI assistant.**_
 
-_Position: **R10 integration complete `c3c6d81` — HELD on vendor blocker.** R9 (`d5ba6c1`) shipped VENDOR.md + token infrastructure; `web/cesium/` bundle was absent; all R9 and earlier builds rendered CustomPainter fallback (by design — fallback masked it). R10's vendor step delivers the first true Cesium boot. Density `c7c68b9`, remediation `9abbc16`, motion cues `e38cb9e`, globe-context `c3c6d81` all gate-passed. Fable HOLD confirmed: no fallback-as-final; CesiumJS pin = latest-stable-at-vendor-time. Single FINAL review after R10 deploy (8 items)._
+_Position: **★ NULLSCHOOL MILESTONE SHIPPED.** Cesium V2.16 vendored, activated, and live on `rand0m.ai`. P1–P4 nullschool-mode chrome + R10 convergence all merged; `origin/main` = `bde2a28`. P4 production release dispatched (run ID pending). **POST-LAUNCH phase open:** flow-field rendering, globe-state persistence, country-outline boundaries, per-layer geo-animations. Iteration deploys directly to prod (owner-locked); workflow 80 staging available as review surface._
 
 | Cycle | Release | Work | Gate |
 | --- | --- | --- | --- |
 | **C7** | **R7** ✓ **DEPLOYED** (`c150405`, release `27423312204`) | D2–D5 + scientist RESOLVE-OR-EXPLAIN + call-site + S5/S3 + uniformity + timer-leak + ISO table (Codex T1); Systems+Connect RETIRED | CI green; HTTP smoke ✓; owner visual review #1 ✓ |
 | **C8** | **R8** ✓ **DEPLOYED** (`e1e49c7`, release `27432166050`) | D7 nullschool shell + D8 chart vocabulary + BE chart-series + scroll-helper + CustomPainter globe in new shell → **UI consolidation release**. Owner review #2 verdict PENDING (post-deploy). | D7/D8/chart-series gate-passed; CI green; HTTP smoke ✓ |
-| **C9** | — | Cesium slice 1 `760c51a` ✓ (governance core); Cesium slice 2 ✓ (browser bridge; `VENDOR.md` + token env-injection; `KNIGHTS_CESIUM_ION_API_KEY` fallback). ⚠ Note: `web/cesium/` contained VENDOR.md only — CesiumJS bundle absent; runtime = CustomPainter fallback. | R8 deployed ✓ |
-| **C10** | — | Cesium slice 3 `b826abb` ✓ (flow-field wiring — bundle still absent); D6 `8c6857d` ✓; attribution corrections `79d9295` ✓; density slipped (salvage in C11) | C9 complete ✓ |
-| **C10/R9** | **R9** ✓ **DEPLOYED** (`d5ba6c1`, release `27436691750`) | D6 + attribution + Cesium token infrastructure + flow-field wiring → deployed. ~~★ NULLSCHOOL MILESTONE~~ — **CORRECTED (session 33):** `web/cesium/` bundle absent; all builds rendered CustomPainter fallback. True Cesium boot is at R10 vendor step. Attribution + D6 verdicts ARE live. | All C10 gate-passes ✓; CI green ✓; owner deployed ✓ |
-| **C11** | — | Density `c7c68b9` ✓; remediation `9abbc16` ✓ (3 density source registrations + suppression-guard governance); motion cues `e38cb9e` ✓; globe-context `c3c6d81` ✓. **Release HELD** — CesiumJS vendor step required (bundle absent from `web/cesium/`). | R9 deployed ✓ |
-| **C12/R10** | **R10 FINAL** *(HELD — vendor step required)* | CesiumJS vendor step (pin = latest-stable-at-vendor-time; record in VENDOR.md; never float) → **first true Cesium boot** → R10 FINAL release. ★ NULLSCHOOL MILESTONE moves here. Single owner FINAL review (8 items). | Vendor step complete; Fable HOLD lifted; owner sign-off |
+| **C9** | — | Cesium slice 1 `760c51a` ✓ (governance core); Cesium slice 2 ✓ (browser bridge; token env-injection; `KNIGHTS_CESIUM_ION_API_KEY` fallback). Note: `web/cesium/` had VENDOR.md only through R9 — bundle shipped at R10 vendor step. | R8 deployed ✓ |
+| **C10** | — | Cesium slice 3 `b826abb` ✓ (flow-field wiring); D6 `8c6857d` ✓; attribution corrections `79d9295` ✓; density slipped (salvage in C11) | C9 complete ✓ |
+| **C10/R9** | **R9** ✓ **DEPLOYED** (`d5ba6c1`, release `27436691750`) | D6 + attribution + Cesium token infrastructure + flow-field wiring deployed. Note: CesiumJS bundle absent until R10; R9 rendered CustomPainter fallback. Attribution + D6 verdicts live. | All C10 gate-passes ✓; CI green ✓; owner deployed ✓ |
+| **C11** | — | Density `c7c68b9` ✓; remediation `9abbc16` ✓ (3 source registrations + suppression-guard); motion cues `e38cb9e` ✓; globe-context `c3c6d81` ✓; CesiumJS vendor step + P1–P4 nullschool-mode chrome (black stage, rotate toggle, credits footer, minimal context) | R9 deployed ✓ |
+| **C12/R10** | **R10** ✓ **DEPLOYED** (`bde2a28`, release pending run ID) | CesiumJS vendored + activated; P1–P4 chrome; density + countries + all data verticals convergence. ★ **NULLSCHOOL MILESTONE — Cesium V2.16 live.** Single owner FINAL review (8 items) pending. | Vendor step ✓; CI green ✓; P4 release dispatched ✓ |
 
 **Visual smoke suspension:** R5+R6 checklist items suspended until R7 consolidated visual review. Post-R7: ≤5 items per release window, only when UI changed (§21b).
 
@@ -96,27 +96,31 @@ _Position: **R10 integration complete `c3c6d81` — HELD on vendor blocker.** R9
 | Attribution corrections — GBIF/Berkeley/WGMS/Hansen/WDPA/Open-Meteo/FIRMS (`79d9295`) | merged to main | green | **✓ live** (R9 `d5ba6c1`) |
 | D6 verdicts pass — schematic deleted; preview pair quarantined (T5 evidence); motion suite RETAINED (`8c6857d`) | merged to main | green | **✓ live** (R9 `d5ba6c1`) |
 | **Production Release `27436691750`** (`d5ba6c1`) — owner. Attribution + D6 verdicts + Cesium token infrastructure live. ~~★ NULLSCHOOL MILESTONE~~ — CORRECTED: CesiumJS bundle absent; builds = CustomPainter fallback. `origin/main` = `d5ba6c1` (Fable-verified). | — | — | **✓ live** |
-| Tier 2 density vertical (`c7c68b9`) | gate-passed (C11); pending R10 release | green | **pending R10** |
-| Density remediation + 3 source registrations + suppression-guard governance entries (`9abbc16`) | gate-passed (C11); pending R10 release | green | **pending R10** |
-| Tier 1 motion cues (`e38cb9e`) | gate-passed (C11); pending R10 release | green | **pending R10** |
-| @scient1st globe-context (`c3c6d81`) | gate-passed (C11); pending R10 release | green | **pending R10** |
-| CesiumJS vendor step — pin latest-stable-at-vendor-time; record in `VENDOR.md`; place bundle in `web/cesium/` | ⛔ **VENDOR BLOCKER** — not yet done | — | **blocks R10** |
+| Tier 2 density vertical (`c7c68b9`) | merged to main | green | **✓ live** (R10 `bde2a28`) |
+| Density remediation + 3 source registrations + suppression-guard governance entries (`9abbc16`) | merged to main | green | **✓ live** (R10 `bde2a28`) |
+| Tier 1 motion cues (`e38cb9e`) | merged to main | green | **✓ live** (R10 `bde2a28`) |
+| @scient1st globe-context (`c3c6d81`) | merged to main | green | **✓ live** (R10 `bde2a28`) |
+| ~~VENDOR BLOCKER~~ **RESOLVED** — CesiumJS vendored + placed in `web/cesium/`; pinned in `VENDOR.md` | merged to main | green | **✓ live** (R10 `bde2a28`) |
+| P1–P4 nullschool-mode chrome (black stage, rotate toggle, credits footer, minimal context) | merged to main | green | **✓ live** (R10 `bde2a28`) |
+| **Production Release R10** (`bde2a28`) — P4 release dispatched; run ID pending. CesiumJS V2.16 vendored + activated; nullschool chrome; density + countries + all data verticals. ★ NULLSCHOOL MILESTONE — **first true Cesium boot live on `rand0m.ai`**. | — | — | **✓ live** (run ID TBD) |
 
-`origin/main` (xyz) is at `d5ba6c1` (Production Release `27436691750`; Fable-verified). R9 deployed ✓.
+`origin/main` (xyz) is at `bde2a28` (R10; P4 production release dispatched; Fable-verified).
 
 ⚠ **State rule:** rows may only show "merged" or "deployed" when a git-verified SHA from a Fable gate confirmation or `git log origin/main` check is recorded here. Do not assert merged/deployed from session memory.
 
-⚠ **Visual suspension LIFTED at R7.** Owner consolidated visual review #1 complete (session 25). Post-R7 visual reviews bounded to ≤5 items per release window (§21b).
+⚠ **Visual suspension LIFTED at R7.** Post-R7 reviews bounded to ≤5 items per window (§21b).
 
 ~~⛔ HARD BLOCKER~~ **RESOLVED (session 32):** `RANDOM_CESIUM_ION_API_KEY` set in root `.env` and as GitHub Actions secret.
 
-⛔ **VENDOR BLOCKER (session 33):** CesiumJS bundle was never placed in `web/cesium/` — only `VENDOR.md` was committed. All production builds (R9 and prior) rendered CustomPainter fallback. Fable ruling: HOLD on R10; no fallback-as-final. Earth agent must perform vendor step: pin latest-stable CesiumJS, place bundle in `web/cesium/`, record pin in `VENDOR.md`, never float.
+~~⛔ VENDOR BLOCKER~~ **RESOLVED:** CesiumJS bundled in `web/cesium/`; pinned in `VENDOR.md`. Fable HOLD lifted.
 
-⚠ **Gate lesson (session 33, binding):** "vendored" claims are verified by **asset presence**, not docs. A `VENDOR.md` without the vendored assets is not a vendor step. Agents must confirm `web/cesium/` contains the actual CesiumJS bundle before claiming Cesium as vendored.
+⚠ **Gate lesson (session 33, binding):** "vendored" = **asset presence**, not docs. A `VENDOR.md` without the vendored assets is not a vendor step.
 
-⚠ **FINAL visual review PENDING (8 items):** single combined review after R10 deploy — R8 viewport/chart items + R9 attribution/D6 items + R10 nullschool globe. Owner to perform post-R10-deploy; 8 items total. Verdict not yet recorded.
+⚠ **FINAL visual review PENDING (8 items):** single combined review post-R10-deploy — R8 viewport/chart + R9 attribution/D6 + R10 nullschool/chrome. Owner to perform; verdict not yet recorded.
 
-Next checkpoint **R10 FINAL** — vendor step → unblock Fable HOLD → R10 release → FINAL review.
+⚠ **Spec path (binding):** Earth spec files live at `READMORE/architecture/earth/` (not `READLESS/internal/architecture/`). Use `../READMORE/architecture/earth/<file>` in all roadmap links. Agent commands: `Only read C:\Projects\qa-kitt\.github\READLESS\EARTH-ROADMAP.md` — do not read READMORE spec files unless the agent command lists them explicitly.
+
+Next track: **POST-LAUNCH** — flow-field rendering, globe-state persistence, country-outline boundaries, per-layer geo-animations.
 
 ---
 
@@ -124,9 +128,9 @@ Next checkpoint **R10 FINAL** — vendor step → unblock Fable HOLD → R10 rel
 
 _Active — in flight or ready for immediate action._
 
-- **Earth agent:** R10 integration complete `c3c6d81` — HELD on vendor blocker. **Next action:** CesiumJS vendor step — pin latest-stable, place bundle in `web/cesium/`, record in `VENDOR.md`. Then: Fable HOLD lift → R10 release.
-- **Fixes agent:** 3 pre-existing VCM test failures triaged this cycle (pre-existing; not introduced by C11 work). Build-size report queued. Post-R9 branch deletions pending.
-- **Docs agent:** session-33 update — R9 corrected (VENDOR.md-only, CustomPainter fallback); R10 integration gate-passes recorded; vendor blocker noted; NULLSCHOOL MILESTONE moved to R10; path references updated (T13 reorg); Fixes triage noted.
+- **Earth agent:** POST-LAUNCH phase open. No active build work. Next: (a) confirm/wire wind+ocean flow-field rendering in Cesium context (see POST-LAUNCH track below).
+- **Fixes agent:** 3 pre-existing VCM test failures triaged (not C11-introduced); build-size report queued; post-R9 branch deletions pending; Codex T15 legacy graveyard sweep pending.
+- **Docs agent:** major reconciliation — R10 shipped; spec path fixed (`READMORE/architecture/earth/`); POST-LAUNCH track opened; channels noted.
 
 ---
 
@@ -134,20 +138,31 @@ _Active — in flight or ready for immediate action._
 
 _Queued — approved scope, not yet started._
 
-1. **Vendor step — unblocks R10 (Earth, immediate):**
-   - Pin latest-stable CesiumJS at vendor time; place bundle in `web/cesium/`; record exact version + checksum in `VENDOR.md`; never float.
-   - Gate lesson: asset presence required — `VENDOR.md` alone is not sufficient (session 33 correction).
-   - After vendor step: Fable HOLD lift → R10 release.
-2. **R10 FINAL release (after vendor step):**
-   - Density `c7c68b9` + remediation `9abbc16` + motion cues `e38cb9e` + globe-context `c3c6d81` + CesiumJS vendor bundle → R10 FINAL.
-   - ★ NULLSCHOOL MILESTONE — first true Cesium boot.
-   - Owner: FINAL visual review post-R10-deploy (8 items: R8 viewport/chart + R9 attribution/D6 + R10 nullschool globe). Single pass.
-3. **Fixes (parallel):**
-   - VCM test failures: 3 pre-existing; triage verdict recorded (not C11-introduced). Fixes agent to resolve or descope.
-   - Build-size report: generate + record findings.
-   - Post-R9 branch deletions: `earth/cesium-runtime-base`, `earth/source-attribution-corrections`, `earth/design-d6-dead-surface`.
-   - Codex T15: legacy graveyard sweep.
-4. **Future-infra queue:** GFW near-real-time forest alerts (FIRMS pattern, new callable); remote-config budget + kill switch.
+### POST-LAUNCH track
+
+> **Channels note:** iteration deploys go directly to prod (owner-locked); workflow 80 staging available as review surface. Prod is the primary review surface.
+
+1. **(a) Wind+ocean flow-field rendering (Earth, immediate):**
+   Confirm/wire flow-field rendering paths in the Cesium context. Cesium slice 3 (`b826abb`) wired flow fields against the CustomPainter fallback; verify the same paths activate against the live Cesium renderer. Earth agent to audit + wire; leave Fixes callout if CI issues arise.
+
+2. **(b) Globe-state persistence (Earth):**
+   Renderer lifecycle management + app-shell `IndexedStack`/keep-alive wiring + Cesium viewer reuse across Data↔Earth toggle and app-nav. Prevents Cesium viewer teardown/rebuild on every tab switch.
+
+3. **(c) Country-outline boundaries + per-layer geo-animations (Earth, future):**
+   End-goal: visible country outlines on the Cesium globe + layer-specific animated geometry overlays. Requires vector geometry pipeline (not yet in scope). Fable spec required before implementation.
+
+4. **(d) Data View Chrome-extension polish (optional):**
+   Standalone polish session for the Data View surface. Owner-directed; not yet scheduled.
+
+### Fixes (parallel, ongoing)
+- VCM test failures: 3 pre-existing; triage recorded (not C11-introduced). Fixes agent to resolve or descope.
+- Build-size report: generate + record findings.
+- Post-R9 branch deletions: `earth/cesium-runtime-base`, `earth/source-attribution-corrections`, `earth/design-d6-dead-surface`.
+- Codex T15: legacy graveyard sweep.
+
+### Future-infra queue
+- GFW near-real-time forest alerts (FIRMS pattern, new callable — do not implement without explicit owner directive).
+- Remote-config budget + kill switch (separate approved phase required).
 
 ---
 
@@ -173,7 +188,7 @@ _Completed and on `main`._
 - **Glaciers data-view wiring** (`6316893`) — Earth agent. Data View wiring for glaciers layer. **Deployed ✓** (Production Release `27390760970` @ `9298e84`).
 - **Connect slices 1–3** (`ed7f3f4`) — Connect agent. Source onboarding pipeline slices 1–3. Connect stall resolved (two-cycle bootstrap gap fixed via §14). Render tests skip-marked per CODEX pending harness chore. **Deployed ✓** (Production Release `27390760970` @ `9298e84`).
 - **Production Release `27390760970`** (`9298e84`) — owner. Glaciers wiring + Connect slices 1–3 live on `rand0m.ai`. `origin/main` = `9298e84` (Fable-verified). ✓
-- **Environmental Data Vertical audit** — Systems agent (Fable-ratified). Findings persisted to [`internal/architecture/environmental-data-vertical-audit.md`](internal/architecture/environmental-data-vertical-audit.md). Implementation order approved: forest → protected-areas → biodiversity.
+- **Environmental Data Vertical audit** — Systems agent (Fable-ratified). Findings persisted to [`READMORE/architecture/earth/environmental-data-vertical-audit.md`](../READMORE/architecture/earth/environmental-data-vertical-audit.md). Implementation order approved: forest → protected-areas → biodiversity.
 - **Forest pipeline + 19th layer** (`glad-hansen-forest-summary`) — Earth agent. GLAD/Hansen annual asset-backed refresh pipeline; dedicated `forest` layer id registered (region-ready 14→15). **Deployed ✓** (Production Release `27393039706` @ `716c4d3`).
 - **`chore/test-deterministic-cursor`** — Fixes agent. Cursor-timer test harness fix — vendored-SDK non-deterministic hang resolved. **Deployed ✓** (Production Release `27393039706` @ `716c4d3`).
 - **Connect slice 4** — Connect agent. Source onboarding pipeline slice 4. **Deployed ✓** (Production Release `27393039706` @ `716c4d3`).
@@ -186,7 +201,7 @@ _Completed and on `main`._
 - **F1.0 Dynamic Web Favicon** — Fixes agent. **Deployed ✓** (Production Release `27394511208` @ `4148495`). ⚠ Owner visual pending.
 - **Entities E1 slices 1–2** — Connect agent. Slice 1: `EntityDefinition` with mandatory `sourceRef`; unsourced mapping guard; Connect intake integration. Slice 2: entity-to-region mapping, entity-to-source association. **Deployed ✓** (Production Release `27394511208` @ `4148495`). ⚠ Owner visual pending.
 - **Production Release `27394511208`** (`4148495`) — owner. Biodiversity, favicon F1.0, Entities E1 slices 1–2 live on `rand0m.ai`. `origin/main` = `4148495` (Fable-verified). Owner visual checklist pending confirmation. ✓
-- **Environmental Data Vertical — COMPLETE** — Systems + Earth + Docs agents. All three phases deployed: forest (`glad-hansen-forest-summary`) ✓, protected-areas (`wdpa-protected-area-summary`) ✓, biodiversity (`e9f9e47`) ✓. Spec: [`internal/architecture/environmental-data-vertical-audit.md`](internal/architecture/environmental-data-vertical-audit.md). ✓
+- **Environmental Data Vertical — COMPLETE** — Systems + Earth + Docs agents. All three phases deployed: forest (`glad-hansen-forest-summary`) ✓, protected-areas (`wdpa-protected-area-summary`) ✓, biodiversity (`e9f9e47`) ✓. Spec: [`READMORE/architecture/earth/environmental-data-vertical-audit.md`](../READMORE/architecture/earth/environmental-data-vertical-audit.md). ✓
 - **VCM slice 2 + `berkeley-vcm-registry-summary` registration** — Systems + Earth agents. Scope amendment applied (creditsIssued/Retired filter; lat/long stored; banned-term guard). Registry entry live. **Deployed ✓** (Production Release `27413467093` @ `1702eaa`).
 - **Entities E1 slice 3 (resolver contract) + ripples** — Connect + Earth agents. Connect owns resolver; Earth owns consumption. Ripple fixes included. **Deployed ✓** (Production Release `27413467093` @ `1702eaa`).
 - **Production Release `27413467093`** (`1702eaa`) — owner. VCM slice 2 + E1 S3 resolver + ripples live on `rand0m.ai`. `origin/main` = `1702eaa` (Fable-verified). HTTP smoke ✓; visual checklist items fold into R7 post-design review. ✓
@@ -212,6 +227,10 @@ _Completed and on `main`._
 - **Scroll-helper + CustomPainter globe shell** — Earth agent. Scroll-helper and CustomPainter globe in new shell. **Deployed ✓** (Production Release `27432166050` @ `e1e49c7`).
 - **Production Release `27432166050`** (`e1e49c7`) — owner. D7 nullschool shell + D8 chart vocabulary + chart-series + scroll-helper live on `rand0m.ai`. `origin/main` = `e1e49c7` (Fable-verified). HTTP smoke ✓. Owner review #2 verdict pending. ✓
 - **Cesium slice 2 — browser bridge** — Earth agent. JS bridge; `VENDOR.md` + env-injected token; `KNIGHTS_CESIUM_ION_API_KEY` reserved fallback. Slice 2 gate-passed (C9). ⚠ **CORRECTED (session 33):** `web/cesium/` contained `VENDOR.md` only — CesiumJS bundle was absent; runtime rendered CustomPainter fallback at all R9 and prior builds. True vendor step is a separate R10 gate. **On main** (merged). ✓
+- **CesiumJS vendor step** — Earth agent. Pin latest-stable CesiumJS at vendor time; bundle placed in `web/cesium/`; exact version + checksum recorded in `VENDOR.md`. Fable HOLD lifted. ★ Gate: first true Cesium renderer boot. **Deployed ✓** (R10 `bde2a28`). ✓
+- **P1–P4 nullschool-mode chrome** — Earth + Design agents. Black stage; rotate toggle; credits footer; minimal @scient1st context. **Deployed ✓** (R10 `bde2a28`). ✓
+- **R10 convergence: density + countries + all data verticals** — density `c7c68b9`, remediation `9abbc16`, motion cues `e38cb9e`, globe-context `c3c6d81` + P1–P4 chrome + CesiumJS vendor bundle → `bde2a28`. **Deployed ✓** (R10 `bde2a28`). ✓
+- **Production Release R10** (`bde2a28`) — owner. CesiumJS V2.16 vendored + activated; nullschool chrome; density + countries + all data verticals live on `rand0m.ai`. ★ **NULLSCHOOL MILESTONE — first true Cesium boot**. P4 release dispatched (run ID pending). `origin/main` = `bde2a28` (Fable-verified). ✓
 
 ---
 
@@ -233,21 +252,21 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **Forest layer (19th) — Fable ruling (session 15):** dedicated `forest` layer id added to catalog (not a sub-group of an existing layer). Human-encroachment block remains unchanged — human encroachment is a distinct concept and is not blocked by the forest governance entry. Do not conflate the two.
 - **Connect sheet render-test stall (known issue, session 17):** the two remaining skip-marked tests in Connect are NOT caused by the cursor-timer hang. Root cause is a separate Connect sheet render-test stall. Fixes agent diagnosing under `chore/connect-sheet-test-stall`. Do not un-skip these two tests until that fix lands — the cursor-timer fix (`716c4d3`) does not resolve them.
 - **Countries mapping integration — new thread (session 17, owner directive):** country-granularity expansion of `earth_region_registry`; countries as first-class regions; sources/layers/entities mappable to country level; feeds Entities region groups + @scient1st regional answers. **DATA/REGISTRY LEVEL ONLY** — no globe boundary rendering; Cesium V2.16 freeze unchanged. Earth agent spec audit underway (session 18).
-- **VCM spec amendment (session 18, Fable ruling):** scope filter added — include only projects with `creditsIssued>0 OR creditsRetired>0 AND lat/long present`. `creditsIssued`/`creditsRetired` are neutral registry-accountability fields (permitted). Lat/long stored for map readiness, not rendered (Cesium freeze). Slice 1 @ `70fafbf` built to pre-amendment spec; slice 2 applying amendment. Full ruling in [`internal/architecture/vcm-governance-spec.md`](internal/architecture/vcm-governance-spec.md).
-- **Earth/Connect resolver boundary (session 18, binding):** Connect owns the entity resolver; Earth owns consumption. No cross-ownership. Interface contract changes require `DOCS:` callout before implementation. Codified in [`internal/architecture/entities-spec.md`](internal/architecture/entities-spec.md).
+- **VCM spec amendment (session 18, Fable ruling):** scope filter added — include only projects with `creditsIssued>0 OR creditsRetired>0 AND lat/long present`. `creditsIssued`/`creditsRetired` are neutral registry-accountability fields (permitted). Lat/long stored for map readiness, not rendered (Cesium freeze). Slice 1 @ `70fafbf` built to pre-amendment spec; slice 2 applying amendment. Full ruling in [`READMORE/architecture/earth/vcm-governance-spec.md`](../READMORE/architecture/earth/vcm-governance-spec.md).
+- **Earth/Connect resolver boundary (session 18, binding):** Connect owns the entity resolver; Earth owns consumption. No cross-ownership. Interface contract changes require `DOCS:` callout before implementation. Codified in [`READMORE/architecture/earth/entities-spec.md`](../READMORE/architecture/earth/entities-spec.md).
 - **Scoped local validation (§18, binding):** named test files for touched surface only; no full-suite local runs; CI is the authoritative broad gate. `validate-earth-fast` gains `-TestPaths` (Fixes chore in progress). Known flaky-harness: non-deterministic mid-suite crash (cursor-timer family) — emit `FIXES:` callout and continue; do not block.
 - **Owner visual checklists SUSPENDED (session 19, owner directive):** visual spot-checks against `rand0m.ai` deferred until Design D5 merges (R7). Checkpoints verified by HTTP smoke + CI release smoke only. Reason: Data View surfaces under active redesign (D1–D6); visual checks against pre-consolidation layout are not meaningful gates. Will be re-enabled after R7. Previous ⚠ rows for PR `27394511208` superseded by this suspension — reviewed in post-R7 visual pass.
 - **Countries spec RATIFIED (session 19, Fable):** ISO tier; no `EarthRegionIds.all` expansion (breaks existing lookups); fail-explicit lookups (missing country = explicit error, not silent fallback); S2 closes E1 gap (resolver queryable by country); VCM coord→country mapping (lat/long → ISO at ingest, not display); 5-slice plan (S1 registry, S2 resolver, S3 VCM mapping, S4 @scient1st regional, S5 cleanup).
-- **Design agent — IA consolidation (session 19, owner directive):** promoted from audit to implementation. Worktree `worktrees\rand0m-design`; owns D1–D6 presentation slices. Spec: [`internal/architecture/earth-ia-consolidation-spec.md`](internal/architecture/earth-ia-consolidation-spec.md). Earth agent is merge gate for every D-slice. D1 in flight; pill ruling resolved.
+- **Design agent — IA consolidation (session 19, owner directive):** promoted from audit to implementation. Worktree `worktrees\rand0m-design`; owns D1–D6 presentation slices. Spec: [`READMORE/architecture/earth/earth-ia-consolidation-spec.md`](../READMORE/architecture/earth/earth-ia-consolidation-spec.md). Earth agent is merge gate for every D-slice. D1 in flight; pill ruling resolved.
 - **Fable checkpoint bundle cadence (§19):** Fable declares checkpoint bundles one cycle ahead — agents know what the next release gate includes before the cycle starts.
 - **CONNECTION-HARDENING DATA LAYER COMPLETE (session 20):** all planned data verticals shipped — ocean, ice, air, forest, protected-areas, biodiversity, VCM. Data layer enters maintenance mode; Systems agent idle post-R5. Next Systems work requires a new owner directive.
 - **Owner visual checklists SUSPENSION CONFIRMED (session 20):** R5 checklist items (VCM card, biodiversity card, favicon, E1 UI) fold into the R7 post-design visual review. Agents do not need to track individual visual items until R7 triggers the consolidated review.
-- **Owner rulings — visual direction (session 20, binding):** Earth+ pill = BOTTOM-LEFT always; filtered score gauge = TOP-RIGHT (filter-reactive); dark-canvas gauge/donut/chip density harmonized with `AppColors`. Reference images provided to Design agent. Full ruling in [`internal/architecture/earth-ia-consolidation-spec.md`](internal/architecture/earth-ia-consolidation-spec.md).
+- **Owner rulings — visual direction (session 20, binding):** Earth+ pill = BOTTOM-LEFT always; filtered score gauge = TOP-RIGHT (filter-reactive); dark-canvas gauge/donut/chip density harmonized with `AppColors`. Reference images provided to Design agent. Full ruling in [`READMORE/architecture/earth/earth-ia-consolidation-spec.md`](../READMORE/architecture/earth/earth-ia-consolidation-spec.md).
 - **R6 bundle declared (session 20, Fable):** Countries S1+S2, Design D1 (+D2 if ready), uniformity fixes, Connect flips + E1 S4. Release approval requested at integration; no automatic release on merge.
 - **R6 final bundle (session 21):** uniformity fixes + timer-leak chore SLIPPED to R7 — Systems/Fixes branches never reached remote. R6 final = Countries S1+S2 + D1 + Connect flips+E1 S4 only. Slipped items added to R7 bundle.
 - **Countries S1 gate-passed (session 20):** `f82c595` — additive-only registry expansion; `RegionIds` guard in place. No `EarthRegionIds.all` expansion.
 - **Countries S2 gate-passed (session 21):** `58361b4` — fail-explicit `EarthRegionResolver` closes the E1 referential gap; stale schematic copy resolved. Stale schematic open callout dropped.
-- **Design D1 gate-passed (session 21):** `3cd4255` (`earth/design-d1-globe-primary`) — presentation-only; pill BOTTOM-LEFT ✓; gauge TOP-RIGHT ✓; dark-canvas AppColors. Design's DOCS: callout resolved — §6 formally appended to [`internal/architecture/earth-ia-consolidation-spec.md`](internal/architecture/earth-ia-consolidation-spec.md).
+- **Design D1 gate-passed (session 21):** `3cd4255` (`earth/design-d1-globe-primary`) — presentation-only; pill BOTTOM-LEFT ✓; gauge TOP-RIGHT ✓; dark-canvas AppColors. Design's DOCS: callout resolved — §6 formally appended to [`READMORE/architecture/earth/earth-ia-consolidation-spec.md`](../READMORE/architecture/earth/earth-ia-consolidation-spec.md).
 - **Connect render tests ENABLED (session 21):** `af62d6f` — all 3 render tests enabled; zero skips remain in Connect. `chore/connect-sheet-test-stall` resolved by this gate-pass.
 - **R7 bundle declared (session 21):** Design D2–D5 + resolver wiring + Intelligence summary + Countries S3 + uniformity fixes + timer-leak chore. R7 closes with owner consolidated visual review (suspended checklist items folded in: VCM card, biodiversity card, favicon, E1 UI).
 - **R6 DEPLOYED (session 22):** `ca91443`, Production Release `27415455211` — Countries S1+S2, Design D1, Connect flips + E1 S4. `origin/main` = `ca91443`.
@@ -264,16 +283,16 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **Timer-leak UNPROVEN (session 23):** fix is on remote (slip counters reset) but crash recurred during Earth validation after push. Timer-leak merges to R7 only on Fixes' explicit READY verdict after 3 clean combined runs. Do not treat "on remote" as "fixed."
 - **New binding standard §20 (session 23):** needing code on main = `git merge origin/main`; never copy files across branches. Connect S5 copied 3 Countries files byte-identical to main — benign this time (dedupes at R7), but pattern prohibited. Standard added to coordination standards.
 - **§18 analyze amendment (session 23):** `flutter analyze` is the mandatory final step of every slice, after the last edit. Scoped test runs do not substitute. Motivating case: `earth/scientist-entity-resolution` passed local scoped tests; CI went red on undefined symbol that analyze would have caught. Codified in [`internal/automation/agent-coordination-standards.md`](internal/automation/agent-coordination-standards.md) §18.
-- **Fable ruling — sparklines dropped (session 23):** synthetic trend-shaped sparklines banned from D1–D6. Real sparklines require a real time-series source (future slice, new Fable spec required). Replacement: trend chips (`AppColors` tokens). Codified in [`internal/architecture/earth-ia-consolidation-spec.md`](internal/architecture/earth-ia-consolidation-spec.md) §6.
+- **Fable ruling — sparklines dropped (session 23):** synthetic trend-shaped sparklines banned from D1–D6. Real sparklines require a real time-series source (future slice, new Fable spec required). Replacement: trend chips (`AppColors` tokens). Codified in [`READMORE/architecture/earth/earth-ia-consolidation-spec.md`](../READMORE/architecture/earth/earth-ia-consolidation-spec.md) §6.
 - **Connect S2 callout CLOSED (session 23):** standing S2 callout resolved — Connect S5 `4ec0d24` already wired the validate path; Earth call-site micro-slice closes the remaining gap. No further S2 action needed.
 - **STRATEGIC RESTRUCTURE (session 24, owner directive):** end-goal established; governance amended; agent roster restructured; token-economy standards bound. See pivots below.
 - **End-goal established (session 24):** animated planetary flow globe (nullschool-class) + governed AI assistant. Roadmap plan updated to C7–C12 (R7→R8→R9 FINAL). Prior 14-day framing retired.
-- **Human Activity freeze LIFTED at Tiers 1+2 (session 24, owner directive):** Tier 1 (symbolic motion cues — static corridors/lanes/orbital bands; no live data; RETAINED GLOBE INVENTORY; D6 must not quarantine motion-suite assets) and Tier 2 (aggregate density verticals — flights/ships/satellites; public datasets; identity-suppressed, ≥24h delay floor, fail-closed, health/trend-neutral; Fable spec per vertical) are unblocked. Tier 3 live per-vehicle tracking remains BANNED. Governance spec: [`internal/architecture/human-activity-governance-amendment.md`](internal/architecture/human-activity-governance-amendment.md). Coordination standards §4 taxonomy updated.
+- **Human Activity freeze LIFTED at Tiers 1+2 (session 24, owner directive):** Tier 1 (symbolic motion cues — static corridors/lanes/orbital bands; no live data; RETAINED GLOBE INVENTORY; D6 must not quarantine motion-suite assets) and Tier 2 (aggregate density verticals — flights/ships/satellites; public datasets; identity-suppressed, ≥24h delay floor, fail-closed, health/trend-neutral; Fable spec per vertical) are unblocked. Tier 3 live per-vehicle tracking remains BANNED. Governance spec: [`READMORE/architecture/earth/human-activity-governance-amendment.md`](../READMORE/architecture/earth/human-activity-governance-amendment.md). Coordination standards §4 taxonomy updated.
 - **Agent restructure — effective at R7 (session 24, owner directive):** roster post-R7 = Fable + Earth + Design + Fixes + Docs + CODEX Grunt Pool. Systems retires after timer-leak branch merges; Connect retires after S5 merges. Earth absorbs both scopes. Architectural Earth/Connect code boundary unchanged. CODEX Grunt Pool (OpenAI) handles low-risk mechanical tasks only — named files + acceptance command + do-not-touch list per task; never touches guards, gates, catalog files, or governance logic.
 - **Token-economy standards (session 24, binding §21):** thread-sized slices (one coherent unit per run); one visual sign-off per release window (≤5 items, only when UI changed); tests only for governance-critical paths + one FE layout guard per D-slice; single bounded failure-triage pass (no repair loops). Codified in [`internal/automation/agent-coordination-standards.md`](internal/automation/agent-coordination-standards.md) §21.
 - **R7 DEPLOYED (session 25):** `c150405`, Production Release `27423312204`. D2–D5 + scientist RESOLVE-OR-EXPLAIN + call-site + Countries S3 + Connect S5 + timer-leak + uniformity + Codex T1 ISO table all live. `origin/main` = `c150405`.
 - **Systems + Connect RETIRED (session 25):** wind-down complete. Scopes absorbed by Earth. Worktrees torn down. Post-R7 roster = Fable + Earth + Design + Fixes + Docs + CODEX Grunt Pool.
-- **Owner visual review #1 — approved direction, consolidate further (session 25):** post-R7 consolidated visual review complete. Verdict: approved direction; consolidate further → IA v2. Visual suspension lifted. IA v2 spec appended to [`internal/architecture/earth-ia-consolidation-spec.md`](internal/architecture/earth-ia-consolidation-spec.md).
+- **Owner visual review #1 — approved direction, consolidate further (session 25):** post-R7 consolidated visual review complete. Verdict: approved direction; consolidate further → IA v2. Visual suspension lifted. IA v2 spec appended to [`READMORE/architecture/earth/earth-ia-consolidation-spec.md`](../READMORE/architecture/earth/earth-ia-consolidation-spec.md).
 - **Open Branches table rewritten from reality (session 29, T10 audit):** entire prior table was stale — contained branches that had never existed on the remote, inferred names with "(or equivalent)" placeholders, and deployed rows that belonged in Deploy Checkpoints. Table rebuilt from confirmed remote branches only. Lesson recorded in coordination standards §2: Open Branches rows update on Fable gate confirmation only, same as Deploy Checkpoint rows.
 - **T8 attribution audit — correction slice in R9 bundle (session 29):** Codex T8 ran an attribution audit across all deployed data verticals. Findings requiring correction: (a) GBIF — mixed-license records (some CC-BY-NC 4.0); license constraint must be explicit in governance drawer. (b) Berkeley VCM — non-commercial restriction (BCTP terms) must appear verbatim, not just implied. (c) WGMS, Hansen (GFW), WDPA — missing or incomplete formal citation strings. (d) Open-Meteo, FIRMS — attribution text absent from governance drawer. Correction slice: `earth/source-attribution-corrections` (R9 bundle). At R9, the governance-drawer text becomes legally exact for all seven sources.
 - **T9 density fixtures — pre-staged T3 deliverables (session 29):** Codex T9 pre-staged density test fixtures as T3 deliverables in branch `codex/density-fixtures`. These are consumed by `earth/data-human-activity-density` (the in-flight C10 density vertical). The fixtures branch is an R9 dependency — not an orphan. Earth agent must `git merge --no-edit origin/codex/density-fixtures` into the density branch before its test suite runs.
@@ -283,6 +302,8 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **Task 13 reorg merged `6886c25` (session 33):** READLESS reorganized — active specs now under `READLESS/internal/architecture/`; archive under `READLESS/archive/architecture/`; coordination standards under `READLESS/internal/automation/`. All roadmap path references updated this session. Earth agent hit a phantom-empty-folder on the old `architecture/` path — root cause confirmed as stale links. Do not use bare `architecture/` paths in agent commands; always use `READLESS\internal\architecture\`.
 - **Fixes triage (session 33):** 3 pre-existing VCM test failures confirmed as pre-existing (not introduced by C11 work). Build-size report queued. Fixes agent to resolve or descope VCM failures independently.
 - **Review count updated to 8 (session 33):** combined R8+R9+R10 items = 8. Single FINAL review performed after R10 deploy. §21b exception: ≤8 items for combined multi-release review.
+- **Major reconciliation (this session):** R10 shipped — `bde2a28` live on `rand0m.ai`; ★ NULLSCHOOL MILESTONE confirmed. Spec path corrected everywhere: `READMORE/architecture/earth/` (was `READLESS/internal/architecture/`). POST-LAUNCH track opened: (a) flow-field rendering, (b) globe-state persistence, (c) country-outline boundaries, (d) Chrome-extension polish. Channels noted: iteration deploys to prod (owner-locked); workflow 80 staging available. Agent Roster stale notes cleared.
+- **R10 DEPLOYED (P4 release dispatched):** `bde2a28`. CesiumJS V2.16 vendored + activated; P1–P4 nullschool chrome; density + countries + all data verticals live. ★ NULLSCHOOL MILESTONE. `origin/main` = `bde2a28`.
 - **R9 DEPLOYED (session 32):** `d5ba6c1`, Production Release `27436691750`. D6 verdicts + attribution corrections + Cesium token infrastructure + flow-field wiring live. Note: R9 deployed CustomPainter globe — Cesium bundle absent (corrected session 33). `origin/main` = `d5ba6c1`. Visual review carried forward to R10 FINAL (8 items).
 - **Density WIP salvage SUCCEEDED (session 32):** `earth/data-human-activity-density` branch is on remote. Slip=1 erased — C11 completes the vertical. No restart required; Earth agent pulls and resumes from WIP.
 - **HARD BLOCKER RESOLVED (session 32):** `RANDOM_CESIUM_ION_API_KEY` was set in root `.env` AND as a GitHub Actions secret. Note: deployed env var name is `RANDOM_CESIUM_ION_API_KEY` (API key naming convention), not `RANDOM_CESIUM_ION_TOKEN` as originally specified. env-contract-notes.md updated with actual deployed name.
@@ -331,18 +352,19 @@ _Scope changes, strategy shifts, or deferred decisions._
 
 _Rows reflect current remote branches confirmed by Fable gate or `git log origin/main`. All stale/never-existed rows removed (T10 audit, session 29). **Rule: Open Branches updates come from Fable gate confirmations only — same standard as Deploy Checkpoint rows.** Codified in coordination standards §2._
 
+_No active feature branches. R10 merged to main (`bde2a28`)._
+
 | Branch | Repo | Status | Release |
 | --- | --- | --- | --- |
-| `earth/data-human-activity-density` | xyz | Gate-passed `c7c68b9` + `9abbc16` (C11); **pending R10 merge** | R10 |
-| `codex/density-fixtures` | xyz | Consumed by density vertical (T9 fixtures; `git merge --no-edit` required before test suite) | R10 dependency |
+| _(none)_ | — | — | — |
 
-_Safe to delete (post-R9, Fixes pending):_ `earth/cesium-runtime-base`, `earth/source-attribution-corrections`, `earth/design-d6-dead-surface`.
+_Safe to delete (Fixes pending):_ `earth/cesium-runtime-base`, `earth/source-attribution-corrections`, `earth/design-d6-dead-surface`, `earth/data-human-activity-density`, `codex/density-fixtures`.
 
 ---
 
 ## Launch Checklist
 
-_Items that must be resolved before or at the R10 FINAL release. Owner-confirmed scope (session 32)._
+_Items that were required before/at R10 FINAL release. R10 deployed (`bde2a28`). Remaining items are post-launch._
 
 | Item | Status | Notes |
 | --- | --- | --- |
