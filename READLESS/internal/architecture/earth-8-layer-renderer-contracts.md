@@ -1,10 +1,8 @@
 # Earth 8-Layer Program — Renderer Contracts
 
-**Date:** 2026-06-16 (session 41)
-**Status:** DRAFT — awaiting Fable ratification
-**Owner:** Earth agent (implementation); Fable (ratification)
-
-> FABLE CALLOUT: This doc is ready for ratification. Review renderer contracts §1 and §2, the data contracts §3, and the disjoint-lane model §4. Confirm or amend before Earth agent begins any 8-layer implementation slice.
+**Date:** 2026-06-16 (session 43 — updated)
+**Status:** RATIFIED + COMPLETE — all 8 layers live (`fe44868` tip)
+**Owner:** Earth agent (implementation); Docs (this record)
 
 ---
 
@@ -13,6 +11,8 @@
 Wind Phase 1a/1b established a renderer (`earth_flow_field.js` + `EarthWindGrid` + `syncFlowField`) for flow-field animation. The 8-Layer Program extends that foundation across two renderer types and a disjoint-lane model so multiple layers can run in parallel without merge conflicts.
 
 All 8 layers reuse one of the two ratified renderer contracts below. **No forks, no custom renderers outside these contracts.**
+
+**8-Layer Program complete (git-verified):** slices 1–7 merged; all 8 layers live at `fe44868`. Flow-field and point/scalar renderers both shipping in production.
 
 ---
 
@@ -59,11 +59,11 @@ Add a `FlowFieldConfig` entry in the layer catalog. Do not modify `earth_flow_fi
 
 ## §2 — Point / Scalar Renderer Contract (discrete points or heatmap)
 
-**Entry points:** `earth_point_renderer.js`, `EarthPointGrid` (Dart), `syncPointLayer` (Dart→JS bridge)
+**Entry points:** `earth_point_field.js` (note: shipping name is `earth_point_field.js`, not `earth_point_renderer.js`), `EarthPointGrid` (Dart), `syncPointLayer` (Dart→JS bridge)
 
-**Used by:** Wildfires (FIRMS), Air quality (point mode), future point-source layers
+**Used by:** Wildfires (FIRMS), Air quality (point/heatmap), Biodiversity, SST scalar — all live
 
-> ⚠ This renderer is **ratified-in-contract but not yet implemented.** Earth agent implements when the first point-based layer is approved. Do not implement speculatively.
+> ✅ **LIVE** — point/scalar renderer implemented and shipping (`451f7c2` slice 2 + `d91da59` slice 6 + `299e9e6` slice 7). File shipping as `earth_point_field.js`.
 
 ### Data shape (per-frame input)
 
@@ -126,17 +126,19 @@ Each of the 8 layers is assigned a **lane** — a branch + file-ownership scope.
 4. REBASE-BEFORE-MERGE applies to all lanes that diverge from a shared-file change. Earth agent runs rebase + hand-resolve before opening a PR.
 5. Lanes that are file-disjoint from the current open lane **may** run in parallel. Earth agent declares disjointness via `DOCS:` callout before opening a second lane.
 
-### Current lane assignments
+### Current lane assignments (all 8 LIVE — git-verified at `fe44868`)
 
-| Lane | Layer | Branch | Status |
-| --- | --- | --- | --- |
-| L1 | Wind (GFS live) | — (merged, `b7f9849`) | ✅ Complete |
-| L2 | Ocean currents (OSCAR) | `earth/layer-ocean` | ⏳ Not started |
-| L3 | Wildfires (FIRMS point) | `earth/layer-wildfires` | ⏳ Not started |
-| L4 | Air quality (point/heatmap) | `earth/layer-airquality-point` | ⏳ Not started |
-| L5 | Ocean swell (future) | TBD | 🔮 Post-launch |
-| L6 | Forest fire risk (future) | TBD | 🔮 Post-launch |
-| L7 | Dust / aerosol (future) | TBD | 🔮 Post-launch |
-| L8 | TBD (owner directive) | TBD | 🔮 Future spec |
+| Lane | Layer | SHAs | Status | Renderer |
+| --- | --- | --- | --- | --- |
+| L1 | **Wind (GFS live)** | `b7f9849` + Phase 1b | ✅ Live | Flow-field |
+| L2 | **Ocean currents (OSCAR)** | `1ed1b6b` | ✅ Live | Flow-field |
+| L3 | **Air quality (Open-Meteo)** | `fe87c3c` (rep), `fbb4dd6` (live) | ✅ Live — selectable rep/live | Point / scalar |
+| L4 | **Forest cover (Hansen/GLAD)** | `5ce9513` | ✅ Live | Scalar |
+| L5 | **Human density** | `5ce9513` | ✅ Live (representative) | Scalar |
+| L6 | **Wildfires (FIRMS)** | `d91da59` | ✅ Live | Point / discrete |
+| L7 | **Biodiversity (GBIF)** | `d91da59` | ✅ Live | Point / heatmap |
+| L8 | **SST (Sea Surface Temp anomaly)** | `299e9e6`, `353a478` | ✅ Live — anomaly vs 1991–2020 | Scalar |
 
-Lane assignments for L5–L8 require a Fable spec before any branch opens.
+**8-Layer Program: COMPLETE.** All 8 layers merged and on `origin/main` (`fe44868`). Infrastructure slices: `90eb743` (contracts + heatmap renderer), `451f7c2` (point renderer `earth_point_field.js`), `d182d7a` (LayerLegend + palette contract).
+
+Future Earth Pro layers (flights/ships/satellites aggregate density) require separate Fable governance specs before any branch opens. See `human-activity-governance-amendment.md` Tier 2 and `monorepo-cleanup-audit.md` Rescission 2.

@@ -1,7 +1,7 @@
 # Global Health Score — Data Audit & Methodology
 
 **Version:** earth.healthscore.v1
-**Status:** RATIFIED (session 42)
+**Status:** RATIFIED + LIVE (capstone `855e6e0`; function `58feb9f`)
 **Date:** 2026-06-16
 **Owner:** Earth agent (implementation); Fable (ratification); Docs (this record)
 
@@ -38,16 +38,20 @@ Each signal is normalised to [0, 1] where 0 = best observed (or expected best) a
 
 ---
 
-## Architecture: Hybrid Server-fn + Client-recompute
+## Architecture: Hybrid Server-fn + Client-recompute (LIVE — `58feb9f` + `855e6e0`)
 
-The health score uses a **hybrid model**:
+The health score uses a **hybrid model** — both sides are now shipping:
 
-1. **Server function** (`generateEarthHealthScore` or equivalent scheduled callable): computes the weighted score from the latest cached grid data; writes result to Firestore `earth/healthscore` document.
-2. **Client recompute**: on each data refresh tick, the client recomputes the score from locally-cached signal values using the same weights. The server result is the authoritative display value; the client recompute provides a live-tick update between server writes.
+1. **Server function (`earthHealthScoreRefresh` — `58feb9f`):** scheduled aggregation; reads cached per-layer Storage grids/snapshots → per-region + global sub-scores → writes one public Storage object. Coverage-weighted per-region; exposure-weighted global. Fail-soft per signal.
+2. **Client reactive recompute (`855e6e0` capstone):** the gauge recomputes REACTIVELY on every `earth+` filter change, using locally-cached signal values. Replaces the static `78 - viewer-AI-carbon` estimate. AIEDS digital footprint surfaces as a **separate chip** — never blended into the score.
 
-This pattern mirrors the earthWindGfsRefresh → client-render separation: the server is the source of truth, the client is a low-latency reflector.
+**Architecture notes:**
+- Server is authoritative; client recompute is the low-latency reflector between server ticks.
+- `air-quality = burden (US AQI)`; `SST = burden on |anomaly| vs 1991–2020 climatology` — both server and client use these normalizations.
+- `earthSstRefresh` (`353a478`) was updated to emit the SST ANOMALY signal (vs 1991–2020) to match the representative asset.
+- Fail-soft: missing/stale server object → client-only recompute labeled `"estimated"`. Signal data absent → score suppressed (not shown).
 
-**Fail-soft:** if the server health score document is absent or stale (>2h), the client falls back to client-only recompute and labels the score as `"estimated"`. If signal data is also absent, the score is suppressed (not shown).
+**Firestore / Storage path:** score written to one public Storage object (not Firestore document — server reads cached grids, no per-user cost). Client reads this object on refresh tick.
 
 ---
 

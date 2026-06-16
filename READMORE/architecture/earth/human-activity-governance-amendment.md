@@ -1,9 +1,9 @@
 # Human Activity Data Vertical — Governance Amendment
 
-Date: 2026-06-12 (session 24)
+Date: 2026-06-12 (session 24; amended session 43 — Pro-tier gate added)
 Author: Docs agent (owner directive + governance reviewer ratification per session 24)
 Prior state: Human Activity freeze — all tiers BANNED (coordination standards §4)
-Amendment: Tiers 1 + 2 LIFTED; Tier 3 REMAINS BANNED
+Amendment: Tiers 1 + 2 LIFTED; Tier 3 REMAINS BANNED; Tier 2 gated to Pro tier (session 43)
 
 ---
 
@@ -83,6 +83,10 @@ suppression guard and VCM banned-term guard patterns).
 **Governance spec required:** each Tier 2 vertical (flights, ships, satellites)
 requires a separate governance reviewer governance spec before implementation, following the
 VCM governance spec pattern. No catalog entry without an approved spec.
+
+**Pro-tier gate (session 43 owner override — binding):** Tier 2 aggregate density layers (flights, ships, satellites) are **Pro-tier only**. Free-tier users do not see these layers. The entitlement gate is enforced at the callable layer (same pattern as TP-4 submit). Rationale: aggregate density data surfaces traffic infrastructure at scale; pairing with Pro tier ensures accountability and limits abuse surface.
+
+⚠ **Open correction — `futureLayerIds` test (Rescission 2):** commit `79ba5fa` incorrectly removed `flights` and `ships` from `futureLayerIds` in the Earth region model test, citing Tier 3 prohibition. This was wrong — Tier 2 aggregate flights/ships are permitted. Earth agent must restore `flights` and `ships` to `futureLayerIds` annotated as Pro-tier. See `monorepo-cleanup-audit.md` Rescission 2.
 
 ---
 

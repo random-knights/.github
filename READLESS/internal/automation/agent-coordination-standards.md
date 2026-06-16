@@ -655,3 +655,25 @@ No lane pushes directly to `origin/main` from its lane worktree. Pushes go to th
 Fast-forward races lose work silently: if lane A and lane B both push to `origin/main` within the same minute, one push is rejected (non-fast-forward), the author retries, and if they rebase before retrying, the other lane's commits are re-ordered or duplicated. Funnelling all integration through `apps/rand0m` with a single Earth-agent integrator eliminates the race.
 
 **This standard supersedes any prior language that implied feature work could happen in the main clone.** §11 (Main Clone Earth-Exclusive) is complementary and remains in force.
+
+---
+
+## 23. Contract-Ownership — Earth Defines; Inputs Import (Binding — Session 43)
+
+**Rule:** renderer contracts, model contracts, and shared data-shape types are defined **ONCE** by Earth agent in `lib/models/earth/`. All other agents (Test, Design, Fixes, Docs, CODEX Grunt Pool) import from that canonical path — they do not copy, redefine, or fork the contracts.
+
+### Applies to:
+- `EarthWindGrid`, `EarthPointGrid`, `EarthPoint`, `PointRenderMode` — renderer input types
+- `EarthLayerDefinition`, `EarthLayerCatalog` — catalog contracts
+- Health Score types (`EarthHealthScoreV1`, etc.) — shared across functions + client
+- Any other type under `lib/models/earth/` or `functions/src/models/earth/`
+
+### Violations:
+- A Test or Design agent redefining `EarthLayerDefinition` in its own file = contract fork. PROHIBITED.
+- A Fixes agent copying `EarthWindGrid` to a test helper = contract fork. PROHIBITED.
+- CODEX Grunt Pool must be given the explicit import path in the task spec — never derives types from scratch.
+
+### Why:
+Contract duplication was the root cause of multiple type drift incidents (missing fields, incompatible nullability). A single Earth-owned definition makes drift a compile error, not a runtime surprise.
+
+**EARTH agent callout pattern:** when a new model type is added to `lib/models/earth/`, Earth emits a `DOCS:` callout naming the type and its canonical path. Docs records it here or in the relevant spec.

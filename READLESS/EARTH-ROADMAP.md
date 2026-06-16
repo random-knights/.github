@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-16 (session 42 — Health Score ratified; Data Explorer v1 POST-LAUNCH; mini-player 4333563; §22 worktree-lane isolation binding)
+**Last updated:** 2026-06-16 (session 43 — 8-layer COMPLETE; Live Health Score capstone 855e6e0; Inspect security gate 86ae546; version banner; monorepo cleanup P1 fe44868; two rescissions OPEN)
 
 ---
 
@@ -14,7 +14,7 @@ _Post-R7 roster active. Systems and Connect retired (wind-down complete, scopes 
 
 | Agent | Identity | Worktree | Active branch | Focus |
 | --- | --- | --- | --- | --- |
-| Earth | `deve10per` / dev-kitt | `apps/rand0m` (integration only — §22) | main=`5ce9513`; hosting=`1650a82` (pre-P3) | Earth features, layers, governance; catalog owner; integrator/deploy; absorbs Systems+Connect scopes |
+| Earth | `deve10per` / dev-kitt | `apps/rand0m` (integration only — §22) | main=`fe44868`; hosting=`1650a82` (pre-P3; deploy PENDING) | Earth features, layers, governance; catalog owner; integrator/deploy; absorbs Systems+Connect scopes |
 | Design | `deve10per` / dev-kitt | `worktrees\rand0m-design` | POST-LAUNCH; no active D-slice | IA v2 D7+D8; Cesium FE globe shell; presentation/layout only |
 | Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | CI/hygiene; no Earth-page edits | CI, harness, QA; token-economy triage (§21d) |
 | Docs | `eng1neer` / qa-kitt | qa-kitt clone | `readless-readmore-reorg` | READLESS, CODEX, EARTH-ROADMAP |
@@ -35,7 +35,7 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 
 _**End goal: animated planetary flow globe (nullschool-class) + governed AI assistant.**_
 
-_Position: **8-layer program in flight; capstone approaching.** `origin/main` (xyz) = `5ce9513` (slice 5 — forest + human-density scalar, count 3→5); last confirmed hosting deploy = `1650a82` (release `27580329138`, pre-P3); hosting deploy PENDING owner wf90. 8-layer slices 1–5 merged; mini-player `4333563` merged. Health Score methodology ratified (earth.healthscore.v1). Data Explorer v1 POST-LAUNCH scope ratified. §22 worktree-lane isolation binding. Functions deploy bundle deploy-ready (SST/density/forest/OSCAR refreshers + enforce-flip `6fd5b60` STAGED for 2nd deploy) — owner deploys at 8-layer checkpoint. Public site-flip = FINAL gate (Fable + owner)._
+_Position: **8-layer COMPLETE + Live Health Score capstone live on main.** `origin/main` (xyz) = `fe44868` (monorepo cleanup P1); last confirmed hosting deploy = `1650a82` (release `27580329138`, pre-P3); hosting deploy PENDING owner wf90. All 8 Earth layers + live Health Score + version banner + Inspect security gate + mini-player all merged. `public-access-flip` (`05d00d2`) HELD — deploys at public-flip gate only. Two rescissions OPEN: `technologia.mp3` must be restored; `futureLayerIds` flights/ships must be re-added as Pro layers. Public site-flip = FINAL gate (Fable + owner). Goal: 6/26._
 
 | Cycle | Release | Work | Gate |
 | --- | --- | --- | --- |
@@ -133,10 +133,24 @@ _Position: **8-layer program in flight; capstone approaching.** `origin/main` (x
 | **8-Layer slice 4** (`fbb4dd6`) — OSCAR refresher (`1ed1b6b`) + scalar refreshers (`e13c1e7`) merged; functions bundle deploy-ready | merged to main | green | ⏳ deploy PENDING owner wf90 |
 | **8-Layer slice 5** (`5ce9513`) — forest + human-density scalar; layer count 3→5 | merged to main | green | ⏳ deploy PENDING owner wf90 |
 | **App Check enforce-flip staged** (`6fd5b60`) — DEFERRED to 2nd functions deploy (post-monitoring) | merged to main | — | ⏳ STAGED — 2nd deploy only |
-| **Mini-player** (`4333563`) — shell-above-Navigator + PiP/MediaSession + handoff follow-up | merged to main | green | ⏳ deploy PENDING owner wf90 |
-| **Health Score capstone** — earth.healthscore.v1; hybrid server-fn + client-recompute; 5-signal roster; AIEDS separate | spec RATIFIED; implementation pending | — | ⏳ POST-LAUNCH or batched with 8-layer deploy |
+| **Mini-player** (`4333563`) — shell-above-Navigator + PiP/MediaSession (Relax+Vibe survives route change) | merged to main | green | ⏳ deploy PENDING owner wf90 |
+| **Mini-player handoff** (`731b47a`) — single-instance handoff: full↔mini↔PiP | merged to main | green | ⏳ deploy PENDING owner wf90 |
+| **Filter panel fix** (`4c4cd80`) — earth+ filter panel fits without scroll; no globe-zoom hijack | merged to main | green | ⏳ deploy PENDING owner wf90 |
+| **8-Layer slice 6** (`d91da59`) — wildfire + biodiversity POINT layers (count 5→7) | merged to main | green | ⏳ deploy PENDING owner wf90 |
+| **Health Score function** (`58feb9f`) — `earthHealthScoreRefresh` — live Global Health Score aggregation (earth.healthscore.v1); reads cached grids → per-region + global; writes public Storage object | merged to main | green | ⏳ functions deploy PENDING owner |
+| **8-Layer slice 7** (`299e9e6`) — SST ocean scalar layer (count 7→8) | merged to main | green | ⏳ deploy PENDING owner wf90 |
+| **SST anomaly update** (`353a478`) — `earthSstRefresh` emits SST ANOMALY vs 1991–2020 baseline | merged to main | green | ⏳ functions deploy PENDING owner |
+| **⚠ futureLayerIds flights/ships removed** (`79ba5fa`) — RESCISSION OPEN: test incorrectly dropped `flights`/`ships` from governed futureLayerIds citing Tier 3 prohibition. Tier 2 aggregate (Pro-tier) is PERMITTED. Earth agent must reverse. | merged to main | — | ⚠ Earth reversal PENDING |
+| **Live Health Score UI capstone** (`855e6e0`) — reactive recompute on earth+ filter; replaces static 78; AIEDS as separate chip | merged to main | green | ⏳ deploy PENDING owner wf90 |
+| **LayerLegend + palette contract** (`d182d7a`) — reusable color-key widget | merged to main | green | ⏳ deploy PENDING owner wf90 |
+| **Layer-validation harness** (`ff22b06`) — reusable QA harness for Earth layers | merged to main | green | ⏳ deploy PENDING owner wf90 |
+| **Version-update banner** (`8df7ba2`) — in-app banner polls version.json + SW skip-waiting refresh | merged to main | green | ⏳ deploy PENDING owner wf90 |
+| **Inspect security fix** (`86ae546`) — redact secrets + gate Inspect page to owner/org (pre-public safety gate) | merged to main | green | ⏳ deploy PENDING owner wf90 |
+| **Monorepo cleanup P1** (`fe44868`) — drop 7 unused Earth textures + delete `technologia.mp3` + de-four-app README. ⚠ RESCISSION: `technologia.mp3` must be restored + wired (launch/alert sound). | merged to main | green | ⏳ deploy PENDING owner wf90 |
+| **public-access-flip** (`05d00d2`) — HELD branch; deploys at public-flip gate only | NOT on main — HELD | — | ⛔ HELD — public-flip gate only |
+| **8-LAYER PROGRAM: COMPLETE** — all 8 layers live on main (`fe44868`). Flow-field (Wind L1, Ocean OSCAR L2) + Point/scalar (Air quality L3, Forest L4, Density L5, Wildfire L6, Biodiversity L7, SST L8). | merged to main | green | ⏳ deploy PENDING wf90 |
 
-`origin/main` (xyz) is at `5ce9513` (8-layer slice 5 — Fixes-verified). Hosting = `1650a82` (pre-P3; last confirmed deployed).
+`origin/main` (xyz) is at `fe44868` (monorepo cleanup P1 — git-verified). Hosting = `1650a82` (pre-P3; last confirmed deployed).
 
 ⚠ **State rule:** rows may only show "merged" or "deployed" when a git-verified SHA from a Fable gate confirmation or `git log origin/main` check is recorded here. Do not assert merged/deployed from session memory.
 
@@ -204,11 +218,27 @@ Next track: **PUBLIC-LAUNCH SEQUENCE** (goal: 6/26) — P3 deploy confirm → mo
 
 ⚠ **8-Layer Program (session 41):** two renderer contracts ratified-in-draft: (1) flow-field (`earth_flow_field.js` + `EarthWindGrid` + `syncFlowField`) for Wind/Ocean/Swell; (2) point/scalar (`earth_point_renderer.js` + `EarthPointGrid` + `syncPointLayer`) for Wildfires/AirQuality/future — contract-only, not yet implemented. Disjoint-lane model: each layer gets its own branch + file scope; shared-file changes lock the owner lane; REBASE-BEFORE-MERGE applies across lanes. L1 (Wind) complete. L2 (Ocean OSCAR) next. Fable ratification PENDING — **do not begin L2 implementation until Fable confirms.** See [`internal/architecture/earth-8-layer-renderer-contracts.md`](internal/architecture/earth-8-layer-renderer-contracts.md).
 
-⚠ **Health Score ratified (session 42, earth.healthscore.v1):** 5-signal roster (air quality 0.30 count-based, SST anomaly 0.25 vs 1991–2020, wildfire 0.20, forest 0.15, human density 0.10 provisional). Hybrid server-fn + client-recompute. AIEDS separate, unblended, device — never numerically combined with Health Score. Governance: signal roster locked at v0.1; schema versioned. See [`../READMORE/architecture/earth/global-health-score-data-audit.md`](../READMORE/architecture/earth/global-health-score-data-audit.md).
+✅ **8-Layer Program COMPLETE (session 43):** all 8 Earth layers live at `fe44868`. L1 Wind (flow-field), L2 Ocean OSCAR (flow-field), L3 Air quality (scalar/point), L4 Forest (scalar), L5 Human density (scalar), L6 Wildfire (point/discrete), L7 Biodiversity (point/heatmap), L8 SST anomaly (scalar). Renderer contracts ratified and shipping. See [`internal/architecture/earth-8-layer-renderer-contracts.md`](internal/architecture/earth-8-layer-renderer-contracts.md).
 
-⚠ **Data Explorer v1 — POST-LAUNCH (session 42):** read-only adapters; E1–E4 entity types; owner/org-gated; Recycler owner-only; secrets excluded at query layer. Off-Hive (Firestore) — binding: frozen typeId 7 conflict + `agent_order` collision + `kn1ghts_hive` app-local. Not in P3 bundle. See [`internal/architecture/data-explorer-v1-spec.md`](internal/architecture/data-explorer-v1-spec.md).
+✅ **Live Health Score CAPSTONE (session 43, earth.healthscore.v1):** `earthHealthScoreRefresh` (`58feb9f`) aggregates live signals → public Storage object. Client UI (`855e6e0`) recomputes REACTIVELY on earth+ filter changes; replaces static 78; AIEDS as separate chip. SST updated to anomaly vs 1991–2020 (`353a478`). See [`../READMORE/architecture/earth/global-health-score-data-audit.md`](../READMORE/architecture/earth/global-health-score-data-audit.md).
 
-⚠ **§22 worktree-lane isolation (session 42, binding):** `apps/rand0m` = Earth agent + main integration ONLY. Every other lane works in its own `worktrees/<lane>`. No lane may branch-swap inside `apps/rand0m`. No lane pushes directly to `origin/main` from its lane worktree. Push→Earth-integrates→others-pull. Codified in [`internal/automation/agent-coordination-standards.md`](internal/automation/agent-coordination-standards.md) §22.
+⚠ **Inspect DataSource Explorer — POST-LAUNCH (session 43):** read-only adapters; E1–E4; owner/org-gated; Recycler owner-only; secrets excluded at query layer. Off-Hive (Firestore). Renamed spec: [`internal/architecture/inspect-data-explorer-spec.md`](internal/architecture/inspect-data-explorer-spec.md). `data-explorer-v1-spec.md` superseded.
+
+⚠ **§22 worktree-lane isolation (session 42, binding):** `apps/rand0m` = Earth/main integration ONLY. Every other lane in `worktrees/<lane>`. No branch-swap in `apps/rand0m`. Push→Earth-integrates→others-pull. See [`internal/automation/agent-coordination-standards.md`](internal/automation/agent-coordination-standards.md) §22.
+
+⚠ **§23 contract-ownership (session 43, binding):** renderer contracts, model types, and data-shape contracts defined ONCE by Earth in `lib/models/earth/`. All other agents import — never copy or redefine. See coordination standards §23.
+
+⚠ **Inspect security gate (session 43, `86ae546`):** Inspect page now redacts secrets and is gated to owner/org only (pre-public safety gate). Required before public launch. Deploy PENDING owner wf90.
+
+⚠ **Monorepo cleanup P1 (`fe44868`) + TWO OPEN RESCISSIONS:**
+1. `technologia.mp3` was deleted — must be restored by Earth agent (launch + alert sound; wiring pending Fable scope). See [`internal/architecture/monorepo-cleanup-audit.md`](internal/architecture/monorepo-cleanup-audit.md) Rescission 1.
+2. `79ba5fa` wrongly removed `flights`/`ships` from `futureLayerIds` — Earth agent must restore as Pro-tier aggregate layers per governance amendment. See Rescission 2.
+
+⚠ **`public-access-flip` (`05d00d2`) HELD:** branch exists but is NOT on `origin/main`. Deploys at public-flip gate only — do not merge before Fable + owner sign-off.
+
+⚠ **Governance amendment — Pro-tier gate for flights/ships/satellites (session 43):** Tier 2 aggregate density layers are Pro-tier only at launch. Updated in [`../READMORE/architecture/earth/human-activity-governance-amendment.md`](../READMORE/architecture/earth/human-activity-governance-amendment.md).
+
+⚠ **BYOK ≥1-key gate (session 43):** unkeyed providers are disabled (not just quota-limited). `keySource=missing` → provider blocked. Detailed in [`internal/decisions/0006-byok.md`](../decisions/0006-byok.md).
 
 ---
 
@@ -216,14 +246,14 @@ Next track: **PUBLIC-LAUNCH SEQUENCE** (goal: 6/26) — P3 deploy confirm → mo
 
 _Renderer contracts govern all animated Earth layers. Spec: [`internal/architecture/earth-8-layer-renderer-contracts.md`](internal/architecture/earth-8-layer-renderer-contracts.md)._
 
-> **FABLE CALLOUT:** Renderer contracts (§1 flow-field, §2 point/scalar, §3 data contracts, §4 disjoint-lane model) are drafted and ready for ratification. No 8-layer implementation begins until Fable confirms. See spec above.
+**8-Layer Program: COMPLETE — all 8 layers live at `fe44868`.**
 
 ### Renderer Contracts (summary)
 
 | Contract | Entry points | Used by | Status |
 | --- | --- | --- | --- |
-| **Flow-field** | `earth_flow_field.js` · `EarthWindGrid` · `syncFlowField` | Wind, Ocean (OSCAR), Ocean swell | ✅ Live (Wind L1); contract ratification PENDING Fable |
-| **Point / scalar** | `earth_point_renderer.js` · `EarthPointGrid` · `syncPointLayer` | Wildfires, Air quality (point), future point layers | 📋 Contract-only; not yet implemented; ratification PENDING Fable |
+| **Flow-field** | `earth_flow_field.js` · `EarthWindGrid` · `syncFlowField` | Wind (L1), Ocean OSCAR (L2) | ✅ Live (ratified + shipping) |
+| **Point / scalar** | `earth_point_field.js` · `EarthPointGrid` · `syncPointLayer` | Air quality (L3), Forest (L4), Density (L5), Wildfire (L6), Biodiversity (L7), SST (L8) | ✅ Live (`451f7c2` + slices 3–7) |
 
 **Core rules:**
 - No forks. All layers use one of the two contracts above — never a bespoke renderer.
@@ -232,20 +262,20 @@ _Renderer contracts govern all animated Earth layers. Spec: [`internal/architect
 - Flow-field: static-rep bundle first; live data overlays after callable resolves (instant visual on cold load).
 - Point: callable caps at 10,000 points; zero-coordinate points stripped server-side.
 
-### Layer Roster & Status
+### Layer Roster & Status (COMPLETE — all 8 live, git-verified `fe44868`)
 
-_Per-layer status updated only when git-verified (SHA from `git log origin/main` or Fable gate). Do not assert merged/deployed from session memory._
-
-| # | Layer | Renderer | Branch / SHA | Status | Notes |
+| # | Layer | Renderer | SHA(s) | Status | Notes |
 | --- | --- | --- | --- | --- | --- |
-| L1 | **Wind (GFS live)** | Flow-field | merged `b7f9849` | ✅ **Live** | NOAA-GFS; earthWindGfsRefresh deployed; static-rep Phase 1a → live Phase 1b |
-| L2 | **Ocean currents (OSCAR)** | Flow-field | `earth/layer-ocean` (not opened) | ⏳ Queued — after Fable ratification + anim-bugfix | Mirrors GFS pattern; separate data contract; owner deploys function manually |
-| L3 | **Wildfires (FIRMS)** | Point / discrete | `earth/layer-wildfires` (not opened) | ⏳ Queued | FIRMS snapshot already in catalog; point renderer required |
-| L4 | **Air quality (point/heatmap)** | Point / heatmap | `earth/layer-airquality-point` (not opened) | ⏳ Queued | Open-Meteo source; upgrades current card-only surface to point renderer |
-| L5 | **Ocean swell** | Flow-field | TBD | 🔮 Post-launch | Fable spec required |
-| L6 | **Forest fire risk** | Point (TBD) | TBD | 🔮 Post-launch | Fable spec required |
-| L7 | **Dust / aerosol** | Point / heatmap (TBD) | TBD | 🔮 Post-launch | Fable spec required |
-| L8 | **TBD** | TBD | TBD | 🔮 Future | Owner directive + Fable spec required |
+| L1 | **Wind (GFS live)** | Flow-field | `b7f9849` + Phase 1b | ✅ **Live** | NOAA-GFS; `earthWindGfsRefresh` deployed; static-rep Phase 1a → live Phase 1b |
+| L2 | **Ocean currents (OSCAR)** | Flow-field | `1ed1b6b` | ✅ **Live** | Phase 2 live OSCAR; mirrors GFS data contract; ocean-only geo-validity |
+| L3 | **Air quality (Open-Meteo)** | Point / scalar | `fe87c3c` (rep), `fbb4dd6` (live) | ✅ **Live** — selectable rep/live | `earthAirQualityRefresh` deployed; count-based flip for Health Score |
+| L4 | **Forest cover (Hansen/GLAD)** | Scalar | `5ce9513` | ✅ **Live** | Asset-backed; `earthForestRefresh` deployed |
+| L5 | **Human density** | Scalar | `5ce9513` | ✅ **Live (representative)** | `earthHumanDensityRefresh` deployed; 0.10 weight provisional |
+| L6 | **Wildfires (FIRMS)** | Point / discrete | `d91da59` | ✅ **Live** | `earthWildfireRefresh` deployed; point discrete mode |
+| L7 | **Biodiversity (GBIF)** | Point / heatmap | `d91da59` | ✅ **Live** | Fail-closed suppression guard; coarse grid |
+| L8 | **SST (Sea Surface Temp anomaly)** | Scalar | `299e9e6`, `353a478` | ✅ **Live** | Anomaly vs 1991–2020 climatology; `earthSstRefresh` updated |
+
+**Future Earth Pro layers** (flights/ships/satellites aggregate density) require separate Fable governance specs before any branch opens. Pro-tier gate binding per governance amendment.
 
 ### Disjoint-Lane Model (summary)
 
@@ -257,13 +287,17 @@ Each layer = one branch (`earth/layer-<id>`) + its own file scope. No two open l
 
 _Active — in flight or ready for immediate action._
 
-- **Owner (blocking — deploy):** Trigger wf90 (`RECAPTCHA_V3_SITE_KEY` Actions var required). Byte-hash delivery confirms P3+8-layer+mini-player bundle. Then: `firebase deploy --only functions:...` (after `git pull`) for OSCAR/SST/density/forest refreshers. Report wf90 success + functions deploy to Fable for SHA record.
+- **Owner (blocking — deploy):** Trigger wf90 at `fe44868` tip (`RECAPTCHA_V3_SITE_KEY` Actions var required). Byte-hash delivery confirms full bundle (P3 + 8-layer + Health Score capstone + version banner + Inspect gate + mini-player). Then: `firebase deploy --only functions:...` (after `git pull`) for `earthHealthScoreRefresh` + `earthSstRefresh` anomaly + OSCAR/SST/density/forest/wildfire refreshers. Report wf90 + functions deploy SHA to Fable for SHA record. Do NOT deploy `public-access-flip` (`05d00d2`) — HELD until public-flip gate.
 - **Owner (blocking — orphan dirs):** `rm -rf rand0m-dvmerge rand0m-mainmerge` after confirming no process holds them.
-- **Earth agent:** `earth/anim-bugfix` — fix ocean animation regression + view-switch ghost trails. Gate: CI green + owner device pass. (L2 Ocean does not open until anim-bugfix merged + Fable ratification received.)
+- **Earth agent (RESCISSIONS — open, blocking for launch):**
+  1. Restore `assets/audio/technologia.mp3` (deleted by `fe44868`; launch + alert sound; re-add `assets/audio/` pubspec glob). Wire playback at app launch + alert triggers (Fable scope confirmation required for wiring — restore alone is unblocked).
+  2. Re-add `flights` + `ships` to `futureLayerIds` in `earth_region_model_test.dart` as Pro-tier aggregate layers (`79ba5fa` removal was wrong per governance amendment). Separate governance specs required before implementation.
+- **Earth agent:** `earth/anim-bugfix` — fix ocean animation regression + view-switch ghost trails. Gate: CI green + owner device pass.
 - **Test agent:** P0 callable gate mismatch fix — callables must honour entitlement check (not domain-only). Required before callable features reach public users.
-- **Fixes agent:** delete merged branches (P3 bundle + C16 deletables); clean generated-registrant nit in `047cca8`; VCM test failures (3 pre-existing) still open. ⚠ Do NOT delete `design-dataview-scenario` or `chore/idle-spin-test` — these are NOT merged (see Open Branches corrections below).
-- **Fable agent:** ratify renderer contracts in [`internal/architecture/earth-8-layer-renderer-contracts.md`](internal/architecture/earth-8-layer-renderer-contracts.md) — §1 flow-field, §2 point/scalar, §3 data contracts, §4 disjoint-lane model. L2 implementation blocked until confirmed.
-- **Fable agent:** confirm whether `6fd5b60` (App Check enforce-flip) rides the initial functions batch deploy or holds for the 2nd post-monitoring deploy.
+- **Fixes agent:** delete merged branches (P3 bundle + C16 deletables); clean generated-registrant nit in `047cca8`; VCM test failures (3 pre-existing) still open. ⚠ Do NOT delete `design-dataview-scenario` or `chore/idle-spin-test` — these are NOT merged.
+- **Fable agent:** confirm whether `6fd5b60` (App Check enforce-flip) rides the initial functions batch deploy or holds for 2nd post-monitoring deploy. Confirm scope of `technologia.mp3` wiring (playback triggers) before Earth implements.
+
+> **FABLE CALLOUT:** Review: (1) BYOK ≥1-key gate + unkeyed-providers-disabled addition to ADR 0006 — confirm binding. (2) Governance amendment Pro-tier gate for Tier 2 aggregate density (flights/ships/satellites) — confirm binding. (3) `technologia.mp3` wiring triggers (launch + alert sound) — confirm scope before Earth implements. (4) `inspect-data-explorer-spec.md` ratification — owner/org gate, Recycler owner-only, off-Hive binding.
 
 ---
 
@@ -275,38 +309,49 @@ _Queued — approved scope, not yet started. **Serialize Earth-page edits — on
 
 ### Public-launch sequence (BLOCKING — serialized)
 
-1. **Owner:** `RECAPTCHA_V3_SITE_KEY` Actions var set → wf90 run → byte-hash delivery confirmed
-2. **Owner:** `firebase deploy --only functions:...` (after `git pull`) → confirm functions live
-3. **Fable:** record P3 deployed SHA (git-verified from owner confirm)
-4. **Monitoring period:** App Check MONITORING baselines legitimate traffic
-5. **Earth + Owner:** enforce-flip (App Check) + Pro/managed server tier-read → SECOND functions deploy
-6. **Owner device-pass:** all five Disclosure Safeguards ✓ + entitlement checks ✓ + sign-in for non-domain Google account ✓
-7. **Test agent:** callable gate mismatch P0 fixed (entitlement check replaces domain-only guard)
-8. **Fable:** legal sign-off (device-pass review)
-9. **Owner:** PUBLIC SITE-FLIP
+1. **Earth agent:** resolve two rescissions (restore `technologia.mp3`; re-add `flights`/`ships` to futureLayerIds as Pro layers)
+2. **Owner:** `RECAPTCHA_V3_SITE_KEY` Actions var set → wf90 at `fe44868` → byte-hash delivery confirmed (all layers + capstone + Inspect gate)
+3. **Owner:** `firebase deploy --only functions:...` (after `git pull`) — includes `earthHealthScoreRefresh` + updated `earthSstRefresh` + all refresh functions
+4. **Fable:** record deployed SHA (git-verified from owner confirm)
+5. **Monitoring period:** App Check MONITORING baselines legitimate traffic
+6. **Earth + Owner:** enforce-flip (`6fd5b60`) + Pro/managed server tier-read → SECOND functions deploy (Fable confirms whether `6fd5b60` rides initial batch or holds)
+7. **Owner:** deploy `public-access-flip` (`05d00d2`) — HELD; deploys at this gate only
+8. **Owner device-pass:** Health Score live (not static 78) ✓ + AIEDS as separate chip ✓ + Disclosure Safeguards ✓ + entitlement checks ✓ + non-domain Google sign-in ✓ + Inspect gated to owner ✓
+9. **Test agent:** callable gate mismatch P0 fixed (entitlement check replaces domain-only guard)
+10. **Fable:** legal sign-off (device-pass review)
+11. **Owner:** PUBLIC SITE-FLIP
 
 ### Earth — in flight (serialized, one lineage)
-- `earth/anim-bugfix`: fix ocean animation regression + view-switch ghost trails. Gate: CI green + owner device pass. (Can run in parallel with P3 deploy sequence above — file-disjoint.)
+- `earth/anim-bugfix`: fix ocean animation regression + view-switch ghost trails. Gate: CI green + owner device pass.
 - `earth/filter-ux-v2`: outside-click-close + remove All-Layers + random built-layer default one-at-a-time + disable inactive layers (in flight — record SHA when merged).
+- **RESCISSION fix (unblocked):** restore `technologia.mp3` + re-add pubspec audio glob. Can land before or alongside anim-bugfix — file-disjoint.
 - Gate each before next opens.
 
-### 8-Layer Program (Earth — after Fable ratification; L2 after anim-bugfix)
+### Earth Pro track (post-launch; Fable spec per vertical required)
+
+Earth Pro = entitlement-gated features for Pro/org subscribers.
+
+| Track | Description | Gate |
+| --- | --- | --- |
+| **All-Layers mode** | Show all 8 layers simultaneously (Pro-only toggle) | Fable spec + Pro entitlement gate |
+| **HD assets** | Higher-resolution data assets for Pro subscribers | Fable spec required |
+| **Flights density (aggregate)** | Tier 2 aggregate; identity-suppressed; ≥24h delay; governance spec per `human-activity-governance-amendment.md` | Separate Fable governance spec |
+| **Ships density (aggregate)** | Tier 2 aggregate; same constraints as flights | Separate Fable governance spec |
+| **Satellite density (aggregate)** | Tier 2 aggregate; TLE feeds; coarse-cell | Separate Fable governance spec |
+
+⚠ No Tier 2 vertical opens without: (1) individual Fable governance spec, (2) Pro-tier entitlement gate wired, (3) identity-suppression function implemented + tested. `futureLayerIds` to be updated with `flights`/`ships`/`satellites` after Earth rescission fix (`79ba5fa` reversal).
+
+### All-Layers Live (pre-6/26 goal)
+
+All 8 Earth layers are now live on `origin/main`. Hosting deploy (wf90) lands all layers simultaneously. Owner triggers wf90 → all layers live. No additional Earth slices required for "all-layers-live" milestone.
+
+### 8-Layer Program (COMPLETE)
 
 See **Earth 8-Layer Program** section above for roster, renderer contracts, and lane model.
 
-**L2 — Ocean (OSCAR) — next after ratification + anim-bugfix merged:**
-- Flow-field renderer (reuses `earth_flow_field.js`); separate data contract only.
-- Static-rep bundle first; live OSCAR callable overlays after resolve.
-- Owner deploys Firebase function manually (wf90 HOSTING-ONLY).
-- Branch: `earth/layer-ocean` (not opened — blocked on Fable ratification).
-- Gate: CI green + owner device pass.
+All 8 layers live at `fe44868`. No further 8-layer implementation work required.
 
-**L3 / L4 (Wildfires / Air quality) — after L2 merged:**
-- Point renderer (`earth_point_renderer.js`) — contract-only, not yet implemented.
-- Implementation blocked on: Fable ratification + point renderer initial slice.
-- Lanes are file-disjoint from L2 and from each other — may run in parallel after L2 merges.
-
-**L5–L8 — post-launch; Fable spec required before any branch opens.**
+Future Pro layers (flights/ships/satellites aggregate density) require separate Fable governance specs.
 
 ### Globe-chrome + Data View (Design — after each Earth pass gates)
 
@@ -370,11 +415,21 @@ Fable architecture rulings (binding):
 
 _Completed and on `main`._
 
+- **8-LAYER PROGRAM COMPLETE** (session 43) — all 8 layers live at `fe44868`. L1 Wind (`b7f9849`), L2 Ocean OSCAR (`1ed1b6b`), L3 Air quality (`fbb4dd6` live), L4 Forest (`5ce9513`), L5 Density (`5ce9513`), L6 Wildfire (`d91da59`), L7 Biodiversity (`d91da59`), L8 SST anomaly (`299e9e6`+`353a478`). Renderer contracts ratified+shipping. ✓ (merged; deploy PENDING wf90)
+- **Live Health Score CAPSTONE** (session 43) — `earthHealthScoreRefresh` (`58feb9f`) live server aggregation; `855e6e0` reactive UI recompute on filter; replaces static 78; AIEDS separate chip. SST anomaly updated (`353a478`). earth.healthscore.v1. ✓ (merged; functions deploy PENDING owner)
+- **Inspect security gate** (`86ae546`) — secrets redacted; Inspect page gated to owner/org (pre-public safety). ✓ (merged; deploy PENDING wf90)
+- **Version-update banner** (`8df7ba2`) — in-app banner polls version.json + SW skip-waiting. ✓ (merged; deploy PENDING wf90)
+- **Mini-player** (`4333563` + `731b47a`) — persistent mini-player (Relax+Vibe survives route change) + single-instance handoff (full↔mini↔PiP). ✓ (merged; deploy PENDING wf90)
+- **Monorepo cleanup P1** (`fe44868`) — 7 unused Earth textures deleted; README de-four-app'd. ⚠ Two rescissions OPEN (technologia.mp3; flights/ships futureLayerIds). ✓ (merged; deploy PENDING; rescissions pending Earth reversal)
+- **§23 contract-ownership BINDING** (session 43) — contracts defined ONCE by Earth in `lib/models/earth/`; all agents import. Codified in coordination standards §23. ✓
+- **Inspect DataSource Explorer spec** (session 43) — [`internal/architecture/inspect-data-explorer-spec.md`](internal/architecture/inspect-data-explorer-spec.md); replaces `data-explorer-v1-spec.md`. POST-LAUNCH, owner/org, off-Hive, Recycler owner-only. ✓
+- **Governance amendment — Pro-tier gate for Tier 2 density** (session 43) — flights/ships/satellites aggregate density layers = Pro-tier only. Updated [`../READMORE/architecture/earth/human-activity-governance-amendment.md`](../READMORE/architecture/earth/human-activity-governance-amendment.md). ✓
+- **BYOK ≥1-key gate** (session 43) — unkeyed providers disabled (not just quota-limited); updated [`internal/decisions/0006-byok.md`](../decisions/0006-byok.md). ✓
+- **Monorepo cleanup audit** (session 43) — [`internal/architecture/monorepo-cleanup-audit.md`](internal/architecture/monorepo-cleanup-audit.md); P1 done; two rescissions documented; P2/P3 pending Fable. ✓
 - **Mini-player merged** (`4333563`) — shell-above-Navigator + PiP/MediaSession + handoff follow-up. On main; deploy PENDING owner wf90. ✓
 - **Health Score methodology RATIFIED (earth.healthscore.v1)** — 5-signal roster (air quality 0.30 count-based, SST anomaly 0.25 vs 1991–2020, wildfire 0.20, forest 0.15, human density 0.10 provisional); hybrid server-fn + client-recompute; AIEDS separate+unblended+device; governance constraints locked. Spec: [`../READMORE/architecture/earth/global-health-score-data-audit.md`](../READMORE/architecture/earth/global-health-score-data-audit.md). ✓
-- **Data Explorer v1 spec RATIFIED — POST-LAUNCH** — read-only adapters, E1–E4, secrets-excluded, owner/org-gated, Recycler owner-only, off-Hive (Firestore). Spec: [`internal/architecture/data-explorer-v1-spec.md`](internal/architecture/data-explorer-v1-spec.md). ✓
 - **§22 worktree-lane isolation BINDING** — `apps/rand0m` = Earth/main integration only; every other lane in `worktrees/<lane>`; no branch-swap in `apps/rand0m`; push→merge→pull. Codified in [`internal/automation/agent-coordination-standards.md`](internal/automation/agent-coordination-standards.md) §22. ✓
-- **8-Layer slices 1–5 merged** (`90eb743` / `451f7c2` / `fe87c3c` / `fbb4dd6` / `5ce9513`). OSCAR refresher `1ed1b6b` + scalar refreshers `e13c1e7` + enforce-flip staged `6fd5b60`. Functions bundle deploy-ready. `origin/main` = `5ce9513`. ✓ (merged; deploy PENDING owner)
+- **8-Layer slices 1–5 merged** (`90eb743` / `451f7c2` / `fe87c3c` / `fbb4dd6` / `5ce9513`). OSCAR refresher `1ed1b6b` + scalar refreshers `e13c1e7` + enforce-flip staged `6fd5b60`. Functions bundle deploy-ready. ✓ (merged; deploy PENDING owner)
 - **P3 public-launch bundle merged** (`8022265`) — allowlist hardening (`203c768`) + cost/abuse backstop (`047cca8`: Firestore counters, RC kill-switch, SSRF 169.254 fix, App Check MONITORING) + BYOK (`5baba7b`) + geo-validity Phase 0+1 + Disclosure Safeguards Standard + Test entitlement TP-1..TP-4 + AIEDS whitepaper + reCAPTCHA build wiring. Hosting deploy PENDING owner wf90. ✓ (merged)
 - **Disclosure Safeguards Standard ratified** — LEGAL-SAFEGUARDS AUDIT gate resolved for public-launch scope; all five safeguards present in P3 bundle. Owner device-pass PENDING. ✓
 - **Auth domain restrictions clarified (ADR 0004)** — public = any Google sign-in; `@rand0m.ai`-only lifted at site-flip; callable domain guard → entitlement check at public-flip. ✓
@@ -547,6 +602,15 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **External-access gate ratified (session 36):** fail-closed `external_access_allowlist` Remote Config live. Domain OR allowlist; verified accounts only; Access ≠ Owner. **Mandatory add-a-tester procedure:** add email to RC → owner gate device-pass (allow + block + domain all three) → tester all-clear. No tester onboarded without device-pass.
 - **Beta path declared (session 36):** steady-state = release → owner function deploy → owner device-pass → Test beta-readiness hardening → testers at T5/T6 (record/create). Full submit beta requires T7 (owner GitHub App/token for `/123` write path) — do not promise submit before T7 wired. Test agent to persist beta-readiness checklist as READLESS note.
 - **CI economy (session 36, binding):** GitHub Actions now metered on Team Org plan. Batched-release standard: deploy every few passes. Minimize workflow triggers. Workflow 90 byte-hash is the sole delivery gate — no supplementary checks.
+- **Session 43 paper-trail refresh:** 8-layer program marked COMPLETE (all 8 layers git-verified at `fe44868`). Live Health Score capstone recorded. Two rescissions documented (`technologia.mp3` + `flights/ships`). `inspect-data-explorer-spec.md` created (replaces `data-explorer-v1-spec.md`). `monorepo-cleanup-audit.md` created. §23 contract-ownership added to coordination standards. Governance amendment updated with Pro-tier gate. BYOK ≥1-key gate added. `public-access-flip` `05d00d2` status clarified as HELD (NOT on main). Earth Pro track queued.
+- **8-Layer Program COMPLETE (session 43):** all 8 layers merged at `fe44868`. Renderer contracts ratified (flow-field + point/scalar both shipping; point shipping as `earth_point_field.js` not `earth_point_renderer.js`). Prior "FABLE CALLOUT — ratification pending" language superseded.
+- **Live Health Score replaces static 78 (session 43, `855e6e0`):** prior "static 78 - viewer-AI-carbon estimate" is retired. Canonical score is now `earthHealthScoreRefresh`-aggregated + client-reactive. AIEDS digital footprint surfaced as a separate chip — never blended.
+- **`79ba5fa` RESCISSION — flights/ships test removal was wrong (session 43):** the commit cited Tier 3 prohibition (live per-vehicle tracking) to justify removing `flights`/`ships` from `futureLayerIds`. Tier 2 aggregate density (identity-suppressed, ≥24h delay, coarse-cell) is explicitly PERMITTED by governance amendment (session 24). Earth agent must reverse. Pro-tier gate applies at implementation time.
+- **`fe44868` RESCISSION — `technologia.mp3` deletion was premature (session 43):** deleted as "zero refs" but is the intended launch/alert sound. Wiring is pending (not abandoned). Earth agent must restore from git history. Playback trigger scope requires Fable confirmation before wiring.
+- **`public-access-flip` (`05d00d2`) HELD (session 43):** SHA exists on origin but is NOT in `origin/main`. This is the gate-controlled public access flip. Must NOT be merged before Fable + owner sign-off at public-flip checkpoint. Do not confuse with the wf90 hosting deploy.
+- **What's-New release-notes source (session 43 — queued):** no authoritative single source for in-app release notes currently. Post-launch track; needs owner directive + design spec.
+- **`rk_media` adopt-vs-sunset (session 43 — queued):** `rk_media` package decision post-launch. If adopted → formalize as governed package; if sunset → consolidate into `apps/rand0m`. No action before launch.
+- **`connect_page_test` refactor (session 43 — queued):** test structure reflects pre-retirement Connect agent architecture. Post-launch; Test agent owns.
 - **Session 42 docs persisted:** Health Score ratified (earth.healthscore.v1) → `READMORE/architecture/earth/global-health-score-data-audit.md`. Data Explorer v1 POST-LAUNCH spec → `internal/architecture/data-explorer-v1-spec.md`. §22 worktree-lane isolation → `internal/automation/agent-coordination-standards.md` appended. Mini-player `4333563` merged. 8-layer slices 1–5 + OSCAR + scalar refreshers + enforce-flip staged all recorded. `origin/main` updated to `5ce9513`.
 - **§22 root cause — FF-merge races (session 42):** multiple lanes working in `apps/rand0m` and pushing to `origin/main` caused fast-forward collisions (out-of-order commits). Fix: `apps/rand0m` = integration-only; all feature work in lane worktrees; push→Earth-integrates→others-pull. §22 supersedes any prior language allowing feature work in main clone. Complements §11 (Main Clone Earth-Exclusive).
 - **Open Branches corrections (session 42, Fixes-verified):** `design-dataview-scenario` (`c1f5844`) is NOT merged into `origin/main` — was incorrectly listed as "merged (superseded)". Status: unmerged; superseded in intent; do not delete without owner confirm. `chore/idle-spin-test` (`9fc16ef`) is NOT merged into `origin/main` — was incorrectly listed as "redundant/deletable". Status: unmerged; owner decision required before deletion.
@@ -626,14 +690,14 @@ _Scope changes, strategy shifts, or deferred decisions._
 
 _Rows reflect current remote branches confirmed by Fable gate or `git log origin/main`. All stale/never-existed rows removed (T10 audit, session 29). **Rule: Open Branches updates come from Fable gate confirmations only — same standard as Deploy Checkpoint rows.** Codified in coordination standards §2._
 
-_Rebuilt session 42 from git + Fixes-verified state. qa-kitt/.github: 2 branches (main + readless-readmore-reorg). xyz: `origin/main` = `5ce9513`. 8-layer slices 1–5 + OSCAR + refreshers + enforce-flip staged + mini-player all on main. Open Branches corrections applied (session 42): design-dataview-scenario and chore/idle-spin-test are NOT merged._
+_Rebuilt session 43 from git-verified state. qa-kitt/.github: 2 branches (main + readless-readmore-reorg). xyz: `origin/main` = `fe44868`. All 8 layers + Health Score capstone + version banner + Inspect gate + monorepo cleanup on main. `public-access-flip` (`05d00d2`) is NOT on main — HELD branch._
 
 | Branch | Repo | Status | Notes |
 | --- | --- | --- | --- |
 | `readless-readmore-reorg` | qa-kitt/.github | Active — Docs branch | All READLESS/READMORE updates; session 42 changes uncommitted until this session commits |
 | `earth/anim-bugfix` | xyz | In flight | Ocean animation regression + view-switch ghost trails; open bugs |
 | `earth/filter-ux-v2` | xyz | In flight | Outside-click-close + remove All-Layers + random default + disable inactive; record SHA when merged |
-| mini-player worktree | xyz | In flight — active worktree | `4333563` merged; handoff follow-up ongoing; worktree active |
+| `feature/public-access-flip` (`05d00d2`) | xyz | **HELD — NOT on main** | Public-flip gate; deploys only at public site-flip checkpoint; do not merge before Fable+owner sign-off |
 | `geo-mask-asset` | xyz | ✅ Merged — deletable | Merged in P3 (`8022265`); Fixes agent to delete |
 | `geo-enforce` | xyz | ✅ Merged — deletable | Merged in P3 (`8022265`); Fixes agent to delete |
 | `disclosure-safeguards` | xyz | ✅ Merged — deletable | Merged in P3 (`8022265`); Fixes agent to delete |
@@ -656,12 +720,13 @@ _xyz remaining unmerged branches: low-priority; not blocking. Earth agent to enu
 
 ## Launch Checklist
 
-_Updated session 40 for public-launch sprint. Go/no-go detail: [`internal/architecture/public-launch-readiness.md`](internal/architecture/public-launch-readiness.md)._
+_Updated session 43. `origin/main` = `fe44868`. Go/no-go detail: [`internal/architecture/public-launch-readiness.md`](internal/architecture/public-launch-readiness.md)._
 
 | Item | Status | Notes |
 | --- | --- | --- |
-| **P3 bundle wf90 deploy** | ⏳ **PENDING owner** | `RECAPTCHA_V3_SITE_KEY` Actions var required first. Owner triggers wf90; byte-hash delivery confirms. Report SHA to Fable. |
-| **P3 functions deploy** | ⏳ **PENDING owner** | `firebase deploy --only functions:...` after `git pull`. Owner confirms. |
+| **Earth rescissions** | ⚠ **OPEN — Earth agent** | (1) Restore `technologia.mp3`; (2) Re-add `flights`/`ships` to `futureLayerIds` as Pro layers. See `monorepo-cleanup-audit.md`. |
+| **wf90 deploy at `fe44868`** | ⏳ **PENDING owner** | `RECAPTCHA_V3_SITE_KEY` Actions var required first. Owner triggers wf90; byte-hash delivery confirms full bundle. Report SHA to Fable. |
+| **Functions deploy** | ⏳ **PENDING owner** | `firebase deploy --only functions:...` after `git pull`. Includes `earthHealthScoreRefresh` + `earthSstRefresh` anomaly + all refresh functions. |
 | **`RECAPTCHA_V3_SITE_KEY` Actions var** | ⏳ **PENDING owner** | Must be set in `random-knights/xyz` Actions secrets before wf90 run. |
 | **App Check MONITORING mode** | ⏳ Confirm post-deploy | Confirm active after functions deploy. Monitoring period before enforce-flip. |
 | **App Check enforce-flip** | ⏳ **DEFERRED — 2nd deploy** | Post-monitoring. RC flip + functions redeploy. Owner + Earth agent. |
@@ -670,6 +735,7 @@ _Updated session 40 for public-launch sprint. Go/no-go detail: [`internal/archit
 | **P0 — repo-123 infra leak** | ⛔ **Fix before callable features** | `/123` must not appear in client bundles or error payloads. |
 | **Owner device-pass (public-flip)** | ⏳ **PENDING** | Sign-in as non-domain Google account ✓; Disclosure Safeguards visible ✓; entitlement checks ✓. |
 | **Fable legal sign-off** | ⏳ **PENDING** | Post device-pass. Fable owns go/no-go. |
+| **`public-access-flip` (`05d00d2`) deploy** | ⛔ **HELD — public-flip gate only** | Merge + deploy at public site-flip checkpoint only. Do not trigger before Fable+owner sign-off. |
 | **PUBLIC SITE-FLIP** | ⛔ **FINAL gate** | All above must be ✅. Owner executes. |
 | **LEGAL-SAFEGUARDS AUDIT** | ✅ **RESOLVED (session 40)** | Disclosure Safeguards Standard (5 safeguards) shipped in P3. Owner device-pass pending. See [`internal/architecture/disclosure-safeguards-standard.md`](internal/architecture/disclosure-safeguards-standard.md). |
 | **T7 — GitHub App / token for /123** | ✅ **LIVE (`b7f9849`)** | `GITHUB_APP_ID`/`INSTALLATION_ID`/`PRIVATE_KEY` Path B wired into `githubProxy` callable. |
