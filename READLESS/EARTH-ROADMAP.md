@@ -401,6 +401,76 @@ Fable architecture rulings (binding):
 - abc READMORE public-launch seeding (history-review or fresh-seed required; CODEX.md line update queued).
 - Codex T14 (held for launch).
 
+### Multi-Platform — PWA Install (PRE-6/26; low-risk; no store review)
+
+Install the existing Flutter-web app to the home screen / desktop on all four platforms via the standard Web App Manifest + browser "Add to Home Screen" / "Install app" prompt. **No native build, no app store, no review timeline risk.**
+
+| Platform | Mechanism | Notes |
+| --- | --- | --- |
+| Windows | Chrome / Edge "Install app" → PWA shortcut | Works today if manifest is well-formed |
+| macOS | Safari "Add to Dock" / Chrome install | Safari PWA support limited; Chrome/Edge reliable |
+| Android | Chrome "Add to Home Screen" → standalone PWA | Full PWA support; service worker + offline shell |
+| iOS | Safari "Add to Home Screen" → standalone | Safari only; no push notifications in iOS PWA |
+
+**What's needed (low-risk, web-only changes):**
+
+1. `web/manifest.json` — verify `name`, `short_name`, `icons` (192px + 512px PNG), `display: standalone`, `start_url`, `theme_color`, `background_color`. Maskable icon variant for Android adaptive icons.
+2. `web/index.html` — `<link rel="manifest">` wired (already present in Flutter web template; verify).
+3. Service worker (`flutter_service_worker.js`) — Flutter web generates this; confirm caching strategy doesn't break the live-data refresh tick.
+4. HTTPS — already required for `rand0m.ai`; no change.
+5. iOS splash / apple-touch-icon meta tags — add `<link rel="apple-touch-icon">` + `<meta name="apple-mobile-web-app-capable" content="yes">`.
+
+**No Earth globe impact.** Cesium + flow-field/point-field/scalar-field renderers run inside the browser engine whether launched from a URL or a PWA shell — identical code path.
+
+**Gate:** owner install-test on each platform before 6/26 (Android + iOS add-to-home + one desktop). Byte-hash delivery via wf90 is sufficient delivery gate — no new release workflow needed.
+
+> FABLE CALLOUT: PWA Install is pre-6/26 scope. Confirm: (1) manifest icon set owner-approved (branding); (2) iOS apple-touch-icon acceptable as the rand0m.ai icon (same as favicon F1.0). No Fable spec required if these two are yes.
+
+---
+
+### Multi-Platform — Native Apps (POST-LAUNCH; audit-first; multi-week)
+
+Full native Flutter builds: Windows (MSIX), Android (AAB/APK), macOS (notarized .app), iOS (IPA). **This is a post-launch roadmap item — not committed pre-6/26 work.** Native builds are recorded here to protect production quality by explicitly deferring the risk to after the web launch is stable.
+
+#### The Globe Crux (blocking constraint for native)
+
+The Earth globe depends on **web-only Flutter APIs**:
+
+- `HtmlElementView` — renders a DOM element (the Cesium canvas) inside Flutter. **Web-only.** Does not exist on Android, iOS, Windows, macOS.
+- `earth_flow_field.js` / `earth_point_field.js` / `earth_scalar_field.js` — JavaScript renderers that communicate with Dart via `dart:js` / `dart:html` postMessage. **Web-only.**
+- `CesiumJS` (V2.16) — JavaScript library running in a browser engine. **Browser-required.**
+
+Native platforms do not have a DOM or a browser engine by default. Two approaches exist; both require an audit before any implementation:
+
+| Approach | Description | Risk |
+| --- | --- | --- |
+| **WebView host** | Embed a `webview_flutter` WebView on native; load the Cesium/flow-field JS page inside it; communicate via `postMessage` JS↔Dart bridge | Medium. WebView performance varies by platform; bridge latency; iOS WKWebView restrictions. Audit required. |
+| **Native renderer** | Port flow-field/point-field/scalar-field to a native Flutter renderer (CustomPainter or Flutter GPU / Impeller); replace Cesium with a native map SDK | High. Large scope; separate Fable spec per renderer; no ETA. |
+
+WebView host is the lower-risk path and the likely initial approach, but it requires a WebView-bridge audit before Earth agent opens any branch.
+
+#### Per-platform requirements (summary)
+
+| Platform | Build target | App-Check attestation | Signing/notarization | Store/distribution | Review timeline |
+| --- | --- | --- | --- | --- | --- |
+| Android | AAB (Play Store) or APK (sideload) | **Play Integrity API** (replaces SafetyNet) | Keystore + Play App Signing | Google Play Store | 1–7 days (initial) |
+| iOS | IPA | **App Attest** (DeviceCheck fallback) | Apple Developer Program ($99/yr) + Xcode notarization | App Store | 1–7 days (typical); rejection risk |
+| Windows | MSIX or portable EXE | **reCAPTCHA Enterprise** or custom attestation (no Play Integrity on Windows) | EV Code Signing certificate | Microsoft Store or direct | 1–3 days (Store); 0 (direct MSIX) |
+| macOS | .app (notarized) | **DeviceCheck** (macOS 10.15+) | Apple Developer Program + notarization + Gatekeeper | Mac App Store or notarized DMG | 1–7 days (Store); ~1h (notarization) |
+
+**Firebase App Check** must be reconfigured per platform — each uses a different attestation provider. The current web config (reCAPTCHA v3) does not cover native. A separate Firebase App Check native-setup slice is required before any native build reaches production.
+
+#### Gate (blocking before any native implementation opens)
+
+1. **Fable audit directive** — owner + Fable ratify the WebView-host approach (or a native renderer alternative) and confirm scope.
+2. **WebView-bridge architecture spec** — Earth agent documents `postMessage` contract between WebView JS context and Flutter Dart; Fable ratifies.
+3. **App-Check native config** — per-platform attestation providers configured in Firebase console (owner action).
+4. **Web launch stable** — native work does not open until web public-flip is confirmed stable (monitoring period complete).
+
+> FABLE CALLOUT: Native Apps is audit-first, post-launch. No branch opens until (1) Fable ratifies the WebView-host vs native-renderer approach, (2) App-Check native providers are confirmed for each target platform, and (3) web public-flip is stable. Record these gates when the owner is ready to open the native track.
+
+---
+
 ### Future track (Fable spec + owner directive required)
 - OSCAR live ocean (Phase 2 layered-animation; reuses renderer).
 - Free-tier provider models (AI cost reduction; separate spec).
