@@ -1,7 +1,7 @@
 # Public Launch Readiness — Security + Cost Audit & Go/No-Go Checklist
 
 **Date:** 2026-06-16 (session 43 — updated)
-**Status:** P3+8-layer+capstone merged; `origin/main` = `fe44868`; wf90 deploy + device-pass PENDING owner confirm
+**Status:** P3+8-layer+capstone+globe-polish+PWA merged; `origin/main` = `52fd725`; Rescission 1 FIXED; wf90 deploy + device-pass PENDING owner confirm
 **Owner:** Fable (go/no-go gate); Owner (device-pass + site-flip); Docs (this record)
 
 ---
@@ -40,11 +40,16 @@ Items merged after P3 bundle (`8022265`) that will ride the next wf90 hosting de
 | LayerLegend widget | `d182d7a` | Reusable color-key widget + palette contract |
 | Version banner | `8df7ba2` | In-app version-update banner (polls version.json + SW skip-waiting refresh) |
 | Inspect security fix | `86ae546` | Redact secrets + gate Inspect to owner/org only (pre-public safety gate) |
-| Monorepo cleanup P1 | `fe44868` | Drop 7 unused textures + de-four-app README; **⚠ two rescissions pending** (see `monorepo-cleanup-audit.md`) |
+| Monorepo cleanup P1 | `fe44868` | Drop 7 unused textures + de-four-app README; ~~⚠ two rescissions pending~~ Rescission 1 FIXED; Rescission 2 OPEN (see `monorepo-cleanup-audit.md`) |
+| ✅ Rescission 1 fix | `7b8c5c2`+`76809d7` | `technologia.mp3` restored + alert/launch sound wired; `web/release-notes.json` introduced |
+| Globe-polish 1–7 | `53a64c3`→`bd872d2` | Cesium entity markers; auto-rotate; filter flourish; "i" info icon; point-marker snapshot; taco counters; Data View Layers reorganized |
+| Connect BYOK providers | `d76e455` | BYOK providers status green in Connect + Add+ custom sources |
+| Governance overlay-readiness fix | `4b7e683` | 8-layer overlay readiness corrected; all 8 layers animate |
+| PWA Install | `52fd725` | Web manifest + beforeinstallprompt; iOS apple-touch-icon; installable on all platforms |
 
-⚠ **Rescissions pending (non-blocking for deploy, but Earth agent must reverse before launch):**
-- `technologia.mp3` was deleted — must be restored + wired (launch/alert sound)
-- `futureLayerIds` flights/ships were removed from test — must be re-added as Pro layers
+⚠ **Rescissions status:**
+- ✅ Rescission 1 FIXED — `technologia.mp3` restored (`7b8c5c2`) + alert/launch sound wired (`76809d7`). On main; deploy PENDING wf90.
+- ⚠ Rescission 2 OPEN — `futureLayerIds` flights/ships removed by `79ba5fa` — Earth agent must re-add as Pro-tier aggregate layers before launch.
 
 ---
 
@@ -100,7 +105,7 @@ Key never in bundle; never in Firestore; never in function logs. Callable forwar
 - [ ] Fable legal sign-off (Disclosure Safeguards device-pass reviewed + legal gate cleared) ✓
 - [ ] `0004-auth-domain-restrictions.md` ruling applied: public auth = any Google sign-in ✓
 - [ ] callable gate mismatch P0 fixed (callables honour entitlement, not domain-only) ✓
-- [ ] `technologia.mp3` restored + wired (launch/alert sound) before site-flip ✓
+- [x] `technologia.mp3` restored + wired (launch/alert sound) — ✅ FIXED on main (`7b8c5c2`+`76809d7`); deploy PENDING wf90 ✓
 - [ ] `futureLayerIds` flights/ships re-added as Pro layers (Earth agent, `monorepo-cleanup-audit.md` Rescission 2) ✓
 
 ### Should be ✅ before site-flip (non-blocking but flag if missing)

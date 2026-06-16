@@ -1,7 +1,7 @@
 # Monorepo Cleanup Audit
 
-**Date:** 2026-06-16 (session 43)
-**Status:** P1 DONE (`fe44868`); P2/P3 pending Fable spec
+**Date:** 2026-06-16 (session 43; updated session 44 — Rescission 1 FIXED)
+**Status:** P1 DONE (`fe44868`); Rescission 1 FIXED (`7b8c5c2`+`76809d7`); Rescission 2 OPEN; P2/P3 pending Fable spec
 **Owner:** Fixes agent (execution); Fable (scope ratification); Docs (this record)
 
 ---
@@ -26,19 +26,18 @@ Baseline audit of unreferenced assets, stale docs, and architectural debt in the
 
 ---
 
-## ⚠ RESCISSIONS — Earth Agent Must Reverse (blocking)
+## RESCISSIONS
 
-Two items in P1 require Earth-agent reversal before they affect production. These are OPEN corrections — do NOT treat P1 as fully clean until both are reversed.
+One item remains OPEN. One item FIXED.
 
-### RESCISSION 1: `technologia.mp3` — MUST BE RESTORED
+### ✅ RESCISSION 1: `technologia.mp3` — FIXED
 
 - **What happened:** `fe44868` deleted `assets/audio/technologia.mp3` as "zero refs."
 - **Why wrong:** `technologia.mp3` is the intended **launch sound + alert sound** for `rand0m.ai`. It has no current code refs because the wiring is pending (not because it is unwanted). Deleting it before wiring = lost asset.
-- **Required action (Earth agent):**
-  1. Restore `assets/audio/technologia.mp3` from git history (`git checkout fe44868^:assets/audio/technologia.mp3`).
-  2. Re-add `assets/audio/` glob to `pubspec.yaml`.
-  3. Wire playback at app launch + alert triggers (separate Earth slice; requires Fable scope confirmation before implementation).
-- **Status:** OPEN. Earth agent owns. `DOCS:` callout when restored.
+- **Resolution:**
+  - `7b8c5c2` — `chore: restore technologia.mp3 + assets/audio/ glob (owner override; deletion rescinded)` — asset restored from git history; `assets/audio/` glob re-added to `pubspec.yaml`.
+  - `76809d7` — `feat(banner): What's-new section + alert/launch sound` — `technologia.mp3` wired to alert + launch sound triggers; `web/release-notes.json` introduced.
+- **Status:** ✅ FIXED. On `origin/main`. Deploy PENDING owner wf90.
 
 ### RESCISSION 2: `futureLayerIds` flights/ships — MUST BE RE-ADDED as Pro layers
 
@@ -48,7 +47,7 @@ Two items in P1 require Earth-agent reversal before they affect production. Thes
   1. Re-add `'flights'` and `'ships'` to `futureLayerIds` in the Earth region model / test.
   2. Annotate as Pro-tier layers (not free-tier) — aggregate density, identity-suppressed, per `human-activity-governance-amendment.md`.
   3. Separate Fable governance spec required before actual layer implementation (same pattern as VCM/biodiversity).
-- **Status:** OPEN. Earth agent owns. `DOCS:` callout when reversed.
+- **Status:** ⚠ OPEN. Earth agent owns. `DOCS:` callout when reversed.
 
 ---
 
@@ -72,7 +71,7 @@ _These are observations from the audit. Do not execute any P2 item without expli
 
 | ID | Finding | Correction | Status |
 | --- | --- | --- | --- |
-| C1 | `technologia.mp3` deleted prematurely | Restore + wire (see Rescission 1) | ⚠ OPEN |
+| C1 | `technologia.mp3` deleted prematurely | Restored `7b8c5c2` + wired `76809d7` (see Rescission 1) | ✅ FIXED |
 | C2 | `futureLayerIds` test dropped flights/ships | Re-add as Pro-tier (see Rescission 2) | ⚠ OPEN |
 | C3 | README "four-app" framing retired | Fixed in `fe44868` | ✅ Done |
 | C4 | 7 unused Earth textures consuming bundle | Deleted in `fe44868` | ✅ Done |
