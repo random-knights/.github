@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-15 (session 39 — Phase A/B/T7 live; prod b7f9849; AIEDS whitepaper published; anim bugs; cleanup)
+**Last updated:** 2026-06-16 (session 41 — 8-Layer Program opened; renderer contracts drafted; public-launch goal 6/26; prepare-then-flip)
 
 ---
 
@@ -14,7 +14,7 @@ _Post-R7 roster active. Systems and Connect retired (wind-down complete, scopes 
 
 | Agent | Identity | Worktree | Active branch | Focus |
 | --- | --- | --- | --- | --- |
-| Earth | `deve10per` / dev-kitt | main clone (exclusive) | prod=`b7f9849`; `earth/anim-bugfix` in flight | Earth features, layers, governance; catalog owner; integrator/deploy; absorbs Systems+Connect scopes |
+| Earth | `deve10per` / dev-kitt | main clone (exclusive) | main=`8022265` (P3 undeployed); hosting=`1650a82`; `earth/anim-bugfix` in flight | Earth features, layers, governance; catalog owner; integrator/deploy; absorbs Systems+Connect scopes |
 | Design | `deve10per` / dev-kitt | `worktrees\rand0m-design` | POST-LAUNCH; no active D-slice | IA v2 D7+D8; Cesium FE globe shell; presentation/layout only |
 | Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | CI/hygiene; no Earth-page edits | CI, harness, QA; token-economy triage (§21d) |
 | Docs | `eng1neer` / qa-kitt | qa-kitt clone | `readless-readmore-reorg` | READLESS, CODEX, EARTH-ROADMAP |
@@ -35,7 +35,7 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 
 _**End goal: animated planetary flow globe (nullschool-class) + governed AI assistant.**_
 
-_Position: **prod = `b7f9849`**. Phase A (URL tools enabled), Phase B/T7 (githubProxy submit), Data-View-v2 distillation — all LIVE. AIEDS whitepaper published to READMORE. Open bugs: ocean animation + view-switch trails → `earth/anim-bugfix` in flight. Cleanup: 4 merged branches deletable + orphan worktree dirs `rand0m-dvmerge` + `rand0m-mainmerge` (Windows handle locks)._
+_Position: **P3 public-launch sprint merged.** `origin/main` (xyz) = `8022265`; last confirmed hosting deploy = `1650a82` (release `27580329138`, pre-P3). P3 bundle (allowlist hardening `203c768` + cost/abuse backstop `047cca8` + BYOK `5baba7b` + geo-validity Phase 0+1 + Disclosure Safeguards + Test entitlement TP-1..TP-4 + AIEDS whitepaper + reCAPTCHA build wiring) merged to main — **hosting deploy PENDING owner wf90 confirm**; functions deploy PENDING owner manual deploy + confirm. P3 deployed SHA will be recorded here after Fable-verified confirmation. Open bugs: ocean animation + view-switch trails → `earth/anim-bugfix`. Cleanup: P3 merged branches deletable + orphan dirs `rand0m-dvmerge` + `rand0m-mainmerge` (Windows handle locks). DEFERRED: App Check enforce-flip + Pro/managed server tier-read = SECOND functions deploy (post-monitoring). Public site-flip = FINAL gate (Fable + owner)._
 
 | Cycle | Release | Work | Gate |
 | --- | --- | --- | --- |
@@ -50,6 +50,7 @@ _Position: **prod = `b7f9849`**. Phase A (URL tools enabled), Phase B/T7 (github
 | **C14** | — | Wind Phase 1b ✓ (live NOAA-GFS wind + rotation-trail fix); Firebase functions deploy = owner one-time manual | Phase 1b live on device ✓ (owner-verified) |
 | **C15** | **batched release** ✓ **DEPLOYED** (`f9697be`, release `27571417246` ✓ success) | External-access RC gate; taco icon `22d699d`; FIRMS wildfire snapshot + taco `769bc67`; donation-reconcile; data-refresh frontend `9f174a2`; all three refresh functions deployed (earthWindGfsRefresh + earthAirQualityRefresh + earthWildfireRefresh); owner device-pass ✓ | Byte-hash delivery ✓; allowlist live; device-pass ✓ |
 | **C16** | ✓ **DEPLOYED** (`b7f9849`) | P0 beta-hardening (URL tools hidden + tester intro); Phase A (URL tools enabled); Phase B/T7 (githubProxy callable + GitHub App submit to `/123`); Data-View-v2 distillation (rebase-before-merge applied) | All LIVE; byte-hash delivery ✓ |
+| **C17 / P3** | ⏳ **PENDING owner deploy** (main=`8022265`; hosting=`1650a82` pre-P3) | Public-launch sprint: allowlist hardening (`203c768`) + cost/abuse backstop (`047cca8`: Firestore counters, RC kill-switch, SSRF 169.254 fix, App Check MONITORING) + BYOK (`5baba7b`: key-via-proxy, Hive-local, keySource telemetry) + geo-validity Phase 0+1 (mask asset + ocean-only enforcement) + Disclosure Safeguards Standard + Test entitlement TP-1..TP-4 (submit=Pro/org) + AIEDS whitepaper + reCAPTCHA build wiring. `RECAPTCHA_V3_SITE_KEY` Actions var required (owner). | wf90 confirm PENDING; functions deploy PENDING; P3 SHA to be recorded after Fable-verified confirm |
 
 **Visual smoke suspension:** R5+R6 checklist items suspended until R7 consolidated visual review. Post-R7: ≤5 items per release window, only when UI changed (§21b).
 
@@ -118,8 +119,16 @@ _Position: **prod = `b7f9849`**. Phase A (URL tools enabled), Phase B/T7 (github
 | **Data-View-v2 distillation** — rebase-before-merge applied (not auto-merge); Data View Scenario/Regional distillation live | merged to main | green | **✓ live** (`b7f9849`) |
 | ⚠ **Open bug: ocean animation** — animation issue on ocean layer; tracked → `earth/anim-bugfix` | — | — | bug open |
 | ⚠ **Open bug: view-switch trails** — ghost trails on Earth↔Data view switch; tracked → `earth/anim-bugfix` | — | — | bug open |
+| **Hosting pre-P3** (`1650a82`, release `27580329138`) | deployed | green | **✓ live** (last confirmed hosting; pre-P3 bundle) |
+| **P3 bundle — allowlist hardening** (`203c768`) | merged to main (`8022265`) | — | ⏳ deploy PENDING owner wf90 |
+| **P3 bundle — cost/abuse backstop** (`047cca8`) | merged to main (`8022265`) | — | ⏳ deploy PENDING; ⚠ generated-registrant nit (Fixes hygiene post-deploy) |
+| **P3 bundle — BYOK** (`5baba7b`) | merged to main (`8022265`) | — | ⏳ deploy PENDING |
+| **P3 bundle — geo-validity Phase 0+1** (mask asset + ocean-only) | merged to main (`8022265`) | — | ⏳ deploy PENDING |
+| **P3 bundle — Disclosure Safeguards Standard** | merged to main (`8022265`) | — | ⏳ deploy PENDING; owner device-pass required |
+| **P3 bundle — Test entitlement TP-1..TP-4** (submit=Pro/org) | merged to main (`8022265`) | — | ⏳ deploy PENDING |
+| **P3 bundle — reCAPTCHA build wiring** | merged to main (`8022265`) | — | ⏳ deploy PENDING; `RECAPTCHA_V3_SITE_KEY` Actions var required (owner) |
 
-`origin/main` (xyz) is at `b7f9849` (C16 — Fable-verified; prod = `b7f9849`).
+`origin/main` (xyz) is at `8022265` (P3 bundle merged; Fable-verified). Hosting = `1650a82` (pre-P3; last confirmed deployed).
 
 ⚠ **State rule:** rows may only show "merged" or "deployed" when a git-verified SHA from a Fable gate confirmation or `git log origin/main` check is recorded here. Do not assert merged/deployed from session memory.
 
@@ -167,7 +176,66 @@ All three layers now serve live cached data.
 
 ⚠ **LEGAL-SAFEGUARDS AUDIT — pre-launch hard gate:** all on-screen disclosure labels (e.g. representative-wind "not current conditions") are DEFERRED to a pre-launch LEGAL-SAFEGUARDS AUDIT. This audit is a **HARD GATE** before any public/non-owner exposure. Governance-catalog obligations remain TRUE at the data layer; only UI disclosure surfacing is deferred (owner-gated dev site). No agent proceeds with disclosure UI implementation until this gate is opened by Fable + owner.
 
-Next track: **LAYERED-ANIMATION PROGRAM** — Phase 2 Ocean (OSCAR; reuses renderer) → point-based layers (wildfires etc.) → PASS A/B/C chrome + Data View → pre-launch legal-safeguards audit.
+⚠ **P3 deploy PENDING (session 40):** P3 bundle merged to main (`8022265`). Hosting deploy (wf90) + functions deploy (owner manual) NOT YET CONFIRMED. Do not record P3 as "deployed" until owner confirms wf90 byte-hash success + manual functions deploy. `RECAPTCHA_V3_SITE_KEY` Actions var must be set before wf90 run (owner action).
+
+⚠ **App Check MONITORING — enforce-flip DEFERRED:** App Check is in MONITORING mode after P3. Enforce-flip + Pro/managed server tier-read = the SECOND functions deploy event (post-monitoring period). No agent proceeds on enforce-flip without Fable + owner directive.
+
+⚠ **Public site-flip = FINAL gate (Fable + owner):** site-flip requires: P3 deploy confirmed ✓ + P3 functions deployed ✓ + monitoring period ✓ + enforce-flip done ✓ + owner device-pass (all five Disclosure Safeguards + entitlement checks) ✓ + Fable legal sign-off ✓ + callable gate mismatch P0 fixed ✓. See [`internal/architecture/public-launch-readiness.md`](internal/architecture/public-launch-readiness.md) go/no-go checklist.
+
+⚠ **BYOK (session 40, `5baba7b`):** key routed through callable proxy; client stores in Hive (unencrypted, local — v1 accepted risk). Encrypted Hive fast-follow post-launch. See [`internal/decisions/0006-byok.md`](../decisions/0006-byok.md).
+
+⚠ **Test entitlement TP-1..TP-4 (session 40):** TP-1..TP-3 free; TP-4 submit = Pro/org gate. `githubProxy` allowlist guard replaced by entitlement check at public-flip. Jira = CUT; run-in-app = STRETCH post-launch. See [`internal/architecture/test-public-monetization-spec.md`](internal/architecture/test-public-monetization-spec.md).
+
+⚠ **Geo-validity standard (session 40):** Phase 0 (mask asset bundled) + Phase 1 (ocean layer: OCEAN-ONLY enforcement) shipped in P3. Phase 2 (terrestrial layers) + Phase 3 (per-layer custom) = post-launch. See [`internal/architecture/layer-geo-validity-standard.md`](internal/architecture/layer-geo-validity-standard.md).
+
+✅ **Disclosure Safeguards Standard (session 40):** LEGAL-SAFEGUARDS AUDIT gate resolved for P3 public-launch scope. All five safeguards shipped in P3 — AIEDS label + representative-data label + modeled-estimate indicator + no-greenwashing review + Data View attribution. Owner device-pass PENDING (part of public-flip go/no-go). See [`internal/architecture/disclosure-safeguards-standard.md`](internal/architecture/disclosure-safeguards-standard.md).
+
+⚠ **Auth domain restrictions (session 40, ADR 0004):** public launch = SIGN-IN REQUIRED (any Google account); `@rand0m.ai`-only restriction lifted at site-flip. `githubProxy` stays allowlist-gated (beta) → entitlement-gated (public-flip). Callable domain-only guard removed at public-flip; replaced by entitlement checks. See [`internal/decisions/0004-auth-domain-restrictions.md`](../decisions/0004-auth-domain-restrictions.md).
+
+Next track: **PUBLIC-LAUNCH SEQUENCE** (goal: 6/26) — P3 deploy confirm → monitoring → enforce-flip (second deploy) → device-pass → Fable sign-off → public site-flip. Parallel: **8-LAYER PROGRAM** — renderer contracts PENDING Fable ratification; L2 Ocean first after ratification + anim-bugfix.
+
+⚠ **8-Layer Program (session 41):** two renderer contracts ratified-in-draft: (1) flow-field (`earth_flow_field.js` + `EarthWindGrid` + `syncFlowField`) for Wind/Ocean/Swell; (2) point/scalar (`earth_point_renderer.js` + `EarthPointGrid` + `syncPointLayer`) for Wildfires/AirQuality/future — contract-only, not yet implemented. Disjoint-lane model: each layer gets its own branch + file scope; shared-file changes lock the owner lane; REBASE-BEFORE-MERGE applies across lanes. L1 (Wind) complete. L2 (Ocean OSCAR) next. Fable ratification PENDING — **do not begin L2 implementation until Fable confirms.** See [`internal/architecture/earth-8-layer-renderer-contracts.md`](internal/architecture/earth-8-layer-renderer-contracts.md).
+
+---
+
+## Earth 8-Layer Program
+
+_Renderer contracts govern all animated Earth layers. Spec: [`internal/architecture/earth-8-layer-renderer-contracts.md`](internal/architecture/earth-8-layer-renderer-contracts.md)._
+
+> **FABLE CALLOUT:** Renderer contracts (§1 flow-field, §2 point/scalar, §3 data contracts, §4 disjoint-lane model) are drafted and ready for ratification. No 8-layer implementation begins until Fable confirms. See spec above.
+
+### Renderer Contracts (summary)
+
+| Contract | Entry points | Used by | Status |
+| --- | --- | --- | --- |
+| **Flow-field** | `earth_flow_field.js` · `EarthWindGrid` · `syncFlowField` | Wind, Ocean (OSCAR), Ocean swell | ✅ Live (Wind L1); contract ratification PENDING Fable |
+| **Point / scalar** | `earth_point_renderer.js` · `EarthPointGrid` · `syncPointLayer` | Wildfires, Air quality (point), future point layers | 📋 Contract-only; not yet implemented; ratification PENDING Fable |
+
+**Core rules:**
+- No forks. All layers use one of the two contracts above — never a bespoke renderer.
+- `syncFlowField(null)` / `syncPointLayer(null, layerId)` clear a layer slot on hide/switch.
+- Geo-validity enforcement (`layer-geo-validity-standard.md`) applied before renderer — renderer receives only valid points.
+- Flow-field: static-rep bundle first; live data overlays after callable resolves (instant visual on cold load).
+- Point: callable caps at 10,000 points; zero-coordinate points stripped server-side.
+
+### Layer Roster & Status
+
+_Per-layer status updated only when git-verified (SHA from `git log origin/main` or Fable gate). Do not assert merged/deployed from session memory._
+
+| # | Layer | Renderer | Branch / SHA | Status | Notes |
+| --- | --- | --- | --- | --- | --- |
+| L1 | **Wind (GFS live)** | Flow-field | merged `b7f9849` | ✅ **Live** | NOAA-GFS; earthWindGfsRefresh deployed; static-rep Phase 1a → live Phase 1b |
+| L2 | **Ocean currents (OSCAR)** | Flow-field | `earth/layer-ocean` (not opened) | ⏳ Queued — after Fable ratification + anim-bugfix | Mirrors GFS pattern; separate data contract; owner deploys function manually |
+| L3 | **Wildfires (FIRMS)** | Point / discrete | `earth/layer-wildfires` (not opened) | ⏳ Queued | FIRMS snapshot already in catalog; point renderer required |
+| L4 | **Air quality (point/heatmap)** | Point / heatmap | `earth/layer-airquality-point` (not opened) | ⏳ Queued | Open-Meteo source; upgrades current card-only surface to point renderer |
+| L5 | **Ocean swell** | Flow-field | TBD | 🔮 Post-launch | Fable spec required |
+| L6 | **Forest fire risk** | Point (TBD) | TBD | 🔮 Post-launch | Fable spec required |
+| L7 | **Dust / aerosol** | Point / heatmap (TBD) | TBD | 🔮 Post-launch | Fable spec required |
+| L8 | **TBD** | TBD | TBD | 🔮 Future | Owner directive + Fable spec required |
+
+### Disjoint-Lane Model (summary)
+
+Each layer = one branch (`earth/layer-<id>`) + its own file scope. No two open lanes touch the same Dart/JS files. Shared-file changes (e.g. `earth_tab.dart`, catalog index, renderer JS) lock to the owning lane; all other open lanes rebase after merge. REBASE-BEFORE-MERGE binding. Earth agent declares disjointness via `DOCS:` callout before opening a second lane in parallel.
 
 ---
 
@@ -175,11 +243,12 @@ Next track: **LAYERED-ANIMATION PROGRAM** — Phase 2 Ocean (OSCAR; reuses rende
 
 _Active — in flight or ready for immediate action._
 
-- **Earth agent:** `earth/anim-bugfix` — fix ocean animation regression + view-switch ghost trails (open bugs from C16 deploy `b7f9849`).
-- **Owner (manual action):** `rm -rf rand0m-dvmerge rand0m-mainmerge` — orphan worktree dirs with Windows handle locks; confirm no process holds them before removing.
-- **Fixes agent:** delete 4 merged branches (`test-external-tools`, `test-t7-submit`, `design-dataview-v2`, `design-dataview-scenario`); confirm `chore/idle-spin-test` deletable; VCM test failures (3 pre-existing) still open.
-- **Test agent:** P0 security findings (callable gate mismatch + repo-123 infra leak) — fix before callable features enter beta scope.
-- **Docs agent:** session 39 complete — Phase A/B/T7 + Data-View-v2 + AIEDS whitepaper recorded and committed.
+- **Owner (blocking — P3 deploy):** Set `RECAPTCHA_V3_SITE_KEY` in `random-knights/xyz` Actions secrets, then trigger wf90. Confirm byte-hash delivery. Then: `firebase deploy --only functions:...` (after `git pull`). Report wf90 success + functions deploy to Fable for SHA record.
+- **Owner (blocking — orphan dirs):** `rm -rf rand0m-dvmerge rand0m-mainmerge` after confirming no process holds them.
+- **Earth agent:** `earth/anim-bugfix` — fix ocean animation regression + view-switch ghost trails. Gate: CI green + owner device pass. (L2 Ocean does not open until anim-bugfix merged + Fable ratification received.)
+- **Test agent:** P0 callable gate mismatch fix — callables must honour entitlement check (not domain-only). Required before callable features reach public users.
+- **Fixes agent:** delete P3 merged branches (geo-mask-asset, geo-enforce, disclosure-safeguards, public-ui-polish, aieds-whitepaper, test-public-entitlement, byok, backstop) + prior C16 deletables (test-external-tools, test-t7-submit, design-dataview-v2, design-dataview-scenario); clean generated-registrant nit in `047cca8`; VCM test failures (3 pre-existing) still open.
+- **Fable agent:** ratify renderer contracts in [`internal/architecture/earth-8-layer-renderer-contracts.md`](internal/architecture/earth-8-layer-renderer-contracts.md) — §1 flow-field, §2 point/scalar, §3 data contracts, §4 disjoint-lane model. L2 implementation blocked until confirmed.
 
 ---
 
@@ -189,25 +258,40 @@ _Queued — approved scope, not yet started. **Serialize Earth-page edits — on
 
 > **Channels note:** iteration deploys to prod (owner-locked); workflow 80 staging available; prod is the review surface. Workflow 90 = HOSTING-ONLY; Firebase functions via owner manual deploy.
 
+### Public-launch sequence (BLOCKING — serialized)
+
+1. **Owner:** `RECAPTCHA_V3_SITE_KEY` Actions var set → wf90 run → byte-hash delivery confirmed
+2. **Owner:** `firebase deploy --only functions:...` (after `git pull`) → confirm functions live
+3. **Fable:** record P3 deployed SHA (git-verified from owner confirm)
+4. **Monitoring period:** App Check MONITORING baselines legitimate traffic
+5. **Earth + Owner:** enforce-flip (App Check) + Pro/managed server tier-read → SECOND functions deploy
+6. **Owner device-pass:** all five Disclosure Safeguards ✓ + entitlement checks ✓ + sign-in for non-domain Google account ✓
+7. **Test agent:** callable gate mismatch P0 fixed (entitlement check replaces domain-only guard)
+8. **Fable:** legal sign-off (device-pass review)
+9. **Owner:** PUBLIC SITE-FLIP
+
 ### Earth — in flight (serialized, one lineage)
-- `earth/anim-bugfix`: fix ocean animation regression + view-switch ghost trails. Gate: CI green + owner device pass.
+- `earth/anim-bugfix`: fix ocean animation regression + view-switch ghost trails. Gate: CI green + owner device pass. (Can run in parallel with P3 deploy sequence above — file-disjoint.)
 - `earth/filter-ux-v2`: outside-click-close + remove All-Layers + random built-layer default one-at-a-time + disable inactive layers (in flight — record SHA when merged).
 - Gate each before next opens.
 
-### LAYERED-ANIMATION PROGRAM (Earth — after filter-ux-v2 + distillation merged)
+### 8-Layer Program (Earth — after Fable ratification; L2 after anim-bugfix)
 
-**Renderer contract:** `earth_flow_field.js` + `EarthWindGrid` + `syncFlowField`. All animation layers reuse this renderer — do not fork.
+See **Earth 8-Layer Program** section above for roster, renderer contracts, and lane model.
 
-**Phase 2 — Ocean (next):**
-- Live OSCAR ocean-current data via Firebase callable (mirrors GFS wind pattern).
-- Reuses `earth_flow_field.js` renderer; separate data contract only.
-- Static-rep → live-OSCAR fast-follow pattern.
-- Owner deploys Firebase function manually; workflow 90 untouched.
+**L2 — Ocean (OSCAR) — next after ratification + anim-bugfix merged:**
+- Flow-field renderer (reuses `earth_flow_field.js`); separate data contract only.
+- Static-rep bundle first; live OSCAR callable overlays after resolve.
+- Owner deploys Firebase function manually (wf90 HOSTING-ONLY).
+- Branch: `earth/layer-ocean` (not opened — blocked on Fable ratification).
 - Gate: CI green + owner device pass.
 
-**Point-based layers (future, after Phase 2):**
-- Wildfires and similar point-source layers.
-- Requires separate renderer extension; Fable spec required before implementation.
+**L3 / L4 (Wildfires / Air quality) — after L2 merged:**
+- Point renderer (`earth_point_renderer.js`) — contract-only, not yet implemented.
+- Implementation blocked on: Fable ratification + point renderer initial slice.
+- Lanes are file-disjoint from L2 and from each other — may run in parallel after L2 merges.
+
+**L5–L8 — post-launch; Fable spec required before any branch opens.**
 
 ### Globe-chrome + Data View (Design — after each Earth pass gates)
 
@@ -271,6 +355,12 @@ Fable architecture rulings (binding):
 
 _Completed and on `main`._
 
+- **P3 public-launch bundle merged** (`8022265`) — allowlist hardening (`203c768`) + cost/abuse backstop (`047cca8`: Firestore counters, RC kill-switch, SSRF 169.254 fix, App Check MONITORING) + BYOK (`5baba7b`) + geo-validity Phase 0+1 + Disclosure Safeguards Standard + Test entitlement TP-1..TP-4 + AIEDS whitepaper + reCAPTCHA build wiring. Hosting deploy PENDING owner wf90. ✓ (merged)
+- **Disclosure Safeguards Standard ratified** — LEGAL-SAFEGUARDS AUDIT gate resolved for public-launch scope; all five safeguards present in P3 bundle. Owner device-pass PENDING. ✓
+- **Auth domain restrictions clarified (ADR 0004)** — public = any Google sign-in; `@rand0m.ai`-only lifted at site-flip; callable domain guard → entitlement check at public-flip. ✓
+- **BYOK decision (ADR 0006)** — key-via-proxy; client Hive (unencrypted v1); keySource telemetry; encrypted Hive fast-follow. ✓
+- **Geo-validity standard Phase 0+1** — mask asset bundled; ocean-only enforcement for ocean layer. ✓
+- **Test entitlement TP-1..TP-4** — submit=Pro/org; TP-1..TP-3 free; Jira CUT; run-in-app STRETCH post-launch. ✓
 - **Phase A — URL tools enabled** (`b7f9849`) — domain-only URL tools surfaced for allowlisted testers; tester intro copy live. ✓
 - **Phase B/T7 — githubProxy submit** (`b7f9849`) — GitHub App callable (`GITHUB_APP_ID`/`INSTALLATION_ID`/`PRIVATE_KEY` Path B); submit to `/123` wired end-to-end. ✓
 - **Data-View-v2 distillation** (`b7f9849`) — rebase-before-merge applied (REBASE-BEFORE-MERGE standard; not auto-merge); Data View Scenario/Regional distillation live. ✓
@@ -437,6 +527,13 @@ _Scope changes, strategy shifts, or deferred decisions._
 - **External-access gate ratified (session 36):** fail-closed `external_access_allowlist` Remote Config live. Domain OR allowlist; verified accounts only; Access ≠ Owner. **Mandatory add-a-tester procedure:** add email to RC → owner gate device-pass (allow + block + domain all three) → tester all-clear. No tester onboarded without device-pass.
 - **Beta path declared (session 36):** steady-state = release → owner function deploy → owner device-pass → Test beta-readiness hardening → testers at T5/T6 (record/create). Full submit beta requires T7 (owner GitHub App/token for `/123` write path) — do not promise submit before T7 wired. Test agent to persist beta-readiness checklist as READLESS note.
 - **CI economy (session 36, binding):** GitHub Actions now metered on Team Org plan. Batched-release standard: deploy every few passes. Minimize workflow triggers. Workflow 90 byte-hash is the sole delivery gate — no supplementary checks.
+- **8-Layer Program opened (session 41):** two renderer contracts drafted — flow-field (`earth_flow_field.js`/`EarthWindGrid`/`syncFlowField`) for Wind/Ocean/Swell; point/scalar (`earth_point_renderer.js`/`EarthPointGrid`/`syncPointLayer`) for Wildfires/AirQuality/future. Disjoint-lane model: 8 lanes, each with its own branch + file scope; shared-file changes lock to owner lane; REBASE-BEFORE-MERGE binding. L1 (Wind) complete; L2–L4 queued; L5–L8 post-launch. Fable ratification PENDING before any implementation begins. LAYERED-ANIMATION PROGRAM (old prose) superseded by the 8-Layer Program section. Public-launch goal: 6/26 (prepare-then-flip).
+- **P3 public-launch sprint (session 40):** P3 bundle merged to main (`8022265`). Key items: allowlist hardening, cost/abuse backstop (Firestore counters + RC kill-switch + SSRF block + App Check MONITORING), BYOK (key-via-proxy, Hive-local, keySource), geo-validity Phase 0+1 (ocean-only), Disclosure Safeguards (5 safeguards), Test entitlement TP-1..TP-4 (submit=Pro/org), reCAPTCHA build wiring. Hosting deploy PENDING owner. `RECAPTCHA_V3_SITE_KEY` Actions var required before wf90.
+- **App Check monitoring → enforce split (session 40):** App Check ships in MONITORING mode (no traffic block). Enforce-flip is DEFERRED to the SECOND functions deploy (post-monitoring period). This is a deliberate two-step: baseline legitimate traffic before blocking.
+- **Public site-flip decoupled from P3 deploy (session 40):** P3 deploy is NOT the site-flip. Public-flip requires: P3 confirmed ✓ + monitoring ✓ + enforce-flip ✓ + device-pass ✓ + Fable sign-off ✓ + callable P0 fix ✓. Fable owns the go/no-go; owner executes the flip.
+- **LEGAL-SAFEGUARDS AUDIT gate resolved for P3 scope (session 40):** previously a blanket HARD GATE on all disclosure UI. Now resolved: Disclosure Safeguards Standard (5 safeguards) defines what must be present; all five are in P3 bundle; owner device-pass is the final verification. The gate is not removed — it is satisfied by the standard.
+- **Jira CUT from Test scope (session 40):** Jira ticket creation is CUT from P3 and from the near-term test roadmap. Post-launch; separate spec + OAuth proxy required.
+- **BYOK: unencrypted Hive accepted for v1 (session 40):** encrypted Hive storage deferred as a fast-follow. Key-at-rest risk is local-device-only (key never in Firestore/logs/bundle). ADR 0006.
 - **Phase A/B/T7 shipped (session 39):** owner chose Option 2 (do-it-all-first). Phase A (URL tools enabled) + Phase B/T7 (githubProxy callable + GitHub App submit to `/123`) shipped together at `b7f9849`. T7 secrets (`GITHUB_APP_ID`/`INSTALLATION_ID`/`PRIVATE_KEY` Path B) wired into Firebase callable. URL-tools decision closed.
 - **Data-View-v2 shipped via rebase (session 39):** REBASE-BEFORE-MERGE standard applied. Data View distillation re-attempted as `earth/design-dataview-v2` with proper rebase onto `origin/main` tip — not auto-merge. Live at `b7f9849`.
 - **AIEDS open standard published (session 39):** AIEDS v1 whitepaper + adoption guide published to `READMORE/architecture/aieds/` (CC BY 4.0). Sanitized of internal infra/identities. First public-facing spec from qa-kitt.
@@ -506,17 +603,25 @@ _Scope changes, strategy shifts, or deferred decisions._
 
 _Rows reflect current remote branches confirmed by Fable gate or `git log origin/main`. All stale/never-existed rows removed (T10 audit, session 29). **Rule: Open Branches updates come from Fable gate confirmations only — same standard as Deploy Checkpoint rows.** Codified in coordination standards §2._
 
-_Rebuilt session 39 from git + session state. qa-kitt/.github: 2 branches (main + readless-readmore-reorg). xyz app repo: survivors post-C16; 4 branches confirmed deletable (merged at b7f9849)._
+_Rebuilt session 40 from git + session state. qa-kitt/.github: 2 branches (main + readless-readmore-reorg). xyz app repo: P3 branches + prior C16 deletables all merged to `8022265`._
 
 | Branch | Repo | Status | Notes |
 | --- | --- | --- | --- |
 | `readless-readmore-reorg` | qa-kitt/.github | Active — Docs branch | All READLESS/READMORE updates; not yet merged to main |
-| `earth/anim-bugfix` | xyz | In flight | Ocean animation regression + view-switch ghost trails from C16; open bugs |
+| `earth/anim-bugfix` | xyz | In flight | Ocean animation regression + view-switch ghost trails; open bugs |
 | `earth/filter-ux-v2` | xyz | In flight | Outside-click-close + remove All-Layers + random default + disable inactive; record SHA when merged |
-| `test-external-tools` | xyz | ✅ Merged — deletable | Merged at `b7f9849`; Fixes agent to delete |
-| `test-t7-submit` | xyz | ✅ Merged — deletable | Merged at `b7f9849`; Fixes agent to delete |
-| `design-dataview-v2` | xyz | ✅ Merged — deletable | Merged at `b7f9849`; Fixes agent to delete |
-| `design-dataview-scenario` | xyz | ✅ Merged (superseded) — deletable | Superseded by design-dataview-v2; Fixes agent to delete |
+| `geo-mask-asset` | xyz | ✅ Merged — deletable | Merged in P3 (`8022265`); Fixes agent to delete |
+| `geo-enforce` | xyz | ✅ Merged — deletable | Merged in P3 (`8022265`); Fixes agent to delete |
+| `disclosure-safeguards` | xyz | ✅ Merged — deletable | Merged in P3 (`8022265`); Fixes agent to delete |
+| `public-ui-polish` | xyz | ✅ Merged — deletable | Merged in P3 (`8022265`); Fixes agent to delete |
+| `aieds-whitepaper` | xyz | ✅ Merged — deletable | Merged in P3 (`8022265`); Fixes agent to delete |
+| `test-public-entitlement` | xyz | ✅ Merged — deletable | Merged in P3 (`8022265`); Fixes agent to delete |
+| `byok` | xyz | ✅ Merged — deletable | Merged in P3 (`8022265`); Fixes agent to delete |
+| `backstop` | xyz | ✅ Merged — deletable | Merged in P3 (`8022265`); Fixes agent to delete |
+| `test-external-tools` | xyz | ✅ Merged — deletable | Merged at `b7f9849` (C16); Fixes agent to delete |
+| `test-t7-submit` | xyz | ✅ Merged — deletable | Merged at `b7f9849` (C16); Fixes agent to delete |
+| `design-dataview-v2` | xyz | ✅ Merged — deletable | Merged at `b7f9849` (C16); Fixes agent to delete |
+| `design-dataview-scenario` | xyz | ✅ Merged (superseded) — deletable | Superseded; Fixes agent to delete |
 | `chore/idle-spin-test` | xyz | Redundant/deletable | Test fix superseded; Fixes agent to confirm and delete |
 
 ⚠ **Orphan worktree dirs (Windows handle locks):** `rand0m-dvmerge` + `rand0m-mainmerge` — cannot remove via git; manual `rm -rf` required by owner after confirming no process holds them.
@@ -527,21 +632,31 @@ _xyz remaining unmerged branches: low-priority; not blocking. Earth agent to enu
 
 ## Launch Checklist
 
-_Items that were required before/at R10 FINAL release. R10 deployed (`bde2a28`). Remaining items are post-launch._
+_Updated session 40 for public-launch sprint. Go/no-go detail: [`internal/architecture/public-launch-readiness.md`](internal/architecture/public-launch-readiness.md)._
 
 | Item | Status | Notes |
 | --- | --- | --- |
-| READMORE publishes via `abc` repo | ⚠ **Pre-flip required** | Purpose expanded. CODEX.md line update queued. History-review or fresh-seed required before flip. Owner to confirm readiness. |
+| **P3 bundle wf90 deploy** | ⏳ **PENDING owner** | `RECAPTCHA_V3_SITE_KEY` Actions var required first. Owner triggers wf90; byte-hash delivery confirms. Report SHA to Fable. |
+| **P3 functions deploy** | ⏳ **PENDING owner** | `firebase deploy --only functions:...` after `git pull`. Owner confirms. |
+| **`RECAPTCHA_V3_SITE_KEY` Actions var** | ⏳ **PENDING owner** | Must be set in `random-knights/xyz` Actions secrets before wf90 run. |
+| **App Check MONITORING mode** | ⏳ Confirm post-deploy | Confirm active after functions deploy. Monitoring period before enforce-flip. |
+| **App Check enforce-flip** | ⏳ **DEFERRED — 2nd deploy** | Post-monitoring. RC flip + functions redeploy. Owner + Earth agent. |
+| **Pro/managed server tier-read** | ⏳ **DEFERRED — 2nd deploy** | Same event as enforce-flip. Earth agent slice required. |
+| **P0 — callable gate mismatch fix** | ⛔ **Fix before public callable access** | Callables must honour entitlement check (not domain-only) at public-flip. Test agent owns. Until fixed: callable features inaccessible to public non-domain users. |
+| **P0 — repo-123 infra leak** | ⛔ **Fix before callable features** | `/123` must not appear in client bundles or error payloads. |
+| **Owner device-pass (public-flip)** | ⏳ **PENDING** | Sign-in as non-domain Google account ✓; Disclosure Safeguards visible ✓; entitlement checks ✓. |
+| **Fable legal sign-off** | ⏳ **PENDING** | Post device-pass. Fable owns go/no-go. |
+| **PUBLIC SITE-FLIP** | ⛔ **FINAL gate** | All above must be ✅. Owner executes. |
+| **LEGAL-SAFEGUARDS AUDIT** | ✅ **RESOLVED (session 40)** | Disclosure Safeguards Standard (5 safeguards) shipped in P3. Owner device-pass pending. See [`internal/architecture/disclosure-safeguards-standard.md`](internal/architecture/disclosure-safeguards-standard.md). |
+| **T7 — GitHub App / token for /123** | ✅ **LIVE (`b7f9849`)** | `GITHUB_APP_ID`/`INSTALLATION_ID`/`PRIVATE_KEY` Path B wired into `githubProxy` callable. |
+| **Auth domain restriction (ADR 0004)** | ✅ **Decided** | Public = any Google sign-in. `@rand0m.ai`-only lifted at site-flip. See [`internal/decisions/0004-auth-domain-restrictions.md`](internal/decisions/0004-auth-domain-restrictions.md). |
+| READMORE publishes via `abc` repo | ⚠ **Pre-flip required** | Purpose expanded. CODEX.md line update queued. History-review or fresh-seed required. Owner to confirm readiness. |
+| abc READMORE public-launch seeding | ⚠ **Pre-flip required** | History-review or fresh-seed required; CODEX.md line update queued. |
 | `.github` repo visibility | ✓ **Private permanently** | Owner-confirmed. Not a launch blocker. |
 | All repos private | ✓ **Owner-confirmed** | All `random-knights/*` repos private. |
-| Codex T13 reorg | ✓ **Merged** (`6886c25`) | READLESS reorganized: active specs → `internal/architecture/`; archive → `archive/architecture/`; standards → `internal/automation/`. All roadmap path refs updated (session 33). |
+| Codex T13 reorg | ✓ **Merged** (`6886c25`) | READLESS reorganized: active specs → `internal/architecture/`; archive → `archive/architecture/`; standards → `internal/automation/`. |
 | Codex T14 | ⏳ **Held for launch** | Launch-gated. Do not execute before public launch. |
-| **LEGAL-SAFEGUARDS AUDIT** | ⛔ **HARD GATE** | All on-screen disclosure labels (representative data, "not current conditions", etc.) must be audited + added before any public/non-owner exposure. Fable + owner open this gate. No disclosure UI implemented until then. |
-| **T7 — GitHub App / token for /123** | ✅ **LIVE (`b7f9849`)** | `GITHUB_APP_ID`/`INSTALLATION_ID`/`PRIVATE_KEY` Path B wired into `githubProxy` Firebase callable. Submit to `/123` end-to-end deployed. |
-| **P0 security — callable gate mismatch** | ⛔ **Fix before callable features in beta** | Callables enforce domain-only; allowlisted non-domain testers hit 403. Fix: callables must honour RC allowlist. Until fixed: beta scope = T5/T6 client flows only. See beta-readiness doc. |
-| **P0 security — repo-123 infra leak** | ⛔ **Fix before callable features in beta** | `/123` internal path must not appear in client bundles, error messages, or network responses visible to testers. Audit + remediate via callable proxy. |
-| abc READMORE public-launch seeding | ⚠ **Pre-flip required** | History-review or fresh-seed required; CODEX.md line update queued. |
-| Owner gate device-pass (external-access) | ✅ **DONE (session 37)** | Allowlisted ✓ / non-allowlisted blocked ✓ / domain ✓. |
+| Owner gate device-pass (beta external-access) | ✅ **DONE (session 37)** | Allowlisted ✓ / non-allowlisted blocked ✓ / domain ✓. (Beta device-pass. Public-flip device-pass is a separate item above.) |
 
 ---
 
