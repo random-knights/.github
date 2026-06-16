@@ -608,3 +608,50 @@ When a test or CI check fails during slice work:
 **Why:** repair loops consume context, delay the HANDOFF, and often produce
 fixes that mask rather than resolve root causes. The CI gate catches what
 scoped triage misses.
+
+---
+
+## 22. Worktree-Lane Isolation — apps/rand0m = Earth/main Integration Only (Binding — Session 42)
+
+**Root cause of FF-merge races:** multiple lanes working in `apps/rand0m` (the main clone) caused fast-forward merge collisions — one agent's push advanced `origin/main` while another was mid-slice, resulting in out-of-order or lost commits.
+
+### The Rule
+
+```
+apps/rand0m  =  Earth agent + main integration ONLY
+                (merge, pull, deploy — no feature development)
+
+Every other lane  =  its own  worktrees/<lane>  (never apps/rand0m)
+```
+
+**Specifically:**
+- `apps/rand0m` is the integration clone. Only the Earth agent (as integrator) touches it for: pulling latest `origin/main`, merging a gate-passed branch, triggering wf90, or performing a production release.
+- **No lane may branch-swap inside `apps/rand0m`.** `git switch`, `git checkout <branch>`, or `git worktree add` from inside apps/rand0m is prohibited during any active integration.
+- **No lane may work in another lane's worktree.** Each worktree is owned by exactly one lane; agents do not share worktree directories.
+- Feature work (Earth slices, Design slices, Test slices, Fixes CI work) all happen in `worktrees/<lane>`.
+
+### Merge flow (binding)
+
+```
+Lane worktree → push branch → origin/<branch>
+  ↓  (Earth agent, in apps/rand0m)
+git pull origin/main
+git merge --no-ff origin/<branch>  (or rebase per REBASE-BEFORE-MERGE rule)
+CI green → git push origin main
+  ↓
+All other worktrees: git pull (or rebase) before next push
+```
+
+No lane pushes directly to `origin/main` from its lane worktree. Pushes go to the lane branch; Earth integrates via `apps/rand0m`.
+
+### Violations to watch for
+
+- A `git switch main` inside an active lane worktree (locks the branch; blocks the integration clone).
+- Two lanes both running `git push origin main` in quick succession without a pull in between (FF-race).
+- Working on Earth feature files inside `apps/rand0m` instead of a lane worktree (violates both this rule and §11 Main Clone Earth-Exclusive Rule).
+
+### Why
+
+Fast-forward races lose work silently: if lane A and lane B both push to `origin/main` within the same minute, one push is rejected (non-fast-forward), the author retries, and if they rebase before retrying, the other lane's commits are re-ordered or duplicated. Funnelling all integration through `apps/rand0m` with a single Earth-agent integrator eliminates the race.
+
+**This standard supersedes any prior language that implied feature work could happen in the main clone.** §11 (Main Clone Earth-Exclusive) is complementary and remains in force.
