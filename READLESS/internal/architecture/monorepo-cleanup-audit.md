@@ -1,7 +1,7 @@
 # Monorepo Cleanup Audit
 
-**Date:** 2026-06-16 (session 43; updated session 44 — Rescission 1 FIXED)
-**Status:** P1 DONE (`fe44868`); Rescission 1 FIXED (`7b8c5c2`+`76809d7`); Rescission 2 OPEN; P2/P3 pending Fable spec
+**Date:** 2026-06-16 (session 43; updated session 44 — Rescission 1 FIXED; session 45 — Rescission 2 FIXED)
+**Status:** P1 DONE (`fe44868`); Rescission 1 FIXED (`7b8c5c2`+`76809d7`, deployed `a49a957`); Rescission 2 FIXED (`183c2f0`, pending next wf90); P2/P3 pending Fable spec
 **Owner:** Fixes agent (execution); Fable (scope ratification); Docs (this record)
 
 ---
@@ -26,9 +26,7 @@ Baseline audit of unreferenced assets, stale docs, and architectural debt in the
 
 ---
 
-## RESCISSIONS
-
-One item remains OPEN. One item FIXED.
+## ✅ RESCISSIONS — BOTH FIXED
 
 ### ✅ RESCISSION 1: `technologia.mp3` — FIXED
 
@@ -37,17 +35,15 @@ One item remains OPEN. One item FIXED.
 - **Resolution:**
   - `7b8c5c2` — `chore: restore technologia.mp3 + assets/audio/ glob (owner override; deletion rescinded)` — asset restored from git history; `assets/audio/` glob re-added to `pubspec.yaml`.
   - `76809d7` — `feat(banner): What's-new section + alert/launch sound` — `technologia.mp3` wired to alert + launch sound triggers; `web/release-notes.json` introduced.
-- **Status:** ✅ FIXED. On `origin/main`. Deploy PENDING owner wf90.
+- **Status:** ✅ FIXED. **DEPLOYED at `a49a957`.**
 
-### RESCISSION 2: `futureLayerIds` flights/ships — MUST BE RE-ADDED as Pro layers
+### ✅ RESCISSION 2: `futureLayerIds` flights/ships — FIXED
 
 - **What happened:** `79ba5fa` removed `flights` and `ships` from `futureLayerIds` in `earth_region_model_test.dart`, citing governance prohibition on "live flight/ship/surveillance overlays."
 - **Why wrong:** The commit conflated Tier 3 (live per-vehicle tracking — BANNED) with Tier 2 (aggregate density verticals — PERMITTED per governance amendment, session 24). Commercial flights and maritime vessel density (aggregate, identity-suppressed, ≥24h delay) are **explicitly permitted** as Pro-tier Earth layers.
-- **Required action (Earth agent):**
-  1. Re-add `'flights'` and `'ships'` to `futureLayerIds` in the Earth region model / test.
-  2. Annotate as Pro-tier layers (not free-tier) — aggregate density, identity-suppressed, per `human-activity-governance-amendment.md`.
-  3. Separate Fable governance spec required before actual layer implementation (same pattern as VCM/biodiversity).
-- **Status:** ⚠ OPEN. Earth agent owns. `DOCS:` callout when reversed.
+- **Resolution:**
+  - `183c2f0` — `fix(earth): Rescission 2 — restore flights + ships to governed futureLayerIds (Pro-tier aggregate)` — `flights` + `ships` restored to `futureLayerIds`; annotated per governance amendment session 24.
+- **Status:** ✅ FIXED. On `origin/main` (`183c2f0`). Pending next wf90 deploy.
 
 ---
 
@@ -72,6 +68,6 @@ _These are observations from the audit. Do not execute any P2 item without expli
 | ID | Finding | Correction | Status |
 | --- | --- | --- | --- |
 | C1 | `technologia.mp3` deleted prematurely | Restored `7b8c5c2` + wired `76809d7` (see Rescission 1) | ✅ FIXED |
-| C2 | `futureLayerIds` test dropped flights/ships | Re-add as Pro-tier (see Rescission 2) | ⚠ OPEN |
+| C2 | `futureLayerIds` test dropped flights/ships | Restored as Pro-tier `183c2f0` (see Rescission 2) | ✅ FIXED |
 | C3 | README "four-app" framing retired | Fixed in `fe44868` | ✅ Done |
 | C4 | 7 unused Earth textures consuming bundle | Deleted in `fe44868` | ✅ Done |
