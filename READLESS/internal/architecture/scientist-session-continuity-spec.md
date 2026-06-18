@@ -23,9 +23,9 @@ addressed. This spec covers Phases 0–4.
   fallback that is exercised in tests. No silent failure modes.
 - **`excludesSensitiveData: true`** on every AI send — must be set and must
   never be removed without an explicit governance phase.
-- **Default AI Provider proxy only** — all AI calls route through the existing
+- **AI Provider via proxy only** — all AI calls route through the existing
   `generateAIResponse` Firebase callable. No direct provider API calls from the
-  Flutter client.
+  Flutter client. ⚠ **Updated session 47 (`f1b6a31`):** live gate = first-party-OR-BYOK via the proxy. @scient1st users may use the platform first-party key (same as chat) or their own BYOK key; no local BYOK pre-gate is required. This matches chat behavior. "Default AI Provider proxy only" previously implied BYOK-only, which is no longer accurate.
 - **No persistence** — scientist responses and session state are in-memory only
   for this branch. No Firestore writes without a separate approved persistence
   phase.

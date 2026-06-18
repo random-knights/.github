@@ -26,7 +26,7 @@ Bring the Earth globe rendering to feature parity with earth.nullschool.net: smo
 
 | Slice | Description | SHA | Status | Notes |
 | --- | --- | --- | --- | --- |
-| **1a** | Bilinear scalar raster — smooth per-pixel interpolation for scalar layers; `web/earth_scalar_field.js` updated | `c8ff53f` | ✅ **MERGED** | Parallel-eligible; no blockers |
+| **1a** | Bilinear scalar raster — smooth per-pixel interpolation for scalar layers; `web/earth_scalar_field.js` updated | `c8ff53f` | ✅ **MERGED** | ⚠ **SUPERSEDED** — slice-1a screen-space raster pixelates at zoom and clips at globe limb. Prod scalar rendering = per-cell geographic-quad tiles (Cesium polygons, polish-10 `04b4f0a`, session 47). Do NOT reintroduce the raster approach. |
 | **2+5a** | Base-map rivers/lakes vector overlay + overlay scale-bar widget (single commit) | `01a27e7` | ✅ **MERGED** | Parallel-eligible; ∥ to 1a |
 | **1b** | Finer 1° grid lines + gzip refresher writes (functions); SST stays coarse; 0.5° post-launch | `8a42ae4` (functions) | ✅ **MERGED** | Parallel-eligible; ∥ |
 | **4** | Filter taxonomy redesign — animate/overlay/annotation slot architecture | `37cf8d3` | ✅ **MERGED** | Requires two-score (P3-5, `aecbd55`) complete ✓ |

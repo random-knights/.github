@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-17 (session 46 — nullschool-parity 1a/2+5a/1b/4 MERGED c8ff53f/01a27e7/8a42ae4/37cf8d3; two-score polish-1+2 MERGED acdebb9/2ecbadb; rubicon icon removed 11458d4; wf80 Cesium token injected dbe6096; origin/main = f2fd20d; 28 commits PENDING next wf90)
+**Last updated:** 2026-06-18 (session 47 — PROD DEPLOYED = `5df0df4` (wf90, rand0m.ai + ai-rand0m.web.app = 200, allowlist-gated, public-flip HELD 6/26); polish-10 scalar overlay = per-cell geographic-quad tiles `04b4f0a`; @scient1st first-party-OR-BYOK key `f1b6a31`; wind NOMADS→THREDDS `a6441fb`; ocean migration DROPPED for launch; origin/main = `a6441fb`; 6 commits PENDING next wf90 + owner-manual functions deploy)
 
 ---
 
@@ -14,7 +14,7 @@ _Post-R7 roster active. Systems and Connect retired (wind-down complete, scopes 
 
 | Agent | Identity | Worktree | Active branch | Focus |
 | --- | --- | --- | --- | --- |
-| Earth | `deve10per` / dev-kitt | `apps/rand0m` (integration only — §22) | main=`f2fd20d`; hosting=`a49a957` (deployed) | Earth features, layers, governance; catalog owner; integrator/deploy; absorbs Systems+Connect scopes |
+| Earth | `deve10per` / dev-kitt | `apps/rand0m` (integration only — §22) | main=`a6441fb`; hosting=`5df0df4` (deployed) | Earth features, layers, governance; catalog owner; integrator/deploy; absorbs Systems+Connect scopes |
 | Design | `deve10per` / dev-kitt | `worktrees\rand0m-design` | POST-LAUNCH; no active D-slice | IA v2 D7+D8; Cesium FE globe shell; presentation/layout only |
 | Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | CI/hygiene; no Earth-page edits | CI, harness, QA; token-economy triage (§21d) |
 | Docs | `eng1neer` / qa-kitt | qa-kitt clone | `readless-readmore-reorg` | READLESS, CODEX, EARTH-ROADMAP |
@@ -35,7 +35,7 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 
 _**End goal: animated planetary flow globe (nullschool-class) + governed AI assistant.**_
 
-_Position: **Nullschool-parity 1a/2+5a/1b/4 MERGED; two-score polish-1+2 MERGED; both rescissions FIXED; 13 animated layers on main.** `origin/main` (xyz) = `f2fd20d` (git-verified, session 46); last confirmed hosting deploy = `a49a957` (wf90 run `27667673146`; 28 commits PENDING next wf90). All 8 (+5 batch-2 = 13) Earth layers + live Health Score + two-score Globe/Data View + nullschool-parity 4 slices merged + PWA + all-layers-live source-swap all on main. `public-access-flip` (`05d00d2`) HELD — deploys at public-flip gate only. ✅ Both rescissions FIXED: Rescission 1 (`7b8c5c2`+`76809d7`) + Rescission 2 (`183c2f0`). ✅ P0 callable gate FIXED (`2ac0251`). Public site-flip = FINAL gate (Fable + owner). Goal: 6/26._
+_Position: **wf90 DEPLOYED `5df0df4` (2026-06-18); both rescissions FIXED + live; 13 animated layers live; polish-10 scalar overlay (geographic quads) on main; wind THREDDS on main.** `origin/main` (xyz) = `a6441fb` (git-verified, session 47); last confirmed hosting deploy = `5df0df4` (wf90, 2026-06-18; 6 commits PENDING next wf90 + owner-manual functions deploy). All 8 (+5 batch-2 = 13) Earth layers + live Health Score + two-score Globe/Data View + nullschool-parity 4 slices merged + PWA + all-layers-live source-swap all live at `5df0df4`. `public-access-flip` (`05d00d2`) HELD — deploys at public-flip gate only. ✅ Both rescissions FIXED + deployed (`5df0df4`). ✅ P0 callable gate FIXED (`2ac0251`) — deployed at `5df0df4`. Public site-flip = FINAL gate (Fable + owner). Goal: 6/26._
 
 | Cycle | Release | Work | Gate |
 | --- | --- | --- | --- |
@@ -140,7 +140,7 @@ _Position: **Nullschool-parity 1a/2+5a/1b/4 MERGED; two-score polish-1+2 MERGED;
 | **Health Score function** (`58feb9f`) — `earthHealthScoreRefresh` — live Global Health Score aggregation (earth.healthscore.v1); reads cached grids → per-region + global; writes public Storage object | merged to main | green | ⏳ functions deploy PENDING owner |
 | **8-Layer slice 7** (`299e9e6`) — SST ocean scalar layer (count 7→8) | merged to main | green | ✅ deployed (`a49a957`) |
 | **SST anomaly update** (`353a478`) — `earthSstRefresh` emits SST ANOMALY vs 1991–2020 baseline | merged to main | green | ⏳ functions deploy PENDING owner |
-| **✅ Rescission 2 FIXED** — `79ba5fa` erroneous removal reversed by `183c2f0`; `flights` + `ships` restored to governed `futureLayerIds` as Pro-tier aggregate layers; annotated per governance amendment session 24 | merged to main | green | ⏳ deploy PENDING next wf90 |
+| **✅ Rescission 2 FIXED** — `79ba5fa` erroneous removal reversed by `183c2f0`; `flights` + `ships` restored to governed `futureLayerIds` as Pro-tier aggregate layers; annotated per governance amendment session 24 | merged to main | green | ✅ live (`5df0df4`) |
 | **Live Health Score UI capstone** (`855e6e0`) — reactive recompute on earth+ filter; replaces static 78; AIEDS as separate chip | merged to main | green | ✅ deployed (`a49a957`) |
 | **LayerLegend + palette contract** (`d182d7a`) — reusable color-key widget | merged to main | green | ✅ deployed (`a49a957`) |
 | **Layer-validation harness** (`ff22b06`) — reusable QA harness for Earth layers | merged to main | green | ✅ deployed (`a49a957`) |
@@ -162,28 +162,34 @@ _Position: **Nullschool-parity 1a/2+5a/1b/4 MERGED; two-score polish-1+2 MERGED;
 | **Governance overlay-readiness fix** (`4b7e683`) — 8-layer overlay readiness corrected; all 8 layers now animate correctly | merged to main | green | ✅ deployed (`a49a957`) |
 | **PWA Install** (`52fd725`) — installable on all devices (manifest + beforeinstallprompt); iOS apple-touch-icon + apple-mobile-web-app meta tags | merged to main | green | ✅ deployed (`a49a957`) |
 | **GlobeView/DataView polish + shell + filter + region laser + OSCAR grid + ocean fixes** (`862645a`–`a49a957` — 22 commits: build_number stamp + SW-hash fallback; region highlight = animated border laser `0a81a82`; denser OSCAR 2° 180×91 grid `e75039f`; GlobeView polish 1+2+5+6+7+8 `d96e31b`/`1f3d093`/`6c921cb`/`f5727c4`/`bb7baa5`/`fc660f6`; DataView polish 1+2+3+6 `2946361`/`1ea1fd5`/`f0f1751`; shell banner + denser nav + install 90d gate `aa8ca0f`; all-layers-live data prep scalar grids `5b5c0aa`; filter polish + overlay state machine + Data View score fix + lamp mode + Globe View layout `b768db9`/`5c0c0a5`/`ea127f1`/`be94d65`/`fc62f6f`/`6a12e39`/`95104b9`; harden ocean mask + self-heal flow trail `a49a957`) | merged to main | green | ✅ deployed (`a49a957`) |
-| **Point snapshots + Carbon/Glaciers functions + timeline=Now-backed** (`e6da040`) — wildfire/biodiversity point snapshot callables; Carbon/Glaciers data sources; timeline windows backed by Now | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **Filter-state contract + timeline activation** (`2c925d4`+`96d6b60`) — My Location, layer SET/All-Layers, active timeline contract; activate timeline only by data backing (disable unbacked windows) | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **All-layers-live source-swap** (`60ab9c7`) — 5 flips to live readers; all 8 layers now serve live data from callable sources | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **Batch-2 layer data functions + wire 5 animated layers** (`8164ea6`+`42e8e53`) — functions deploy: VCM points + Protected-Areas scalar + Tree-Time (derived); wire Carbon/Glaciers/VCM/Protected-Areas/Tree-Time animated | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **Pro-tier aggregate layer labels + batch-2 App-live** (`13be178`+`f03e9a3`) — label flights/ships/satellites "Pro · coming soon"; batch-2 verticals App-live after `8164ea6` shipped grids | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **✅ Rescission 2 FIXED** (`183c2f0`) — `flights` + `ships` restored to governed `futureLayerIds` as Pro-tier aggregate layers (reversal of `79ba5fa` erroneous Tier 3 citation; annotated per governance amendment session 24) | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **✅ P0 callable gate FIXED** (`2ac0251`) — allowlisted non-domain testers now pass `runAgentActionPreview` entitlement check; callable-backed features unblocked for allowlisted users | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **Two-score model split + shared widgets** (`e28cbb5`) — `EarthScoreModel` split into `GlobalScore`+`RegionalScore`; shared `GlobalRingWidget`/`RegionalRingWidget`; Hive-persist `EarthFilterPrefs`; rotate-to-user-location-on-load | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **Two-score Globe View layout** (`91648a5`+`aecbd55`) — remove Globe-View tacos counters (redesign `91648a5`); TL = Global full-ring; TR = Regional half-ring + filter chips; BL = filters (timeline removed); BR = timeline selector; region laser only on explicit pick (P3-5) | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **Data View v2** (`3767c77`+`48966d6`+`cac27ef`) — single scrollable page; live-score breakdown; multi-select layer filters; layer surfaces registry-derived (no hardcoded list); Data View footer (tacos link + 3 credits, no counters); dashboard-72 removed (consolidation locked) | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **TWO-SCORE REDESIGN COMPLETE** (`5140751`) — consume Earth's shared two-score rings in Data View; full two-score system: Globe View TL/TR/BL/BR + Data View rings | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **Nullschool-parity 1a** (`c8ff53f`) — bilinear scalar raster interpolation; smooth per-pixel rendering for scalar layers; `web/earth_scalar_field.js` updated | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **Remove rubicon-carbon demo icon** (`11458d4`) — chore: remove demo app icon from branding assets | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **Nullschool-parity 2+5a** (`01a27e7`) — base-map rivers/lakes vector overlay + overlay scale-bar widget (single combined commit) | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **Nullschool-parity 1b** (`8a42ae4`) — finer 1° scalar grids + gzip refresher writes (functions); SST stays coarse; 0.5° post-launch | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **Nullschool-parity 4 — filter taxonomy** (`37cf8d3`) — animate/overlay/annotation slot architecture; filter taxonomy redesign complete | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **Redesign-polish-1** (`acdebb9`) — timeline dot-line connector; fixed equal-width scores; filter-gap close; scale-bar into panel | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **Redesign-polish-2** (`2ecbadb`) — icon filter slots; old-style layer indicators; dual-radial score (Fallback A — visual design still being refined); tacos/credits removed from Globe View | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **ci(wf80): Cesium Ion token injection** (`dbe6096`) — inject Cesium Ion token into staging build + token gate; preview now at wf80/randomknights-xyz with Cesium Ion fully active | merged to main | green | ⏳ deploy PENDING next wf90 |
-| **test: de-duplicate stale Layers-workspace facet assertion** (`f2fd20d`) — test fix for nullschool-parity slice 4 filter taxonomy assertions | merged to main | green | ⏳ deploy PENDING next wf90 |
+| **Point snapshots + Carbon/Glaciers functions + timeline=Now-backed** (`e6da040`) — wildfire/biodiversity point snapshot callables; Carbon/Glaciers data sources; timeline windows backed by Now | merged to main | green | ✅ live (`5df0df4`) |
+| **Filter-state contract + timeline activation** (`2c925d4`+`96d6b60`) — My Location, layer SET/All-Layers, active timeline contract; activate timeline only by data backing (disable unbacked windows) | merged to main | green | ✅ live (`5df0df4`) |
+| **All-layers-live source-swap** (`60ab9c7`) — 5 flips to live readers; all 8 layers now serve live data from callable sources | merged to main | green | ✅ live (`5df0df4`) |
+| **Batch-2 layer data functions + wire 5 animated layers** (`8164ea6`+`42e8e53`) — functions deploy: VCM points + Protected-Areas scalar + Tree-Time (derived); wire Carbon/Glaciers/VCM/Protected-Areas/Tree-Time animated | merged to main | green | ✅ live (`5df0df4`) |
+| **Pro-tier aggregate layer labels + batch-2 App-live** (`13be178`+`f03e9a3`) — label flights/ships/satellites "Pro · coming soon"; batch-2 verticals App-live after `8164ea6` shipped grids | merged to main | green | ✅ live (`5df0df4`) |
+| **✅ Rescission 2 FIXED** (`183c2f0`) — `flights` + `ships` restored to governed `futureLayerIds` as Pro-tier aggregate layers (reversal of `79ba5fa` erroneous Tier 3 citation; annotated per governance amendment session 24) | merged to main | green | ✅ live (`5df0df4`) |
+| **✅ P0 callable gate FIXED** (`2ac0251`) — allowlisted non-domain testers now pass `runAgentActionPreview` entitlement check; callable-backed features unblocked for allowlisted users | merged to main | green | ✅ live (`5df0df4`) |
+| **Two-score model split + shared widgets** (`e28cbb5`) — `EarthScoreModel` split into `GlobalScore`+`RegionalScore`; shared `GlobalRingWidget`/`RegionalRingWidget`; Hive-persist `EarthFilterPrefs`; rotate-to-user-location-on-load | merged to main | green | ✅ live (`5df0df4`) |
+| **Two-score Globe View layout** (`91648a5`+`aecbd55`) — remove Globe-View tacos counters (redesign `91648a5`); TL = Global full-ring; TR = Regional half-ring + filter chips; BL = filters (timeline removed); BR = timeline selector; region laser only on explicit pick (P3-5) | merged to main | green | ✅ live (`5df0df4`) |
+| **Data View v2** (`3767c77`+`48966d6`+`cac27ef`) — single scrollable page; live-score breakdown; multi-select layer filters; layer surfaces registry-derived (no hardcoded list); Data View footer (tacos link + 3 credits, no counters); dashboard-72 removed (consolidation locked) | merged to main | green | ✅ live (`5df0df4`) |
+| **TWO-SCORE REDESIGN COMPLETE** (`5140751`) — consume Earth's shared two-score rings in Data View; full two-score system: Globe View TL/TR/BL/BR + Data View rings | merged to main | green | ✅ live (`5df0df4`) |
+| **Nullschool-parity 1a** (`c8ff53f`) — bilinear scalar raster interpolation; smooth per-pixel rendering for scalar layers; `web/earth_scalar_field.js` updated | merged to main | green | ✅ live (`5df0df4`) |
+| **Remove rubicon-carbon demo icon** (`11458d4`) — chore: remove demo app icon from branding assets | merged to main | green | ✅ live (`5df0df4`) |
+| **Nullschool-parity 2+5a** (`01a27e7`) — base-map rivers/lakes vector overlay + overlay scale-bar widget (single combined commit) | merged to main | green | ✅ live (`5df0df4`) |
+| **Nullschool-parity 1b** (`8a42ae4`) — finer 1° scalar grids + gzip refresher writes (functions); SST stays coarse; 0.5° post-launch | merged to main | green | ✅ live (`5df0df4`) |
+| **Nullschool-parity 4 — filter taxonomy** (`37cf8d3`) — animate/overlay/annotation slot architecture; filter taxonomy redesign complete | merged to main | green | ✅ live (`5df0df4`) |
+| **Redesign-polish-1** (`acdebb9`) — timeline dot-line connector; fixed equal-width scores; filter-gap close; scale-bar into panel | merged to main | green | ✅ live (`5df0df4`) |
+| **Redesign-polish-2** (`2ecbadb`) — icon filter slots; old-style layer indicators; dual-radial score (Fallback A — visual design still being refined); tacos/credits removed from Globe View | merged to main | green | ✅ live (`5df0df4`) |
+| **ci(wf80): Cesium Ion token injection** (`dbe6096`) — inject Cesium Ion token into staging build + token gate; preview now at wf80/randomknights-xyz with Cesium Ion fully active | merged to main | green | ✅ live (`5df0df4`) |
+| **test: de-duplicate stale Layers-workspace facet assertion** (`f2fd20d`) — test fix for nullschool-parity slice 4 filter taxonomy assertions | merged to main | green | ✅ live (`5df0df4`) |
+| **#3 Data View semantic colour** (`708a533`) — semantic colour pass for Data View score visuals | merged to main | green | ⏳ deploy PENDING next wf90 |
+| **#4 localized-points densifier** (`531b168`) — densify representative biodiversity/glacier/vcm point layers (functions); `earthLocalizationRefresh` + point-cloud outputs | merged to main | green | ⏳ deploy PENDING next wf90 + owner-manual functions deploy |
+| **#1 polish-9 — scalar overlay OLD LARGE tiles** (`0afea74`) — INSUFFICIENT: screen-space raster (~5° fixed grid) pixelates at zoom and clips at globe limb | merged to main | green | ⚠ **SUPERSEDED by polish-10** (`04b4f0a`) — do NOT use raster approach; see binding lesson |
+| **#2 @scient1st first-party key** (`f1b6a31`) — drop BYOK-only gate; @scient1st uses first-party key like chat (first-party-OR-BYOK via proxy); client-only | merged to main | green | ⏳ deploy PENDING next wf90 |
+| **#1 polish-10 — scalar overlay per-cell geographic-quad tiles** (`04b4f0a`) — THE FIX: each data cell rendered as a geographic quad (Cesium polygon); sharp edges, no limb clip, correct PROD look | merged to main | green | ⏳ deploy PENDING next wf90 |
+| **wind GFS → Unidata THREDDS** (`a6441fb`) — migrate `earthWindGfsRefresh` from retired NOMADS GrADS (NWS SCN 25-81, 2026-02-23) to Unidata THREDDS OPeNDAP; GFS 0.25° "Best" aggregation; 270/270 functions tests green | merged to main | green | ⏳ deploy PENDING next wf90 + owner-manual functions deploy |
 
-`origin/main` (xyz) is at `f2fd20d` (git-verified, session 46). Hosting = `a49a957` (deployed; 28 commits PENDING next wf90).
+`origin/main` (xyz) is at `a6441fb` (git-verified, session 47). Hosting = `5df0df4` (deployed; wf90 2026-06-18; 6 commits PENDING next wf90).
 
 ⚠ **State rule:** rows may only show "merged" or "deployed" when a git-verified SHA from a Fable gate confirmation or `git log origin/main` check is recorded here. Do not assert merged/deployed from session memory.
 
@@ -325,7 +331,17 @@ Each layer = one branch (`earth/layer-<id>`) + its own file scope. No two open l
 
 _Active — in flight or ready for immediate action._
 
-- **Owner (blocking — deploy):** Trigger wf90 at `f2fd20d` tip. Byte-hash delivery confirms full bundle (nullschool-parity 4 slices + two-score polish-1/2 + batch-2 layers + all-layers-live source-swap + Rescission 2 fix + P0 gate fix + wf80 Cesium token). Then: `firebase deploy --only functions:earthHealthScoreRefresh,earthSstRefresh` (after `git pull`) — health score + SST anomaly functions still PENDING. Do NOT deploy `public-access-flip` (`05d00d2`) — HELD. Report wf90 SHA + functions deploy SHA to Fable. ⚠ Note stale correction: batch-2 refreshers had a stale-checkout 403 on prior deploy — redeploy by refresher name only (names confirmed existing; not a code issue).
+- ✅ **wf90 DEPLOYED `5df0df4` (2026-06-18):** rand0m.ai + ai-rand0m.web.app = 200. Allowlist-gated. `public-access-flip` (`05d00d2`) HELD — public-flip gate only, deploy date target 6/26.
+
+**Fast-follow queue (origin/main = `a6441fb`; 6 commits PENDING next wf90):**
+1. **Scalar overlay tiles** ✅ FIXED at polish-10 (`04b4f0a`) — per-cell geographic-quad tiles; polish-9 (`0afea74`) was INSUFFICIENT (screen-space raster); do NOT reintroduce raster approach.
+2. **@scient1st key** ✅ broadened to first-party-OR-BYOK via proxy (`f1b6a31`) — no local BYOK pre-gate required, matches chat.
+3. **Data View semantic colour** ✅ merged (`708a533`) — pending next wf90.
+4. **Localized-points densifier** ✅ merged (`531b168`) — pending next wf90 + owner-manual functions deploy (`earthLocalizationRefresh`).
+5. **Wind GFS → Unidata THREDDS** ✅ merged (`a6441fb`) — NOMADS GrADS retired (NWS SCN 25-81); THREDDS OPeNDAP active; pending next wf90 + owner-manual functions deploy (`earthWindGfsRefresh`).
+6. **Ocean migration** DROPPED for launch — no public no-auth OSCAR source (jplOscar stale-2015; OSCAR V2 Earthdata-auth). Representative ocean retained.
+7. **Wildfire/health-score fn deploy** = owner-manual `firebase deploy --only functions:...` after `git pull` (wf90 is HOSTING-ONLY).
+8. **5-surface UI cleanup** queued — not yet merged.
 - **Owner (blocking — orphan dirs):** `rm -rf rand0m-dvmerge rand0m-mainmerge` after confirming no process holds them.
 - ✅ **Both rescissions FIXED:** Rescission 1 (`7b8c5c2`+`76809d7`) deployed at `a49a957`. Rescission 2 (`183c2f0`) pending next wf90. No open Earth reversal work.
 - **Earth agent:** `earth/anim-bugfix` — fix ocean animation regression + view-switch ghost trails. Gate: CI green + owner device pass.
@@ -670,6 +686,9 @@ _Completed and on `main`._
 
 _Scope changes, strategy shifts, or deferred decisions._
 
+- **Session 47 (2026-06-18) — scalar overlay: APPROACH matters (binding lesson):** screen-space raster (slice-1a bilinear) was trialled in polish-9 (`0afea74`) and found INSUFFICIENT — pixelates at zoom, clips at globe limb. Per-cell geographic-quad tiles (polish-10 `04b4f0a`) is the correct PROD look. Do NOT reintroduce the raster overlay approach; the quad approach is the permanent scalar rendering strategy.
+- **Session 47 (2026-06-18) — owner-does-visual-smoke (re-affirmed):** polish-9 (`0afea74`) passed CI and merged to main but was visually wrong. The defect was only visible on an owner device pass against the preview. Agents do HTTP-level smoke only; owner visual pass on a real device is the required gate before declaring a visual fix complete.
+- **Session 47 (2026-06-18) — NOMADS GrADS retired:** NWS SCN 25-81 (2026-02-23) decommissioned NOMADS GrADS. `earthWindGfsRefresh` migrated to Unidata THREDDS OPeNDAP at `a6441fb`. If wind data is stale, check THREDDS endpoint first, not GrADS.
 - Cesium bridge planning frozen at V2.16. Next Cesium work is runtime implementation only.
 - Earth Vision (imagery/processing) is tooling/research-only until architecture is approved.
 - Air-quality is health/trend-neutral (`influencesEarthHealthScore/Trend = false`): live card only, not folded into Earth health score.
@@ -846,7 +865,7 @@ _Scope changes, strategy shifts, or deferred decisions._
 
 _Rows reflect current remote branches confirmed by Fable gate or `git log origin/main`. All stale/never-existed rows removed (T10 audit, session 29). **Rule: Open Branches updates come from Fable gate confirmations only — same standard as Deploy Checkpoint rows.** Codified in coordination standards §2._
 
-_Updated session 45 (git-verified). qa-kitt/.github: 2 branches (main + readless-readmore-reorg). xyz: `origin/main` = `5140751` (two-score complete). All 8 layers + Health Score capstone + both rescissions fixed + all-layers-live source-swap + batch-2 animated layers + P0 callable gate fix + two-score redesign on main. `public-access-flip` (`05d00d2`) is NOT on main — HELD branch._
+_Updated session 47 (git-verified). qa-kitt/.github: 2 branches (main + readless-readmore-reorg). xyz: `origin/main` = `a6441fb` (wind THREDDS + scalar polish-10 + @scient1st key + Data View colour + localized-points + wf90 at `5df0df4`). All 8 layers + Health Score capstone + both rescissions fixed + all-layers-live source-swap + batch-2 animated layers + P0 callable gate fix + two-score redesign + nullschool-parity + fast-follow queue on main. `public-access-flip` (`05d00d2`) is NOT on main — HELD branch._
 
 | Branch | Repo | Status | Notes |
 | --- | --- | --- | --- |
@@ -876,12 +895,12 @@ _xyz remaining unmerged branches: low-priority; not blocking. Earth agent to enu
 
 ## Launch Checklist
 
-_Updated session 45. `origin/main` = `5140751`. Deployed = `a49a957`. Go/no-go detail: [`internal/architecture/public-launch-readiness.md`](internal/architecture/public-launch-readiness.md)._
+_Updated session 47. `origin/main` = `a6441fb`. Deployed = `5df0df4` (wf90 2026-06-18). Go/no-go detail: [`internal/architecture/public-launch-readiness.md`](internal/architecture/public-launch-readiness.md)._
 
 | Item | Status | Notes |
 | --- | --- | --- |
 | **Earth rescissions** | ✅ **BOTH FIXED** | (1) ✅ Rescission 1 FIXED (`7b8c5c2`+`76809d7`) — deployed at `a49a957`. (2) ✅ Rescission 2 FIXED (`183c2f0`) — `flights`+`ships` restored to `futureLayerIds`; pending next wf90. |
-| **wf90 deploy** | ✅ **DEPLOYED `a49a957`** | Previous wf90 confirmed at `a49a957`. Next wf90 PENDING at `5140751` tip (two-score + all-layers-live + batch-2 + Rescission 2 + P0 fix). |
+| **wf90 deploy** | ✅ **DEPLOYED `5df0df4`** | wf90 confirmed at `5df0df4` (2026-06-18). Next wf90 PENDING at `a6441fb` tip (nullschool-parity + two-score + fast-follow queue 1–5). |
 | **Functions deploy** | ⏳ **PENDING owner** | `firebase deploy --only functions:...` after `git pull`. Includes `earthHealthScoreRefresh` + `earthSstRefresh` anomaly + all refresh functions. |
 | **`RECAPTCHA_V3_SITE_KEY` Actions var** | ⏳ **PENDING owner** | Must be set in `random-knights/xyz` Actions secrets before wf90 run. |
 | **App Check MONITORING mode** | ⏳ Confirm post-deploy | Confirm active after functions deploy. Monitoring period before enforce-flip. |
