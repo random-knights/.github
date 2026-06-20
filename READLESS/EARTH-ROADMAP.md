@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-19 (session 48 — earth-worker Cloud Run (Python/rasterio) staging; CAMS particulates PM2.5 + chemistry NO2 live-verified; REAL tree-time (WorldClim×VCF5KYR) + REAL forest (VCF5KYR) staging; client scalar layers landed; visual/perf polish (nullschool flow-field, texture-cache, IDW seam blur, fast point/wave fill, CustomPainter renavigation fix, trail-wipe, ocean advection); earth.nullschool filter parity OWNER-RATIFIED (4-batch); origin/main = `5ecc71e`; all staging PENDING next wf90 + owner device-pass + `gcloud run jobs deploy earth-worker`)
+**Last updated:** 2026-06-19 (session 48 — earth-worker Cloud Run (Python/rasterio) staging; CAMS particulates PM2.5 + chemistry NO2 live-verified; REAL tree-time (WorldClim×VCF5KYR) + REAL forest (VCF5KYR) staging; client scalar layers landed; visual/perf polish (nullschool flow-field, texture-cache, IDW seam blur, fast point/wave fill, CustomPainter renavigation fix, trail-wipe, ocean advection); earth.nullschool filter parity OWNER-RATIFIED (4-batch); ⭐⭐ NORTH-STAR RATIFIED: RETIRE CESIUM → full 2D-canvas renderer (nullschool/cambecc arch), target 6/26/2026, Agent B in parallel; origin/main = `5ecc71e`; all staging PENDING next wf90 + owner device-pass + `gcloud run jobs deploy earth-worker`)
 
 ---
 
@@ -35,7 +35,7 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 
 _**End goal: animated planetary flow globe (nullschool-class) + governed AI assistant.**_
 
-_Position: **wf90 DEPLOYED `5df0df4` (2026-06-18); both rescissions FIXED + live; 13 animated layers live; earth-worker Cloud Run staging + CAMS/tree-time/forest REAL layers staging; visual/perf polish on main; earth.nullschool filter parity RATIFIED.** `origin/main` (xyz) = `5ecc71e` (git-verified, session 48); last confirmed hosting deploy = `5df0df4` (wf90, 2026-06-18; multiple commits PENDING next wf90 + owner device-pass + earth-worker redeploy + owner-manual functions deploy). All 8 (+5 batch-2 = 13) Earth layers + live Health Score + two-score Globe/Data View + nullschool-parity 4 slices merged + PWA + all-layers-live source-swap all live at `5df0df4`. `public-access-flip` (`05d00d2`) HELD — deploys at public-flip gate only. ✅ Both rescissions FIXED + deployed (`5df0df4`). ✅ P0 callable gate FIXED (`2ac0251`) — deployed at `5df0df4`. Public site-flip = FINAL gate (Fable + owner). Goal: 6/26._
+_Position: **wf90 DEPLOYED `5df0df4` (2026-06-18); both rescissions FIXED + live; 13 animated layers live; earth-worker Cloud Run staging + CAMS/tree-time/forest REAL layers staging; visual/perf polish on main; earth.nullschool filter parity RATIFIED; ⭐⭐ NORTH-STAR RATIFIED: RETIRE CESIUM → full 2D-canvas renderer, target 6/26/2026, Agent B parallel track.** `origin/main` (xyz) = `5ecc71e` (git-verified, session 48); last confirmed hosting deploy = `5df0df4` (wf90, 2026-06-18; multiple commits PENDING next wf90 + owner device-pass + earth-worker redeploy + owner-manual functions deploy). All 8 (+5 batch-2 = 13) Earth layers + live Health Score + two-score Globe/Data View + nullschool-parity 4 slices merged + PWA + all-layers-live source-swap all live at `5df0df4`. `public-access-flip` (`05d00d2`) HELD — deploys at public-flip gate only. ✅ Both rescissions FIXED + deployed (`5df0df4`). ✅ P0 callable gate FIXED (`2ac0251`) — deployed at `5df0df4`. Public site-flip = FINAL gate (Fable + owner). Goal: 6/26._
 
 | Cycle | Release | Work | Gate |
 | --- | --- | --- | --- |
@@ -409,6 +409,28 @@ Earth Pro = entitlement-gated features for Pro/org subscribers.
 
 ⚠ No Tier 2 vertical opens without: (1) individual Fable governance spec, (2) Pro-tier entitlement gate wired, (3) identity-suppression function implemented + tested. `futureLayerIds` to be updated with `flights`/`ships`/`satellites` after Earth rescission fix (`79ba5fa` reversal).
 
+### ⭐⭐ NORTH-STAR: Retire Cesium → Full 2D-Canvas Renderer (RATIFIED — session 48)
+
+**Decision:** Replace the Cesium WebGL globe with a full 2D-canvas renderer built on the nullschool/cambecc architecture. **Target: 6/26/2026.**
+
+**Why:** Cesium's only unique value over a 2D canvas is GPU terrain draping — but terrain draping requires raw imagery tiles, which are blocked by the no-raw-imagery governance rule. Cesium's 3D WebGL pipeline is also the direct source of the owner's seam artifacts and see-through rendering bugs. The 2D-canvas path (cambecc/earth style) eliminates both root causes natively.
+
+**Architecture:**
+- **Agent A (Cesium — current):** continues finishing PROD batches, launching, and serving public users. No disruption to current wf90 cadence.
+- **Agent B (earth2d — parallel):** builds the full 2D-canvas renderer on a separate feature-flagged `earth2d` page. Invisible to public users until toggle is enabled.
+- **User toggle:** 3D↔2D surface switch. Both renderers live in the same app; user picks.
+- **Renderer target:** nullschool/cambecc canvas architecture — per-pixel reprojection, d3-style projections, native flow-field without Cesium dependencies.
+
+**Key constraints:**
+- No-raw-imagery governance rule is **unchanged** — applies to Agent B the same as Agent A. 2D-canvas does not require imagery tiles; vector + scalar data only.
+- Main technical risk: **per-pixel reprojection perf** on mobile/low-end devices. Agent B must profile before shipping any public surface.
+- Agent B is **file-disjoint** from Agent A (separate page + renderer files). No merge conflicts with Cesium work.
+- Cesium globe stays live until 2D canvas has reached device-pass quality. No Cesium removal before that gate.
+
+**Gate:** owner device-pass on `earth2d` page at feature-flag parity → Fable go/no-go → swap default → Cesium retirement.
+
+---
+
 ### earth.nullschool Filter Parity Program (OWNER-RATIFIED — session 48)
 
 **Goal:** match earth.nullschool.net filter behavior — unlock all layers except Space; Animate=Wind/Currents/Waves in every mode; default overlay=SST; add SSTA/BAA/HTSGW overlays.
@@ -723,6 +745,7 @@ _Completed and on `main`._
 
 _Scope changes, strategy shifts, or deferred decisions._
 
+- **Session 48 (2026-06-19) — ⭐⭐ NORTH-STAR RATIFIED: Retire Cesium → full 2D-canvas renderer (binding):** Owner has ratified the strategic shift to a nullschool/cambecc-style 2D-canvas renderer as the long-term Earth renderer. Target date 6/26/2026. Agent B (earth2d, feature-flagged) builds in parallel with Agent A (Cesium, PROD); user toggles 3D↔2D. Rationale: Cesium's GPU draping (its only unique value) is blocked by the no-raw-imagery governance rule; Cesium's 3D pipeline is the direct root cause of seam + see-through artifacts. The 2D-canvas path eliminates both natively. Key risk: per-pixel reprojection perf — Agent B must profile on low-end devices before any public gate. No-raw-imagery rule is unchanged and applies to Agent B.
 - **Session 48 (2026-06-19) — CMEMS currents, not OSCAR (binding):** earth.nullschool.net uses free CMEMS (Copernicus Marine) for ocean currents, not OSCAR. Owner has registered `RANDOM_CMEMS_*` secrets. All currents-parity work targets CMEMS. Do NOT design currents pipelines around OSCAR (stale/auth-gated sources); OSCAR was already DROPPED for launch (session 47). CMEMS = free and available.
 - **Session 48 (2026-06-19) — Cesium cannot replicate d3 map projections (binding):** nullschool's distinctive projections (orthographic, stereographic, Waterman butterfly, etc.) are d3.js features on a 2D canvas. Cesium is a 3D WebGL globe. The closest Cesium equivalent is a 3D/2D/Columbus view toggle. Do NOT scope projection parity as anything beyond 3D↔2D↔Columbus — further projection work would require replacing Cesium, which is out of scope.
 - **Session 48 (2026-06-19) — Cloud Run earth-worker as new data pipeline surface:** CAMS/tree-time/forest layers are produced by `apps/rand0m/worker` (Python/rasterio, Cloud Run Jobs), not Firebase Functions. The `gcloud run jobs deploy earth-worker` owner-manual step is now a distinct deploy surface alongside wf90 (hosting) and `firebase deploy --only functions:...` (callables). Three deploy surfaces: (1) wf90 HOSTING-ONLY, (2) `firebase deploy --only functions:...` owner-manual, (3) `gcloud run jobs deploy earth-worker` owner-manual.
