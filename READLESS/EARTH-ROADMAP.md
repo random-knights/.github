@@ -4,7 +4,7 @@ Living shared plan for Earth feature work across `dev-kitt` and `qa-kitt`.
 Update this file at the start and end of every session.
 
 **Repo:** `eng1neer/github-qakitt` (qa-kitt · random-knights/.github)
-**Last updated:** 2026-06-18 (session 47 — PROD DEPLOYED = `5df0df4` (wf90, rand0m.ai + ai-rand0m.web.app = 200, allowlist-gated, public-flip HELD 6/26); polish-10 scalar overlay = per-cell geographic-quad tiles `04b4f0a`; @scient1st first-party-OR-BYOK key `f1b6a31`; wind NOMADS→THREDDS `a6441fb`; ocean migration DROPPED for launch; origin/main = `a6441fb`; 6 commits PENDING next wf90 + owner-manual functions deploy)
+**Last updated:** 2026-06-19 (session 48 — earth-worker Cloud Run (Python/rasterio) staging; CAMS particulates PM2.5 + chemistry NO2 live-verified; REAL tree-time (WorldClim×VCF5KYR) + REAL forest (VCF5KYR) staging; client scalar layers landed; visual/perf polish (nullschool flow-field, texture-cache, IDW seam blur, fast point/wave fill, CustomPainter renavigation fix, trail-wipe, ocean advection); earth.nullschool filter parity OWNER-RATIFIED (4-batch); origin/main = `5ecc71e`; all staging PENDING next wf90 + owner device-pass + `gcloud run jobs deploy earth-worker`)
 
 ---
 
@@ -14,7 +14,7 @@ _Post-R7 roster active. Systems and Connect retired (wind-down complete, scopes 
 
 | Agent | Identity | Worktree | Active branch | Focus |
 | --- | --- | --- | --- | --- |
-| Earth | `deve10per` / dev-kitt | `apps/rand0m` (integration only — §22) | main=`a6441fb`; hosting=`5df0df4` (deployed) | Earth features, layers, governance; catalog owner; integrator/deploy; absorbs Systems+Connect scopes |
+| Earth | `deve10per` / dev-kitt | `apps/rand0m` (integration only — §22) | main=`5ecc71e`; hosting=`5df0df4` (deployed) | Earth features, layers, governance; catalog owner; integrator/deploy; absorbs Systems+Connect scopes |
 | Design | `deve10per` / dev-kitt | `worktrees\rand0m-design` | POST-LAUNCH; no active D-slice | IA v2 D7+D8; Cesium FE globe shell; presentation/layout only |
 | Fixes | `deve10per` / dev-kitt | main clone (CI paths only) | CI/hygiene; no Earth-page edits | CI, harness, QA; token-economy triage (§21d) |
 | Docs | `eng1neer` / qa-kitt | qa-kitt clone | `readless-readmore-reorg` | READLESS, CODEX, EARTH-ROADMAP |
@@ -35,7 +35,7 @@ Agents share `origin/main` on xyz (`random-knights/xyz`). Pull before push. One 
 
 _**End goal: animated planetary flow globe (nullschool-class) + governed AI assistant.**_
 
-_Position: **wf90 DEPLOYED `5df0df4` (2026-06-18); both rescissions FIXED + live; 13 animated layers live; polish-10 scalar overlay (geographic quads) on main; wind THREDDS on main.** `origin/main` (xyz) = `a6441fb` (git-verified, session 47); last confirmed hosting deploy = `5df0df4` (wf90, 2026-06-18; 6 commits PENDING next wf90 + owner-manual functions deploy). All 8 (+5 batch-2 = 13) Earth layers + live Health Score + two-score Globe/Data View + nullschool-parity 4 slices merged + PWA + all-layers-live source-swap all live at `5df0df4`. `public-access-flip` (`05d00d2`) HELD — deploys at public-flip gate only. ✅ Both rescissions FIXED + deployed (`5df0df4`). ✅ P0 callable gate FIXED (`2ac0251`) — deployed at `5df0df4`. Public site-flip = FINAL gate (Fable + owner). Goal: 6/26._
+_Position: **wf90 DEPLOYED `5df0df4` (2026-06-18); both rescissions FIXED + live; 13 animated layers live; earth-worker Cloud Run staging + CAMS/tree-time/forest REAL layers staging; visual/perf polish on main; earth.nullschool filter parity RATIFIED.** `origin/main` (xyz) = `5ecc71e` (git-verified, session 48); last confirmed hosting deploy = `5df0df4` (wf90, 2026-06-18; multiple commits PENDING next wf90 + owner device-pass + earth-worker redeploy + owner-manual functions deploy). All 8 (+5 batch-2 = 13) Earth layers + live Health Score + two-score Globe/Data View + nullschool-parity 4 slices merged + PWA + all-layers-live source-swap all live at `5df0df4`. `public-access-flip` (`05d00d2`) HELD — deploys at public-flip gate only. ✅ Both rescissions FIXED + deployed (`5df0df4`). ✅ P0 callable gate FIXED (`2ac0251`) — deployed at `5df0df4`. Public site-flip = FINAL gate (Fable + owner). Goal: 6/26._
 
 | Cycle | Release | Work | Gate |
 | --- | --- | --- | --- |
@@ -188,8 +188,18 @@ _Position: **wf90 DEPLOYED `5df0df4` (2026-06-18); both rescissions FIXED + live
 | **#2 @scient1st first-party key** (`f1b6a31`) — drop BYOK-only gate; @scient1st uses first-party key like chat (first-party-OR-BYOK via proxy); client-only | merged to main | green | ⏳ deploy PENDING next wf90 |
 | **#1 polish-10 — scalar overlay per-cell geographic-quad tiles** (`04b4f0a`) — THE FIX: each data cell rendered as a geographic quad (Cesium polygon); sharp edges, no limb clip, correct PROD look | merged to main | green | ⏳ deploy PENDING next wf90 |
 | **wind GFS → Unidata THREDDS** (`a6441fb`) — migrate `earthWindGfsRefresh` from retired NOMADS GrADS (NWS SCN 25-81, 2026-02-23) to Unidata THREDDS OPeNDAP; GFS 0.25° "Best" aggregation; 270/270 functions tests green | merged to main | green | ⏳ deploy PENDING next wf90 + owner-manual functions deploy |
+| **Cloud Run earth-worker** (`apps/rand0m/worker` — Python/rasterio; Dockerfile libexpat1 fix for rasterio runtime) — production raster pipeline; owner-deployed via `gcloud run jobs deploy earth-worker`; replaces Cloud Functions for heavy data ingestion | merged to main | green | ⏳ staging — pending owner `gcloud run jobs deploy earth-worker` |
+| **CAMS particulates — PM2.5 live layer** — client scalar layer + earth-worker rasterio pipeline; CAMS Atmosphere Data Store; **live-verified** (global PM2.5 field confirmed) | merged to main | green | ⏳ staging — flips live on `gcloud run jobs deploy earth-worker` |
+| **CAMS chemistry — NO2 scalar layer** — total-column NO2 (µmol/m²) via CAMS; client scalar layer + earth-worker pipeline; **live-verified** | merged to main | green | ⏳ staging — flips live on `gcloud run jobs deploy earth-worker` |
+| **REAL tree-time composite** (WorldClim climate × NASA VCF5KYR % tree cover) — **live-verified**: Amazon/Congo/SE-Asia high; deserts/poles ~0; replaces synthetic-IDW tree-time | merged to main | green | ⏳ staging — flips live on `gcloud run jobs deploy earth-worker` |
+| **REAL forest layer** (VCF5KYR % tree cover) — replaces synthetic; same earth-worker pipeline as tree-time | merged to main | green | ⏳ staging — flips live on `gcloud run jobs deploy earth-worker` |
+| **nullschool flow-field polish** — smoother flow rendering; visual fidelity toward nullschool quality; scalar texture-cache + idle pre-warm (reduces first-render latency) | merged to main | green | ⏳ deploy PENDING next wf90 + owner device-pass |
+| **Softened synthetic-IDW overlay seam** — blur applied on coarse grids only; sharp-edge tiling artifact removed for non-real-data layers | merged to main | green | ⏳ deploy PENDING next wf90 + owner device-pass |
+| **Fast point/wave fill** — bucketed event-suspended entity adds; faster flow-field regrow; reduces visual pop-in | merged to main | green | ⏳ deploy PENDING next wf90 + owner device-pass |
+| **CustomPainter-on-renavigation bug FIXED** — static per-viewType platform-view registration; prevents CustomPainter layer drop on route change (renavigation regression) | merged to main | green | ⏳ deploy PENDING next wf90 + owner device-pass |
+| **Flow trail-wipe-on-layer-switch + ocean advection boost** — clean trail removal on layer switch; ocean advection multiplier increased for more visible current flow | merged to main | green | ⏳ deploy PENDING next wf90 + owner device-pass |
 
-`origin/main` (xyz) is at `a6441fb` (git-verified, session 47). Hosting = `5df0df4` (deployed; wf90 2026-06-18; 6 commits PENDING next wf90).
+`origin/main` (xyz) is at `5ecc71e` (git-verified, session 48). Hosting = `5df0df4` (deployed; wf90 2026-06-18; multiple commits PENDING next wf90 + owner device-pass + earth-worker redeploy).
 
 ⚠ **State rule:** rows may only show "merged" or "deployed" when a git-verified SHA from a Fable gate confirmation or `git log origin/main` check is recorded here. Do not assert merged/deployed from session memory.
 
@@ -333,15 +343,21 @@ _Active — in flight or ready for immediate action._
 
 - ✅ **wf90 DEPLOYED `5df0df4` (2026-06-18):** rand0m.ai + ai-rand0m.web.app = 200. Allowlist-gated. `public-access-flip` (`05d00d2`) HELD — public-flip gate only, deploy date target 6/26.
 
-**Fast-follow queue (origin/main = `a6441fb`; 6 commits PENDING next wf90):**
-1. **Scalar overlay tiles** ✅ FIXED at polish-10 (`04b4f0a`) — per-cell geographic-quad tiles; polish-9 (`0afea74`) was INSUFFICIENT (screen-space raster); do NOT reintroduce raster approach.
-2. **@scient1st key** ✅ broadened to first-party-OR-BYOK via proxy (`f1b6a31`) — no local BYOK pre-gate required, matches chat.
-3. **Data View semantic colour** ✅ merged (`708a533`) — pending next wf90.
+**Fast-follow queue (origin/main = `5ecc71e`; multiple commits PENDING next wf90 + owner device-pass + earth-worker redeploy):**
+1. **Scalar overlay tiles** ✅ FIXED at polish-10 (`04b4f0a`) — per-cell geographic-quad tiles; polish-9 was INSUFFICIENT; do NOT reintroduce raster.
+2. **@scient1st key** ✅ first-party-OR-BYOK via proxy (`f1b6a31`).
+3. **Data View semantic colour** ✅ merged (`708a533`).
 4. **Localized-points densifier** ✅ merged (`531b168`) — pending next wf90 + owner-manual functions deploy (`earthLocalizationRefresh`).
-5. **Wind GFS → Unidata THREDDS** ✅ merged (`a6441fb`) — NOMADS GrADS retired (NWS SCN 25-81); THREDDS OPeNDAP active; pending next wf90 + owner-manual functions deploy (`earthWindGfsRefresh`).
-6. **Ocean migration** DROPPED for launch — no public no-auth OSCAR source (jplOscar stale-2015; OSCAR V2 Earthdata-auth). Representative ocean retained.
-7. **Wildfire/health-score fn deploy** = owner-manual `firebase deploy --only functions:...` after `git pull` (wf90 is HOSTING-ONLY).
-8. **5-surface UI cleanup** queued — not yet merged.
+5. **Wind GFS → Unidata THREDDS** ✅ merged (`a6441fb`) — pending next wf90 + owner-manual functions deploy (`earthWindGfsRefresh`).
+6. **Ocean migration** DROPPED for launch — no public no-auth OSCAR source.
+7. **Wildfire/health-score fn deploy** = owner-manual `firebase deploy --only functions:...` (wf90 is HOSTING-ONLY).
+8. **5-surface UI cleanup** — addressed by visual/perf polish (nullschool flow-field, texture-cache, IDW seam, trail-wipe, ocean advection); merged on main pending next wf90.
+
+**Staging — pending owner device-pass + `gcloud run jobs deploy earth-worker`:**
+- Cloud Run earth-worker (`apps/rand0m/worker`, Python/rasterio, Dockerfile libexpat1 fix) — owner deploys with `gcloud run jobs deploy earth-worker`.
+- CAMS particulates PM2.5 + CAMS chemistry NO2 scalar layers — live-verified; flip live on earth-worker redeploy.
+- REAL tree-time (WorldClim × VCF5KYR) + REAL forest (VCF5KYR) — live-verified; flip live on earth-worker redeploy.
+- Visual/perf: nullschool flow-field polish; scalar texture-cache + idle pre-warm; IDW seam blur; fast point/wave fill; CustomPainter renavigation fix; trail-wipe; ocean advection boost — pending next wf90 + owner device-pass.
 - **Owner (blocking — orphan dirs):** `rm -rf rand0m-dvmerge rand0m-mainmerge` after confirming no process holds them.
 - ✅ **Both rescissions FIXED:** Rescission 1 (`7b8c5c2`+`76809d7`) deployed at `a49a957`. Rescission 2 (`183c2f0`) pending next wf90. No open Earth reversal work.
 - **Earth agent:** `earth/anim-bugfix` — fix ocean animation regression + view-switch ghost trails. Gate: CI green + owner device pass.
@@ -392,6 +408,27 @@ Earth Pro = entitlement-gated features for Pro/org subscribers.
 | **Satellite density (aggregate)** | Tier 2 aggregate; TLE feeds; coarse-cell | Separate Fable governance spec |
 
 ⚠ No Tier 2 vertical opens without: (1) individual Fable governance spec, (2) Pro-tier entitlement gate wired, (3) identity-suppression function implemented + tested. `futureLayerIds` to be updated with `flights`/`ships`/`satellites` after Earth rescission fix (`79ba5fa` reversal).
+
+### earth.nullschool Filter Parity Program (OWNER-RATIFIED — session 48)
+
+**Goal:** match earth.nullschool.net filter behavior — unlock all layers except Space; Animate=Wind/Currents/Waves in every mode; default overlay=SST; add SSTA/BAA/HTSGW overlays.
+
+**Key facts (binding):**
+- **CURRENTS source = free CMEMS (Copernicus Marine), NOT OSCAR.** Nullschool uses CMEMS. Owner has already registered `RANDOM_CMEMS_*` secrets. Currents-parity is a CMEMS upgrade — no premium data purchase required. Do NOT design currents around OSCAR.
+- **Cesium (3D WebGL) CANNOT reproduce nullschool's d3 map projections.** Projection toggle = 3D/2D/Columbus view only. Do NOT attempt to implement orthographic/stereographic/etc. as a feature parity item; 3D↔2D↔Columbus is the full scope.
+
+**4-batch plan (owner-ratified):**
+
+| Batch | Scope | Status |
+| --- | --- | --- |
+| **1 — Filter unlock** | Client-only: unlock all layers except Space; Animate=Wind/Currents/Waves in every mode; default overlay=SST | ⏳ PENDING — Earth agent |
+| **2 — CMEMS currents + Waves** | Worker: CMEMS Copernicus Marine currents pipeline + Waves (HTSGW) earth-worker job | ⏳ PENDING — Earth agent + earth-worker |
+| **3 — SSTA/BAA overlays** | SST Anomaly (SSTA) + Barometric Pressure Anomaly (BAA) overlay layers | ⏳ PENDING — Earth agent + earth-worker |
+| **4 — Projection toggle** | 3D/2D/Columbus view toggle (Cesium-native; no d3 projections) | ⏳ PENDING — Earth agent |
+
+Spec: to be created at [`internal/architecture/earth/earth-nullschool-filter-parity-spec.md`](internal/architecture/earth/earth-nullschool-filter-parity-spec.md). Earth agent to open spec before Batch 1 implementation.
+
+---
 
 ### Nullschool-Parity Program (RATIFIED — session 45; slices 1a/2+5a/1b/4 MERGED — session 46)
 
@@ -686,6 +723,9 @@ _Completed and on `main`._
 
 _Scope changes, strategy shifts, or deferred decisions._
 
+- **Session 48 (2026-06-19) — CMEMS currents, not OSCAR (binding):** earth.nullschool.net uses free CMEMS (Copernicus Marine) for ocean currents, not OSCAR. Owner has registered `RANDOM_CMEMS_*` secrets. All currents-parity work targets CMEMS. Do NOT design currents pipelines around OSCAR (stale/auth-gated sources); OSCAR was already DROPPED for launch (session 47). CMEMS = free and available.
+- **Session 48 (2026-06-19) — Cesium cannot replicate d3 map projections (binding):** nullschool's distinctive projections (orthographic, stereographic, Waterman butterfly, etc.) are d3.js features on a 2D canvas. Cesium is a 3D WebGL globe. The closest Cesium equivalent is a 3D/2D/Columbus view toggle. Do NOT scope projection parity as anything beyond 3D↔2D↔Columbus — further projection work would require replacing Cesium, which is out of scope.
+- **Session 48 (2026-06-19) — Cloud Run earth-worker as new data pipeline surface:** CAMS/tree-time/forest layers are produced by `apps/rand0m/worker` (Python/rasterio, Cloud Run Jobs), not Firebase Functions. The `gcloud run jobs deploy earth-worker` owner-manual step is now a distinct deploy surface alongside wf90 (hosting) and `firebase deploy --only functions:...` (callables). Three deploy surfaces: (1) wf90 HOSTING-ONLY, (2) `firebase deploy --only functions:...` owner-manual, (3) `gcloud run jobs deploy earth-worker` owner-manual.
 - **Session 47 (2026-06-18) — scalar overlay: APPROACH matters (binding lesson):** screen-space raster (slice-1a bilinear) was trialled in polish-9 (`0afea74`) and found INSUFFICIENT — pixelates at zoom, clips at globe limb. Per-cell geographic-quad tiles (polish-10 `04b4f0a`) is the correct PROD look. Do NOT reintroduce the raster overlay approach; the quad approach is the permanent scalar rendering strategy.
 - **Session 47 (2026-06-18) — owner-does-visual-smoke (re-affirmed):** polish-9 (`0afea74`) passed CI and merged to main but was visually wrong. The defect was only visible on an owner device pass against the preview. Agents do HTTP-level smoke only; owner visual pass on a real device is the required gate before declaring a visual fix complete.
 - **Session 47 (2026-06-18) — NOMADS GrADS retired:** NWS SCN 25-81 (2026-02-23) decommissioned NOMADS GrADS. `earthWindGfsRefresh` migrated to Unidata THREDDS OPeNDAP at `a6441fb`. If wind data is stale, check THREDDS endpoint first, not GrADS.
@@ -865,7 +905,7 @@ _Scope changes, strategy shifts, or deferred decisions._
 
 _Rows reflect current remote branches confirmed by Fable gate or `git log origin/main`. All stale/never-existed rows removed (T10 audit, session 29). **Rule: Open Branches updates come from Fable gate confirmations only — same standard as Deploy Checkpoint rows.** Codified in coordination standards §2._
 
-_Updated session 47 (git-verified). qa-kitt/.github: 2 branches (main + readless-readmore-reorg). xyz: `origin/main` = `a6441fb` (wind THREDDS + scalar polish-10 + @scient1st key + Data View colour + localized-points + wf90 at `5df0df4`). All 8 layers + Health Score capstone + both rescissions fixed + all-layers-live source-swap + batch-2 animated layers + P0 callable gate fix + two-score redesign + nullschool-parity + fast-follow queue on main. `public-access-flip` (`05d00d2`) is NOT on main — HELD branch._
+_Updated session 48 (git-verified). qa-kitt/.github: 2 branches (main + readless-readmore-reorg). xyz: `origin/main` = `5ecc71e` (earth-worker Cloud Run + CAMS particulates/chemistry + real tree-time/forest + visual/perf polish on main; hosting = `5df0df4`). All 8 layers + Health Score capstone + both rescissions fixed + all-layers-live source-swap + batch-2 animated layers + P0 callable gate fix + two-score redesign + nullschool-parity + fast-follow queue + staging CAMS/tree-time/forest on main. `public-access-flip` (`05d00d2`) is NOT on main — HELD branch._
 
 | Branch | Repo | Status | Notes |
 | --- | --- | --- | --- |
@@ -895,12 +935,12 @@ _xyz remaining unmerged branches: low-priority; not blocking. Earth agent to enu
 
 ## Launch Checklist
 
-_Updated session 47. `origin/main` = `a6441fb`. Deployed = `5df0df4` (wf90 2026-06-18). Go/no-go detail: [`internal/architecture/public-launch-readiness.md`](internal/architecture/public-launch-readiness.md)._
+_Updated session 48. `origin/main` = `5ecc71e`. Deployed = `5df0df4` (wf90 2026-06-18). Go/no-go detail: [`internal/architecture/public-launch-readiness.md`](internal/architecture/public-launch-readiness.md)._
 
 | Item | Status | Notes |
 | --- | --- | --- |
 | **Earth rescissions** | ✅ **BOTH FIXED** | (1) ✅ Rescission 1 FIXED (`7b8c5c2`+`76809d7`) — deployed at `a49a957`. (2) ✅ Rescission 2 FIXED (`183c2f0`) — `flights`+`ships` restored to `futureLayerIds`; pending next wf90. |
-| **wf90 deploy** | ✅ **DEPLOYED `5df0df4`** | wf90 confirmed at `5df0df4` (2026-06-18). Next wf90 PENDING at `a6441fb` tip (nullschool-parity + two-score + fast-follow queue 1–5). |
+| **wf90 deploy** | ✅ **DEPLOYED `5df0df4`** | wf90 confirmed at `5df0df4` (2026-06-18). Next wf90 PENDING at `5ecc71e` tip (fast-follow queue + visual/perf polish + CAMS client layers). Owner device-pass required before next wf90. |
 | **Functions deploy** | ⏳ **PENDING owner** | `firebase deploy --only functions:...` after `git pull`. Includes `earthHealthScoreRefresh` + `earthSstRefresh` anomaly + all refresh functions. |
 | **`RECAPTCHA_V3_SITE_KEY` Actions var** | ⏳ **PENDING owner** | Must be set in `random-knights/xyz` Actions secrets before wf90 run. |
 | **App Check MONITORING mode** | ⏳ Confirm post-deploy | Confirm active after functions deploy. Monitoring period before enforce-flip. |
