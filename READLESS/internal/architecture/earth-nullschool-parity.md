@@ -1,8 +1,10 @@
 # Earth Nullschool-Parity Program
 
-**Date:** 2026-06-17 (session 46 — slices 1a/2+5a/1b/4 MERGED)
-**Status:** Ratified — slices 1a/2+5a/1b/4 MERGED; slice 3 in flight; slices 6+5b pending
+**Date:** 2026-06-17 (session 46 — slices 1a/2+5a/1b/4 MERGED); updated 2026-06-19 (session 49 — filter parity batch 1 SHIPPED; SSTA/BAA/CMEMS/Waves merged)
+**Status:** Slices 1a/2+5a/1b/4 MERGED; filter parity batch 1 SHIPPED (`ccb72b9`+); SSTA (`4c22c06`) + BAA (`7e7cd00`) overlays MERGED; CMEMS currents worker MERGED (`ad16eec`); Waves flow MERGED (`93e7fb5`); slice 3 in flight; slices 6+5b pending
 **Owner:** Earth agent (implementation); Fable (ratification + gate); Docs (this spec)
+
+⚠ **Session 49 update:** The earth.nullschool filter parity program (ratified session 48) has shipped batch 1 (filter unlock) and batch 3 (SSTA/BAA overlays). Batch 2 is partially merged (CMEMS worker + Waves layer merged; CMEMS earth-worker job pending owner deploy). Batch 4 (projection toggle = 2D/3D) shipped as part of the 2D renderer (`0daaf35`). See EARTH-ROADMAP.md → earth.nullschool Filter Parity Program for current batch status.
 
 ---
 

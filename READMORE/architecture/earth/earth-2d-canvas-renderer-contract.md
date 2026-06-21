@@ -1,18 +1,26 @@
 # Earth 2D-Canvas Renderer — Interface Contract (north-star track)
 
-**Date:** 2026-06-20 (session 49)
-**Status:** DRAFT — for Fable ratification (north-star track, Agent B parallel lane)
-**Owner:** Agent B (implementation, `deve10per`/dev-kitt); Fable (ratification + gate); Docs (`eng1neer`/qa-kitt, this spec)
+**Date:** 2026-06-20 (session 49; updated session 49)
+**Status:** ✅ **SHIPPED — renderer on main** (feature-flagged; 2D/3D toggle live `0daaf35`; lifecycle fixed `99e351f`; slot-parity partial — composite+region merged, full parity on branch)
+**Owner:** Earth agent (implementation, `deve10per`/dev-kitt); Fable (gate); Docs (`eng1neer`/qa-kitt, this spec)
 **Mandate:** ROADMAP north-star (session 48) — "RETIRE CESIUM → full 2D-canvas renderer (nullschool/cambecc arch)", target **6/26/2026**.
 **Reference impl:** cambecc's open-source `earth` (nullschool's ancestor) — d3-geo + 2D `<canvas>`, distortion-grid + web worker.
 
-This is deliverable #1: the **read-only data API** the 2D renderer consumes. It changes **no** contract, model, or live renderer; it records what the new lane imports and the boundary that keeps the lane parallel-safe.
+This document records the interface contract the 2D renderer consumes. It changes **no** contract, model, or live Cesium renderer; it records what the new lane imports and the boundary that keeps the lane parallel-safe.
+
+**Shipped state (session 49, on main; PENDING next wf90 deploy):**
+- 2D/3D toggle ON by default (`0daaf35` pack5) — 3D still accessible via toggle
+- 2D/3D lifecycle fix — black 2D globe + 3D-won't-return fixed (`99e351f`); one-renderer-at-a-time enforced (`b6a5c83`)
+- earth2d composite — all 3 slots (flow/scalar/point) rendered every frame (`5a8e0cf`)
+- earth2d region/laser/my-location bridged (`86b9e68` + `1bcbdbe`)
+- nullschool-quality flow: denser, ocean animates, sea-masked trails (`51c3d04`)
+- Slot parity remaining: earth2d full filter-chrome parity — **on branch**
 
 ---
 
 ## 1. Scope & non-goals
 
-In scope: a new, **file-disjoint** 2D-canvas renderer module + a feature-flagged-OFF 3D↔2D toggle in Globe View, consuming the existing governed Earth data exactly as the Cesium renderer does. Build order: interface spec → thin proof (orthographic SST) → 8 projections → particle flow → points + hit-test → filter-chrome parity.
+In scope: a new, **file-disjoint** 2D-canvas renderer module + a feature-flagged 3D↔2D toggle in Globe View (default→2D as of `0daaf35`), consuming the existing governed Earth data exactly as the Cesium renderer does. Build order: interface spec → thin proof → composite all slots → region/laser/my-location → nullschool-quality flow → filter-chrome parity. **Current status: composite + region/laser/flow shipped; filter-chrome parity on branch.**
 
 Not in scope (this contract): retiring/removing the Cesium path (it stays until the 2D path is owner-validated at parity), any change to `lib/models/earth/**`, any change to the live `web/earth_*.js` or `lib/**/earth/**` renderers, new providers, Functions, or deploy.
 
@@ -121,12 +129,12 @@ Acceptance target: smooth (~60fps) rotate at full canvas for the orthographic SS
 
 ## 9. Open items / coordination
 
-- **Toggle mount-point** — confirm the Earth agent owns/serializes the one-line host edit; lane stays otherwise disjoint.
-- **Flag mechanism** — const for the proof; confirm RC key naming with the Earth agent for productionization.
-- **d3-geo vendoring** — vendor locally under `web/earth2d/vendor/` (mirrors how CesiumJS is vendored in `web/cesium/`), pinned in a `VENDOR.md`, rather than a CDN at runtime.
-- **Lock-step parity test** — golden LUT/alpha compare against `web/earth_scalar_field.js` to catch palette drift.
-- **ROADMAP roster** — add an "Agent B / earth2d" lane row + a north-star 2D-renderer track section (Docs/`eng1neer`).
-- **`earth-renderer-active-architecture.md` is stale** (dated 2026-06-11; predates the north-star) — it should record the 2D-canvas direction and that Cesium is being retired (Docs update, per the READLESS maintenance rule).
+- ✅ **Toggle mount-point** — Earth agent landed the one-line host edit (`0daaf35` pack5); lane was disjoint.
+- ✅ **Flag mechanism** — compile-time const shipped; default→2D as of `0daaf35`.
+- **d3-geo vendoring** — vendor locally under `web/earth2d/vendor/` (mirrors CesiumJS in `web/cesium/`), pinned in a `VENDOR.MD`, rather than a CDN at runtime. Verify current state.
+- **Lock-step parity test** — golden LUT/alpha compare against `web/earth_scalar_field.js` to catch palette drift. Not yet confirmed.
+- ✅ **ROADMAP roster** — north-star + 2D renderer track recorded in EARTH-ROADMAP.md (session 48–49).
+- **Slot parity** — composite + region/laser/my-location MERGED; remaining filter-chrome parity on branch (Earth agent).
 
 ---
 

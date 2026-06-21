@@ -1,9 +1,11 @@
 # Global Health Score — Data Audit & Methodology
 
-**Version:** earth.healthscore.v1
-**Status:** RATIFIED + LIVE (capstone `855e6e0`; function `58feb9f`)
-**Date:** 2026-06-16
+**Current version:** earth.healthscore.v0.3 (CLIENT merged `ab15e4c`; **`earthHealthScoreRefresh` FUNCTION-DEPLOY PENDING**)
+**Live deployed version:** earth.healthscore.v0.2 (function `58feb9f` + real-layers upgrade `0046781`; still running; SST=0 symptom — see §Live gap)
+**Date:** 2026-06-16 (v0.1); updated 2026-06-19 (v0.3 methodology)
 **Owner:** Earth agent (implementation); Fable (ratification); Docs (this record)
+
+⚠ **Live gap (session 49):** v0.3 methodology is MERGED on the client but the deployed `earthHealthScoreRefresh` function is v0.2. Until the owner runs `firebase deploy --only functions:earthHealthScoreRefresh`, the live score SST domain reads `0` (stale v0.2 function output does not yet map SST to the v0.3 domain contract). No user-visible regression on the overall score (score degrades gracefully without SST), but SST contribution is zeroed.
 
 ---
 
@@ -76,10 +78,51 @@ The AI Environmental Disclosure Standard (AIEDS) disclosure is **not blended** i
 
 ---
 
-## Open Questions (v0.2 roadmap)
+---
 
-- Weighted rolling-average smoothing to reduce day-to-day variance (currently point-in-time)?
-- Regional sub-scores (per continent / ocean basin) in addition to global?
-- Ocean acidification signal (pH trend) — data source TBD.
-- Biodiversity index signal — current GBIF count is a proxy; a more direct pressure signal preferred.
-- Live WorldPop / GPW source to replace the human-density representative grid.
+## v0.2 — Real layers consumed (`0046781`, session 49)
+
+- **Retired:** synthetic carbon ppm scalar from globe overlay (`b966f0b`); score no longer consumes the synthetic carbon signal.
+- **Added:** CAMS particulates, CAMS chemistry NO2, REAL tree-time (WorldClim × VCF5KYR), REAL forest (VCF5KYR) inputs fed into score computation via earth-worker rasterio pipeline.
+- **Status:** merged on client; earth-worker redeploy required to activate real grid sources.
+
+---
+
+## v0.3 — De-double-count via domains, anchored normalizers, S3 regional mask (session 49)
+
+**Owner-ratified. CLIENT MERGED (`ab15e4c`). Function redeploy PENDING.**
+
+### v0.3 Methodology changes
+
+**S1 — Score-panel reconciliation** (`d6b4823`): category labels camelCase; score-panel UI reconciled with underlying domain model.
+
+**S2 — De-double-count via domains + anchored normalizers** (`1e2a1fb` `8560be9` `7cc8911`):
+- Signals grouped into **domains** (e.g. `atmosphere`, `ocean`, `land`, `biodiversity`) — each domain contributes once to the global score; signals within a domain are averaged before weighting.
+- **Anchored normalizers:** normalization bounds are locked per domain at ratification time rather than floating with observed data. Prevents headline score drift from data range changes.
+- Globe layers mapped to v0.3 domain contract; Data View multi-select labels updated to domain groupings.
+
+**S3 — Regional applicability mask + honest trend** (`89cd375`):
+- Each domain has a **regional applicability mask** — a signal that has no coverage in a region does not contribute to that region's sub-score (fail-explicit, not fail-zero).
+- **Honest trend:** trend arrow reflects the direction of the underlying domain signal, not a smoothed estimate. Label updated to "global-weighted" for clarity.
+
+**S4 — Ratified headline guards + weight-sensitivity disclosure** (`ab15e4c`):
+- Headline score capped/guarded to avoid misleading single-tick spikes.
+- **Weight-sensitivity disclosure** surfaced in UI: "score is sensitive to SST and AQI weights — see methodology." Owner-ratified phrasing.
+
+### Live gap
+
+`earthHealthScoreRefresh` deployed function is v0.2. Until redeployed:
+- SST domain contribution = 0 (old function does not output the v0.3 SST domain field).
+- Score degrades gracefully (SST=0, no crash), but Earth Health Score underweights ocean stress.
+- Fix: `firebase deploy --only functions:earthHealthScoreRefresh` after `git pull`.
+
+---
+
+## Open Items (post-v0.3)
+
+- [ ] `earthHealthScoreRefresh` function redeploy to v0.3 domains (owner-manual — BLOCKING live parity)
+- [ ] Weighted rolling-average smoothing to reduce day-to-day variance (currently point-in-time)
+- [ ] Regional sub-scores (per continent / ocean basin) already partially wired via S3 mask
+- [ ] Ocean acidification signal (pH trend) — data source TBD
+- [ ] Biodiversity index signal — GBIF count is a proxy; more direct pressure signal preferred
+- [ ] Live WorldPop / GPW source to replace human-density representative grid
