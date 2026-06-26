@@ -1,97 +1,96 @@
-# TIMELINE — how RAND0M got built
+# TIMELINE — how the Random Knights ecosystem got built
 
-> The story of a planet-scale app built in the open, fast.
-> **Under 30 days. Under 1,500 deploys.** One app, one globe, a small crew of
-> agents, and a lot of real environmental data.
+> It started with **one person** and a pile of random projects.
+> No team, no funding, no permission — just a stubborn idea: point every AI you can
+> get your hands on at a hard problem, keep your own taste and judgment at the helm,
+> and actually ship. This is that track record — built in the open, grounded in the
+> commit history below, most of it inside a single month.
 
 ---
 
-## The build, in a nutshell
+## Before the first commit — catching the bug
 
-RAND0M (**rand0m.ai**) started as a single idea: take the messy, scattered,
-hard-to-read state of the planet and turn it into one living globe you can read at
-a glance. No dashboards-of-dashboards. One Earth, honest numbers, and a score that
-tells you how the planet is doing today.
+Long before any of this had a name, there were three little scripts:
+`nasa-vision.py`, `iss-tracking.py`, `earth-vision.py`. Watching the ISS cross the
+sky, pulling NASA imagery, poking at the idea that you could put the whole planet on
+a screen and *read* it. That was the bug. Those same scripts still live in the
+earth-ingest pipeline today — the oldest bones in the ecosystem.
 
-It came together in a sprint — **fewer than 30 days, fewer than 1,500 deploys** —
-shipping continuously the whole way: build, validate, deploy, repeat. Every change
-went out small and often, with automated checks guarding each step and a human
-keeping the final "go" on anything that touches the live site.
+## Down the rabbit hole — 0RAC1ES on the R1
 
-## The Planet Health Score: v0.3 → v0.6
+The first real agentic experiment was **0RAC1ES** on the **Rabbit R1**, built with the
+device's own "intern" creation tool. The intern never got it right — not once. Handed
+the exact same brief to Claude, and it was working **in about three hours**. Then came
+the stubborn move: **bootloading the R1 to Android** to build it properly by hand — and
+it worked. Proof the ecosystem could travel off-screen, onto a dedicated little device.
 
-The heart of RAND0M is the **Planet Health Score** — a single index, computed per
-region and rolled up to the whole planet, that says how healthy things look right
-now.
+## A pile of random projects becomes an ecosystem
 
-It grew up fast:
+The apps came one at a time, solo. **`knight1y`** was first — its earliest commit lands
+**January 12, 2026**. Then **`random1y`**, then **`uti1ity`** (the testing surface) —
+Flutter app after Flutter app, every hat worn by the same person: pathfinder, planner,
+tester, developer-when-it-came-to-it, designer.
 
-- **v0.3** — the first honest attempt: a handful of environmental signals blended
-  into one number.
-- **v0.4** — split the ocean into *warming* and *acidification*, and started
-  labeling which signals are true planetary-boundary measures vs context.
-- **v0.6** — **nine domains**: land cover, fire, air, ocean warming, ocean
-  acidification, cryosphere (ice), biodiversity, conservation, and a new one —
-  **human pressure (the Anthroposphere)**. That last domain — how much a place is
-  shaped by people — is now **grounded and ratified**: anchored on the Global Human
-  Modification (gHM) index, a peer-reviewed geospatial synthesis of infrastructure,
-  agriculture, and urban footprint. Science-backed, planetary-boundary anchored.
+On **May 28** the random pile stopped being random: the **monorepo** — shared `rk_*`
+packages, one wired ecosystem instead of a folder of side-quests.
 
-Every score is stamped with the methodology version it was computed under, so the
-numbers stay comparable as the science improves.
+## The dream: remake earth.nullschool — with AI, and more of the planet
 
-## Six spheres, one globe
+The north star, ever since joining the **voluntary carbon market (VCM)**, was to
+rebuild **earth.nullschool** — but smarter, with AI and far more of the planet's real
+data. The first attempts were, honestly, dismal: pulling map PNGs and trying to bend
+them onto a globe, pinning things on top. Wrong from the start. The breakthrough was
+doing it the *real* way — **layer by layer**: scalar grids, point sets, actual science,
+projected honestly onto a globe.
 
-RAND0M reads the planet through its **six spheres** — atmosphere, hydrosphere,
-cryosphere, biosphere, lithosphere, and the anthroposphere (us). The globe lets
-you filter and color the Earth by any of them.
+On **June 12** — a **90-commit day**, the busiest of the entire build — the
+**nullschool-mode Earth View** landed. The dream, finally on screen.
 
-You can explore it two ways: a **3D globe** you can spin and zoom, and a fast
-**2D map** with the kind of flowing, full-bleed visuals you'd expect from the best
-weather maps — wind that moves, oceans that shimmer, color ramps tuned to the data.
+## The build, by the numbers
 
-## The live layers
+This isn't a vibe; it's in the log. **1,072 commits** in the app repo, **under 1,500
+deploys**, and an Earth-to-launch sprint of **under 30 days**. The Planet Health Score
+went from a first honest attempt to a nine-domain, planetary-boundary-grounded index
+**in four days**.
 
-The globe is fed by real, current science — not stock imagery:
-
-- **Atmosphere:** live wind, temperature, and storm-energy (CAPE / instability)
-  from global forecast models (**NOAA / NCEP GFS**).
-- **Air:** particulate and NO₂ loading from **CAMS** (Copernicus Atmosphere).
-- **Ocean:** sea-surface temperature anomalies and surface currents from **NOAA**
-  and Copernicus Marine.
-- **Fire:** active-fire detections.
-- **Movement:** **aggregated** flight and maritime activity — shown as density,
-  never as tracking of individual aircraft or vessels — plus governed satellite
-  context.
-
-Layers refresh on a schedule so the globe reflects the world as it is, not a
-snapshot frozen in time.
+| Date | Milestone |
+| --- | --- |
+| **Jan 12** | first `knight1y` commit — the ecosystem's first heartbeat |
+| **May 28** | the monorepo — shared `rk_*` packages; `0RAC1ES` wired to `rk_ui` |
+| **May 30** | `random1y`; the REST functions foundation |
+| **May 31** | Connect Earth tab + source registry — **earth+ begins** |
+| **Jun 1** | earth-ingest tooling: glacier / WGMS / scalar scripts; deploy hardening |
+| **Jun 5** | AIEDS foundation model — the open AI-disclosure standard |
+| **Jun 9** | production release locked to manual-only — ship discipline |
+| **Jun 11** | `uti1ity` page-aware routing; a 57-commit day |
+| **Jun 12** | **nullschool-mode Earth View** — the dream lands (90 commits) |
+| **Jun 16** | a 66-commit day |
+| **Jun 18** | Berkeley **VCM** offsets ingest — the carbon-market roots, in code |
+| **Jun 20** | Planet Health Score **v0.3** |
+| **Jun 22** | score **v0.4** (planetary boundaries) → **v0.5** |
+| **Jun 24** | score **v0.6** — the human / Anthroposphere domain |
+| **Jun 25–26** | closeout, the REST-API deploy, **PROD live & ungated** |
 
 ## The crew
 
-RAND0M isn't built by one monolith — it's run by a small crew of **agents**:
-`rand0m`, `dai1y`, `knight1y`, and `aut0mate`, each with a role, one of them
-"active" at a time. They're the personality layer on top of the machine — your way
-in to the data, the chat, and the tools.
+The ecosystem runs on a small crew of agents — **`rand0m`**, **`dai1y`**,
+**`knight1y`**, **`aut0mate`** — plus **`0RAC1ES`** out on the R1. They're the
+personality layer on top of the machine. But there's always exactly **one human at the
+helm**.
 
-## 0RAC1ES on the R1
+## Every AI, one pathfinder
 
-Along the way, RAND0M reached off-screen: **0RAC1ES**, a creation for the
-**Rabbit R1**, bringing a piece of the RAND0M world onto a dedicated little device.
-A side-quest that proved the ecosystem travels.
+Here's the honest method: **every** AI in the stack — the ones in the app *and* the one
+on the R1 — got put to work: to plan, prep, clean, build, test, and deploy. None of it
+was "the AI did it." It was one person directing a small army of models and keeping the
+things models don't have — the taste, the judgment, the dead ends ruled out, and the
+final **go** on anything that touched the live site.
 
-## How it ships
-
-RAND0M runs on a **continuous-delivery** model: a **staging** world for trying
-things live, and a **production** world (rand0m.ai) that only goes out on a
-deliberate, human-approved release. Automated validation runs on every change;
-the globe you see is always the latest thing that passed the gates.
+One human. A pile of random projects. Every AI they could point at it. Under a month of
+real building. A planet you can read, shipped in the open.
 
 ## Where it's going
 
-- Deeper time: scrub the timeline back through years of reanalysis data and watch
-  regions change.
-- More autonomy: infrastructure that heals and refreshes itself.
-- More spheres of the story, told well.
-
-This is RAND0M: a planet you can read, built in the open, shipping every day.
+- **Deeper time** — scrub the timeline back through years of reanalysis data.
+- **More autonomy** — infrastructure that heals and refreshes itself.
+- **More open** — earth+ as an open-source, standalone globe anyone can run.
