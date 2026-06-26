@@ -110,7 +110,7 @@ went from a first honest attempt to a nine-domain, planetary-boundary-grounded i
 | **Jun 20** | Planet Health Score **v0.3** |
 | **Jun 22** | score **v0.4** (planetary boundaries) → **v0.5** |
 | **Jun 24** | score **v0.6** — the human / Anthroposphere domain |
-| **Jun 25–26** | closeout, the REST-API deploy, **PROD live & ungated** |
+| **Jun 26** | closeout, the REST-API deploy, **PROD live & ungated** |
 
 ## The crew
 
