@@ -2,9 +2,7 @@
 <br />
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/random-knights/.github/blob/main/assets/ruok-drk.gif">
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/random-knights/.github/blob/main/assets/ruok-lte.png">
-    <img alt="Shows a Day/Night themed markedown gif based on AM/PM." src="https://github.com/random-knights/.github/blob/main/assets/ruok-drk.gif">
+    <img alt="Random Knights, XYZ — day/night themed header." src="https://github.com/random-knights/.github/raw/main/assets/ruok-earth.png">
   </picture>
 
 <h3 align="center" style="color:#ff4124">Random Knights, XYZ</h3>
