@@ -1,3 +1,46 @@
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/random-knights/.github/blob/main/assets/ruok-drk.gif">
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/random-knights/.github/blob/main/assets/ruok-lte.png">
+    <img alt="Shows a Day/Night themed markedown gif based on AM/PM." src="https://github.com/random-knights/.github/blob/main/assets/ruok-drk.gif">
+  </picture>
+
+<h3 align="center" style="color:#ff4124">Random Knights, XYZ</h3>
+
+  <p align="center">
+    rand0m.ai & randomly.engineering
+    <br />
+    <a href="https://github.com/random-knights/.github/blob/main/READMORE"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/random-knights/xyz">View Demo</a>
+    ·
+    <a href="https://github.com/random-knights/123/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/random-knights/123/issues">Request Feature</a>
+  </p>
+</div>
+
+## <span style="color:#555555"><u> **SUMMARY** </u></span>
+
+[Rand0m.AI](https://rand0m.ai) [`Custom AI Agents, Dualing Chatbots, Test Automations, Earth Data, Classrooms and Rand0m Creations`]
+from [Random Knights, XYZ](https://randomknights.xyz)
+
+- Built with
+  - Node.js, Flutter and Dart
+  - Apache Hive
+    - (Firebase Data Connect **coming soon**)
+  - Gemini, OpenAI, Claude, Perplexity, Rabbit R1
+  - S.T.E.A.M. and FFmpeg
+  - Maximum Effort
+  - Canva & Adobe Illustrator
+  - [Randomly.Engineering](https://randomly.engineering)
+  - Cypress / Playwright + Testing-Library
+  - Firebase/FlutterFire
+  - :flying_saucer: Roswell, GA :peach:
+ 
 # TIMELINE — how the Random Knights ecosystem got built
 
 > It started with **one person** and a pile of random projects.
