@@ -33,8 +33,9 @@ It grew up fast:
 - **v0.6** — **nine domains**: land cover, fire, air, ocean warming, ocean
   acidification, cryosphere (ice), biodiversity, conservation, and a new one —
   **human pressure (the Anthroposphere)**. That last domain — how much a place is
-  shaped by people — is still **provisional**, weighted carefully and flagged as
-  "we're still calibrating this one." Honesty over false precision.
+  shaped by people — is now **grounded and ratified**: anchored on the Global Human
+  Modification (gHM) index, a peer-reviewed geospatial synthesis of infrastructure,
+  agriculture, and urban footprint. Science-backed, planetary-boundary anchored.
 
 Every score is stamped with the methodology version it was computed under, so the
 numbers stay comparable as the science improves.

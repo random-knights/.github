@@ -39,11 +39,6 @@ from [Random Knights, XYZ](https://randomknights.xyz)
   - Maximum Family Effort
   - Canva & Adobe Illustrator
   - [Randomly.Engineering](https://randomly.engineering)
-    - @dev-kitt
-    - @dev-dusty
-    - @xyz-admin
-    - @qa-eleven
-    - @qa-kitt
   - Cypress / Playwright + Testing-Library
   - Firebase/FlutterFire
   - :flying_saucer: Roswell, GA :peach:
@@ -605,7 +600,7 @@ To further define which tacos should be consumed, use the dropdown reference bel
 [license-shield]: https://img.shields.io/github/license/repo_name.svg?style=for-the-badge
 [license-url]: https://github.com/random-knights/random/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white
-[linkedin-url]: https://linkedin.com/qa-kitt
+[linkedin-url]: https://linkedin.com/company/random-knights
 
 <!-- WORKSPACE (C1: ff4124) -->
 

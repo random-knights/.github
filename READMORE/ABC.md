@@ -31,7 +31,7 @@ measurement.
 Land cover, fire, air, ocean warming, ocean acidification, cryosphere (ice),
 biodiversity, conservation, and human pressure (the Anthroposphere). Some are
 benefits (more is healthier), some are burdens (more is worse). The human-pressure
-domain is still being calibrated.
+domain is grounded on the Global Human Modification (gHM) index.
 **Try it:** toggle domains and watch how the score and colors respond.
 
 ### Lesson 4 — The six spheres
