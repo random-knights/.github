@@ -50,7 +50,7 @@ Featuring:
 
 ## <span style="color:#D8D8D8"><u> **POINTS OF CONTACT** </u></span>
 
-If any issues arise for any of the below mentioned areas, please draft a strongly worded email and never send it to: **admin@rand0m.ai**
+If any issues arise for any of the below mentioned areas, please draft a strongly worded email and never send it to: **<PUBLIC_CONTACT>**
 
 <div align="center">
 
@@ -97,7 +97,7 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
   - The formal learning space. All junior contributors start here.
   - Missions live as folders, not separate repos, keeping things simple and focused.
 
-- eng1neer
+- engineering reviewer
   - The formal testing space. All QA contributors start here.
   - Learn, add, and monitor our Regression tests w/open-source tools.
 

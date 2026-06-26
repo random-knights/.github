@@ -46,7 +46,7 @@ Featuring: Kn1ght1y Agents of Order...
 - ⚔️ Unified architecture across all subsystems
 - 📊 Advanced data management and state handling
 - 🧩 Modular feature integration framework
-- 🛡️ Production-level workflows and standards
+- 🛡️ Production-level processes and standards
 - 👀 Observation-only learning environment for junior contributors
 
 <p align="center">
@@ -55,7 +55,7 @@ Featuring: Kn1ght1y Agents of Order...
 
 ## <span style="color:#D8D8D8"><u> **POINTS OF CONTACT** </u></span>
 
-If any issues arise for any of the below mentioned areas, please draft a strongly worded email and never send it to: **admin@rand0m.ai**
+If any issues arise for any of the below mentioned areas, please draft a strongly worded email and never send it to: **<PUBLIC_CONTACT>**
 
 <div align="center">
 
@@ -112,7 +112,7 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
   - The formal learning space. All junior contributors start here.
   - Missions live as folders, not separate repos, keeping things simple and focused.
 
-- eng1neer
+- engineering reviewer
   - The formal testing space. All QA contributors start here.
   - Learn, add, and monitor our Regression tests w/open-source tools.
 
@@ -231,16 +231,16 @@ _For more information, please visit: [GitHub Manifesto](https://lmgtfy.app/?q=ho
 
 ```mermaid
 classDiagram
-    AI_Agent_DAY5 <|-- Eng1neer
+    AI_Agent_DAY5 <|-- engineering reviewer
     AI_Agent_DAY5 <|-- Expl0rer
     AI_Agent_DAY5 <|-- Devel0per
-    AI_Agent_DAY5 <|-- Scient1st
+    AI_Agent_DAY5 <|-- science reviewer
     AI_Agent_DAY5 <|-- Secur1ty
     AI_Agent_DAY5 : +envt | day5.rand0m.ai/agents
     AI_Agent_DAY5 : +org | Random Knights, XYZ
     AI_Agent_DAY5: -user() [agent_name]@rand0m.ai
     AI_Agent_DAY5: -roles() Manager | Viewer | Admin
-    class Eng1neer{
+    class engineering reviewer{
       +biomedical
       +civil
       +electrical
@@ -269,7 +269,7 @@ classDiagram
       -build()
       -break()
     }
-    class Scient1st{
+    class science reviewer{
       +business
       +earth
       +computer
