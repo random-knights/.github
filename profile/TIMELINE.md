@@ -69,12 +69,14 @@ it worked. Proof the ecosystem could travel off-screen, onto a dedicated little 
 
 ## A pile of random projects becomes an ecosystem
 
-The apps came one at a time, solo. **`knight1y`** was first — its earliest commit lands
-**January 12, 2026**. Then **`random1y`**, then **`uti1ity`** (the testing surface) —
-Flutter app after Flutter app, every hat worn by the same person: pathfinder, planner,
-tester, developer-when-it-came-to-it, designer.
+| Date | Milestone |
+| --- | --- |
+| **Jan 1** | first `knight1y` commit — the ecosystem's first heartbeat |
+| **May 28** | the monorepo — shared `rk_*` packages; `0RAC1ES` wired to `rk_ui` |
+| **May 30** | `random1y`; the REST functions foundation |
+| **May 31** | Connect Earth tab + source registry — **earth+ begins** |
 
-On **May 28** the random pile stopped being random: the **monorepo** — shared `rk_*`
+The random pile stopped being random: the **monorepo** — shared `rk_*`
 packages, one wired ecosystem instead of a folder of side-quests.
 
 ## The dream: remake earth.nullschool — with AI, and more of the planet
@@ -86,7 +88,7 @@ them onto a globe, pinning things on top. Wrong from the start. The breakthrough
 doing it the *real* way — **layer by layer**: scalar grids, point sets, actual science,
 projected honestly onto a globe.
 
-On **June 12** — a **90-commit day**, the busiest of the entire build — the
+**90-commit day**, the busiest of the entire build — the
 **nullschool-mode Earth View** landed. The dream, finally on screen.
 
 ## The build, by the numbers
@@ -98,10 +100,6 @@ went from a first honest attempt to a nine-domain, planetary-boundary-grounded i
 
 | Date | Milestone |
 | --- | --- |
-| **Jan 12** | first `knight1y` commit — the ecosystem's first heartbeat |
-| **May 28** | the monorepo — shared `rk_*` packages; `0RAC1ES` wired to `rk_ui` |
-| **May 30** | `random1y`; the REST functions foundation |
-| **May 31** | Connect Earth tab + source registry — **earth+ begins** |
 | **Jun 1** | earth-ingest tooling: glacier / WGMS / scalar scripts; deploy hardening |
 | **Jun 5** | AIEDS foundation model — the open AI-disclosure standard |
 | **Jun 9** | production release locked to manual-only — ship discipline |
