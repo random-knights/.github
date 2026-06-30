@@ -51,49 +51,9 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 
 ## <span style="color:#FAAFA5"><u> **CORE SOLUTIONS** </u></span>
 
-| Stack           | Version / Models |    :chipmunk:    |
-| --------------- | :--------------: | :--------------: |
-| Flutter         |     ^3.38.3      |                  |
-| Dart            |     ^3.10.1      |                  |
-| DevTools        |     ^2.51.1      |                  |
-| Google AI       |        v         |                  |
-|                 | gemini-2.5-flash |   **enabled**    |
-|                 |  gemini-2.5-pro  |   **enabled**    |
-|                 |   nano-banana    |   experimental   |
-| OpenAI          |        v         |                  |
-|                 |     gpt-4.1      |   **enabled**    |
-|                 |      gpt-4o      |   **enabled**    |
-|                 |    gpt-5-nano    |   **enabled**    |
-| Anthropic       |        v         |                  |
-|                 |  claude-sonnet   |   **enabled**    |
-|                 |   claude-opus    |     planned      |
-| xAI             |        v         |                  |
-|                 |       grok       |   **enabled**    |
-|                 |    grok-mini     |     planned      |
-| Perplexity      |        v         |                  |
-|                 |  sonar / search  |     planned      |
-| Firebase        |        v         |                  |
-|                 |     Hosting      |   **enabled**    |
-|                 |    Functions     |   **enabled**    |
-|                 |  Authentication  |   **enabled**    |
-| Earth           |        v         |                  |
-|                 |     Weather      |     **live**     |
-|                 |       Wind       |     **live**     |
-|                 |    Wildfires     |     **live**     |
-|                 |      Carbon      |   **derived**    |
-|                 |    Tree-Time     |   **derived**    |
-|                 |     Glaciers     | **asset-backed** |
-|                 |      Ocean       |     research     |
-|                 |     Flights      |     research     |
-|                 |      Ships       |     research     |
-|                 |     Terrain      |     research     |
-| Agent Framework |        v         |                  |
-|                 |     random1y     |   **enabled**    |
-|                 |     knight1y     |   **enabled**    |
-|                 |     c0nnect      |   **enabled**    |
-|                 |     e1evate      |   **enabled**    |
-|                 |      Earth       |   **enabled**    |
-|                 | Glacier Summary  |     **MVP**      |
+![Core Solutions - stack, models and status](../assets/core-solutions.svg)
+
+![Ops - junior contributors](../assets/ops-contributors.svg)
 
 </div>
 
