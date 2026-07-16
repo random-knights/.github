@@ -18,8 +18,13 @@ The smallest repo with the widest blast radius. Four things:
 3. **Everything here is public.** Nothing private, internal, or secret, ever.
 4. **ONE write-lane per repo.** Parallelize across repos, never within one.
 
-There is no CI gate here (no workflows at all), so nothing checks a PR
-automatically. Unpushed local-only work for this repo exists as bundles in
+There IS a CI gate now: `.github/workflows/ci.yml`, reporting as the check
+**`CI Gate`**. It validates that every workflow YAML parses, that the 21 assets
+other repos load by raw URL still exist, that `profile/README.md` resolves, and
+that any doc the PR touches has working references. Run it locally with
+`node .github/scripts/check-repo.mjs --base origin/main`.
+
+Unpushed local-only work for this repo exists as bundles in
 `C:\rand0m\_rescued\` (two branches + an assets/core-solutions.svg stash) -
 check `_rescued\INVENTORY.md` before significant work in READMORE/ or assets/.
 
