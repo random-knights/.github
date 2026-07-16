@@ -1,0 +1,102 @@
+# The PR gate for the org-level .github repo.
+#
+# Until 2026-07-16 this repo had NO workflows at all - and it is the repo that
+# renders github.com/random-knights for the entire internet, and hosts the
+# assets other repos load over raw URLs. A PR here was checked by nothing, with
+# the org ruleset requiring 0 reviewers.
+#
+# Both failure modes here are SILENT, which is why a gate is worth more than
+# usual:
+#   - a broken reference on profile/README.md defaces the org's front page;
+#   - deleting or renaming an asset breaks images in OTHER repos' READMEs with
+#     no error anywhere - the picture just disappears.
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    # Job name is the status-check name. Pin THIS when making it a required
+    # check.
+    name: .github CI Gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # REQUIRED: the checker diffs against the base ref. The default depth
+          # of 1 leaves no base ref. The checker fails loud rather than silently
+          # checking zero files, but do not make it prove that every run.
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # Every workflow in this repo must parse. A malformed workflow does not
+      # "fail" - GitHub just never runs it, which is the same silent class of
+      # bug as everything else this gate guards.
+      - name: Validate every workflow YAML parses
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+          files=(.github/workflows/*.yml .github/workflows/*.yaml)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "::error::No workflows found to validate - this gate should at least see itself."
+            exit 1
+          fi
+          python3 - "${files[@]}" <<'PY'
+          import sys, yaml
+          bad = 0
+          for path in sys.argv[1:]:
+              try:
+                  doc = yaml.safe_load(open(path, encoding="utf-8"))
+              except Exception as e:
+                  print(f"::error::{path}: YAML does not parse: {e}")
+                  bad += 1
+                  continue
+              if not isinstance(doc, dict):
+                  print(f"::error::{path}: not a YAML mapping")
+                  bad += 1
+                  continue
+              # `on:` is parsed as the boolean True by YAML 1.1.
+              trig = doc.get("on", doc.get(True))
+              if not trig:
+                  print(f"::error::{path}: no triggers - this workflow can never run")
+                  bad += 1
+              if not doc.get("jobs"):
+                  print(f"::error::{path}: no jobs")
+                  bad += 1
+              print(f"ok  {path}")
+          sys.exit(1 if bad else 0)
+          PY
+          echo "validated ${#files[@]} workflow file(s)"
+
+      - name: Resolve the base ref this PR is diffed against
+        id: base
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            base="origin/${{ github.base_ref }}"
+          else
+            base="${{ github.event.before }}"
+            if ! git cat-file -e "$base^{commit}" 2>/dev/null; then base="HEAD~1"; fi
+          fi
+          git rev-parse --verify "$base" >/dev/null
+          echo "ref=$base" >> "$GITHUB_OUTPUT"
+
+      - name: Cross-repo asset guard + public profile + changed-doc links
+        run: node .github/scripts/check-repo.mjs --base "${{ steps.base.outputs.ref }}"
