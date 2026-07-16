@@ -1,0 +1,7 @@
+name: Broken
+on:
+  pull_request:
+    branches: [main
+jobs:
+  x:
+    runs-on: ubuntu-latest
