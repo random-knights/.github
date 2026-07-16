@@ -29,7 +29,7 @@ jobs:
   gate:
     # Job name is the status-check name. Pin THIS when making it a required
     # check.
-    name: .github CI Gate
+    name: CI Gate
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
