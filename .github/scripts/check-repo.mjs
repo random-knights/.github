@@ -95,14 +95,20 @@ const CROSS_REPO_ASSETS = [
   "assets/uti1ity/uti1ity.gif",
 ];
 
-// A live, pre-existing break, kept visible rather than quietly dropped from the
-// manifest. assets/_c1assr00m/ruok-ce.gif is referenced by BOTH
-// READMORE/_c1assr00m/README.md (this repo) and abc/apps/_c1assr00m/README.md,
-// and it has never existed here - the raw URL 404s on the public internet
-// today. Fixing it is a CONTENT decision (add the missing gif, or repoint at
-// assets/_c1assr00m/ce-drk.gif), so it is reported, not guessed at. Remove this
-// entry once the owner decides, and the guard will enforce it like the rest.
-const KNOWN_BROKEN = ["assets/_c1assr00m/ruok-ce.gif"];
+// RESOLVED 2026-07-16, so this list is empty and should stay that way.
+//
+// assets/_c1assr00m/ruok-ce.gif was referenced by BOTH
+// READMORE/_c1assr00m/README.md (this repo) and abc/apps/_c1assr00m/README.md
+// and had never existed - the raw URL 404'd on the public internet. The owner
+// chose to repoint both READMEs at assets/_c1assr00m/ce-drk.gif, which is the
+// c1assr00m image those same files already use for their header and which
+// serves correctly. Both references are now repointed and nothing refers to
+// ruok-ce.gif anywhere.
+//
+// Keep this empty. An entry here is an asset the guard has been told to stop
+// protecting, which is exactly how a silent break becomes permanent. If you are
+// tempted to add one, fix the asset instead.
+const KNOWN_BROKEN = [];
 
 for (const a of CROSS_REPO_ASSETS) {
   if (!existsSync(a)) {
