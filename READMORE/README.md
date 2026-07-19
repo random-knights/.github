@@ -4,7 +4,7 @@ READMORE is the public documentation and contribution entry point for Random Kni
 
 ## Folder Map
 
-- `architecture/aieds/` - AI Environmental Disclosure Standard drafts and supporting public architecture notes.
+- `architecture/aieds/` - AI Energy Disclosure Standard drafts and supporting public architecture notes.
 - `architecture/earth/` - Earth feature, source, attribution, and governance specs that have been sanitized for public review.
 - `architecture/ecosystem/` - public product and app-shell architecture notes.
 - `architecture/packages/` - public package boundary and scaffold notes.

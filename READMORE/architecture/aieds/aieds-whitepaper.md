@@ -1,4 +1,4 @@
-# AI Environmental Disclosure Standard (AIEDS) — Whitepaper
+# AI Energy Disclosure Standard (AIEDS) — Whitepaper
 
 **Version:** AIEDS v1
 **Status:** Open Standard — Published
@@ -9,7 +9,7 @@
 
 ## Abstract
 
-The AI Environmental Disclosure Standard (AIEDS) is a provider-agnostic open standard for disclosing the environmental impact of an AI interaction in a consistent, educational, and honest way. It defines a metric hierarchy, a fixed methodology, a disclosure schema, and required display copy so that any product, agent, or platform can attach a comparable "nutrition label" to an AI response, report, agent output, test result, or automation summary.
+The AI Energy Disclosure Standard (AIEDS) is a provider-agnostic open standard for disclosing the environmental impact of an AI interaction in a consistent, educational, and honest way. It defines a metric hierarchy, a fixed methodology, a disclosure schema, and required display copy so that any product, agent, or platform can attach a comparable "nutrition label" to an AI response, report, agent output, test result, or automation summary.
 
 AIEDS does not claim to measure verified emissions, certify providers, or account for offset quality. It provides a principled, honest, and versioned estimate that clearly states its confidence tier and assumptions.
 
