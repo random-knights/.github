@@ -1,6 +1,6 @@
 # Agent rules (.github)
 
-**Read `../CODEX.md` in this repo root and follow it. It is the authority for
+**Read `../AGENTS.md` in this repo root and follow it. It is the authority for
 this repo.** Canonical org rules live in `C:\rand0m\CODEX.md`.
 
 This is the ORG-LEVEL .github repo: the public org profile, the READMORE docs

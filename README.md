@@ -24,7 +24,7 @@ public face and shared assets.
 
 ## Operating this repo
 
-- [CODEX.md](CODEX.md) - agents: the rules that apply in this repo.
+- [AGENTS.md](AGENTS.md) - agents: the rules that apply in this repo.
 
 There is no build, no toolchain, and no CI in this repo.
 
