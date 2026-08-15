@@ -1,8 +1,8 @@
-# CODEX - agent rules for the .github repo
+# AGENTS - agent rules for the .github repo
 
-Canonical rules live in `C:\rand0m\CODEX.md` (the working-root codex). This
+Canonical rules live in `C:\rand0m\AGENTS.md` (the working-root standard). This
 file restates what an agent MUST follow here and adds the specifics. If the two
-ever disagree, the working-root codex wins.
+ever disagree, the working-root standard wins.
 
 This is the ORG-LEVEL `.github` repo. It is not application code. It holds:
 
