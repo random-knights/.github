@@ -40,30 +40,32 @@ This is the smallest repo with the widest reach. Three specific traps:
 
 ## Concurrency - IMPORTANT
 
-At most ONE write-lane per repo at a time. Parallelize ACROSS repos, never
-WITHIN one.
+Follow the canonical root rule. Parallel write-lanes in one repository are
+allowed only when each lane uses its own full clone, claimed file paths do not
+overlap, and each lane rebases onto origin/main before pushing. Shared
+worktrees still permit only one write-lane because they share one `.git`
+directory. Read-only lanes may run alongside write work.
 
-Why: every repo under `C:\rand0m` is a fresh clone sharing per-repo git
-worktrees. Two write-lanes in one repo has repeatedly caused mid-edit on-disk
-file changes, commits tangling onto another agent's branch, and .git metadata
-corruption (NUL-padded config/packed-refs, stale index.lock).
-
-- Read-only lanes (audits, discovery, gh status reads) may run alongside
-  anything.
-- If you hit a shared-worktree conflict mid-task: STOP. Verify `git status` and
-  `git diff` contain only YOUR changes and HEAD is on YOUR branch before
-  committing.
-- `xyz-docs` is the highest-risk repo org-wide; serialize writes to it.
+If you hit a shared-worktree conflict, stop and verify that `git status` and
+`git diff` contain only your changes and HEAD is on your branch before
+committing. `xyz-docs` remains the highest-risk repo org-wide, so serialize
+writes there.
 
 ## Toolchain and CI
 
-None. Markdown and images.
+Markdown, images, and Node.js 20 for the repository checker.
 
-**There is no CI gate in this repo** - no `.github/workflows/` at all. A PR here
-is gated by nothing but review, and the org ruleset requires 0 reviewers. If
-auto-merge is ever enabled here before a gate exists, PRs will merge the instant
-they open with nothing checked - on the repo that renders the org's public front
-page. That is tracked follow-on work.
+Every PR and main push emits:
+
+- `.github/workflows/ci.yml`: required `CI Gate`, which validates workflow YAML,
+  the public profile, changed-document links, and cross-repository asset safety.
+- `.github/workflows/secret-scan.yml`: gitleaks secret scanning.
+- GitHub CodeQL default setup for Actions.
+
+The organization ruleset `ci-gate-required` requires `CI Gate` on the default
+branch. The separate default-branch protection ruleset still requires a PR with
+0 required reviewers. Never bypass either ruleset, and verify the exact merged
+SHA after merge.
 
 For org context: Flutter 3.38.3 lives at `C:\flutter`; never use `setx` to edit
 the USER PATH (it is over the 1024-char setx cap and truncates silently).

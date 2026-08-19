@@ -30,7 +30,7 @@ There is no build, no toolchain, and no CI in this repo.
 
 ## The rest of the ecosystem
 
-- The app: [xyz](https://github.com/random-knights/xyz) (rand0m.ai)
+- The app: [ruok](https://github.com/random-knights/ruok) (rand0m.ai)
 - Docs, ADRs, runbooks: [xyz-docs](https://github.com/random-knights/xyz-docs)
 - Requests, bugs, testing: [123](https://github.com/random-knights/123/issues)
 - Learning: [abc / c1assr00m](https://github.com/random-knights/abc)
