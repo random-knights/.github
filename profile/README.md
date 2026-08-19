@@ -17,7 +17,7 @@
     <a href="https://github.com/random-knights/.github/blob/main/READMORE"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/random-knights/xyz">View Demo</a>
+    <a href="https://github.com/random-knights/ruok">View Demo</a>
     ·
     <a href="https://github.com/random-knights/123/issues">Report Bug</a>
     ·
@@ -65,10 +65,10 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
   - c1assr00m: the formal learning space.
   - e1even: The formal testing space.
 
-- xyz
+- ruok
   - Public root/chat landing app for `rand0m.ai`.
   - A single-app experience built around AI, utilities, environmental awareness, customization, experimentation, and a healthy amount of organized chaos
-  - Everything eventually flows through the XYZ repo.
+  - Everything eventually flows through the ruok repo.
 
 - rk_core
   - The shared foundation of the ecosystem.
