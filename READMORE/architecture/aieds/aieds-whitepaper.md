@@ -1,5 +1,13 @@
 # AI Energy Disclosure Standard (AIEDS) — Whitepaper
 
+> **CORRECTED 2026-08-21.** This document stated `1 MRT = 22 kg CO2e/year`,
+> which was the AIEDS 1.x value. Canonical methodology 2.0.0 (2026-07-12)
+> unified the Mature Reference Tree at **21 kg CO2e/year**, and both Random
+> Knights implementations ship 21 000 g. The numbers, the worked example and
+> the version references below have been corrected to 2.0.0. The source of
+> truth is `aieds/spec/methodology.md`; where this document and that spec
+> disagree, the spec wins.
+
 **Version:** AIEDS v1
 **Status:** Open Standard — Published
 **Date:** 2026-06-15
@@ -100,19 +108,19 @@ The **reference grid intensity** for AIEDS v1 modeled disclosures is `429 g CO2e
 AIEDS defines a **Mature Reference Tree (MRT)** as the educational anchor for Tree-Time equivalency:
 
 ```
-1 MRT = 22 kg CO2e / year
+1 MRT = 21 kg CO2e / year
 ```
 
 Tree-Time formula:
 
 ```
-tree_time_minutes = (carbon_g_co2e / 22000) * 525600
+tree_time_minutes = (carbon_g_co2e / 21000) * 525600
 ```
 
 Where `525600` = minutes in one year (365 × 24 × 60).
 
 **MRT assumptions:**
-- 22 kg CO2e/year represents a temperate-zone mature tree absorbing carbon through photosynthesis (mid-range of published estimates).
+- 21 kg CO2e/year represents a temperate-zone mature tree absorbing carbon through photosynthesis (mid-range of published estimates). AIEDS 1.x used 22 kg; 2.0.0 unified on 21 kg.
 - MRT is a stable educational reference. It is NOT a claim about any specific tree, species, forest, restoration project, offset, or conservation outcome.
 - Implementations MUST label Tree-Time as educational.
 
@@ -146,7 +154,7 @@ Disclosures MUST avoid certification, offset, or environmental-outcome language 
 
 ---
 
-## 5. Disclosure Schema (v1)
+## 5. Disclosure Schema (2.0.0)
 
 A conforming AIEDS v1 disclosure is a structured object with at minimum the Level 1 fields and a `version` declaration.
 
@@ -154,7 +162,7 @@ A conforming AIEDS v1 disclosure is a structured object with at minimum the Leve
 
 ```json
 {
-  "version": "AIEDS v1",
+  "version": "AIEDS 2.0.0",
   "confidence": "Modeled",
   "energy_wh": 0.42,
   "carbon_g_co2e": 0.18,
@@ -164,9 +172,9 @@ A conforming AIEDS v1 disclosure is a structured object with at minimum the Leve
   "input_tokens": 120,
   "output_tokens": 80,
   "cost_usd": 0.0012,
-  "methodology": "AIEDS v1; MRT=22kg CO2e/yr; grid=429 g/kWh (IEA global average, modeled)",
+  "methodology": "AIEDS 2.0.0; MRT=21kg CO2e/yr; grid=429 g/kWh (IEA global average, modeled)",
   "equivalencies": {
-    "tree_time_minutes": 4.30,
+    "tree_time_minutes": 4.51,
     "phone_charges": 0.035,
     "led_bulb_hours": 0.042,
     "laptop_minutes": 0.50,
