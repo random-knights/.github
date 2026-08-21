@@ -1,5 +1,13 @@
 # AIEDS Adoption Guide
 
+> **CORRECTED 2026-08-21.** This document stated `1 MRT = 22 kg CO2e/year`,
+> which was the AIEDS 1.x value. Canonical methodology 2.0.0 (2026-07-12)
+> unified the Mature Reference Tree at **21 kg CO2e/year**, and both Random
+> Knights implementations ship 21 000 g. The numbers, the worked example and
+> the version references below have been corrected to 2.0.0. The source of
+> truth is `aieds/spec/methodology.md`; where this document and that spec
+> disagree, the spec wins.
+
 **Version:** AIEDS v1
 **Status:** Published
 **Date:** 2026-06-15
@@ -46,7 +54,7 @@ Use an order-of-magnitude estimate for your model class (e.g. "large language mo
 ## Step 2 — Compute Equivalencies (optional)
 
 ```
-tree_time_minutes = (carbon_g_co2e / 22000) * 525600
+tree_time_minutes = (carbon_g_co2e / 21000) * 525600
 phone_charges     = energy_wh / 12
 led_bulb_hours    = energy_wh / 10
 laptop_minutes    = (energy_wh / 50) * 60
@@ -61,7 +69,7 @@ Label all equivalencies as educational. Never present them as offsets.
 
 ```json
 {
-  "version": "AIEDS v1",
+  "version": "AIEDS 2.0.0",
   "confidence": "Modeled",
   "carbon_g_co2e": 0.18,
   "energy_wh": 0.42,
@@ -71,9 +79,9 @@ Label all equivalencies as educational. Never present them as offsets.
   "input_tokens": 120,
   "output_tokens": 80,
   "cost_usd": 0.0012,
-  "methodology": "AIEDS v1; MRT=22kg CO2e/yr; grid=429 g/kWh (IEA global average, modeled)",
+  "methodology": "AIEDS 2.0.0; MRT=21kg CO2e/yr; grid=429 g/kWh (IEA global average, modeled)",
   "equivalencies": {
-    "tree_time_minutes": 4.30,
+    "tree_time_minutes": 4.51,
     "phone_charges": 0.035,
     "led_bulb_hours": 0.042,
     "laptop_minutes": 0.50,
