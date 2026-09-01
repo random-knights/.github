@@ -9,10 +9,10 @@
     <img alt="Shows a Day/Night themed markedown gif based on AM/PM." src="https://github.com/random-knights/.github/blob/main/assets/ruok-drk.gif">
   </picture>
 
-<h3 align="center" style="color:#ff4124">Random Knights, XYZ</h3>
+<h3 align="center" style="color:#ff4124">Random Knights, LLC</h3>
 
   <p align="center">
-    rand0m.ai & randomly.engineering
+    🏫 <a href="https://rand0m.ai">rand0m.ai</a> 2025-2030 🛸 roswell, ga 🍑 <a href="https://randomknights.xyz">ᴚk.xyz</a> + <a href="https://randomknights.llc">ᴚk.llc</a> + <a href="https://randomknights.org">ᴚk.org</a> 🏰
     <br />
     <a href="https://github.com/random-knights/.github/blob/main/READMORE"><strong>Explore the docs »</strong></a>
     <br />
@@ -27,9 +27,6 @@
 
 ## <span style="color:#555555"><u> **SUMMARY** </u></span>
 
-[Rand0m.AI](https://rand0m.ai) [`Custom AI Agents, Dualing Chatbots, Test Automations, Earth Data, Classrooms and Rand0m Creations`]
-from [Random Knights, XYZ](https://randomknights.xyz)
-
 - Built with
   - Node.js, Flutter and Dart
   - Apache Hive
@@ -39,9 +36,9 @@ from [Random Knights, XYZ](https://randomknights.xyz)
   - Maximum Family Effort
   - Canva & Adobe Illustrator
   - [Randomly.Engineering](https://randomly.engineering)
+  - [Knightly.Engineering](https://knightly.engineering)
   - Cypress / Playwright + Testing-Library
   - Firebase/FlutterFire
-  - :flying_saucer: Roswell, GA :peach:
 
 ## <span style="color:#555555"><u> **POINTS OF CONTACT** </u></span>
 
@@ -58,46 +55,6 @@ If any issues arise for any of the below mentioned areas, please draft a strongl
 </div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## 🏫 <span style="color:#858585"><u> **HOW IT WORKS** </u></span>
-
-- abc
-  - c1assr00m: the formal learning space.
-  - e1even: The formal testing space.
-
-- ruok
-  - Public root/chat landing app for `rand0m.ai`.
-  - A single-app experience built around AI, utilities, environmental awareness, customization, experimentation, and a healthy amount of organized chaos
-  - Everything eventually flows through the ruok repo.
-
-- rk_core
-  - The shared foundation of the ecosystem.
-  - Common contracts, models, utilities, helpers, configuration, and reusable building blocks used across the project.
-
-- rk_ai
-  - The AI abstraction layer.
-  - Handles model providers, request orchestration, provider configuration, token usage, cost tracking, environmental metrics, and future AI integrations.
-- rk_agents
-  - The agent framework.
-  - Defines agent contracts, behaviors, commands, capabilities, personalities, lifecycle management, and future agent execution patterns.
-
-- rk_ui
-  - The shared user experience layer.
-  - Contains reusable widgets, layouts, navigation patterns, dialogs, visual components, animations, splash screens, progress systems, and other shared presentation logic.
-
-- rk_branding
-  - The identity layer.
-  - Logos, icons, themes, colors, typography, visual assets, and the overall look and feel of the Random Knights ecosystem.
-
-- rk_media
-  - The media layer.
-  - Audio, video, images, rendering metadata, playback models, and future media processing contracts.
-
-- rk_data
-  - The data layer.
-  - Storage models, persistence contracts, local-first data structures, synchronization patterns, favorites, history, settings, and future data integrations.
-
-<small>\*\*models, providers, agent 'kitts', and stuff is subject to change\*\*</small>
 
 <!-- THEME -->
 <div align="center">
@@ -175,7 +132,7 @@ Open-source and FREE for ALL (**aside from what the money hungry AI overlords re
 
 6. **Behavior Driven Development** Cucumber BDD promotes collaboration between technical and non-technical stakeholders through human-readable specifications that align implementation with expected behavior.
 
-7. **AI & Agent Systems** XYZ leverages multiple AI providers and agentic workflows to deliver personalized experiences while maintaining transparency, user control, and provider independence wherever possible.
+7. **AI & Agent Systems** `rand0m` leverages multiple `ai` providers and agentic workflows to deliver personalized experiences while maintaining transparency, user control, and provider independence wherever possible.
 
 8. **Data & Storage** Local-first storage, selective cloud integration, and user-controlled data ownership are foundational principles throughout the ecosystem.
 
@@ -277,75 +234,6 @@ Don't forget to give the project a star! Thanks again!
 
 _For more information, please visit: [GitHub Manifesto](https://lmgtfy.app/?q=how+to+use+github)_
 
-<small>**EXAMPLE:**</small>
-
-```mermaid
-%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel': true, 'mainBranchName': 'rand0m'} } }%%
-gitGraph
-    %% rand0m (AI shell / PROD)
-    commit id:"commit_01"
-    commit id:"commit_02"
-
-    %% Core feeder repos (ordered)
-    branch up10ad
-    commit id:"commit_K01"
-    commit id:"commit_K02"
-    commit id:"commit_K03"
-
-    branch out1ine
-    commit id:"commit_C01"
-    commit id:"commit_C02"
-
-    branch knight1y
-    commit id:"commit_O01"
-    commit type:HIGHLIGHT id:"commit_O02"
-
-    %% Experimental / learning repos
-    branch c1assr00m
-    commit id:"commit_U01"
-
-    %% Demo / testing repo (LAST, spans everything)
-    branch exp10re
-    commit id:"commit_E01"
-    commit id:"commit_E02"
-    commit id:"commit_E03"
-
-    %% Back to rand0m – controlled integrations
-    checkout rand0m
-    commit id:"commit_03"
-    merge c1assr00m
-    commit id:"commit_04"
-    merge out1ine
-    commit id:"commit_05"
-    merge up10ad
-    commit id:"commit_06"
-    merge knight1y tag:"cherrypick"
-    merge exp10re tag:"demo"
-
-    commit type:REVERSE id:"head"
-```
-
-<small>😉 RUOK-CE</small>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- WORKFLOWS -->
-
-## <span style="color:#555555" name="workflows"><u> **TEST AUTOMATION** </u></span>
-
-**Xray <> Cucumber** <small>demo only</small>
-
-```mermaid
-graph LR
-A[ID Manual Tests for Automation in Jira] --> B
-B[Convert to Cucumber Tests in Jira] --> C
-C[Export Cucumber Feature files from Jira] --> D
-D[Impliment Step Definitions in Cypress] --> E
-E[Execute Cypress tests in CI environment] --> F[Report automation results to Jira]
-```
-
-<small>\*\*implimentation requires broader community engagement</small>
-
 <!-- BADGES -->
 
 ## <span style="color:#555555"><u> **CORE DEVELPOMENT** </u></span>
@@ -418,123 +306,6 @@ E[Execute Cypress tests in CI environment] --> F[Report automation results to Ji
 [![GitHubActions][GitHubActions]][GitHubActions-url]
 [![Slack][Slack]][Slack-url]
 [![CypressCloud][CypressCloud]][CypressCloud-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- TACOS -->
-
-<span style="color:#B387FD"><u>**Random Knights, XYZ**</u></span> fully supports the consumption of tacos. Use the examples below to help make all of your wildest taco dreams come true. NOTE: we assume no liable after tacos are consumed. Please use at your own discretion - and listen to your tum tum.
-
-```js
-// EAT MORE TACOS [js]
-function tacosToEat() {
-  const message = document.getElementById("kitt");
-  message.innerHTML = "";
-  let x = document.getElementById("tacos").value;
-  try {
-    if (x == "") throw "empty";
-    if (isNaN(x)) throw "doing math";
-    x = Number(x);
-    if (x < 8) throw "too hungry";
-    if (x > 85) throw "too full";
-  } catch (err) {
-    message.innerHTML =
-      "WARNING: consuming " + x + " tacos may leave you " + err;
-  }
-}
-```
-
-```csharp
-// EAT MORE TACO [c#]
-using Tacos;
-
-namespace MyTaco
-{
-    class Taco
-    {
-        static void Main(string[], args)
-        {
-            string txt = "Eat More Tacos";
-            Console.WriteLine(txt.ToUpper());
-        }
-    }
-}
-
-```
-
-```sql
--- EAT MORE TACOS [sql]
-WITH cte_Tacos (TacoType) AS
-(
-    SELECT 'Beef Taco' UNION
-    SELECT 'Chicken Taco' UNION
-    SELECT 'Pork Taco')
-)
-SELECT TOP 1 TacoType FROM cte_Tacos ORDER BY NEWID()
-
-```
-
-<!-- EXPAND -->
-
-<span style="color:#A6A6A6"> **MORE:** </span>:taco::taco::taco:
-
-To further define which tacos should be consumed, use the dropdown reference below...
-
-<details>
-  <summary><span style="color:mediumpurple"> CLICK TO EXPAND </span></summary>
-
-- <span style="color:hotpink"> [@]\_OUTER </span>
-  - [BOWL]
-  - [LETTUCE]
-  - [SHELL/WRAP]
-    - <span style="color:mediumpurple"> [@]\_Corn </span>
-    - <span style="color:mediumpurple"> [@]\_Flour </span>
-  - [NONE]
-    - <span style="color:mediumpurple"> [@]\_Seek-Help </span>
-- <span style="color:hotpink"> [@]\_INNER </span>
-  - [BEEF]
-    - <span style="color:mediumpurple"> [@]\_Birria </span>
-    - <span style="color:mediumpurple"> [@]\_Carne-Asada </span>
-    - <span style="color:mediumpurple"> [@]\_Ground </span>
-    - <span style="color:mediumpurple"> [@]\_Shredded </span>
-  - [CHICKEN]
-    - <span style="color:mediumpurple"> [@]\_Chopped </span>
-    - <span style="color:mediumpurple"> [@]\_Shredded </span>
-    - <span style="color:mediumpurple"> [@]\_Tinga </span>
-  - [PORK]
-    - <span style="color:mediumpurple"> [@]\_Al-Pastor </span>
-    - <span style="color:mediumpurple"> [@]\_Barbacoa </span>
-    - <span style="color:mediumpurple"> [@]\_Campechanos </span>
-    - <span style="color:mediumpurple"> [@]\_Carnitas </span>
-    - <span style="color:mediumpurple"> [@]\_Chorizo </span>
-  - [FISH]
-    - <span style="color:mediumpurple"> [@]\_Pescado </span>
-
-- <span style="color:hotpink"> [@]\_TOPPINGS </span>
-  - [BROWNS]
-    - <span style="color:mediumpurple"> [@]\_Lentals </span>
-    - <span style="color:mediumpurple"> [@]\_MoreMeat </span>
-    - <span style="color:mediumpurple"> [@]\_Rice </span>
-  - [GREENS]
-    - <span style="color:mediumpurple"> [@]\_Cilantro </span>
-    - <span style="color:mediumpurple"> [@]\_Lettuce </span>
-    - <span style="color:mediumpurple"> [@]\_Lime </span>
-    - <span style="color:mediumpurple"> [@]\_Guacamole </span>
-    - <span style="color:mediumpurple"> [@]\_Jalapeños </span>
-    - <span style="color:mediumpurple"> [@]\_Spinich </span>
-  - [REDS]
-    - <span style="color:mediumpurple"> [@]\_HotSauce </span>
-    - <span style="color:mediumpurple"> [@]\_Peppers </span>
-    - <span style="color:mediumpurple"> [@]\_Pico </span>
-    - <span style="color:mediumpurple"> [@]\_Salsa </span>
-    - <span style="color:mediumpurple"> [@]\_Tomatoe </span>
-  - [WHITES]
-    - <span style="color:mediumpurple"> [@]\_CheeseDuh </span>
-    - <span style="color:mediumpurple"> [@]\_EggWhites </span>
-    - <span style="color:mediumpurple"> [@]\_Onions </span>
-    - <span style="color:mediumpurple"> [@]\_SourCream </span>
-  - [YELLOWS] - <span style="color:mediumpurple"> [@]\_Corn </span> - <span style="color:mediumpurple"> [@]\_Egg </span> - <span style="color:mediumpurple"> [@]\_MoreCheese </span> - <span style="color:mediumpurple"> [@]\_Pineapples </span>
-  </details>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
