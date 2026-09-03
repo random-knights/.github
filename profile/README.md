@@ -4,9 +4,9 @@
 <br />
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/random-knights/.github/blob/main/assets/ruok-drk.gif">
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/random-knights/.github/blob/main/assets/ruok-lte.png">
-    <img alt="Shows a Day/Night themed markedown gif based on AM/PM." src="https://github.com/random-knights/.github/blob/main/assets/ruok-drk.gif">
+    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/random-knights/.github/blob/main/assets/Random_Dark.gif">
+    <source media="(prefers-color-scheme: light)" srcset="https://github.com/random-knights/.github/blob/main/assets/Random_Lite.gif">
+    <img alt="Random Knights, LLC: an animated header that follows your light or dark theme." src="https://github.com/random-knights/.github/blob/main/assets/Random_Dark.gif">
   </picture>
 
 <h3 align="center" style="color:#ff4124">Random Knights, XYZ</h3>
