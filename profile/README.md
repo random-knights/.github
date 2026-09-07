@@ -4,9 +4,9 @@
 <br />
 <div align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/random-knights/.github/blob/main/assets/ruok-drk.gif">
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/random-knights/.github/blob/main/assets/ruok-lte.png">
-    <img alt="Shows a Day/Night themed markedown gif based on AM/PM." src="https://github.com/random-knights/.github/blob/main/assets/ruok-drk.gif">
+    <source media="(prefers-color-scheme: dark)" srcset="../assets/rk-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="../assets/rk-lite.png">
+    <img alt="Random Knights" src="../assets/rk-dark.png">
   </picture>
 
 <h3 align="center" style="color:#ff4124">Random Knights, LLC</h3>
@@ -26,6 +26,10 @@
 </div>
 
 ## <span style="color:#555555"><u> **SUMMARY** </u></span>
+
+<div align="center">
+  <img alt="Random Knights" src="../assets/rk.gif">
+</div>
 
 - Built with
   - Node.js, Flutter and Dart
