@@ -99,7 +99,7 @@ went from a first honest attempt to a nine-domain, planetary-boundary-grounded i
 | Date | Milestone |
 | --- | --- |
 | **Jun 1** | earth-ingest tooling: glacier / WGMS / scalar scripts; deploy hardening |
-| **Jun 5** | AIEDS foundation model — the open AI-disclosure standard |
+| **Jun 5** | AiEDs foundation model — the open AI-disclosure standard |
 | **Jun 9** | production release locked to manual-only — ship discipline |
 | **Jun 11** | `uti1ity` page-aware routing; a 57-commit day |
 | **Jun 12** | **nullschool-mode Earth View** — the dream lands (90 commits) |
