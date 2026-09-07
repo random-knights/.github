@@ -56,7 +56,7 @@ Each domain is anchored against **planetary boundary thresholds** (Rockström et
 
 The Anthroposphere domain is grounded on the **Global Human Modification (gHM)** index — a peer-reviewed geospatial synthesis of infrastructure, agriculture, and urban footprint. Ratified in v0.6.
 
-Score methodology: [xyz-earth Discussion #1](https://github.com/random-knights/xyz-earth/discussions/1) · [TIMELINE](../../../TIMELINE.md)
+Score methodology: [xyz-earth Discussion #1](https://github.com/random-knights/xyz-earth/discussions/1) | [TIMELINE](../../../profile/TIMELINE.md)
 
 ---
 
@@ -93,5 +93,5 @@ Both renderers share the same layer, score, and filter state. Switching between 
 
 ---
 
-*For the open AIEDS standard (AI energy disclosure), see [architecture/aieds/](../aieds/).*  
+*For the open AiEDs standard (AI energy disclosure), see [architecture/aieds/](../aieds/).*
 *For research and data discussions, see [xyz-earth Discussions](https://github.com/random-knights/xyz-earth/discussions).*

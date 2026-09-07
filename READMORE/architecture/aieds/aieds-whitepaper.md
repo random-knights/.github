@@ -1,14 +1,14 @@
-# AI Energy Disclosure Standard (AIEDS) — Whitepaper
+# AI Energy Disclosure Standard (AiEDs) — Whitepaper
 
 > **CORRECTED 2026-08-21.** This document stated `1 MRT = 22 kg CO2e/year`,
-> which was the AIEDS 1.x value. Canonical methodology 2.0.0 (2026-07-12)
+> which was the AiEDs 1.x value. Canonical methodology 2.0.0 (2026-07-12)
 > unified the Mature Reference Tree at **21 kg CO2e/year**, and both Random
 > Knights implementations ship 21 000 g. The numbers, the worked example and
 > the version references below have been corrected to 2.0.0. The source of
 > truth is `aieds/spec/methodology.md`; where this document and that spec
 > disagree, the spec wins.
 
-**Version:** AIEDS v1
+**Version:** AiEDs v1
 **Status:** Open Standard — Published
 **Date:** 2026-06-15
 **License:** CC BY 4.0 (specification text)
@@ -17,9 +17,9 @@
 
 ## Abstract
 
-The AI Energy Disclosure Standard (AIEDS) is a provider-agnostic open standard for disclosing the environmental impact of an AI interaction in a consistent, educational, and honest way. It defines a metric hierarchy, a fixed methodology, a disclosure schema, and required display copy so that any product, agent, or platform can attach a comparable "nutrition label" to an AI response, report, agent output, test result, or automation summary.
+The AI Energy Disclosure Standard (AiEDs) is a provider-agnostic open standard for disclosing the environmental impact of an AI interaction in a consistent, educational, and honest way. It defines a metric hierarchy, a fixed methodology, a disclosure schema, and required display copy so that any product, agent, or platform can attach a comparable "nutrition label" to an AI response, report, agent output, test result, or automation summary.
 
-AIEDS does not claim to measure verified emissions, certify providers, or account for offset quality. It provides a principled, honest, and versioned estimate that clearly states its confidence tier and assumptions.
+AiEDs does not claim to measure verified emissions, certify providers, or account for offset quality. It provides a principled, honest, and versioned estimate that clearly states its confidence tier and assumptions.
 
 ---
 
@@ -27,7 +27,7 @@ AIEDS does not claim to measure verified emissions, certify providers, or accoun
 
 ### Why a Standard?
 
-AI systems consume energy and emit carbon at every inference. Without a shared standard, disclosures vary in methodology, confidence, and framing — making comparison impossible and greenwashing easy. AIEDS establishes a common floor:
+AI systems consume energy and emit carbon at every inference. Without a shared standard, disclosures vary in methodology, confidence, and framing — making comparison impossible and greenwashing easy. AiEDs establishes a common floor:
 
 - **Same methodology** across providers and products.
 - **Same confidence labeling** so users can calibrate their trust.
@@ -47,7 +47,7 @@ AI systems consume energy and emit carbon at every inference. Without a shared s
 
 ## 2. Metric Hierarchy
 
-AIEDS defines four levels of metrics:
+AiEDs defines four levels of metrics:
 
 ### Level 1 — Scientific (required)
 
@@ -81,7 +81,7 @@ These are illustrative comparisons derived from the Level 1 metrics. They MUST b
 
 ### Level 4 — Earth Context (future, optional)
 
-Regional grid intensity, renewable mix, carbon intensity context, restoration linkage. Not required in AIEDS v1.
+Regional grid intensity, renewable mix, carbon intensity context, restoration linkage. Not required in AiEDs v1.
 
 ---
 
@@ -101,11 +101,11 @@ Alternatively, carbon may be derived from modeled energy:
 carbon_g_co2e = (energy_wh / 1000) * grid_intensity_g_per_kwh
 ```
 
-The **reference grid intensity** for AIEDS v1 modeled disclosures is `429 g CO2e/kWh` (global average; IEA reference; modeled, not regional). Implementations using a different intensity MUST declare the value and source.
+The **reference grid intensity** for AiEDs v1 modeled disclosures is `429 g CO2e/kWh` (global average; IEA reference; modeled, not regional). Implementations using a different intensity MUST declare the value and source.
 
 ### 3.2 Mature Reference Tree (MRT) — Tree-Time Methodology
 
-AIEDS defines a **Mature Reference Tree (MRT)** as the educational anchor for Tree-Time equivalency:
+AiEDs defines a **Mature Reference Tree (MRT)** as the educational anchor for Tree-Time equivalency:
 
 ```
 1 MRT = 21 kg CO2e / year
@@ -120,7 +120,7 @@ tree_time_minutes = (carbon_g_co2e / 21000) * 525600
 Where `525600` = minutes in one year (365 × 24 × 60).
 
 **MRT assumptions:**
-- 21 kg CO2e/year represents a temperate-zone mature tree absorbing carbon through photosynthesis (mid-range of published estimates). AIEDS 1.x used 22 kg; 2.0.0 unified on 21 kg.
+- 21 kg CO2e/year represents a temperate-zone mature tree absorbing carbon through photosynthesis (mid-range of published estimates). AiEDs 1.x used 22 kg; 2.0.0 unified on 21 kg.
 - MRT is a stable educational reference. It is NOT a claim about any specific tree, species, forest, restoration project, offset, or conservation outcome.
 - Implementations MUST label Tree-Time as educational.
 
@@ -139,7 +139,7 @@ Implementations MAY substitute documented alternatives for the following referen
 
 ## 4. Confidence Model
 
-Every AIEDS disclosure MUST declare a confidence tier. Implementations MUST NOT claim a tier they cannot support.
+Every AiEDs disclosure MUST declare a confidence tier. Implementations MUST NOT claim a tier they cannot support.
 
 | Tier | Meaning |
 | --- | --- |
@@ -156,13 +156,13 @@ Disclosures MUST avoid certification, offset, or environmental-outcome language 
 
 ## 5. Disclosure Schema (2.0.0)
 
-A conforming AIEDS v1 disclosure is a structured object with at minimum the Level 1 fields and a `version` declaration.
+A conforming AiEDs v1 disclosure is a structured object with at minimum the Level 1 fields and a `version` declaration.
 
 ### 5.1 JSON Schema (reference)
 
 ```json
 {
-  "version": "AIEDS 2.0.0",
+  "version": "AiEDs 2.0.0",
   "confidence": "Modeled",
   "energy_wh": 0.42,
   "carbon_g_co2e": 0.18,
@@ -172,7 +172,7 @@ A conforming AIEDS v1 disclosure is a structured object with at minimum the Leve
   "input_tokens": 120,
   "output_tokens": 80,
   "cost_usd": 0.0012,
-  "methodology": "AIEDS 2.0.0; MRT=21kg CO2e/yr; grid=429 g/kWh (IEA global average, modeled)",
+  "methodology": "AiEDs 2.0.0; MRT=21kg CO2e/yr; grid=429 g/kWh (IEA global average, modeled)",
   "equivalencies": {
     "tree_time_minutes": 4.51,
     "phone_charges": 0.035,
@@ -185,9 +185,9 @@ A conforming AIEDS v1 disclosure is a structured object with at minimum the Leve
 
 ### 5.2 Required Display Copy
 
-Any surface rendering an AIEDS disclosure MUST include:
+Any surface rendering an AiEDs disclosure MUST include:
 
-> **AIEDS v1 estimated disclosure**
+> **AiEDs v1 estimated disclosure**
 > Energy and carbon are modeled estimates.
 > Tree-Time and equivalents are educational comparisons.
 
@@ -210,7 +210,7 @@ Implementations MAY abbreviate the disclosure in constrained UI surfaces:
 
 ## 6. Versioning and Governance
 
-- The standard is versioned: `AIEDS v1`, `AIEDS v2`, etc.
+- The standard is versioned: `AiEDs v1`, `AiEDs v2`, etc.
 - **Methodology changes that alter output values require a version bump.** Adding optional fields or clarifying text does not.
 - Mixed methodologies MUST NOT be combined without explicit labeling. A surface that still uses a legacy assumption (e.g. a different MRT value) must be labeled until migrated.
 - Contribution process: issues and pull requests welcome via the repository hosting this document.
@@ -218,9 +218,9 @@ Implementations MAY abbreviate the disclosure in constrained UI surfaces:
 
 ---
 
-## 7. Non-Goals (AIEDS v1)
+## 7. Non-Goals (AiEDs v1)
 
-AIEDS v1 explicitly does not:
+AiEDs v1 explicitly does not:
 
 - Measure or verify provider emissions.
 - Certify providers, models, or products.
@@ -240,6 +240,6 @@ See [`aieds-adoption-guide.md`](aieds-adoption-guide.md) for implementation patt
 
 - Canonical content-type and JSON Schema ID for machine-readable disclosures (`application/vnd.aieds+json`).
 - Per-provider default energy/carbon coefficients registry and sourcing methodology.
-- AIEDS envelope for non-chat surfaces (batch reports, agent runs, Earth Intelligence, test results, automation summaries).
+- AiEDs envelope for non-chat surfaces (batch reports, agent runs, Earth Intelligence, test results, automation summaries).
 - A lightweight conformance test suite.
 - Level 4 regional grid integration specification.

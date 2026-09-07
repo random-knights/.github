@@ -1,24 +1,24 @@
-# AIEDS Adoption Guide
+# AiEDs Adoption Guide
 
 > **CORRECTED 2026-08-21.** This document stated `1 MRT = 22 kg CO2e/year`,
-> which was the AIEDS 1.x value. Canonical methodology 2.0.0 (2026-07-12)
+> which was the AiEDs 1.x value. Canonical methodology 2.0.0 (2026-07-12)
 > unified the Mature Reference Tree at **21 kg CO2e/year**, and both Random
 > Knights implementations ship 21 000 g. The numbers, the worked example and
 > the version references below have been corrected to 2.0.0. The source of
 > truth is `aieds/spec/methodology.md`; where this document and that spec
 > disagree, the spec wins.
 
-**Version:** AIEDS v1
+**Version:** AiEDs v1
 **Status:** Published
 **Date:** 2026-06-15
 
-See the [AIEDS Whitepaper](aieds-whitepaper.md) for the full specification.
+See the [AiEDs Whitepaper](aieds-whitepaper.md) for the full specification.
 
 ---
 
 ## Quick Start
 
-An AIEDS v1 disclosure requires three things:
+An AiEDs v1 disclosure requires three things:
 
 1. **Level 1 metrics** — `carbon_g_co2e` and `energy_wh`.
 2. **Confidence tier** — `Estimated`, `Modeled`, `Provider-derived`, or `Verified`.
@@ -69,7 +69,7 @@ Label all equivalencies as educational. Never present them as offsets.
 
 ```json
 {
-  "version": "AIEDS 2.0.0",
+  "version": "AiEDs 2.0.0",
   "confidence": "Modeled",
   "carbon_g_co2e": 0.18,
   "energy_wh": 0.42,
@@ -79,7 +79,7 @@ Label all equivalencies as educational. Never present them as offsets.
   "input_tokens": 120,
   "output_tokens": 80,
   "cost_usd": 0.0012,
-  "methodology": "AIEDS 2.0.0; MRT=21kg CO2e/yr; grid=429 g/kWh (IEA global average, modeled)",
+  "methodology": "AiEDs 2.0.0; MRT=21kg CO2e/yr; grid=429 g/kWh (IEA global average, modeled)",
   "equivalencies": {
     "tree_time_minutes": 4.51,
     "phone_charges": 0.035,
@@ -97,7 +97,7 @@ Label all equivalencies as educational. Never present them as offsets.
 ### Required copy (always visible, non-optional)
 
 ```
-AIEDS v1 estimated disclosure
+AiEDs v1 estimated disclosure
 Energy and carbon are modeled estimates.
 Tree-Time and equivalents are educational comparisons.
 ```
@@ -121,15 +121,15 @@ Reveal all Level 2 and Level 3 fields behind an expand affordance (accordion, to
 
 ## Conformance Checklist
 
-### Must (required for AIEDS v1 conformance)
+### Must (required for AiEDs v1 conformance)
 
-- [ ] `version: "AIEDS v1"` present in every disclosure object.
+- [ ] `version: "AiEDs v1"` present in every disclosure object.
 - [ ] `carbon_g_co2e` and `energy_wh` present and non-zero.
 - [ ] `confidence` present and set to one of the four defined tiers.
 - [ ] `methodology` string present; declares grid intensity and MRT value if used.
 - [ ] Required display copy appears on every rendered surface.
 - [ ] No equivalency labeled as offset, credit, certification, or verified outcome.
-- [ ] Mixed-methodology surfaces labeled until migrated to AIEDS v1.
+- [ ] Mixed-methodology surfaces labeled until migrated to AiEDs v1.
 
 ### Should (best practice)
 
@@ -142,13 +142,13 @@ Reveal all Level 2 and Level 3 fields behind an expand affordance (accordion, to
 - [ ] Never claim `Provider-derived` or `Verified` confidence without the corresponding evidence.
 - [ ] Never present Tree-Time or other equivalencies as carbon offsets.
 - [ ] Never omit the required display copy on a rendered surface.
-- [ ] Never mix AIEDS v1 and legacy methodologies on the same surface without labeling.
+- [ ] Never mix AiEDs v1 and legacy methodologies on the same surface without labeling.
 
 ---
 
 ## Surfaces and Attachment Points
 
-AIEDS disclosures can attach to any AI-produced artifact:
+AiEDs disclosures can attach to any AI-produced artifact:
 
 | Surface | Notes |
 | --- | --- |
@@ -163,8 +163,8 @@ AIEDS disclosures can attach to any AI-produced artifact:
 
 ## Frequently Asked Questions
 
-**Can I use AIEDS with any AI provider?**
-Yes. AIEDS is provider-agnostic. Use whichever confidence tier reflects your data source.
+**Can I use AiEDs with any AI provider?**
+Yes. AiEDs is provider-agnostic. Use whichever confidence tier reflects your data source.
 
 **What if my provider doesn't report energy or carbon?**
 Use the `Modeled` tier with a declared per-token coefficient and grid intensity. Document both in `methodology`.
@@ -178,7 +178,7 @@ No. Tree-Time is an educational equivalency derived from a reference tree absorb
 **How do I handle a response that spans multiple model calls?**
 Sum `input_tokens`, `output_tokens`, `cost_usd`, `carbon_g_co2e`, `energy_wh`; sum latencies or use wall-clock total. Set `confidence` to the lowest tier across all calls.
 
-**What changes require a version bump to AIEDS v2?**
+**What changes require a version bump to AiEDs v2?**
 Any methodology change that would alter the numeric output of a disclosure — e.g. changing the MRT value, the reference grid intensity, or the core formula. Adding optional fields, clarifying text, or adding surface guidance does not require a version bump.
 
 ---
@@ -191,7 +191,7 @@ A conforming implementation typically consists of:
 2. **A presentation component** — renders compact and expanded views with required copy.
 3. **A test suite** — asserts formula correctness for representative inputs (tree-time, equivalencies, confidence labeling).
 
-No provider integration, live data feed, or backend service is required for AIEDS v1 conformance.
+No provider integration, live data feed, or backend service is required for AiEDs v1 conformance.
 
 ---
 
