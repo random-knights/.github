@@ -28,7 +28,7 @@
 ## <span style="color:#555555"><u> **SUMMARY** </u></span>
 
 <div align="center">
-  <img alt="Random Knights" src="../assets/rk.gif">
+  <img alt="Random Knights: device lineup with globe badge" src="../assets/rk-header-v2.gif">
 </div>
 
 - Built with
