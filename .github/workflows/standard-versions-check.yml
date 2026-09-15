@@ -1,0 +1,25 @@
+# This repo carries a STANDARD version table on the org profile page, so it is
+# a consumer of its own reusable workflow. No credential: check only.
+name: Standard versions check
+
+on:
+  pull_request:
+    paths:
+      - profile/README.md
+      - scripts/sync-standard-versions.mjs
+      - .github/workflows/standard-versions*.yml
+  schedule:
+    # Weekly backstop. The fan-out in random-knights/standard opens the pull
+    # request when a version moves; this is what notices if the fan-out did not
+    # run at all.
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  standard-versions:
+    uses: random-knights/.github/.github/workflows/standard-versions.yml@main
+    with:
+      readme: profile/README.md

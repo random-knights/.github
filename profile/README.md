@@ -19,11 +19,11 @@
     🌝 <a href="https://randomly.engineering">randomly.engineering</a> & <a href="https://knightly.engineering">knightly.engineering</a> 🌚
     <br />
     <br />
-    <a href="https://< some demo link >">View Demo</a>
+    <a href="https://rand0m.ai">View Demo</a>
     ·
-    <a href="https://github.com/random-knights/< repo >/wiki">View Docs</a>
+    <a href="https://github.com/random-knights/.github/tree/main/READMORE">View Docs</a>
     ·
-    <a href="https://github.com/random-knights/< repo >/issues">Report Bug</a>
+    <a href="https://github.com/random-knights/123/issues">Report Bug</a>
     <br />
   </p>
 </div>
@@ -122,12 +122,16 @@ follow our progress on [GitHub @ Random Knights](https://github.com/random-knigh
 
 ## <span style="color:#555555" name="standard"><u> **STANDARD** </u></span>
 
-| Name        | :chipmunk: |    Version    |             Description             |
-| ----------- | :--------: | :-----------: | :---------------------------------: |
-| Earth+      |     🌎     | v1.0.0-draft  |        Earth Health Scoring         |
-| AiEDs       |     ⚡     |    v2.2.0     |        AI Energy Disclosure         |
-| K13         |     👑     |    v2.0.0     |        AI Summary Reporting         |
-| AI for Good |     ❤️     |   &middot;    | (ITU) &middot; (UN) Recommendations |
+<!-- STANDARD:BEGIN -->
+
+| Name        | :chipmunk: |   Version    |             Description             |
+| ----------- | :--------: | :----------: | :---------------------------------: |
+| Earth+      |     🌎     | v1.0.0-draft |        Earth Health Scoring         |
+| AiEDs       |     ⚡     |    v2.2.0    |        AI Energy Disclosure         |
+| K13         |     👑     |    v2.0.0    |         AI Response Summary         |
+| AI for Good |     ❤️     |   &middot;   | (ITU) &middot; (UN) Recommendations |
+
+<!-- STANDARD:END -->
 
 </div>
 
