@@ -125,19 +125,11 @@ follow our progress on [GitHub @ Random Knights](https://github.com/random-knigh
 | Name        | :chipmunk: |    Version    |             Description             |
 | ----------- | :--------: | :-----------: | :---------------------------------: |
 | Earth+      |     🌎     | v1.0.0-draft  |        Earth Health Scoring         |
-| AiEDs       |     ⚡     |    v2.1.0     |        AI Energy Disclosure         |
+| AiEDs       |     ⚡     |    v2.2.0     |        AI Energy Disclosure         |
 | K13         |     👑     |    v2.0.0     |        AI Summary Reporting         |
 | AI for Good |     ❤️     |   &middot;    | (ITU) &middot; (UN) Recommendations |
 
 </div>
-
-<!-- OPERATING -->
-
-## <span style="color:#555555"><u> **OPERATING** </u></span>
-
-- [RUNBOOK.md](RUNBOOK.md) - humans: how it deploys (merging to main publishes
-  the live site), roll back, what breaks and how to fix it.
-- [AGENTS.md](AGENTS.md) - agents: the rules that apply in this repo.
 
 <!-- CONTACT -->
 
