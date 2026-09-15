@@ -28,7 +28,21 @@ import { readFileSync, writeFileSync } from "node:fs";
 
 const BEGIN = "<!-- STANDARD:BEGIN -->";
 const END = "<!-- STANDARD:END -->";
-const DEFAULT_SOURCE = "https://standard.rand0m.ai/versions.json";
+// THE DEFAULT SOURCE IS THE REPOSITORY, NOT THE PUBLISHED SITE.
+//
+// standard.rand0m.ai is deployed BY HAND, owner identity only, per the standard
+// repo CONTRIBUTING.md. Pointing this check at the published site would make
+// every consumer pull request depend on a manual deploy having happened: the
+// check would hard-fail with a 404 until someone ran a deploy, which is a red
+// check nobody can fix by fixing their own repo. That is how a gate teaches
+// people to ignore it.
+//
+// So the default reads standard main, which is current the moment a version
+// PR merges and needs no deploy. The published URL below is the one EXTERNAL
+// consumers pin to, and it is what the site serves; pass --source to use it.
+const DEFAULT_SOURCE =
+  "https://raw.githubusercontent.com/random-knights/standard/main/spec/v2/standard-versions.json";
+export const PUBLISHED_SOURCE = "https://standard.rand0m.ai/versions.json";
 
 // PRESENTATION LIVES HERE, not in versions.json. That file is in the standard
 // repo, which runs an ASCII gate with a deliberately near-empty exception list,
