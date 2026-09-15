@@ -9,6 +9,8 @@
     <img alt="Random Knights" src="../assets/rk-dark.png">
   </picture>
 
+<!-- HERO -->
+
 <h3 align="center" style="color:#ff4124">Random Knights, LLC</h3>
 
   <p align="center">
@@ -17,115 +19,53 @@
     🌝 <a href="https://randomly.engineering">randomly.engineering</a> & <a href="https://knightly.engineering">knightly.engineering</a> 🌚
     <br />
     <br />
-    <a href="https://github.com/random-knights/.github/blob/main/READMORE"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/random-knights/ruok">View Demo</a>
+    <a href="https://< some demo link >">View Demo</a>
     ·
-    <a href="https://github.com/random-knights/123/issues">Report Bug</a>
+    <a href="https://github.com/random-knights/< repo >/wiki">View Docs</a>
     ·
-    <a href="https://github.com/random-knights/123/issues">Request Feature</a>
+    <a href="https://github.com/random-knights/< repo >/issues">Report Bug</a>
+    <br />
   </p>
 </div>
 
-## <span style="color:#555555"><u> **SUMMARY** </u></span>
+<!-- HERO GIF -->
 
-<div align="center">
+<p align="center">
   <img alt="Random Knights: device lineup with globe badge" src="../assets/rk-header-v2.gif">
-</div>
+</p>
 
-- Built with
+<!-- TITLE -->
+
+<h1 align="center">  🏫 <span style="color:#ff4124" name="color-theme"> ɯ0puɐɹ </span> <span style="color:#723848" name="color-theme"> kn1ghts </span> 🏰
+</h1>
+
+This family passion project explores agentic systems, environmental 🌎 awareness, digital ownership, personal productivity, creativity, and responsible AI. Some experiments will succeed. Some will fail. All of them will be **ɯ0puɐɹ & random** events can lead to extraordinary outcomes!
+
+The objective of our work is to demonstrate the direct impact of technology, both in its ability to help create and destroy. The world is filled with enough physical and digital "Hot Garbage", how you want to contribute is up to you, but **ONLY YOU** can prevent garbage fires!
+
+- Built with:
+  - Maximum Family Effort
+  - Rand0m AI Standard : E+ w/ AiEDs & K13
+  - [Randomly.Engineering](https://randomly.engineering)
+  - [Knightly.Engineering](https://knightly.engineering)
   - Node.js, Flutter and Dart
   - Apache Hive
     - (Firebase Data Connect **coming soon**)
   - Gemini, OpenAI, Claude, Perplexity
   - S.T.E.A.M. and FFmpeg
-  - Maximum Family Effort
   - Canva & Adobe Illustrator
-  - [Randomly.Engineering](https://randomly.engineering)
-  - [Knightly.Engineering](https://knightly.engineering)
   - Cypress / Playwright + Testing-Library
   - Firebase/FlutterFire
 
-## <span style="color:#555555"><u> **POINTS OF CONTACT** </u></span>
-
-If any issues arise for any of the below mentioned areas, please draft a strongly worded email and never send it to: **admin@rand0m.ai**
-
 <div align="center">
 
-## <span style="color:#FAAFA5"><u> **CORE SOLUTIONS** </u></span>
-
-![Core Solutions - stack, models and status](../assets/core-solutions.svg)
-
-![Ops - junior contributors](../assets/ops-contributors.svg)
+[![ForScience][ForScience]][ForScience-url] [![ForDevs][ForDevs]][ForDevs-url] [![ForQAs][ForQAs]][ForQAs-url]
 
 </div>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- ABOUT -->
 
-<!-- THEME -->
-<div align="center">
-
-<h1>  🏫 <span style="color:#ff4124" name="color-theme"> ɯ0puɐɹ </span> <span style="color:#723848" name="color-theme"> kn1ghts </span> 🏰
-</h1>
-
-### 🌝 Day -- Work
-
-![Day Palette](https://github.com/random-knights/.github/blob/main/assets/palette-day.svg)
-
-<!-- <svg width="900" height="90" viewBox="0 0 900 90" xmlns="http://www.w3.org/2000/svg">
-  <rect x="0"   y="0" width="180" height="90" fill="#edc303"/>
-  <rect x="180" y="0" width="180" height="90" fill="#ff4124"/>
-  <rect x="360" y="0" width="180" height="90" fill="#faafa5"/>
-  <rect x="540" y="0" width="180" height="90" fill="#fadfdb"/>
-  <rect x="720" y="0" width="180" height="90" fill="#b1fec8"/>
-</svg> -->
-
-### 🌚 Night -- Play
-
-![Night Palette](https://github.com/random-knights/.github/blob/main/assets/palette-night.svg)
-
-<!-- <svg width="900" height="90" viewBox="0 0 900 90" xmlns="http://www.w3.org/2000/svg">
-  <rect x="0"   y="0" width="180" height="90" fill="#563998"/>
-  <rect x="180" y="0" width="180" height="90" fill="#723848"/>
-  <rect x="360" y="0" width="180" height="90" fill="#ad7a88"/>
-  <rect x="540" y="0" width="180" height="90" fill="#e5bec8"/>
-  <rect x="720" y="0" width="180" height="90" fill="#6fcf8c"/>
-</svg> -->
-
-</div>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- GIF -->
-<div align="center">
-
-<picture>
-  <source media="(prefers-color-scheme: dark)"
-          srcset="https://github.com/random-knights/.github/blob/main/assets/ReadMe-Night.gif">
-
-  <source media="(prefers-color-scheme: light)"
-          srcset="https://github.com/random-knights/.github/blob/main/assets/ReadMe-Day.gif">
-
-<img alt="Shows a Day/Night themed animated README"
-       src="https://github.com/random-knights/.github/blob/main/assets/ReadMe-Night.gif">
-</picture>
-
-</div>
-
-<!-- RABBIT HOLE -->
-
-## <span style="color:#555555" name="rabbit-hole"><u> **ENTER THE RABBIT HOLE** </u></span>
-
-We both Love & Hate `AI`, but we LOVE 🌍 way more!
-
-`Rand0m.AI` is an experiment in building technology that serves people first. We believe users should own their experience, control their data, understand what their software is doing, and decide how much automation belongs in their lives.
-
-This family passion project explores agentic systems, environmental awareness, digital ownership, personal productivity, creativity, and responsible AI. Some experiments will succeed. Some will fail. All of them will be **random** ... and **random** events can lead to extraordinary outcomes!
-
-The objective of our work is to demonstrate the direct impact of technology, both in its ability to help create and destroy. The world is filled with enough physical and digital "Hot Garbage", how you want to contribute is up to you, but **ONLY YOU** can prevent garbage fires!
-
-Open-source and FREE for ALL (**aside from what the money hungry AI overlords require you to pay for increased API request limits; see your preferred AI lord's website for more info...**) our mission is to NEVER value profit/power over the product.
+## <span style="color:#555555" name="roadmap"><u> **ABOUT** </u></span>
 
 1. **Environmental Awareness** The platform incorporates carbon, tree-time, wildfire, weather, glacier, and Earth-awareness initiatives to help connect technology usage with real-world environmental impact.
    1. <small>**inspired by [earth.nullschool.net](https://earth.nullschool.net/)**</small>
@@ -145,111 +85,77 @@ Open-source and FREE for ALL (**aside from what the money hungry AI overlords re
 
 Dive in for knightly research, random side-projects, or just for plain old fun.
 
-[![ForScience][ForScience]][ForScience-url]
-
-[![ForDevs][ForDevs]][ForDevs-url]
-
-[![ForQAs][ForQAs]][ForQAs-url]
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- AGENTS -->
-
-## <span style="color:#555555" name="roadmap"><u> **AGENTS** </u></span>
-
-- 🌝 Dayi1y 🏫 Agents of Change:
-  - 🐿️ art1st `¯\_(ツ)_/¯`
-  - 🦥 ath1ete `run();`
-  - 🐈 auth0r `Once upon a while(true)...`
-  - 🦔 edit0r `Write-Output "Hello, $name!"`
-  - 🐾 navigat0r `Recalculating... again.`
-  - 🦫 eng1neer `Measure twice, deploy once.`
-  - 🐇 pr0ducer `#TODO: Figure out what I’m doing here`
-  - 🦨 recyc1er `rm -rf garbage/*`
-  - 🦊 sh0pper `if (sale) buy++;`
-
-- 🌚 Knight1y 🏰 Agent of Chaos:
-  - 🦦 act0r `System.exit("And scene.");`
-  - 🐹 c0median `print("LOL");`
-  - 🐁 c00k `sudo make sandwich`
-  - 🐈‍⬛ deve10per `Works on my machine™`
-  - 🐺 direct0r `stop(); // Hammertime!`
-  - 🦝 exp10rer `cd ../somewhere-interesting`
-  - 🐭 rep0rter `BREAKING: Something happened.`
-  - 🐀 scient1st `It worked once. Let's publish.`
-  - 🦡 pr0tect0r `Access denied. Nice try.`
-
-- 🗺️ Random1y ⚡ Agents of Order:
-  - 🐱 temp1ate `Ctrl+C, Ctrl+V, but professionally.`
-  - 🐰 va1idat0r `Trust, but verify();`
 
 <!-- ROADMAP -->
 
 ## <span style="color:#555555" name="roadmap"><u> **ROADMAP** </u></span>
 
-Below is a 1 year overview of the previous, current, and future efforts for `Rand0m.AI` developed by `Randomly.Engineering` and the `Random Knights, XYZ` contributors.
 
 ```mermaid
 gantt
 title Future Proofing
 dateFormat YYYY-MM
-
-section 2025
-🌮🌮🌮🌮 :crit, a1, 2025-11, 60d
-
 section 2026
-🍻 :active, a1, 2026-01, 31d
-
-🍕 :a1, 2026-02, 28d
-
-🍩 :a1, 2026-03, 31d
-
-☕ :a1, 2026-04, 30d
-
-🥓 :a1, 2026-05, 31d
-
-🍔 :a1, 2026-06, 31d
-
-🍜 :a1, 2026-07, 30d
-
-☕ :a1, 2026-08, 30d
-
-🍑 :a1, 2026-09, 30d
-
-🛸 :a1, 2026-10, 30d
-
-section Nov
-👑🐿️ :a1, 2026-11, 30d
+✌️ :a1, 2026-06, 60d
+❤️ :active, a1, 2026-04, 183d
+🌎 :crit, a1, 2026-01, 365d
 ```
 
 <!-- CONTRIBUTING -->
 
 ## <span style="color:#555555" name="contributing"><u> **CONTRIBUTING** </u></span>
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+If you have a suggestion that would make this better, fork the repo and open a pull request &mdash; or open an issue with the tag "enhancement". Don't forget to star the project!
 
-1. Fork the Project
+1. Fork the Projects
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-[Rand0m Discord](https://app.discord.com/random-knights)
+follow our progress on [GitHub @ Random Knights](https://github.com/random-knights)
 
-[Rand0m GitHub](https://github.com/random-knights)
+<!-- STANDARD -->
 
-_For more information, please visit: [GitHub Manifesto](https://lmgtfy.app/?q=how+to+use+github)_
+<div align="center">
 
-<!-- BADGES -->
+## <span style="color:#555555" name="standard"><u> **STANDARD** </u></span>
 
-## <span style="color:#555555"><u> **CORE DEVELPOMENT** </u></span>
+| Name        | :chipmunk: |    Version    |             Description             |
+| ----------- | :--------: | :-----------: | :---------------------------------: |
+| Earth+      |     🌎     | v1.0.0-draft  |        Earth Health Scoring         |
+| AiEDs       |     ⚡     |    v2.2.0     |        AI Energy Disclosure         |
+| K13         |     👑     |    v2.0.0     |        AI Summary Reporting         |
+| AI for Good |     ❤️     |   &middot;    | (ITU) &middot; (UN) Recommendations |
 
-### **Workspace**
+</div>
+
+<!-- CONTACT -->
+
+## <span style="color:#555555"><u> **CONTACT** </u></span>
+
+If any issues arise, please draft a strongly worded email and <u>**never**</u> send it to: **admin@rand0m.ai**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!----------- BADGES ----------->
+
+<!-- TECHNOLOGY -->
+
+## <span style="color:#555555"><u> **TECHNOLOGY** </u></span>
+
+<!-- ### **Workspace**
 
 [![Windows][Windows]][Windows-url]
 [![Nvidia][Nvidia]][Nvidia-url]
-[![Ryzen][Ryzen]][Ryzen-url]
+[![Ryzen][Ryzen]][Ryzen-url] -->
+
+### **CLI**
+
+[![GitBash][GitBash]][GitBash-url]
+[![Herdr][Herdr]][Herdr-url]
+[![Powershell][Powershell]][Powershell-url]
 
 ### **IDE**
 
@@ -268,10 +174,10 @@ _For more information, please visit: [GitHub Manifesto](https://lmgtfy.app/?q=ho
 
 ### **Tools**
 
-[![AdobeAudition][AdobeAudition]][AdobeAudition-url]
-[![AdobePodcast][AdobePodcast]][AdobePodcast-url]
+[![CodexMicropad][CodexMicropad]][CodexMicropad-url]
 [![TeenageEngineeringMic][TeenageEngineeringMic]][TeenageEngineeringMic-url]
 [![NothingHeadphones][NothingHeadphones]][NothingHeadphones-url]
+[![RaspberryPi][RaspberryPi]][RaspberryPi-url]
 
 ### **Development**
 
@@ -295,12 +201,14 @@ _For more information, please visit: [GitHub Manifesto](https://lmgtfy.app/?q=ho
 
 ### **AI**
 
-[![ChatGPT][ChatGPT]][ChatGPT-url]
+[![OpenAI][OpenAI]][OpenAI-url]
 [![Gemini][Gemini]][Gemini-url]
 [![Claude][Claude]][Claude-url]
 [![RabbitTech][RabbitTech]][RabbitTech-url]
 [![Perplexity][Perplexity]][Perplexity-url]
 [![Rand0mAI][Rand0mAI]][Rand0mAI-url]
+[![HuggingFace][HuggingFace]][HuggingFace-url]
+[![Ollama][Ollama]][Ollama-url]
 
 ### **Design**
 
@@ -310,9 +218,20 @@ _For more information, please visit: [GitHub Manifesto](https://lmgtfy.app/?q=ho
 
 ### **Pipelines**
 
+[![GoogleCloud][GoogleCloud]][GoogleCloud-url]
 [![GitHubActions][GitHubActions]][GitHubActions-url]
+[![Firebase][Firebase]][Firebase-url]
+[![Jira][Jira]][Jira-url]
 [![Slack][Slack]][Slack-url]
-[![CypressCloud][CypressCloud]][CypressCloud-url]
+
+### **Research & Funding**
+
+<div align="center">
+
+[![ORCiD][ORCiD]][ORCiD-url]
+[![OpenCollective][OpenCollective]][OpenCollective-url]
+
+</div>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -351,6 +270,15 @@ _For more information, please visit: [GitHub Manifesto](https://lmgtfy.app/?q=ho
 [Macbook]: https://img.shields.io/badge/Apple-MacBook_Pro_2022-000000?style=for-the-badge&logo=apple&logoColor=white
 [Macbook-url]: https://www.apple.com/macbook-pro/
 
+<!-- CLI (C1: 8855ff) -->
+
+[GitBash]: https://img.shields.io/badge/GitBash-8855ff?style=for-the-badge&logo=git&logoColor=white
+[GitBash-url]: https://git-scm.com/
+[Herdr]: https://img.shields.io/badge/Herdr-8855ff?style=for-the-badge&logo=herdr&logoColor=white
+[Herdr-url]: https://herdr.dev/
+[Powershell]: https://img.shields.io/badge/Powershell-8855ff?style=for-the-badge&logo=power-shell&logoColor=white
+[Powershell-url]: https://apps.microsoft.com/detail/9mz1snwt0n5d?hl=en-US&gl=US
+
 <!-- IDE (C1: ff4124) -->
 
 [VSCode]: https://img.shields.io/badge/Visual_Studio_Code-ff4124?style=for-the-badge&logo=visualstudiocode&logoColor=white
@@ -374,14 +302,14 @@ _For more information, please visit: [GitHub Manifesto](https://lmgtfy.app/?q=ho
 
 <!-- TOOLS (C2: ad7a88) -->
 
-[AdobeAudition]: https://img.shields.io/badge/Adobe_Audition-ad7a88?style=for-the-badge&logo=adobeaudition&logoColor=white
-[AdobeAudition-url]: https://www.adobe.com/products/audition.html
-[AdobePodcast]: https://img.shields.io/badge/Adobe_Podcast-ad7a88?style=for-the-badge&logo=adobe&logoColor=white
-[AdobePodcast-url]: https://podcast.adobe.com/
+[CodexMicropad]: https://img.shields.io/badge/Open_AI-Codex--Micro-ad7a88?style=for-the-badge&logoColor=white
+[CodexMicropad-url]: https://openai.com/supply/co-lab/work-louder/
 [TeenageEngineeringMic]: https://img.shields.io/badge/Teenage_Engineering-CM--15_Mic-ad7a88?style=for-the-badge&logoColor=white
 [TeenageEngineeringMic-url]: https://teenage.engineering/products/cm-15
 [NothingHeadphones]: https://img.shields.io/badge/Nothing-Headphone_(1)-ad7a88?style=for-the-badge&logoColor=white
 [NothingHeadphones-url]: https://nothing.tech/products/headphone-1
+[RaspberryPi]: https://img.shields.io/badge/Raspberry_Pi-ad7a88?style=for-the-badge&logo=raspberrypi&logoColor=white
+[RaspberryPi-url]: https://www.raspberrypi.com/
 
 <!-- DEVELOPMENT BADGES -->
 
@@ -436,19 +364,23 @@ _For more information, please visit: [GitHub Manifesto](https://lmgtfy.app/?q=ho
 
 <!-- PIPELINE (C4: 6fcf8c) -->
 
-[Slack]: https://img.shields.io/badge/Slack-6fcf8c?style=for-the-badge&logo=slack&logoColor=white
+[Slack]: https://img.shields.io/badge/Slack-6fcf8c?style=for-the-badge&logo=slack&logoColor=orange
 [Slack-url]: https://www.slack.com/
-[CypressCloud]: https://img.shields.io/badge/Cypress_Cloud-6fcf8c?style=for-the-badge&logo=cypress&logoColor=white
+[CypressCloud]: https://img.shields.io/badge/Cypress_Cloud-6fcf8c?style=for-the-badge&logo=cypress&logoColor=orange
 [CypressCloud-url]: https://www.cypress.io/
-[Firebase]: https://img.shields.io/badge/Firebase-6fcf8c?style=for-the-badge&logo=firebase&logoColor=black
+[Firebase]: https://img.shields.io/badge/Firebase-6fcf8c?style=for-the-badge&logo=firebase&logoColor=orange
 [Firebase-url]: https://firebase.google.com/
-[GitHubActions]: https://img.shields.io/badge/GitHub_Actions-6fcf8c?style=for-the-badge&logo=github-actions&logoColor=white
+[GitHubActions]: https://img.shields.io/badge/GitHub_Actions-6fcf8c?style=for-the-badge&logo=github-actions&logoColor=orange
 [GitHubActions-url]: https://github.com/features/actions
+[GoogleCloud]: https://img.shields.io/badge/Google_Cloud-6fcf8c?style=for-the-badge&logo=google-cloud&logoColor=orange
+[GoogleCloud-url]: https://cloud.google.com
+[Jira]: https://img.shields.io/badge/Jira-6fcf8c?style=for-the-badge&logo=jira&logoColor=orange
+[Jira-url]: https://www.atlassian.com/software/jira
 
 <!-- AI (C4: b1fec8) -->
 
-[ChatGPT]: https://img.shields.io/badge/ChatGPT-b1fec8?style=for-the-badge&logo=openai&logoColor=white
-[ChatGPT-url]: https://chatgpt.com/
+[OpenAI]: https://img.shields.io/badge/OpenAI-b1fec8?style=for-the-badge&logo=openaigym&logoColor=white
+[OpenAI-url]: https://openai.com/
 [Gemini]: https://img.shields.io/badge/Gemini-b1fec8?style=for-the-badge&logo=google&logoColor=white
 [Gemini-url]: https://gemini.google.com/
 [Claude]: https://img.shields.io/badge/Claude-b1fec8?style=for-the-badge&logo=anthropic&logoColor=white
@@ -459,5 +391,14 @@ _For more information, please visit: [GitHub Manifesto](https://lmgtfy.app/?q=ho
 [Perplexity-url]: https://www.perplexity.ai/
 [Rand0mAI]: https://img.shields.io/badge/Rand0m.AI-FF4124?style=for-the-badge
 [Rand0mAI-url]: https://rand0m.ai/
+[HuggingFace]: https://img.shields.io/badge/HuggingFace-b1fec8?style=for-the-badge&logo=huggingface&logoColor=white
+[HuggingFace-url]: https://www.huggingface.co/
+[Ollama]: https://img.shields.io/badge/Ollama-b1fec8?style=for-the-badge&logo=ollama&logoColor=white
+[Ollama-url]: https://www.ollama.com/
 
-</details>
+<!-- AI (C4: b1fec8) -->
+
+[OpenCollective]: https://img.shields.io/badge/OpenCollective-edc303?style=for-the-badge&logo=opencollective&logoColor=white
+[OpenCollective-url]: https://opencollective.com/random-knights
+[ORCiD]: https://img.shields.io/badge/ORCiD-edc303?style=for-the-badge&logo=orcid&logoColor=white
+[ORCiD-url]: https://orcid.org/0009-0006-5066-1693
