@@ -25,6 +25,8 @@
 // such as a missing marker or an unreachable source. A drift and a breakage
 // must not look the same to CI.
 import { readFileSync, writeFileSync } from "node:fs";
+import { resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 
 const BEGIN = "<!-- STANDARD:BEGIN -->";
 const END = "<!-- STANDARD:END -->";
@@ -142,6 +144,7 @@ async function main(argv) {
 
   const block = renderBlock(versions);
   let drifted = false;
+  let examined = 0;
   for (const target of targets) {
     let text;
     try {
@@ -157,6 +160,9 @@ async function main(argv) {
       process.stderr.write(`${target}: ${err.message}\n`);
       return 2;
     }
+    // Counted only once the file has been read AND the markers found, so
+    // "examined" means what it says: this file was really compared.
+    examined += 1;
     if (next === text) {
       process.stdout.write(`${target}: in sync\n`);
       continue;
@@ -171,11 +177,31 @@ async function main(argv) {
       );
     }
   }
+  if (examined === 0) {
+    process.stderr.write(
+      "examined no files, so there is nothing to report. Refusing to exit 0: " +
+        "a check that cannot tell in-sync from never-ran is worse than no " +
+        "check, because it is trusted.\n",
+    );
+    return 2;
+  }
   if (mode === "check" && drifted) return 1;
   return 0;
 }
 
-const invokedDirectly = process.argv[1] && process.argv[1].endsWith("sync-standard-versions.mjs");
+// Entry-point detection by RESOLVED PATH, not by filename.
+//
+// This used to test `process.argv[1].endsWith("sync-standard-versions.mjs")`.
+// A renamed or copied file then failed that test, main() never ran, and node
+// exited 0: a gate that silently passes without examining anything. That was
+// found by a verification harness that downloaded this file as `sync.mjs` and
+// got four confident green results from a script that had done nothing.
+//
+// A check that cannot tell "in sync" from "never ran" is worse than no check,
+// because it is trusted. This is the same comparison build-site.mjs and
+// summarise.mjs in the standard repo already use, and it survives renaming.
+const invokedDirectly =
+  process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 if (invokedDirectly) {
   main(process.argv).then((code) => {
     process.exitCode = code;
