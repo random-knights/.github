@@ -1,0 +1,58 @@
+# Reusable workflow: FAIL if a repo STANDARD version table has drifted from the
+# one published source, https://standard.rand0m.ai/versions.json.
+#
+# CHECK ONLY, AND THAT IS DELIBERATE. This repo AGENTS.md says, in as many
+# words, that nothing private, internal or secret belongs here and that no
+# workflow here takes a secret. A workflow_call that declares a secret is a
+# workflow here taking a secret, so the half of this system that needs a
+# credential does not live in this repo.
+#
+# The split, and it is better design than the alternative anyway:
+#
+#   here (.github)   the sync SCRIPT, one copy, public, no credential, plus
+#                    this drift check that every repo calls on its pull requests
+#   in standard      the fan-out that mints a GitHub App token and opens the
+#                    pull requests, because "a version moved" is an event that
+#                    happens in standard and the work belongs where the event is
+#
+# So every consumer gets the guarantee (drift cannot merge) with no credential
+# anywhere near this repo.
+
+name: Standard versions
+
+on:
+  workflow_call:
+    inputs:
+      readme:
+        description: Path to the README that carries the STANDARD block
+        required: false
+        default: README.md
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  standard-versions:
+    name: Standard versions
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this repository
+        uses: actions/checkout@v4
+
+      # The script lives in the org .github repo, which is public, so this
+      # checkout needs no token.
+      - name: Check out the sync script
+        uses: actions/checkout@v4
+        with:
+          repository: random-knights/.github
+          path: .standard-sync
+          sparse-checkout: scripts
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Check for drift
+        run: node .standard-sync/scripts/sync-standard-versions.mjs --check "${{ inputs.readme }}"
