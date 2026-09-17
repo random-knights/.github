@@ -100,3 +100,19 @@ jobs:
 
       - name: Cross-repo asset guard + public profile + changed-doc links
         run: node .github/scripts/check-repo.mjs --base "${{ steps.base.outputs.ref }}"
+
+      # The AiEDs block on the public profile page is GENERATED. This repo holds
+      # the generated blocks and the script that places them, so it is the one
+      # repo that can check the block against its own source with no network
+      # call and no credential. A hand edit to the block, or a stale block left
+      # behind after the generator ran, fails here rather than sitting on the
+      # org's front page as a figure nobody can reconcile.
+      - name: The AiEDs block on the profile page has not drifted
+        run: node scripts/sync-aieds.mjs --check --repo organisation --source ./aieds profile/README.md
+
+      - name: Script tests
+        # Name the file rather than the directory: `node --test scripts/` is
+        # resolved as a MODULE by some node builds and dies with
+        # MODULE_NOT_FOUND, which looks like a broken test run rather than a
+        # broken invocation.
+        run: node --test scripts/sync-aieds.test.mjs

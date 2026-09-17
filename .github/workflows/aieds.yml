@@ -1,0 +1,67 @@
+# Reusable workflow: FAIL if a repo's AiEDs disclosure block has drifted from
+# the generated block published in random-knights/.github.
+#
+# CHECK ONLY, AND THAT IS DELIBERATE, for exactly the reason the STANDARD
+# version check is check-only: this repo's AGENTS.md says no workflow here takes
+# a secret, and a workflow_call that declares one would be a workflow here
+# taking a secret. The half that needs a credential (opening the pull requests)
+# lives in random-knights/standard with the fan-out.
+#
+#   here (.github)   the generated blocks, the sync SCRIPT, and this drift
+#                    check that every consumer calls on its pull requests
+#   in standard      the fan-out that mints a GitHub App token and opens the
+#                    pull requests
+#
+# Consumers call it with the repository name the block is filed under, which is
+# the repository's own name, or `organisation` for the org-wide block. It is not
+# called `org`, because org IS a repository here.
+
+name: AiEDs block
+
+on:
+  workflow_call:
+    inputs:
+      repo:
+        description: Block to check, the repository name or `organisation`
+        required: true
+        type: string
+      readme:
+        description: Path to the README that carries the AiEDs block
+        required: false
+        default: README.md
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  aieds:
+    name: AiEDs block
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this repository
+        uses: actions/checkout@v4
+
+      # The script and the generated blocks live in the org .github repo, which
+      # is public, so this checkout needs no token.
+      - name: Check out the sync script and the generated blocks
+        uses: actions/checkout@v4
+        with:
+          repository: random-knights/.github
+          path: .aieds-sync
+          sparse-checkout: |
+            scripts
+            aieds
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Check for drift
+        run: |
+          node .aieds-sync/scripts/sync-aieds.mjs \
+            --check \
+            --repo "${{ inputs.repo }}" \
+            --source .aieds-sync/aieds \
+            "${{ inputs.readme }}"
