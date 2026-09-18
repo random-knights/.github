@@ -9,14 +9,14 @@
 <td align="center" width="25%">
 
 ⚡<br>
-<b>1,013.9</b><br>
+<b>918.8</b><br>
 <sub>kWh</sub>
 
 </td>
 <td align="center" width="25%">
 
 🌫️<br>
-<b>435.0</b><br>
+<b>394.2</b><br>
 <sub>kg CO₂e</sub>
 
 </td>
@@ -24,15 +24,15 @@
 
 🌳<br>
 <sub>Tree-Time</sub><br>
-<b>7,560</b><br>
+<b>6,851</b><br>
 <sub>days</sub>
 
 </td>
 <td align="center" width="25%">
 
 🔢<br>
-<b>5.80 B</b><br>
-<sub>tokens, 114 sessions</sub>
+<b>5.26 B</b><br>
+<sub>tokens, 110 sessions</sub>
 
 </td>
 </tr>
@@ -44,7 +44,7 @@
 measured by a `SessionEnd` hook on the developers' machines and reported under AiEDs section 2.4.1,<br>
 which counts plain input, cache-creation and cache-read tokens all as input at the input coefficient.<br>
 <sub>98.5 percent of our input is cache reads, so that rule decides the answer by 8.4x.
-Weighting a cache read at 0.1 instead gives <b>120.9 kWh, 51.9 kg CO₂e, 901 days of Tree-Time</b>.
+Weighting a cache read at 0.1 instead gives <b>109.6 kWh, 47.0 kg CO₂e, 817 days of Tree-Time</b>.
 That lower figure is <b>a local departure from the standard, not a reading of it</b>. It is
 published because it is what this project offsets against.
 </sub>
@@ -56,11 +56,11 @@ published because it is what this project offsets against.
 
 | Equivalent | Amount | Basis |
 | --- | ---: | --- |
-| Phone charges | 84,490 | 12 Wh per charge |
-| LED bulb hours | 101,388 | 10 W bulb |
-| Laptop hours | 20,278 | 50 W laptop |
-| Driving distance | 2,559 km | 170 g CO₂e per km |
-| Tree-Time | 7,560 days | 21 kg CO₂e per mature tree per year |
+| Phone charges | 76,569 | 12 Wh per charge |
+| LED bulb hours | 91,882 | 10 W bulb |
+| Laptop hours | 18,376 | 50 W laptop |
+| Driving distance | 2,319 km | 170 g CO₂e per km |
+| Tree-Time | 6,851 days | 21 kg CO₂e per mature tree per year |
 
 </details>
 
@@ -69,13 +69,13 @@ published because it is what this project offsets against.
 
 <sub>What the figures above cost, and what it would take to absorb them. Modeled, like everything else here.</sub>
 
-**Energy cost: USD 185.95.** 1,013.9 kWh at USD 0.1834 per kWh, the United States average residential price for June 2026 (18.34 cents per kilowatthour), from <a href="https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_3">U.S. Energy Information Administration, Electric Power Monthly, Table 5.3</a>. The rate is pinned, not looked up at render time, so this figure is reproducible.
+**Energy cost: USD 168.51.** 918.8 kWh at USD 0.1834 per kWh, the United States average residential price for June 2026 (18.34 cents per kilowatthour), from <a href="https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_3">U.S. Energy Information Administration, Electric Power Monthly, Table 5.3</a>. The rate is pinned, not looked up at render time, so this figure is reproducible.
 
-**Modeled provider spend: USD 3,354.46.** The same sessions priced at published API list prices, rates version 2026-09-01, with cache writes at 1.25x and cache reads at 0.1x an input token. It is a MODEL, not a bill: this work runs on a subscription, so the marginal cost was nothing. It covers the 101 of 114 sessions counted above whose model that file prices; the other 13 carry a model nobody has priced and add nothing, rather than an assumed rate.
+**Modeled provider spend: USD 3,122.06.** The same sessions priced at published API list prices, rates version 2026-09-01, with cache writes at 1.25x and cache reads at 0.1x an input token. It is a MODEL, not a bill: this work runs on a subscription, so the marginal cost was nothing. It covers the 97 of 110 sessions counted above whose model that file prices; the other 13 carry a model nobody has priced and add nothing, rather than an assumed rate.
 
-**Trees needed: 21.** 435.0 kg CO₂e divided by 21 kg CO₂e, the yearly capture of one mature tree, rounded up: 21 mature trees would absorb this carbon within one year. Put the other way round, that is the Tree-Time above: one mature tree working for 7,560 days, about 20.7 years.
+**Trees needed: 19.** 394.2 kg CO₂e divided by 21 kg CO₂e, the yearly capture of one mature tree, rounded up: 19 mature trees would absorb this carbon within one year. Put the other way round, that is the Tree-Time above: one mature tree working for 6,851 days, about 18.8 years.
 
-**Offset cost: USD 2.62.** 0.4 tonnes of CO₂e at USD 6.03 per tonne, the REDD+ (Reduced Emissions from Deforestation and Degradation in Developing Countries) average, 2024, <a href="https://www.ecosystemmarketplace.com/publications/2025-state-of-the-voluntary-carbon-market-sovcm/">Ecosystem Marketplace, State of the Voluntary Carbon Market 2025, Table 4</a>. That is a nature-based avoidance and protection, not removals average: this project prices itself against keeping land, animals and trees standing, never against carbon removals or industrial and household offsets. Buying an offset is not the same as not spending the energy, and this line does not claim otherwise.
+**Offset cost: USD 2.38.** 0.4 tonnes of CO₂e at USD 6.03 per tonne, the REDD+ (Reduced Emissions from Deforestation and Degradation in Developing Countries) average, 2024, <a href="https://www.ecosystemmarketplace.com/publications/2025-state-of-the-voluntary-carbon-market-sovcm/">Ecosystem Marketplace, State of the Voluntary Carbon Market 2025, Table 4</a>. That is a nature-based avoidance and protection, not removals average: this project prices itself against keeping land, animals and trees standing, never against carbon removals or industrial and household offsets. Buying an offset is not the same as not spending the energy, and this line does not claim otherwise.
 
 </details>
 

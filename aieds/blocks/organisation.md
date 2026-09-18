@@ -58,10 +58,10 @@ the rest predate that field and are weighted 1.0, so the departure figure is con
 
 | Repository | kWh | kg CO₂e | Tree-Time (days) | tokens | sessions |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| ruok | 1,013.9 | 435.0 | 7,560 | 5.80 B | 114 |
+| ruok | 918.8 | 394.2 | 6,851 | 5.26 B | 110 |
+| xyz | 158.2 | 67.9 | 1,180 | 906 M | 39 |
 | micr0pad | 113.7 | 48.8 | 848 | 650 M | 11 |
-| xyz | 61.4 | 26.3 | 458 | 351 M | 24 |
-| org | 51.2 | 22.0 | 382 | 293 M | 25 |
+| org | 49.7 | 21.3 | 370 | 284 M | 25 |
 | rk_branding | 22.0 | 9.4 | 164 | 126 M | 16 |
 | xyz-docs | 20.2 | 8.7 | 151 | 116 M | 17 |
 | llc | 18.7 | 8.0 | 139 | 107 M | 17 |
@@ -72,7 +72,7 @@ the rest predate that field and are weighted 1.0, so the departure figure is con
 | randomly | 8.2 | 3.5 | 61 | 46.66 M | 18 |
 | rk_agents | 7.5 | 3.2 | 56 | 42.82 M | 10 |
 | rk_ui | 6.4 | 2.7 | 48 | 36.62 M | 7 |
-| abc | 5.8 | 2.5 | 43 | 33.10 M | 8 |
+| abc | 5.6 | 2.4 | 42 | 32.04 M | 8 |
 | xyz-earth | 5.6 | 2.4 | 42 | 31.87 M | 6 |
 | 123 | 4.6 | 2.0 | 34 | 26.32 M | 6 |
 | .github | 1.9 | 0.8 | 14 | 10.74 M | 6 |
