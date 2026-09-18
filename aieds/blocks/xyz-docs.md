@@ -1,0 +1,76 @@
+<div align="center">
+
+## <span style="color:#FF4124"> **Ai Energy Disclosure Standard** </span> ( <span style="color:#FAAFA5"><small> **AiEDs v2.2.0** </small></span> )
+
+### 🌎 <span style="color:#EDC303"> Total **AiEDs** Usage | xyz-docs </span> 🏰
+
+<table>
+<tr>
+<td align="center" width="25%">
+
+⚡<br>
+<b>9.2</b><br>
+<sub>kWh</sub>
+
+</td>
+<td align="center" width="25%">
+
+🌫️<br>
+<b>3.9</b><br>
+<sub>kg CO₂e</sub>
+
+</td>
+<td align="center" width="25%">
+
+🌳<br>
+<b>68</b><br>
+<sub>tree-days</sub>
+
+</td>
+<td align="center" width="25%">
+
+🔢<br>
+<b>52.55 M</b><br>
+<sub>tokens, 2 sessions</sub>
+
+</td>
+</tr>
+</table>
+
+**The figures above are the AiEDs impact of developing this repository,**
+measured by a `SessionEnd` hook on the developers' machines and reported under AiEDs section 2.4.1,<br>
+which counts plain input, cache-creation and cache-read tokens all as input at the input coefficient.<br>
+<sub>98.8 percent of our input is cache reads, so that rule decides the answer by 8.7x.
+Weighting a cache read at 0.1 instead gives <b>1.1 kWh, 0.5 kg CO₂e, 8 tree-days</b>.
+That lower figure is <b>a local departure from the standard, not a reading of it</b>. It is
+published because it is what this project offsets against.
+</sub>
+
+<details>
+<summary><b>Equivalencies</b></summary>
+
+<sub>The same educational comparisons the rand0m.ai app renders, from the same constants: a phone charge is 12 Wh, an LED bulb 10 W, a laptop 50 W, and driving 170 gCO₂e per km. Educational comparisons, not measurements.</sub>
+
+| Equivalent | 9.2 kWh and 3.9 kg CO₂e is about |
+| --- | --- |
+| Phone charges | 765 |
+| LED bulb hours | 918 |
+| Laptop hours | 184 |
+| Driving | 23 km |
+| Tree-Time | 68 tree-days |
+
+</details>
+
+<sub>
+<a href="https://standard.rand0m.ai/aieds/v2/methodology.md">AiEDs Methodology v2.2.0</a>
+by <a href="https://standard.rand0m.ai">Random Knights, LLC</a> (ORCID 0009-0006-5066-1693),
+<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+· `claude` coefficients are <code>class-estimated</code>, the second-weakest provenance tier
+· grid 429 gCO₂e/kWh pinned
+· measured by a `SessionEnd` hook, not modeled from a guess<br>
+Energy and carbon are modeled estimates. Tree-Time and equivalents are educational comparisons.
+</sub>
+
+<sub>Measured by a <code>SessionEnd</code> hook on one developer machine; a second machine's ledger is not yet merged in, over 293 recorded sessions. Generated, never hand-typed.</sub>
+
+</div>
