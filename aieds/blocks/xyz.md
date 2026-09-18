@@ -9,14 +9,14 @@
 <td align="center" width="25%">
 
 ⚡<br>
-<b>760.3</b><br>
+<b>61.4</b><br>
 <sub>kWh</sub>
 
 </td>
 <td align="center" width="25%">
 
 🌫️<br>
-<b>326.2</b><br>
+<b>26.3</b><br>
 <sub>kg CO₂e</sub>
 
 </td>
@@ -24,15 +24,15 @@
 
 🌳<br>
 <sub>Tree-Time</sub><br>
-<b>5,669</b><br>
+<b>458</b><br>
 <sub>days</sub>
 
 </td>
 <td align="center" width="25%">
 
 🔢<br>
-<b>4.35 B</b><br>
-<sub>tokens, 99 sessions</sub>
+<b>351 M</b><br>
+<sub>tokens, 24 sessions</sub>
 
 </td>
 </tr>
@@ -43,8 +43,8 @@
 **The figures above are the AiEDs impact of developing this repository,**
 measured by a `SessionEnd` hook on the developers' machines and reported under AiEDs section 2.4.1,<br>
 which counts plain input, cache-creation and cache-read tokens all as input at the input coefficient.<br>
-<sub>98.5 percent of our input is cache reads, so that rule decides the answer by 8.4x.
-Weighting a cache read at 0.1 instead gives <b>90.5 kWh, 38.8 kg CO₂e, 675 days of Tree-Time</b>.
+<sub>98.0 percent of our input is cache reads, so that rule decides the answer by 8.1x.
+Weighting a cache read at 0.1 instead gives <b>7.5 kWh, 3.2 kg CO₂e, 56 days of Tree-Time</b>.
 That lower figure is <b>a local departure from the standard, not a reading of it</b>. It is
 published because it is what this project offsets against.
 </sub>
@@ -56,11 +56,11 @@ published because it is what this project offsets against.
 
 | Equivalent | Amount | Basis |
 | --- | ---: | --- |
-| Phone charges | 63,357 | 12 Wh per charge |
-| LED bulb hours | 76,028 | 10 W bulb |
-| Laptop hours | 15,206 | 50 W laptop |
-| Driving distance | 1,919 km | 170 g CO₂e per km |
-| Tree-Time | 5,669 days | 21 kg CO₂e per mature tree per year |
+| Phone charges | 5,118 | 12 Wh per charge |
+| LED bulb hours | 6,141 | 10 W bulb |
+| Laptop hours | 1,228 | 50 W laptop |
+| Driving distance | 155 km | 170 g CO₂e per km |
+| Tree-Time | 458 days | 21 kg CO₂e per mature tree per year |
 
 </details>
 
@@ -69,11 +69,13 @@ published because it is what this project offsets against.
 
 <sub>What the figures above cost, and what it would take to absorb them. Modeled, like everything else here.</sub>
 
-**Energy cost: USD 139.44.** 760.3 kWh at USD 0.1834 per kWh, the United States average residential price for June 2026 (18.34 cents per kilowatthour), from <a href="https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_3">U.S. Energy Information Administration, Electric Power Monthly, Table 5.3</a>. The rate is pinned, not looked up at render time, so this figure is reproducible.
+**Energy cost: USD 11.26.** 61.4 kWh at USD 0.1834 per kWh, the United States average residential price for June 2026 (18.34 cents per kilowatthour), from <a href="https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_3">U.S. Energy Information Administration, Electric Power Monthly, Table 5.3</a>. The rate is pinned, not looked up at render time, so this figure is reproducible.
 
-**Modeled provider spend: USD 2,570.99.** The same sessions priced at published API list prices, rates version 2026-09-01, with cache writes at 1.25x and cache reads at 0.1x an input token. It is a MODEL, not a bill: this work runs on a subscription, so the marginal cost was nothing. It covers the 89 of 99 sessions counted above whose model that file prices; the other 10 carry a model nobody has priced and add nothing, rather than an assumed rate.
+**Modeled provider spend: USD 190.23.** The same sessions priced at published API list prices, rates version 2026-09-01, with cache writes at 1.25x and cache reads at 0.1x an input token. It is a MODEL, not a bill: this work runs on a subscription, so the marginal cost was nothing. It covers the 20 of 24 sessions counted above whose model that file prices; the other 4 carry a model nobody has priced and add nothing, rather than an assumed rate.
 
-**Trees needed: 16.** 326.2 kg CO₂e divided by 21 kg CO₂e, the yearly capture of one mature tree, rounded up: 16 mature trees would absorb this carbon within one year. Put the other way round, that is the Tree-Time above: one mature tree working for 5,669 days, about 15.5 years.
+**Trees needed: 2.** 26.3 kg CO₂e divided by 21 kg CO₂e, the yearly capture of one mature tree, rounded up: 2 mature trees would absorb this carbon within one year. Put the other way round, that is the Tree-Time above: one mature tree working for 458 days, about 1.3 years.
+
+**Offset cost: USD 0.16.** 0.0 tonnes of CO₂e at USD 6.03 per tonne, the REDD+ (Reduced Emissions from Deforestation and Degradation in Developing Countries) average, 2024, <a href="https://www.ecosystemmarketplace.com/publications/2025-state-of-the-voluntary-carbon-market-sovcm/">Ecosystem Marketplace, State of the Voluntary Carbon Market 2025, Table 4</a>. That is a nature-based avoidance and protection, not removals average: this project prices itself against keeping land, animals and trees standing, never against carbon removals or industrial and household offsets. Buying an offset is not the same as not spending the energy, and this line does not claim otherwise.
 
 </details>
 
@@ -87,6 +89,6 @@ by <a href="https://standard.rand0m.ai">Random Knights, LLC</a> (ORCID 0009-0006
 Energy and carbon are modeled estimates. Tree-Time and equivalents are educational comparisons.
 </sub>
 
-<sub>Measured by a <code>SessionEnd</code> hook on one developer machine; a second machine's ledger is not yet merged in, over 293 recorded sessions covering 2026-07-27 to 2026-09-13, which is every session the hook recorded and no session it did not. Two attribution bases are published: BY LANE LEDGER in the table above, and BY WORKING DIRECTORY, the stricter view, in <code>aieds-readme.json</code>. The organisation totals are the same under both. Generated, never hand-typed.</sub>
+<sub>Measured by a <code>SessionEnd</code> hook on one developer machine; a second machine's ledger is not yet merged in, over 293 recorded sessions covering 2026-07-27 to 2026-09-13, which is every session the hook recorded and no session it did not. Two attribution bases are published: BY LANE LEDGER in the table above, and BY WORKING DIRECTORY, the stricter view, in <code>aieds-readme.json</code>. The organization totals are the same under both. Both bases are DATE AWARE: the application repository was named <code>xyz</code> until 2026-08-19 and is named <code>ruok</code> now, so a row written before that day is placed on the repository the name meant then. Any offset figure is a nature-based average, not removals. Generated, never hand-typed.</sub>
 
 </div>

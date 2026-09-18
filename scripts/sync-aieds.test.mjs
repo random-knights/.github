@@ -50,9 +50,9 @@ test("a repository with no generated block gets a sentence, never zeroes", async
   assert.ok(!block.includes("0.0"));
 });
 
-test("the organisation block is NOT the org repository's block", () => {
+test("the organization block is NOT the org repository's block", () => {
   // org is a repository in this organisation (randomknights.org). Keying the
-  // organisation block as "org" published one repository's figures as the whole
+  // organization block as "org" published one repository's figures as the whole
   // company's, on the public front page, with nothing red anywhere.
   assert.notEqual(ORG_KEY, "org");
   const organisation = readFileSync(join(AIEDS, "blocks", "organisation.md"), "utf8");
@@ -73,7 +73,7 @@ test("every generated block says whose development it measures", () => {
   const organisation = readFileSync(join(AIEDS, "blocks", "organisation.md"), "utf8");
   assert.match(
     organisation,
-    /impact of developing every repository in this organisation/,
+    /impact of developing every repository in this organization/,
   );
   for (const name of ["ruok", "xyz", "micr0pad"]) {
     const block = readFileSync(join(AIEDS, "blocks", `${name}.md`), "utf8");
