@@ -65,9 +65,9 @@ Score methodology: [xyz-earth Discussion #1](https://github.com/random-knights/x
 | Layer | Data source | Refresh cadence | License / terms |
 | --- | --- | --- | --- |
 | **Wind / temperature / storms** | NOAA / NCEP GFS (global forecast) | ~6 h | Public domain (US government) |
-| **Air quality** | CAMS — Copernicus Atmosphere Monitoring Service | ~12 h | [Copernicus licence](https://ads.atmosphere.copernicus.eu/licences/licence-to-use-copernicus-products/) |
+| **Air quality** | CAMS — Copernicus Atmosphere Monitoring Service | ~12 h | [Copernicus license](https://ads.atmosphere.copernicus.eu/licences/licence-to-use-copernicus-products/) |
 | **Sea-surface temperature** | NOAA OISST / Open-Meteo Marine | Daily | NOAA open data |
-| **Ocean currents** | Copernicus Marine | Daily | [Marine Service licence](https://marine.copernicus.eu/user-corner/service-commitments-and-licence) |
+| **Ocean currents** | Copernicus Marine | Daily | [Marine Service license](https://marine.copernicus.eu/user-corner/service-commitments-and-licence) |
 | **Active fire / hotspots** | NASA FIRMS | ~3 h (VIIRS) | Public domain (US government) |
 | **Forest cover / land** | GLAD Hansen Global Forest Watch | Annual | CC BY 4.0 |
 | **Biodiversity proxy** | GBIF occurrence data | Periodic | CC BY 4.0 |
