@@ -40,7 +40,7 @@
 
 <sub>Tree-Time is the time one mature tree (two or more years of growth) needs to capture this carbon at its yearly rate, 21 kg CO₂e per year; shown in days.</sub>
 
-**The figures above are the AiEDs impact of developing every repository in this organisation,**
+**The figures above are the AiEDs impact of developing every repository in this organization,**
 measured by a `SessionEnd` hook on the developers' machines and reported under AiEDs section 2.4.1,<br>
 which counts plain input, cache-creation and cache-read tokens all as input at the input coefficient.<br>
 <sub>98.3 percent of our input is cache reads, so that rule decides the answer by 1.8x.
@@ -54,14 +54,14 @@ the rest predate that field and are weighted 1.0, so the departure figure is con
 <details>
 <summary><b>By repository</b></summary>
 
-<sub>Attributed by the LANE LEDGER: a session that ran inside a repository is placed there, and a session that ran in the workspace root or a scratchpad is spread across the repositories its lane events name inside that session's window, one share per event. 70 of 293 recorded sessions were spread this way; 58 of them predate the recorded session duration and use a six-hour look-back, which is an assumption and is stated here rather than hidden. 160 sessions could be placed on no repository at all and are in the organisation total above only, so these rows do not add up to it. The strict by-directory figures are published beside this block in <code>aieds-readme.json</code>.</sub>
+<sub>Attributed by the LANE LEDGER: a session that ran inside a repository is placed there, and a session that ran in the workspace root or a scratchpad is spread across the repositories its lane events name inside that session's window, one share per event. 70 of 293 recorded sessions were spread this way; 58 of them predate the recorded session duration and use a six-hour look-back, which is an assumption and is stated here rather than hidden. 160 sessions could be placed on no repository at all and are in the organization total above only, so these rows do not add up to it. The strict by-directory figures are published beside this block in <code>aieds-readme.json</code>.</sub>
 
 | Repository | kWh | kg CO₂e | Tree-Time (days) | tokens | sessions |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| xyz | 760.3 | 326.2 | 5,669 | 4.35 B | 99 |
-| ruok | 316.7 | 135.9 | 2,362 | 1.81 B | 50 |
+| ruok | 1,013.9 | 435.0 | 7,560 | 5.80 B | 114 |
 | micr0pad | 113.7 | 48.8 | 848 | 650 M | 11 |
-| org | 49.7 | 21.3 | 370 | 284 M | 25 |
+| xyz | 61.4 | 26.3 | 458 | 351 M | 24 |
+| org | 51.2 | 22.0 | 382 | 293 M | 25 |
 | rk_branding | 22.0 | 9.4 | 164 | 126 M | 16 |
 | xyz-docs | 20.2 | 8.7 | 151 | 116 M | 17 |
 | llc | 18.7 | 8.0 | 139 | 107 M | 17 |
@@ -72,7 +72,7 @@ the rest predate that field and are weighted 1.0, so the departure figure is con
 | randomly | 8.2 | 3.5 | 61 | 46.66 M | 18 |
 | rk_agents | 7.5 | 3.2 | 56 | 42.82 M | 10 |
 | rk_ui | 6.4 | 2.7 | 48 | 36.62 M | 7 |
-| abc | 5.6 | 2.4 | 42 | 32.04 M | 8 |
+| abc | 5.8 | 2.5 | 43 | 33.10 M | 8 |
 | xyz-earth | 5.6 | 2.4 | 42 | 31.87 M | 6 |
 | 123 | 4.6 | 2.0 | 34 | 26.32 M | 6 |
 | .github | 1.9 | 0.8 | 14 | 10.74 M | 6 |
@@ -110,6 +110,8 @@ the rest predate that field and are weighted 1.0, so the departure figure is con
 
 **Trees needed: 67.** 1,395.4 kg CO₂e divided by 21 kg CO₂e, the yearly capture of one mature tree, rounded up: 67 mature trees would absorb this carbon within one year. Put the other way round, that is the Tree-Time above: one mature tree working for 24,254 days, about 66.4 years.
 
+**Offset cost: USD 8.41.** 1.4 tonnes of CO₂e at USD 6.03 per tonne, the REDD+ (Reduced Emissions from Deforestation and Degradation in Developing Countries) average, 2024, <a href="https://www.ecosystemmarketplace.com/publications/2025-state-of-the-voluntary-carbon-market-sovcm/">Ecosystem Marketplace, State of the Voluntary Carbon Market 2025, Table 4</a>. That is a nature-based avoidance and protection, not removals average: this project prices itself against keeping land, animals and trees standing, never against carbon removals or industrial and household offsets. Buying an offset is not the same as not spending the energy, and this line does not claim otherwise.
+
 </details>
 
 <sub>
@@ -122,6 +124,6 @@ by <a href="https://standard.rand0m.ai">Random Knights, LLC</a> (ORCID 0009-0006
 Energy and carbon are modeled estimates. Tree-Time and equivalents are educational comparisons.
 </sub>
 
-<sub>Measured by a <code>SessionEnd</code> hook on one developer machine; a second machine's ledger is not yet merged in, over 293 recorded sessions covering 2026-07-27 to 2026-09-13, which is every session the hook recorded and no session it did not. Two attribution bases are published: BY LANE LEDGER in the table above, and BY WORKING DIRECTORY, the stricter view, in <code>aieds-readme.json</code>. The organisation totals are the same under both. Generated, never hand-typed.</sub>
+<sub>Measured by a <code>SessionEnd</code> hook on one developer machine; a second machine's ledger is not yet merged in, over 293 recorded sessions covering 2026-07-27 to 2026-09-13, which is every session the hook recorded and no session it did not. Two attribution bases are published: BY LANE LEDGER in the table above, and BY WORKING DIRECTORY, the stricter view, in <code>aieds-readme.json</code>. The organization totals are the same under both. Both bases are DATE AWARE: the application repository was named <code>xyz</code> until 2026-08-19 and is named <code>ruok</code> now, so a row written before that day is placed on the repository the name meant then. Any offset figure is a nature-based average, not removals. Generated, never hand-typed.</sub>
 
 </div>
