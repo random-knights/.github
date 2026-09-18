@@ -66,8 +66,8 @@ the rest predate that field and are weighted 1.0, so the departure figure is con
 | xyz-docs | 20.2 | 8.7 | 151 | 116 M | 17 |
 | llc | 18.7 | 8.0 | 139 | 107 M | 17 |
 | xyz-tools | 15.6 | 6.7 | 116 | 89.34 M | 8 |
+| standard | 12.6 | 5.4 | 94 | 71.84 M | 13 |
 | knightly | 11.6 | 5.0 | 87 | 66.66 M | 18 |
-| standard | 10.0 | 4.3 | 74 | 56.64 M | 8 |
 | r1-01 | 9.4 | 4.0 | 70 | 53.77 M | 9 |
 | randomly | 8.2 | 3.5 | 61 | 46.66 M | 18 |
 | rk_agents | 7.5 | 3.2 | 56 | 42.82 M | 10 |
@@ -75,7 +75,6 @@ the rest predate that field and are weighted 1.0, so the departure figure is con
 | abc | 5.6 | 2.4 | 42 | 32.04 M | 8 |
 | xyz-earth | 5.6 | 2.4 | 42 | 31.87 M | 6 |
 | 123 | 4.6 | 2.0 | 34 | 26.32 M | 6 |
-| aieds | 2.7 | 1.1 | 20 | 15.20 M | 8 |
 | .github | 1.9 | 0.8 | 14 | 10.74 M | 6 |
 | rk_ai | 1.9 | 0.8 | 14 | 10.74 M | 6 |
 | rk_core | 0.9 | 0.4 | 7 | 5.37 M | 6 |
