@@ -48,7 +48,7 @@
     "gpt-5.5": 129,
     "claude-fable-5-1": 12
   },
-  "laneEvents": 1965,
+  "laneEvents": 1972,
   "laneRowsSpread": 70,
   "laneRowsUnmatched": 31,
   "laneWindowsFromDuration": 12,
@@ -284,6 +284,29 @@
         "drivingKm": 39.39349471021904
       }
     },
+    "standard": {
+      "breakdownShare": 1,
+      "kwh": 12.608432441041975,
+      "kgCo2e": 5.4090175172070065,
+      "treeDays": 94.01387589431228,
+      "tokens": 71838650.7048992,
+      "sessions": 13,
+      "cacheReadShare": 0.975464839615737,
+      "costUsd": 30.045060274886385,
+      "pricedRows": 8,
+      "departure": {
+        "kwh": 1.6662721366859723,
+        "kgCo2e": 0.714830746638282,
+        "treeDays": 12.424439167760623,
+        "ratio": 7.566850674295454
+      },
+      "equivalents": {
+        "phoneCharges": 1050.7027034201647,
+        "ledBulbHours": 1260.8432441041975,
+        "laptopHours": 252.1686488208395,
+        "drivingKm": 31.817750101217687
+      }
+    },
     "knightly": {
       "breakdownShare": 1,
       "kwh": 11.645617105975115,
@@ -305,29 +328,6 @@
         "ledBulbHours": 1164.5617105975114,
         "laptopHours": 232.91234211950228,
         "drivingKm": 29.38805728507838
-      }
-    },
-    "standard": {
-      "breakdownShare": 1,
-      "kwh": 9.953419619327569,
-      "kgCo2e": 4.270017016691527,
-      "treeDays": 74.21696243297177,
-      "tokens": 56635747.81033212,
-      "sessions": 8,
-      "cacheReadShare": 0.9732582138000864,
-      "costUsd": 21.11639161582601,
-      "pricedRows": 4,
-      "departure": {
-        "kwh": 1.3502858696673952,
-        "kgCo2e": 0.5792726380873126,
-        "treeDays": 10.068310138184243,
-        "ratio": 7.371342500813782
-      },
-      "equivalents": {
-        "phoneCharges": 829.4516349439641,
-        "ledBulbHours": 995.3419619327569,
-        "laptopHours": 199.06839238655138,
-        "drivingKm": 25.11774715700898
       }
     },
     "r1-01": {
@@ -466,29 +466,6 @@
         "ledBulbHours": 556.8998328901339,
         "laptopHours": 111.37996657802678,
         "drivingKm": 14.053531077051026
-      }
-    },
-    "aieds": {
-      "breakdownShare": 1,
-      "kwh": 2.6550128217144073,
-      "kgCo2e": 1.1390005005154809,
-      "treeDays": 19.7969134613405,
-      "tokens": 15202902.89456709,
-      "sessions": 8,
-      "cacheReadShare": 0.9836677996295811,
-      "costUsd": 8.928668659060373,
-      "pricedRows": 5,
-      "departure": {
-        "kwh": 0.3159862670185771,
-        "kgCo2e": 0.13555810855096956,
-        "treeDays": 2.3561290295763757,
-        "ratio": 8.40230446330858
-      },
-      "equivalents": {
-        "phoneCharges": 221.25106847620063,
-        "ledBulbHours": 265.5012821714407,
-        "laptopHours": 53.10025643428815,
-        "drivingKm": 6.700002944208711
       }
     },
     ".github": {
