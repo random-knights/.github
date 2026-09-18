@@ -92,3 +92,40 @@ test("the generated data records the ledgers it consumed, with no local paths", 
   assert.equal(typeof data.rowsWithoutCwd, "number");
   assert.equal(typeof data.generatedAt, "string");
 });
+
+test("RK-104: the published blocks carry Tree-Time, Equivalencies and Offset", () => {
+  // A drift guard on the SHAPE, not on a figure. The sync script never renders,
+  // so if the generator's output ever loses one of these rows this repository is
+  // where it would be published without anybody noticing.
+  for (const name of [ORG_KEY, "ruok", "xyz"]) {
+    const block = readFileSync(join(AIEDS, "blocks", `${name}.md`), "utf8");
+    assert.match(block, /<sub>Tree-Time<\/sub>/, `${name}: no Tree-Time label`);
+    assert.match(block, /<sub>days<\/sub>/, `${name}: Tree-Time has no unit`);
+    assert.ok(!/\btree-days\b/.test(block), `${name}: still says tree-days`);
+    assert.match(block, /Tree-Time is the time one mature tree/, `${name}: no definition`);
+    assert.match(block, /\| Equivalent \| Amount \| Basis \|/, `${name}: Equivalencies is not a table`);
+    assert.match(block, /<summary><b>Offset<\/b><\/summary>/, `${name}: no Offset row`);
+    assert.match(block, /\*\*Energy cost:/, `${name}: Offset does not lead with the energy cost`);
+    assert.match(block, /eia\.gov/, `${name}: the electricity rate has no source`);
+  }
+});
+
+test("RK-104: the fallback sentence explains why an absence is legitimate", async () => {
+  const block = await fetchBlock(AIEDS, "a-repo-that-has-never-been-worked-on");
+  assert.match(block, /absence of measurement, not a claim that the work cost nothing/);
+});
+
+test("RK-104: the data names both attribution bases", () => {
+  const data = JSON.parse(readFileSync(join(AIEDS, "aieds-readme.json"), "utf8"));
+  assert.equal(data.attributionBasis, "lane-ledger");
+  assert.ok(Object.keys(data.repos).length > 0, "no repositories on the published basis");
+  assert.ok(
+    Object.keys(data.reposByDirectory).length > 0,
+    "the strict by-directory view must be kept, so the two can be compared",
+  );
+  // Every repository the strict basis knows about must survive into the
+  // published one. The lane basis adds, it never takes away.
+  for (const repo of Object.keys(data.reposByDirectory)) {
+    assert.ok(data.repos[repo], `${repo} is in the strict view but not the published one`);
+  }
+});
