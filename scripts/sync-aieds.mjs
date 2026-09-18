@@ -54,6 +54,13 @@ const DEFAULT_SOURCE =
 // The block a repository carries when the hook has attributed no session to it.
 // It is a sentence, never a table of zeroes: a zero figure is a claim that the
 // work cost nothing, and an absence of measurement is not that claim.
+//
+// It also says WHY an absence is legitimate, because the first question a
+// reader asks of a blank disclosure is whether somebody forgot. The AiEDs
+// ledger begins 2026-07-27, so a repository whose work predates the hook has no
+// row and never will. The generator emits the same sentence for the same
+// reason; the two must not drift, and a test in the generator's suite and the
+// one below both read it.
 export function noSessionsBlock(repo) {
   const title = repo === ORG_KEY ? "Random Knights, LLC" : repo;
   return [
@@ -63,7 +70,7 @@ export function noSessionsBlock(repo) {
     "",
     `### <span style="color:#EDC303"> Total **AiEDs** Usage | ${title} </span>`,
     "",
-    `**No sessions recorded yet for ${title}.** The <code>SessionEnd</code> hook has not attributed any development session to this repository, so there is no figure to publish. This block fills in on the next generated sync.`,
+    `**No sessions recorded yet for ${title}.** The <code>SessionEnd</code> hook has not attributed any development session to this repository, so there is no figure to publish. A repository created before the hook began recording, or worked on only from a machine whose ledger is not merged in here, will read this way and that is an absence of measurement, not a claim that the work cost nothing. This block fills in on the next generated sync.`,
     "",
     "</div>",
   ].join("\n");
