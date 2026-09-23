@@ -97,8 +97,8 @@ gantt
 title Future Proofing
 dateFormat YYYY-MM
 section 2026
-✌️ :a1, 2026-06, 60d
-❤️ :active, a1, 2026-04, 183d
+✌️ :a1, 2026-01, 365d
+❤️ :active, a1, 2026-01, 365d
 🌎 :crit, a1, 2026-01, 365d
 ```
 
