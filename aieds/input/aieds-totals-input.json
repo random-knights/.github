@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-02T17:03:15.150Z",
+  "methodology": {
+    "name": "AiEDs",
+    "version": "2.5.0",
+    "impactModelVersion": "v2",
+    "countRule": "2.4.1 plain input, cache creation and cache reads all counted at the input rate",
+    "url": "https://standard.rand0m.ai/aieds/v2/methodology.md"
+  },
+  "coverage": {
+    "from": "2026-07-11",
+    "to": "2026-11-02",
+    "machines": 1,
+    "sessions": 246
+  },
+  "company": {
+    "tokens": 39814197485.000015,
+    "energyKWh": 6919.122174371989,
+    "gCO2e": 2968303.412805592,
+    "treeTimeMinutes": 74292393.9890771,
+    "water": {
+      "siteL": 2490.8839827739157,
+      "gridL": 31274.432228161386,
+      "waterL": 33765.3162109353,
+      "rangeL": {
+        "low": 12246.84624863842,
+        "high": 78186.08057040349
+      },
+      "gridBasis": "US average"
+    },
+    "confidence": "low"
+  },
+  "sites": {
+    "rand0m": {
+      "tokens": 9970020019.059526,
+      "energyKWh": 1743.2913318973576,
+      "gCO2e": 747871.9813839663,
+      "treeTimeMinutes": 18718167.305495843,
+      "water": {
+        "siteL": 627.5848794830487,
+        "gridL": 7879.676820176056,
+        "waterL": 8507.261699659104,
+        "rangeL": {
+          "low": 3085.625657458323,
+          "high": 19699.192050440142
+        },
+        "gridBasis": "US average"
+      },
+      "confidence": "low"
+    },
+    "randomly": {
+      "tokens": 706250134.1928571,
+      "energyKWh": 123.33406717075714,
+      "gCO2e": 52910.3148162548,
+      "treeTimeMinutes": 1324269.5936868344,
+      "water": {
+        "siteL": 44.400264181472565,
+        "gridL": 557.4699836118222,
+        "waterL": 601.8702477932948,
+        "rangeL": {
+          "low": 218.30129889224014,
+          "high": 1393.6749590295558
+        },
+        "gridBasis": "US average"
+      },
+      "confidence": "low"
+    },
+    "knightly": {
+      "tokens": 776581156.6928573,
+      "energyKWh": 135.59038896475718,
+      "gCO2e": 58168.27686588081,
+      "treeTimeMinutes": 1455868.872414617,
+      "water": {
+        "siteL": 48.812540027312586,
+        "gridL": 612.8685581207025,
+        "waterL": 661.681098148015,
+        "rangeL": {
+          "low": 239.9949884676202,
+          "high": 1532.1713953017563
+        },
+        "gridBasis": "US average"
+      },
+      "confidence": "low"
+    },
+    "xyz": {
+      "tokens": 984925185.7095237,
+      "energyKWh": 171.91432655565714,
+      "gCO2e": 73751.24609237691,
+      "treeTimeMinutes": 1845888.330769205,
+      "water": {
+        "siteL": 61.889157560036566,
+        "gridL": 777.0527560315702,
+        "waterL": 838.9419135916067,
+        "rangeL": {
+          "low": 304.28835800351317,
+          "high": 1942.6318900789258
+        },
+        "gridBasis": "US average"
+      },
+      "confidence": "low"
+    },
+    "llc": {
+      "tokens": 136492380.52619046,
+      "energyKWh": 23.82899707925714,
+      "gCO2e": 10222.63974700131,
+      "treeTimeMinutes": 255858.06909637566,
+      "water": {
+        "siteL": 8.57843894853257,
+        "gridL": 107.70706679824225,
+        "waterL": 116.28550574677482,
+        "rangeL": {
+          "low": 42.17732483028514,
+          "high": 269.2676669956057
+        },
+        "gridBasis": "US average"
+      },
+      "confidence": "low"
+    },
+    "org": {
+      "tokens": 351809268.27619046,
+      "energyKWh": 61.447474135257146,
+      "gCO2e": 26360.96640402532,
+      "treeTimeMinutes": 659777.3305693194,
+      "water": {
+        "siteL": 22.121090688692572,
+        "gridL": 277.7425830913623,
+        "waterL": 299.86367378005485,
+        "rangeL": {
+          "low": 108.76202921940515,
+          "high": 694.3564577284058
+        },
+        "gridBasis": "US average"
+      },
+      "confidence": "low"
+    }
+  }
+}

@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-02T17:03:15.150Z",
+  "asOf": "2026-11-02",
+  "methodology": {
+    "name": "AiEDs",
+    "version": "2.5.0",
+    "impactModelVersion": "v2",
+    "countRule": "2.4.1 plain input, cache creation and cache reads all counted at the input rate",
+    "url": "https://standard.rand0m.ai/aieds/v2/methodology.md"
+  },
+  "meaning": "AI agent sessions that built these sites",
+  "coverage": {
+    "from": "2026-07-11",
+    "to": "2026-11-02",
+    "machines": 1,
+    "sessionsRecorded": 246,
+    "knownMissing": [
+      "other computers",
+      "sessions not yet recorded"
+    ]
+  },
+  "company": {
+    "tokens": 39814197485,
+    "energyKWh": 6919.122174,
+    "gCO2e": 2968303.413,
+    "treeTimeMinutes": 74292393.989,
+    "water": {
+      "waterL": 33765.3162,
+      "rangeL": {
+        "low": 12246.8462,
+        "high": 78186.0806
+      },
+      "gridBasis": "US average"
+    },
+    "confidence": "low"
+  },
+  "sites": {
+    "rand0m": {
+      "tokens": 9970020019,
+      "energyKWh": 1743.291332,
+      "gCO2e": 747871.981,
+      "treeTimeMinutes": 18718167.305,
+      "water": {
+        "waterL": 8507.2617,
+        "rangeL": {
+          "low": 3085.6257,
+          "high": 19699.1921
+        },
+        "gridBasis": "US average"
+      },
+      "confidence": "low"
+    },
+    "randomly": {
+      "tokens": 706250134,
+      "energyKWh": 123.334067,
+      "gCO2e": 52910.315,
+      "treeTimeMinutes": 1324269.594,
+      "water": {
+        "waterL": 601.8702,
+        "rangeL": {
+          "low": 218.3013,
+          "high": 1393.675
+        },
+        "gridBasis": "US average"
+      },
+      "confidence": "low"
+    },
+    "knightly": {
+      "tokens": 776581157,
+      "energyKWh": 135.590389,
+      "gCO2e": 58168.277,
+      "treeTimeMinutes": 1455868.872,
+      "water": {
+        "waterL": 661.6811,
+        "rangeL": {
+          "low": 239.995,
+          "high": 1532.1714
+        },
+        "gridBasis": "US average"
+      },
+      "confidence": "low"
+    },
+    "xyz": {
+      "tokens": 984925186,
+      "energyKWh": 171.914327,
+      "gCO2e": 73751.246,
+      "treeTimeMinutes": 1845888.331,
+      "water": {
+        "waterL": 838.9419,
+        "rangeL": {
+          "low": 304.2884,
+          "high": 1942.6319
+        },
+        "gridBasis": "US average"
+      },
+      "confidence": "low"
+    },
+    "llc": {
+      "tokens": 136492381,
+      "energyKWh": 23.828997,
+      "gCO2e": 10222.64,
+      "treeTimeMinutes": 255858.069,
+      "water": {
+        "waterL": 116.2855,
+        "rangeL": {
+          "low": 42.1773,
+          "high": 269.2677
+        },
+        "gridBasis": "US average"
+      },
+      "confidence": "low"
+    },
+    "org": {
+      "tokens": 351809268,
+      "energyKWh": 61.447474,
+      "gCO2e": 26360.966,
+      "treeTimeMinutes": 659777.331,
+      "water": {
+        "waterL": 299.8637,
+        "rangeL": {
+          "low": 108.762,
+          "high": 694.3565
+        },
+        "gridBasis": "US average"
+      },
+      "confidence": "low"
+    }
+  },
+  "sharedUnplaced": {
+    "tokens": 26888119341,
+    "energyKWh": 4659.715589,
+    "gCO2e": 1999017.987,
+    "treeTimeMinutes": 50032564.487,
+    "water": {
+      "waterL": 22739.4121,
+      "rangeL": {
+        "low": 8247.6966,
+        "high": 52654.7862
+      },
+      "gridBasis": "US average"
+    },
+    "confidence": "low"
+  },
+  "sharedUnplacedMeaning": "Everything that is not one of the six sites, such as other repositories, shared tooling and work not placed on a site. Sites plus this row equal the company total.",
+  "display": {
+    "company": {
+      "tokens": {
+        "value": "40",
+        "unit": "billion",
+        "text": "about 40 billion"
+      },
+      "energy": {
+        "value": "6.9",
+        "unit": "MWh",
+        "text": "about 6.9 MWh"
+      },
+      "carbon": {
+        "value": "3",
+        "unit": "t CO2e",
+        "text": "about 3 t CO2e"
+      },
+      "treeTime": {
+        "value": "140",
+        "unit": "years",
+        "text": "about 140 years (1 tree)",
+        "note": "(1 tree)"
+      },
+      "water": {
+        "value": "34,000",
+        "unit": "L",
+        "low": "12,000",
+        "high": "78,000",
+        "basis": "US average",
+        "text": "about 34,000 L (12,000 to 78,000)"
+      }
+    },
+    "sites": {
+      "rand0m": {
+        "tokens": {
+          "value": "10",
+          "unit": "billion",
+          "text": "about 10 billion"
+        },
+        "energy": {
+          "value": "1.7",
+          "unit": "MWh",
+          "text": "about 1.7 MWh"
+        },
+        "carbon": {
+          "value": "750",
+          "unit": "kg CO2e",
+          "text": "about 750 kg CO2e"
+        },
+        "treeTime": {
+          "value": "36",
+          "unit": "years",
+          "text": "about 36 years (1 tree)",
+          "note": "(1 tree)"
+        },
+        "water": {
+          "value": "8,500",
+          "unit": "L",
+          "low": "3,100",
+          "high": "20,000",
+          "basis": "US average",
+          "text": "about 8,500 L (3,100 to 20,000)"
+        }
+      },
+      "randomly": {
+        "tokens": {
+          "value": "710",
+          "unit": "million",
+          "text": "about 710 million"
+        },
+        "energy": {
+          "value": "120",
+          "unit": "kWh",
+          "text": "about 120 kWh"
+        },
+        "carbon": {
+          "value": "53",
+          "unit": "kg CO2e",
+          "text": "about 53 kg CO2e"
+        },
+        "treeTime": {
+          "value": "2.5",
+          "unit": "years",
+          "text": "about 2.5 years (1 tree)",
+          "note": "(1 tree)"
+        },
+        "water": {
+          "value": "600",
+          "unit": "L",
+          "low": "220",
+          "high": "1,400",
+          "basis": "US average",
+          "text": "about 600 L (220 to 1,400)"
+        }
+      },
+      "knightly": {
+        "tokens": {
+          "value": "780",
+          "unit": "million",
+          "text": "about 780 million"
+        },
+        "energy": {
+          "value": "140",
+          "unit": "kWh",
+          "text": "about 140 kWh"
+        },
+        "carbon": {
+          "value": "58",
+          "unit": "kg CO2e",
+          "text": "about 58 kg CO2e"
+        },
+        "treeTime": {
+          "value": "2.8",
+          "unit": "years",
+          "text": "about 2.8 years (1 tree)",
+          "note": "(1 tree)"
+        },
+        "water": {
+          "value": "660",
+          "unit": "L",
+          "low": "240",
+          "high": "1,500",
+          "basis": "US average",
+          "text": "about 660 L (240 to 1,500)"
+        }
+      },
+      "xyz": {
+        "tokens": {
+          "value": "980",
+          "unit": "million",
+          "text": "about 980 million"
+        },
+        "energy": {
+          "value": "170",
+          "unit": "kWh",
+          "text": "about 170 kWh"
+        },
+        "carbon": {
+          "value": "74",
+          "unit": "kg CO2e",
+          "text": "about 74 kg CO2e"
+        },
+        "treeTime": {
+          "value": "3.5",
+          "unit": "years",
+          "text": "about 3.5 years (1 tree)",
+          "note": "(1 tree)"
+        },
+        "water": {
+          "value": "840",
+          "unit": "L",
+          "low": "300",
+          "high": "1,900",
+          "basis": "US average",
+          "text": "about 840 L (300 to 1,900)"
+        }
+      },
+      "llc": {
+        "tokens": {
+          "value": "140",
+          "unit": "million",
+          "text": "about 140 million"
+        },
+        "energy": {
+          "value": "24",
+          "unit": "kWh",
+          "text": "about 24 kWh"
+        },
+        "carbon": {
+          "value": "10",
+          "unit": "kg CO2e",
+          "text": "about 10 kg CO2e"
+        },
+        "treeTime": {
+          "value": "180",
+          "unit": "days",
+          "text": "about 180 days (1 tree)",
+          "note": "(1 tree)"
+        },
+        "water": {
+          "value": "120",
+          "unit": "L",
+          "low": "42",
+          "high": "270",
+          "basis": "US average",
+          "text": "about 120 L (42 to 270)"
+        }
+      },
+      "org": {
+        "tokens": {
+          "value": "350",
+          "unit": "million",
+          "text": "about 350 million"
+        },
+        "energy": {
+          "value": "61",
+          "unit": "kWh",
+          "text": "about 61 kWh"
+        },
+        "carbon": {
+          "value": "26",
+          "unit": "kg CO2e",
+          "text": "about 26 kg CO2e"
+        },
+        "treeTime": {
+          "value": "1.3",
+          "unit": "years",
+          "text": "about 1.3 years (1 tree)",
+          "note": "(1 tree)"
+        },
+        "water": {
+          "value": "300",
+          "unit": "L",
+          "low": "110",
+          "high": "690",
+          "basis": "US average",
+          "text": "about 300 L (110 to 690)"
+        }
+      }
+    },
+    "sharedUnplaced": {
+      "tokens": {
+        "value": "27",
+        "unit": "billion",
+        "text": "about 27 billion"
+      },
+      "energy": {
+        "value": "4.7",
+        "unit": "MWh",
+        "text": "about 4.7 MWh"
+      },
+      "carbon": {
+        "value": "2",
+        "unit": "t CO2e",
+        "text": "about 2 t CO2e"
+      },
+      "treeTime": {
+        "value": "95",
+        "unit": "years",
+        "text": "about 95 years (1 tree)",
+        "note": "(1 tree)"
+      },
+      "water": {
+        "value": "23,000",
+        "unit": "L",
+        "low": "8,200",
+        "high": "53,000",
+        "basis": "US average",
+        "text": "about 23,000 L (8,200 to 53,000)"
+      }
+    }
+  },
+  "requiredSentences": [
+    "Energy and carbon are modeled estimates.",
+    "Tree-Time and equivalents are educational comparisons.",
+    "Water is a modeled estimate."
+  ]
+}
