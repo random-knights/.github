@@ -1,0 +1,450 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/random-knights/.github/main/aieds/aieds-totals.schema.json",
+  "title": "AiEDs totals (counts only)",
+  "description": "Closed key list at every level. Any other key is invalid. A site with no placed work has null values, never zero.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "asOf",
+    "methodology",
+    "meaning",
+    "coverage",
+    "company",
+    "sites",
+    "sharedUnplaced",
+    "sharedUnplacedMeaning",
+    "display",
+    "requiredSentences"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "generatedAt": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9:.]+Z$"
+    },
+    "asOf": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "methodology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version",
+        "impactModelVersion",
+        "countRule",
+        "url"
+      ],
+      "properties": {
+        "name": {
+          "const": "AiEDs"
+        },
+        "version": {
+          "const": "2.5.0"
+        },
+        "impactModelVersion": {
+          "const": "v2"
+        },
+        "countRule": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9 .,()'-]{1,200}$"
+        },
+        "url": {
+          "const": "https://standard.rand0m.ai/aieds/v2/methodology.md"
+        }
+      }
+    },
+    "meaning": {
+      "const": "AI agent sessions that built these sites"
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "from",
+        "to",
+        "machines",
+        "sessionsRecorded",
+        "knownMissing"
+      ],
+      "properties": {
+        "from": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "to": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+        },
+        "machines": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sessionsRecorded": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "knownMissing": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9 ,.-]{1,80}$"
+          }
+        }
+      }
+    },
+    "company": {
+      "$ref": "#/$defs/row"
+    },
+    "sites": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rand0m",
+        "randomly",
+        "knightly",
+        "xyz",
+        "llc",
+        "org"
+      ],
+      "properties": {
+        "rand0m": {
+          "$ref": "#/$defs/row"
+        },
+        "randomly": {
+          "$ref": "#/$defs/row"
+        },
+        "knightly": {
+          "$ref": "#/$defs/row"
+        },
+        "xyz": {
+          "$ref": "#/$defs/row"
+        },
+        "llc": {
+          "$ref": "#/$defs/row"
+        },
+        "org": {
+          "$ref": "#/$defs/row"
+        }
+      }
+    },
+    "sharedUnplaced": {
+      "$ref": "#/$defs/row"
+    },
+    "sharedUnplacedMeaning": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9 .,()'-]{1,300}$"
+    },
+    "display": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "company",
+        "sites",
+        "sharedUnplaced"
+      ],
+      "properties": {
+        "company": {
+          "$ref": "#/$defs/tiles"
+        },
+        "sites": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "rand0m",
+            "randomly",
+            "knightly",
+            "xyz",
+            "llc",
+            "org"
+          ],
+          "properties": {
+            "rand0m": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/tiles"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "randomly": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/tiles"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "knightly": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/tiles"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "xyz": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/tiles"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "llc": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/tiles"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "org": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/tiles"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "sharedUnplaced": {
+          "$ref": "#/$defs/tiles"
+        }
+      }
+    },
+    "requiredSentences": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "prefixItems": [
+        {
+          "const": "Energy and carbon are modeled estimates."
+        },
+        {
+          "const": "Tree-Time and equivalents are educational comparisons."
+        },
+        {
+          "const": "Water is a modeled estimate."
+        }
+      ],
+      "items": false
+    }
+  },
+  "$defs": {
+    "water": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "waterL",
+        "rangeL",
+        "gridBasis"
+      ],
+      "properties": {
+        "waterL": {
+          "type": "number",
+          "minimum": 0
+        },
+        "rangeL": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "low",
+            "high"
+          ],
+          "properties": {
+            "low": {
+              "type": "number",
+              "minimum": 0
+            },
+            "high": {
+              "type": "number",
+              "minimum": 0
+            }
+          }
+        },
+        "gridBasis": {
+          "const": "US average"
+        }
+      }
+    },
+    "row": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tokens",
+        "energyKWh",
+        "gCO2e",
+        "treeTimeMinutes",
+        "water",
+        "confidence"
+      ],
+      "properties": {
+        "tokens": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "energyKWh": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "gCO2e": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "treeTimeMinutes": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "water": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/water"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "confidence": {
+          "const": "low"
+        }
+      }
+    },
+    "tile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "unit",
+        "text"
+      ],
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "treeTile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "unit",
+        "text",
+        "note"
+      ],
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "note": {
+          "const": "(1 tree)"
+        }
+      }
+    },
+    "waterTile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "value",
+        "unit",
+        "low",
+        "high",
+        "basis",
+        "text"
+      ],
+      "properties": {
+        "value": {
+          "type": "string"
+        },
+        "unit": {
+          "type": "string"
+        },
+        "low": {
+          "type": "string"
+        },
+        "high": {
+          "type": "string"
+        },
+        "basis": {
+          "const": "US average"
+        },
+        "text": {
+          "type": "string"
+        }
+      }
+    },
+    "tiles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tokens",
+        "energy",
+        "carbon",
+        "treeTime",
+        "water"
+      ],
+      "properties": {
+        "tokens": {
+          "$ref": "#/$defs/tile"
+        },
+        "energy": {
+          "$ref": "#/$defs/tile"
+        },
+        "carbon": {
+          "$ref": "#/$defs/tile"
+        },
+        "treeTime": {
+          "$ref": "#/$defs/treeTile"
+        },
+        "water": {
+          "$ref": "#/$defs/waterTile"
+        }
+      }
+    }
+  }
+}
