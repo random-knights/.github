@@ -45,7 +45,7 @@ The objective of our work is to demonstrate the direct impact of technology, bot
 
 - Built with:
   - Maximum Family Effort
-  - Rand0m AI Standard : E+ w/ AiEDs & K13
+  - Rand0m AI Standard : E+ w/ AiEDs
   - [Randomly.Engineering](https://randomly.engineering)
   - [Knightly.Engineering](https://knightly.engineering)
   - Node.js, Flutter and Dart
