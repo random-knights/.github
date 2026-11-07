@@ -27,7 +27,7 @@
         "low": 12246.84624863842,
         "high": 78186.08057040349
       },
-      "gridBasis": "US average"
+      "gridBasis": "US avg"
     },
     "confidence": "low"
   },
@@ -45,7 +45,7 @@
           "low": 3085.625657458323,
           "high": 19699.192050440142
         },
-        "gridBasis": "US average"
+        "gridBasis": "US avg"
       },
       "confidence": "low"
     },
@@ -62,7 +62,7 @@
           "low": 218.30129889224014,
           "high": 1393.6749590295558
         },
-        "gridBasis": "US average"
+        "gridBasis": "US avg"
       },
       "confidence": "low"
     },
@@ -79,7 +79,7 @@
           "low": 239.9949884676202,
           "high": 1532.1713953017563
         },
-        "gridBasis": "US average"
+        "gridBasis": "US avg"
       },
       "confidence": "low"
     },
@@ -96,7 +96,7 @@
           "low": 304.28835800351317,
           "high": 1942.6318900789258
         },
-        "gridBasis": "US average"
+        "gridBasis": "US avg"
       },
       "confidence": "low"
     },
@@ -113,7 +113,7 @@
           "low": 42.17732483028514,
           "high": 269.2676669956057
         },
-        "gridBasis": "US average"
+        "gridBasis": "US avg"
       },
       "confidence": "low"
     },
@@ -130,7 +130,7 @@
           "low": 108.76202921940515,
           "high": 694.3564577284058
         },
-        "gridBasis": "US average"
+        "gridBasis": "US avg"
       },
       "confidence": "low"
     }
