@@ -31,7 +31,7 @@
         "low": 12246.8462,
         "high": 78186.0806
       },
-      "gridBasis": "US average"
+      "gridBasis": "US avg"
     },
     "confidence": "low"
   },
@@ -47,7 +47,7 @@
           "low": 3085.6257,
           "high": 19699.1921
         },
-        "gridBasis": "US average"
+        "gridBasis": "US avg"
       },
       "confidence": "low"
     },
@@ -62,7 +62,7 @@
           "low": 218.3013,
           "high": 1393.675
         },
-        "gridBasis": "US average"
+        "gridBasis": "US avg"
       },
       "confidence": "low"
     },
@@ -77,7 +77,7 @@
           "low": 239.995,
           "high": 1532.1714
         },
-        "gridBasis": "US average"
+        "gridBasis": "US avg"
       },
       "confidence": "low"
     },
@@ -92,7 +92,7 @@
           "low": 304.2884,
           "high": 1942.6319
         },
-        "gridBasis": "US average"
+        "gridBasis": "US avg"
       },
       "confidence": "low"
     },
@@ -107,7 +107,7 @@
           "low": 42.1773,
           "high": 269.2677
         },
-        "gridBasis": "US average"
+        "gridBasis": "US avg"
       },
       "confidence": "low"
     },
@@ -122,7 +122,7 @@
           "low": 108.762,
           "high": 694.3565
         },
-        "gridBasis": "US average"
+        "gridBasis": "US avg"
       },
       "confidence": "low"
     }
@@ -138,7 +138,7 @@
         "low": 8247.6966,
         "high": 52654.7862
       },
-      "gridBasis": "US average"
+      "gridBasis": "US avg"
     },
     "confidence": "low"
   },
@@ -171,7 +171,7 @@
         "unit": "L",
         "low": "12,000",
         "high": "78,000",
-        "basis": "US average",
+        "basis": "US avg",
         "text": "about 34,000 L (12,000 to 78,000)"
       }
     },
@@ -203,7 +203,7 @@
           "unit": "L",
           "low": "3,100",
           "high": "20,000",
-          "basis": "US average",
+          "basis": "US avg",
           "text": "about 8,500 L (3,100 to 20,000)"
         }
       },
@@ -234,7 +234,7 @@
           "unit": "L",
           "low": "220",
           "high": "1,400",
-          "basis": "US average",
+          "basis": "US avg",
           "text": "about 600 L (220 to 1,400)"
         }
       },
@@ -265,7 +265,7 @@
           "unit": "L",
           "low": "240",
           "high": "1,500",
-          "basis": "US average",
+          "basis": "US avg",
           "text": "about 660 L (240 to 1,500)"
         }
       },
@@ -296,7 +296,7 @@
           "unit": "L",
           "low": "300",
           "high": "1,900",
-          "basis": "US average",
+          "basis": "US avg",
           "text": "about 840 L (300 to 1,900)"
         }
       },
@@ -327,7 +327,7 @@
           "unit": "L",
           "low": "42",
           "high": "270",
-          "basis": "US average",
+          "basis": "US avg",
           "text": "about 120 L (42 to 270)"
         }
       },
@@ -358,7 +358,7 @@
           "unit": "L",
           "low": "110",
           "high": "690",
-          "basis": "US average",
+          "basis": "US avg",
           "text": "about 300 L (110 to 690)"
         }
       }
@@ -390,7 +390,7 @@
         "unit": "L",
         "low": "8,200",
         "high": "53,000",
-        "basis": "US average",
+        "basis": "US avg",
         "text": "about 23,000 L (8,200 to 53,000)"
       }
     }

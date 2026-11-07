@@ -283,7 +283,7 @@
           }
         },
         "gridBasis": {
-          "const": "US average"
+          "const": "US avg"
         }
       }
     },
@@ -411,7 +411,7 @@
           "type": "string"
         },
         "basis": {
-          "const": "US average"
+          "const": "US avg"
         },
         "text": {
           "type": "string"

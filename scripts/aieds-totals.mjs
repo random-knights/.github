@@ -37,7 +37,7 @@ export const REQUIRED_SENTENCES = [
   "Tree-Time and equivalents are educational comparisons.",
   "Water is a modeled estimate.",
 ];
-const GRID_BASIS = "US average";
+const GRID_BASIS = "US avg";
 const SAFE_TEXT = /^[A-Za-z0-9 .,()'-]{1,200}$/;
 // The input is a recorded value, so it must agree with a recomputation to far
 // better than any display rounding.

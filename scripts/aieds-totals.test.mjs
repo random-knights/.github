@@ -162,10 +162,10 @@ test("shared / unplaced equals the company total minus the six sites", () => {
   assert.ok(sh.energyKWh >= 0);
 });
 
-test("water: low <= value <= high, US average label", () => {
+test("water: low <= value <= high, US avg label", () => {
   for (const r of rows(COMMITTED)) {
     assert.ok(r.water.rangeL.low <= r.water.waterL && r.water.waterL <= r.water.rangeL.high);
-    assert.equal(r.water.gridBasis, "US average");
+    assert.equal(r.water.gridBasis, "US avg");
     assert.equal(r.confidence, "low");
   }
 });
@@ -237,7 +237,7 @@ test("display strings are 2 significant figures with the right unit step", () =>
   assert.equal(d.treeTime.text, "about 140 years (1 tree)");
   assert.equal(d.treeTime.note, "(1 tree)");
   assert.equal(d.water.text, "about 34,000 L (12,000 to 78,000)");
-  assert.equal(d.water.basis, "US average");
+  assert.equal(d.water.basis, "US avg");
   assert.deepEqual(COMMITTED.display.company, d);
   // 2 significant figures at most, in every value string.
   for (const [p, s] of strings(COMMITTED.display)) {
@@ -338,7 +338,7 @@ test("PII gate: a laptop-shaped input full of private fields yields none of them
       gridL: energy * 4.52,
       waterL: energy * 4.88,
       rangeL: { low: energy * 1.77, high: energy * 11.3 },
-      gridBasis: "US average",
+      gridBasis: "US avg",
     },
     confidence: "low",
     branch: secrets[3],

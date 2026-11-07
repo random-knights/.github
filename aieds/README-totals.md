@@ -34,7 +34,7 @@ the six sites plus `sharedUnplaced` equal `company`.
    Never show zero.
 3. If the fetch fails or the JSON is not valid, show "coming soon ..." too.
 4. Always show the `asOf` date, even when it is old.
-5. Water always shows its range and the words "US average".
+5. Water always shows its range and the words "US avg".
 6. Do not call any of it a measurement, an offset or a saving.
 
 ## Where to fetch it
