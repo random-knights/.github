@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-02T17:03:15.150Z",
-  "asOf": "2026-11-02",
+  "generatedAt": "2026-11-18T13:58:30.314Z",
+  "asOf": "2026-11-17",
   "methodology": {
     "name": "AiEDs",
     "version": "2.5.0",
@@ -12,24 +12,24 @@
   "meaning": "AI agent sessions that built these sites",
   "coverage": {
     "from": "2026-07-11",
-    "to": "2026-11-02",
+    "to": "2026-11-17",
     "machines": 1,
-    "sessionsRecorded": 246,
+    "sessionsRecorded": 263,
     "knownMissing": [
       "other computers",
       "sessions not yet recorded"
     ]
   },
   "company": {
-    "tokens": 39814197485,
-    "energyKWh": 6919.122174,
-    "gCO2e": 2968303.413,
-    "treeTimeMinutes": 74292393.989,
+    "tokens": 40050416697,
+    "energyKWh": 6960.599023,
+    "gCO2e": 2986096.981,
+    "treeTimeMinutes": 74737741.578,
     "water": {
-      "waterL": 33765.3162,
+      "waterL": 33967.7232,
       "rangeL": {
-        "low": 12246.8462,
-        "high": 78186.0806
+        "low": 12320.2603,
+        "high": 78654.769
       },
       "gridBasis": "US avg"
     },
@@ -37,75 +37,75 @@
   },
   "sites": {
     "rand0m": {
-      "tokens": 9970020019,
-      "energyKWh": 1743.291332,
-      "gCO2e": 747871.981,
-      "treeTimeMinutes": 18718167.305,
+      "tokens": 10011003130,
+      "energyKWh": 1750.51043,
+      "gCO2e": 750968.974,
+      "treeTimeMinutes": 18795680.615,
       "water": {
-        "waterL": 8507.2617,
+        "waterL": 8542.4909,
         "rangeL": {
-          "low": 3085.6257,
-          "high": 19699.1921
+          "low": 3098.4035,
+          "high": 19780.7679
         },
         "gridBasis": "US avg"
       },
       "confidence": "low"
     },
     "randomly": {
-      "tokens": 706250134,
-      "energyKWh": 123.334067,
-      "gCO2e": 52910.315,
-      "treeTimeMinutes": 1324269.594,
+      "tokens": 724348127,
+      "energyKWh": 126.523113,
+      "gCO2e": 54278.415,
+      "treeTimeMinutes": 1358511.196,
       "water": {
-        "waterL": 601.8702,
+        "waterL": 617.4328,
         "rangeL": {
-          "low": 218.3013,
-          "high": 1393.675
+          "low": 223.9459,
+          "high": 1429.7112
         },
         "gridBasis": "US avg"
       },
       "confidence": "low"
     },
     "knightly": {
-      "tokens": 776581157,
-      "energyKWh": 135.590389,
-      "gCO2e": 58168.277,
-      "treeTimeMinutes": 1455868.872,
+      "tokens": 786192065,
+      "energyKWh": 137.283385,
+      "gCO2e": 58894.572,
+      "treeTimeMinutes": 1474047.011,
       "water": {
-        "waterL": 661.6811,
+        "waterL": 669.9429,
         "rangeL": {
-          "low": 239.995,
-          "high": 1532.1714
+          "low": 242.9916,
+          "high": 1551.3023
         },
         "gridBasis": "US avg"
       },
       "confidence": "low"
     },
     "xyz": {
-      "tokens": 984925186,
-      "energyKWh": 171.914327,
-      "gCO2e": 73751.246,
-      "treeTimeMinutes": 1845888.331,
+      "tokens": 988478063,
+      "energyKWh": 172.537487,
+      "gCO2e": 74018.582,
+      "treeTimeMinutes": 1852579.359,
       "water": {
-        "waterL": 838.9419,
+        "waterL": 841.9829,
         "rangeL": {
-          "low": 304.2884,
-          "high": 1942.6319
+          "low": 305.3914,
+          "high": 1949.6736
         },
         "gridBasis": "US avg"
       },
       "confidence": "low"
     },
     "llc": {
-      "tokens": 136492381,
-      "energyKWh": 23.828997,
-      "gCO2e": 10222.64,
-      "treeTimeMinutes": 255858.069,
+      "tokens": 136617352,
+      "energyKWh": 23.851348,
+      "gCO2e": 10232.228,
+      "treeTimeMinutes": 256098.052,
       "water": {
-        "waterL": 116.2855,
+        "waterL": 116.3946,
         "rangeL": {
-          "low": 42.1773,
-          "high": 269.2677
+          "low": 42.2169,
+          "high": 269.5202
         },
         "gridBasis": "US avg"
       },
@@ -128,15 +128,15 @@
     }
   },
   "sharedUnplaced": {
-    "tokens": 26888119341,
-    "energyKWh": 4659.715589,
-    "gCO2e": 1999017.987,
-    "treeTimeMinutes": 50032564.487,
+    "tokens": 27051968693,
+    "energyKWh": 4688.445787,
+    "gCO2e": 2011343.243,
+    "treeTimeMinutes": 50341048.015,
     "water": {
-      "waterL": 22739.4121,
+      "waterL": 22879.6154,
       "rangeL": {
-        "low": 8247.6966,
-        "high": 52654.7862
+        "low": 8298.549,
+        "high": 52979.4374
       },
       "gridBasis": "US avg"
     },
@@ -151,9 +151,9 @@
         "text": "about 40 billion"
       },
       "energy": {
-        "value": "6.9",
+        "value": "7",
         "unit": "MWh",
-        "text": "about 6.9 MWh"
+        "text": "about 7 MWh"
       },
       "carbon": {
         "value": "3",
@@ -170,9 +170,9 @@
         "value": "34,000",
         "unit": "L",
         "low": "12,000",
-        "high": "78,000",
+        "high": "79,000",
         "basis": "US avg",
-        "text": "about 34,000 L (12,000 to 78,000)"
+        "text": "about 34,000 L (12,000 to 79,000)"
       }
     },
     "sites": {
@@ -183,9 +183,9 @@
           "text": "about 10 billion"
         },
         "energy": {
-          "value": "1.7",
+          "value": "1.8",
           "unit": "MWh",
-          "text": "about 1.7 MWh"
+          "text": "about 1.8 MWh"
         },
         "carbon": {
           "value": "750",
@@ -209,40 +209,40 @@
       },
       "randomly": {
         "tokens": {
-          "value": "710",
+          "value": "720",
           "unit": "million",
-          "text": "about 710 million"
+          "text": "about 720 million"
         },
         "energy": {
-          "value": "120",
+          "value": "130",
           "unit": "kWh",
-          "text": "about 120 kWh"
+          "text": "about 130 kWh"
         },
         "carbon": {
-          "value": "53",
+          "value": "54",
           "unit": "kg CO2e",
-          "text": "about 53 kg CO2e"
+          "text": "about 54 kg CO2e"
         },
         "treeTime": {
-          "value": "2.5",
+          "value": "2.6",
           "unit": "years",
-          "text": "about 2.5 years (1 tree)",
+          "text": "about 2.6 years (1 tree)",
           "note": "(1 tree)"
         },
         "water": {
-          "value": "600",
+          "value": "620",
           "unit": "L",
           "low": "220",
           "high": "1,400",
           "basis": "US avg",
-          "text": "about 600 L (220 to 1,400)"
+          "text": "about 620 L (220 to 1,400)"
         }
       },
       "knightly": {
         "tokens": {
-          "value": "780",
+          "value": "790",
           "unit": "million",
-          "text": "about 780 million"
+          "text": "about 790 million"
         },
         "energy": {
           "value": "140",
@@ -250,9 +250,9 @@
           "text": "about 140 kWh"
         },
         "carbon": {
-          "value": "58",
+          "value": "59",
           "unit": "kg CO2e",
-          "text": "about 58 kg CO2e"
+          "text": "about 59 kg CO2e"
         },
         "treeTime": {
           "value": "2.8",
@@ -261,19 +261,19 @@
           "note": "(1 tree)"
         },
         "water": {
-          "value": "660",
+          "value": "670",
           "unit": "L",
           "low": "240",
-          "high": "1,500",
+          "high": "1,600",
           "basis": "US avg",
-          "text": "about 660 L (240 to 1,500)"
+          "text": "about 670 L (240 to 1,600)"
         }
       },
       "xyz": {
         "tokens": {
-          "value": "980",
+          "value": "990",
           "unit": "million",
-          "text": "about 980 million"
+          "text": "about 990 million"
         },
         "energy": {
           "value": "170",
@@ -294,10 +294,10 @@
         "water": {
           "value": "840",
           "unit": "L",
-          "low": "300",
+          "low": "310",
           "high": "1,900",
           "basis": "US avg",
-          "text": "about 840 L (300 to 1,900)"
+          "text": "about 840 L (310 to 1,900)"
         }
       },
       "llc": {
@@ -380,18 +380,18 @@
         "text": "about 2 t CO2e"
       },
       "treeTime": {
-        "value": "95",
+        "value": "96",
         "unit": "years",
-        "text": "about 95 years (1 tree)",
+        "text": "about 96 years (1 tree)",
         "note": "(1 tree)"
       },
       "water": {
         "value": "23,000",
         "unit": "L",
-        "low": "8,200",
+        "low": "8,300",
         "high": "53,000",
         "basis": "US avg",
-        "text": "about 23,000 L (8,200 to 53,000)"
+        "text": "about 23,000 L (8,300 to 53,000)"
       }
     }
   },
