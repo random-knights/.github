@@ -231,14 +231,23 @@ test("no banned water word appears anywhere in the output text", () => {
 });
 
 test("display strings are 2 significant figures with the right unit step", () => {
-  const d = displayFor(COMMITTED.company);
+  // A frozen company row (the 2026-11-02 totals), so a data refresh does not
+  // break the pinned strings. The committed file is checked against
+  // displayFor() itself just below.
+  const d = displayFor({
+    tokens: 39814197485,
+    energyKWh: 6919.122174,
+    gCO2e: 2968303.413,
+    treeTimeMinutes: 74292393.989,
+    water: { waterL: 33765.3162, rangeL: { low: 12246.8462, high: 78186.0806 }, gridBasis: "US avg" },
+  });
   assert.equal(d.tokens.text, "about 40 billion");
   assert.equal(d.energy.text, "about 6.9 MWh");
   assert.equal(d.treeTime.text, "about 140 years (1 tree)");
   assert.equal(d.treeTime.note, "(1 tree)");
   assert.equal(d.water.text, "about 34,000 L (12,000 to 78,000)");
   assert.equal(d.water.basis, "US avg");
-  assert.deepEqual(COMMITTED.display.company, d);
+  assert.deepEqual(COMMITTED.display.company, displayFor(COMMITTED.company));
   // 2 significant figures at most, in every value string.
   for (const [p, s] of strings(COMMITTED.display)) {
     if (!p.endsWith(".value") && !p.endsWith(".low") && !p.endsWith(".high")) continue;
